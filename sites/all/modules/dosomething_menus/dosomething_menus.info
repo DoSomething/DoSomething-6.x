@@ -1,0 +1,4 @@
+name = "DoSomething Menus"
+description = "Secondary Nav Menus"
+core = 6.x
+package = DoSomething

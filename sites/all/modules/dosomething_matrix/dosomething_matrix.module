@@ -1,0 +1,106 @@
+<?php
+
+function dosomething_matrix_block($op = 'list', $delta = 0, $edit = array()) {
+
+  $blocks = array();
+
+  if ($op == 'list') {
+    $blocks[0]['info'] = 'Action Matrix';
+    $blocks[0]['cache'] = BLOCK_CACHE_GLOBAL;
+  } else if ($op == 'view') {
+    switch ($delta) {
+      case 0:
+        $blocks['subject'] = 'Action Matrix';
+        $blocks['content'] = _dosomething_matrix_form();
+        break;
+    }
+  }
+  
+  return $blocks;
+
+}
+
+function _dosomething_matrix_form() {
+
+  $base_path = drupal_get_path('module', 'dosomething_matrix');
+  
+  drupal_add_css($base_path . '/css/dosomething_matrix.css', 'module', 'all', FALSE);
+
+  drupal_add_js($base_path . '/js/customSelect.jquery.js', 'module', 'header', FALSE);
+  drupal_add_js($base_path . '/js/dosomething_matrix.js', 'module', 'footer', FALSE);
+
+  $time  = _dosomething_matrix_select(4, 'time', 'How Long?');
+  $where = _dosomething_matrix_select(2, 'where', 'Where?');
+  $who = _dosomething_matrix_select(3, 'who', 'Who With?');
+  $causes = _dosomething_matrix_select_causes(5, 'cause', 'What Cause?');
+
+  $result = "<a href=\"/actnow\"><img src=\"/$base_path/images/header_actnow_orange.png\" /></a>";
+  $result .= '<p>Select from the options below and hit search. We will give you tons of easy ways to <em>do something</em>!</p>';
+  $result .= '<form action="/actnow/matrix" id="action-matrix">';
+  $result .= $causes;
+  $result .= $who;
+  $result .= $where;
+  $result .= $time;
+  $result .= '<input type="image" value="search" src="/'.drupal_get_path('module', 'dosomething_matrix').'/images/search.png">';
+  $result .= '</form>';
+
+  return $result;
+
+}
+
+function _dosomething_matrix_select($vid, $name, $text) {
+
+  $result = '<div>';
+  $result .= "<select name=\"$name\" id=\"$name\">";
+  $result .= "<option selected=\"selected\" value=\"\">$text</option>";
+
+  $tree = taxonomy_get_tree($vid);
+
+  foreach ($tree as $term) {
+    $result .= "<option value=\"{$term->tid}\">{$term->name}</option>";
+  }
+
+  $result .= '</select>';
+  $result .= '</div>';
+
+  return $result;
+
+}
+
+function _dosomething_matrix_select_causes($vid, $name, $text) {
+
+  $result = '<div>';
+  $result .= "<select name=\"$name\" id=\"$name\">";
+  $result .= "<option selected=\"selected\" value=\"\">$text</option>";
+
+  $tree = taxonomy_get_tree($vid);
+
+  $select_tree = array();
+
+  foreach ($tree as $term) {
+    if (count($term->parents) < 2 && $term->parents[0] == 0) { // Extract cause names
+      $select_tree[$term->tid]['name'] = $term->name;
+      $select_tree[$term->tid]['tids'][] = $term->tid;
+    } else { // These are issues
+      foreach ($term->parents as $parent_tid) { // add this tid to each parent
+        $select_tree[$parent_tid]['tids'][] = $term->tid;
+      }
+    }
+  }
+
+  uasort($select_tree, _dosomething_matrix_cause_sort);
+
+  foreach ($select_tree as $cause) {
+    $result .= '<option value="'.implode('+', array_unique($cause['tids'])).'">'.$cause['name'].'</option>';
+  }
+
+  $result .= '</select>';
+  $result .= '</div>';
+
+  return $result;
+
+}
+
+function _dosomething_matrix_cause_sort($a, $b) {
+  return strcmp($a['name'], $b['name']);
+}

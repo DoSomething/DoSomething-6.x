@@ -1,0 +1,86 @@
+/* $Id$ */
+
+/**
+ * @file
+ * Views Styling
+ */
+
+.view-front-scroller {
+  background-color: #48bcdc;
+  margin-left: -59px;
+  width: 530px;
+  padding: 10px;
+}
+
+.view-front-scroller .view-content {
+  line-height: 0px;
+  display: block;
+}
+
+.view-front-scroller #profiler-thumbnails {
+  width: 75px;
+  float: left;
+}
+
+.view-front-scroller #profiler-thumbnails div.activeSlide {
+  border: 2px solid #fec333;
+}
+
+.view-front-scroller #profiler-thumbnails img {
+  width: 71px;
+  height: 71px;
+}
+
+.view-front-scroller #profiler-thumbnails div {
+  margin-bottom: 6px;
+  border: 2px solid transparent;
+}
+
+.view-front-scroller #profiler-thumbnails .row-4 {
+  margin-bottom: 0px;
+}
+
+.view-front-scroller #profiler-main {
+  width: 445px;
+  float: left;
+  margin-left: 10px;
+  position: relative;
+  margin-top: 2px;
+}
+
+.view-front-scroller .slide {
+  width: 445px;
+  height: 395px;
+}
+
+.view-front-scroller .slide .text {
+  position: absolute;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  margin: 10px;
+  width: 405px;
+}
+
+.view-front-scroller .slide .text h2,
+.view-front-scroller .slide .text p {
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+.view-front-scroller .slide .text h2 {
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  color: #0f3b70;
+  color: white;
+}
+
+.view-front-scroller .slide .text p {
+  color: #48bcdc;
+  font-size: 1.2em;
+}
+
+.view-Projects .views-row-odd {
+  background: #def3f9;
+}

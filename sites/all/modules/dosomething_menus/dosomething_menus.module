@@ -1,0 +1,99 @@
+<?php
+
+function dosomething_menus_block($op = 'list', $delta = 0, $edit = array()) {
+
+  $blocks = array();
+
+  if ($op == 'list') {
+    $blocks[0]['info'] = 'What\'s Your Thing Nav';
+    $blocks[0]['cache'] = BLOCK_NO_CACHE;
+    $blocks[1]['info'] = 'Act Now Nav';
+    $blocks[1]['cache'] = BLOCK_NO_CACHE;
+    $blocks[2]['info'] = 'Clubs Nav';
+    $blocks[2]['cache'] = BLOCK_NO_CACHE;
+    $blocks[3]['info'] = 'Our Programs Nav';
+    $blocks[3]['cache'] = BLOCK_NO_CACHE;
+    $blocks[4]['info'] = 'Social Action Training Nav';
+    $blocks[4]['cache'] = BLOCK_NO_CACHE;
+    $blocks[5]['info'] = 'About Us Nav';
+    $blocks[5]['cache'] = BLOCK_NO_CACHE;
+  } else if ($op == 'view') {
+    switch ($delta) {
+      case 0:
+        $blocks['subject'] = 'What\'s Your Thing';
+        $blocks['content'] = _dosomething_menu_whatsyourthing();
+        break;
+      case 1:
+        $blocks['subject'] = 'Act Now Nav';
+        $blocks['content'] = _dosomething_menu('actnow', 'menu-act-now');
+        break;
+      case 2:
+        $blocks['subject'] = 'Clubs Nav';
+        $blocks['content'] = _dosomething_menu('sharesomething', 'menu-clubs', _dosomething_menu_clubs_header());
+        break;
+      case 3:
+        $blocks['subject'] = 'Our Programs Nav';
+        $blocks['content'] = _dosomething_menu('sharesomething', 'menu-programs');
+        break;
+      case 4:
+        $blocks['subject'] = 'Social Action Training Nav';
+        $blocks['content'] = _dosomething_menu('actnow', 'menu-social-action-t', _dosomething_menu_training_header());
+        break;
+      case 5:
+        $blocks['subject'] = 'About Us Nav';
+        $blocks['content'] = _dosomething_menu('plain', 'menu-about-us');
+        break;
+    }
+  }
+  
+  return $blocks;
+
+}
+
+function _dosomething_menu_whatsyourthing($header = NULL) {
+  $result = '';
+  $items = array();
+  $causes = taxonomy_get_tree(5, 0, -1, 1);
+  $result .= '<div id="secondary" class="whatsyourthing">';
+  $result .= '<ul>';
+  foreach ($causes as $cause) {
+    $result .= '<li><a href="/whatsyourthing/'.str_replace(' ', '+', $cause->name).'">'.$cause->name.'</a></li>';
+  }
+  $result .= '</ul>';
+  $result .= '<div class="whatsyourthing-bottom"></div>';
+  $result .= '</div>';
+  return $result;
+}
+
+function _dosomething_menu($class, $menu, $header = NULL) {
+  $result = "<div id=\"secondary\" class=\"$class\">";
+  if ($header) {
+    $result .= $header;
+  }
+  $result .= theme('links', menu_navigation_links($menu));
+  $result .= '<div class="btm"></div>';
+  $result .= '</div>';
+  return $result;
+}
+
+function _dosomething_menu_clubs_header() {
+  $result = <<< EOF
+    <div class="breadcrumbs">
+      <span class="link"><a href="/programs">Our Programs</a></span>
+      <span class="sep">&raquo;</span>
+      <span class="current">Clubs</span>
+    </div>
+EOF;
+  return $result;
+}
+
+function _dosomething_menu_training_header() {
+  $result = <<< EOF
+    <div class="breadcrumbs">
+      <span class="link"><a href="/actnow">Act Now!</a></span>
+      <span class="sep">&raquo;</span>
+      <span class="current">Action Training</span>
+    </div>
+EOF;
+  return $result;
+}

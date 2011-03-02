@@ -1,0 +1,33 @@
+/* $Id$ */
+
+/**
+ * @file
+ * Panels Styling
+ */
+
+#panel-actnow-matrix .pane-views-panes .views-row {
+  padding: 10px;
+  clear: both;
+}
+
+#panel-actnow-matrix .pane-views-panes .views-row-odd {
+  background: #def3f9;
+}
+
+#panel-actnow-matrix .pane-views-panes .views-field-field-picture-fid {
+  float: left;
+  padding: 0 10px 10px 0;
+}
+
+#panel-actnow-matrix .pane-views-panes .views-field-title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+#panel-actnow-matrix .item-list .pager li a {
+  padding-right: 4px;
+}
+
+#panel-actnow-matrix .item-list .pager li a.views-throbbing {
+  color: transparent;
+}

@@ -1,0 +1,113 @@
+.views-row-odd  .node-type-issue,
+.views-row-odd  .node-type-cause {
+  padding-right: 10px;
+  clear: left;
+}
+
+.node-type-issue,
+.node-type-cause {
+  width: 245px;
+  float: left;
+  padding-bottom: 20px;
+}
+
+.view-issue .node-type-issue {
+  width: auto;
+}
+
+.node-type-issue img,
+.node-type-cause img {
+  float: left;
+  padding: 0 10px 0 0;
+}
+
+.view-issue .node-type-issue .blue {
+  width: 212px;
+  float: left;
+}
+
+.view-issue .node-type-issue .learn {
+  margin-right: 20px;
+}
+
+.view-issue .views-row-odd .node-type-issue {
+  padding-right: 0px;
+}
+.view-issue .node-type-issue .blue img {
+  float: none;
+}
+
+.node-type-issue .field-type-text,
+.node-type-cause .field-type-text {
+  padding-left: 130px;
+}
+
+.node-type-issue p,
+.node-type-cause .field-type-text .field-item {
+  color: #0f3b70;
+  font-size: 0.9em;
+  line-height: 1.5em;
+}
+
+.node-type-issue h3,
+.node-type-cause h3 {
+  font-size: 1.17em;
+  padding: 1em 0;
+}
+
+.view-issue .issue-intro h2,
+.view-whatsyourthing .view-header h2 {
+  font-size: 26px;
+  color: #48bcdc;
+  text-transform: uppercase;
+  margin-bottom: 0.5em;
+}
+
+.view-issue .blue h3,
+.view-issue .issue-intro p,
+.view-whatsyourthing .view-header p {
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.3em;
+  margin-bottom: 1em;
+  color: #0f3b70;
+}
+
+.view-issue .blue h3 {
+  text-align: center;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.view-issue .blue ol li {
+  margin: 0 0 0.4em 1.5em;
+  padding-top: 0;
+  color: #F2BE3A;
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 0.9em;
+}
+
+.view-issue .blue ol li span {
+  margin-bottom: 0;
+  font-size: 13px;
+  font-weight: normal;
+}
+
+.view-issues .intro h2 {
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  font-size: 26px;
+  color: #48bcdc;
+}
+
+.view-issues .intro img {
+  float: left;
+  padding: 0 13px 13px 0;
+}
+
+.view-issues .intro p {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #0f3b70;
+}

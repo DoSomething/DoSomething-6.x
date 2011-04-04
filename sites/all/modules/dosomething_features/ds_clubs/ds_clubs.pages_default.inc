@@ -12,7 +12,10 @@ function ds_clubs_default_page_manager_pages() {
   $page->admin_title = 'clubs';
   $page->admin_description = '';
   $page->path = 'clubs';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'none',
     'title' => '',

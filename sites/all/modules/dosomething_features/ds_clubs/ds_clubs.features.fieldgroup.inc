@@ -44,9 +44,7 @@ function ds_clubs_fieldgroup_default_groups() {
     ),
     'weight' => '-10',
     'group_type' => 'standard',
-    'fields' => array(
-      '0' => 'field_club_agreement',
-    ),
+    'fields' => array(),
   );
 
   // Exported group: group_club_details

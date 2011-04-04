@@ -11,7 +11,7 @@ function ds_clubs_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'clubs';
   $page->admin_description = '';
-  $page->path = 'programs/clubs';
+  $page->path = 'clubs';
   $page->access = array();
   $page->menu = array(
     'type' => 'none',

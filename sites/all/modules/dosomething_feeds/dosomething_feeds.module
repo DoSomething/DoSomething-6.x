@@ -1,0 +1,125 @@
+<?php
+
+function dosomething_feeds_menu() {
+  $items = array();
+  $items['news/feed2'] = array(
+    'title' => 'DoSomething.org News Feed',
+    'page callback' => 'dosomething_feed_news',
+    'access callback' => TRUE,
+    'description' => 'DoSomething.org News',
+    'type' => MENU_CALLBACK,
+  );
+  $items['cgg/rss2'] = array(
+    'title' => 'Celebs Gone Good',
+    'page callback' => 'dosomething_feed_cgg',
+    'access callback' => TRUE,
+    'description' => 'News on the latest Celebs Gone Good',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function dosomething_feed_news() {
+  $pub_date = date('r');
+  $title = 'DoSomething.org News Box';
+  $link = 'http://www.dosomething.org/news/feed';
+  $description = 'The DoSomething.org News Box';
+  $type = 'chatterbox';
+  dosomething_feed_maker($pub_date, $title, $link, $description, $type);
+}
+
+function dosomething_feed_cgg() {
+  $pub_date = date('r');
+  $title = 'Celebs Gone Good';
+  $link = 'http://www.dosomething.org/cgg/rss';
+  $description = 'The Celebs Gone Good Blog';
+  $type = 'celebs_gone_good';
+  dosomething_feed_maker($pub_date, $title, $link, $description, $type);
+}
+
+function dosomething_feed_maker($pub_date, $title, $link, $description, $type) {
+  
+
+  $items = '';
+  $sql = "
+    SELECT n.title, created, n.nid, teaser, filename, filemime, field_embedded_video_value
+    FROM node n
+    INNER JOIN node_revisions nr ON n.vid = nr.vid
+     AND n.type='$type'
+     AND n.status = 1
+    LEFT JOIN content_field_picture pic ON n.vid = pic.vid AND pic.delta = 0
+    LEFT JOIN files f ON f.fid = pic.field_picture_fid
+    LEFT JOIN content_field_embedded_video vid ON vid.vid = n.vid AND vid.delta = 0
+    WHERE field_embedded_video_provider = 'youtube'
+    OR field_picture_fid IS NOT NULL 
+    ORDER BY n.created DESC
+    LIMIT 10
+  ";
+
+  $result = db_query($sql);
+
+  while ($feed_item = db_fetch_object($result)) {
+
+    $item = '';
+    $item .= '<item>';
+    $item .= '<title>' . check_plain($feed_item->title) . '</title>';
+    $item .= '<link>' . url('node/'.$feed_item->nid, array('absolute' => TRUE)) . '</link>';
+    $item .= '<pubDate>' . date('r', ($feed_item->created + 7200)) . '</pubDate>';
+    $item .= '<description><![CDATA[' . strip_tags($feed_item->teaser) . ']]></description>';
+
+    $the_node = node_load(array('nid' => $feed_item->nid));
+    foreach ($the_node->taxonomy as $term) {
+     if ($term->vid == 5) {
+      $parent = "";
+      $parents = taxonomy_get_parents($term->tid);
+      $first = reset($parents);
+      if ($first) {
+       $parent = str_replace(" ", "+", $first->name."/");
+      }
+      $main_part = str_replace(" ", "+", $term->name);
+      $item .= "<category domain=\"http://www.dosomething.org/whatsyourthing/{$parent}{$main_part}\">$term->name</category>\n";
+     }
+    }
+    $item .= '<content:encoded><![CDATA[' . $feed_item->teaser . ']]></content:encoded>';
+
+    if ($feed_item->filename) {
+      $item .= '<media:content url="http://www.dosomething.org/files/imagecache/140x105/files/pictures/actionguide/' . $feed_item->filename . '" type="' . $feed_item->filemime . '" width="140" height="105"></media:content>';
+    }
+    if ($feed_item->field_embedded_video_value) {
+      $item .= '<media:content url="http://www.youtube.com/watch?v=' . substr($feed_item->field_embedded_video_value, 0, strpos($feed_item->field_embedded_video_value, '?')) . '" medium="video"></media:content>';
+    }
+
+    $item .= '<guid>' . url('node/'.$feed_item->nid, array('absolute' => TRUE)) . '</guid>';
+    $item .= '</item>';
+
+    $items .= $item;
+
+  }
+
+  drupal_set_header('Content-Type: text/xml; charset=utf-8');
+
+  $output = <<<EOF
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:media="http://search.yahoo.com/mrss/">
+
+<channel> 
+  <title>$title</title>
+  <atom:link href="$link" rel="self" type="application/rss+xml" />
+  <link>$link</link>
+  <description>$description</description> 
+  <pubDate>$pub_date</pubDate> 
+  <language>en</language>
+  $items
+</channel>
+</rss>
+EOF;
+
+  print $output;
+
+  exit();
+
+}

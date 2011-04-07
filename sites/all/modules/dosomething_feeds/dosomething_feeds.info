@@ -1,0 +1,4 @@
+name = "DoSomething Feeds"
+description = "Custom Feeds"
+core = 6.x
+package = DoSomething

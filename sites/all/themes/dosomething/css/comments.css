@@ -5,15 +5,26 @@
  * Comment Styling
  */
 
-
 #comments /* Wrapper for the list of comments and its title */ {
   margin: 1em 0;
+  background-color: #def3f9;
+  padding: 15px;
+}
+
+#comments h2 {
+  color: #48bcdc;
+  font-size: 20px;
+  margin-bottom: 1em;
 }
 
 #comments .title /* Heading for the list of comments */ {
 }
 
 .comment /* Wrapper for a single comment */ {
+}
+
+.comment .comment-top {
+  display: block;
 }
 
 .comment-preview /* Preview of the comment before submitting new or updated comment */ {
@@ -64,6 +75,17 @@
 }
 
 .comment .content /* Comment's content wrapper */ {
+  background-color: #4ac1e1;
+  padding: 5px;
+  color: white;
+}
+
+.comment .content a {
+  color: white;
+}
+
+.comment .content a:hover {
+  text-decoration: underline;
 }
 
 .comment .user-signature /* The user's signature */ {

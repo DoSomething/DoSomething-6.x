@@ -425,3 +425,8 @@ div.block ol {
   margin: 0 0 1em;
   padding: 0;
 }
+
+div.block.pink {
+  background: #f4f1ed;
+}
+

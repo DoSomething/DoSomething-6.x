@@ -80,3 +80,12 @@ function ds_projects_node_info() {
   );
   return $items;
 }
+
+/**
+ * Implementation of hook_views_api().
+ */
+function ds_projects_views_api() {
+  return array(
+    'api' => '2',
+  );
+}

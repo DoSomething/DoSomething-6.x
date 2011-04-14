@@ -1,0 +1,590 @@
+.pager
+{
+	margin: 1em 0;
+}
+
+.opportunity h1
+{
+	float: none;
+	margin: 0;
+}
+
+
+/* form fixes */
+/* fix required form fields' asterisks */
+form label span.form-required {
+    display: inline;
+}
+
+form fieldset
+{
+	width: 500px;
+	overflow: auto;
+}
+
+form fieldset fieldset
+{
+	width: auto;
+	overflow: auto;
+}
+
+form fieldset form-item
+{
+	width: 500px;
+}
+
+input.form-file
+{
+	width: 300px;
+}
+
+input.form-text
+{
+	width: 90%;
+}
+
+fieldset legend
+{
+	font-weight: bold;
+}
+
+.hide-me
+{
+	display: none;
+}
+
+.clear-left
+{
+ 	clear: left;
+}
+
+/* project form */
+select#edit-taxonomy-field-cause-nids
+{
+	height: 175px !important;
+	float: none;
+	width: 225px;
+}
+
+.project-node-form-taxonomy .description
+{
+	width: 200px;
+}
+
+.project_node_form fieldset.collapsible .fieldset-wrapper
+{
+	overflow: hidden !important;
+}
+
+select#edit-taxonomy-2, select#edit-taxonomy-3, select#edit-taxonomy-4
+{
+	height: 80px !important;
+}
+
+.project-node-form-taxonomy .form-item
+{
+	width: 50%;
+	float: left;
+}
+
+.project-node-form-taxonomy .form-item select
+{
+	width: 225px;
+}
+
+/* project theming */
+.node.project .project-photo img
+{
+	float: right;
+	margin: 0 0 10px 10px;
+	border: 1px solid #888;
+}
+
+/* mu: move pictures to the left on teasers */
+.node.project.project-teaser .project-photo img {
+	float: left;
+	margin: 0px;
+  padding: 5px 10px 10px 0;
+  border-width: 0px;
+}
+
+.node.project .project-field
+{
+	display: block;
+	margin-bottom: 0.75em;
+}
+
+.node.project .project-field label
+{
+	display: inline;
+	width: 100px;
+	font-weight: bold;
+}
+
+.node.project .project-photo-wrapper img
+{
+	border: 1px solid #888;
+}
+
+.node.project .project-updates .project-update
+{
+	padding: 1em;
+	padding-bottom: 1.5em;
+}
+
+.node.project .project-updates .project-update.odd
+{
+	background-color: #DEF3F9;
+}
+
+.node.project .project-updates .project-update .update-date
+{
+	font-size: 0.8em;
+	text-align: right;
+}
+
+a#node-add-project-update
+{
+	display: block;
+	margin: 1em 0 0 1em;	
+}
+
+a#project-update-feed
+{
+	display: block;
+	float: right;
+	margin: 0.75em 0.5em 0 0;
+}
+
+.node.project ul.links
+{
+	display: block;
+	margin-top: 1em;
+}
+
+.node.project ul.links li
+{
+	border-left: 1px solid #888;
+	display: block;
+	float: left;
+	padding: 0 0.5em;
+}
+
+.node.project .project-links
+{
+	display: block;
+	clear: both;
+	margin-top: 1em;
+	padding-bottom: 1em;
+}
+
+.node.project .project-links .comment_forbidden
+{
+	display: none;
+}
+
+#comments
+{
+	clear: left;
+}
+
+.node.project ul.links li.first
+{
+	border-left: 0;
+	padding-left: 0;
+}
+
+.project-teaser
+{
+	margin-bottom: 1em;
+	padding: 0.5em;
+}
+
+.project-teaser.odd
+{
+		background-color: #DEF3F9;
+}
+
+.project-teaser .project-photo img
+{
+	margin-bottom: 0 !important;
+}
+
+.project-teaser .submitted
+{
+	font-size: 0.9em;
+}
+
+.project-teaser .essay
+{
+	margin-top: 1em;
+}
+
+.node.club .project-photo-wrapper img
+{
+	margin: 0 5px 0 0;
+}
+
+.node.club ul#club-project-list li
+{
+	margin-bottom: 0.8em;
+}
+
+/* DHTML slider styles */
+
+.dhtml-slider
+{
+	overflow:hidden !important;		
+	height:240px !important;
+}
+
+.dhtml-slider .frame
+{
+	display: none;
+}
+
+.dhtml-slider .frame.first
+{
+	display: block;
+}
+
+/* projects page views */
+
+.view tbody th
+{
+	border: 0 !important;
+}
+
+.view-content-projects-recent-updates th, .view-content-projects-recent-updates td,
+.view-content-projects-most-popular-block th, .view-content-projects-most-popular-block td
+{
+	width: 33%;
+}
+
+h3.final-grant-update-subhead
+{
+	font-size: 125%;
+	margin-top: -0.5em;
+}
+
+select#edit-taxonomy-5, select#edit-taxonomy-7, select#edit-taxonomy-8
+{
+	height: 8em !important;
+}
+
+/* error messages */
+div.messages /* Important messages (status, warning, and error) for the user */
+{
+	margin: 0 1em 5px 1em;
+	border: 2px solid #ccc;
+	padding: 5px;
+	color: #000;
+	background-color: #fff;
+	font-style: italic;
+}
+
+div.status /* Normal priority messages */
+{
+}
+
+div.warning /* Medium priority messages */
+{
+	border-color: #ff7;
+}
+
+div.warning,
+tr.warning,
+body.section-admin tr.warning
+{
+	color: #000;
+	background-color: #ffc;
+}
+
+div.error /* High priority messages. See also the .error declaration below. */
+{
+	border-color: #c00;
+}
+
+div.error,
+tr.error,
+body.section-admin tr.error
+{
+	color: #900;
+	background-color: #fee;
+}
+
+/* clubs and club events */
+fieldset.location
+{
+	border: 0 !important;
+	width: 450px !important;
+	overflow: visible;
+}
+
+fieldset.location table
+{
+	width: 450px;
+}
+
+fieldset.location tr
+{
+	vertical-align: top;
+}
+
+fieldset.location td
+{
+	font-weight: normal;
+}
+
+fieldset.location tr.odd.even .form-item label
+{
+	/*display: none;*/
+}
+
+fieldset.location #gmap-loc1-gmap0
+{
+	width: 480px !important;
+	margin-left: -80px;
+	border: 1px solid #aaa;
+}
+
+fieldset.location .form-text
+{
+	width: 350px !important;
+}
+
+fieldset.location .description
+{
+	width: 400px;
+	white-space: normal;
+}
+
+fieldset.location tbody, fieldset.location tr
+{
+	background-color: #fff !important;
+	border: 0 !important;
+}
+
+fieldset.location td #edit-locations-0-postal-code
+{
+	margin-left: 10px;
+}
+
+fieldset.location legend
+{
+	display: none;
+}
+
+.og-event-calendar span.event-nodetype
+{
+	display: none !important;
+}
+
+.og-event-calendar li
+{
+	background-image: none !important;
+	font-size: 1.1em;
+	width: 233px;
+	float: none;
+	border-right: none;
+}
+
+.og-event-calendar li a
+{
+	width: 165px;
+	display: block;
+	float: left;
+}
+
+#sidebar-right .event-more-link
+{
+	display: none;
+}
+
+#sidebar-right .og-event-calendar .event-more-link
+{
+	display: block;
+	margin-top: 0.5em;
+}
+
+.event-calendar th.heading
+{
+	background-color: #0F3B70;
+	color: #fff;
+	font-weight: bold;
+}
+
+.event-calendar td.today
+{
+	background-color: #48BCDC;
+}
+
+.event-calendar td.sat, .event-calendar td.sun
+{
+	background-color: #D1EEF6;
+}
+
+.event-calendar td .type
+{
+	display: none;
+}
+
+.event-calendar td .start
+{
+	font-size: 0.8em;
+}
+
+.event-calendar div.title
+{
+	font-size: 1em !important;
+}
+
+.event-calendar .event .stripe-1, .event-calendar .event .stripe-2, .event-calendar .event .stripe-3, .event-calendar .event .stripe-4, .event-calendar .event .stripe-5, .event-calendar .event .stripe-6, .event-calendar .event .stripe-7, .event-calendar .event .stripe-8, .event-calendar .event .stripe-9
+{
+	display: none;
+}
+
+/* og groups */
+select#edit-og-groups
+{
+	width: 100%;
+	min-height: 100px !important;
+}
+
+.project-og-settings label
+{
+	display: none;
+}
+
+.og-block-0 .item-list li
+{
+	background-image: none;
+	font-size: 1.1em;
+	float: none;
+}
+
+.og-block-0 .item-list ul
+{
+	padding-bottom: 0;
+}
+
+.og-block-0 form
+{
+	display: none;
+}
+
+.club-page-learn h3
+{
+	margin: 1em 0 1em 0 !important;
+}
+
+.panel-pane .view-clubs-learn-block
+{
+	position: relative;
+	top: 29;
+}
+
+/* ordered list styling */
+ol.big-blue li
+{
+	color: #48BCDC;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+ol.big-blue li li,
+ol.big-blue li .not-so-big-blue
+{
+	margin-bottom: 0;
+	font-size: 13px;
+	color: #000;
+	font-weight: normal;
+}
+
+div#container
+{
+	padding-top: 0px !important;
+}
+
+.og-description-indent
+{
+	margin-left: 2.5em;
+}
+
+/* action matrix fix for safari */
+div#sidebar-right .selectArea .center
+{
+	width: 195px !important;
+}
+
+#actnow-matrix-large .selectArea .center
+{
+	width: 350px !important;
+}
+
+
+img.all-the-way-left
+{
+	margin: 1em 0 1em -45px;
+}
+
+img#teen-jean-drive
+{
+	position: relative;
+	top: -20px;
+	left: 10px;
+}
+
+.node.action-guide .alignleft img
+{
+	margin-top: 0.25em;
+}
+
+div.node.test_grant_app div.field	
+{
+	margin-bottom: 1em;
+}
+
+/* subscribe block niceforms safari fix */
+.block.pink.colwide.plain #sarea0 .center
+{
+	width: 300px !important;
+}
+
+
+/* make search clubs by state dropdown navy instead of yellow */
+div#sidebar-right .search-clubs-by-state-block #sarea0 {
+	width: 180px;
+	margin-right: 10px;
+}
+div#sidebar-right .search-clubs-by-state-block #sarea0.selectArea,
+div#sidebar-right .search-clubs-by-state-block #sarea0.selectArea .left {
+    background: #0F3B70;
+}
+div#sidebar-right  .search-clubs-by-state-block #sarea0.selectArea .right {
+    background: url("niceforms/actnow_how.png") no-repeat left top;
+}
+
+/* hide attachments on celebs gone good */
+.node.celebs_gone_good table#attachments {
+	display: none;
+}
+
+
+/* expand views select lists */
+#views-edit-view select
+{
+	height: auto !important;
+}
+
+#alumni-view-reset
+{
+	padding: 1em 0 0 1em;
+}
+
+/* grants db stuff */
+.node.grants_database .field
+{
+    margin-top: 1em;
+}

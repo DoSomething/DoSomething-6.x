@@ -1,0 +1,6 @@
+.live-profile { margin: 2em 0 1em; background-color: #def3f9; padding: 0 1em 1em 1em; }
+.node .live-profile h2 { color: #0F3B70; margin: 0px; position: relative; top: -16px; font-size: 20px; font-weight: bold; }
+.live-profile .label { float: left; width: 100px; font-size: 10px; font-weight: bold; text-transform: uppercase; margin: 0.5em 0; }
+.live-profile hr { clear: both; height: 0px; border: 0px; border-bottom: 1px solid #055494; padding: 2px 0; }
+.live-profile input { width: 250px; border-color: #ccc; border-style: solid; border-width: 0 1px 1px 0; color: #48bcdc; margin-right: 37px; float: left; padding: 3px 6px; }
+.live-profile select { width: 250px; border-color: #ccc; border-style: solid; border-width: 0 1px 1px 0; color: #48bcdc; margin-right: 37px; float: left; padding: 3px 6px; }

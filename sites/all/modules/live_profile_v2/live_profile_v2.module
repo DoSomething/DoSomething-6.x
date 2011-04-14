@@ -1,0 +1,240 @@
+<?php
+
+function live_profile_v2_menu($may_cache) {
+  $items = array();
+  if ($may_cache) {
+    $items[] = array(
+      'path' => 'live_profile_v2_router',
+      'callback' => 'live_profile_v2_router',
+      'type' => MENU_CALLBACK,
+      'access' => TRUE,
+    );
+  }
+  return $items;
+}
+
+function live_profile_v2_router($field, $value) {
+
+  global $user;
+  $resp = array(); 
+  $field = rawurldecode($field);
+
+  $field_names = array(
+    'profile_fname' => 'First Name',
+    'profile_lname' => 'Last Name',
+    'mail' => 'E-mail',
+    'profile_address1' => 'Address 1',
+    'profile_address2' => 'Address 2',
+    'profile_city' => 'City',
+    'profile_state' => 'State',
+    'profile_zip' => 'Zip',
+    'profile_cell' => 'Cell',
+    'profile_bday' => 'Birthday',
+  );
+
+
+  if ($user->uid) {
+    if (! $value) {
+       $resp['success'] = FALSE;
+       $resp['msg'] = $field_names[$field].': A value is required.';
+    } /*elseif ($field == 'profile_cell' && ! ds_mobile_check($value)) {
+       $resp['success'] = FALSE;
+       $resp['msg'] = 'Number must be 10 digits long';
+    }*/ else {
+      $resp['success'] = TRUE;
+      $resp['msg'] = "$user->uid updating $field: $value";
+
+      $category = db_result(db_query("SELECT category FROM profile_fields WHERE name = '%s'", $field));
+      $result = db_query("SELECT name, value FROM profile_values pv INNER JOIN profile_fields pf ON pv.fid = pf.fid WHERE category = '%s' AND uid = '%s'", $category, $user->uid);
+
+      $profile_values = array();
+      while($row = db_fetch_object($result)) {
+        $profile_values[$row->name] = $row->value;
+      }
+      $profile_values[$field] = $value;
+      $resp['profile'] = $profile_values;
+      $the_user = user_load(array('uid' => $user->uid));
+      $resp['user'] = $the_user;
+      $after = user_save($the_user, $profile_values, $category);
+      $resp['after'] = $after;
+    }
+  } else {
+    $resp['success'] = FALSE;
+    $resp['msg'] = "Anonymous users can't alter profile information";
+  }
+
+  print drupal_to_js($resp);
+
+}
+
+function live_profile_v2_show($fields = array(
+  'profile_fname',
+  'profile_lname',
+  'mail',
+  'profile_address1',
+  'profile_address2',
+  'profile_city',
+  'profile_state',
+  'profile_zip',
+  'profile_cell',
+)) {
+
+  global $user;
+
+  $field_names = array(
+    'profile_fname' => 'First Name',
+    'profile_lname' => 'Last Name',
+    'mail' => 'E-mail',
+    'profile_address1' => 'Address 1',
+    'profile_address2' => 'Address 2',
+    'profile_city' => 'City',
+    'profile_state' => 'State',
+    'profile_zip' => 'Zip',
+    'profile_cell' => 'Cell',
+    'profile_bday' => 'Birthday',
+  );
+
+  $base_edit = '/user/'.$user->uid.'/edit/';
+  $field_edit_links = array(
+    'profile_fname' => $base_edit.'Personal Information',
+    'profile_lname' => $base_edit.'Personal Information',
+    'mail' => $base_edit,
+    'profile_address1' => $base_edit.'Location',
+    'profile_city' => $base_edit.'Location',
+    'profile_state' => $base_edit.'Location',
+    'profile_zip' => $base_edit.'Location',
+    'profile_cell' => $base_edit.'Subscriptions',
+    'profile_bday' => $base_edit.'Personal Information'
+ );
+
+  $current_path = preg_replace('|^/|', '', drupal_get_path_alias(request_uri()));
+
+  print '<div class="live-profile">';
+  $count = count($fields);
+  foreach ($fields as $key => $field) : ?>
+    <div class='label <?=$key?> <?=$field;?>'><?=$field_names[$field]?> <span class="form-required" title="This field is required.">*</span></div>
+    <div style="clear:both;"></div>
+    <? if ($field == 'profile_state') {
+         print_state_select_v2($user->$field);?>
+    <? } else { ?>
+    <input id='<?=$field;?>' class='form-text field <?=$field?>' value='<?=$user->$field;?>' />
+    <? } ?>
+    <div class="profile-value"><a class="edit" href="<?=$field_edit_links[$field].'?destination='.$current_path;?>">Edit</a> <?=$user->$field;?></div>
+    <div style="clear:both;"></div>
+  <?php endforeach; ?>
+  <div class="no-javascript-info"><br/><p>To update values in your profile, visit your profile page by clicking an edit link above.</p></div>
+  </div>
+  <?
+//  drupal_add_css(drupal_get_path('module', 'live_profile_v2') .'/live_profile_v2.css', 'module', 'all', FALSE);
+  drupal_add_js(drupal_get_path('module', 'live_profile_v2').'/live_profile_v2.js',
+                                'module',
+                                'footer',
+                                FALSE,
+                                FALSE );
+
+}
+
+function print_state_select_v2($old_value) {
+
+  $us_states = array(
+    'AL' => 'Alabama (AL)',
+    'AK' => 'Alaska (AK)',
+    'AZ' => 'Arizona (AZ)',
+    'AR' => 'Arkansas (AR)',
+    'CA' => 'California (CA)',
+    'CO' => 'Colorado (CO)',
+    'CT' => 'Connecticut (CT)',
+    'DE' => 'Delaware (DE)',
+    'DC' => 'District of Columbia (DC)',
+    'FL' => 'Florida (FL)',
+    'GA' => 'Georgia (GA)',
+    'GU' => 'Guam (GU)',
+    'HI' => 'Hawaii (HI)',
+    'ID' => 'Idaho (ID)',
+    'IL' => 'Illinois (IL)',
+    'IN' => 'Indiana (IN)',
+    'IA' => 'Iowa (IA)',
+    'KS' => 'Kansas (KS)',
+    'KY' => 'Kentucky (KY)',
+    'LA' => 'Louisiana (LA)',
+    'ME' => 'Maine (ME)',
+    'MD' => 'Maryland (MD)',
+    'MA' => 'Massachusetts (MA)',
+    'MI' => 'Michigan (MI)',
+    'MN' => 'Minnesota (MN)',
+    'MS' => 'Mississippi (MS)',
+    'MO' => 'Missouri (MO)',
+    'MT' => 'Montana (MT)',
+    'NE' => 'Nebraska (NE)',
+    'NV' => 'Nevada (NV)',
+    'NH' => 'New Hampshire (NH)',
+    'NJ' => 'New Jersey (NJ)',
+    'NM' => 'New Mexico (NM)',
+    'NY' => 'New York (NY)',
+    'NC' => 'North Carolina (NC)',
+    'ND' => 'North Dakota (ND)',
+    'OH' => 'Ohio (OH)',
+    'OK' => 'Oklahoma (OK)',
+    'OR' => 'Oregon (OR)',
+    'PA' => 'Pennyslvania (PA)',
+    'PR' => 'Puerto Rico (PR)',
+    'RI' => 'Rhode Island (RI)',
+    'SC' => 'South Carolina (SC)',
+    'SD' => 'South Dakota (SD)',
+    'TN' => 'Tennessee (TN)',
+    'TX' => 'Texas (TX)',
+    'UT' => 'Utah (UT)',
+    'VT' => 'Vermont (VT)',
+    'VA' => 'Virginia (VA)',
+    'VI' => 'Virgin Islands (VI)',
+    'WA' => 'Washington (WA)',
+    'WV' => 'West Virginia (WV)',
+    'WI' => 'Wisconsin (WI)',
+    'WY' => 'Wyoming (WY)',
+  );
+
+  $ca_provinces = array(
+    'AB' => 'Alberta (AB)',
+    'BC' => 'British Columbia (BC)',
+    'MB' => 'Manitoba (MB)',
+    'NB' => 'New Brunswick (NB)',
+    'NL' => 'Newfoundland and Labrador (NL)',
+    'NT' => 'Northwest Territories (NT)',
+    'NS' => 'Nova Scotia (NS)',
+    'NU' => 'Nunavut (NU)',
+    'PE' => 'Prince Edward Island (PE)',
+    'SK' => 'Saskatchewan (SK)',
+    'ON' => 'Ontario (ON)',
+    'QC' => 'Quebec (QC)',
+    'YT' => 'Yukon (YT)',
+  );
+
+  print '
+<select id="profile_state" class="field profile_state">
+
+    <option></option>
+
+    <optgroup label="United States">';
+
+  foreach ($us_states as $abbr => $long) {
+    $sel = '';
+    if ($old_value === $abbr) {
+      $sel = ' selected="selected"';
+    }
+    print "<option value=\"$abbr\"$sel>$long</option>";
+  }
+  print '</optgroup>';
+
+  print '<optgroup label="Canada">';
+  foreach ($ca_provinces as $abbr => $long) {
+    $sel = '';
+    if ($old_value === $abbr) {
+      $sel = ' selected="selected"';
+    }
+    print "<option value=\"$abbr\"$sel>$long</option>";
+  }
+  print '</optgroup>';
+
+  print '</select>';
+      
+}

@@ -121,18 +121,6 @@
 
 <body class="<?php print $classes; ?>">
 
-  <div id="dev-box">
-    <div class="box blue"><a href="http://www.dosomething.org/<?=$_GET['q']?>">View this page on DoSomething.org</a></div>
-    <div class="box blue">
-      <?php
-        $notes = new stdClass();
-        $notes->type = 'dev_notes';
-        $notes->name = $user->name;
-        print drupal_get_form($notes->type . '_node_form', $notes);
-      ?>
-    </div>
-  </div>
-
   <div id="page-wrapper"><div id="page">
 
     <div id="header"><div class="section clearfix">

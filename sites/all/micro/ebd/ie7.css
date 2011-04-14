@@ -1,0 +1,29 @@
+div.fb-twitter-counts {
+  margin-top: -74px !important;
+}
+
+div#sidebar-right .plans-scroller .block-title a {
+  margin-left: -10px !important;
+  margin-top: -30px !important;
+  margin-bottom: 15px !important;
+}
+
+div#sidebar-right div#ebd-signup div.middle {
+  padding-bottom: 70px !important;
+}
+
+div#sidebar-right {
+  padding-left: 15px !important;
+}
+
+div#container div#node-bg-container > div.node {
+  padding-bottom: 30px !important;
+}
+
+div.submit-button input {
+  right: -10px;
+  font-size: 0;
+  line-height: 999px; /* Set it higher than your image height */
+  overflow: hidden; /* Hide the text */
+  bottom: -161px !important;
+}

@@ -72,14 +72,54 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   /*
   $hooks['hook_name_here'] = array( // Details go here );
   */
-
-  $hooks['dev_notes_node_form'] = array(
-    'arguments' => array('form' => NULL),
-    'template' => 'forms/dev_notes_node_form',
-  );
+  $hooks['primary_links'] = array();
+  $hooks['login_links'] = array();
+  $hooks['signup_block'] = array();
 
   // @TODO: Needs detailed comments. Patches welcome!
   return $hooks;
+}
+
+function dosomething_primary_links() {
+  return '<ul class="links">
+      <li class="first menu-1-1-2"><a href="/whatsyourthing" class="menu-1-1-2" title="Facts, Info On Causes That Matter"></a></li>
+      <li class="menu-1-2-2"><a href="/actnow" class="menu-1-2-2" title="Volunteer Ideas Near You"></a></li>
+      <li class="last menu-1-3-2"><a href="/programs" class="menu-1-3-2" title="Grants, Clubs and Campaigns"></a></li>
+    </ul>';
+}
+
+function dosomething_login_links() {
+  global $user;
+  $block_str = '<div class="block block-user"><p class="alignright">';
+  if ($user->uid > 0) {//Logged in, provide My Account | Log Out
+    $block_str .= l('My Account','user/'.$user->uid).' | '.l('Log Out','logout');
+  } else { //Logged out, provide login
+    $block_str .= '<p class="alignright">'.l('Log In','user/login',NULL,drupal_get_destination()).' | '.l('Join Us','user/register');
+  }
+  $block_str .= '</p></div>';
+  return $block_str;
+}
+
+function dosomething_signup_block() {
+  return '<div class="block form_block">
+<form method="post" action="http://org2.democracyinaction.org/dia/api/process.jsp" target="_blank" id="signup">
+<input type="hidden" name="table" value="supporter"/>
+<input type="hidden" name="organization_KEY" value="5216"/>
+
+<input type="hidden" name="link" value="groups"/>
+<input type="hidden" name="linkKey" value="57593"/>
+<input type="hidden" name="redirect" value="http://www.dosomething.org/thankyou"/>
+    <h3>Do Something more</h3>
+  
+    <p>Get involved!<br/>
+    <input type="text" id="email" name="Email" value="email" maxlength="" class="styled short" onClick="if (this.value == \'email\') { this.value=\'\'; }" />
+    <input type="image" src="'.base_path().path_to_theme().'/images/form_submit_go.png" name="go" value="Signup" alt="go" class="submit" /></form><form action="/volunteer/list" method="get">
+  </form>
+    </p>
+  <p><a href="/volunteer">Volunteer info</a> on ur cell<br/>'.
+    drupal_get_form('ds_mobile_anon_form',FALSE).
+  '</p>
+</div>';
 }
 
 /**
@@ -106,34 +146,28 @@ function dosomething_preprocess(&$vars, $hook) {
  */
 function dosomething_preprocess_page(&$vars, $hook) {
 
-  switch($hook) {
+  $vars['ds_micro'] = path_to_theme().'/../../micro';
+  $vars['subtheme_directory'] = path_to_theme(); //Path for legacy microsites
+  // add page template suggestions -- later items have higher priority
 
-    case 'page':
+  // page-[content-type].tpl.php
+  if ('node' == arg(0)) {
+    $vars['template_files'][]  = 'page-' . $vars['node']->type;
+  }
 
-      // add page template suggestions -- later items have higher priority
-
-      // page-[content-type].tpl.php
-      if ('node' == arg(0)) {
-        $vars['template_files'][]  = 'page-' . $vars['node']->type;
-      }
-
-      /* page-[path].tpl.php and variations
-         e.g. for the URL /about/team/staff we generate suggestions:
-         page-about.tpl.php
-         page-about-team.tpl.php
-         page-about-team-staff.tpl.php
-      */
-      $alias = drupal_get_path_alias(str_replace('/edit', '', $_GET['q']));
-      if ($alias != $_GET['q']) {
-        $template_name = 'page';
-        foreach (explode('/', $alias) as $path_element) {
-          $template_name .= '-' . $path_element;
-          $vars['template_files'][] = $template_name;
-        }
-      }
-
-      break;
-
+  /* page-[path].tpl.php and variations
+     e.g. for the URL /about/team/staff we generate suggestions:
+     page-about.tpl.php
+     page-about-team.tpl.php
+     page-about-team-staff.tpl.php
+  */
+  $alias = drupal_get_path_alias(str_replace('/edit', '', $_GET['q']));
+  if ($alias != $_GET['q']) {
+    $template_name = 'page';
+    foreach (explode('/', $alias) as $path_element) {
+      $template_name .= '-' . $path_element;
+      $vars['template_files'][] = $template_name;
+    }
   }
 
 }

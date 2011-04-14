@@ -1,0 +1,644 @@
+div.submit-button {
+  position: relative;
+}
+
+div.submit-button input {
+  position: absolute;
+  bottom: -123px;
+  right: -30px;
+  background: transparent url(submit.png) no-repeat;
+  text-indent: -99em;
+  width: 121px;
+  height: 44px;
+  background-position: 0 0;
+  cursor: pointer;
+  border: 0;
+}
+
+div.submit-button input:hover {
+  background-position: 0px -44px;
+}
+
+div#ebd-form .form-item {
+  margin: 0px;
+}
+
+div#ebd-form input.form-text, div#ebd-form input.field, div#ebd-form select  {
+  width: 90%;
+  border: 1px solid black;
+  background: transparent;
+  padding: 2px;
+}
+
+div#ebd-form textarea {
+  border: 1px solid black;
+  background: transparent;
+}
+
+div.signup-form .middle, div.plans-scroller .middle {
+  padding: 13px;
+}
+
+div.plans-scroller .middle .plans {
+  min-height: 178px;
+  margin-top: -72px;
+}
+
+div.plans-scroller * {
+  zoom: 1;
+}
+
+div.plans div.child {
+  width: 100%;
+  clear: both;
+}
+
+div.signup-form .body {
+  margin-top: -75px;
+}
+
+div.messages {
+  margin-bottom: 0px !important;
+}
+
+div.messages.status {
+  margin: -80px auto 0px auto;
+  width: 420px;
+}
+
+.box-count {
+  font-size: 13px;
+  font-weight: strong;
+}
+
+.relative {
+  position: relative;
+}
+
+div#sidebar-right div.blocks-container div.signup-form, div#sidebar-right div.blocks-container div.plans-scroller {
+  margin-right: 17px;
+}
+
+div.signup-form .has-bg.top {
+  background: url(node-bg-top.png) no-repeat;
+  height: 80px;
+}
+
+div#container div#main div.blocks-container div.signup-form .has-bg {
+  background-size: 293px 100%;
+  -moz-background-size: 293px 100%;
+  -webkit-background-size: 100%;
+  -khtml-background-size: 100%;
+  -o-background-size: 100%;
+} 
+
+div#container div#main div.blocks-container div.signup-form .has-bg.middle {
+  background: url(node-bg-mid.jpg) repeat;
+  min-height: 207px;
+  background-size: contain;
+  -moz-background-size: contain;
+  -webkit-background-size: contain;
+  -khtml-background-size: contain;
+}
+
+div#container div#main div.blocks-container div.plans-scroller .has-bg {
+  background-size: 293px 100%;
+  -moz-background-size: 293px 100%;
+  -webkit-background-size: 100%;
+  -khtml-background-size: 100%;
+  -o-background-size: 100%;
+} 
+
+div#container div#main div.blocks-container div.plans-scroller .has-bg.middle {
+  background: url(node-bg-mid.jpg) repeat;
+  background-size: contain;
+  -moz-background-size: contain;
+  -webkit-background-size: contain;
+  -khtml-background-size: contain;
+}
+
+div.plans-scroller .bottom {
+  background: url(node-bg-bottom.png) no-repeat;
+  height: 80px;
+  margin-top: -73px;
+}
+
+div.plans-scroller .has-bg.top {
+  background: url(node-bg-top.png) no-repeat;
+  height: 80px;
+}
+
+div.signup-form .bottom {
+  background: url(node-bg-bottom.png) no-repeat;
+  height: 80px;
+  margin-top: -54px;
+}
+
+div.fb-twitter-counts {
+  background: url(facebook-twitter-counts_01.jpg) no-repeat;
+  width: 170px;
+  height: 95px;
+  z-index: 1;
+  margin-top: -94px;
+  margin-left: 300px;
+}
+
+
+
+div.social {
+  background: url(social-media-icons_01.jpg) no-repeat;
+  width: 238px;
+  height: 64px;
+  z-index: 1;
+  margin-top: 92px;
+  margin-left: 25px;
+}
+
+div.social a {
+  display: block;
+  text-indent: -999em;
+  width: 51px;
+  height: 50px;
+}
+
+div.social ul {
+  display: inline;
+  overflow: hidden;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+div.social ul li {
+  float: left;
+}
+
+div.social ul li.first {
+  margin-left: 12px;
+}
+
+div.social a.twitter {
+
+}
+
+div.social a.facebook {
+
+}
+
+div.social a.digg {
+
+}
+
+div.social a.email {
+
+}
+
+
+div.bwb-logo {
+  background: url(bwb-logo_01.jpg) no-repeat;
+  position: absolute;
+  width: 164px;
+  height: 65px;
+  top: 21px;
+  left: 680px;
+  z-index: 1;
+}
+
+div.top-description {
+  background: url(tagline_01.jpg) no-repeat;
+  position: absolute;
+  width: 475px;
+  height: 59px;
+  top: 19px;
+  left: 200px;
+  z-index: 1;
+}
+
+div.top-navholder {
+  background: url(nav_01.jpg) no-repeat;
+  position: absolute;
+  width: 823px;
+  height: 90px;
+  top: 83px;
+  left: 35px;
+}
+
+div#main ul.tabs.primary {
+  border-bottom: none;
+  background: none;
+}
+
+div.video {
+  padding: 10px 0 16px;
+}
+
+div#container div.node.page div.body div.body-text {
+  margin-top: -74px;
+  zoom: 1;
+}
+
+div#container div.node.page div.body {
+  width: 430px;
+  padding: 25px;
+}
+
+div#container * {
+  font-family: Georgia, Arial, Helvetica, sans-serif;
+}
+
+div#wrapper div#container {
+  padding: 30px 0px;
+  width: 883px;
+  position: relative;
+}
+
+img.logo {
+  position: absolute;
+  left: 24px;
+  top: 9px;
+  z-index: 1;
+}
+
+
+div#node-top, div#container div.node.page, div#node-bottom {
+  width: 487px;
+  zoom: 1;
+}
+
+div#node-top {
+  margin-top: 17px;
+  background: url(node-bg-top.png) no-repeat;
+  height: 80px;
+}
+
+div#container div.node.page {
+  background: url(node-bg-mid.jpg) repeat-y;
+}
+
+div#node-bottom {
+  margin-top: -60px;
+  background: url(node-bg-bottom.png) no-repeat;
+  height: 80px;
+}
+
+/*div#node-top, div#container div.node.page, div#node-bottom {*/
+div#node-bg-container {
+  float: left;
+  padding: 0px 7px;
+}
+
+div#bg-top {
+  background: url(bg-top2.jpg) no-repeat;
+  height: 87px;
+}
+
+div#bg-bottom {
+  background: url(bg-bottom-trans.png) no-repeat;
+  margin-top: -50px;
+  height: 87px;
+}
+
+div#main div.relative {
+  position: relative;
+}
+
+div#container div#main {
+  background: url(bg-repeat2.jpg) repeat-y;
+  width: 876px;
+  margin-left: 4px;
+  margin: 0px;
+  float: none;
+  padding: 1px 35px 3px 35px;
+}
+
+div.logo-trans {
+  background: url(logo-trans.png) no-repeat;
+  width: 106px;
+  height: 56px;
+  margin: 0 auto;
+  opacity: .42;
+  padding-top: 6px;
+}
+
+div.node.page.gallery h2 {
+  padding-bottom: 13px;
+}
+
+div.view-content-ebd-2011-signup div.node > h3 {
+  float: left;
+  margin: -5px 0px 0px 0px;
+  padding-right: 8px;
+}
+
+div.node.project-teaser.odd {
+  background: #B66F71;
+}
+
+div.node .resizable-textarea {
+  width: auto;
+}
+
+div.plans-scroller .author {
+  padding-top: 3px;
+  float: right;
+  font-weight: bold;
+}
+
+div.plans-scroller .boxes {
+  padding-top: 3px;
+  float: left;
+  font-weight: bold;
+}
+
+div.blocks-container .text {
+  width: 180px;
+  padding: 0px 50px;
+  position: relative;
+}
+
+div.plans-scroller a.title {
+  padding-bottom: 5px;
+  display: block;
+}
+
+div#sidebar-right .block-title {
+  text-align: center;
+  text-indent: -999em;
+  zoom: 1;
+}
+
+div#sidebar-right .signup-form .block-title {
+  background: url(sign-up.png) no-repeat;
+  margin: -30px 0px 13px 99px;
+}
+
+div#sidebar-right .plans-scroller .block-title a {
+  background: url(recent-plans-hover.png) no-repeat;
+  background-position: 0px 0px;
+  margin: -50px 0 0 68px;
+  display: block;
+  width: 140px;
+  height: 24px;
+}
+
+div#sidebar-right .plans-scroller .block-title a:hover {
+  background-position: 0px -22px;
+}
+
+div#sidebar-right .counter .block-title {
+  background: url(books-pledged.png) no-repeat;
+  margin: -35px 0 0 62px;
+}
+
+div#sidebar-right .plans-scroller {
+  margin-top: -27px;
+}
+
+div#sidebar-right .counter {
+
+}
+
+div.plans-scroller ul {
+  margin: 0px;
+  width: 275px;
+  overflow: hidden;
+  list-style-type: none;
+  padding: 0;
+}
+
+div.plans-scroller div.controls {
+  position: relative;
+  display: none;
+}
+
+div.plans-scroller div.controls a {
+  position: absolute;
+  top: -47px;
+  text-indent: -999em;
+  background: url(recent-plans-nav.png) no-repeat;
+  width: 60px;
+  height: 50px;
+  display: block;
+}
+
+div.plans-scroller div.controls a#prev {
+  left: -10px;
+  background-position: 0px -41px;
+}
+
+div.plans-scroller div.controls a#prev:hover {
+  background-position: 0px -177px;
+}
+
+div.plans-scroller div.controls a#next {
+  right:  -6px;
+  background-position: -238px -41px;
+}
+
+div.plans-scroller div.controls a#next:hover {
+  background-position: -238px -177px;
+}
+
+div.plans-scroller ul li {
+  list-style-image: none;
+  margin: 0px;
+  width: 100%;
+}
+
+div.plans-scroller ul li h3 {
+  margin: 0px;
+}
+
+div.counter {
+  background: url(block-bg.png) no-repeat;
+  height: 137px;
+  width: 299px;
+  padding: 10px;
+}
+
+div.blocks-container {
+  margin-top: -125px;
+}
+
+div.blocks-container > div {
+  margin: 0 0 40px 0;
+}
+
+div#sidebar-right {
+  padding-bottom: 55px;
+  padding-top: 53px;
+  width: 310px;
+  zoom: 1;
+  float: left;
+}
+
+ol.bigred li {
+  color: #C1272D;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.not-big-red {
+  margin-bottom: 0;
+  font-size: 13px;
+  color: black;
+  font-weight: normal;
+}
+
+div.counter div.number {
+  font-size: 42px;
+  margin-top: 37px;
+  font-weight: bold;
+  margin-left: 22px;
+}
+
+div#container div.node h2, div#sidebar-right .block-title, .liveprofile-instructions {
+  color: #C1272D;
+}
+
+div.isbn h3 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+div.isbn {
+  float:right;
+}
+
+div#container div.node p {
+  color: black;
+}
+
+div#main div.node a, div#sidebar-right a {
+  color: #C1272D;
+  font-weight: bold;
+}
+
+div.share-buttons {
+  margin-top: 15px;
+  margin-right: 20px;
+}
+
+.col_left .blurb {
+  color: #C1272D;
+  text-align: center;
+  margin: 0;
+  font-size: 2em;
+}
+
+ul#subnav {
+  list-style-type: none;
+  list-style-position: inside;
+  padding-left: 0px;
+  position: absolute;
+  margin: 13px 0px 0px 0px;
+}
+
+ul#subnav li {
+  display: block;
+  text-indent: -999em;
+}
+
+ul#subnav li a {
+  background: url(nav-text_01.png) no-repeat;
+  height: 54px;
+  width: 131px;
+  text-decoration: none;
+  position: absolute;
+}
+
+ul#subnav li.home a {
+  background-position: -36px -28px;
+  left: 35px;
+  top: 14px;
+}
+
+ul#subnav li.home a:hover {
+  background-position: -36px -118px;
+}
+
+ul#subnav li.run a {
+  background-position: -167px -28px;
+  left: 165px;
+  top: 14px;
+  width: 255px;
+}
+
+ul#subnav li.run a:hover {
+  background-position: -167px -118px;
+}
+
+ul#subnav li.submit a {
+  background-position: -415px -28px;
+  left: 415px;
+  top: 14px;
+  height: 38px;
+}
+
+ul#subnav li.submit a:hover {
+  background-position: -415px -118px;
+}
+
+ul#subnav li.gallery a {
+  background-position: -546px -28px;
+  left: 546px;
+  top: 14px;
+  height: 38px;
+}
+
+ul#subnav li.gallery a:hover {
+  background-position: -546px -118px;
+}
+
+
+ul#subnav li.faq a {
+  background-position: -689px -28px;
+  left: 689px;
+  top: 14px;
+  height: 29px;
+  width: 62px;
+}
+
+ul#subnav li.faq a:hover {
+  background-position: -689px -118px;
+}
+
+div#ebd-form h2 {
+  text-align: center;
+  color: black;
+}
+
+#ebd-form{
+  padding: 0 1em 1em 1em;
+  zoom: 1;
+}
+.live-profile { margin: 2em 0 1em; display: none; }
+.live-profile .label, .node #ebd-form label {  width: 140px; font-weight: bold; margin: .4em 0 .1em 0; }
+
+.live-profile .label, .node #ebd-form label[for=edit-title], .node #ebd-form label[for=edit-field-what-is-your-goal-number--0-value] {
+  float: left;
+}
+
+.live-profile .value { float: left; width: 250px; font-size: 13px; margin-top: 2px; margin-right: 18px; }
+.node #ebd-form label[for=edit-body] { width: auto; }
+.node #ebd-form input[type=submit] { font-size: 23px; width: 223px; }
+.live-profile hr { clear: both; height: 0px; border: 0px; border-bottom: 1px solid black; padding: 2px 0; }
+.live-profile input.update, .live-profile select.update { display: none; }
+
+.live-profile input.update, .node #ebd-form input[type=text], .live-profile select.update { width: 250px; border-color: #ccc; border-style: solid; border-width: 0 1px 1px 0; margin-right: 6px; float: left; }
+
+div#ebd-form textarea, .live-profile input.update, .node #ebd-form input[type=text], div#main .live-profile select.update {
+  padding: 3px 0px 3px 6px;
+  margin-right: 11px;
+  height: auto;
+}
+
+div#ebd-form .textarea .form-item textarea {
+  height: 85px;
+  width: 215px;
+}
+
+div#ebd-form .button {
+  min-height: 25px;
+}

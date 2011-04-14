@@ -1,0 +1,218 @@
+.box-count {
+  font-size: 13px;
+  font-weight: strong;
+}
+
+div.node.page.gallery h2 {
+  padding-bottom: 13px;
+}
+
+div.view-content-ebd-2011-signup div.node > h3 {
+  float: left;
+  margin: -5px 0px 0px 0px;
+  padding-right: 8px;
+}
+
+div.node.project-teaser.odd {
+  background: #B66F71;
+}
+
+div.node .resizable-textarea {
+  width: auto;
+}
+
+div.plans-scroller .author {
+  text-align: right;
+}
+
+div#sidebar-right .block-title {
+  text-align: center;
+  margin: -35px 0 0 0;
+}
+
+div.node h2, div#sidebar-right .block-title {
+  font-size: 3em;
+}
+
+div.plans-scroller ul {
+  margin-bottom: 0px;
+  height: 130px;
+  overflow: hidden;
+  list-style-type: none;
+  padding: 0;
+}
+
+div.plans-scroller div.controls {
+  text-align: right;
+  padding: 0 1em 5px 0;
+}
+
+div.plans-scroller ul li {
+  list-style-image: none;
+  margin: 0px;
+  width: 100%;
+}
+
+div.plans-scroller ul li h3 {
+  margin: 0px;
+}
+
+div.counter, div.plans-scroller {
+  background: #b66f71;
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  border-radius: 11px;
+  padding: 10px;
+}
+
+div.blocks-container {
+  margin-top: -125px;
+}
+
+div.blocks-container div.bwb {
+  margin-bottom: 70px;
+}
+
+div.blocks-container > div {
+  margin: 0 0 40px 0;
+}
+
+div#sidebar-right {
+  width: 250px;
+}
+
+ol.bigred li {
+  color: #611417;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.not-big-red {
+  margin-bottom: 0;
+  font-size: 13px;
+  color: black;
+  font-weight: normal;
+}
+
+div.counter div.text {
+  font-size: 1.7em;
+}
+
+div.counter div.number, div.counter div.text {
+  text-align: center;
+  color: #611417;
+}
+
+div.counter div.number {
+  font-size: 56px;
+}
+
+div#container div.node h2, div#sidebar-right .block-title {
+  color: #611417;
+}
+
+div.isbn h3 {
+  text-align: center;
+  margin-top: 0px;
+}
+
+div.isbn {
+  float:right;
+}
+
+div#container div.node p {
+  color: black;
+}
+
+div#main div.node a, div#sidebar-right a {
+  color: #611417;
+}
+
+div.share-buttons {
+  float: right;
+  padding-top: 15px;
+  margin-right: -65px;
+}
+
+img#logo {
+  margin-left: 90px;
+  margin-top: -15px;
+}
+
+.col_left .blurb {
+  color: #611417;
+  text-align: center;
+  margin: 0;
+  font-size: 2em;
+}
+
+ul#subnav {
+  list-style-type: none;
+  list-style-position: inside;
+  padding-left: 0px;
+}
+
+ul#subnav li {
+  display: inline;
+  border-right: 2px solid black;
+  padding: 0px 8px 3px 8px;
+  font-size: 2.1em;
+}
+
+ul#subnav li a {
+  text-decoration: none;
+  color: #c0272d;
+}
+
+ul#subnav li.last {
+  border-width: 0px;
+  padding-right: 0px;
+}
+
+ul#subnav li.first {
+  padding-left: 0px;
+}
+
+div#ebd-form h2 {
+  text-align: center;
+  color: black;
+}
+
+#ebd-form{
+  padding: 1em 2em 4em 1em;
+  background-color: #999;
+  -webkit-border-radius: 11px;
+  -moz-border-radius: 11px;
+  border-radius: 11px;
+}
+.live-profile { margin: 2em 0 1em; }
+.live-profile .label, .node #ebd-form label {  width: 140px; font-size: 10px; font-weight: bold; text-transform: uppercase; margin: 0.5em 0; }
+
+.live-profile .label, .node #ebd-form label[for=edit-title], .node #ebd-form label[for=edit-field-what-is-your-goal-number--0-value] {
+  float: left;
+}
+
+input#edit-field-what-is-your-goal-number--0-value {
+    margin-top: 25px;
+}
+
+
+.live-profile .value { float: left; width: 250px; font-size: 13px; margin-top: 2px; margin-right: 18px; }
+.node #ebd-form label[for=edit-body] { width: auto; }
+.node #ebd-form input[type=submit] { font-size: 23px; width: 223px; }
+.live-profile hr { clear: both; height: 0px; border: 0px; border-bottom: 1px solid black; padding: 2px 0; }
+.live-profile input.update, .live-profile select.update { display: none; }
+
+.live-profile input.update, .node #ebd-form input[type=text], .live-profile select.update { width: 250px; border-color: #ccc; border-style: solid; border-width: 0 1px 1px 0; margin-right: 6px; float: left; }
+
+div#ebd-form textarea, .live-profile input.update, .node #ebd-form input[type=text], div#main .live-profile select.update {
+  color: #C0272D;
+  padding: 3px 0px 3px 6px;
+  margin-right: 11px;
+  height: auto;
+}
+
+div#ebd-form .button {
+  min-height: 25px;
+}

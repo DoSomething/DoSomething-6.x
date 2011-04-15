@@ -304,3 +304,14 @@ function page_manager_pages_features_export_render($module, $data) {
   page_manager_get_tasks();
   return ctools_component_features_export_render('page_manager_pages', $module, $data);
 }
+
+/**
+ * Implementation of hook_features_revert() for page_manager.
+ */
+function page_manager_pages_features_revert($module) {
+  if ($pages = features_get_default('page_manager_pages', $module)) {
+    foreach ($pages as $page) {
+      page_manager_page_delete($page);
+    }
+  }
+}

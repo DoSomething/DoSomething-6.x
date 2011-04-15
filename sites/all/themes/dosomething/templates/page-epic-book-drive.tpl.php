@@ -20,6 +20,7 @@ $nodePath = drupal_get_path_alias('node/'.$node->nid);
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/style.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/additional.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/block-editing.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/zen.css';?>" type="text/css" media="all" />
   <!--[if IE 7]>
           <link rel="stylesheet" type="text/css" href="/nd/ebd/ie7.css">
   <![endif]-->
@@ -35,10 +36,22 @@ $nodePath = drupal_get_path_alias('node/'.$node->nid);
   <![endif]-->
 
     <?=$scripts;?>
+    <script type="text/javascript" src="/<?=$ds_micro;?>/ebd/jquery.cycle.2-99.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
         $('.liveprofile-instructions').hide();
         $('input#update-profile').hide();
+        $('div.plans-scroller .plans .child').not(':first-child').hide();
+        $('div.plans-scroller div.controls').show();
+        $('div.plans-scroller .plans').cycle({
+          containerResize: 1,
+          cleartype: true,
+          cleartypeNoBg: true,
+          pause: 1,
+          prev: '#prev',
+          next: '#next'
+        });
+        $('div#ebd-form form#node-form').submit(function() { return updateProfile(this); });
       });
     </script>
 
@@ -99,7 +112,7 @@ $top_right
 			<!--End Top Right Block Section-->
         </div>
         <div class="clear"></div>
-				<?php if ($messages): print $messages.'<div style="clear:both"></div>'; endif; ?>
+				<?php if ($messages): print $messages.$tabs.'<div style="clear:both"></div>'; endif; ?>
     </div>
 
     <div id="container">
@@ -147,7 +160,6 @@ $top_right
         <?php if(($help)&&(arg(0)=='node')&&(arg(1)=='add')): print $help; endif;?>
 
       <?php print $content_top;?>
-        <?php print $tabs;?>
          <div id="node-bg-container">
           <div id="node-top"></div>
       <?php print $content; ?>

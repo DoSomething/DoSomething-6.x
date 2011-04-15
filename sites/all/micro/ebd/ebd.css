@@ -239,9 +239,17 @@ div.top-navholder {
   left: 35px;
 }
 
-div#main ul.tabs.primary {
+div#wrapper ul.tabs.primary {
   border-bottom: none;
   background: none;
+  list-style-type: none;
+  width: 300px;
+  margin: 0 auto;
+}
+
+div#wrapper ul.tabs.primary li {
+  float: left;
+  padding-left: 10px;
 }
 
 div.video {
@@ -487,7 +495,7 @@ div.blocks-container > div {
   margin: 0 0 40px 0;
 }
 
-div#sidebar-right {
+div#container div#main div#sidebar-right {
   padding-bottom: 55px;
   padding-top: 53px;
   width: 310px;

@@ -1,0 +1,24 @@
+<?
+
+/**
+ * Implementation of hook_form_alter()
+*/
+function dosomething_forms_form_alter(&$form, $form_state, $form_id) {
+  //
+  // contenttype node form
+  //
+  if (substr($form_id, -10) == '_node_form') {
+
+    //$form['body_field']['body']['#rows'] = 5;
+    $form['body_field']['body']['#resizable'] = TRUE;
+    
+    // remove "split summary at cursor" button and related elements if necessary
+    $form['body_field']['#after_build'] = NULL;
+    $form['body_field']['teaser_js'] = NULL;
+    $form['body_field']['teaser_include'] = NULL;
+
+  }
+
+}
+
+?>

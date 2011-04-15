@@ -1,0 +1,450 @@
+<?php
+
+function ds_mobile_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
+  //no mobile except Subscriptions tab
+  if ($form_id == 'user_edit' && arg(3) != 'Subscriptions') {
+    $form_id = 'ds_mobile_remove';
+  }
+  switch ($form_id) {
+    case 'ds_mobile_anon_form':
+      //print_r('<pre>' . print_r($form_id, true) . ': ' . print_r($form, true) . '</pre>');
+      $form['category']['#access'] = false;
+    break;
+    case 'user_register':
+      break;
+    case 'user_edit':
+    $form['#validate']['ds_mobile_user_validate'] = array('whole');
+    $form['mobile'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Mobile Volunteer Alerts (Optional)'),
+        '#weight' => $form_id == 'user_edit' ? 3 : 1,
+        '#collapsible' => FALSE,
+      );
+      //cell # and checkbox and category are added by profile module
+      //move cell # into account fieldset
+      $form['mobile']['profile_receive'] = $form['Subscriptions']['profile_receive'];
+      unset($form['Subscriptions']['profile_receive']);
+      $form['mobile']['profile_cell'] = $form['Subscriptions']['profile_cell'];
+      unset($form['Subscriptions']['profile_cell']);
+      //custom validation function for mobile  stuff
+      $form['mobile']['profile_cell']['#validate'] = array( 'ds_mobile_user_validate' => array('cell') );
+      $form['mobile']['profile_mobile_category'] = array(
+	    '#type' => 'select',
+	    '#title' => t('Mobile Alert Topic'),
+	    '#default_value' => '',
+	    '#options' => ds_mobile_opp_categories(),
+	    '#required' => FALSE,
+	    '#description' => t('Type of volunteer opportunities you are interested in.')
+      );
+  
+      //$form['mobile']['profile_mobile_category']['#validate'] = array( 'ds_mobile_user_validate' => array('category') );
+      unset($form['Subscriptions']['profile_mobile_category']);
+    break;
+    case 'ds_mobile_remove':
+      unset($form['Subscriptions']['profile_receive']);
+      unset($form['Subscriptions']['profile_cell']);
+      unset($form['Subscriptions']['profile_mobile_category']);
+    break;
+  }
+}
+
+function ds_mobile_user($op, &$edit, &$account, $category = NULL) {
+
+  switch($op) {
+    case 'validate':
+      //save this info so we have it for insert
+      $_SESSION['ds_mobile_tmp_info'] = array(
+          'context' => isset($edit['profile_cell']) ? TRUE: FALSE,
+          'cell' => $edit['profile_cell'],
+          'receive' => $edit['profile_receive'],
+          'category' => $edit['profile_mobile_category'],
+          //fid = 12 is profile_receive
+          'previous_receive' => db_result(db_query('SELECT value FROM {profile_values} WHERE fid=12 AND uid=%d', $account->uid)),
+      );
+    break;
+    case 'insert':
+    case 'update':
+    $context = $_SESSION['ds_mobile_tmp_info']['context'];
+    $receive = $_SESSION['ds_mobile_tmp_info']['receive'];
+    $previous_receive = $_SESSION['ds_mobile_tmp_info']['previous_receive'];
+      if ($context && $receive && !$previous_receive) {
+        ds_mobile_mcommons_optin($_SESSION['ds_mobile_tmp_info']['cell'], $edit['profile_zipcode'], $account->uid, $_SESSION['ds_mobile_tmp_info']['category']);
+        drupal_set_message('You have been subscribed to mobile volunteer opportunities');
+
+	//Send an opp on signup
+	//ds_mobile_anon_oppsend($_SESSION['ds_mobile_tmp_info']['cell'],$edit['profile_zipcode'],$_SESSION['ds_mobile_tmp_info']['category']);
+
+      }
+      else if ($context && !$receive && $previous_receive) {
+        ds_mobile_mcommons_optout($_SESSION['ds_mobile_tmp_info']['cell']);
+        drupal_set_message('You have been unsubscribed from mobile volunteer opportunities');
+      }
+      unset($_SESSION['ds_mobile_tmp_info']);
+    break;
+  }
+}
+
+function ds_mobile_help($section) {
+  switch ($section) {
+      case 'admin/modules#description':
+      return t('Module that integrates mobile functionality into DS.org');
+      break;
+  }
+}
+
+function ds_mobile_menu() {
+  $items = array();
+  $items[] = array(
+    'path' => 'ds_mobile/testapi',
+    'title' => t('optout'),
+    'callback' => 'ds_mobile_api_test',
+    'access' => user_access('administer nodes'),
+    'type' => MENU_CALLBACK
+  );
+  $items[] = array(
+    'path' => 'ds_mobile/optout',
+    'title' => t('optout'),
+    'callback' => 'ds_mobile_api_optout',
+    'access' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  return $items;
+}
+
+function ds_mobile_user_validate($element, $type) {
+  global $user;
+  switch($type) {
+    case 'cell':
+      if (!empty($element['#value']) && ds_mobile_check($element['#value']) === FALSE) {
+        form_error($element, t('Please enter a valid 10-digit phone number. You may also leave this field blank if you don\'t have a 10-digit phone number.'));
+      }
+    break;
+    case 'category':
+      $accepted = ds_mobile_opp_categories();
+      if (!array_key_exists($element['#value'], $accepted)) {
+        form_error($element, t('Unexpected error 1 in ds_mobile. Please send this message to admin@dosomething.org'));        
+      }
+    break;
+    default:
+      if (is_array($type)){
+        //we have the whole form to validate
+        $form = $type;
+        if ($form['profile_receive'] && empty($form['profile_cell'])) {
+          form_set_error('profile_cell', t("You must enter a mobile number if you'd like to receive mobile alerts."));
+        }
+      }
+    break;
+  }
+}
+
+function ds_mobile_check($num) {
+  $phone_sep = '\s\.()-';
+  $re = "/^[$phone_sep]*([0-9]{3})[$phone_sep]*([0-9]{3})[$phone_sep]*([0-9]{4})$/";
+  $matches = array();
+  //make sure this is a valid number
+  if (!preg_match($re, $num, $matches)) {
+    return FALSE;
+  }
+  else {
+    return $matches;
+  }
+}
+
+function ds_mobile_opp_categories() {
+  $vocab_ids = array(5);
+
+  $result = db_query(  "SELECT d.tid, d.vid, d.name, h.parent FROM term_data d, term_hierarchy h WHERE d.vid IN (%s) AND h.tid=d.tid AND h.parent=0 ORDER BY d.name ASC", implode(',', $vocab_ids));
+  
+  $categories = array();
+  while ($row = db_fetch_object($result)) {
+    $categories["{$row->tid}@{$row->vid}"] = $row->name;
+  } 
+  
+  return $categories;
+}
+
+function ds_mobile_anon_form($show_cats = TRUE) {
+  $form = array();
+  $form['cell'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Cell Phone'),
+    '#default_value' => 'Cell Phone',
+    '#size' => 20,
+    '#maxlength' => 20,
+    '#required' => TRUE,
+    '#description' => t('Your 10-digit mobile # (area code first).'),
+  );
+  $form['zip'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Zip'),
+    '#default_value' => 'Zip',
+    '#size' => 5,
+    '#maxlength' => 20,
+    '#required' => TRUE,
+    '#description' => t('Your 5-digit zip code.'),
+  );
+ 
+ if($show_cats){
+  $form['category'] = array(
+    '#type' => 'select',
+    '#title' => t('Interest area'),
+    '#default_value' => '',
+    '#options' => ds_mobile_opp_categories(),
+    '#required' => false,
+    '#description' => t('Type of volunteer opportunities you are interested in.'),
+  );
+ }
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+function ds_mobile_anon_form_validate($form_id, $form_values, $form) {
+  $valid = ds_mobile_check($form_values['cell']);
+  if ($valid === FALSE) {
+    form_set_error('cell', t('Please enter a valid 10-digit phone number.'));
+  }
+  else if (db_result(db_query("SELECT mobile FROM {ds_mobile_anon} WHERE mobile='%s'", $valid[1] . $valid[2] . $valid[3]))) {
+    form_set_error('cell', t('This number has already been entered into the database.'));
+  }
+  else {
+    form_set_value($form['cell'], $valid[1] . $valid[2] . $valid[3] );
+  }
+  if (!ctype_digit($form_values['zip']) || strlen($form_values['zip']) != 5) {
+    form_set_error('zip', t('Please enter a valid 5-digit zipcode'));
+  }
+}
+
+function ds_mobile_anon_form_submit($form_id, $form_values) {
+  db_query("INSERT INTO {ds_mobile_anon} (mobile, zip, category) VALUES ('%s', %d, '%s')",
+    $form_values['cell'], $form_values['zip'], $form_values['category']);
+  ds_mobile_mcommons_optin($form_values['cell'], $form_values['zip'], 0, $form_values['category']);
+  //ds_mobile_anon_oppsend($form_values['cell'], $form_values['zip'], $form_values['category']);
+  drupal_set_message(t('Your mobile information has been submitted successfully'));
+  drupal_goto('actnow/mobile/thanks');
+}
+
+function ds_mobile_anon_oppsend($cell,$zip,$cat){
+}
+function ds_mobile_anon_oppsend_disabled($cell,$zip,$cat){
+        //Send an opp on signup
+        $instant_url = "http://volunteer.dosomething.org/opps/send?zip=".$zip."&phone=".$cell."&cat=".$cat;
+        $instant_file = fopen ($instant_url,"r");
+        if($instant_file){while (!feof ($instant_file)) {fgets($instant_file, 1024);}}
+        fclose($instant_file);
+
+}
+
+function ds_mobile_anon_optout_form() {
+  $form = array();
+  $form['cell'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile #'),
+    '#default_value' => '',
+    '#size' => 20,
+    '#maxlength' => 20,
+    '#required' => TRUE,
+    '#description' => t('Your 10-digit mobile # (area code first please).'),
+  );
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Submit',
+  );
+  return $form;
+}
+
+function ds_mobile_anon_optout_form_validate($form_id, $form_values, $form) {
+  $valid = ds_mobile_check($form_values['cell']);
+  if ($valid === FALSE) {
+    form_set_error('cell', t('Please enter a valid 10-digit phone number.'));
+  }
+  else {
+    form_set_value($form['cell'], $valid[1] . $valid[2] . $valid[3] );
+  }
+}
+
+function ds_mobile_anon_optout_form_submit($form_id, $form_values) {
+  db_query("DELETE FROM {ds_mobile_anon} WHERE mobile='%s'", $form_values['cell']);
+  ds_mobile_mcommons_optout($form_values['cell']);
+  drupal_set_message(t('Your mobile information has been removed successfully.'));
+}
+
+function ds_mobile_mcommons_optin($mobile, $zip, $uid, $category) {
+  // What mCommons expect:
+  /*  <form class="mcommons_iframe js_validateForm" action="http://dosomething.mcommons.com/campaigns/3531/subscriptions?opt_in_path=4701" method="post" target="_top">
+      <input type="hidden" name="redirect_to" value="http://www.dosomething.org" />
+      <select name="carrier" class="requiredElement">
+      <option value="">Unknown</option>
+      <option value="alltel">Alltel</option>
+      <option value="att">AT&amp;T</option>
+      <option value="boost">Boost</option>
+      <option value="ccbell">CCBell</option>
+      <option value="cingular">Cingular Orange</option>
+      <option value="midwest">Midwest Wireless</option>
+      <option value="nextel">Nextel (Sprint iDEN)</option>
+      <option value="sprint">Sprint (Sprint PCS)</option>
+      <option value="suncom">Suncom</option>
+      <option value="tmobile_cgw">T-Mobile</option>
+      <option value="verizon">Verizon Wireless</option>
+      <option value="sprint">CREDO Mobile</option>
+      </select>
+      <input class="requiredElement" id="person_phone" name="person[phone]" size="30" type="text" />              
+      <input class="requiredElement" id="person_postal_code" name="person[postal_code]" size="30" type="text" />
+      <input type="submit" value="Subscribe" />
+    </form>*/
+  $fields = array(
+    'redirect_to' => 'http://www.dosomething.org',
+    'carrier' => '',
+    'person[postal_code]' => $zip,
+    'person[phone]' => $mobile,
+    'person[column_1]' => $uid,
+    'person[column_2]' => $category,
+  );
+  //write data string
+  $data = '';
+  foreach ($fields as $k => $v) {
+  	print_r($v);
+    $data .= $k . '=' . urlencode($v) . '&';
+  }
+  $data = substr($data, 0, -1);
+  
+  $action = 'https://dosomething.mcommons.com/campaigns/3531/subscriptions?opt_in_path=4701';
+  $response = drupal_http_request($action, array("Content-Type" => "application/x-www-form-urlencoded"), 'POST', $data, false);
+  //exec("wget --no-check-certificate --post-data=".escapeshellarg($data)." ".$action);
+}
+
+function ds_mobile_mcommons_optout($mobile) {
+  /*
+    <form action="http://dosomething.mcommons.com/profiles/opt_out" method="post">
+      <input type="hidden" name="redirect_to" value="http://www.dosomething.org" />
+      <input type="text" name="person[phone]" />
+      <input type="submit" value="Opt-Out" />
+    </form>
+   */
+  $data = 'person[phone]=' . urlencode($mobile) . '&redirect_to=' . urlencode("http://www.dosomething.org") . '&company_id=521';
+  $action = 'http://dosomething.mcommons.com/profiles/opt_out';
+  $response = drupal_http_request($action, array("Content-Type" => "application/x-www-form-urlencoded"), 'POST', $data, false);
+}
+
+/*
+//we don't have this yet
+function ds_mobile_api_optin() {
+  if (isset($_POST['data']) && isset($_POST['sig'])) {
+    
+  }
+  return 'failure';
+}
+*/
+
+function ds_mobile_api_optout() {
+  $secret = sha1(variable_get('ds_mobile_api_secret', 'weinersomething'));
+  //make sure we have all necessary data and hash checks out
+  if (isset($_POST['data']) && isset($_POST['sig']) &&
+    base64_encode(ds_mobile_hmacsha1($secret, $_POST['data'])) == $_POST['sig']) {
+    //take in fields
+    $input = explode('|', $_POST['data']);
+    $vars = array();
+    $fields = array('uid', 'mobile', 'time');
+    foreach ($input as $var) {
+      $tmp = array();
+      $tmp = explode('=', $var);
+      if (count($tmp) != 2) {
+        print 'failure: data syntax';
+        exit;
+      }
+      if (in_array($tmp[0], $fields)) {
+        $vars[$tmp[0]] = $tmp[1];
+      }
+      else {
+        print 'failure: unknown field ' . filter_xss($tmp[0], array());
+        exit;
+      }
+    }
+    //validity checks
+    $five_mins = 60 * 5;
+    if (!ctype_digit($vars['time']) || abs(time() - $vars['time']) > $five_mins) {
+      print 'failure: invalid time';
+      exit;
+    }
+    if (!isset($vars['uid']) || !isset($vars['mobile']) || !isset($vars['time'])) {
+      print 'failure: not all required fields given (' . implode(', ', $fields) . ')';
+      exit;
+    }
+    if (!ctype_digit($vars['uid'])) {
+      print 'failure: invalid uid';
+      exit;
+    }
+    elseif ($vars['uid'] != 0 && !db_result(db_query('SELECT uid FROM {users} WHERE uid=%d', $vars['uid']))) {
+      print 'failure: user does not exist';
+      exit;
+    }
+    if (!ctype_digit($vars['mobile']) || strlen($vars['mobile']) != 10) {
+      print 'failure: invalid mobile #';
+      exit;
+    }
+    elseif ($vars['uid'] == 0 && !db_result(db_query("SELECT mobile FROM {ds_mobile_anon} WHERE mobile='%s'", $vars['mobile']))) {
+      print 'failure: mobile # did not exist';
+      exit;
+    }
+    
+    //we have now passed all checks
+    if ($vars['uid'] == 0) {
+      db_query("DELETE FROM {ds_mobile_anon} WHERE mobile = '%s'", $vars['mobile']);
+    }
+    else {
+      //profile fid for cell = 11
+      $fid = 11;
+      db_query("UPDATE {profile_values} SET value='' WHERE fid=%d AND uid=%d", $fid, $vars['uid']);
+    }
+    print 'success';
+    exit;
+  }
+  
+  print 'failure: auth';
+  exit;
+}
+
+function ds_mobile_api_test() {
+  $mobile = arg(2);
+  $uid = 0;
+  $time = time();
+  $secret = sha1(variable_get('ds_mobile_api_secret', 'weinersomething'));
+  $url = 'http://www.dosomething.org/ds_mobile/optout';
+  
+  $data = "mobile=$mobile|uid=$uid|time=$time";
+  $sig = base64_encode(ds_mobile_hmacsha1($secret, $data));
+  
+  $send = 'data=' . urlencode($data) . '&sig=' . urlencode($sig);
+  
+  $req = drupal_http_request($url, array("Content-Type" => "application/x-www-form-urlencoded"), 'POST', $send);
+  
+  print "Request:\n\n";
+  print $req->request ."\n\n\n\n";
+  print "Response:\n\n";
+  print $req->data;
+  exit;
+}
+
+function ds_mobile_hmacsha1($key,$data) {
+  $blocksize=64;
+  $hashfunc='sha1';
+  if (strlen($key)>$blocksize)
+    $key=pack('H*', $hashfunc($key));
+  $key=str_pad($key,$blocksize,chr(0x00));
+  $ipad=str_repeat(chr(0x36),$blocksize);
+  $opad=str_repeat(chr(0x5c),$blocksize);
+  $hmac = pack(
+    'H*',$hashfunc(
+      ($key^$opad).pack(
+        'H*',$hashfunc(
+          ($key^$ipad).$data
+         )
+      )
+    )
+   );
+   return bin2hex($hmac);
+}
+

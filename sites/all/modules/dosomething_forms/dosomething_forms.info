@@ -1,0 +1,5 @@
+name = Do Something Forms
+description = "Handling for forms on Do Something"
+package = Do Something
+version = 6.x-2.0
+core = 6.x

@@ -428,5 +428,15 @@ div.block ol {
 
 div.block.pink {
   background: #f4f1ed;
+  width: 240px;
+  padding: 0 15px 15px;
+  margin: 15px 15px 15px;
+
 }
+
+div.block h2 {
+  position: relative;
+  top: -15px;
+}
+
 

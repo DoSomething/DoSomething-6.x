@@ -1,4 +1,0 @@
-name = "DoSomething Dev"
-description = "Misc. Dev Only Features"
-core = 6.x
-package = DoSomething

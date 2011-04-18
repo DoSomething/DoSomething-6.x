@@ -10,7 +10,9 @@ $photos = $node->field_campaign_pictures;
 if (!$page) {
   $teaser_image = '';
   if (sizeof($photos) > 0) {
-    $teaser_image = $photos[0]['filepath'];
+    $teaser_image = '<a href="/'.$nodePath.'">'.
+                    theme('imagecache','projects_page_thumbnail',$photos[0]['filepath'],'','').
+                    '</a>';
   } elseif ($node->field_campaign_video[0]['embed']) {
     $teaser_image = $node->field_campaign_video[0]['view'];
   }
@@ -34,6 +36,7 @@ if (!$page) {
       <div class="project-photo"><?=$teaser_image;?></div>
       <h3><?=l($title,'node/'.$node->nid,NULL,NULL,NULL,FALSE,TRUE);?></h3>
     <p><?=$teaser_txt;?></p>
+    <div class="clear"></div>
   </div>
 <? } else {//Full view ?>
   <div class="node <?=$node->type ?> campaign project">

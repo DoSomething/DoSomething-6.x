@@ -77,8 +77,10 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   $hooks['signup_block'] = array();
   
   $templates_path = drupal_get_path('theme', 'dosomething') . '/templates';
-  $ds_forms = array('ebd_signup',
-                    'campaign_ebd_2011');
+  $ds_forms = array(
+                 'ebd_signup',
+                 'campaign_ebd_2011',
+                 );
   //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
   foreach ($ds_forms as $name) {
     $hooks[$name.'_node_form'] = array( 'template' => $name.'_form', 'arguments' => array('form' => array()), 'path' => $templates_path );

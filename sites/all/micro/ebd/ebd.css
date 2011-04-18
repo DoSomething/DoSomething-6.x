@@ -239,19 +239,6 @@ div.top-navholder {
   left: 35px;
 }
 
-div#wrapper ul.tabs.primary {
-  border-bottom: none;
-  background: none;
-  list-style-type: none;
-  width: 300px;
-  margin: 0 auto;
-}
-
-div#wrapper ul.tabs.primary li {
-  float: left;
-  padding-left: 10px;
-}
-
 div.video {
   padding: 10px 0 16px;
 }

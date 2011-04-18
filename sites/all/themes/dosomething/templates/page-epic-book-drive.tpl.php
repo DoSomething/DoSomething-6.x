@@ -21,6 +21,8 @@ $nodePath = drupal_get_path_alias('node/'.$node->nid);
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/additional.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/block-editing.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/zen.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/drupal5-reference.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/tabs.css';?>" type="text/css" media="all" />
   <!--[if IE 7]>
           <link rel="stylesheet" type="text/css" href="/nd/ebd/ie7.css">
   <![endif]-->
@@ -112,7 +114,8 @@ $top_right
 			<!--End Top Right Block Section-->
         </div>
         <div class="clear"></div>
-				<?php if ($messages): print $messages.$tabs.'<div style="clear:both"></div>'; endif; ?>
+				<?php if ($messages): print $messages; endif;
+              print $tabs.'<div style="clear:both"></div>'; ?>
     </div>
 
     <div id="container">

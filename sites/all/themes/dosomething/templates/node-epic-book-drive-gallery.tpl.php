@@ -21,17 +21,11 @@ if ($is_plan) {
     <div class="body-text">
         <h2>Plans</h2>
         <?
-        $view = views_get_view('ebd_2011_signup');
-        $view->is_cacheable = 0;
-        print views_build_view('block', $view, NULL, TRUE, 5);
+        print views_embed_view('ebd_2011_signup', 'block');
         ?>
-
         <h2>Projects</h2>
-
         <?
-        $view = views_get_view('ebd_2011_projects');
-        $view->is_cacheable = 0;
-        print views_build_view('block', $view, NULL, TRUE, 10);
+        print views_embed_view('ebd_2011_projects','block');
         ?>
     </div>
    </div>

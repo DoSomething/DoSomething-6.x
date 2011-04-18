@@ -22,8 +22,13 @@ $url = 'http://www.dosomething.org/green-your-school'; ?>
  print $title;
 ?></title>
   <?php print $head; ?>
-  <?php print $styles; ?>
-  <link rel="stylesheet" href="/nd/iyg-2011/iyg.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/style.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/additional.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/block-editing.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/zen.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/drupal5-reference.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/tabs.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=$ds_micro;?>/iyg-2011/iyg.css" type="text/css" media="all" />
   <!--[if IE]>
     <?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie.css')): ?>
       <link rel="stylesheet" href="<?php print $base_path . $subtheme_directory ?>/fixes_msie.css" type="text/css">
@@ -114,13 +119,12 @@ $top_right
 
             </div>
         </div>
-<?php if ($top_right) { ?>
         <div class="col_right">
 			<!--Begin Top Right Block Section-->
-			<?=$top_right;?>
+      <?=theme('login_links').
+         theme('signup_block');?>
 			<!--End Top Right Block Section-->
         </div>
-<?php } ?>
         <a href='/green-your-school'>
         <img id="logo" src="/nd/iyg-2011/logo.png" alt="Green Your School Challenge" /></a>
         <div class="clear"></div>
@@ -164,7 +168,7 @@ $top_right
 <?              } ?>
                 <a class="tab1 <? if (arg(1)==631375) {print 'active';}?>" href="/green-your-school/find-your-school"></a>
                 <a class="tab2 <? if (! $onmyschoolpage && arg(1)==633277) {print 'active';}?>" href="/green-your-school/browse-schools"></a>
-                <a class="tab3 <? if ($current_path=='green-your-school/share') {print 'active';}?>" href="/green-your-school/share"></a>
+                <!--<a class="tab3 <? if ($current_path=='green-your-school/share') {print 'active';}?>" href="/green-your-school/share"></a>-->
                 <a class="tab4 <? if (arg(1)==632730) {print 'active';}?>" href="/green-your-school/browse-ideas"></a>
                 <a class="tab5 <? if (arg(1)==632815) {print 'active';}?>" href="/green-your-school/report-back"></a>
                 <a class="tab6 <? if (arg(1)==633500) {print 'active';}?>" href="/green-your-school/free-stuff"></a>

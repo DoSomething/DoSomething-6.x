@@ -1,0 +1,8 @@
+.s-name {
+  display: none;
+}
+
+#school-finder label {
+  width: 120px;
+  display: inline-block;
+}

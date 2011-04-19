@@ -75,7 +75,16 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   $hooks['primary_links'] = array();
   $hooks['login_links'] = array();
   $hooks['signup_block'] = array();
-
+  
+  $templates_path = drupal_get_path('theme', 'dosomething') . '/templates';
+  $ds_forms = array(
+                 'ebd_signup',
+                 'campaign_ebd_2011',
+                 );
+  //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
+  foreach ($ds_forms as $name) {
+    $hooks[$name.'_node_form'] = array( 'template' => $name.'_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
+  }
   // @TODO: Needs detailed comments. Patches welcome!
   return $hooks;
 }
@@ -94,7 +103,9 @@ function dosomething_login_links() {
   if ($user->uid > 0) {//Logged in, provide My Account | Log Out
     $block_str .= l('My Account','user/'.$user->uid).' | '.l('Log Out','logout');
   } else { //Logged out, provide login
-    $block_str .= '<p class="alignright">'.l('Log In','user/login',NULL,drupal_get_destination()).' | '.l('Join Us','user/register');
+    $block_str .= '<p class="alignright">'.
+                  l('Log In','user/login',array( 'html' => true, 'query' => drupal_get_destination())).
+                  ' | '.l('Join Us','user/register');
   }
   $block_str .= '</p></div>';
   return $block_str;

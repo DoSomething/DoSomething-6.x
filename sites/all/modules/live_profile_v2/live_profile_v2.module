@@ -1,15 +1,13 @@
 <?php
 
-function live_profile_v2_menu($may_cache) {
+function live_profile_v2_menu() {
   $items = array();
-  if ($may_cache) {
-    $items[] = array(
-      'path' => 'live_profile_v2_router',
-      'callback' => 'live_profile_v2_router',
-      'type' => MENU_CALLBACK,
-      'access' => TRUE,
-    );
-  }
+  $items[] = array(
+    'path' => 'live_profile_v2_router',
+    'callback' => 'live_profile_v2_router',
+    'type' => MENU_CALLBACK,
+    'access' => TRUE,
+  );
   return $items;
 }
 
@@ -79,8 +77,7 @@ function live_profile_v2_show($fields = array(
   'profile_cell',
 )) {
 
-  global $user;
-
+  global $user; $user = user_load($user->uid);
   $field_names = array(
     'profile_fname' => 'First Name',
     'profile_lname' => 'Last Name',

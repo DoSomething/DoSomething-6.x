@@ -15,6 +15,11 @@
  */
 
 
+div#sidebar-right div.region div.block-block.block {
+  padding: 0;
+  margin: 0;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -571,7 +576,9 @@ div.node h2 {
     color: #48BCDC;
 }
 
-div.block h2 {
+/* Disabled for epic book drive */
+
+/*div.block h2 {
     clear: both;
     margin: 0;
     color: #48BCDC;
@@ -581,7 +588,7 @@ div.block h2 {
 div.block h2 {
     position: relative;
     top: -16px;
-}
+}*/
 
 div.block.blue h2.img,
 div.block.pink h2.img {
@@ -1114,8 +1121,8 @@ form input.submit {
 	margin-right:7px;
 }
 
-#ds-mobile-anon-form #edit-submit-1{
-    width: 38px;
+#ds-mobile-anon-form .form-submit{
+  width: 38px;
   height: 19px;
   padding: 55px 0 0;
   margin: 0;

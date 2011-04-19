@@ -1,0 +1,15 @@
+<?php
+
+function ds_mobile_install() {
+  db_query(
+    'CREATE TABLE IF NOT EXISTS {ds_mobile_anon} (
+    `mobile` VARCHAR( 20 ) NOT NULL ,
+    `zip` INT( 10 ) NOT NULL ,
+    `category` VARCHAR( 20 ) NOT NULL,
+    INDEX ( `mobile` , `zip` )
+    );'
+  );
+}
+
+
+?>

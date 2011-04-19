@@ -1,10 +1,12 @@
 <?
 
+$form['body_field']['format'] = NULL;
+
 print drupal_render($form['title']);
 print '<br/>';
 print drupal_render($form['field_what_is_your_goal_number_']);
 print '<br style="clear:both"/>';
-print '<div class="textarea">'.drupal_render($form['body_filter']['body']).'</div>';
+print '<div class="textarea">'.drupal_render($form['body_field']).'</div>';
 ?>
 
 <?

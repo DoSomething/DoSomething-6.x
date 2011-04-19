@@ -1,0 +1,764 @@
+
+a.emission {
+  background: url(/nd/iyg-2011/emission-trans2.png) no-repeat;
+  display: block;
+  width: 292px;
+  height: 143px;
+  background-position: 0 -150px;
+  padding-bottom: 5px;
+}
+
+a.emission:hover {
+  background-position: 0 0;
+}
+
+div#container div.node.campaign_gys_2011.teaser h2 {
+  font-size: 14px;
+  width: auto;
+}
+
+div#container div.node.teaser img {
+  float: left;
+  margin-top: -12px;
+  margin-left: -10px;
+  padding-right: 10px;
+}
+
+div#container div.node div.gys-teaser.even {
+  background: #4D4D4D;
+}
+
+div#container div.node div.gys-teaser {
+  padding: 5px;
+}
+
+div#container div.node p.author {
+  color: #89C64C;
+  text-align:right;
+  padding-right: 20px;
+}
+
+div#container div.node div.subheading {
+  color: #89C64C;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px 0px;
+}
+
+
+div#enrolled-students {
+  float:right;
+  padding-right: 30px;
+  width: 195px;
+}
+
+div#container p#school-location {
+  font-size: 18px;
+}
+
+div#container div.node.gys_2011 h2.title, div#container div.node.campaign_gys_2011 h2, div#container div.node h2 {
+  width:440px;
+}
+
+div#container div.campaign_gys_2011 h3 {
+  color: white;
+}
+
+div#gys-report-form input#edit-submit {
+  float:right;
+}
+
+#field-campaign-pictures-attach-wrapper * {
+  color:white;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+#edit-field-campaign-pictures-upload {
+  background: black;
+}
+
+#field-campaign-pictures-attach-button {
+  color: black;
+}
+
+fieldset div.description {
+  color:white;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+div#comingsoon p {
+  text-align: center;
+}
+
+img.comingsoon-full {
+  width: 426px;
+  margin-left: 163px;
+}
+
+div.node.gys_2011 h2, div#container div.node-gys h2 {
+  padding-bottom: 10px;
+}
+
+div#gys-signup-form input#edit-submit {
+  float:right;
+  padding-right: 10px;
+  border: 0;
+  width: 96px;
+  height: 35px;
+  cursor: pointer;
+}
+
+div#gys-signup-form div.register input#edit-submit {
+  background: transparent url('register.png') no-repeat;
+  text-indent: -9999em;
+}
+
+div#gys-signup-form div.enroll input#edit-submit {
+  background: transparent url('enroll.png') no-repeat;
+  text-indent: 9999999px;
+}
+
+div#container div.node p#pagenav {
+  margin-left: -10px;
+  margin-top: -22px;
+}
+
+img#palm {
+  float:left;
+  height:50px;
+}
+
+img#book {
+  float: left;
+  height: 125px;
+  padding: 0px 15px;
+}
+
+div.hp-photos {
+  margin-left:45px; 
+}
+
+div.hp-photos.mini {
+  padding-bottom:20px;
+}
+
+div.hp-photos img {
+  padding-right: 43px;
+}
+
+div.hp-photos.mini img {
+  height: 72px;
+}
+
+div.hp-photos.dm1 img {
+  height: 100px;
+}
+
+table#freestuff td.image.fb-small img, table#freestuff td.image.fb-large img {
+  height: 392px;
+}
+
+table#freestuff td.image.twitter img {
+  height: 193px;
+}
+
+table#freestuff td.image.fb-tall img {
+  height: 382px;
+  padding-left: 90px;
+}
+
+table#freestuff td.heading {
+  text-align:center;
+}
+
+table#freestuff td.col1.heading {
+  padding-right: 68px;
+}
+
+table#freestuff td.col2 {
+  padding-right: 30px;
+}
+
+
+div.results {
+  padding-bottom: 25px;
+}
+
+a.hideme {
+  display:none;
+}
+
+a.showme {
+  display:block;
+}
+
+div.pager * {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+div#container div.node div.pager span.pager-list strong.pager-current {
+  color: #666666;
+}
+
+div.node-gys table *, div#main div.messages, div#main div.messages * {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+div.node-gys table td {
+  color: white;
+  font-weight: normal;
+}
+
+div.node-gys table td.name, div.node-gys table th.name, div.node-gys table td.col1 {
+  padding: 5px 0px 5px 28px;
+}
+
+div.node-gys table td.missinglink {
+  width: 200px;
+}
+
+div.node-gys table td.city, div.node-gys table th.city {
+  padding: 5px 0px 5px 0px;
+}
+
+div.node-gys table td.name, div.node-gys table td.col1 {
+  width:430px;
+}
+
+div.node-gys table td.city {
+  width: 98px;
+}
+
+div.node-gys table td.col2 {
+  width: 298px;
+}
+
+div.node-gys table td.active {
+  background: none;
+}
+
+div.node-gys table thead th img {
+  padding-left:6px;
+}
+
+div.node-gys table th {
+  color: #89C64C;
+  font-weight: bold;
+  border-bottom: none;
+}
+
+div.node-gys table tr {
+  border-bottom: none;
+}
+div.node-gys table tr.even {
+  background:none;
+}
+div.node-gys table tr.odd {
+  background: #4D4D4D;
+}
+
+div#container div.node div.node-gys table {
+  margin-left: -20px;
+}
+
+div.node-gys table tbody {
+  border-top: none;
+}
+form#tellafriend-page input#edit-submit, form#tellafriend-page input#edit-submit-tellafriend {
+  padding:36px 0px 30px 328px;
+  padding: 6px;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  border-width: 0px;
+}
+
+div#tellafriend-message {
+  background: #666;
+  border: 4px solid #444;
+  padding-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 674px;
+
+}
+div#greatschools-attrib {
+  position:relative;
+  padding-top:25px;
+  height:80px;
+}
+
+div#greatschools-attrib p {
+  top: 8px;
+  padding-bottom: 10px;
+}
+
+div#container div.node div#greatschools-attrib p, div#container div.node div#greatschools-attrib img {
+  margin-left:500px;
+  position:absolute;
+}
+
+img.subheader {
+  padding-top: 33px;
+  padding-bottom: 10px;
+}
+
+div.form-item div#signup-description {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  color:white;
+  padding: 3px 0px 3px;
+}
+
+div#signup-description + span {
+  display:none;
+}
+
+div.node h2, div.node h3 {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #89C64C;
+}
+
+h2#tellafriend-title {
+  margin: 15px 15px 15px 20px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #89C64C;
+}
+
+form#tellafriend-page {
+  margin: 15px 15px 15px 20px;
+}
+
+form#tellafriend-page a {
+  color: #89C64C;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+form#tellafriend-page div {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+h2 + form#tellafriend-page {
+  color: white;
+}
+
+div#lastyear {
+   text-align:center;
+}
+
+div.marker {
+  min-width:400px;
+  min-height:150px;
+}
+
+div.marker *, div.subheading {
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+div.marker h3 {
+   color: #89C64C;
+}
+
+div#container div.marker div.body, div#container div.marker div.body div, div#container div.marker div.body span, div#container div.marker p {
+   color:black;
+   font-size: 14px;
+}
+
+div#container div.marker div.body div.moreinfo {
+  padding-top:22px;
+  font-size:8px;
+  float:right;
+}
+
+div#map_canvas {
+  width:715px;
+  height:560px;
+}
+
+label, .formdata {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+div#iyg-bottom div.title {
+  color:white;
+  font-size: 1.6em;
+  text-align:center;
+  margin-top: -5px;
+}
+div#iyg-bottom p {
+  font-size: 14px;
+}
+
+div#iyg-bottom p.description {
+  width:255px;
+  padding-left: 23px;
+  margin-bottom: .7em;
+  font-size: 12px;
+}
+
+div#iyg-bottom div#block2 p.description {
+  width:263px;
+  padding-left: 14px;
+}
+
+
+div#iyg-bottom div#block2 img.main {
+  margin: -9px 0px -22px -22px;
+  height: 165px;
+}
+
+div#iyg-bottom div#block3 img.main {
+  padding-left: 5px;
+  width: 285px;
+  height: 129px;
+  padding-top: 10px;
+}
+
+div#iyg-bottom div.block a {
+  text-decoration: none;
+}
+
+div#iyg-bottom div.block div.title:hover {
+  color: #89C64C;
+}
+
+div#iyg-bottom div#block2 img.main2 {
+  margin-left: -34px;
+  height: 140px;
+  position: absolute;
+}
+
+div#iyg-bottom div.block img.main {
+  padding: 5px 25px;
+}
+
+div#iyg-bottom div.block img.more {
+    margin-top: -10px;
+    padding: 0px 0px 0px 62px;
+}
+
+div#iyg-bottom div.share {
+  padding: 5px 40px 0px 0px;
+}
+
+div#main div.share.right {
+  padding: 1em 2em 0em 0em;
+  left: 465px;
+  position:absolute;
+}
+
+form#find-your-school {
+  position:relative;
+}
+
+input#search-button {
+  position:absolute;
+  margin: 15px 0px 0px 5px;
+  border: 0;
+  width: 96px;
+  height: 35px;
+  cursor: pointer;
+  background: transparent url('search.png') no-repeat;
+
+}
+
+input[type=text],textarea,select {
+  padding: 5px;
+  background: #666666;
+  border: none;
+  color:white;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+form#find-your-school input#gys-school {
+  margin-top: 17px;
+  width:17em;
+  height: 2em;
+}
+
+div.share.right > * {
+  float:right;
+}
+
+div.share img {
+  margin-top: -10px;
+  padding-left: 5px;
+}
+
+iframe#video {
+  padding-left: 33px;
+  padding-bottom: 10px;
+}
+
+div#video {
+  padding-left: 11px;
+  padding-bottom: 15px;
+}
+
+div#video img {
+  position:absolute;
+}
+
+div#video img#picture {
+}
+
+div#video img#button {
+   left:340px;
+   top:117px;
+}
+
+div#iyg-sidebar img#sidebar05 {
+  padding-left: 12px;
+  padding-top: 10px;
+}
+
+div#iyg-sidebar img#sidebar06 {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+div#iyg-sidebar {
+  background: url(iyg-bg-right.png) repeat-y scroll 0 0;
+  top: 0px;
+  /*height:300px;*/
+  width:200px;
+  height:100%;
+  right:-200px;
+  position:absolute;
+}
+
+div#iyg-nav-top {
+  position: relative;
+  margin: -89px 0px -4px -15px;
+}
+
+div#iyg-sidebar {
+  background: url(iyg-bg-right.png) repeat-y scroll 0 0;
+  top: 0px;
+  /*height:300px;*/
+  width:200px;
+  height:100%;
+  right:-200px;
+  position:absolute;
+}
+
+div#iyg-sidebar div#sidenav { position: absolute; top: 0px; z-index: 3; width:106px; padding-left:5px; padding-top: 15px;}
+div#iyg-sidebar div#sidenav a { background: url(gys-sidenav-all3.png) no-repeat; width: 120px; height: 110px; float:left; display:block;}
+
+div#iyg-sidebar div#sidenav a.tab1 { background-position: 0px 0px; }
+div#iyg-sidebar div#sidenav a.tab2 { background-position: 0px -108px; height: 102px; }
+div#iyg-sidebar div#sidenav a.tab3 { background-position: 0px -209px; height: 103px; }
+div#iyg-sidebar div#sidenav a.tab4 { background-position: 0px -314px; }
+div#iyg-sidebar div#sidenav a.tab5 { background-position: 0px -423px; }
+div#iyg-sidebar div#sidenav a.tab6 { background-position: 0px -534px; height: 88px; }
+div#iyg-sidebar div#sidenav a.tab0 { background-position: 0px -618px; }
+
+
+div#iyg-sidebar div#sidenav a.tab1:hover, div#iyg-sidebar div#sidenav a.tab1.active { background-position: -120px 0px; }
+div#iyg-sidebar div#sidenav a.tab2:hover, div#iyg-sidebar div#sidenav a.tab2.active { background-position: -120px -108px; }
+div#iyg-sidebar div#sidenav a.tab3:hover, div#iyg-sidebar div#sidenav a.tab3.active { background-position: -120px -209px; }
+div#iyg-sidebar div#sidenav a.tab4:hover, div#iyg-sidebar div#sidenav a.tab4.active { background-position: -120px -314px; }
+div#iyg-sidebar div#sidenav a.tab5:hover, div#iyg-sidebar div#sidenav a.tab5.active { background-position: -120px -423px; }
+div#iyg-sidebar div#sidenav a.tab6:hover, div#iyg-sidebar div#sidenav a.tab6.active { background-position: -120px -534px; }
+div#iyg-sidebar div#sidenav a.tab0:hover, div#iyg-sidebar div#sidenav a.tab0.active { background-position: -120px -618px; }
+
+
+
+div#iyg-sidebar.nav table {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+div.nav table tbody {
+  border-top: none;
+}
+
+div#iyg-nav-bottom {
+  background: #0a543d;
+  margin-left:-15px;
+  height:44px;
+  position:relative;
+}
+
+div#iyg-nav-bottom img#bottomnav2 {
+  margin-left: 75px;
+}
+
+div#iyg-nav-bottom img#bottomnav3 {
+  margin-left: 83px;
+}
+
+
+div#triangle2 {
+  position:relative;
+  height: 100%;
+}
+
+div#triangle2 img.triangle {
+  position:absolute;
+  z-index: 2;
+}
+
+div#iyg-bottom {
+  height: 291px;
+  background: #000000 url(bottom.jpg) repeat-x scroll 0 0;
+  margin-left: -15px;
+  width:883px;
+  padding-top: 15px;
+}
+
+div#iyg-bottom > div {
+  float:left;
+  height:291px;
+  width:294px;
+}
+
+div#container {
+  padding-bottom: 0px;
+}
+
+div#container p {
+  color: white;
+}
+
+div#main {
+  background: #000000 url(iyg-bg-body.png) repeat-x scroll 0 0;
+  float:none;
+  padding-top: 15px;
+  padding-bottom: 1px;
+  width: 758px;
+  margin-left: -15px;
+  position:relative;
+  min-height: 738px;
+}
+
+div#container.iyg div.node {
+  margin: 15px 0px 15px 20px;
+}
+
+div#container p, div#enrolled-students div.nickname, div#enrolled-students {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 14px;
+/*  padding-left:8px;*/
+}
+
+div#container div.node strong {
+  color: white;
+  font-weight: bold;
+}
+
+div#container div.node p,div#container div.node input,div#container div.node select, .form-item label, div.node div.formdata, div.node div.textarea,div.form-item div.description, .form-item input, form#tellafriend-page p, h3.indent {
+  margin-left: 8px;
+}
+
+div.node div.textarea label {
+  margin-left: 0px;
+}
+
+div#container div.node p,div#container div.node input,div#container div.node select, div#main ol  {
+  margin-right: 15px;
+}
+
+div#container div.node a,
+div#container div.node p a, div#iyg-bottom a, div#main div.messages a {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: #89C64C;
+  font-weight: bold;
+}
+
+div#container div.node hr {
+  height: 0px;
+  border: 0px;
+  border-top: 1px dashed white;
+  margin: 1em 0;
+  clear: both;
+}
+
+div.node img.sign-up {
+  float: left;
+  margin-right: 15px;
+}
+
+div.main {
+  width: 400px;
+  float: left;
+}
+
+div.secondary {
+  float: left;
+  width: 350px;
+}
+
+div.main-your-pics,
+div.main-contests,
+div.main-take-action {
+  width: 100%;
+  color: white;
+}
+
+div.main-your-pics {
+  text-align: center;
+}
+
+
+div#main ol li, div#main ul li {
+  margin: 0px;
+  font-size: 14px;
+  color: white;
+}
+div.secondary div.psa {
+  padding: 10px;
+  margin: 0 auto 5px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  background-color: #7792b0;
+}
+
+div.psa p,
+div.psa img {
+  display: block
+  margin: 0 auto;
+}
+
+div#video-share {
+  float: right;
+}
+
+div#page-share {
+  float: left;
+  margin-top: 17px;
+  margin-left: 25px;
+  margin-right: 42px;
+}
+
+div#page-share a,
+div#page-share img {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+img#logo {
+  margin-left:90px;
+  position:relative;
+  z-index: 1;
+}
+
+div#main div.messages {
+  border-color: #89C64C;
+  margin: 2em 1em 30px;
+}
+
+div#main div.messages ul li {
+  color: black;
+}

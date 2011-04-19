@@ -1,5 +1,0 @@
-<?php
-
-function dosomething_dev_form_dev_notes_node_form_alter(&$form, &$form_state) {
-  $form['#redirect'] = $_GET['q'];
-}

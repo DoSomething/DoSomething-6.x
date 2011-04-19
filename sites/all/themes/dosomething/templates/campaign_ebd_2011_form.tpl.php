@@ -1,5 +1,5 @@
 <?
-
+//drupal_set_message('<pre>'.print_r($form,true).'</pre>');
 if (user_access('administer nodes')) {
   //print '<pre>'.print_r($form,TRUE).'</pre>';
 }

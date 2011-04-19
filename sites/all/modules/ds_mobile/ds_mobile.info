@@ -1,0 +1,5 @@
+core = 6.x
+name = Mobile Commons Integrator
+description = Integrate mobile functionality into DS.org
+version = "6.x-1.0"
+package = Do Something

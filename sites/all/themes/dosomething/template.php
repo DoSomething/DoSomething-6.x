@@ -114,6 +114,7 @@ function dosomething_login_links() {
 }
 
 function dosomething_header($args = array('front_page' => '', 'directory' => '', 'mission' => '')) {
+  global $user;
   $header_str = '    <div id="header"><div class="section clearfix">
 
     <a href="'.$args['front_page'].'" title="DoSomething.org" rel="home" id="logo"><img src="/'.$args['directory'].'/images/logo.png" alt="DoSomething.org" /></a>

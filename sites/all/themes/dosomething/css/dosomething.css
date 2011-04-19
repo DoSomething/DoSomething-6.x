@@ -408,6 +408,13 @@ div.callout {
   color: #48bcdc;
 }
 
+div.block ul li {
+  margin: 0 0 0.4em 0.25em;
+  padding-top: 0;
+  list-style-image: url("http://www.dosomething.org/sites/all/themes/zen/dosomething/images/logobullet.gif");
+  line-height: 0.9em;
+}
+
 div.block ol li {
   margin: 0 0 0.4em 1.5em;
   padding-top: 0;
@@ -428,15 +435,36 @@ div.block ol {
 
 div.block.pink {
   background: #f4f1ed;
-  width: 240px;
+  width: 200px;
   padding: 0 15px 15px;
-  margin: 15px 15px 15px;
+  margin: 15px 15px 33px;
 
 }
 
 div.block h2 {
   position: relative;
   top: -15px;
+  margin-bottom: -20px;
 }
 
+div.node-type-poll h2 {
+  font-size: 13px;
+  color: #055494;
+  padding-top: 20px;
+}
 
+div.node-type-poll span.submitted {
+  display: none;
+}
+
+div.poll #edit-vote.form-submit {
+  background: url("http://www.dosomething.org/sites/all/themes/zen/dosomething/images/form_submit_vote.png");
+  border: none;
+  width: 53px;
+  height: 19px;
+}
+
+div.field-item.odd  {
+  text-align: center; 
+  padding-top: 10px;
+}

@@ -211,10 +211,120 @@ function ds_grants_database_views_default_views() {
   $handler->override_option('use_pager', '0');
   $handler->override_option('distinct', 1);
   $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->override_option('header', '<style type="text/css">
+#views-filters table
+{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+#views-filters table td select
+{
+  height: 70px;
+}
+
+#views-filters table td,
+#views-filters table th
+{
+  padding: 3px;
+  vertical-align: top;
+}
+
+.view-content-grant-alumni table
+{
+  width: 100%;
+}
+
+.view-content-grant-alumni table td,
+.view-content-grant-alumni table th
+{
+  padding: 2px;
+}
+
+</style>
+<img src="http://www.dosomething.org/files/layout/GRANTS.jpg" alt="grants">
+<h3><?php 
+$num_nodes = $GLOBALS[\'pager_total_items\'][0];
+echo "There are $num_nodes grants for you!";
+ ?></h3> 
+<p>Here is a database of available resources for entrepreneurs. We now allow YOU to add resources! <a href="/node/add/grants-database" target="blank">Submit an award or grant listing</a>.</p>
+');
+  $handler->override_option('header_format', '2');
+  $handler->override_option('header_empty', 0);
+  $handler->override_option('empty', '<style type="text/css">
+#views-filters table
+{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+#views-filters table td select
+{
+  height: 70px;
+}
+
+#views-filters table td,
+#views-filters table th
+{
+  padding: 3px;
+  vertical-align: top;
+}
+
+.view-content-grant-alumni table
+{
+  width: 100%;
+}
+
+.view-content-grant-alumni table td,
+.view-content-grant-alumni table th
+{
+  padding: 2px;
+}
+
+</style>
+<h3>We did not find that kind of grant.  Sorry!  Try searching again.</h3>
+');
+  $handler->override_option('empty_format', '2');
   $handler->override_option('items_per_page', 20);
   $handler->override_option('use_pager', '1');
   $handler->override_option('style_plugin', 'table');
-  $handler->override_option('style_options', NULL);
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'override' => 1,
+    'sticky' => 0,
+    'order' => 'desc',
+    'columns' => array(
+      'title' => 'title',
+      'field_type_of_award_value' => 'field_type_of_award_value',
+      'field_award_focus_value' => 'field_award_focus_value',
+      'field_rolling_value' => 'field_rolling_value',
+      'field_application_deadline_value' => 'field_application_deadline_value',
+    ),
+    'info' => array(
+      'title' => array(
+        'sortable' => 1,
+        'separator' => '',
+      ),
+      'field_type_of_award_value' => array(
+        'separator' => '',
+      ),
+      'field_award_focus_value' => array(
+        'sortable' => 1,
+        'separator' => '',
+      ),
+      'field_rolling_value' => array(
+        'sortable' => 1,
+        'separator' => '',
+      ),
+      'field_application_deadline_value' => array(
+        'sortable' => 1,
+        'separator' => '',
+      ),
+    ),
+    'default' => 'field_rolling_value',
+  ));
   $handler->override_option('path', 'grants/database');
   $handler->override_option('menu', array(
     'type' => 'none',

@@ -122,7 +122,9 @@
 <body class="<?php print $classes; ?>">
 
   <div id="page-wrapper"><div id="page">
-
+  <? print theme('header', array(
+                              'front_page' => $front_page,
+                              )); ?>
     <div id="header"><div class="section clearfix">
 
       <a href="<?php print $front_page; ?>" title="<?php print t('DoSomething.org'); ?>" rel="home" id="logo"><img src="/<?php print $directory; ?>/images/logo.png" alt="<?php print t('DoSomething.org'); ?>" /></a>
@@ -143,9 +145,12 @@
 
           <?php if ($user->uid) : ?>
             <?php print l('My Account', 'user/' . $user->uid); ?> | <a href="/logout">Log Out</a>
-          <?php else: ?>
-            <a href="/user/login">Log In</a> | <a href="/user/register">Join Us</a>
-          <?php endif; ?>
+          <?php else:
+                  $redirect = array( 'html' => true, 'query' => drupal_get_destination());
+                  print l('Log In','user/login',$redirect).
+                        ' | '.l('Join Us','user/register',$redirect);
+
+          endif; ?>
 
         </p>
 

@@ -75,6 +75,7 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   $hooks['primary_links'] = array();
   $hooks['login_links'] = array();
   $hooks['signup_block'] = array();
+  $hooks['header'] = array();
   
   $templates_path = drupal_get_path('theme', 'dosomething') . '/templates';
   $ds_forms = array(
@@ -103,12 +104,70 @@ function dosomething_login_links() {
   if ($user->uid > 0) {//Logged in, provide My Account | Log Out
     $block_str .= l('My Account','user/'.$user->uid).' | '.l('Log Out','logout');
   } else { //Logged out, provide login
+    $redirect = array( 'html' => true, 'query' => drupal_get_destination());
     $block_str .= '<p class="alignright">'.
-                  l('Log In','user/login',array( 'html' => true, 'query' => drupal_get_destination())).
-                  ' | '.l('Join Us','user/register');
+                  l('Log In','user/login',$redirect).
+                  ' | '.l('Join Us','user/register',$redirect);
   }
   $block_str .= '</p></div>';
   return $block_str;
+}
+
+function dosomething_header($args = array('front_page' => '', 'directory' => '', 'mission' => '')) {
+  global $user;
+  $header_str = '    <div id="header"><div class="section clearfix">
+
+    <a href="'.$args['front_page'].'" title="DoSomething.org" rel="home" id="logo"><img src="/'.$args['directory'].'/images/logo.png" alt="DoSomething.org" /></a>
+
+    <ul id="primary-nav">
+    <li class="whatsyourthing"><a href="/whatsyourthing">Whats Your Thing?</a></li>
+    <li class="actnow"><a href="/actnow">Act Now!</a></li>
+    <li class="programs"><a href="/programs">Our Programs</a></li>
+    </ul>
+
+    ';
+
+  if ($args['mission']) {
+    $header_str .= '<div id="mission">'.$args['mission'].'</div>';
+  }
+  $header_str .= '
+    <div id="sign-up">
+
+    <p class="text">
+    ';
+  if ($user->uid) {
+    $header_str .= l('My Account', 'user/' . $user->uid).' | <a href="/logout">Log Out</a>';
+  } else {
+    $redirect = array( 'html' => true, 'query' => drupal_get_destination());
+    $header_str .= l('Log In','user/login',$redirect).
+      ' | '.l('Join Us','user/register',$redirect);
+  }
+  $header_str .= '
+
+    </p>
+
+    <div class="blue">
+    <h3>Do Something More</h3>
+    <p>Get Involved!</p>
+    <form action="#">
+    <input class="short" type="text" name="Email" />
+    <input class="go" type="submit" value="GO" />
+    </form>
+    <p><a href="#">Volunteer info</a> on ur cell</a></p>
+    <form action="#">
+    <input class="short" type="text" name="Cell Phone" />
+    <input class="short" type="text" name="Zip" />
+    <input class="go" type="submit" value="GO" />
+    </form>
+
+    </div>
+
+    </div>
+    </div></div> <!-- /.section, /#header -->
+    ';
+
+  return $header_str;
+
 }
 
 function dosomething_signup_block() {

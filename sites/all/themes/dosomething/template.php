@@ -281,6 +281,7 @@ function dosomething_preprocess_node(&$vars, $hook) {
           $vars['template_files'][] = $template_name;
         }
       }
+      $vars['template_files'][] = 'node-' . $vars['node']->type;
 
       break;
 

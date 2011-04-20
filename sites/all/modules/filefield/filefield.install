@@ -310,7 +310,6 @@ function _filefield_update_6001_move_operation($field, &$context) {
 
   // Work our way through the field values 50 rows at a time.
   $limit = 50;
-  $where_clause = '';
   $result = NULL;
   if ($field['multiple']) {
     $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE (vid = %d AND delta > %d) OR vid > %d ORDER BY vid ASC, delta ASC", $context['sandbox']['current_node'], $context['sandbox']['current_delta'], $context['sandbox']['current_node'], 0, $limit);
@@ -342,7 +341,7 @@ function _filefield_update_6001_move_operation($field, &$context) {
     // Update our progress information.
     $context['sandbox']['processed_files'][$row['vid'] . '_' . $delta] = TRUE;
     $context['sandbox']['current_node'] = $row['vid'];
-    $context['sandbox']['current_delta'] = $row['delta'];
+    $context['sandbox']['current_delta'] = $delta;
   }
 
   // Inform the batch engine that we are not finished,

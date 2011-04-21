@@ -47,6 +47,7 @@ stylesheets[all][]   = css/whatsyourthing.css
 stylesheets[all][]   = css/actnow.css
 stylesheets[all][]   = css/projects.css
 stylesheets[all][]   = css/programs.css
+stylesheets[all][]   = css/front.css
 stylesheets[print][] = css/print.css
 ; stylesheets[handheld][] = css/mobile.css
 ; stylesheets[only screen and (max-device-width: 480px)][] = css/iphone.css

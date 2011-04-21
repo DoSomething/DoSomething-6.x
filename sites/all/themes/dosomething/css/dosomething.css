@@ -459,13 +459,6 @@ div.node-type-poll span.submitted {
   display: none;
 }
 
-div.poll #edit-vote.form-submit {
-  background: url("http://www.dosomething.org/sites/all/themes/zen/dosomething/images/form_submit_vote.png");
-  border: none;
-  width: 53px;
-  height: 19px;
-}
-
 img.alignleft {
   margin: 0 1em 1em 0;
 }
@@ -550,4 +543,11 @@ div.callout {
 div.callout a {
   margin: 0;
   padding: 0;
+}
+
+div.block h3 {
+  margin: 0 0 1em;
+  font-size: 1.1em;
+  line-height: 1em;
+  color: #0F3B70;
 }

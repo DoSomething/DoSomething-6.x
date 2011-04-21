@@ -12,7 +12,7 @@
 .with-wireframes #content .section,
 .with-wireframes #navigation .section,
 .with-wireframes .region-sidebar-first .section,
-.with-wireframes .region-sidebar-second .section,
+.with-wireframes .region-right .section,
 .with-wireframes #footer .section {
   margin: 1px;
   padding: 2px;

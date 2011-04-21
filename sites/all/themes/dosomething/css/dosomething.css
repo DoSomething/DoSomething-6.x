@@ -24,7 +24,7 @@ body div#page-wrapper #page {
 }
 
 div.block.blue {
-  padding: 15px;
+  padding: 0 10px;
   background-color: #def3f9;
 }
 
@@ -209,11 +209,6 @@ hr {
   clear: both;
 }
 
-.blue {
-  background-color: #def3f9;
-  padding: 15px;
-}
-
 .blue ol {
   margin: 0 0 1em;
   padding: 0;
@@ -248,8 +243,9 @@ div.block.features div.content {
   display: block;
 }
 
-div.block.features div.col_left {
+#content-area div.dhtml-slider div.col_left {
   float: left;
+  margin-right: 0;
 }
 
 div.block.features div.col_right {
@@ -409,10 +405,20 @@ div.callout {
 }
 
 div.block ul li {
-  margin: 0 0 0.4em 0.25em;
-  padding-top: 0;
-  list-style-image: url("http://www.dosomething.org/sites/all/themes/zen/dosomething/images/logobullet.gif");
-  line-height: 0.9em;
+  float: left;
+  padding: 0 7px 0 5px;
+  background: url("/sites/all/themes/zen/dosomething/./images/ul_divider.png") no-repeat right;
+}
+
+div.block ul li.first {
+  padding-left: 0;
+  border-left: 0;
+}
+
+div.block ul li.last {
+  padding-right: 0;
+  border-right: 0;
+  background: none;
 }
 
 div.block ol li {
@@ -435,16 +441,12 @@ div.block ol {
 
 div.block.pink {
   background: #f4f1ed;
-  width: 200px;
   padding: 0 15px 15px;
-  margin: 15px 15px 33px;
-
 }
 
 div.block h2 {
   position: relative;
-  top: -15px;
-  margin-bottom: -20px;
+  top: -16px;
 }
 
 div.node-type-poll h2 {
@@ -464,7 +466,88 @@ div.poll #edit-vote.form-submit {
   height: 19px;
 }
 
-div.field-item.odd  {
-  text-align: center; 
-  padding-top: 10px;
+img.alignleft {
+  margin: 0 1em 1em 0;
+}
+
+div.block ul {
+  clear: both;
+  margin: 0;
+  padding: 0 0 1.2em;
+  list-style-type: none;
+  font-size: 0.85em;
+}
+ul.logolist {
+  list-style-image: url("/sites/all/themes/zen/dosomething/./images/logobullet.gif") !important;
+  padding-left: 20px !important;
+}
+
+div.block ul li {
+  padding: 0 7px 0 5px;
+}
+
+ul.logolist li {
+  background: none !important;
+  float: none !important;
+}
+
+#main-wrapper p {
+  margin: 0 0 1em;
+}
+
+div.block .col_left {
+  float: left;
+  margin-right: 15px;
+}
+
+div.col_left img {
+  padding-bottom: 0.5em;
+}
+
+div.block h4 {
+  margin: 0 0 0.5em;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
+div.block {
+  display: block;
+  margin: 0 0 37px;
+}
+
+img.goleft {
+  float: left;
+  padding: 10px;
+}
+
+div.box.blue {
+  background: #DEF3F9;
+}
+
+div.box {
+  padding: 0px 15px 15px 15px;
+  margin: 1em 0;
+}
+
+div.box h2 {
+  clear: both;
+  margin: 0;
+  color: #0F3B70;
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  top: -16px;
+}
+
+div.callout {
+  margin: 1em;
+  padding: 0.5em;
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+div.callout a {
+  margin: 0;
+  padding: 0;
 }

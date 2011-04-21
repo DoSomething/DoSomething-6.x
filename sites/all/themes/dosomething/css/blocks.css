@@ -90,3 +90,33 @@
 
 #block-user-3 /* "Who's online" block for a list of the online users */ {
 }
+
+div.region-right div.block {
+  margin-right: 15px;
+}
+
+div.block.col, div.block.colwide, div.region-right div.block {
+  padding: 0 15px 15px;
+}
+
+div.block.blue, div.plain.blue .content {
+  background: #DEF3F9;
+}
+
+div.block h2 {
+  color: #0F3B70;
+  position: relative;
+  top: -16px;
+  clear: both;
+  margin: 0;
+  font-size: 20px;
+}
+
+div.block.blue h2 a {
+  color: #0f3b70;
+}
+
+div#main div.region-right div.block-block {
+  margin: 0;
+  padding: 0;
+}

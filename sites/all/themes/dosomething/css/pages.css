@@ -230,13 +230,13 @@ ul.links li {
 /*
  * Second sidebar (on right in LTR languages, on left in RTL)
  *
- * Remember to NOT add padding or margin to your .region-sidebar-second
+ * Remember to NOT add padding or margin to your .region-right
  * (see the layout.css file.)
  */
-.region-sidebar-second {
+.region-right {
 }
 
-.region-sidebar-second .section {
+.region-right .section {
 }
 
 /*

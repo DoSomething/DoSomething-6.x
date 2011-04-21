@@ -122,54 +122,11 @@
 <body class="<?php print $classes; ?>">
 
   <div id="page-wrapper"><div id="page">
-
-    <div id="header"><div class="section clearfix">
-
-      <a href="<?php print $front_page; ?>" title="<?php print t('DoSomething.org'); ?>" rel="home" id="logo"><img src="/<?php print $directory; ?>/images/logo.png" alt="<?php print t('DoSomething.org'); ?>" /></a>
-
-      <ul id="primary-nav">
-        <li class="whatsyourthing"><a href="/whatsyourthing">Whats Your Thing?</a></li>
-        <li class="actnow"><a href="/actnow">Act Now!</a></li>
-        <li class="programs"><a href="/programs">Our Programs</a></li>
-      </ul>
-
-      <?php if ($mission): ?>
-        <div id="mission"><?php print $mission; ?></div>
-      <?php endif; ?>
-
-      <div id="sign-up">
-
-        <p class="text">
-
-          <?php if ($user->uid) : ?>
-            <?php print l('My Account', 'user/' . $user->uid); ?> | <a href="/logout">Log Out</a>
-          <?php else: ?>
-            <a href="/user/login">Log In</a> | <a href="/user/register">Join Us</a>
-          <?php endif; ?>
-
-        </p>
-
-        <div class="blue">
-          <h3>Do Something More</h3>
-          <p>Get Involved!</p>
-          <form action="#">
-            <input class="short" type="text" name="Email" />
-            <input class="go" type="submit" value="GO" />
-          </form>
-          <p><a href="#">Volunteer info</a> on ur cell</a></p>
-          <form action="#">
-            <input class="short" type="text" name="Cell Phone" />
-            <input class="short" type="text" name="Zip" />
-            <input class="go" type="submit" value="GO" />
-          </form>
-
-        </div>
-
-      </div>
-
-      <?php print $header; ?>
-
-    </div></div> <!-- /.section, /#header -->
+  <? print theme('header', array(
+                              'front_page' => $front_page,
+                              'directory' => $directory,
+                              'mission' => $mission,
+                              )); ?>
 
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
 

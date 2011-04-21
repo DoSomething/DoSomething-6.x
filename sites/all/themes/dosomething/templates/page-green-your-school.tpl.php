@@ -3,6 +3,9 @@
 <?
 global $user;
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
+$last_path_item = preg_replace('/[?#].*/','',
+                    array_pop(explode('/', $current_path)));
+
 $url = 'http://www.dosomething.org/green-your-school'; ?>
 
 <head>
@@ -159,7 +162,7 @@ $top_right
    }
  }
 ?>
-        <div id="main">
+        <div id="main" class="<?=$last_path_item;?>">
           <div id="iyg-sidebar" class="nav">
             <div id="triangle2">
               <div id="sidenav">

@@ -1,3 +1,10 @@
+div#main.judge div.share {
+    display: none;
+}
+
+div#container div#main.judge div.node div.node-gys h2 {
+    width: auto;
+}
 
 a.emission {
   background: url(/nd/iyg-2011/emission-trans2.png) no-repeat;

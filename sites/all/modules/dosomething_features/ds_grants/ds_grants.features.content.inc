@@ -901,6 +901,57 @@ return array( 0 => array(\'value\' => $user->profile_phone));',
     ),
   );
 
+  // Exported field: field_recipient_birthdate
+  $fields['grant-field_recipient_birthdate'] = array(
+    'field_name' => 'field_recipient_birthdate',
+    'type_name' => 'grant',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+      ),
+      'full' => array(
+        'format' => 'field_recipient_birthdate_short',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'field_recipient_birthdate_short',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'datestamp',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'date',
+    'active' => '1',
+    'granularity' => array(
+      '0' => 'year',
+      '1' => 'month',
+      '2' => 'day',
+    ),
+    'field_timezone' => 'America/New_York',
+    'timezone_db' => '',
+    'tz_handling' => 'none',
+    'todate' => '',
+    'default_format' => 'field_recipient_birthdate_short',
+    'widget' => array(
+      'default_value' => 'blank',
+      'default_value_custom' => '',
+      'default_value2' => 'blank',
+      'default_value_custom2' => '',
+      'input_format' => 'site-wide',
+      'input_format_custom' => '',
+      'increment' => '1',
+      'text_parts' => array(),
+      'year_range' => '-30:+10',
+      'label' => 'Birth Date',
+      'weight' => '-9',
+      'description' => '',
+      'type' => 'date_select',
+      'module' => 'date',
+    ),
+  );
+
   // Exported field: field_recommendation_upload
   $fields['grant-field_recommendation_upload'] = array(
     'field_name' => 'field_recommendation_upload',
@@ -1999,6 +2050,57 @@ Other',
     ),
   );
 
+  // Exported field: field_recipient_birthdate
+  $fields['grant_alumni-field_recipient_birthdate'] = array(
+    'field_name' => 'field_recipient_birthdate',
+    'type_name' => 'grant_alumni',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+      ),
+      'teaser' => array(
+        'format' => 'field_recipient_birthdate_short',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'field_recipient_birthdate_short',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'datestamp',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'date',
+    'active' => '1',
+    'granularity' => array(
+      '0' => 'year',
+      '1' => 'month',
+      '2' => 'day',
+    ),
+    'field_timezone' => 'America/New_York',
+    'timezone_db' => '',
+    'tz_handling' => 'none',
+    'todate' => '',
+    'default_format' => 'field_recipient_birthdate_short',
+    'widget' => array(
+      'default_value' => 'blank',
+      'default_value_custom' => '',
+      'default_value2' => 'blank',
+      'default_value_custom2' => '',
+      'input_format' => 'site-wide',
+      'input_format_custom' => '',
+      'increment' => '1',
+      'text_parts' => array(),
+      'year_range' => '-30:+30',
+      'label' => 'Recipient\'s Birth Date',
+      'weight' => '3',
+      'description' => '',
+      'type' => 'date_select',
+      'module' => 'date',
+    ),
+  );
+
   // Exported field: field_state_plain
   $fields['grant_alumni-field_state_plain'] = array(
     'field_name' => 'field_state_plain',
@@ -2399,6 +2501,7 @@ return array(0 => array(\'value\' => $user->mail));',
   t('Application Node ID');
   t('Are you still involved with your project?');
   t('Believe It');
+  t('Birth Date');
   t('Build It');
   t('City');
   t('College (if applicable)');
@@ -2423,6 +2526,7 @@ return array(0 => array(\'value\' => $user->mail));',
   t('Principal/Dean\'s Name');
   t('Principal/Dean\'s phone number');
   t('Project Dates');
+  t('Recipient\'s Birth Date');
   t('Recommendation');
   t('Recommendation (Upload)');
   t('Recommender\'s Email');

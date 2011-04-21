@@ -29,7 +29,7 @@ function ds_front_default_page_manager_pages() {
     'title' => 'Panel',
     'no_blocks' => 0,
     'pipeline' => 'standard',
-    'css_id' => '',
+    'css_id' => 'panel-front',
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
@@ -124,32 +124,66 @@ function ds_front_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => '',
       'title' => '',
-      'body' => '<div class="block col pink frontRR" style="width: 200px;"> <!-- cause videos -->
-<a href="/video"><h2 class="img" style="height: 36px; left: -45px; top: -32px;"><img alt="Online Videos" src="/files/Images/cause-videos_fp.gif"></h2></a>
+      'body' => '<div style="width: 260px; float:left"> <!-- container -->
+
+<div class="block col pink frontRR" style="width: 200px;"> <!-- cause videos -->
+<a href="/video"><h2 class="img" style="height: 36px; left: -45px; top: -32px;"><img alt="Online Videos" src="/files/Images/cause-videos_fp.gif"/ ></h2></a>
 	<div class="node story">
-    	<h3>Teens for Jeans</h3>
-	<p>Watch 90210\'s <b><a href="http://www.youtube.com/watch?v=VSuXbJqnVoI">Matt Lanter</a></b> and <b><a href="http://www.youtube.com/watch?v=VSuXbJqnVoI">Jessica Lowndes</a></b> give details (and funny outtakes) for the 4th Annual <a href="http://www.youtube.com/watch?v=VSuXbJqnVoI">Teens for Jeans</a> drive.</p>
-<div>  
-<a href="http://www.youtube.com/watch?v=VSuXbJqnVoI">
-<img src="http://www.dosomething.org/files/tjf-still_08.jpg" width="110px">
+    	<h3><a href="http://www.dosomething.org/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else">How to Pitch Your Project</a></h3>
+	<p><b><a href="http://www.dosomething.org/u">Do Something U</a></b> experts provide these helpful tips for pitching your project or organization to people that you meet.</p>
+<div >  
+<a  href="http://www.dosomething.org/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else" target="_blank">
+<img src="http://www.dosomething.org/files/speedpitch4dsorg.JPG" width="110px" />
 </a> <br>
- <a href="http://www.youtube.com/watch?v=VSuXbJqnVoI" style="padding-left: 60px;">Watch the video</a>   
+ <a  href="http://www.dosomething.org/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else" target="_blank" style="padding-left: 60px;">Watch the video</em></a>   
 </div> 
 
 </div>
 <br>
-<h3>Fight youth homelessness</h3>
+<h3>More on Do Something U</h3>
 <ul class="logolist">
-<li>Drop off jeans at any Aéropostale Jan 17 - Feb 13</li>
-<li>Win <a href="http://www.dosomething.org/teensforjeans/contests">$5000</a> for your school or <a href="http://www.dosomething.org/teensforjeans/contests">celeb-autographed jeans</a>.</li>
-<li><a href="http://www.dosomething.org/teensforjeans/faq">Learn more....</a></li>
+<li>How to start a <a href="http://www.dosomething.org/u/video/video-how-to-start-community-action-project">community action project</a>.</li>
+<li>11 things to know about <a href="http://www.dosomething.org/u/information/11-things-to-know-about-event-fundraising">event fundraising</a>.</li>
+<li>How to get <a href="http://www.dosomething.org/u/video/video-how-to-get-corporate-sponsors-to-love-you">corporate sponsors</a>.</li>
+<li>Tips for using <a href="http://www.dosomething.org/u/tips/tip-using-google-maps">Google Maps</a>.</li>
+<li>How to seek <a href="http://www.dosomething.org/u/tips/tips-getting-kind-donations">in-kind</a> donations.</li>
 </ul>
 
 <a href="/video" class="more">Online cause videos</a>
 <br>
 <a href="/video/rant-rave" class="more">Online videos from you!</a>
-</div>',
-      'format' => '4',
+</div> <!-- end cause videos -->
+
+
+
+<div class="block col pink" style="width: 200px; position: relative;"> <!-- news -->
+<a style="position: absolute; top:-20px; left: 15px;" href="/news"><img alt="News" src="/nd/front/news.png" /></a>
+ <ul class="logolist" style="padding-bottom: 0px; padding-top: 30px;">
+ <?php
+  $results = db_query("SELECT title, nid FROM node WHERE type=\'chatterbox\' AND status = 1 ORDER BY created DESC LIMIT 5");
+  while ($result = db_fetch_object($results)) {
+   print \'<li>\'.l($result->title, \'node/\'.$result->nid).\'</li>\';
+  }
+ ?>
+ </ul>
+ <p style="margin: 1em 0 0;"><a class="more" href="/news">Read More</a></p>
+</div> <!-- end news -->
+
+
+<div class="block col pink" style="width: 200px; position: relative;"> <!-- share something -->
+ <h2><img src="/sites/all/themes/zen/dosomething/images/header_sharesomething.png" alt="Share"></h2>
+ <h3>Post A Video</h3>
+ <p><a href="/node/add/rant-rave">Upload or embed a video about your cause.</a></p>
+ <h3>Submit a Guide for Action</h3>
+ <p><a href="/node/add/action-guide-submission">Write your own step-by-step instructions for action that others can follow.</a></p>
+ <h3>Post your Project</h3>
+ <p><a href="/node/add/project">Tell us how you\'re taking action.</a></p>
+ <h3>Join a Forum Discussion</h3>
+ <p><a href="/forum">Start your own topic or respond to someone\'s comments.</a></p>
+</div> <!-- end share something -->
+
+</div> <!-- end container -->',
+      'format' => '2',
       'substitute' => TRUE,
     );
     $pane->cache = array();
@@ -166,7 +200,7 @@ function ds_front_default_page_manager_pages() {
     $pane->panel = 'right';
     $pane->type = 'views';
     $pane->subtype = 'newsbox_recent';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_pager_settings' => 0,
@@ -198,7 +232,7 @@ function ds_front_default_page_manager_pages() {
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'block-8';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,

@@ -10,7 +10,7 @@ function ds_front_views_default_views() {
   $view = new view;
   $view->name = 'featured_poll';
   $view->description = 'poll on front page and actnow';
-  $view->tag = 'poll, front page';
+  $view->tag = 'front';
   $view->view_php = '';
   $view->base_table = 'node';
   $view->is_cacheable = FALSE;

@@ -1,0 +1,14 @@
+#main ol { padding-left: 50px; }
+#main ol li { line-height: 0.7em; vertical-align: top; }
+#main ol li span { zoom: 1; top: 8px; }
+div.wwo-footer {
+  margin-left: 350px;
+}
+
+input.form-submit {
+  line-height: 999px; /* Set it higher than your image height */
+  overflow: hidden; /* Hide the text */
+  font-size: 0;
+  text-indent: 0 !important;
+}
+

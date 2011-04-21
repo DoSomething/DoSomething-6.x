@@ -1,0 +1,198 @@
+div#wrapper div#header div.col_right {
+  height: 202px;
+}
+
+div#container div#main div.subtitle {
+  color: #FFF;
+  font-weight: bold;
+  font-size: 52px !important;
+}
+
+ul.tabs.primary {
+  position: absolute;
+}
+
+div.smaller {
+  font-size: 13px;
+}
+
+div.error {
+  display: inline-block;
+  padding: 5px 27px;
+}
+
+#main ol { list-style: decimal outside none; color: #20c0e0; font-size: 2.2em; font-weight: bold; font-family: Georgia, "Times New Roman", Times, serif; margin: 1.5em 0; }
+#main ol li { line-height: 0.5em; margin: 0.6em 0; list-style: decimal; }
+#main ol span { font-size: 0.6em; color: white; font-weight: normal; font-family: Helvetica, sans-serif; position: relative; top: -4px; display: block; line-height: 1.2em; }
+#main ol span strong { font-weight: bold; color: #20c0e0; }
+
+
+div.center {
+  text-align: center;
+}
+
+div.wwo-footer {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+div.wwo-footer .social {
+  margin: 25px 0px;
+}
+
+div.wwo-footer .social .icon {
+  margin-left: 5px;
+}
+
+
+div.wwo-footer .links {
+  display: inline-block;
+  padding-bottom: 100px;
+}
+
+.icon {
+  background: url(icons3.jpg) no-repeat;
+}
+
+.icon.first {
+  margin-left: 0;
+}
+
+a.icon {
+  display: block;
+  text-indent: -99999em;
+  text-align: left;
+  float: left;
+}
+
+.icon.square {
+  width: 52px;
+  height: 51px;
+}
+
+input.form-submit.icon {
+  background-position: 0px 0px;
+  width: 129px;
+  height: 42px;
+  text-indent: -99999em;
+  cursor: pointer;
+  margin-top: 5px;
+  border: 0;
+}
+
+input.form-submit:hover {
+  background-position: 0px -42px;
+}
+
+.icon.faq {
+  background-position: 0px -281px;
+  width: 90px;
+  height: 41px;
+}
+
+.icon.faq:hover {
+  background-position: 0px -332px;
+}
+
+.icon.home {
+  background-position: 0px -383px;
+  width: 104px;
+  height: 42px;
+}
+
+.icon.home:hover {
+  background-position: 0px -433px;
+}
+
+.icon.facebook {
+  background-position: 0 -97px;
+}
+
+.icon.facebook:hover {
+  background-position: -56px -97px;
+}
+
+.icon.twitter {
+  background-position: 0px -161px;
+}
+
+.icon.twitter:hover {
+  background-position: -56px -161px;
+}
+
+.icon.digg {
+  background-position: 0 -221px;
+}
+
+.icon.digg:hover {
+  background-position: -56px -221px;
+}
+
+div#wrapper div#header img.dates {
+  margin: 0 auto;
+  width: 267px;
+  display: block;
+  padding: 33px 0px 0px 0px;
+}
+
+div#main.week-without-oil .node {
+  font-family: Arial,Helvetica,sans-serif !important;
+  font-size: 17px !important;
+  text-align: center;
+}
+
+div#wrapper div#container {
+  width: 883px;
+  padding: 0px;
+}
+
+div#container div#main {
+  background: #000 url(bg-top.jpg) no-repeat;
+  min-height: 880px;
+  width: 883px;
+  margin: 0px;
+  float: none;
+}
+
+input#mobile {
+  font-size: 50px;
+  font-weight: bold;
+  background: #eee;
+  border: none;
+  padding: 12px;
+  display: block;
+  margin: 15px auto;
+  width: 380px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+}
+
+div.node h2#title {
+  text-indent:-99999em;
+  font-size: 0px;
+}
+
+div#main div.node h2 {
+  margin-bottom: .5em;
+}
+
+div.node.page {
+  width: 630px;
+  margin: 0 auto;
+  padding-top: 135px;
+}
+
+.slightly-narrower {
+  width: 531px;
+  margin: 0 auto !important;
+}
+
+div.narrower {
+  width: 347px;
+  margin: -9px auto 3px auto;
+}
+
+div#wrapper div#container p, div#wrapper div#container div.node span {
+  color: #FFF;
+}

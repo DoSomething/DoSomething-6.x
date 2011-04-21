@@ -89,11 +89,12 @@ function ds_clubs_fieldgroup_default_groups() {
       '0' => 'field_clubs_meeting_location',
       '1' => 'field_club_meeting_frequency',
       '2' => 'field_club_first_meeting',
-      '3' => 'field_field_club_new',
-      '4' => 'field_club_url',
-      '5' => 'field_school',
-      '6' => 'field_yacapp_school_type',
-      '7' => 'field_school_level',
+      '3' => 'field_club_first_meeting_when',
+      '4' => 'field_field_club_new',
+      '5' => 'field_club_url',
+      '6' => 'field_school',
+      '7' => 'field_yacapp_school_type',
+      '8' => 'field_school_level',
     ),
   );
 
@@ -138,9 +139,10 @@ function ds_clubs_fieldgroup_default_groups() {
     'fields' => array(
       '0' => 'field_name',
       '1' => 'field_name_last',
-      '2' => 'field_email',
-      '3' => 'field_phone_required',
-      '4' => 'field_club_intended_role',
+      '2' => 'field_club_leader_birthdate',
+      '3' => 'field_email',
+      '4' => 'field_phone_required',
+      '5' => 'field_club_intended_role',
     ),
   );
 

@@ -275,13 +275,12 @@ function dosomething_preprocess_node(&$vars, $hook) {
       */
       $alias = drupal_get_path_alias(str_replace('/edit', '', $_GET['q']));
       if ($alias != $_GET['q']) {
-        $template_name = 'node';
+        $template_name = 'node-path';
         foreach (explode('/', $alias) as $path_element) {
           $template_name .= '-' . $path_element;
           $vars['template_files'][] = $template_name;
         }
       }
-      $vars['template_files'][] = 'node-' . $vars['node']->type;
 
       break;
 

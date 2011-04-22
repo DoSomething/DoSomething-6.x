@@ -125,17 +125,18 @@ body {
 /*
  * Second sidebar
  */
-.region-sidebar-second {
-  float: left; /* LTR */
+.region-right {
+  float: right; /* LTR */
   width: 300px;
-  padding: 0;
+  margin: 0 0 0 15px;
+  clear: right;
 }
 
 .node {
-  padding: 0; /* DO NOT CHANGE. Add padding or margin to .region-sidebar-second .section. */
+  padding: 0; /* DO NOT CHANGE. Add padding or margin to .region-right .section. */
 }
 
-.region-sidebar-second .section {
+.region-right .section {
   margin: 0 0 0 20px; /* LTR */
   padding: 0;
 }
@@ -162,7 +163,7 @@ body {
 #content,
 #navigation,
 .region-sidebar-first,
-.region-sidebar-second,
+.region-right,
 #footer,
 .region-page-closure {
   overflow: visible;

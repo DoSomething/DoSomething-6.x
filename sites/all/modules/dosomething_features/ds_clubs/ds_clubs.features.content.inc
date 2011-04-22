@@ -235,6 +235,60 @@ yes',
     ),
   );
 
+  // Exported field: field_club_first_meeting_when
+  $fields['club-field_club_first_meeting_when'] = array(
+    'field_name' => 'field_club_first_meeting_when',
+    'type_name' => 'club',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+      ),
+      'teaser' => array(
+        'format' => 'short',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'short',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'date',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'date',
+    'active' => '1',
+    'granularity' => array(
+      '0' => 'year',
+      '1' => 'month',
+      '2' => 'day',
+      '3' => '0',
+      '4' => '0',
+      '5' => '0',
+    ),
+    'field_timezone' => 'America/New_York',
+    'timezone_db' => '',
+    'tz_handling' => 'none',
+    'todate' => '',
+    'default_format' => 'short',
+    'widget' => array(
+      'default_value' => 'blank',
+      'default_value_custom' => '',
+      'default_value2' => 'blank',
+      'default_value_custom2' => '',
+      'input_format' => 'site-wide',
+      'input_format_custom' => '',
+      'increment' => '1',
+      'text_parts' => array(),
+      'year_range' => '-0:+1',
+      'label' => 'If not, when is your first meeting?',
+      'weight' => 0,
+      'description' => '',
+      'type' => 'date_select',
+      'module' => 'date',
+    ),
+  );
+
   // Exported field: field_club_intended_role
   $fields['club-field_club_intended_role'] = array(
     'field_name' => 'field_club_intended_role',
@@ -348,6 +402,61 @@ yes',
       'description' => '',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
+    ),
+  );
+
+  // Exported field: field_club_leader_birthdate
+  $fields['club-field_club_leader_birthdate'] = array(
+    'field_name' => 'field_club_leader_birthdate',
+    'type_name' => 'club',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+      ),
+      'teaser' => array(
+        'format' => 'field_club_leader_birthdate_default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'field_club_leader_birthdate_default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'date',
+    'required' => '1',
+    'multiple' => '0',
+    'module' => 'date',
+    'active' => '1',
+    'granularity' => array(
+      '0' => 'year',
+      '1' => 'month',
+      '2' => 'day',
+      '3' => '0',
+      '4' => '0',
+      '5' => '0',
+    ),
+    'field_timezone' => 'America/New_York',
+    'timezone_db' => '',
+    'tz_handling' => 'none',
+    'todate' => '',
+    'default_format' => 'field_club_leader_birthdate_default',
+    'widget' => array(
+      'default_value' => 'blank',
+      'default_value_custom' => '',
+      'default_value2' => 'blank',
+      'default_value_custom2' => '',
+      'input_format' => 'site-wide',
+      'input_format_custom' => 'm/d/y',
+      'increment' => NULL,
+      'text_parts' => NULL,
+      'year_range' => NULL,
+      'label' => 'Date of birth',
+      'weight' => '-3',
+      'description' => 'mm/dd/yyyy
+',
+      'type' => 'date_text',
+      'module' => 'date',
     ),
   );
 
@@ -2353,12 +2462,14 @@ return array(0 => array(\'value\' => $user->mail));',
   t('Club Photos');
   t('Club Video - to appear on Clubs Profile Page');
   t('Country, if outside the U.S. and Canada');
+  t('Date of birth');
   t('Did you have your first meeting yet?');
   t('Email');
   t('Expected number of club members');
   t('First Name');
   t('Has your group been in existence for more than a month?');
   t('How often does your Club plan to hold meetings?');
+  t('If not, when is your first meeting?');
   t('Is this a school address?');
   t('Last Name');
   t('Member 1 email');

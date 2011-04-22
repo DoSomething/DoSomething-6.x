@@ -1,0 +1,51 @@
+div#panel-front div.center-wrapper {
+  margin-top: 3em;
+}
+
+div#panel-front div.panel-col-first div.block.col {
+  padding: 0;
+}
+
+div.frontRR img {
+  margin-left: 40px;
+}
+
+#events-calendar ul {
+  padding: 0px;
+  margin: 0 0 1em;
+}
+
+#events-calendar ul li {
+  list-style-type: none;
+  margin: 0.5em 0;
+  background: none;
+  float: none;
+}
+
+#events-calendar .date {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+div#panel-front div.view-newsbox-recent ul {
+  list-style-image: url("/sites/all/themes/zen/dosomething/./images/logobullet.gif");
+  padding-left: 20px;
+}
+
+div#panel-front div.view-newsbox-recent ul li {
+  background: none;
+  float: none;
+}
+
+.node .poll .vote-form #edit-vote {
+  width: 53px;
+  height: 19px;
+  padding: 19px 0 0;
+  margin: 0;
+  border: 0;
+  background: transparent url("/sites/all/themes/zen/dosomething/./images/form_submit_vote.png") no-repeat center top;
+  overflow: hidden;
+  cursor: pointer;
+  cursor: hand;
+  display: block;
+}

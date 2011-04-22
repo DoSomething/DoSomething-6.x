@@ -24,7 +24,7 @@ $nodePath = drupal_get_path_alias('node/'.$node->nid);
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/drupal5-reference.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/tabs.css';?>" type="text/css" media="all" />
   <!--[if IE 7]>
-          <link rel="stylesheet" type="text/css" href="/nd/ebd/ie7.css">
+          <link rel="stylesheet" type="text/css" href="/<?=$ds_micro;?>/ebd/ie7.css">
   <![endif]-->
   <!--[if IE]>
     <?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie.css')): ?>

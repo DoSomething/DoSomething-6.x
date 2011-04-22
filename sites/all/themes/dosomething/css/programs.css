@@ -1,0 +1,12 @@
+div.campaign {
+  margin: 1em 0;
+}
+
+div.campaign a.campaign-logo {
+  float: right;
+  padding: 0 10px 10px 0;
+}
+
+div.campaign p {
+  width: 370px;
+}

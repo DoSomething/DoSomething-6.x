@@ -65,12 +65,12 @@
 /*
  * Second sidebar
  */
-.region-sidebar-second {
+.region-right {
   float: right;
   margin-left: -960px; /* Width of content + sidebar-first. */
-  margin-right: 760px; /* Negative value of .region-sidebar-second's width + left margin. */
+  margin-right: 760px; /* Negative value of .region-right's width + left margin. */
 }
 
-.region-sidebar-second .section {
+.region-right .section {
   margin: 0 20px 0 0;
 }

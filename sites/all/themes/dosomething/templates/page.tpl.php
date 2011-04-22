@@ -136,7 +136,7 @@
 
         <?php print $breadcrumb; ?>
 
-        <?php if ($title): ?>
+        <?php if ($title && $node->type != 'page'): ?>
           <h1 class="title"><?php print $title; ?></h1>
         <?php endif; ?>
 
@@ -182,9 +182,11 @@
         </div></div> <!-- /.section, /#navigation -->
       <?php endif; ?>
 
-      <?php print $sidebar_first; ?>
+      <?php //print $sidebar_first; ?>
 
-      <?php print $sidebar_second; ?>
+      <?php //print $sidebar_second; ?>
+
+      <?php print $right; ?>
 
     </div> </div> <!-- /#main, /#main-wrapper -->
 

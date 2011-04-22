@@ -7,11 +7,17 @@ function dosomething_matrix_block($op = 'list', $delta = 0, $edit = array()) {
   if ($op == 'list') {
     $blocks[0]['info'] = 'Action Matrix';
     $blocks[0]['cache'] = BLOCK_CACHE_GLOBAL;
+    $blocks[1]['info'] = 'Action Matrix (Large)';
+    $blocks[1]['cache'] = BLOCK_CACHE_GLOBAL;
   } else if ($op == 'view') {
     switch ($delta) {
       case 0:
         $blocks['subject'] = 'Action Matrix';
         $blocks['content'] = _dosomething_matrix_form();
+        break;
+      case 1:
+        $blocks['subject'] = 'Action Matrix';
+        $blocks['content'] = _dosomething_matrix_large_form();
         break;
     }
   }
@@ -43,6 +49,39 @@ function _dosomething_matrix_form() {
   $result .= $time;
   $result .= '<input type="image" value="search" src="/'.drupal_get_path('module', 'dosomething_matrix').'/images/search.png">';
   $result .= '</form>';
+
+  return $result;
+
+}
+
+function _dosomething_matrix_large_form() {
+
+  $base_path = drupal_get_path('module', 'dosomething_matrix');
+  
+  drupal_add_css($base_path . '/css/dosomething_matrix.css', 'module', 'all', FALSE);
+
+  drupal_add_js($base_path . '/js/customSelect.jquery.js', 'module', 'header', FALSE);
+  drupal_add_js($base_path . '/js/dosomething_matrix.js', 'module', 'footer', FALSE);
+
+  $time  = _dosomething_matrix_select(4, 'time', 'How Long?');
+  $where = _dosomething_matrix_select(2, 'where', 'Where?');
+  $who = _dosomething_matrix_select(3, 'who', 'Who With?');
+  $causes = _dosomething_matrix_select_causes(5, 'cause', 'What Cause?');
+
+  $result = "<div class=\"block colwide pink\"><h2 class=\"img\"><a href=\"/actnow\"><img src=\"/$base_path/images/header_actnowmatrix.png\" width=\"217\" height=\"34\" alt=\"Act Now! (the matrix)\"></a></h2>";
+  $result .= '<p>Select from the options below and hit search. We will give you tons of easy ways to <em>do something</em>!</p>';
+  $result .= '<form action="/actnow/matrix" id="action-matrix">';
+  $result .= $causes;
+  $result .= '<p>Select a cause that you want to help. (Animal Welfare, the Environment, Health...)</p>';
+  $result .= $who;
+  $result .= '<p>Select who you will be working with (Club, School, Team...)</p>';
+  $result .= $where;
+  $result .= '<p>Select where you will be volunteering (Home, City, Online...)</p>';
+  $result .= $time;
+  $result .= '<p>Select the amount of time you have (Minute, Day, Semester...)</p>';
+  $result .= '<input type="image" value="search" src="/'.drupal_get_path('module', 'dosomething_matrix').'/images/search.png">';
+  $result .= '</form>';
+  $result .= '</div>';
 
   return $result;
 

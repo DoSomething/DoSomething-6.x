@@ -75,45 +75,30 @@
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
 
-  <?php if ($page): ?>
-    <h2 class="title"><?php print $title; ?></h2>
-  <?php else: ?>
-    <h2 class="title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+<?php if (!$page): ?>
+
+  <?php if ($node->field_project_photo) : ?>
+    <?php print theme('imagecache', 'projects_page_thumbnail', $node->field_project_photo[0]['filepath']); ?>
   <?php endif; ?>
 
-  <?php if ($unpublished): ?>
-    <div class="unpublished"><?php print t('Unpublished'); ?></div>
+  <h3 class="title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h3>
+
+  <?php if ($display_submitted): ?>
+    <p class="submitted"><?php print $updated; ?></p>
   <?php endif; ?>
 
-  <?php if ($page && ($display_submitted || $terms)): ?>
-    <div class="meta">
-      <?php if ($display_submitted): ?>
-        <span class="submitted">
-          <?php
-            print t('Submitted by !username on !datetime',
-              array('!username' => $name, '!datetime' => $date));
-          ?>
-        </span>
-      <?php endif; ?>
+  <p>
+  <?php print node_teaser(strip_tags($node->field_essay_see_it[0]['value']), NULL, 230); ?>
+  </p>
 
-      <?php if ($terms): ?>
-        <div class="cause-links"><?php print $cause_links; ?></div>
-      <?php endif; ?>
-
-    </div>
-
-  <?php endif; ?>
-
-  <?php if (strlen($node->field_picture[0]['view'])): ?>
-    <div class="chatterbox-photo"><?php print $node->field_picture[0]['view']; ?></div>
-  <?php endif; ?>
+<?php else: ?>
 
   <div class="content">
     <?php print $content; ?>
   </div>
 
-  <?php if (!$page): ?>
-    <hr />
-  <?php endif; ?>
+  <?php print $links; ?>
+
+<?php endif; ?>
 
 </div> <!-- /.node -->

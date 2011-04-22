@@ -112,10 +112,12 @@
     <div class="box blue stats">
       <h2 class="header">vital stats:</h2>
       <p>people impacted:</p>
-      <?php print $field_num_people_impacted_rendered; ?>
+      <?php print $field_num_people_impacted[0]['value']; ?>
       <p>people involved:</p>
       <?php print $field_num_people_involved_rendered; ?>
     </div>
+
+    <?php dpm(array_keys(get_defined_vars())); ?>
 
     <h2>why it's important:</h2>
     <div class="box">

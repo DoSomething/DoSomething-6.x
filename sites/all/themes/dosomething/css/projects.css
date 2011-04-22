@@ -61,5 +61,42 @@ div.panel-pane .node-type-project.node-teaser {
 
 div#content div.node-type-project h2 {
   color: #48bcdc;
-  font-size: 1.4em;
+  font-size: 20px;
+  position: absolute;
+  top: -16px;
+}
+
+div.view-projects-search div.view-content div.views-row {
+  margin: 1em 0;
+  padding: 5px;
+}
+
+div.view-projects-search div.view-content div.views-row-odd {
+  background-color: #def3f9;
+}
+
+div.view-projects-search div.views-field-field-project-photo-fid {
+  float: left;
+}
+
+div.view-projects-search div.views-field-field-project-photo-fid div.field-content {
+  line-height: 0;
+}
+
+div.view-projects-search div.views-field-title {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: bold;
+  padding-left: 122px;
+  padding-bottom: 5px;
+}
+
+div.view-projects-search div.views-field-field-essay-see-it-value {
+  padding-left: 122px;
+}
+
+div.node-type-project div.box {
+  position: relative;
+  padding-bottom: 5px;
+  padding-top: 15px;
 }

@@ -136,7 +136,7 @@
 
         <?php print $breadcrumb; ?>
 
-        <?php if ($title && $node->type != 'page'): ?>
+        <?php if ($title && !in_array($node->type, array('page', 'chatterbox'))): ?>
           <h1 class="title"><?php print $title; ?></h1>
         <?php endif; ?>
 

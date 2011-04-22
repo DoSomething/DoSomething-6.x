@@ -1,5 +1,4 @@
 <?php
-// $Id: location_handler_field_location_distance.inc,v 1.2.2.4 2010/07/04 14:48:15 rooby Exp $
 
 /**
  * @file

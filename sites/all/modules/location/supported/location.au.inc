@@ -1,5 +1,4 @@
 <?php
-// $Id: location.au.inc,v 1.9.2.1 2010/05/27 12:16:14 rooby Exp $
 
 // Australia
 
@@ -297,13 +296,16 @@ function location_geocode_au_google($location = array()) {
   preg_match('/<code>(.*)<\/code>/', $http_reply->data, $status_code_match);
   $status_code = $status_code_match[1];
   if ($status_code != 200) {
+    watchdog('location', 'Google geocoding returned status code: %status_code', array('%status_code' => $status_code));
     return NULL;
   }
 
   $accuracy_code_match = array();
   preg_match('/Accuracy="([0-9])"/', $http_reply->data, $accuracy_code_match);
   $accuracy_code = $accuracy_code_match[1];
-  if ($accuracy_code != 8 && $accuracy_code != 7) {
+  $min_accuracy = variable_get('location_geocode_au_google_accuracy_code', variable_get('location_geocode_google_minimum_accuracy', '3'));
+  if ($accuracy_code < $min_accuracy) {
+    watchdog('location', 'Google geocoding result for %country did not meet the minimum accuracy level of %min_accuracy. Result accuracy: %accuracy_code', array('%country' => $location['country'], '%min_accuracy' => $min_accuracy, '%accuracy_code' => $accuracy_code));
     return NULL;
   }
 
@@ -329,7 +331,7 @@ function location_geocode_au_google_settings() {
 
   $form['location_geocode_au_google_accuracy_code'] = array(
     '#type' => 'select',
-    '#title' => t('Google Maps Geocoding Accuracy for %country', array('%country' => $country ) ),
+    '#title' => t('Google Maps Geocoding Accuracy for Australia'),
     '#default_value' => variable_get('location_geocode_au_google_accuracy_code', variable_get('location_geocode_google_minimum_accuracy', '3')),
     '#options' => location_google_geocode_accuracy_codes(),
     '#description' => t('The minimum required accuracy for the geolocation data to be saved.'),
@@ -547,5 +549,17 @@ function location_province_list_numeric_au() {
     '006' => "Western Australia",
     '007' => "Australian Capital Territory",
     '008' => "Northern Territory",
+  );
+}
+
+/**
+ * Returns minimum and maximum latitude and longitude needed to create a bounding box.
+ */
+function location_bounds_au() {
+  return array(
+    'minlng' => 72.57625,
+    'minlat' => -53.259967,
+    'maxlng' => 159.4839,
+    'maxlat' => -10.078033,
   );
 }

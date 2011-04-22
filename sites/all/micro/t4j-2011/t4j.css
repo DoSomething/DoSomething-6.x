@@ -1,0 +1,304 @@
+div#container #main {
+  background: url(denim.png) repeat 0 0;
+  width: auto;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+}
+
+div#container div.node {
+  margin: 0 15px 15px 15px;
+  padding: 15px;
+  border: 5px solid #c41230;
+  background: url(dark_denim.png) repeat 0 0;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  width: 753px;
+}
+
+div#container div.node p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 14px;
+}
+
+div#container div.node strong {
+  color: #91c5ff;
+  font-weight: bold;
+}
+
+div#container div.node a,
+div#container div.node p a {
+  color: #91c5ff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+div#container div.node hr {
+  height: 0px;
+  border: 0px;
+  border-top: 1px dashed white;
+  margin: 1em 0;
+  clear: both;
+}
+
+div.node img.sign-up {
+  float: left;
+  margin-right: 15px;
+}
+
+div.main {
+  width: 380px;
+  margin-right: 20px;
+  float: left;
+}
+
+div.secondary {
+  float: left;
+  width: 350px;
+}
+
+div.main-your-pics,
+div.main-contests,
+div.main-take-action {
+  width: 100%;
+  color: white;
+}
+
+div.main-your-pics {
+  text-align: center;
+}
+
+div.main-contests ol li,
+div.main-take-action ol li {
+  margin: 1.5em 0;
+  font-size: 1.1em;
+}
+
+div.main-contests ol li div h2,
+div.main-take-action ol li div h2 {
+  font-size: 1.2em;
+  color: #91c5ff;
+  margin: 0 0 0.25em;
+}
+
+div.secondary div.psa {
+  padding: 10px;
+  margin: 0 auto 5px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  background-color: #7792b0;
+}
+
+div.psa p,
+div.psa img {
+  display: block
+  margin: 0 auto;
+}
+
+div#video-share {
+  float: right;
+}
+
+div#page-share {
+  float: left;
+  margin-top: 17px;
+  margin-left: 25px;
+  margin-right: 42px;
+}
+
+div#page-share a,
+div#page-share img {
+  margin: 0px;
+  padding: 0px;
+}
+
+div#t4j-nav {
+  float: left;
+}
+
+div#t4j-nav ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#t4j-nav li {
+  float: left;
+}
+
+div#t4j-nav li a {
+  display: block;
+  background-image: url(nav.png);
+  height: 48px;
+  text-indent: -9999em;
+  outline: none;
+}
+
+div#t4j-nav li a#get-started { width: 117px; background-position: -5px 0px; }
+div#t4j-nav li a#get-started:hover { width: 117px; background-position: -5px -48px; }
+div#t4j-nav li a#get-started.active { width: 117px; background-position: -5px -48px; }
+div#t4j-nav li a#drop-off { width: 89px; background-position: -122px 0px; }
+div#t4j-nav li a#drop-off:hover { width: 89px; background-position: -122px -48px; }
+div#t4j-nav li a#drop-off.active { width: 89px; background-position: -122px -48px; }
+div#t4j-nav li a#take-action { width: 114px; background-position: -211px 0px; }
+div#t4j-nav li a#take-action:hover { width: 114px; background-position: -211px -48px; }
+div#t4j-nav li a#take-action.active { width: 114px; background-position: -211px -48px; }
+div#t4j-nav li a#contests { width: 99px; background-position: -325px 0px; }
+div#t4j-nav li a#contests:hover { width: 99px; background-position: -325px -48px; }
+div#t4j-nav li a#contests.active { width: 99px; background-position: -325px -48px; }
+div#t4j-nav li a#your-pics { width: 104px; background-position: -424px 0px; }
+div#t4j-nav li a#your-pics:hover { width: 104px; background-position: -424px -48px; }
+div#t4j-nav li a#your-pics.active { width: 104px; background-position: -424px -48px; }
+
+div#t4j-signup {
+  background: url(sign_up_text.png) no-repeat 0 0;
+  width: 493px;
+  height: 151px;
+}
+
+div#t4j-sign {
+  background: url(dark_denim.png) repeat 0 0;
+  width: 500px;
+  height: 170px;
+  border: 2px solid #c1c9ce;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  margin-top: 10px;
+  margin-left: 272px;
+  padding: 15px;
+}
+
+a#t4j-logo {
+  float: left;
+  position: absolute;
+  top: -37px;
+  left: -13px;
+  margin: 0px;
+  padding: 0px;
+}
+
+div#t4j-top {
+  position: relative;
+}
+
+img#callout {
+  position: absolute;
+  top: -90px;
+  left: 170px;
+}
+
+#whats-new {
+  margin-left: 425px;
+}
+
+#update-dia,
+#update-mc {
+  position: absolute;
+  top: 74px;
+  left: 588px;
+}
+
+#update-mc {
+  top: 124px;
+}
+
+#t4j-top label {
+  color: white;
+  font-weight: bold;
+}
+
+input.form-file {
+  color: white;
+}
+
+.update-container input {
+  border-width: 0px;
+  margin: 2px 0px;
+  padding: 2px 3px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  border-width: 0px;
+}
+
+input.go {
+  background-color: #7792b0;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#contest-form .lhs,
+#contest-form .rhs,
+#action-kit .lhs,
+#action-kit .rhs {
+  float: left;
+  width: 370px;
+}
+
+#contest-form label,
+#action-kit label {
+  display: block;
+  float: left;
+  width: 150px;
+  padding: 0;
+  margin: 9px 0 0;
+  text-align: right;
+  color: white;
+}
+
+#contest-form input,
+#action-kit input {
+  border-width: 0px;
+  margin: 9px 0 0 10px;
+  width: 200px;
+  padding: 2px 3px;
+}
+
+#contest-form input#contest-submit,
+#action-kit input#action-kit-submit {
+  background: url(sign_up_blue.png) no-repeat 0 0;
+  width: 86px;
+  height: 22px;
+  display: block;
+  cursor: pointer;
+  text-indent: -9999em;
+  float: right;
+  margin-right: 17px;
+  font-size: 0;
+  line-height: 0;
+}
+
+#contest-form input#contest-submit {
+  background: url(submit_blue.png) no-repeat 0 0;
+}
+
+#t4j-top input.go {
+  background: url(sign_up_blue.png) no-repeat 0 0;
+  width: 86px;
+  height: 22px;
+  display: block;
+  cursor: pointer;
+  text-indent: -9999em;
+  font-size: 0;
+  line-height: 0;
+  border-width: 0;
+  margin: 5px 0 0 72px;
+}
+
+div#main div.messages {
+  border-color: #c41230;
+  margin: 2em 1em 0;
+}
+
+div#main div.node h2 {
+  color: #91c5ff;
+}
+
+div#main div.tfj_contest_signup {
+  color: white;
+}
+
+div#main div.tfj_contest_signup div.field {
+  margin: 1em 0;
+  font-size: 1.1em;
+}

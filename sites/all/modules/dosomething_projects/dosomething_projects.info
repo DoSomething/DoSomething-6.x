@@ -1,0 +1,4 @@
+name = "DoSomething Projects"
+description = "Project Search"
+core = 6.x
+package = DoSomething

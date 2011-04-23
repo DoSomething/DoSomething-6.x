@@ -279,7 +279,9 @@ where signup.type='gys_2011' and signup.title='%s' and l.postal_code='%s'
     $errorMsg = 'The provided school name was not found.  Be the first to <a href="/green-your-school/find-your-school">register your school</a>!';
   } else {
     $pageBuilt = 1;
-?>
+    if (in_array('grant reviewer', array_values($user->roles))) { ?>
+       <a href="#judging-form" style="color:red;">Jump to the judging form</a>
+  <? } ?>
   <h2><?=$data['school']['name'];?></h2>
   <p id="school-location"><?=$data['school']['city'].', '.$stateArray[$data['school']['province']];?></p>
   
@@ -363,13 +365,11 @@ where signup.type='gys_2011' and signup.title='%s' and l.postal_code='%s'
     } else {
       print '<p>No projects have been submitted yet.  Be the first to <a href="/green-your-school/report-back">report back</a>!</p>';
     }
-?>
-  <?
-      //print "<pre style='color:white;'>".print_r($data,TRUE)."</pre>";
-  ?>
 
+    if (in_array('grant reviewer', array_values($user->roles))) { ?>
+<iframe id="judging-form" src="https://spreadsheets.google.com/embeddedform?formkey=dEI5NWIzVGNCdWZod3VUVEk5S3VFSGc6MA" width="760" height="1310" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
 
-<?
+<?  }
   }
 }
 

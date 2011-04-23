@@ -57,7 +57,7 @@ endif; ?>
   if (user_access('administer nodes')) {
     print drupal_render($form['options']);
   }
-  print drupal_render($form['submit']); 
+  print drupal_render($form['buttons']['submit']); 
   if (user_access('administer nodes')) {
     print drupal_render($form['delete']); 
   }

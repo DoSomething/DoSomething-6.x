@@ -136,7 +136,7 @@ if ($user_zip && ! isset($zip)) {
   //  print drupal_render($form['locations'][0]['longitude']);
   }
 
-  print '<div class="'.$button.'">'.drupal_render($form['submit']).'</div>';
+  print '<div class="'.$button.'">'.drupal_render($form['buttons']['submit']).'</div>';
 ?>
   <br/>
   <p style="float: right;">Questions about this form?  Email <a href="mailto:green@dosomething.org">green@dosomething.org</a></p>

@@ -273,7 +273,7 @@ function dosomething_preprocess_node(&$vars, $hook) {
          page-about-team.tpl.php
          page-about-team-staff.tpl.php
       */
-      $alias = drupal_get_path_alias(str_replace('/edit', '', $_GET['q']));
+      $alias = $vars['node']->path;
       if ($alias != $_GET['q']) {
         $template_name = 'node-path';
         foreach (explode('/', $alias) as $path_element) {

@@ -1,7 +1,6 @@
 <?
 
 $form['body_field']['format'] = NULL;
-
 print drupal_render($form['title']);
 print '<br/>';
 print drupal_render($form['field_what_is_your_goal_number_']);
@@ -24,7 +23,7 @@ live_profile_v2_show(
 
 <div class="submit-button">
 <?
-print drupal_render($form['submit']);
+print drupal_render($form['buttons']['submit']);
 ?>
 </div>
 

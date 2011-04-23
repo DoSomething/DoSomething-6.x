@@ -7,7 +7,7 @@ $form['preview']['#access'] = false;
 $form['locations']['#access'] = false;
 $form['group_show_us_what_you_did']['field_campaign_video']['#collapsible'] = true;
 $form['group_show_us_what_you_did']['field_campaign_video']['#collapsed'] = true;
-$submit = drupal_render($form['submit']);
+$submit = drupal_render($form['buttons']['submit']);
 print drupal_render($form);
 
 live_profile_v2_show(

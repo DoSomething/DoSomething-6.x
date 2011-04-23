@@ -58,7 +58,7 @@ endif;
 
 
 
-  print drupal_render($form['submit']);
+  print drupal_render($form['buttons']['submit']);
 
 ?>
 

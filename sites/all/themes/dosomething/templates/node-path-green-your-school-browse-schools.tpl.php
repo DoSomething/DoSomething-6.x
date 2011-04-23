@@ -153,7 +153,7 @@ technology.field_iyg_technology_value as 'technology',
 why.field_campaign_essay_why_value as 'why',
 how.field_campaign_essay_how_value as 'how',
 gsid.field_great_schools_id_value as 'gsid',
-pictures.field_campaign_pictures_title as 'photo_title', files.filepath as 'photo_file', pictures.delta as 'photo_id',
+files.filepath as 'photo_file', pictures.delta as 'photo_id',
 video.field_campaign_video_embed as 'video_embed'
 
 from node signup

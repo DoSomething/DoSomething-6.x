@@ -3,7 +3,7 @@
 /**
  * Implementation of hook_form_alter()
 */
-function dosomething_forms_form_alter(&$form, $form_state, $form_id) {
+function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
   //
   // contenttype node form
   //
@@ -16,7 +16,14 @@ function dosomething_forms_form_alter(&$form, $form_state, $form_id) {
     $form['body_field']['#after_build'] = NULL;
     $form['body_field']['teaser_js'] = NULL;
     $form['body_field']['teaser_include'] = NULL;
+  }
+  switch ($form_id) {
+    case 'scholarships_att_node_form':
+      $form['group_your_media']['field_scholarship_att_pic']['#prefix'] = '<p>Picture (recommended): show us a picture of yourself showcasing your personality, style, and excitement about a DoSomething.org/AT&T scholarship!</p>';
+      $form['preview']['#access'] = false;
+      $form['group_your_media']['field_scholarship_att_pic']['#suffix'] = '<div class="media-upload-note">The video and/or picture you upload in connection with your application will be posted on our gallery tab which is viewable to the public.  By uploading your video and/or picture to this site, you represent and warrant: (i) you have obtained all rights, licenses, consents and permission to use the content featured in the video/photo, including but not limited to, those of any persons that may have participated in the video or are recognizable in the photo; (ii) the video, in whole or in part, has not been released commercially; and (iii) the video/photo does not and will not violate any third party rights.</div>';
 
+    break;
   }
 
 }

@@ -2,11 +2,12 @@
 
 function live_profile_v2_menu() {
   $items = array();
-  $items[] = array(
-    'path' => 'live_profile_v2_router',
-    'callback' => 'live_profile_v2_router',
+  $items['live_profile_v2_router/%/%'] = array(
+    'page callback' => 'live_profile_v2_router',
     'type' => MENU_CALLBACK,
-    'access' => TRUE,
+    'page arguments' => array(1,2),
+    'access callback' => 'user_access',
+    'access arguments' => array('access content'),
   );
   return $items;
 }

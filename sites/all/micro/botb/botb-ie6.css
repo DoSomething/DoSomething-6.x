@@ -1,0 +1,30 @@
+div#container {
+    overflow: hidden;
+}
+
+div#container #botbMain {
+    background: url(bg_8.gif) repeat-y;
+}
+
+div#container #botbTop {
+    background: url(bg_top_8.gif) no-repeat;
+    margin-top: -180px;
+}
+
+div#container #botbLogo a {
+    background-image: url(logo_8.png);
+}
+
+div#container #botbNav li.start a { background: url(menu_8.png) no-repeat 0 0; }
+div#container #botbNav li.videos a { background: url(menu_8.png) no-repeat -132px -73px; }
+div#container #botbNav li.tips a { background: url(menu_8.png) no-repeat -132px -198px; }
+div#container #botbNav li.register a { background: url(menu_8.png) no-repeat -132px -132px; }
+div#container #botbNav li.videos a:hover { background: url(menu_8.png) no-repeat 0px -73px; }
+div#container #botbNav li.tips a:hover { background: url(menu_8.png) no-repeat 0px -264px; }
+div#container #botbNav li.register a:hover { background: url(menu_8.png) no-repeat 0px -132px; }
+
+div#container #botbNav li {
+    background: transparent url(/nd/botb/splat.gif) no-repeat 0 0;
+}
+
+div#footer ul { margin-left: 40px; }

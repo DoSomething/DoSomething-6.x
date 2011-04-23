@@ -2,7 +2,7 @@
   <div class="video-teaser">
     <h3><?=$node->title;?></h3>
     <div class="video"><?=$node->field_botb_video[0]['view'];?></div>
-    <p><?=neat_trim($node->field_botb_music_education[0]['view'], 250, ' '.l("...", 'node/'.$node->nid));?></p>
+    <p><?=node_teaser($node->field_botb_music_education[0]['view'] . l("...", 'node/'.$node->nid), NULL, 250); ?></p>
   </div>
 <? } else { //Full view ?>
 

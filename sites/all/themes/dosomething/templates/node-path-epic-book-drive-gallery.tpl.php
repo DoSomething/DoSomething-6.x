@@ -21,11 +21,13 @@ if ($is_plan) {
     <div class="body-text">
         <h2>Plans</h2>
         <?
-        print views_embed_view('ebd_2011_signup', 'block');
+        $view = views_get_view('ebd_2011_signup');
+        print $view->execute_display('block');
         ?>
         <h2>Projects</h2>
         <?
-        print views_embed_view('ebd_2011_projects','block');
+        $view = views_get_view('ebd_2011_projects');
+        print $view->execute_display('block');
         ?>
     </div>
    </div>

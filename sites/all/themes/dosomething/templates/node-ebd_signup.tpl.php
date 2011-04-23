@@ -4,7 +4,7 @@ $box_count = $node->field_what_is_your_goal_number_[0]['value'];
 
 if (!$page) {//Teaser?>
   <div class="node <?=$node->type ?>">
-      <h3><?=l($title,'node/'.$node->nid,NULL,NULL,NULL,FALSE,TRUE);?>
+      <h3><?=l($title,'node/'.$node->nid,array('html' => TRUE));?>
       <? if ($box_count) { ?>
       <span class="box-count">(<?=$box_count;?> boxes)</span>
       <? } ?>

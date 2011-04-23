@@ -449,6 +449,18 @@ div.item-list ul li {
 div.item-list ul {
 }
 
+div.item-list ul.pager li {
+  list-style-type: none;
+  list-style-image: none;
+  display: inline;
+  padding: 0.25em;
+  margin: 0;
+}
+
+div.item-list ul.pager li a {
+  padding: 0;
+}
+
 /* block class specific */
 
 div.block.blue,

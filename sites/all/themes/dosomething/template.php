@@ -273,12 +273,14 @@ function dosomething_preprocess_node(&$vars, $hook) {
          page-about-team.tpl.php
          page-about-team-staff.tpl.php
       */
-      $alias = $vars['node']->path;
-      if ($alias != $_GET['q']) {
-        $template_name = 'node-path';
-        foreach (explode('/', $alias) as $path_element) {
-          $template_name .= '-' . $path_element;
-          $vars['template_files'][] = $template_name;
+      if ($vars['page']) {
+        $alias = $vars['node']->path;
+        if ($alias != $_GET['q']) {
+          $template_name = 'node-path';
+          foreach (explode('/', $alias) as $path_element) {
+            $template_name .= '-' . $path_element;
+            $vars['template_files'][] = $template_name;
+          }
         }
       }
 

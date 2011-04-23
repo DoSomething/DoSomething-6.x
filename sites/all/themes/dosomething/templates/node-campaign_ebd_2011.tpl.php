@@ -34,7 +34,7 @@ if (!$page) {
 ?>
   <div class="node project project-teaser <?=$zebra;?>">
       <div class="project-photo"><?=$teaser_image;?></div>
-      <h3><?=l($title,'node/'.$node->nid,NULL,NULL,NULL,FALSE,TRUE);?></h3>
+      <h3><?=l($title,'node/'.$node->nid, array('html' => TRUE));?></h3>
     <p><?=$teaser_txt;?></p>
     <div class="clear"></div>
   </div>

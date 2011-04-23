@@ -226,7 +226,7 @@ where signup.type='gys_2011' and signup.title='%s' and l.postal_code='%s'
           $data['project'][$result->project_nid][$field] = $result->{$field};
         }
       }
-      $photo_fields = array('photo_title','photo_file');
+      $photo_fields = array('photo_file');
       if (isset($result->photo_id)) {
         foreach ($photo_fields as $field) {
           $newfield = str_replace('photo_','',$field);

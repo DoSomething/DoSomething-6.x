@@ -28,4 +28,73 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
 
 }
 
+function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
+  global $user;
+
+  switch($node->type) {
+    case 'ebd_signup':
+    drupal_set_message($op);
+      if ($op == 'presave') {
+        dia_signup(array(
+                     'link' => 'groups',
+                     'table' => 'supporter',
+                     'linkKey' => 100755,
+                     'Organization' => $_POST['title'],
+                 ));
+      }
+    break;
+  }
+
+}
+
+
+function dia_signup ($args = array()) {
+
+  global $user;
+  $user = user_load(array('uid' => $user->uid));
+
+  $ch = curl_init();
+
+  $default_data = array(
+    'First_Name' => $user->profile_fname,
+    'Last_Name' => $user->profile_lname,
+    'Organization' => $_POST['title'],
+    'Email' => $user->mail,
+    'Phone' => $user->profile_cell,
+    'State' => $user->profile_state,
+    'Zip' => $user->profile_zip,
+    'link' => 'groups',
+    'linkKey' => '',
+    'table' => 'supporter',
+    'organization_KEY' => '5216'
+    );
+
+  $data = array();
+  $data = array_merge($default_data, $args);
+
+  $items = array();
+  foreach($data as $key=>$item){
+    if ($item != '') {
+      $items[] = $key.'='.$item;
+    }
+  }
+
+  $string = "?".implode('&',$items);
+
+  $msg = 'Going to: http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string);
+
+  curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string));
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  $return = 1;
+  if (curl_exec($ch) === false) {
+    $msg .= 'Curl error: '.curl_error($ch);
+    $return = 0;
+  }
+  //drupal_set_message($msg);
+
+  return $return;
+
+}
+
+
 ?>

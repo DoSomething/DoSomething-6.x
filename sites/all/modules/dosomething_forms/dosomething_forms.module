@@ -33,7 +33,6 @@ function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
 
   switch($node->type) {
     case 'ebd_signup':
-    drupal_set_message($op);
       if ($op == 'presave') {
         dia_signup(array(
                      'link' => 'groups',

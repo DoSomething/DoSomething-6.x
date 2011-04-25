@@ -574,3 +574,17 @@ div#att-contact img#presented {
 div#main {
   width: 863px;
 }
+
+div.view-content tbody {
+  border-top-width: 0px;
+}
+
+div.view-content tbody tr {
+  background-color: transparent;
+  border-bottom-width: 0px;
+  vertical-align: top;
+}
+
+div.view-content tbody tr:hover {
+  background-color: transparent;
+}

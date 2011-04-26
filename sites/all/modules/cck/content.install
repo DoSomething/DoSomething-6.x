@@ -671,7 +671,6 @@ function content_update_6011(&$sandbox) {
   }
 
   $nodereference_types = $schema_types;
-  dpm($nodereference_types);
   foreach ($nodereference_types as $table => $field_schema) {
     $field = $field_schema['content fields'][0] . '_nid';
     $spec = $field_schema['fields'][$field];

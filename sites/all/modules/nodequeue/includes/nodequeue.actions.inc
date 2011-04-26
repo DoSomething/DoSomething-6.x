@@ -1,5 +1,4 @@
 <?php
-// $Id: nodequeue.actions.inc,v 1.4 2009/01/06 15:23:01 ezrag Exp $
 
 /**
  * @file nodequeue.actions.inc

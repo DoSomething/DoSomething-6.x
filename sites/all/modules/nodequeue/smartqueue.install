@@ -1,5 +1,4 @@
 <?php
-// $Id: smartqueue.install,v 1.3 2010/03/16 22:39:26 ezrag Exp $
 
 function smartqueue_schema() {
   $schema['smartqueue'] = array(

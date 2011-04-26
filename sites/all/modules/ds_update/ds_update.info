@@ -1,0 +1,4 @@
+name = "DS Upgrade"
+description = "Upgrade support"
+package = DoSomething
+core = 6.x

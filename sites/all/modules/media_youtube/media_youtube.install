@@ -98,7 +98,6 @@ function media_youtube_update_6009() {
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'not null' => FALSE,
       ),
       'status' => array(
         'description' => "The availability status of this media.",
@@ -130,7 +129,6 @@ function media_youtube_update_6009() {
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'not null' => FALSE,
       ),
       'nid' => array(
         'description' => 'The {node} nid.',
@@ -322,7 +320,6 @@ function media_youtube_schema() {
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'not null' => FALSE,
       ),
       'status' => array(
         'description' => "The availability status of this media.",
@@ -354,7 +351,6 @@ function media_youtube_schema() {
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
-        'not null' => FALSE,
       ),
       'vid' => array(
         'description' => 'The {node} vid.',

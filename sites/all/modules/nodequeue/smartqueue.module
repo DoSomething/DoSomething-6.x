@@ -1,5 +1,4 @@
 <?php
-// $Id: smartqueue.module,v 1.10 2010/03/15 00:47:00 ezrag Exp $
 
 /**
  * Implementation of hook_nodequeue_info()

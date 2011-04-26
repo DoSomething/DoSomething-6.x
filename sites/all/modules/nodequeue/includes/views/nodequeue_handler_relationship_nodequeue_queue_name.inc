@@ -2,12 +2,13 @@
 /**
  * Specialized relationship handler to add nodequeues.
  */
-class nodequeue_handler_relationship_nodequeue extends views_handler_relationship {
+class nodequeue_handler_relationship_nodequeue_queue_name extends views_handler_relationship {
+
   function option_definition() {
     $options = parent::option_definition();
 
     $options['limit']['default'] = FALSE;
-    $options['qids']['default'] = array();
+    $options['names']['default'] = array();
     return $options;
   }
 
@@ -18,8 +19,6 @@ class nodequeue_handler_relationship_nodequeue extends views_handler_relationshi
   function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
 
-    $queues = nodequeue_load_queues(nodequeue_get_all_qids(NULL));
-
     $form['limit'] = array(
       '#type' => 'checkbox',
       '#title' => t('Limit to one or more queues (recommended)'),
@@ -29,16 +28,16 @@ class nodequeue_handler_relationship_nodequeue extends views_handler_relationshi
     $options = array();
     $queues = nodequeue_load_queues(nodequeue_get_all_qids(NULL));
     foreach ($queues as $queue) {
-      $options[$queue->qid] = $queue->title;
+      $options[$queue->name] = $queue->title;
     }
 
-    $form['qids'] = array(
-      '#prefix' => '<div><div id="edit-options-qids">',
+    $form['names'] = array(
+      '#prefix' => '<div><div id="edit-options-names">',
       '#suffix' => '</div></div>',
       '#type' => 'checkboxes',
       '#title' => t('Queues'),
       '#options' => $options,
-      '#default_value' => $this->options['qids'],
+      '#default_value' => $this->options['names'],
       '#process' => array('expand_checkboxes', 'views_process_dependency'),
       '#dependency' => array('edit-options-limit' => array(TRUE)),
     );
@@ -62,17 +61,22 @@ class nodequeue_handler_relationship_nodequeue extends views_handler_relationshi
     }
 
     if (!empty($this->options['limit'])) {
+      $qids = array();
+      $map  = nodequeue_get_qid_map();
+      foreach($map as $name => $qid) {
+        if (isset($this->options['names'][$name]) ) {
+          $qids[] = $qid;
+        }
+      }
+
       $join->definition['extra'] = array(array(
         'field' => 'qid',
-        'value' => array_filter($this->options['qids']),
-        'numeric' => TRUE,
+        'value' => $qids,
       ));
     }
 
     $join->construct();
-
     $alias = $join->definition['table'] . '_' . $join->definition['left_table'];
-
     $this->alias = $this->query->add_relationship($alias, $join, 'nodequeue_nodes', $this->relationship);
   }
 }

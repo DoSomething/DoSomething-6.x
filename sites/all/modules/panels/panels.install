@@ -1514,3 +1514,33 @@ function panels_update_6310() {
   drupal_install_modules(array('stylizer'));
   return $ret;
 }
+
+function panels_update_6311() {
+
+  $ret = array();
+
+  // fix panels_display
+  db_change_field($ret, 'panels_display', 'layout', 'layout',
+    array('type' => 'varchar', 'length' => '32', 'default' => ''));
+  db_change_field($ret, 'panels_display', 'title', 'title',
+    array('type' => 'varchar', 'length' => '255', 'default' => ''));
+  db_change_field($ret, 'panels_display', 'hide_title', 'hide_title',
+    array('type' => 'int', 'size' => 'tiny', 'default' => 0));
+
+  // fix panels_pane
+  db_change_field($ret, 'panels_pane', 'panel', 'panel',
+    array('type' => 'varchar', 'length' => '32', 'default' => ''));
+  db_change_field($ret, 'panels_pane', 'type', 'type',
+    array('type' => 'varchar', 'length' => '32', 'default' => ''));
+  db_change_field($ret, 'panels_pane', 'subtype', 'subtype',
+    array('type' => 'varchar', 'length' => '64', 'default' => ''));
+  db_change_field($ret, 'panels_pane', 'shown', 'shown',
+    array('type' => 'int', 'size' => 'tiny', 'default' => 1));
+  db_change_field($ret, 'panels_pane', 'position', 'position',
+    array('type' => 'int', 'size' => 'small', 'default' => 0));
+  db_drop_index($ret, 'panels_pane', 'did');
+  db_add_index($ret, 'panels_pane', 'did_idx', array('did'));
+
+  return $ret;
+
+}

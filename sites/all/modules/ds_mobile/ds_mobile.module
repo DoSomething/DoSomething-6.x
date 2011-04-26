@@ -93,6 +93,8 @@ function ds_mobile_help($section) {
   }
 }
 
+
+//OUT OF DATE: Needs to be updated to current spec of hook_menu in order to work
 function ds_mobile_menu() {
   $items = array();
   $items[] = array(
@@ -168,21 +170,32 @@ function ds_mobile_anon_form($show_cats = TRUE) {
   $form = array();
   $form['cell'] = array(
     '#type' => 'textfield',
-    '#title' => t('Cell Phone'),
+    //'#title' => t('Cell Phone'),
     '#default_value' => 'Cell Phone',
     '#size' => 20,
     '#maxlength' => 20,
     '#required' => TRUE,
-    '#description' => t('Your 10-digit mobile # (area code first).'),
+    '#attributes' => array(
+                       'class' => 'short',
+                       'onClick' => 'if (this.value == this.defaultValue) { this.value=\'\'; }',
+                       'onBlur' => 'if (this.value == \'\') { this.value=this.defaultValue; }',
+                       ),
+    //'#description' => t('Your 10-digit mobile # (area code first).'),
   );
+  $form['#node_type'] = $type;
   $form['zip'] = array(
     '#type' => 'textfield',
-    '#title' => t('Zip'),
+    //'#title' => t('Zip'),
     '#default_value' => 'Zip',
     '#size' => 5,
     '#maxlength' => 20,
     '#required' => TRUE,
-    '#description' => t('Your 5-digit zip code.'),
+    '#attributes' => array(
+                       'class' => 'short',
+                       'onClick' => 'if (this.value == this.defaultValue) { this.value=\'\'; }',
+                       'onBlur' => 'if (this.value == \'\') { this.value=this.defaultValue; }',
+                       ),
+    //'#description' => t('Your 5-digit zip code.'),
   );
  
  if($show_cats){
@@ -197,13 +210,19 @@ function ds_mobile_anon_form($show_cats = TRUE) {
  }
   $form['submit'] = array(
     '#type' => 'submit',
-    '#value' => 'Submit',
+    '#value' => 'Go',
   );
   return $form;
 }
-
-function ds_mobile_anon_form_validate($form_id, $form_values, $form) {
-  $valid = ds_mobile_check($form_values['cell']);
+//The name of this function has nothing to do with the name of the module OR any sort of custom content type
+// It is defined by what is called when we use drupal_get_form('ds_mobile_anon_form');
+//   So, ds_mobile_anon_form is the form ID
+//  This function is defined by <form-id>_validate
+function ds_mobile_anon_form_validate($form, &$form_state) {
+  watchdog('rob', 'hey ds_mobile_anon_form_validate got called');
+  dpm($node);
+  dpm($form);
+  $valid = ds_mobile_check($node['values']['cell']);
   if ($valid === FALSE) {
     form_set_error('cell', t('Please enter a valid 10-digit phone number.'));
   }
@@ -211,18 +230,18 @@ function ds_mobile_anon_form_validate($form_id, $form_values, $form) {
     form_set_error('cell', t('This number has already been entered into the database.'));
   }
   else {
-    form_set_value($form['cell'], $valid[1] . $valid[2] . $valid[3] );
+    form_set_value($form['cell'], $valid[1] . $valid[2] . $valid[3], $form_state);
   }
-  if (!ctype_digit($form_values['zip']) || strlen($form_values['zip']) != 5) {
+  if (!ctype_digit($form_state['values']['zip']) || strlen($form_state['values']['zip']) != 5) {
     form_set_error('zip', t('Please enter a valid 5-digit zipcode'));
   }
 }
 
-function ds_mobile_anon_form_submit($form_id, $form_values) {
+function ds_mobile_anon_form_submit($form, &$form_state) {
   db_query("INSERT INTO {ds_mobile_anon} (mobile, zip, category) VALUES ('%s', %d, '%s')",
-    $form_values['cell'], $form_values['zip'], $form_values['category']);
-  ds_mobile_mcommons_optin($form_values['cell'], $form_values['zip'], 0, $form_values['category']);
-  //ds_mobile_anon_oppsend($form_values['cell'], $form_values['zip'], $form_values['category']);
+    $form_state['values']['cell'], $form_state['values']['zip'], $form_state['values']['category']);
+  ds_mobile_mcommons_optin($form_state['values']['cell'], $form_state['values']['zip'], 0, $form_state['values']['category']);
+  //ds_mobile_anon_oppsend($form_state['values']['cell'], $form_state['values']['zip'], $form_state['values']['category']);
   drupal_set_message(t('Your mobile information has been submitted successfully'));
   drupal_goto('actnow/mobile/thanks');
 }
@@ -256,19 +275,19 @@ function ds_mobile_anon_optout_form() {
   return $form;
 }
 
-function ds_mobile_anon_optout_form_validate($form_id, $form_values, $form) {
-  $valid = ds_mobile_check($form_values['cell']);
+function ds_mobile_anon_optout_form_validate($form, &$form_state) {
+  $valid = ds_mobile_check($form_state['values']['cell']);
   if ($valid === FALSE) {
     form_set_error('cell', t('Please enter a valid 10-digit phone number.'));
   }
   else {
-    form_set_value($form['cell'], $valid[1] . $valid[2] . $valid[3] );
+    form_set_value($form['cell'], $valid[1] . $valid[2] . $valid[3], $form_state );
   }
 }
 
-function ds_mobile_anon_optout_form_submit($form_id, $form_values) {
-  db_query("DELETE FROM {ds_mobile_anon} WHERE mobile='%s'", $form_values['cell']);
-  ds_mobile_mcommons_optout($form_values['cell']);
+function ds_mobile_anon_optout_form_submit($form, &$form_state) {
+  db_query("DELETE FROM {ds_mobile_anon} WHERE mobile='%s'", $form_state['values']['cell']);
+  ds_mobile_mcommons_optout($form_state['values']['cell']);
   drupal_set_message(t('Your mobile information has been removed successfully.'));
 }
 

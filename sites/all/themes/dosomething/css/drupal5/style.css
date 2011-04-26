@@ -13,6 +13,31 @@
  * F4F1ED (lighter pink): bg box
  * 
  */
+#sign-up input[type=text] {
+  color: #48BCDC;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border: 0;
+  padding: 3px 6px;
+  margin-bottom: .2em;
+}
+
+#sign-up input.short {
+  width: 90px;
+}
+
+#sign-up input[type=submit] {
+  background: transparent url(../../images/form_submit_go.png) no-repeat;
+  text-indent: -99em;
+  cursor: pointer;
+  border: 0;
+  width: 38px;
+  height: 19px;
+  margin-left: 3px;
+}
+
 
 
 div#sidebar-right div.region div.block-block.block {

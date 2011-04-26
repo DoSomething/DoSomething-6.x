@@ -148,19 +148,11 @@ function dosomething_header($args = array('front_page' => '', 'directory' => '',
 
     <div class="blue">
     <h3>Do Something More</h3>
-    <p>Get Involved!</p>
-    <form action="#">
-    <input class="short" type="text" name="Email" />
-    <input class="go" type="submit" value="GO" />
-    </form>
-    <p><a href="#">Volunteer info</a> on ur cell</a></p>
-    <form action="#">
-    <input class="short" type="text" name="Cell Phone" />
-    <input class="short" type="text" name="Zip" />
-    <input class="go" type="submit" value="GO" />
-    </form>
-
-    </div>
+    <p>Get Involved!</p>'.
+    get_dia_form().
+    '<p><a href="#">Volunteer info</a> on ur cell</a></p>'.
+    drupal_get_form('ds_mobile_anon_form').
+    '</div>
 
     </div>
     </div></div> <!-- /.section, /#header -->
@@ -168,6 +160,17 @@ function dosomething_header($args = array('front_page' => '', 'directory' => '',
 
   return $header_str;
 
+}
+
+function get_dia_form() {
+  return '<form class="dia" method="post" action="http://org2.democracyinaction.org/dia/api/process.jsp" target="_blank" id="signup">
+    <input type="hidden" name="table" value="supporter"/>
+    <input type="hidden" name="organization_KEY" value="5216"/>
+
+    <input type="hidden" name="link" value="groups"/>
+    <input type="hidden" name="linkKey" value="57593"/>
+    <input type="text" id="email" name="Email" value="email" maxlength="" class="short" onClick="if (this.value == this.defaultValue) { this.value=\'\'; }" onBlur="if (this.value == \'\') { this.value=this.defaultValue; }" />
+    <input type="submit" name="go" value="Go" alt="go" class="submit" /></form>';
 }
 
 /**
@@ -224,23 +227,11 @@ function dosomething_form_element($element, $value) {
 
 
 function dosomething_signup_block() {
-  return '<div class="block form_block">
-<form method="post" action="http://org2.democracyinaction.org/dia/api/process.jsp" target="_blank" id="signup">
-<input type="hidden" name="table" value="supporter"/>
-<input type="hidden" name="organization_KEY" value="5216"/>
-
-<input type="hidden" name="link" value="groups"/>
-<input type="hidden" name="linkKey" value="57593"/>
-<input type="hidden" name="redirect" value="http://www.dosomething.org/thankyou"/>
+  return '<div id="sign-up" class="block form_block">
     <h3>Do Something more</h3>
-  
-    <p>Get involved!<br/>
-    <input type="text" id="email" name="Email" value="email" maxlength="" class="styled short" onClick="if (this.value == \'email\') { this.value=\'\'; }" />
-    <input type="image" src="'.base_path().path_to_theme().'/images/form_submit_go.png" name="go" value="Signup" alt="go" class="submit" /></form><form action="/volunteer/list" method="get">
-  </form>
-    </p>
-  <p><a href="/volunteer">Volunteer info</a> on ur cell<br/>'.
-    drupal_get_form('ds_mobile_anon_form',FALSE).
+    <p>Get involved!'.get_dia_form().
+    '</p><p><a href="/volunteer">Volunteer info</a> on ur cell<br/>'.
+    drupal_get_form('ds_mobile_anon_form').
   '</p>
 </div>';
 }

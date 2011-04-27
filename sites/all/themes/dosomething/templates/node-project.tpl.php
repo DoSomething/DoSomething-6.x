@@ -78,8 +78,35 @@
   drupal_add_js(path_to_theme() . '/js/jcarousel/lib/jquery.jcarousel.min.js');
   drupal_add_js(path_to_theme() . '/js/project.js');
   drupal_add_css(path_to_theme() . '/js/jcarousel/style.css');
+  drupal_add_css(path_to_theme() . '/css/project.css');
   drupal_add_css(path_to_theme() . '/js/jcarousel/skins/dosomething/skin.css');
 ?>
+
+<?
+if ($node->locations[0]) {
+  $lat_lng_str = $node->locations[0]['latitude'].','.$node->locations[0]['longitude'];
+?>
+  <script type="text/javascript"> 
+    function initialize() {
+      var myLatlng = new google.maps.LatLng(<?=$lat_lng_str;?>);
+      var myOptions = {
+        zoom: 4,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      }
+      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      var marker = new google.maps.Marker({
+          position: myLatlng, 
+          map: map,
+          title:"Hello World!"
+      });   
+    }
+    $(document).ready(function() {
+      initialize();
+    });
+  </script> 
+<? } ?>
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
   <?php print $user_picture; ?>
@@ -109,6 +136,7 @@
       <?php print check_markup($field_essay_see_it[0]['value']); ?>
     </div>
 
+    <div id="map_canvas"></div>
     <div class="box blue stats">
       <h2 class="header">vital stats:</h2>
       <p>people impacted:</p>
@@ -117,7 +145,9 @@
       <?php print $field_num_people_involved_rendered; ?>
     </div>
 
+    <div style="clear:both"></div>
     <?php dpm(array_keys(get_defined_vars())); ?>
+    <?php dpm($node); ?>
 
     <h2>why it's important:</h2>
     <div class="box">

@@ -19,7 +19,7 @@ div#container div.node div#att-contact {
 
 ?>
 
-<?php global $user; if ($user->uid) : // logged in ?>
+<?php global $user; if ($user->uid && 0) : // logged in ?>
 
 <?php
   $user = user_load(array('uid' => $user->uid));
@@ -117,7 +117,11 @@ print $apply_header;
 
 ?>
 
-<p>You need to <a href="/user/login?<?=$dest;?>">login</a> or <a href="/user/register?<?=$dest;?>">register</a> to get started!</p></div>
+<!--<p>You need to <a href="/user/login?<?=$dest;?>">login</a> or <a href="/user/register?<?=$dest;?>">register</a> to get started!</p>-->
+<br/><br/><br/>
+<p>The application period is over.  Check out the <a href="/scholarships">DoSomething Scholarships page</a> for more scholarship opportunities.</p>
+
+</div>
 
 <?php endif; ?>
 

@@ -1,3 +1,11 @@
+div.apply.pink.border {
+  display: none;
+}
+
+div.textbox.apply {
+  display:none;
+}
+
 div.search-container {
   background: url(pink-trans.png) repeat;
   top: -117px;
@@ -293,7 +301,7 @@ div.border {
 
 div.action.textbox {
   width: 510px;
-  height: 170px;
+  height: 77px;
   top: 157px;
   left: 124px;
   padding-left: 66px;
@@ -301,7 +309,7 @@ div.action.textbox {
 
 div.action.border {
   width: 592px;
-  height: 193px;
+  height: 123px;
   top: 145px;
   left: 117px;
 }
@@ -323,7 +331,7 @@ div.apply.border {
 div.guides.textbox {
   width: 274px;
   height: 135px;
-  top: 591px;
+  top: 320px;
   left: 288px;
   padding-left: 66px;
 }
@@ -331,7 +339,7 @@ div.guides.textbox {
 div.guides.border {
   width: 370px;
   height: 160px;
-  top: 586px;
+  top: 308px;
   left: 269px;
 }
 

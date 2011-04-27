@@ -124,8 +124,7 @@ $top_right
         </div>
         <div class="col_right">
 			<!--Begin Top Right Block Section-->
-      <?=theme('login_links').
-         theme('signup_block');?>
+            <?=$top_right;?>
 			<!--End Top Right Block Section-->
         </div>
         <a href='/green-your-school'>

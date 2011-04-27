@@ -22,6 +22,7 @@
   border: 0;
   padding: 3px 6px;
   margin-bottom: .2em;
+  background: #FFF;
 }
 
 #sign-up input.short {
@@ -38,7 +39,44 @@
   margin-left: 3px;
 }
 
+#sign-up {
+  position: absolute;
+  width: 177px;
+  top: -38px;
+  right: -30px;
+}
 
+#sign-up .blue {
+  background-color: #def3f9;
+  padding: 13px;
+  -webkit-box-shadow: -1px 1px 5px rgba(0,0,0,0.25);
+  margin-top: 3px;
+}
+
+#sign-up .blue h3 {
+  margin: 0;
+}
+
+#sign-up .text {
+  text-align: center;
+}
+
+#sign-up .text a {
+  color: #fec333;
+}
+
+#sign-up .form-item {
+  display: inline;
+  margin: 0;
+}
+
+#sign-up h3 {
+  color: #0f3b70;
+}
+
+#sign-up p {
+  margin: 0.4em 0 0.2em;
+}
 
 div#sidebar-right div.region div.block-block.block {
   padding: 0;
@@ -1169,13 +1207,12 @@ form input.submit {
   cursor: pointer; /* hand-shaped cursor */
   cursor: hand; /* for IE 5.x */
   position:absolute;
-  top:132px;
-  left:122px;
+  /*top:132px;*/
+  /*left:122px;*/
 }
+
 form>#replacement-2 { /* For non-IE browsers*/
   height: 0px;
-
-
 }
 
 /* mu: fix forms with scrollbars -- tested on IE6, IE7, and FF3 */

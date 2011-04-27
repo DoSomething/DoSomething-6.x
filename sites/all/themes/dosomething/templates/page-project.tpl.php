@@ -127,6 +127,7 @@
                               'front_page' => $front_page,
                               'directory' => $directory,
                               'mission' => $mission,
+                              'top_right' => $top_right,
                               )); ?>
 
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">

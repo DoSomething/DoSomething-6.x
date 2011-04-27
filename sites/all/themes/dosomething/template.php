@@ -73,7 +73,6 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   $hooks['hook_name_here'] = array( // Details go here );
   */
   $hooks['primary_links'] = array();
-  $hooks['login_links'] = array();
   $hooks['signup_block'] = array();
   $hooks['header'] = array();
   
@@ -98,22 +97,7 @@ function dosomething_primary_links() {
     </ul>';
 }
 
-function dosomething_login_links() {
-  global $user;
-  $block_str = '<div class="block block-user"><p class="alignright">';
-  if ($user->uid > 0) {//Logged in, provide My Account | Log Out
-    $block_str .= l('My Account','user/'.$user->uid).' | '.l('Log Out','logout');
-  } else { //Logged out, provide login
-    $redirect = array( 'html' => true, 'query' => drupal_get_destination());
-    $block_str .= '<p class="alignright">'.
-                  l('Log In','user/login',$redirect).
-                  ' | '.l('Join Us','user/register',$redirect);
-  }
-  $block_str .= '</p></div>';
-  return $block_str;
-}
-
-function dosomething_header($args = array('front_page' => '', 'directory' => '', 'mission' => '')) {
+function dosomething_header($args = array('front_page' => '', 'directory' => '', 'mission' => '', 'top_right' => '')) {
   global $user;
   $header_str = '    <div id="header"><div class="section clearfix">
 
@@ -130,47 +114,11 @@ function dosomething_header($args = array('front_page' => '', 'directory' => '',
   if ($args['mission']) {
     $header_str .= '<div id="mission">'.$args['mission'].'</div>';
   }
-  $header_str .= '
-    <div id="sign-up">
-
-    <p class="text">
-    ';
-  if ($user->uid) {
-    $header_str .= l('My Account', 'user/' . $user->uid).' | <a href="/logout">Log Out</a>';
-  } else {
-    $redirect = array( 'html' => true, 'query' => drupal_get_destination());
-    $header_str .= l('Log In','user/login',$redirect).
-      ' | '.l('Join Us','user/register',$redirect);
-  }
-  $header_str .= '
-
-    </p>
-
-    <div class="blue">
-    <h3>Do Something More</h3>
-    <p>Get Involved!</p>'.
-    get_dia_form().
-    '<p><a href="#">Volunteer info</a> on ur cell</a></p>'.
-    drupal_get_form('ds_mobile_anon_form').
-    '</div>
-
-    </div>
-    </div></div> <!-- /.section, /#header -->
+    $header_str .= $args['top_right'].'</div></div> <!-- /.section, /#header -->
     ';
 
   return $header_str;
 
-}
-
-function get_dia_form() {
-  return '<form class="dia" method="post" action="http://org2.democracyinaction.org/dia/api/process.jsp" target="_blank" id="signup">
-    <input type="hidden" name="table" value="supporter"/>
-    <input type="hidden" name="organization_KEY" value="5216"/>
-
-    <input type="hidden" name="link" value="groups"/>
-    <input type="hidden" name="linkKey" value="57593"/>
-    <input type="text" id="email" name="Email" value="email" maxlength="" class="short" onClick="if (this.value == this.defaultValue) { this.value=\'\'; }" onBlur="if (this.value == \'\') { this.value=this.defaultValue; }" />
-    <input type="submit" name="go" value="Go" alt="go" class="submit" /></form>';
 }
 
 /**
@@ -226,16 +174,6 @@ function dosomething_form_element($element, $value) {
 }
 
 
-function dosomething_signup_block() {
-  return '<div id="sign-up" class="block form_block">
-    <h3>Do Something more</h3>
-    <p>Get involved!'.get_dia_form().
-    '</p><p><a href="/volunteer">Volunteer info</a> on ur cell<br/>'.
-    drupal_get_form('ds_mobile_anon_form').
-  '</p>
-</div>';
-}
-
 /**
  * Override or insert variables into all templates.
  *
@@ -283,7 +221,6 @@ function dosomething_preprocess_page(&$vars, $hook) {
       $vars['template_files'][] = $template_name;
     }
   }
-
 }
 
 /**

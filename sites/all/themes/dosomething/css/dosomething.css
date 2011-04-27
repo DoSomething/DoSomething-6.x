@@ -129,7 +129,7 @@ a:hover {
   position: absolute;
   width: 177px;
   top: -38px;
-  right: -10px;
+  right: -30px;
 }
 
 #sign-up .blue {
@@ -165,6 +165,7 @@ a:hover {
   border: 0;
   padding: 3px 6px;
   margin-bottom: .2em;
+  background: #FFF;
 }
 
 #sign-up input[type=submit] {

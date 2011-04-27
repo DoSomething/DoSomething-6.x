@@ -8,7 +8,6 @@ function ds_mobile_form_alter(&$form, &$form_state, $form_id) {
   }
   switch ($form_id) {
     case 'ds_mobile_anon_form':
-      //print_r('<pre>' . print_r($form_id, true) . ': ' . print_r($form, true) . '</pre>');
       $form['category']['#access'] = false;
     break;
     case 'user_register':
@@ -219,10 +218,7 @@ function ds_mobile_anon_form($show_cats = TRUE) {
 //   So, ds_mobile_anon_form is the form ID
 //  This function is defined by <form-id>_validate
 function ds_mobile_anon_form_validate($form, &$form_state) {
-  watchdog('rob', 'hey ds_mobile_anon_form_validate got called');
-  dpm($node);
-  dpm($form);
-  $valid = ds_mobile_check($node['values']['cell']);
+  $valid = ds_mobile_check($form_state['values']['cell']);
   if ($valid === FALSE) {
     form_set_error('cell', t('Please enter a valid 10-digit phone number.'));
   }
@@ -325,7 +321,6 @@ function ds_mobile_mcommons_optin($mobile, $zip, $uid, $category) {
   //write data string
   $data = '';
   foreach ($fields as $k => $v) {
-  	print_r($v);
     $data .= $k . '=' . urlencode($v) . '&';
   }
   $data = substr($data, 0, -1);

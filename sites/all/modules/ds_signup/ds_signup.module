@@ -1,0 +1,52 @@
+<?
+
+function ds_signup_block($op = 'list', $delta = 0, $edit = array()) {
+  $blocks = array();
+
+  if ($op == 'list') {
+    $blocks[0]['info'] = 'Signup top right';
+    $blocks[0]['cache'] = BLOCK_CACHE_GLOBAL;
+  } else if ($op == 'view') {
+    switch ($delta) {
+      case 0:
+        $blocks['subject'] = '';
+        $blocks['content'] = _ds_signup_block();
+        break;
+    }
+  }
+
+  return $blocks;
+}
+
+function _ds_signup_block() {
+  global $user;
+  $block_str = '<div id="sign-up">
+    <p class="text">
+    ';
+  if ($user->uid) {
+    $block_str .= l('My Account', 'user/' . $user->uid).' | <a href="/logout">Log Out</a>';
+  } else {
+    $redirect = array( 'html' => true, 'query' => drupal_get_destination());
+    $block_str .= l('Log In','user/login',$redirect).
+      ' | '.l('Join Us','user/register',$redirect);
+  }
+
+  $block_str .= '</p><div class="blue">
+    <h3>Do Something More</h3>
+    <p>Get Involved!</p>
+      <form class="dia" method="post" action="http://org2.democracyinaction.org/dia/api/process.jsp" target="_blank" id="signup">
+      <input type="hidden" name="table" value="supporter"/>
+      <input type="hidden" name="organization_KEY" value="5216"/>
+
+      <input type="hidden" name="link" value="groups"/>
+      <input type="hidden" name="linkKey" value="57593"/>
+      <input type="hidden" name="redirect" value="http://www.dosomething.org/thankyou">
+      <input type="text" id="email" name="Email" value="email" maxlength="" class="short" onClick="if (this.value == this.defaultValue) { this.value=\'\'; }" onBlur="if (this.value == \'\') { this.value=this.defaultValue; }" />
+      <input type="submit" name="go" value="Go" alt="go" class="submit" /></form>
+    <p><a href="#">Volunteer info</a> on ur cell</a></p>'.
+    drupal_get_form('ds_mobile_anon_form').
+    '</div></div>';
+  return $block_str;
+}
+
+?>

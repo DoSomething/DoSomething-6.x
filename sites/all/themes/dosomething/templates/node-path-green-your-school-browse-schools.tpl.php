@@ -183,7 +183,11 @@ where signup.type='gys_2011' and signup.title='%s' and l.postal_code='%s'
 ", $name, $zip);
   $results = array();
   $schoolname = $name;
-  $data = array();
+  $data = array(
+            'school' => array(),
+            'signup' => array(),
+            'project' => array(),
+            );
   $photos = array();
   $photo_num = 0;
   $users = array();

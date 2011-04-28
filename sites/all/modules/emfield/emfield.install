@@ -348,8 +348,9 @@ function _emfield_update_fix_data($field, $providers = array(), $old_data_keys =
   // to work with; I'm not sure if this value will work in the majority of
   // cases. Thanks, Aaron.
   $limit = variable_get('emfield_install_fix_data_rows', 50);
+  $limit = 5000;
   if (empty($context['sandbox']['providers'])) {
-    $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid >= %d ORDER BY vid ASC", $context['sandbox']['current_node'], 0, $limit);
+    $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid > %d ORDER BY vid ASC", $context['sandbox']['current_node'], 0, $limit);
   }
   else {
     $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid > %d AND ". $context['sandbox']['col_provider'] ." in (". $context['sandbox']['provider_placeholders'] .") ORDER BY vid ASC", $context['sandbox']['current_node'], implode(', ', $context['sandbox']['providers']), 0, $limit);

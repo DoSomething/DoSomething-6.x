@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" lang="<?php print $language ?>" xml:lang="<?php print $language ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" lang="<?php print $language->language ?>" xml:lang="<?php print $language->language ?>">
 <?
 global $user;
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
@@ -152,7 +152,10 @@ $top_right
  $myschool_page = '';
  $onmyschoolpage = 0;
  if ($user->uid) {
-   list($myschool, $zip) = array_values(db_fetch_array(db_query("select title, postal_code from node n inner join location_instance li on li.nid=n.nid and li.vid=n.vid inner join location l on l.lid=li.lid where n.type = 'gys_2011' and uid=%d", $user->uid)));
+   $row = db_fetch_array(db_query("select title, postal_code from node n inner join location_instance li on li.nid=n.nid and li.vid=n.vid inner join location l on l.lid=li.lid where n.type = 'gys_2011' and n.uid=%d", $user->uid));
+   if ($row) {
+     list($myschool, $zip) = array_values($row);
+   }
    if ($myschool && $zip) {
      $myschool_page = '/green-your-school/browse-schools?name='.$myschool.'&zip='.$zip;
      if ('/'.urldecode($current_path)==$myschool_page) {

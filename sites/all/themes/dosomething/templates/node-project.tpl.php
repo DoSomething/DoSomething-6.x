@@ -99,7 +99,7 @@ if ($node->locations[0]) {
       var marker = new google.maps.Marker({
           position: myLatlng, 
           map: map,
-          title:"Hello World!"
+          title:"<?=$title;?>"
       });   
     }
     $(document).ready(function() {
@@ -132,40 +132,38 @@ if ($node->locations[0]) {
     <?php endif; ?>
 
     <div class="box blue">
-      <h2 class="header">the problem:</h2>
+      <h2>the problem:</h2>
       <?php print check_markup($field_essay_see_it[0]['value']); ?>
     </div>
 
-    <div id="map_canvas"></div>
-    <div class="box blue stats">
-      <h2 class="header">vital stats:</h2>
+    <div id="stats" class="box blue">
+      <h2>vital stats:</h2>
       <p>people impacted:</p>
       <?php print $field_num_people_impacted[0]['value']; ?>
       <p>people involved:</p>
       <?php print $field_num_people_involved_rendered; ?>
     </div>
+    <div id="map_canvas"></div>
 
     <div style="clear:both"></div>
-    <?php dpm(array_keys(get_defined_vars())); ?>
-    <?php dpm($node); ?>
 
-    <h2>why it's important:</h2>
     <div class="box">
+    <h2>why it's important:</h2>
       <?php print check_markup($field_essay_believe_it[0]['value']); ?>
     </div>
 
-    <h2>the plan of action:</h2>
     <div class="box">
+    <h2>the plan of action:</h2>
       <?php print check_markup($field_essay_build_it[0]['value']); ?>
     </div>
 
-    <h2>how you can get involved:</h2>
     <div class="box">
+    <h2>how you can get involved:</h2>
       <?php print check_markup($field_others_involved[0]['value']); ?>
     </div>
 
-    <h2>project updates</h2>
     <div class="box">
+    <h2>project updates</h2>
       <?php print views_embed_view('project_updates', 'default', $nid); ?>
     </div>
 

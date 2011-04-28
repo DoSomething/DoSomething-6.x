@@ -1,0 +1,116 @@
+body {
+  font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  background-color: #a5a6a5;
+  margin: 0;
+  padding: 0;
+}
+
+a.buffettbutton{  background: url(/files/buffetds-button.png) no-repeat; display: block; width: 240px; height: 59px; margin-left: 100px; background-position: 0 -59px; }
+a.buffettbutton:hover { background-position: 0 0; }
+
+a.playnow{  background: url(/files/buffett-main1.jpg) no-repeat; display: block; width: 470px; height: 375px;  background-position: 0 -375px; }
+a.playnow:hover { background-position: 0 0; }
+
+a img {border: 0px;}
+a {color: #ef7942; font-weight: bold;}
+a:hover  { font-weight: bold; }
+
+
+
+#wrapper {
+  width: 950px;
+  margin: 0 auto 1em;
+  background-color: #000;
+}
+
+#container {
+  background-color: #666566;
+  padding: 6px 6px 12px;
+}
+
+#banner {
+    background: url(images/header.png) no-repeat;
+    height: 129px;
+    position: relative;
+}
+
+#banner a { display: block; position: absolute; outline: none; text-indent: -9999em; }
+#banner a.sicd { left: 15px; top: 10px; width: 210px; height: 75px; }
+#banner a.readmore { left: 386px; top: 85px; width: 145px; height: 35px; }
+#banner a.ds { right: 80px; top: 12px; width: 110px; height: 90px; }
+
+
+#nav {
+    /*
+  background-image:
+    -moz-linear-gradient(top, #e74d00, #e74900, #7b1400, #6b0c00);
+  background-image:
+    -webkit-gradient(linear, left top, left bottom, color-stop(#e74d00), color0stop(#e74900), color-stop:#7b1400, color-stop: #6b0c00);
+    */
+}
+
+#nav ul {
+  list-style: none;
+  height: 30px;
+  margin: 5px 3px;
+  padding: 0px;
+  background: url(images/menu_bg.gif) repeat-x;
+}
+
+#nav li {
+  float: left;
+  display: block;
+  height: 20px;
+  padding: 0 10px;
+  margin: 5px 0;
+  border-right: 1px solid white;
+}
+
+#nav li.last { border-right: none; }
+
+#nav a {
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+#nav a:hover {
+  text-decoration: none;
+  color: #EF7942;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.shareme  { margin-left: 90px;}
+
+.block {
+  background: #FFF;
+  width: 444px;
+  padding: 0px 10px;
+}
+
+.block, #nav ul {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+}
+
+.gray { background-color: transparent; width: 464px; padding-right: 0px; }
+
+.left { float: left; }
+.right { float: right; }
+.center { text-align:center;}
+
+.tabs { height: 2em; }
+.tabs li {
+  padding: 0 25px 0 0;
+  float: left;
+}
+
+ul {
+  list-style: square outside;
+}
+
+li { color: #ef7942; }

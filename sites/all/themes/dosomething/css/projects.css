@@ -21,25 +21,6 @@ div.panel-pane .node-type-project.node-teaser {
   margin: 0;
 }
 
-.node-type-project .stats  {
-  width: 45%;
-}
-
-.node-type-project .stats p {
-  margin: 0;
-  padding: 0;
-}
-
-.node-type-project .stats h3 {
-  text-align: center;
-}
-
-.node-type-project .stats .field-field-num-people-impacted,
-.node-type-project .stats .field-field-num-people-involved {
-  font-size: 40px;
-  line-height: 1em;
-}
-
 .view-project-updates .views-row {
   background-color: #def3f9;
   margin: 1em 0;
@@ -57,13 +38,6 @@ div.panel-pane .node-type-project.node-teaser {
   color: #48bcdc;
   margin: 0;
   padding: 0;
-}
-
-div#content div.node-type-project h2 {
-  color: #48bcdc;
-  font-size: 20px;
-  position: absolute;
-  top: -16px;
 }
 
 div.view-projects-search div.view-content div.views-row {

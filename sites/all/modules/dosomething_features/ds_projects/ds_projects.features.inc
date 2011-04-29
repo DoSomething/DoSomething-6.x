@@ -44,3 +44,28 @@ function ds_projects_imagecache_default_presets() {
   );
   return $items;
 }
+
+/**
+ * Implementation of hook_node_info().
+ */
+function ds_projects_node_info() {
+  $items = array(
+    'project' => array(
+      'name' => t('Project'),
+      'module' => 'features',
+      'description' => t('A volunteer project.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'has_body' => '0',
+      'body_label' => '',
+      'min_word_count' => '0',
+      'help' => t('<ol>
+<li>This section is for those <strong>25 and under</strong>.</li>
+<li>If you want to recruit volunteers for your project, post your <a href="http://www.volunteermatch.org">volunteer opportunity</a> with our partner Volunteer Match. This section is for posting projects and volunteer experiences that you have participated in.</li>
+<li>You cannot post personal information here, it will be removed. Instead please direct people to your personal project website or facebook page.</li>
+<li>If you want to share your opinions, please go to our <a href="/forum">Forums</a> section.</li>
+</ol>'),
+    ),
+  );
+  return $items;
+}

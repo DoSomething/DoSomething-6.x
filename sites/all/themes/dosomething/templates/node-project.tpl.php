@@ -130,19 +130,25 @@ if ($node->locations[0]) {
        $resized = image_get_info('/var/www/html/'.$resized_path);
        $full_size['file_size'] = 0;
        $resized['file_size'] = 0;
-       $main_photo = $first_photo['filepath'];
-       if (! array_identical($full_size, $resized)) {
-         $main_photo = $resized_path;
-       }
+       //$main_photo = $first_photo['filepath'];
+       //if (! array_identical($full_size, $resized)) {
+       //  $main_photo = $resized_path;
+       //}
+       $main_photo = $resized_path;
+       /*dpm($first_photo);
+       dpm($resized_path);
+       dpm($resized);
+       dpm($full_size);*/
        ?>
        <a class="project-photo-wrapper" rel="lightbox[projectphotos]" title="<?=$first_photo['title'];?>" href="/<?=$first_photo['filepath'];?>">
          <img src="/<?=$main_photo;?>"/></a>
+      <? if (sizeof($field_project_photo)): ?>
       <ul id="project-carousel" class="jcarousel-skin-dosomething">
         <?php foreach($field_project_photo as $photo) : ?>
           <li><?php print $photo['view']; ?></li>
         <?php endforeach; ?>
       </ul>
-    <?php endif; ?>
+    <?php endif; endif; ?>
     </div>
 
     <div class="box blue">
@@ -155,7 +161,7 @@ if ($node->locations[0]) {
       <p>people impacted:</p>
       <?php print $field_num_people_impacted[0]['value']; ?>
       <p>people involved:</p>
-      <?php print $field_num_people_involved_rendered; ?>
+      <?php print $field_num_people_involved[0]['value']; ?>
     </div>
     <div id="map_canvas"></div>
 

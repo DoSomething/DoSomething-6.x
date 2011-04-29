@@ -1,5 +1,8 @@
 #!/bin/bash -i
 
+thisDir="$(dirname $0)"
+create_nd_links=${thisDir}/create_nd_links.sh
+
 # move contrib modules out of the way to avoid accidental updates
 rm -rf /home/dosomething/modules
 mv ./modules /home/dosomething
@@ -166,22 +169,4 @@ drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc");
 
 # move folders in nd that also exist in the repository to oldnd .  create symlinks for folders in micro that point from nd/folder1 -> micro/folder1
 
-base=/var/www/html
-nd=$base/nd
-oldnd=$base/oldnd/$(date '+%Y-%m-%d-%H-%M-%S')
-mkdir -p $oldnd
-
-find $base/sites/all/micro/ -maxdepth 1 -mindepth 1 -type d |
-  while read line;
-  do
-    dirname=$(basename $line)
-    link=$nd/$dirname
-    if [[ -e $link ]] ; then
-      mv $link $oldnd
-    fi
-    if [[ ! -e $link ]] ; then
-      ln -s $line $link
-    fi
-  done
-
-
+$create_nd_links

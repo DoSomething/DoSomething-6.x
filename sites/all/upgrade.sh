@@ -163,3 +163,6 @@ drush ev 'ds_upgrade_repair_system();'
 drush ev 'ds_upgrade_repair_forum();'
 drush ev 'ds_upgrade_repair_content();'
 drush ev 'ds_upgrade_repair_emvideo();'
+
+# remove broken blocks
+drush ev 'db_query("DELETE FROM blocks WHERE module=\"block\" AND delta IN (9, 245, 248, 135, 88)");'

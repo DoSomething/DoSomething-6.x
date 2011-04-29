@@ -438,72 +438,6 @@ function emvideo_update_6101() {
 }
 
 /**
- * Fix fields with empty strings that should be NULLs
- */
-function emvideo_update_6102(&$sandbox) {
-  include_once('./'. drupal_get_path('module', 'content') .'/content.install');
-  drupal_load('module', 'content');
-
-  $ret = array();
-
-  if (!isset($sandbox['progress'])) {
-
-    // Get the latest cache values and schema.
-    content_clear_type_cache(TRUE, TRUE);
-    $types = content_types_install();
-
-    if (empty($types)) {
-      return $ret;
-    }
-
-    $sandbox['fields'] = array();
-    foreach ($types as $type_name => $fields) {
-      foreach ($fields as $field) {
-        if ($field['type'] == 'emvideo') {
-          $sandbox['fields'][] = $field;
-        }
-      }
-    }
-
-    if (empty($sandbox['fields'])) {
-      return $ret;
-    }
-
-    $sandbox['progress'] = 0;
-    $sandbox['visited'] = array();
-  }
-
-  $field = $sandbox['fields'][$sandbox['progress']];
-
-  // We only want to process a field once -- if we hit it a second time,
-  // that means it's its own table and it should have already been updated.
-  if (!in_array($field['field_name'], $sandbox['visited'])) {
-    $db_info = content_database_info($field);
-    $table = $db_info['table'];
-    $broken_columns = array($field['field_name'] . '_value', $field['field_name'] . '_provider', $field['field_name'] . '_embed');
-    foreach ($db_info['columns'] as $column => $attributes) {
-      $attributes['not null'] = FALSE;
-      $column = $attributes['column'];
-      // skip columns that don't need fixing
-      if (!in_array($column, $broken_columns)) {
-        continue;
-      }
-      db_change_field($ret, $table, $column, $column, $attributes);
-      db_field_set_no_default($ret, $table, $column);
-      if ($attributes['type'] == 'varchar' || $attributes['type'] == 'text') {
-        $ret[] = update_sql("UPDATE {". $table ."} SET ". $column ." = NULL WHERE ". $column ." = ''");
-      }
-    }
-    $sandbox['visited'][] = $field['field_name'];
-  }
-
-  $sandbox['progress']++;
-  $ret['#finished'] = $sandbox['progress'] / count($sandbox['fields']);
-
-  return $ret;
-}
-
-/**
  *  Batch function to grab the duration for each video field.
  */
 function _emvideo_update_get_duration($field, &$context) {
@@ -523,7 +457,7 @@ function _emvideo_update_get_duration($field, &$context) {
   }
 
   // Work our way through the field values 50 rows at a time.
-  $limit = 50;
+  $limit = 5000;
   $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid > %d AND {$context['sandbox']['col_duration']} = 0 ORDER BY vid ASC", $context['sandbox']['current_node'], 0, $limit);
   while ($row = db_fetch_array($result)) {
     // Fetch the duration from the provider.

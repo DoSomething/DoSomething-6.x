@@ -1,0 +1,126 @@
+<?php
+
+function ds_upgrade_repair_node() {
+  
+  $ret = array();
+
+  db_change_field($ret, 'node', 'type', 'type',
+    array('type' => 'varchar', 'length' => 32, 'not null' => TRUE, 'default' => ''));
+  db_drop_index($ret, 'node', 'idx_node_status_type_created');
+  db_drop_index($ret, 'node', 'nid');
+
+  return $ret;
+
+}
+
+function ds_upgrade_repair_system() {
+
+  $ret = array();
+
+  db_drop_field($ret, 'files', 'vid');
+
+  return $ret;
+
+}
+
+function ds_upgrade_repair_forum() {
+
+  $ret = array();
+
+  db_add_primary_key($ret, 'forum', array('vid'));
+
+  return $ret;
+
+}
+
+function ds_upgrade_repair_content() {
+
+  // These fields should be tinyints, and db_storage should default to 1.
+  db_change_field($ret, 'content_node_field', 'required', 'required', array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0));
+  db_change_field($ret, 'content_node_field', 'multiple', 'multiple', array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 0));
+  db_change_field($ret, 'content_node_field', 'db_storage', 'db_storage', array('type' => 'int', 'size' => 'tiny', 'not null' => TRUE, 'default' => 1));
+
+  // nid columns in nodereference field tables from Drupal 5 are signed,
+  // and should be unsigned. The following code is adapted from the
+  // dynamic schema generation in content_schema().
+  $schema = array();
+  $schema_types = array();
+  $db_result = db_query("SELECT * FROM {". content_instance_tablename() ."} nfi ".
+    " LEFT JOIN {". content_field_tablename() ."} nf ON nf.field_name = nfi.field_name WHERE nf.active = 1 AND nfi.widget_active = 1 AND nf.type = 'nodereference'");
+  while ($field = db_fetch_array($db_result)) {
+    $field['columns'] = unserialize($field['db_columns']);
+    unset($field['db_columns']);
+    $field_table = _content_tablename($field['field_name'], CONTENT_DB_STORAGE_PER_FIELD);
+    $base_schema = content_table_schema($field);
+    if ($field['db_storage'] == CONTENT_DB_STORAGE_PER_FIELD) {
+      if (!isset($schema[$field_table])) {
+        $schema[$field_table] = $base_schema;
+      }
+    } else {
+        $schema_types[$field_table] = $base_schema;
+        $schema_types[$field_table]['type_name'] = $field['type_name'];
+    }
+  }
+
+  // We now have the nodereference field table schemas, and
+  // can change the necessary fields.
+  $nodereference_tables = $schema;
+  foreach ($nodereference_tables as $table => $field_schema) {
+    $field = $field_schema['content fields'][0] . '_nid';
+    $spec = $field_schema['fields'][$field];
+    foreach (array_keys($field_schema['indexes']) as $name) {
+      db_drop_index($ret, $table, $name);
+    }
+    db_drop_primary_key($ret, $table);
+    db_change_field($ret, $table, $field, $field, $spec, $field_schema);
+  }
+
+  $nodereference_types = $schema_types;
+  foreach ($nodereference_types as $table => $field_schema) {
+    $field = $field_schema['content fields'][0] . '_nid';
+    $spec = $field_schema['fields'][$field];
+    db_query("ALTER TABLE content_type_{$field_schema['type_name']} CHANGE $field $field INT unsigned DEFAULT NULL");
+  }
+
+  return $ret;
+  
+}
+
+function ds_upgrade_repair_emvideo() {
+
+  $ret = array();
+
+  $fields = content_fields();
+  foreach ($fields as $field) {
+    if ($field['module'] == 'emvideo') {
+      if ($field['db_storage'] == 0) { // in its own table
+        db_change_field($ret, 'content_' . $field['field_name'],
+          $field['field_name'].'_provider', $field['field_name'].'_provider',
+          array('type' => 'varchar', 'length' => 255, 'not null' => FALSE)
+        );
+        db_change_field($ret, 'content_' . $field['field_name'],
+          $field['field_name'].'_value', $field['field_name'].'_value',
+          array('type' => 'varchar', 'length' => 255, 'not null' => FALSE)
+        );
+        db_query('UPDATE content_' . $field['field_name'] . ' SET ' . $field['field_name'] . '_provider=NULL WHERE ' . $field['field_name'] . '_provider=""');
+        db_query('UPDATE content_' . $field['field_name'] . ' SET ' . $field['field_name'] . '_value=NULL WHERE ' . $field['field_name'] . '_value=""');
+        db_query('UPDATE content_' . $field['field_name'] . ' SET ' . $field['field_name'] . '_embed=NULL WHERE ' . $field['field_name'] . '_embed=""');
+      } else {// in content type table
+        db_change_field($ret, 'content_type_' . $field['type_name'],
+          $field['field_name'].'_provider', $field['field_name'].'_provider',
+          array('type' => 'varchar', 'length' => 255, 'not null' => FALSE)
+        );
+        db_change_field($ret, 'content_type_' . $field['type_name'],
+          $field['field_name'].'_value', $field['field_name'].'_value',
+          array('type' => 'varchar', 'length' => 255, 'not null' => FALSE)
+        );
+        db_query('UPDATE content_type_' . $field['type_name'] . ' SET ' . $field['field_name'] . '_provider=NULL WHERE ' . $field['field_name'] . '_provider=""');
+        db_query('UPDATE content_type_' . $field['type_name'] . ' SET ' . $field['field_name'] . '_value=NULL WHERE ' . $field['field_name'] . '_value=""');
+        db_query('UPDATE content_type_' . $field['type_name'] . ' SET ' . $field['field_name'] . '_embed=NULL WHERE ' . $field['field_name'] . '_embed=""');
+      }
+    }
+  }
+
+  return $ret;
+
+}

@@ -1517,9 +1517,7 @@ function _content_type_info($reset = FALSE) {
       cache_set('content_type_info:'. $language->language, $info, content_cache_tablename());
     }
   }
-
   return $info;
-
 }
 
 /**

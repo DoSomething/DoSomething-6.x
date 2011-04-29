@@ -359,6 +359,8 @@ function _filefield_update_6001_drop_operation($field, &$context) {
   $ret = array();
   $db_info = content_database_info($field);
   // TODO: Now that the data has been migrated we can drop the columns.
-  db_drop_field($ret, $db_info['table'], $db_info['columns']['description']['column']);
+  if (strlen($db_info['columns']['description']['column'])) {
+    db_drop_field($ret, $db_info['table'], $db_info['columns']['description']['column']);
+  }
   $context['finished'] = 1;
 }

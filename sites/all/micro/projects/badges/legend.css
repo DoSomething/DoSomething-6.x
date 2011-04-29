@@ -1,0 +1,5 @@
+ul {list-style-type:none; padding: 0px;}
+ul li { position:relative; padding-bottom:13px; }
+ul li h3 { margin:0px; }
+ul li img { float:left; padding-right: 10px; }
+li:nth-child(even) { background:#DEF3F9; }

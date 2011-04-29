@@ -1,0 +1,27 @@
+div#container div.node.campaign div.blue.box {
+  margin: 3em 0;
+}
+
+div#container div.node.campaign h2.title {
+  padding-bottom: 10px;
+}
+
+img.badge {
+  height: 75px;
+}
+
+div#topicons {
+  width: 500px;
+}
+
+div.share.twitter {
+  padding-right: 10px;
+}
+
+div#topicons > div.share {
+  float: right;
+}
+
+div#topicons > div.campaignbadge {
+  float: left;
+}

@@ -105,12 +105,6 @@ drush en token -y
 drush updb -y 2>>token.txt
 cat token.txt
 
-# token 
-mv /home/dosomething/modules/token ./modules
-drush en token -y
-drush updb -y 2>>token.txt
-cat token.txt
-
 # pathauto 
 mv /home/dosomething/modules/pathauto ./modules
 drush en pathauto -y

@@ -146,9 +146,12 @@ cat logintoboggan.txt
 
 # rest
 mv /home/dosomething/modules/* ./modules
-drush en dosomething_feeds dosomething_forms dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss -y
+drush en dosomething_feeds dosomething_forms dosomething_functions dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss -y
 drush updb -y 2>>rest.txt
 cat rest.txt
+
+# disable useless core statistics module
+drush dis statistics
 
 # make dosomething the default theme and enable it
 drush php-eval 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration", ), ); drupal_execute("system_themes_form", $form_state);'
@@ -160,9 +163,6 @@ drush ev 'ds_upgrade_repair_system();'
 drush ev 'ds_upgrade_repair_forum();'
 drush ev 'ds_upgrade_repair_content();'
 drush ev 'ds_upgrade_repair_emvideo();'
-
-# remove broken blocks
-drush ev 'db_query("DELETE FROM blocks WHERE module=\"block\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
 
 # enable dosomething theme and make it the default
 drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration",),);drupal_execute("system_themes_form", $form_state);'

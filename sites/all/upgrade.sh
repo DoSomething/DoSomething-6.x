@@ -163,3 +163,25 @@ drush ev 'db_query("DELETE FROM blocks WHERE module=\"block\" AND delta IN (1, 2
 
 # enable dosomething theme and make it the default
 drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration",),);drupal_execute("system_themes_form", $form_state);'
+
+# move folders in nd that also exist in the repository to oldnd .  create symlinks for folders in micro that point from nd/folder1 -> micro/folder1
+
+base=/var/www/html
+nd=$base/nd
+oldnd=$base/oldnd/$(date '+%Y-%m-%d-%H-%M-%S')
+mkdir -p $oldnd
+
+find $base/sites/all/micro/ -maxdepth 1 -mindepth 1 -type d |
+  while read line;
+  do
+    dirname=$(basename $line)
+    link=$nd/$dirname
+    if [[ -e $link ]] ; then
+      mv $link $oldnd
+    fi
+    if [[ ! -e $link ]] ; then
+      ln -s $line $link
+    fi
+  done
+
+

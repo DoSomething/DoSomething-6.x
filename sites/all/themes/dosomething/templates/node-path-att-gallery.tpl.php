@@ -11,8 +11,8 @@ if ($view) {
   $view->filter[2]['value'] = $_GET['filter0'];
   $view->exposed_filter[0]['value'] = $_GET['filter0'];
 
-  //print $view->preview('page');
-  print $view->execute_display('default');
+  $display = $view->execute_display('block_1');
+  print $display['content'];
 }
 
 ?>

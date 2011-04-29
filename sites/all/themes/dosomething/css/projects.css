@@ -1,3 +1,61 @@
+
+
+/* BEGIN INDIVIDUAL PROJECT */
+body.section-project div.project-media {
+  text-align: center;
+}
+
+body.section-project div#content div.node-type-project h2 {
+  color: #48bcdc;
+  font-size: 20px;
+  top: -15px;
+}
+
+body.section-project #map_canvas {
+  width: 60%;
+  float: right;
+}
+
+body.section-project div.node-type-project div.box,
+body.section-project #map_canvas {
+  margin: 1em 0;
+}
+
+body.section-project div.node-type-project div.box {
+  padding-top: 0;
+}
+
+body.section-project #map_canvas,
+body.section-project div#stats {
+  height: 200px;
+}
+
+body.section-project div#stats {
+  padding-bottom: 0;
+  text-align: center;
+}
+
+body.section-project .node-type-project #stats  {
+  width: 30%;
+  float: left;
+}
+
+body.section-project .node-type-project #stats p {
+  margin: 0;
+  padding: 0;
+}
+
+body.section-project .node-type-project #stats h3 {
+  text-align: center;
+}
+
+body.section-project .node-type-project #stats .field-field-num-people-impacted,
+body.section-project .node-type-project #stats .field-field-num-people-involved {
+  font-size: 40px;
+  line-height: 1em;
+}
+/* END INDIVIDUAL PROJECT */
+
 div.panel-pane .node-type-project.node-teaser {
   padding: 10px;
 }

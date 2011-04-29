@@ -165,7 +165,7 @@ drush ev 'ds_upgrade_repair_content();'
 drush ev 'ds_upgrade_repair_emvideo();'
 
 # remove broken blocks
-drush ev 'db_query("DELETE FROM blocks WHERE module=\"block\" AND delta IN (9, 245, 248, 135, 88)");'
+drush ev 'db_query("DELETE FROM blocks WHERE module=\"block\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
 
 # enable dosomething theme and make it the default
 drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration",),);drupal_execute("system_themes_form", $form_state);'

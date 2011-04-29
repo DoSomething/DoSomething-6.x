@@ -1,4 +1,4 @@
-name = "DoSomething Feeds"
+name = "Feeds"
 description = "Custom Feeds"
 core = 6.x
 package = DoSomething

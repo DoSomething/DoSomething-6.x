@@ -1,5 +1,5 @@
-name = Do Something Forms
+name = Forms
 description = "Handling for forms on Do Something"
-package = Do Something
+package = DoSomething
 version = 6.x-2.0
 core = 6.x

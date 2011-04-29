@@ -1,5 +1,5 @@
 core = 6.x
-name = DoSomething Functions
+name = Functions
 description = php functions used across the site
 version = "6.x-1.0"
-package = Do Something
+package = DoSomething

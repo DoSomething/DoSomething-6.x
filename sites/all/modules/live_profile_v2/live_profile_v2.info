@@ -1,5 +1,5 @@
 name = Live Profile
 description = "In-place editing of user profiles"
-package = Do Something
+package = DoSomething
 version = 6.x-0.2
 core = 6.x

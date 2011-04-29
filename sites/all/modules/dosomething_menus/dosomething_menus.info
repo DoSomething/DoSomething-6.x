@@ -1,4 +1,4 @@
-name = "DoSomething Menus"
+name = "Menus"
 description = "Secondary Nav Menus"
 core = 6.x
 package = DoSomething

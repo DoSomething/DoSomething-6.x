@@ -1,4 +1,4 @@
-name = "DoSomething Act Now Matrix"
+name = "Act Now Matrix"
 description = "Tool for navigating action guides"
 core = 6.x
 package = DoSomething

@@ -1,4 +1,4 @@
-name = "DoSomething Upgrade Cleanup"
+name = "Upgrade Cleanup"
 description = "Convenience functions to fix up schema post-upgrade"
 core = 6.x
 package = DoSomething

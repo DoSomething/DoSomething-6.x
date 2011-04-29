@@ -1,5 +1,5 @@
 core = 6.x
-name = DS Signup
+name = Signup
 description = Signup top right block
 version = "6.x-1.0"
-package = Do Something
+package = DoSomething

@@ -1,4 +1,4 @@
-name = "DoSomething Projects"
+name = "Projects"
 description = "Project Search"
 core = 6.x
 package = DoSomething

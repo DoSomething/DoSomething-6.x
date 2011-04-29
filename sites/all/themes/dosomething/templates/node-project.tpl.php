@@ -78,7 +78,6 @@
   drupal_add_js(path_to_theme() . '/js/jcarousel/lib/jquery.jcarousel.min.js');
   drupal_add_js(path_to_theme() . '/js/project.js');
   drupal_add_css(path_to_theme() . '/js/jcarousel/style.css');
-  drupal_add_css('nd/projects/project.css');
   drupal_add_css(path_to_theme() . '/js/jcarousel/skins/dosomething/skin.css');
 ?>
 

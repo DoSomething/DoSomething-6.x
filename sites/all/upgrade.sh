@@ -152,3 +152,14 @@ mv /home/dosomething/modules/* ./modules
 drush en dosomething_feeds dosomething_forms dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss -y
 drush updb -y 2>>rest.txt
 cat rest.txt
+
+# make dosomething the default theme and enable it
+drush php-eval 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration", ), ); drupal_execute("system_themes_form", $form_state);'
+
+# fix up schema problems
+drush en dosomething_upgrade -y
+drush ev 'ds_upgrade_repair_node();'
+drush ev 'ds_upgrade_repair_system();'
+drush ev 'ds_upgrade_repair_forum();'
+drush ev 'ds_upgrade_repair_content();'
+drush ev 'ds_upgrade_repair_emvideo();'

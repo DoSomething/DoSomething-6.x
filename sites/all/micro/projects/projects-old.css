@@ -1,0 +1,9 @@
+div.project div.box { position:relative; padding-bottom: 5px; padding-top: 15px; }
+div.project div.box h2 { position:absolute; }
+div.project h2, div#sidebar-right h2, div#sidebar-right h2 *,div.project + div#comments h2 { color: #48BCDC; font-size:20px; }
+div.project * { color: #0F3B70; }
+div.project span.number { font-size:40px; }
+div.project span.name * { color:#fec333; }
+div.project p.authorinfo, div.project p.authorinfo * { font-weight:bold; }
+div.project div.slideshow-positioner.badges { height:75px; padding: 6px 0px 6px 13px; }
+div.project div.slideshow-positioner.photos { height:120px; padding-left: 13px; }

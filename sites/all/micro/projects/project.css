@@ -1,3 +1,7 @@
+div.project-media {
+  text-align: center;
+}
+
 div#content div.node-type-project h2 {
   color: #48bcdc;
   font-size: 20px;

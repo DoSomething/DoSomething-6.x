@@ -1,0 +1,5 @@
+<?
+function array_identical($a, $b) {
+  return (is_array($a) && is_array($b) && array_diff_assoc($a, $b) === array_diff_assoc($b, $a));
+}
+

@@ -78,7 +78,7 @@
   drupal_add_js(path_to_theme() . '/js/jcarousel/lib/jquery.jcarousel.min.js');
   drupal_add_js(path_to_theme() . '/js/project.js');
   drupal_add_css(path_to_theme() . '/js/jcarousel/style.css');
-  drupal_add_css(path_to_theme() . '/css/project.css');
+  drupal_add_css('nd/projects/project.css');
   drupal_add_css(path_to_theme() . '/js/jcarousel/skins/dosomething/skin.css');
 ?>
 
@@ -122,14 +122,28 @@ if ($node->locations[0]) {
   <?php endif; ?>
 
   <div class="content">
-
-    <?php if ($field_project_photo): ?>
+    <div class="project-media">
+    <?php if ($field_project_photo):
+       $first_photo = array_shift($field_project_photo);
+       $full_size = image_get_info('/var/www/html/'.$first_photo['filepath']);
+       $resized_path = imagecache_create_path('project_highlighted_photo', $first_photo['filepath']);
+       $resized = image_get_info('/var/www/html/'.$resized_path);
+       $full_size['file_size'] = 0;
+       $resized['file_size'] = 0;
+       $main_photo = $first_photo['filepath'];
+       if (! array_identical($full_size, $resized)) {
+         $main_photo = $resized_path;
+       }
+       ?>
+       <a class="project-photo-wrapper" rel="lightbox[projectphotos]" title="<?=$first_photo['title'];?>" href="/<?=$first_photo['filepath'];?>">
+         <img src="/<?=$main_photo;?>"/></a>
       <ul id="project-carousel" class="jcarousel-skin-dosomething">
         <?php foreach($field_project_photo as $photo) : ?>
           <li><?php print $photo['view']; ?></li>
         <?php endforeach; ?>
       </ul>
     <?php endif; ?>
+    </div>
 
     <div class="box blue">
       <h2>the problem:</h2>

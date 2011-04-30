@@ -170,3 +170,16 @@ drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc");
 # move folders in nd that also exist in the repository to oldnd .  create symlinks for folders in micro that point from nd/folder1 -> micro/folder1
 
 $create_nd_links
+
+# disable broken blocks
+drush ev 'db_query("UPDATE blocks SET status=0,region=\"\" WHERE module=\"block\" AND theme=\"dosomething\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
+
+# set up new blocks
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 0, -1, \"navigation\", \"whatsyourthing\r\nwhatsyourthing/*\r\ntipsandtools/*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 1, -1, \"navigation\", \"sharesomething/rantandrave/*\r\nactnow/volunteer\r\nvolunteer\r\nactnow/tipsandtools/*\r\nactnow/actionguide/*\r\nactnow\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 2, -1, \"navigation\", \"clubs\r\nclubs/*\r\nnode/add/club\r\nog/invite/*\r\nclub\r\nclub/*\r\nactnow/club/*\r\nog_calendar/*\r\nog/users/*\r\nog/manage/*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 3, -1, \"navigation\", \"grants/database\r\ngrants/*\r\ngrants\r\npbteen\r\nPBteen\r\nPBTeen\r\nawards\r\nawards/*\r\nprograms\r\nprograms*\r\nds-award-winners/*\r\npeace-players\r\nprograms/awards\r\nprograms/awards/*\r\npage/september-11th-national-day-service-and-remembrance\r\nlost-and-found\r\nPBteen\r\nabuse/confirm\r\nPrograms\r\ngrant-database-entry*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 4, -1, \"navigation\", \"training\r\ntraining/*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 5, -1, \"navigation\", \"staff-blog/*\r\nabout\r\nabout/*\r\napi/doc\r\ndev/donate3\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_matrix\", \"dosomething\", 1, -128, 0, 8, \"right\", \"front\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(0, 0, \"\", \"dosomething_matrix\", \"dosomething\", 0, -128, 1, 8, \"\", \"\")");'

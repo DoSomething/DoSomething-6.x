@@ -167,10 +167,6 @@ drush ev 'ds_upgrade_repair_emvideo();'
 # enable dosomething theme and make it the default
 drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration",),);drupal_execute("system_themes_form", $form_state);'
 
-# move folders in nd that also exist in the repository to oldnd .  create symlinks for folders in micro that point from nd/folder1 -> micro/folder1
-
-$create_nd_links
-
 # disable broken blocks
 drush ev 'db_query("UPDATE blocks SET status=0,region=\"\" WHERE module=\"block\" AND theme=\"dosomething\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
 
@@ -183,3 +179,10 @@ drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme
 drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 5, -1, \"navigation\", \"staff-blog/*\r\nabout\r\nabout/*\r\napi/doc\r\ndev/donate3\")");'
 drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_matrix\", \"dosomething\", 1, -128, 0, 8, \"right\", \"front\")");'
 drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(0, 0, \"\", \"dosomething_matrix\", \"dosomething\", 0, -128, 1, 8, \"\", \"\")");'
+
+# fix breadcrumbs
+drush ev '$old = variable_get("theme_dosomething_settings", NULL); $old["zen_breadcrumb"] = "no"; variable_set("theme_dosomething_settings", $old);'
+
+# move folders in nd that also exist in the repository to oldnd .  create symlinks for folders in micro that point from nd/folder1 -> micro/folder1
+
+$create_nd_links

@@ -158,9 +158,10 @@ if ($node->locations[0]) {
     <div id="stats" class="box blue">
       <h2>vital stats:</h2>
       <p>people impacted:</p>
-      <?php print $field_num_people_impacted[0]['value']; ?>
+      <span class="number"><?=number_format($field_num_people_impacted[0]['value']);?></span>
       <p>people involved:</p>
-      <?php print $field_num_people_involved[0]['value']; ?>
+      <span class="number"><?number_format($field_num_people_involved[0]['value']);?></span>
+      <br/>
     </div>
     <div id="map_canvas"></div>
 

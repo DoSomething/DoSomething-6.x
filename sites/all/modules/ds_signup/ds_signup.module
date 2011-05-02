@@ -5,7 +5,7 @@ function ds_signup_block($op = 'list', $delta = 0, $edit = array()) {
 
   if ($op == 'list') {
     $blocks[0]['info'] = 'Signup top right';
-    $blocks[0]['cache'] = BLOCK_CACHE_GLOBAL;
+    $blocks[0]['cache'] = BLOCK_NO_CACHE;
   } else if ($op == 'view') {
     switch ($delta) {
       case 0:

@@ -146,9 +146,12 @@ cat logintoboggan.txt
 
 # rest
 mv /home/dosomething/modules/* ./modules
-drush en dosomething_feeds dosomething_forms dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss -y
+drush en dosomething_feeds dosomething_forms dosomething_functions dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss -y
 drush updb -y 2>>rest.txt
 cat rest.txt
+
+# disable useless core statistics module
+drush dis statistics
 
 # make dosomething the default theme and enable it
 drush php-eval 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration", ), ); drupal_execute("system_themes_form", $form_state);'
@@ -161,11 +164,24 @@ drush ev 'ds_upgrade_repair_forum();'
 drush ev 'ds_upgrade_repair_content();'
 drush ev 'ds_upgrade_repair_emvideo();'
 
-# remove broken blocks
-drush ev 'db_query("DELETE FROM blocks WHERE module=\"block\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
-
 # enable dosomething theme and make it the default
 drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration",),);drupal_execute("system_themes_form", $form_state);'
+
+# disable broken blocks
+drush ev 'db_query("UPDATE blocks SET status=0,region=\"\" WHERE module=\"block\" AND theme=\"dosomething\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
+
+# set up new blocks
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 0, -1, \"navigation\", \"whatsyourthing\r\nwhatsyourthing/*\r\ntipsandtools/*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 1, -1, \"navigation\", \"sharesomething/rantandrave/*\r\nactnow/volunteer\r\nvolunteer\r\nactnow/tipsandtools/*\r\nactnow/actionguide/*\r\nactnow\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 2, -1, \"navigation\", \"clubs\r\nclubs/*\r\nnode/add/club\r\nog/invite/*\r\nclub\r\nclub/*\r\nactnow/club/*\r\nog_calendar/*\r\nog/users/*\r\nog/manage/*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 3, -1, \"navigation\", \"grants/database\r\ngrants/*\r\ngrants\r\npbteen\r\nPBteen\r\nPBTeen\r\nawards\r\nawards/*\r\nprograms\r\nprograms*\r\nds-award-winners/*\r\npeace-players\r\nprograms/awards\r\nprograms/awards/*\r\npage/september-11th-national-day-service-and-remembrance\r\nlost-and-found\r\nPBteen\r\nabuse/confirm\r\nPrograms\r\ngrant-database-entry*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 4, -1, \"navigation\", \"training\r\ntraining/*\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 5, -1, \"navigation\", \"staff-blog/*\r\nabout\r\nabout/*\r\napi/doc\r\ndev/donate3\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_matrix\", \"dosomething\", 1, -128, 0, 8, \"right\", \"front\")");'
+drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(0, 0, \"\", \"dosomething_matrix\", \"dosomething\", 0, -128, 1, 8, \"\", \"\")");'
+
+# fix breadcrumbs
+drush ev '$old = variable_get("theme_dosomething_settings", NULL); $old["zen_breadcrumb"] = "no"; variable_set("theme_dosomething_settings", $old);'
 
 # move folders in nd that also exist in the repository to oldnd .  create symlinks for folders in micro that point from nd/folder1 -> micro/folder1
 

@@ -1,6 +1,14 @@
 
 
 /* BEGIN INDIVIDUAL PROJECT */
+body.section-project #page {
+  line-height: normal;
+}
+
+body.section-project .number {
+  color: #0F3B70;
+  font-size: 40px;
+}
 body.section-project div.project-media {
   text-align: center;
 }
@@ -27,7 +35,7 @@ body.section-project div.node-type-project div.box {
 
 body.section-project #map_canvas,
 body.section-project div#stats {
-  height: 200px;
+  min-height: 200px;
 }
 
 body.section-project div#stats {

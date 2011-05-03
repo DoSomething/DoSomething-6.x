@@ -68,7 +68,7 @@ endif; ?>
 
 </div>
 
-<?php $form['preview']['#access'] = false; ?>
+<?php $form['buttons']['preview']['#access'] = false; ?>
 
 <div style="display:none">
   <?php print drupal_render($form);?>

@@ -143,7 +143,7 @@ if ($user_zip && ! isset($zip)) {
 <div style="clear:both"></div>
 </div>
 
-<?php $form['preview']['#access'] = false; ?>
+<?php $form['buttons']['preview']['#access'] = false; ?>
 
 <div style="display:none">
   <?php print drupal_render($form);?>

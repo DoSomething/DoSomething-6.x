@@ -92,7 +92,7 @@ cat panels.txt
 # imagecache 
 mv /home/dosomething/modules/imageapi ./modules
 mv /home/dosomething/modules/imagecache ./modules
-drush en imageapi imageapi_ds imagecache imagecache_ui -y
+drush en imageapi imageapi_gd imagecache imagecache_ui -y
 drush updb -y 2>>imagecache.txt
 cat imagecache.txt
 

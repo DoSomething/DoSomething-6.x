@@ -151,7 +151,7 @@ drush updb -y 2>>rest.txt
 cat rest.txt
 
 # disable useless core statistics module
-drush dis statistics
+drush dis statistics -y
 
 # make dosomething the default theme and enable it
 drush php-eval 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration", ), ); drupal_execute("system_themes_form", $form_state);'

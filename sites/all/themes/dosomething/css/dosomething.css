@@ -579,3 +579,7 @@ div.block h3 {
   line-height: 1em;
   color: #0F3B70;
 }
+
+tr.odd .form-item, tr.even .form-item {
+  white-space: normal;
+}

@@ -24,15 +24,18 @@
 .view-issue .node-type-issue .blue {
   width: 212px;
   float: left;
+  background: #def3f9;
+  padding: 15px;
 }
 
-.view-issue .node-type-issue .learn {
+.view-issue .node-type-issue div.learn {
   margin-right: 20px;
 }
 
 .view-issue .views-row-odd .node-type-issue {
   padding-right: 0px;
 }
+
 .view-issue .node-type-issue .blue img {
   float: none;
 }
@@ -74,9 +77,13 @@
 }
 
 .view-issue .blue h3 {
-  text-align: center;
   margin: 1em 0;
   padding: 0;
+}
+
+.view-issue .blue ol {
+  padding: 0;
+  margin: 0;
 }
 
 .view-issue .blue ol li {

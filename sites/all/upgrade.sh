@@ -168,7 +168,7 @@ drush ev 'ds_upgrade_repair_emvideo();'
 drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration",),);drupal_execute("system_themes_form", $form_state);'
 
 # disable broken blocks
-drush ev 'db_query("UPDATE blocks SET status=0,region=\"\" WHERE module=\"block\" AND theme=\"dosomething\" AND delta IN (1, 2, 9, 88, 135, 245, 248)");'
+drush ev 'db_query("UPDATE blocks SET status=0,region=\"\" WHERE module=\"block\" AND theme=\"dosomething\" AND delta IN (1, 2, 9, 88, 102, 135, 245, 248)");'
 
 # set up new blocks
 drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 0, -1, \"navigation\", \"whatsyourthing\r\nwhatsyourthing/*\r\ntipsandtools/*\")");'

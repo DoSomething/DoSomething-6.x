@@ -3,6 +3,7 @@
 base=/var/www/html
 nd=$base/nd
 oldnd=$base/oldnd/$(date '+%Y-%m-%d-%H-%M-%S')
+mkdir -p $nd
 mkdir -p $oldnd
 
 find $base/sites/all/micro/ -maxdepth 1 -mindepth 1 -type d |

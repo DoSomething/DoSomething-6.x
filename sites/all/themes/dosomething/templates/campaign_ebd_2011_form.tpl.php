@@ -1,8 +1,5 @@
 <?
-//drupal_set_message('<pre>'.print_r($form,true).'</pre>');
-if (user_access('administer nodes')) {
-  //print '<pre>'.print_r($form,TRUE).'</pre>';
-}
+$form['options']['sticky'] = NULL;
 $form['preview']['#access'] = false;
 $form['locations']['#access'] = false;
 $form['group_show_us_what_you_did']['field_campaign_video']['#collapsible'] = true;

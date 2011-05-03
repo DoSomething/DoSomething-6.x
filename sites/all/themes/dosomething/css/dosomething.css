@@ -236,11 +236,6 @@ hr {
   clear: both;
 }
 
-.blue ol {
-  margin: 0 0 1em;
-  padding: 0;
-}
-
 div.block.features {
   width: 496px;
   padding: 1em 5px 0;
@@ -557,6 +552,12 @@ div.box h2 {
   font-weight: bold;
   position: relative;
   top: -16px;
+}
+
+div.box h3 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-bottom: 1em;
 }
 
 div.callout {

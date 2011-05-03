@@ -73,12 +73,14 @@
  * @see zen_process()
  */
 ?>
+
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
   <?php print $user_picture; ?>
 
   <?php if (!$page): ?>
     <h2 class="title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
   <?php else: ?>
+    <?php print $node->field_pageheader[0]['value']; ?>
     <h2 class="title"><?php print $title; ?></h2>
   <?php endif; ?>
 

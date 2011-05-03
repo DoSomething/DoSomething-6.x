@@ -33,14 +33,14 @@ print $view_2011->execute_display('block');
 print '<div style="clear:both"></div>';
 ?>
 
-<form id="browse-projects">
+<!--<form id="browse-projects">
 <label for="select-type">Browse by videos or advocacy projects:</label>
 <select id="select-type">
 <option value="" selected="selected">All</option>
 <option value="video">Videos</option>
 <option value="project">Advocacy projects</option>
 </select>
-</form>
+</form>-->
 
 
 <script type="text/javascript">

@@ -1,6 +1,6 @@
 <?
 $form['options']['sticky'] = NULL;
-$form['preview']['#access'] = false;
+$form['buttons']['preview']['#access'] = false;
 $form['locations']['#access'] = false;
 $form['group_show_us_what_you_did']['field_campaign_video']['#collapsible'] = true;
 $form['group_show_us_what_you_did']['field_campaign_video']['#collapsed'] = true;

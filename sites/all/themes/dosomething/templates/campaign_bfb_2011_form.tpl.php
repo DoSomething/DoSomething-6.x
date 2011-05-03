@@ -65,7 +65,7 @@ endif;
 
 <?php
  
- $form['preview']['#access'] = false;
+ $form['buttons']['preview']['#access'] = false;
 
   //print '<!--<pre>'.print_r($form,TRUE).'</pre>-->';
 ?>

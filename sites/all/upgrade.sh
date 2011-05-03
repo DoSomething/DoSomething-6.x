@@ -146,7 +146,7 @@ cat logintoboggan.txt
 
 # rest
 mv /home/dosomething/modules/* ./modules
-drush en dosomething_feeds dosomething_forms dosomething_functions dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss -y
+drush en dosomething_feeds dosomething_forms dosomething_functions dosomething_matrix dosomething_menus dosomething_projects ds_mobile ds_signup features filter_perms live_profile_v2 shadowbox views_rss auto_nodetitle -y
 drush updb -y 2>>rest.txt
 cat rest.txt
 

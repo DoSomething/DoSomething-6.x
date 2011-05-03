@@ -92,7 +92,7 @@ cat panels.txt
 # imagecache 
 mv /home/dosomething/modules/imageapi ./modules
 mv /home/dosomething/modules/imagecache ./modules
-drush en imageapi imageapi_ds imagecache imagecache_ui -y
+drush en imageapi imageapi_gd imagecache imagecache_ui -y
 drush updb -y 2>>imagecache.txt
 cat imagecache.txt
 
@@ -151,7 +151,7 @@ drush updb -y 2>>rest.txt
 cat rest.txt
 
 # disable useless core statistics module
-drush dis statistics
+drush dis statistics -y
 
 # make dosomething the default theme and enable it
 drush php-eval 'require_once(drupal_get_path("module", "system")."/system.admin.inc"); $form_state = array("values" => array("status" => array("dosomething" => "dosomething"), "theme_default" => "dosomething", "op" => "Save configuration", ), ); drupal_execute("system_themes_form", $form_state);'
@@ -169,6 +169,9 @@ drush ev 'require_once(drupal_get_path("module", "system")."/system.admin.inc");
 
 # disable broken blocks
 drush ev 'db_query("UPDATE blocks SET status=0,region=\"\" WHERE module=\"block\" AND theme=\"dosomething\" AND delta IN (1, 2, 9, 88, 102, 135, 245, 248)");'
+
+# fix signup block
+drush ev 'db_query("UPDATE blocks SET cache=-1 WHERE module=\"ds_signup\" AND theme=\"dosomething\" AND delta=0");'
 
 # set up new blocks
 drush ev 'db_query("INSERT INTO blocks (visibility, custom, title, module, theme, status, weight, delta, cache, region, pages) VALUES(1, 0, \"\", \"dosomething_menus\", \"dosomething\", 1, -128, 0, -1, \"navigation\", \"whatsyourthing\r\nwhatsyourthing/*\r\ntipsandtools/*\")");'

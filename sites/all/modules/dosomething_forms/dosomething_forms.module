@@ -7,6 +7,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
   //
   // contenttype node form
   //
+  $form['#attributes']['class'] .= ' ' . $form_id;
   if (substr($form_id, -10) == '_node_form') {
 
     //$form['body_field']['body']['#rows'] = 5;

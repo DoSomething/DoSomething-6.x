@@ -150,6 +150,11 @@ if ($node->locations[0]) {
     <?php endif; endif; ?>
     </div>
 
+    <?php if ($field_embedded_video[0]['embed']):?>
+    <br/><a href="#video">Check out our videos!</a>
+    <?php endif;?>
+
+
     <div class="box blue">
       <h2>the problem:</h2>
       <?php print check_markup($field_essay_see_it[0]['value']); ?>
@@ -160,7 +165,7 @@ if ($node->locations[0]) {
       <p>people impacted:</p>
       <span class="number"><?=number_format($field_num_people_impacted[0]['value']);?></span>
       <p>people involved:</p>
-      <span class="number"><?number_format($field_num_people_involved[0]['value']);?></span>
+      <span class="number"><?=number_format($field_num_people_involved[0]['value']);?></span>
       <br/>
     </div>
     <div id="map_canvas"></div>
@@ -183,9 +188,21 @@ if ($node->locations[0]) {
     </div>
 
     <div class="box">
-    <h2>project updates</h2>
+    <h2>project updates:</h2>
       <?php print views_embed_view('project_updates', 'default', $nid); ?>
     </div>
+
+     <?php
+        if ($field_embedded_video && $field_embedded_video[0]['embed']) { ?>
+          <div class="box">
+          <h2 id="video">videos:</h2>
+        <?
+          foreach ($field_embedded_video as $video) {
+            print $video['view'];
+          } ?>
+        </div>
+    <?  } ?>
+
 
   </div>
 

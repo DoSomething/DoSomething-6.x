@@ -1,0 +1,3 @@
+<?php
+
+include_once('campaign_views_before_2011.features.inc');

@@ -1,8 +1,0 @@
-core = "6.x"
-dependencies[] = "location"
-dependencies[] = "views"
-features[views][] = "ebd_2011_projects"
-features[views][] = "ebd_2011_signup"
-features[views_api][] = "api:2"
-name = "ds_epic"
-package = "Features"

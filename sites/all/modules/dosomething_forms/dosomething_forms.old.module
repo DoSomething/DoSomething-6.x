@@ -1,0 +1,2465 @@
+<?php
+function dosomething_forms_perm()
+{
+	return array(
+		'administer help desk', 
+		'administer grant applications', 
+		'administer clubs',
+		'administer projects',
+		'add updates to any project', 
+		'use granular project taxonomy',
+    'special do something u'
+	);
+}
+
+function _dosomething_forms_fieldval($field)
+{
+	if(is_array($field) && sizeof($field) && isset($field[0]['value']))
+		return $field[0]['value'];
+}
+
+/*
+ * now that we're not pulling opps, no longer necessary
+ *
+
+function dosomething_forms_cron()
+{
+	// clear out volunteer opps with debug messages
+	$result = db_query("SELECT nid FROM {node} WHERE type='volunteer_opp' AND title LIKE '%__NOTICE__%' LIMIT 1000");
+	while($row = db_fetch_object($result))
+		node_delete($row->nid);
+	
+	// delete legacy duplicate volunteer opps (the right way)
+	$result = db_query("SELECT n.nid,v.vid FROM {ds_volunteer_vm} v INNER JOIN {node} n on v.vid=n.vid WHERE v.opp_id=1 AND n.type='volunteer_opp' LIMIT 1000");
+	while($row = db_fetch_object($result))
+		 node_delete($row->nid);
+		 
+	drupal_get_messages();
+	
+	
+	// export virtual volunteer opportunities
+	$filename = 'virtual_volunteer_opportunities.csv';
+	// once a week, and in the middle of the night, export the volunteer opp db
+	$hour = max((intval(date('G')) - 2),0);
+	if(TRUE || ($hour<2))
+	{
+		if((!file_exists($filename)) || ((time() - filemtime($filename))>(7*24*60*60)))
+		{
+			if($f = fopen($filename,'w'))
+			{
+				$result = db_query("SELECT n.title,d.org_name,d.start_date,d.end_date FROM {ds_volunteer_opp} d INNER JOIN {node} n ON d.vid=n.vid WHERE d.vid NOT IN (SELECT eid FROM {location})");
+				while($row = db_fetch_array($result))
+					fputcsv($f,$row);
+				fclose($f);
+			}
+		}
+	}
+}
+ */
+
+
+function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL)
+{
+	global $user;
+	switch($node->type)
+	{
+		case 'club':
+
+			if($op=='submit')
+			{
+
+        $oldnode = node_load(array('nid' => $node->nid));
+
+			  // prevent non-admins from changing clubs' published status
+				if(!user_access('administer clubs'))
+				{
+					if($oldnode)
+					{
+						$node->status = $oldnode->status;
+					}
+				}
+
+        // if status is unpublished->published, curl to DiA
+        if ($oldnode->status == 0 && $node->status == 1) {
+
+          $ch = curl_init();
+
+          $data = array(
+          'First_Name' => $_POST['field_name'][0]['value'],
+          'Last_Name' => $_POST['field_name_last'][0]['value'],
+          'Organization' => $_POST['field_school'][0]['value'],
+          'Email' => $_POST['field_email'][0]['value'],
+          'Phone' => $_POST['field_phone_required'][0]['value'],
+          'Street' => $_POST['field_club_address'][0]['value'],
+          'City' => $_POST['field_club_city'][0]['value'],
+          'State' => $_POST['field_club_state']['key'],
+          'Zip' => $_POST['field_club_zip'][0]['value'],
+          'link' => 'groups',
+          'linkKey' => '57204',
+          'table' => 'supporter',
+          'organization_KEY' => '5216');
+
+          $items = array();
+
+          foreach($data as $key=>$item){
+            // drupal_set_message("$key => *$item*");
+            if ($item !== '') {
+              $items[] = "$key=".$item;
+            }
+          }
+
+          $string = "?".implode('&',$items);
+
+          // $msg = 'Going to: http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string);
+
+          curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string));
+
+          if (curl_exec($ch) === false) {
+            // $msg .= 'Curl error: '.curl_error($ch);
+          }
+          // drupal_set_message($msg);
+
+        }
+
+			}
+			break;
+	
+		case 'help_ticket':
+			if($op=='view')
+			{
+				if(!user_access('administer help desk'))
+					drupal_access_denied();
+			}
+			break;
+		
+		case 'dsaward_app':
+      if ($op == 'prepare') {
+        if ($node->field_application_status[0]['value'] == 1
+             && $node->nid
+             && arg(2) === "edit"
+             && !user_access('administer nodes')) {
+          drupal_set_message("This application has already been submitted for approval and cannot be edited. Contact Amanda Ashton (aashton@dosomething.org) to request permission to further edit this application.");
+          drupal_goto('node/'.$node->nid);
+        }
+      }
+      break;
+
+    case 'ds_award_judging':
+      if ($op == 'submit') {
+        drupal_set_message("Your submission was received.  Feel free to judge more now or come back later!");
+
+      }
+
+      break;
+		case 'grant_application':
+    case 'grant':
+		//case 'my_new_grant_app_node_type':
+			if($op=='view')
+			{
+				if((!user_access('administer grant applications'))&&($user->uid!=$node->uid))
+					drupal_access_denied();
+			}
+			elseif($op=='validate')			
+			{
+				if(_dosomething_forms_fieldval($node->field_application_status)==1)
+				{
+					// oh! actually, this is enforced with javascript already. nevermind.
+        } else {
+          // drupal_set_message("should unrequire");
+        }
+			}
+			elseif($op=='submit')
+			{
+				// prevent the unwashed masses from publishing grant applications
+				if(!user_access('administer grant applications'))
+					$node->status = 0;
+			}		
+      elseif($op=='prepare') {
+        if ($node->field_application_status[0]['value'] == 1
+             && $node->nid
+             && arg(2) === "edit"
+             && !user_access('administer nodes')) {
+          drupal_set_message("This application has already been submitted for approval. Contact Amanda Ashton (aashton@dosomething.org) to request permission to further edit this application.");
+          drupal_goto('node/'.$node->nid);
+        }
+      }
+
+			break;	
+
+    case 'tackle_hunger':
+      change_message_when_content_is_created($op,'Tackle Hunger', "Sweet, thanks for your pledge!  We can't wait to hear how much food you collected :)");
+      if ($op == 'insert' && user_access('administer nodes')) {
+        drupal_set_message('<pre>'.print_r($_SESSION['messages'],'TRUE'),'</pre>');
+      }
+      break;
+    case 'campaign_bfb_2011':
+      if ($op == 'submit') {
+        $node->taxonomy[5] = array(0 => 8184); // hard-coding taxonomy issue: music education
+      }
+      break;
+    case 'campaign_ebd_2011':
+      if ($op == 'submit') {
+        $node->taxonomy[5] = array(0 => 77); // hard-coding taxonomy issue: music education
+        $node->locations[0]['postal_code'] = $user->profile_zip;
+      }
+      break;
+    case 'campaign_gys_2011':
+      if ($op == 'view') {
+        if (isset($_SESSION['next'])) {
+//drupal_set_message('viewing campaign_gys_2011');
+          $next = $_SESSION['next'];
+          $nextquery = $_SESSION['nextquery'];
+          unset($_SESSION['next']);
+          unset($_SESSION['nextquery']);
+          drupal_set_message('Here is your school page.  Share it with your friends on Facebook and Twitter for a chance to win cool prizes!');
+          drupal_goto($path = $next, $query = $nextquery, $fragment = NULL, $http_response_code = 302);
+        }
+      }
+      if ($op == 'submit') {
+        $node->title = db_result(db_query("SELECT title FROM node WHERE nid = %d", $node->field_signup_nid[0]['value']));
+        $node->taxonomy[5] = array(0 => 20); // hard-coding taxonomy issue: environment
+        $signup_node = node_load($node->field_signup_nid[0]['value']);
+        if (! isset($_SESSION['next'])) {
+          $_SESSION['next'] = '/green-your-school/browse-schools';
+          $_SESSION['nextquery'] = 'name='.$node->title.'&zip='.$signup_node->locations[0]['postal_code'];
+        }
+        //drupal_set_message('<pre>'.print_r($node,TRUE).'</pre>');
+      }
+      break;
+    case 'gys_2011':
+      change_message_when_content_is_created($op,'Green Your School 2011', "Sweet, thanks for posting your plan!");
+      if ($op == 'view') {
+        if (isset($_SESSION['next'])) {
+          $next = $_SESSION['next'];
+          $nextquery = $_SESSION['nextquery'];
+          unset($_SESSION['next']);
+          unset($_SESSION['nextquery']);
+          if ($next == 'green-your-school/report-back') {
+            drupal_set_message('Now you can report back on all the awesome ways you greened your school.');
+          } else {
+            drupal_set_message('Here is your school page.  Share it with your friends on Facebook and Twitter for a chance to win cool prizes!');
+          }
+          //drupal_goto($path = $next, $query = $nextquery, $fragment = NULL, $http_response_code = 302);
+        }
+      }
+      if ($op == 'submit') {
+global $user;
+if (user_access('administer nodes') || $user->uid == 466855) {
+//  drupal_set_message('<pre>'.print_r($node,TRUE).'</pre>');
+}
+
+        //print '<pre>'.print_r($node,TRUE).'</pre>';
+          if ($_GET['enroll']) {
+            $_SESSION['pagemsg'] = 'Sweet, you are enrolled in your school!  This is your school page- share it with your friends on Facebook and Twitter for a chance to win cool prizes!  Also, remember to <a href="/green-your-school/report-back">report back</a> on how your project came together.';
+          }
+
+          if (! isset($_SESSION['next'])) {
+            $_SESSION['next'] = 'green-your-school/browse-schools';
+            $_SESSION['nextquery'] = 'name='.$node->title.'&zip='.$node->locations[0]['postal_code'];
+          }
+          $ch = curl_init();
+
+          $data = array(
+          'First_Name' => $user->profile_fname,
+          'Last_Name' => $user->profile_lname,
+          'Organization' => $_POST['title'],
+          'Email' => $user->mail,
+          'Phone' => $user->profile_cell,
+          'Street' => $user->profile_address1,
+          'City' => $user->profile_city,
+          'State' => $user->profile_state,
+          'Zip' => $user->profile_zip,
+          'link' => 'groups',
+          'linkKey' => '100087',
+          'table' => 'supporter',
+          'organization_KEY' => '5216');
+
+          $items = array();
+
+          foreach($data as $key=>$item){
+            // drupal_set_message("$key => *$item*");
+            if ($item !== '') {
+              $items[] = "$key=".$item;
+            }
+          }
+
+          $string = "?".implode('&',$items);
+
+          // $msg = 'Going to: http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string);
+
+          curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string));
+
+          if (curl_exec($ch) === false) {
+            // $msg .= 'Curl error: '.curl_error($ch);
+          }
+          // drupal_set_message($msg);
+      }
+
+
+      break;
+    case 'ebd_signup':
+      if ($op == 'submit') {
+          global $user;
+
+          $ch = curl_init();
+
+          $data = array(
+            'First_Name' => $user->profile_fname,
+            'Last_Name' => $user->profile_lname,
+            'Organization' => $_POST['title'],
+            'Email' => $user->mail,
+            'Phone' => $user->profile_cell,
+            'State' => $user->profile_state,
+            'Zip' => $user->profile_zip,
+            'link' => 'groups',
+            'linkKey' => '100755',
+            'table' => 'supporter',
+            'organization_KEY' => '5216');
+
+          $items = array();
+
+          foreach($data as $key=>$item){
+            // drupal_set_message("$key => *$item*");
+            if ($item !== '') {
+              $items[] = "$key=".$item;
+            }
+          }
+
+          $string = "?".implode('&',$items);
+
+          // $msg = 'Going to: http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string);
+
+          curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string));
+
+          if (curl_exec($ch) === false) {
+            // $msg .= 'Curl error: '.curl_error($ch);
+          }
+          // drupal_set_message($msg);
+      }
+
+
+
+      break;
+    /*case 'project':
+      if (user_access('administer nodes')) {
+        //drupal_set_message('<pre>'.$op.':'.print_r($node,TRUE).'</pre>');
+      }
+      change_message_when_content_is_created($op,'Project','Your project has been posted.  Share it on Facebook and Twitter with the links below!');
+      if ($op=='insert') {
+        $message="Your project has been posted.  Share it on Facebook and Twitter with the links below!";
+        drupal_set_message($message);
+      } else if ($op=='alter') {
+        foreach ($_SESSION['messages']['status'] as $index => $msg) {
+          $msg = preg_replace('/<[^>]*>?/','',$msg);
+          if (preg_match('/Your Project has been created\./i', $msg)) {
+            unset($_SESSION['messages']['status'][$index]);
+          }
+        }
+      }
+      break;
+
+		case 'project_update':
+			// mark the parent project node as updated
+			if($op=='insert')
+			{
+				if(is_numeric($node->field_project[0]['nid']))
+				{
+					if($project_node = node_load(array('nid' => intval($node->field_project[0]['nid']))))
+					{
+						$project_node->changed = time();
+						node_save($project_node);
+					}
+					
+				}
+			}
+		break; */
+		
+		case 'issue':
+		case 'cause':
+			if ($op == 'update' || $op == 'insert') {
+				if (is_array($node->field_project_items)) {
+					foreach($node->field_project_items as $key=>$data) {
+						if ($data['nid']) {
+							unset($temp_node);
+							$temp_node = node_load($data['nid']);
+							//Set new taxonomy.
+							if (is_array($node->taxonomy[5])) {
+								foreach ($node->taxonomy[5] as $new_tid) {						
+									//Assign it all
+									$tax_q = db_fetch_object(db_query("SELECT * from term_data WHERE tid = $new_tid"));
+									$temp_node->taxonomy[$new_tid]->tid = $new_tid;
+									$temp_node->taxonomy[$new_tid]->vid = $tax_q->vid;
+									$temp_node->taxonomy[$new_tid]->name = $tax_q->name;
+									$temp_node->taxonomy[$new_tid]->description = $tax_q->description;
+									$temp_node->taxonomy[$new_tid]->weight = $tax_q->weight;
+									node_save($temp_node);//Save
+								}
+							} 
+						}
+					}
+				}
+				if (is_array($node->field_learn_items)) {
+					foreach($node->field_learn_items as $key=>$data) {
+						if ($data['nid']) {
+							unset($temp_node);
+							$temp_node = node_load($data['nid']);
+							//Set new taxonomy.
+							if (is_array($node->taxonomy[5])) {
+								foreach ($node->taxonomy[5] as $new_tid) {
+									//Assign it all
+									$tax_q = db_fetch_object(db_query("SELECT * from term_data WHERE tid = $new_tid"));
+									$temp_node->taxonomy[$new_tid]->tid = $new_tid;
+									$temp_node->taxonomy[$new_tid]->vid = $tax_q->vid;
+									$temp_node->taxonomy[$new_tid]->name = $tax_q->name;
+									$temp_node->taxonomy[$new_tid]->description = $tax_q->description;
+									$temp_node->taxonomy[$new_tid]->weight = $tax_q->weight;
+									node_save($temp_node);//Save
+								}
+							} 
+						}
+					}
+				}
+				if (is_array($node->field_act_now_items)) {
+					foreach($node->field_act_now_items as $key=>$data) {
+						if ($data['nid']) {
+							unset($temp_node);
+							$temp_node = node_load($data['nid']);
+							//Set new taxonomy.
+							if (is_array($node->taxonomy[5])) {
+								foreach ($node->taxonomy[5] as $new_tid) {
+									//Assign it all
+									$tax_q = db_fetch_object(db_query("SELECT * from term_data WHERE tid = $new_tid"));
+									$temp_node->taxonomy[$new_tid]->tid = $new_tid;
+									$temp_node->taxonomy[$new_tid]->vid = $tax_q->vid;
+									$temp_node->taxonomy[$new_tid]->name = $tax_q->name;
+									$temp_node->taxonomy[$new_tid]->description = $tax_q->description;
+									$temp_node->taxonomy[$new_tid]->weight = $tax_q->weight;
+									node_save($temp_node);//Save
+								}
+							} 
+						}
+					}
+				}	
+				if (is_array($node->field_featured_items)) {
+					foreach($node->field_featured_items as $key=>$data) {
+						if ($data['nid']) {
+							unset($temp_node);
+							$temp_node = node_load($data['nid']);
+							//Set new taxonomy.
+							if (is_array($node->taxonomy[5])) {
+								foreach ($node->taxonomy[5] as $new_tid) {
+									//Assign it all
+									$tax_q = db_fetch_object(db_query("SELECT * from term_data WHERE tid = $new_tid"));
+									$temp_node->taxonomy[$new_tid]->tid = $new_tid;
+									$temp_node->taxonomy[$new_tid]->vid = $tax_q->vid;
+									$temp_node->taxonomy[$new_tid]->name = $tax_q->name;
+									$temp_node->taxonomy[$new_tid]->description = $tax_q->description;
+									$temp_node->taxonomy[$new_tid]->weight = $tax_q->weight;
+									node_save($temp_node);//Save
+								} 
+							}
+						}
+					}
+				}
+			}
+			break;
+
+    case 'test_grant_app':
+
+      if ($op == 'insert') {
+
+        // curl club signup info to DiA
+        $ch = curl_init();
+
+        $data = array(
+				'Email' => $_POST['field_test_grant_app_email'][0]['value'],
+        'link' => 'groups',
+        'linkKey' => '69486',
+        'table' => 'supporter',
+        'organization_KEY' => '5216');
+
+        $items = array();
+
+        foreach($data as $key=>$item){
+          //drupal_set_message("$key => $item");
+          $items[] = "$key=".$item;
+        }
+
+        $string = "?".implode('&',$items);
+
+        $msg = 'Going to: http://org2.democracyinaction.org/dia/api/process.jsp'.$string;
+
+        curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.$string);
+        if (curl_exec($ch) === false) {
+          $msg .= 'Curl error: '.curl_error($ch);
+        }
+
+        drupal_set_message($msg);
+
+      }
+
+      break;
+
+    case 'abc_family':
+      if ($op == 'submit') {
+
+          $ch = curl_init();
+
+          $data = array(
+          'Email' => $_POST['title'],
+          'Zip' => $_POST['field_zip_code_2'][0]['value'],
+          'State' => $_POST['field_state_plain']['key'],
+          'Other_Data_1' => $_POST['field_cause']['key'],
+          'link' => 'groups',
+          'linkKey' => '84936',
+          'table' => 'supporter',
+          'organization_KEY' => '5216');
+
+          $items = array();
+
+          foreach($data as $key=>$item){
+            // drupal_set_message("$key => *$item*");
+            if ($item !== '') {
+              $items[] = "$key=".$item;
+            }
+          }
+
+          $string = "?".implode('&',$items);
+
+          //$msg = 'Going to: http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string);
+
+          curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.rawurlencode($string));
+
+          if (curl_exec($ch) === false) {
+            $msg .= 'Curl error: '.curl_error($ch);
+          }
+          // drupal_set_message($msg);
+
+      }
+      break;
+    case 'som_judge':
+      if ($op == 'view') {
+        drupal_set_message('<pre>' . print_r($node, TRUE) . '</pre>');
+      }
+      break;
+    case 'save_our_music':
+      if ($op == 'view' && !user_access('administer nodes')) {
+        // drupal_set_message('<pre>' . print_r($node, TRUE) . '</pre>');
+        $node->content['group_personal_info']['field_name']['#access'] = false;
+        $node->content['group_personal_info']['field_name_last']['#access'] = false;
+        $node->content['group_personal_info']['field_school']['#access'] = false;
+        $node->content['group_personal_info']['field_plumgrant_address']['#access'] = false;
+        $node->content['group_personal_info']['field_city']['#access'] = false;
+        $node->content['group_personal_info']['field_state_plain']['#access'] = false;
+        $node->content['group_personal_info']['field_zip_code_2']['#access'] = false;
+        $node->content['group_personal_info']['field_phone_required']['#access'] = false;
+        $node->content['group_personal_info']['field_email']['#access'] = false;
+        $node->content['group_your_project']['field_where_did_you_hear']['#access'] = false;
+      }
+			break;
+		/*				
+		case 'feed_the_need': 
+
+			if ($op == 'insert') {
+	
+				// define the mapping from feed_the_need to project teaser and create one
+
+				$teaser_node = new stdClass();
+				$teaser_node->type = 'project_teaser';
+				$teaser_node->status = 1;
+
+				$teaser = array();
+				$teaser->title = 'Feed the Neeed';
+				$teaser->type = 'project_teaser';
+				$teaser->field_related_campaign[0]['value'] = 'Feed the Need';
+				$teaser->field_project_teaser_project_ni[0]['value'] = $node->nid;
+				
+				drupal_execute('project_teaser_node_form', $teaser, $teaser_node);
+
+
+				$form_values = array();
+				$form_values['title'] = 'Feed The Need Project';
+				//$form_values['field_type_of_project']['key'] = 'completed project';
+				drupal_execute('project_teaser_node_form', $form_values, $teaser);
+
+
+				$msg = '<pre>'.print_r($node, TRUE).'</pre>';
+				drupal_set_message($msg);
+				
+			} else if ($op == 'view') {
+				$msg = '<pre>'.print_r($node, TRUE).'</pre>';
+				drupal_set_message($msg);
+			}
+		break;
+		
+		case 'project_teaser':
+			if ($op == 'view') {
+				$msg = '<pre>'.print_r($node, TRUE).'</pre>';
+				drupal_set_message($msg);
+			}
+		break;
+		*/
+		
+	}
+
+}
+
+/*function change_message_when_content_is_created ($op, $content_name, $message) {
+  if ($op=='insert' && $message) {
+    drupal_set_message($message);
+  } else if ($op=='alter') {
+    if (isset($_SESSION['messages']['status'])) {
+      foreach ($_SESSION['messages']['status'] as $index => $msg) {
+        $msg = preg_replace('/<[^>]*>?/','',$msg);
+        if (preg_match("/Your $content_name has been created\./i", $msg)) {
+          unset($_SESSION['messages']['status'][$index]);
+        }
+      }
+    }
+  }
+  return 1;
+}*/
+
+function _dosomething_forms_fix_file_fields_recursive(&$form)
+{
+	foreach($form as $k => $v)
+	{
+		if(is_array($v))
+			_dosomething_forms_fix_file_fields_recursive($form[$k]);
+		else
+			if(($k=='#type')&&($v=='file'))
+				$form['#size'] = 40;
+	}
+}
+
+function dosomething_forms_form_alter($form_id,&$form)
+{	
+  /*
+  if (user_access('administer nodes')) {
+    drupal_set_message($form_id);
+  }
+   */
+
+	// add optional javascript
+	$path = drupal_get_path('module','dosomething_forms') . '/js/' . $form_id . '.js';
+	if(file_exists(getcwd() . '/' . $path))
+		drupal_add_js($path);
+
+	// fix file submission fields
+	_dosomething_forms_fix_file_fields_recursive($form);
+
+	$form['#attributes']['class'] .= ' ' . $form_id;
+	switch($form_id)
+	{
+		/*case 'help_ticket_node_form':			
+			global $user;
+			if($user->uid>0)
+				$form['title']['#default_value'] = $user->mail;
+      $form['field_phone_number']['#access'] = false;
+			break;
+			
+		case 'grant_application_node_form':
+			if(!user_access('administer grant applications'))
+				unset($form['field_grant_application_status']);
+			break;*/
+
+		/*case 'grant_node_form':
+      // remove fields from all versions of the application
+      unset($form['group_personal_info']['field_where_did_you_hear']);
+
+      // hide "Which grant are you applying for?" question
+      $form['group_personal_info']['field_which_grant']['#prefix'] = '<div class="hide-me">';
+      $form['group_personal_info']['field_which_grant']['#suffix'] = '</div>';
+
+      $node = node_load(arg(1));
+      /* additions for ASPCA grant
+         check for application form's node id 
+         or editing of created nodes
+       
+      if (arg(1) == 534583 ||
+        $node->type = 'grant' &&
+          $node->field_which_grant[0]['value'] === 'Animal Action') { // Animal Action Grants
+
+        // add in the new fields
+        $form['group_additional_info']['field_grant_optional_number_1'][0]['value']['#title'] = 'How many animals are predicted to be impacted by this grant?';
+        $form['group_additional_info']['field_grant_optional_essay_1'][0]['value']['#title'] = 'Are you or your project involved with a local shelter?';
+        $form['group_additional_info']['field_grant_optional_essay_1'][0]['value']['#description'] = 'If so, describe your involvement and how long you have been involved.';
+        $form['preview']['#access'] = false;
+        /*
+        $form['group_project_info'] =
+        array_merge($form['group_project_info'], $form['field_grant_optional_number_1']);
+        $form['group_project_info'] =
+        array_merge($form['group_project_info'], $form['field_grant_optional_essay_1']);
+        unset($form['field_grant_optional_number_1']);
+        unset($form['field_grant_optional_essay_1']);
+         
+        $form['field_which_grant']['key']['#value'] = 'Animal Action';
+      } else if (arg(1) == 591579) { // Club Grant Application
+        //print '<pre>'; print_r($form); print '</pre>';
+        $form['group_personal_info']['field_which_grant']['key']['#value'] = 'Club Grant';
+        $form['field_which_grant']['#prefix'] = '<div class="hide-me">';
+        $form['field_which_grant']['#suffix'] = '</div>';
+        $form['group_personal_info']['field_plumgrant_highschool'][0]['value']['#title'] = 'Name of School (if applicable)';
+        $form['group_personal_info']['field_your_college_if_applicabl'][0]['value']['#title'] = 'Club Name';
+        $form['group_essays']['field_essay_one'][0]['value']['#description'] = '1) Tell us about the community you are helping or the problem you are trying to solve. 2) Provide evidence (statistics, testimony or research) that shows why this is an important problem.  3) Why is your club the right group of people to solve this problem? (Max. 1500 characters including spaces)';
+        $form['group_essays']['field_essay_two'][0]['value']['#description'] = 'What is the vision of your project/Club?  (Your long-term goal, ie.  Decrease my school.s energy use) Tell us how you are or plan to achieve your vision, by providing us with detailed goals for your project/Club.  Please make them as specific as possible. (Change all light bulbs in the school to CF lights, Reduce the time lights are left by a 2 hours a day etc.) (Max. 1500 characters including spaces)';
+        $form['group_essays']['field_essay_three'][0]['value']['#description'] = 'What\'s your plan of action? Describe the steps you have and/or you will take to achieve your goals.  Please detail your role in the project/Club.  (Max 1500 characters including spaces)';
+        $form['group_recommendation']['#description'] = 'You can come back and add your recommendation in, but a  RECOMMENDATION IS REQUIRED to complete your application. This can come from any non-friend including a Club Advisor.';
+        unset($form['field_budget_0']['new']['field_budget_0_upload']['#description']);
+        $form['group_additional_info']['#access'] = false;
+      } else if (arg(1) == 591689) { // Club Startup Grant Application
+        //print '<pre>'; print_r($form); print '</pre>';
+        $form['field_which_grant']['key']['#value'] = 'Club Startup Grant';
+        $form['field_which_grant']['#prefix'] = '<div class="hide-me">';
+        $form['field_which_grant']['#suffix'] = '</div>';
+        $form['group_project_numbers']['field_num_people_involved'][0]['value']['#title'] = 'How many people will be directly involved in your Club this year?';
+        $form['group_project_numbers']['field_num_people_involved'][0]['value']['#description'] = '(includes number of Club Members you anticipate to have this year plus potential volunteers throughout the year)';
+        $form['group_project_numbers']['field_num_people_inspired'][0]['value']['#title'] = 'Number of people who you anticipate will donate goods or time to your projects this year';
+        $form['group_project_numbers']['field_num_people_impacted'][0]['value']['#title'] = 'Number of people your Club will help through its projects this year';
+        $form['group_project_numbers']['field_num_people_impacted'][0]['value']['#description'] = '(i.e. # of people you provided food for through you.re a food drive, etc.)';
+        $form['group_personal_info']['field_plumgrant_highschool'][0]['value']['#title'] = 'Name of School (if applicable)';
+        $form['group_personal_info']['field_your_college_if_applicabl'][0]['value']['#title'] = 'Club Name';
+        $form['group_essays']['field_essay_one'][0]['value']['#title'] = 'What are the issues/problems your Club will be working on this year?';
+        $form['group_essays']['field_essay_one'][0]['value']['#description'] = '1) Tell us about the community you will be helping or the problems you will be trying to solve. 2) Tell us why these problems are important to your Club and provide evidence (i.e. any statistics, testimonies, or research you have) that shows why this is an important problem in your community. (Max. 1000 characters)';
+        $form['group_essays']['field_essay_two'][0]['value']['#title'] = 'How is your Club going to solve the problems above?';
+        $form['group_essays']['field_essay_two'][0]['value']['#description'] = 'What\'s your plan of action? Are you going to run a Do Something <a href="/campaigns">Cause Campaign</a>? Please provide some of the details of how you will run at least two of your projects this year. (max. 1500 characters including spaces)';
+        $form['group_essays']['field_essay_three'][0]['value']['#title'] = 'Please provide the details of how you will run your Club this year';
+        $form['group_essays']['field_essay_three'][0]['value']['#description'] = 'Questions to answer: 1) Will you have officers? If so, what will these positions and responsibilities be? If not, how will you share responsibilities? 2) How will you recruit members? 3) Will you have an adult advisor? If so, who and how involved will this advisor be? 4) How often will your Club meet? 5) Where will you hold your meetings? (max. 1500 characters including spaces)';
+        $form['group_essays']['field_essay_four'][0]['value']['#description'] = 'How would winning a Club Startup Grant help you achieve your goals? How will you measure the success of your Club? How are you going to make sure you Club keeps going once the leaders have graduated or left the Club? (max. 1500 characters including spaces)';
+        $form['group_recommendation']['#description'] = 'You can come back and add your recommendation in, but a  RECOMMENDATION IS REQUIRED to complete your application. This can come from any non-friend including a Club Advisor.';
+        unset($form['field_budget_0']['new']['field_budget_0_upload']['#description']);
+        $form['group_additional_info']['field_grant_optional_essay_1'][0]['value']['#title'] = 'How long has your Club been active for?';
+        $form['group_additional_info']['field_grant_optional_number_1']['#access'] = false;
+
+      } else if (arg(1) == 626921) { // PBTeen Grant
+        //print '<!-- <pre>'.print_r($form, true).'</pre> -->';
+        $form['group_personal_info']['field_which_grant']['key']['#value'] = 'Be Amazing Grant';
+        $form['group_additional_info']['#access'] = false;
+      } else if (arg(1) == 632810) { // Starbucks Grant
+        $form['group_personal_info']['field_which_grant']['key']['#value'] = 'Starbucks Grants';
+        $form['group_additional_info']['#access'] = false;
+        $form['field_optional_checkbox']['#access'] = false;
+      } else { // General grant apps
+
+        // Add type of grant as h2
+        preg_match('/key\]=(.*)$/', $form['#action'], $matches);
+        $grant_type = strtoupper(urldecode($matches[1]));
+        $form['#prefix'] = '<h2>'.($grant_type ? $grant_type : 'GRANT APPLICATION').'</h2>';
+
+        // Hide custom fields from general grant apps
+        $form['group_additional_info']['#access'] = false;
+        $form['field_optional_checkbox']['#access'] = false;
+
+      }
+
+      $form['#validate']['grant_form_validate'] = array();
+      //drupal_set_message("<pre>".print_r($form, TRUE)."</pre>");
+
+      break;*/
+      
+	  case 'action_guide_node_form':
+      $form['#validate']['action_guide_form_validate'] = array();
+
+      break;
+    /*case 'ebd_signup_node_form':
+      $form['#validate']['user_field_form_validate'] = array(
+                                                               'profile_fname',
+                                                               'profile_lname',
+                                                               'mail',
+                                                               'profile_cell',
+                                                               'profile_state',
+                                                               'profile_zip',
+                                                               );
+      $form['body_filter']['body']['#required'] = 1;
+      break;
+    case 'campaign_ebd_2011_node_form':
+      $form['#validate']['user_field_form_validate'] = array(
+                                                               'profile_fname',
+                                                               'profile_lname',
+                                                               'mail',
+                                                               'profile_cell',
+                                                               'profile_state',
+                                                               'profile_zip',
+                                                               );
+      $form['body_filter']['body']['#required'] = 1;
+      break;
+   case 'tackle_hunger_node_form':
+      $form['#validate']['tackle_hunger_form_validate'] = array();
+
+      break;*/
+    /*case 'college_survey_node_form':
+      $form['#validate']['college_survey_form_validate'] = array();
+      $form['submit']['#value'] = 'View survey';
+      $form['preview'] = NULL;
+
+      break;*/
+		/*case 'project_update_node_form':
+			$form['title']['#default_value'] = 'Project Update - ' . date('m/j/y');
+			$form['title']['#prefix'] = '<div class="hide-me">';
+			$form['title']['#suffix'] = '</div>';
+
+			if(isset($_GET['nid']))
+			{
+				$project_node = node_load(array('nid' => intval($_GET['nid'])));
+				if($project_node->type=='project')
+				{
+					$form['title']['#default_value'] = 'Project Update - ' . $node->title;
+					$form['field_project']['nids']['#default_value'] = array(0 => intval($_GET['nid']));
+				}				
+			}				
+
+      $form['#validate']['_dosomething_forms_project_update_node_form_validate'] = array();
+
+			break;
+
+
+    case 'scholarships_att_node_form':
+
+      $form['group_your_media']['field_scholarship_att_pic']['#description'] = 'Picture (recommended): show us a picture of yourself showcasing your personality, style, and excitement about a DoSomething.org/AT&T scholarship!';
+      $form['group_your_media']['field_scholarship_att_pic']['#collapsible'] = 0;
+      $form['preview']['#access'] = false;
+      $form['group_your_media']['field_scholarship_att_pic']['#suffix'] = '<div class="media-upload-note">The video and/or picture you upload in connection with your application will be posted on our gallery tab which is viewable to the public.  By uploading your video and/or picture to this site, you represent and warrant: (i) you have obtained all rights, licenses, consents and permission to use the content featured in the video/photo, including but not limited to, those of any persons that may have participated in the video or are recognizable in the photo; (ii) the video, in whole or in part, has not been released commercially; and (iii) the video/photo does not and will not violate any third party rights.</div>';
+
+
+      break;*/
+		/*case 'project_node_form': 
+      global $user;
+      $form['taxonomy'][5]['#description'] = 'Select the cause and issue that are closest to your project. Other users will be looking for projects in these categories and by tagging your project with these other people will be able to see what you are doing!';
+      /* hide related campaign field from non-admins 
+
+      /*
+      $form['field_related_campaign']['#prefix'] = '<div class="hide-me">';
+      $form['field_related_campaign']['#suffix'] = '</div>';
+       
+
+      if(!user_access('administer projects')) {
+        drupal_add_css('sites/all/themes/zen/dosomething/user.css');
+      }
+
+      // check clubs by default
+      if (is_array($form['og_nodeapi']['visible']['og_groups']['#options'])) {
+        $form['og_nodeapi']['visible']['og_groups']['#default_value'] = 
+          array_keys($form['og_nodeapi']['visible']['og_groups']['#options']);
+      }
+
+			$form['og_nodeapi']['visible']['og_groups']['#prefix'] = '<div class="project-og-settings">';
+			$form['og_nodeapi']['visible']['og_groups']['#suffix'] = '</div>';
+			$form['og_nodeapi']['visible']['og_groups']['#description'] = t('The club or clubs responsible for this project (if any). This setting will determine if the project is listed on each club\'s page.');
+			$form['og_nodeapi']['visible']['og_public']['#default_value'] = TRUE;
+			$form['og_nodeapi']['visible']['og_public']['#prefix'] = '<div class="hide-me">';
+			$form['og_nodeapi']['visible']['og_public']['#suffix'] = '</div>';
+
+      $form['locations']['#collapsed'] = FALSE;
+      if (user_access('administer nodes')) {
+        //drupal_set_message('<pre>'.print_r($form['locations'],TRUE).'</pre>');
+      }
+      $form['field_embedded_video']['#collapsible'] = TRUE;
+      $form['field_embedded_video']['#collapsed'] = TRUE;
+      _validate_birthdate_set_error($form['uid']['#value']);
+
+      $form['field_project_age']['#access'] = false;
+      $form['field_related_action_guide']['#access'] = false;
+      if (! user_access('administer nodes')) {
+        $form['field_fb_like_count']['#access'] = false;
+        $form['field_dosomething_award_winner']['#access'] = false;
+      }
+      $form['field_related_campaign']['#access'] = false;
+			$issues_vid = variable_get('dosomething_causes_vid',0);
+
+			$form['taxonomy']['#attributes']['class'] .= ' project-node-form-taxonomy';
+			
+      // don't require the do something award winner field
+			$form['field_dosomething_award_winner'][0]['value']['#required'] = FALSE;
+
+			//access to dosomething project winner field
+			//if(!user_access('administer projects'))			
+				//unset($form['field_dosomething_award_winner']);
+			
+			// mark some fields as required
+			$form['group_explain_your_project']['field_essay_see_it'][0]['value']['#required'] = TRUE;
+			$form['group_explain_your_project']['field_essay_believe_it'][0]['value']['#required'] = TRUE;
+			$form['group_explain_your_project']['field_essay_build_it'][0]['value']['#required'] = TRUE;
+			//$form['locations'][0]['postal_code']['#required'] = TRUE;
+			$form['taxonomy'][variable_get('dosomething_causes_vid',5)]['#required'] = TRUE;
+			$form['taxonomy'][variable_get('dosomething_how_long_vid',4)]['#required'] = TRUE;
+      $form['taxonomy'][variable_get('dosomething_who_vid',3)]['#required'] = TRUE;
+      global $user;
+      if ($user->uid == 262955) {
+        drupal_set_message('<pre>'.print_r($form['locations'],TRUE).'</pre>');
+      }
+      // hide lat/long and map from non-admins
+      /*foreach ($form['locations'] as $key => $value) {
+        if (! preg_match('/^\d+$/', $key)) {
+           continue;
+        }
+        if ($key == 0) {
+            $form['locations'][$key]['postal_code']['#prefix'] = '(where your project is headquartered)';
+        } else {
+          if ($key == 1) {
+            $form['locations'][$key]['postal_code']['#prefix'] = ' (additional location, if any)';
+          }
+          $loc_num = $key+1;
+          //$form['locations'][$key]['#prefix'] = '<fieldset class="collapsible collapsed"><legend><a href="#">Location '.$loc_num.'</a></legend>';
+          //$form['locations'][$key]['#suffix'] = '</fieldset>';
+          $form['locations'][$key]['postal_code']['#title'] .= " $loc_num";
+          if (user_access('administer nodes')) {
+
+          }
+        }
+        unset($form['locations'][$key]['map']);
+        unset($form['locations'][$key]['latitude']);
+        unset($form['locations'][$key]['longitude']);
+        unset($form['locations'][$key]['province']);
+      }
+
+      $form['field_project_photo']['#description'] = '<p>Upload photos that are relevant to your project here. Be sure to upload photos from your project and you could be featured on the DoSomething.org home page.</p><p>The first photo will be used on the site when linking to your project, so make sure it\'s good!</p>';
+
+			
+			// suppress validation errors on image upload
+			if($_POST['cck_imagefield_field_project_photo_op']=='Upload')
+			{
+				drupal_add_css('sites/all/themes/zen/dosomething/suppress-errors.css');
+			}
+			
+			// custom validation
+			$form['#validate']['_dosomething_forms_project_node_form_validate'] = array();
+     
+			break;*/
+
+    case 'user_login':
+      if (arg(1) == 615739) {
+        $form['#redirect'] = 'u';
+      }
+      break;
+    case 'user_edit':
+      $form['#validate']['_dosomething_forms_user_edit_validation'] = array();
+      break;
+		case 'user_register':
+
+			$form['#validate']['_dosomething_forms_extra_user_validation'] = array();
+
+      //$form['#prefix'] = '<pre style="display:none;">'.print_r($_GET).'</pre>';
+
+      // special case for Do Something U login
+      // redirects to u/register/confirm to set dsu role
+      if (preg_match('#^u/register#', $_GET['q'])) {
+        $form['account']['profile_bday'] = $form['Personal Information']['profile_bday'];
+        $form['Info we really want to know...']['#access'] = false;
+        $form['Personal Information']['#access'] = false;
+        $form['Subscriptions']['#access'] = false;
+        $form['mobile']['#access'] = false;
+        $form['Location']['#access'] = false;
+        $form['#redirect'] = 'u/register/confirm';
+      } else if (preg_match('#^node/645951#', $_GET['q'])) {
+        $form['account']['profile_bday'] = $form['Personal Information']['profile_bday'];
+        $form['Info we really want to know...']['#access'] = false;
+        $form['Personal Information']['#access'] = false;
+        $form['Subscriptions']['#access'] = false;
+        $form['mobile']['#access'] = false;
+        $form['Location']['#access'] = false;
+        $form['#redirect'] = 'u/pitch-grants/register/confirm';
+      } else if (preg_match('#^node/632816#', $_GET['q'])) { // starbucks registration
+        $form['account']['profile_bday'] = $form['Personal Information']['profile_bday'];
+        $form['Info we really want to know...']['#access'] = false;
+        $form['Personal Information']['#access'] = false;
+        $form['Subscriptions']['#access'] = false;
+        $form['mobile']['#access'] = false;
+        $form['Location']['#access'] = false;
+        $form['#redirect'] = 'starbucks/register/confirm';
+      }
+
+			_dosomething_forms_remove_privacy_notice($form);
+			$form['Personal Information']['#weight'] = 4;
+			$form['Location']['#weight'] = 5;
+			$form['Subscriptions']['#weight'] = 6;
+
+      /* trying to improve how did you hear about us part of registration */
+      $form['Info we really want to know...']['profile_hearabout']['#suffix'] = "</div>";
+      $form['Info we really want to know...']['profile_hearabout']['#prefix'] = <<<HSFORM
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $("#hsmain").change( function () {
+    $(".hs").hide();
+    $(".hs" + $(this).val()).show();
+    if ($(this).val() == 0) { $("#edit-profile-hearabout").val("none"); }
+  });
+  $(".hs").change( function () {
+    $("#edit-profile-hearabout").val($(this).val());
+  });
+});
+</script>
+
+      <p style="font-weight:bold; color:black;">How did you hear about us?</p>
+
+      <select id="hsmain">
+      <option value="0" selected="selected">&lt;none&gt;</option>
+      <option value="1">Online</option>
+      <option value="2">TV/Radio</option>
+      <option value="3">Other</option>
+      </select>
+
+      <select class="hs hs1" style="display: none;">
+      <option>Other</option>
+      <option>Facebook</option>
+      <option>Fastweb.com</option>
+      <option>Hulu.com</option>
+      <option>MySpace</option>
+      <option>Online Search</option>
+      <option>Other</option>
+      <option>PerezHilton.com</option>
+      <option>Scholarships.com</option>
+      <option>Seventeen.com</option>
+      <option>Twitter</option>
+      <option>YouTube.com</option>
+      </select>
+
+      <select class="hs hs2" style="display: none;">
+      <option>Other</option>
+      <option>A&eacute;ropostale</option>
+      <option>ChangeForTheChildren.org</option>
+      <option>Doritos</option>
+      <option>From a Friend/Peer</option>
+      <option>From an Adult</option>
+      <option>Jonas Brothers</option>
+      <option>Other</option>
+      <option>Six Flags</option>
+      <option>Staples</option>
+      </select>
+
+      <select class="hs hs3" style="display: none;">
+      <option>Other</option>
+      <option>At the Movies</option>
+      <option>Bus Radio</option>
+      <option>Channel One</option>
+      <option>Other Radio</option>
+      <option>Other TV</option>
+      <option>Palladia</option>
+      <option>The N</option>
+      <option>VH1</option>
+      </select>
+
+<div class="hide-me">
+HSFORM;
+
+			break;
+			
+		case 'issue_node_form':
+//			var_dump($form['taxonomy'][5]);
+			unset($form['taxonomy'][5]['#size']);
+			$form['taxonomy'][5]['#title'] = 'Causes';
+/*			foreach($form['taxonomy'][5]['#options'] as $key => $value) {
+				if (is_object($value)) {
+					foreach($value->option as $junk=>$name) {
+						if (substr($name,0,1) == '-') {
+							//Drop it.
+							unset($form['taxonomy'][5]['#options'][$key]);
+						}
+					}
+				}
+			}
+*/
+			break;
+		case 'tips_and_tools_node_form':
+			$form['taxonomy'][5]['#size'] = 6;
+			$form['taxonomy'][5]['#title'] = 'Issues';
+			break;	
+		
+		// make form change between application and published node		
+		case 'club_node_form':
+      $form['#prefix'] = <<<FORM
+        <script type="text/javascript">
+        $(document).ready(function() {
+          $("fieldset.locations").hide();
+          $("#edit-field-club-zip-0-value").change( function () {
+            $("#edit-locations-0-postal-code").val($(this).val());
+          });
+        });
+        </script>
+FORM;
+      $form['#validate']['club_form_validate'] = array();
+			if(!user_access('administer clubs'))
+			{
+
+        // hide weird group moderation options
+        $form['og_selective']['#prefix'] = '<div class="hide-me">';
+        $form['og_selective']['#suffix'] = '</div>';
+        $form['og_register']['#prefix'] = '<div class="hide-me">';
+        $form['og_register']['#suffix'] = '</div>';
+        $form['og_directory']['#prefix'] = '<div class="hide-me">';
+        $form['og_directory']['#suffix'] = '</div>';
+
+				// already existing node?
+				if(is_numeric($form['nid']['#value']))
+				{				
+					$form['group_club_application_details']['#prefix'] = '<div class="hide-me">';
+					$form['group_club_application_details']['#suffix'] = '</div>';		
+				}
+				else
+				{
+					$form['group_club_application_details']['locations'] = $form['locations'];
+					$form['group_club_application_details']['locations']['#title'] = t('Club Location');
+					unset($form['locations']);
+					
+					$form['group_flickr_photo_album']['#prefix'] = '<div class="hide-me">';
+					$form['group_flickr_photo_album']['#suffix'] = '</div>';
+
+   				$form['group_club_leader_info']['field_field_grade']['#prefix'] = '<div class="hide-me">';
+					$form['group_club_leader_info']['field_field_grade']['#suffix'] = '</div>';
+
+				}
+      } else {
+			  //print '<pre>'.print_r($form, TRUE).'</pre>';
+      }
+			
+      // weight parts of the form
+      $form['title']['#weight'] = -15;
+      $form['og_description']['#weight'] = -14;
+      $form['field_club_url']['#weight'] = -13;
+      $form['field_club_intended_role']['#weight'] = -12.5;
+      $form['field_club_first_meeting']['#weight'] = -12;
+      $form['field_club_first_meeting_when']['#weight'] = -11;
+      $form['field_clubs_meeting_location']['#weight'] = -10;
+      $form['field_club_meeting_frequency']['#weight'] = -9;
+      $form['group_what_project_ideas_do_yo']['#weight'] = -8;
+      $form['field_club_expected_members']['#weight'] = -7;
+      $form['group_club_members']['#weight'] = -6;
+      $form['group_where_should_we_send_the']['#weight'] = -5;
+      $form['group_club_photos_and_albums']['#weight'] = -4;
+      $form['group_agreement']['#weight'] = -3;
+
+      // select "moderated" group by default
+      $form['og_selective']['#default_value'] = 1;
+
+      $form['group_agreement']['#weight'] = 0.01;
+      $form['group_agreement']['#description'] = <<<EOT
+      <p>By submitting this club application I understand that I am committing to:</p>
+      <ol>
+        <li>Post at least two projects a year to maintain my standing as a Do Something Club.</li>
+        <li>Read monthly e-blasts in their entirety to stay in touch with Do Something campaigns, opportunities and announcements.</li>
+        <li>Ensure my club's active participation in the Do Something Clubs program for a minimum of 2 years. Club leaders who are in their senior year of high school must plan for club succession, selecting a reliable club leader for the following year in their absence.</li>
+        <li>Update my club profile online whenever important information changes including club leader, contact information and mailing address.</li>
+        <li>Notify the Do Something Clubs staff if anything inhibits my club from active participation in the program by e-mailing.</li>
+      </ol>
+EOT;
+			$form['og_selective']['#attributes']['class'] .= ' og-membership-requests';
+			
+			$form['#suffix'] = <<<EOT
+<script type="text/javascript">
+if(typeof($)!='undefined')
+{
+	$(function(){
+		$('.og-membership-requests label:first').append('<div class="description og-description-indent">Only available for public clubs. To choose this, please uncheck "private club" below.</div>');
+	});
+}
+</script>
+EOT;
+			
+			
+			//require location
+			//$form['locations'][0]['postal_code']['#required'] = TRUE;
+      $form['title']['#description'] = 'Put the Name of your School/Town Do Something Club; Ex: Franklin High School Do Something Club or Westfield Do Something Club; calling yourself a Do Something Club in your community will help attract members and let everyone know that you\'re all about action!';
+
+      $form['group_club_details']['title'] = $form['title'];
+      $form['group_club_details']['og_description'] = $form['og_description'];
+      $form['group_club_details']['og_description']['#description'] = 'Please describe your Club in one sentence for our Clubs Directory';
+      unset($form['title']);
+      unset($form['og_description']);
+
+      $form['group_club_details']['#weight'] = -100;
+      $form['group_club_leader_info']['#weight'] = -90;
+
+      global $user; if ($user->uid == '262955') {
+        //drupal_set_message('<pre>'.print_r($form, TRUE).'</pre>');
+      }
+
+			break;
+		
+    case 'views_filters':
+      if ($form['view']['#value']->name=='grant_databas' || $form['view']['#value']->name=='scholarships') {
+        $form['submit']['#value'] = 'Search';
+        $form['#prefix'] = '<div style="background-color:#EEE"><h3>Search by...</h3>';
+        $form['#suffix'] = '</div>';
+        $form['submit']['#prefix'] = '</td></tr><tr class="odd"><td colspan="6">';
+      }
+      if ( $form['view']['#value']->name=='att_scholarship' ) {
+        if (user_access('administer nodes')) {
+          //print '<pre>'.print_r($form,TRUE).'</pre>';
+        }
+        $form['#action'] = '/att/gallery';
+        $form['submit']['#value'] = 'Get results';
+        $form['#prefix'] = '<div class="search-container"><h3 class="highlight">Search Scholarships</h3>';
+        $form['#suffix'] = '</div>';
+      }
+			// for grants alumni filter -- add reset button, remove issues (leave causes)
+			if(($form['view']['#value']->name=='grant_alumni')||($form['view']['#value']->name=='dsaward_alumni'))
+			{
+				$form['submit']['#suffix'] = '<div id="alumni-view-reset"><a href="/' . $form['view']['#value']->url . '">Reset</a></div>';				
+				
+        // replace first term (-Animal Cruelty) w/Animal Welfare
+        $form['filter1']['#options'][1]->option = array(29 => 'Animal Welfare');
+        unset($form['filter1']['#options']['']);
+
+				foreach($form['filter1']['#options'] as $key => $option)
+				{
+					if(is_numeric($key))
+					{
+						foreach($option->option as $key2 => $name)
+						{
+							if(substr($name,0,1)=='-')
+							{
+								unset($form['filter1']['#options'][$key]);
+							}
+						}
+					}
+				}
+        // add in Animal Welfare, which gets lost
+        //$form['filter1']['#options'] = ("Animal Welfare" => 29);
+			}
+			break;
+		case 'fbconnect_register_form':
+		  $username = $form['reg']['username']['#default_value'];
+		  $name = explode(' ', $username);
+		  $form['reg']['username']['#default_value'] = $name[0] . ' ' . substr($name[1], 0, 1);
+		  $form['reg']['profile_zip'] = array(
+		    '#type' => 'textfield',
+		    '#title' => t('Zipcode'),
+		    '#description' => t('The content of this field is kept private and will not be shown publicly.'),
+		    '#required' => TRUE,
+		  );
+		  $form['reg']['visibility']['#weight'] = 1;
+		  $form['#submit'] = array_merge(array('dosomething_forms_fb_save_zip' => array()), $form['#submit']);
+		break;
+    case 'dsaward_rec_node_form':
+      $app_nid = arg(4);
+      $which = arg(3);
+      $node = node_load($app_nid);
+      $project = node_load($node->field_plumgrant_project[0]['nid']);
+      $header = '';
+      if ($project->title) {
+        $header = '<h3><strong>Project: </strong>'.l($project->title, 'node/'.$project->nid).'</h3>';
+      }
+      $form['#prefix'] = $header;
+			$form['field_dsaward_nid']['#prefix'] = '<div class="hide-me">';
+      $form['field_dsaward_nid'][0]['value']['#value'] = $app_nid;
+			$form['field_dsaward_nid']['#suffix'] = '</div>';
+			$form['field_dsaward_rec_which']['#prefix'] = '<div class="hide-me">';
+      $form['field_dsaward_rec_which'][0]['value']['#value'] = $which;
+			$form['field_dsaward_rec_which']['#suffix'] = '</div>';
+			$form['field_email_0']['#prefix'] = '<div class="hide-me">';
+      $form['field_email_0'][0]['value']['#value'] = $node->field_plumgrant_email[0]['value'];
+			$form['field_email_0']['#suffix'] = '</div>';
+			$form['title']['#prefix'] = '<div class="hide-me">';
+			$form['title']['#suffix'] = '</div>';
+      if ($which == '1') {
+       $form['title']['#default_value'] = $node->field_recommenders_email[0]['value'];
+      } else  {
+       $form['title']['#default_value'] = $node->field_recommenders_email_0[0]['value'];
+      }
+      $form['preview']['#access'] = false;
+      $form['field_dsaward_recommendation'][0]['format']['#access'] = false;
+      $count = 0;
+      if ($node->nid && $which) {
+        $count = db_result(db_query("SELECT COUNT(*) FROM content_type_dsaward_rec WHERE field_dsaward_nid_value = %d AND field_dsaward_rec_which_value = %d", $node->nid, $which));
+      }
+      if ($count > 0) {
+        drupal_set_message("<p>A recommendation has already been submitted through this link. If this was an accident or you need to send another one, please contact: <a href='mailto:dsawards@dosomething.org'>dsawards@dosomething.org</a>.</p>");
+        $form['submit']['#access'] = false;
+        $form['field_dsaward_recommendation']['#access'] = false;
+        $form['field_dsaward_rec_pdf']['#access'] = false;
+      }
+      $form['#validate']['dsaward_rec_validate'] = array();
+      break;
+
+    case 'abc_family_node_form':
+      // check for external search form and set form action to be full path
+      if (arg(0)=='abcfamily') {
+        // change the form action to be the full path
+        $form['#action'] = 'http://' . $_SERVER['HTTP_HOST'] . $form['#action']; 
+      }
+      break;
+    case 'dsaward_app_node_form':
+      //drupal_set_message('<pre>'.print_r($form, true).'</pre>');
+      $form['group_essays']['field_essay_1'][0]['format']['#access'] = false;
+      $form['group_essay_2__believe_it_250_']['field_essay_2'][0]['format']['#access'] = false;
+      $form['group_essay_3__build_it_250_50']['field_essay_3'][0]['format']['#access'] = false;
+      $form['group_essay_4__next_steps_200_']['field_essay_4'][0]['format']['#access'] = false;
+      // remove some fields
+      $form['group_recommendations']['field_recommenders_relationship']['#prefix'] = '<div class="hide-me">';
+      $form['group_recommendations']['field_recommenders_relationship']['#suffix'] = '</div>';
+      $form['group_recommendations']['field_recommenders_phone_number']['#prefix'] = '<div class="hide-me">';
+      $form['group_recommendations']['field_recommenders_phone_number']['#suffix'] = '</div>';
+      $form['group_recommendations']['field_recommenders_relationsh_0']['#prefix'] = '<div class="hide-me">';
+      $form['group_recommendations']['field_recommenders_relationsh_0']['#suffix'] = '</div>';
+      $form['group_recommendations']['field_recommenders_phone_numb_0']['#prefix'] = '<div class="hide-me">';
+      $form['group_recommendations']['field_recommenders_phone_numb_0']['#suffix'] = '</div>';
+			$form['group_recommendations']['field_recommendation_upload_0']['#prefix'] = '<div class="hide-me">';
+			$form['group_recommendations']['field_recommendation_upload_0']['#suffix'] = '</div>';
+			$form['group_recommendations']['field_recommendation_2']['#prefix'] = '<div class="hide-me">';
+			$form['group_recommendations']['field_recommendation_2']['#suffix'] = '</div>';
+      $form['#validate']['dsaward_app_form_validate'] = array();
+    break;
+  case 'som_judge_node_form':
+    $cnid = arg(1);
+    $pos = nodequeue_get_subqueue_position(47, $cnid) + 1;
+    $nnid = db_result(db_query("SELECT nid FROM {nodequeue_nodes} WHERE qid=47 AND position=$pos"));
+    if (!$nnid) {
+      $form['#redirect'] = "saveourmusic/home";
+    } else {
+      $form['#redirect'] = "/node/$nnid";
+    }
+    break;
+  case 'feed_the_need_node_form':
+    $form['taxonomy']['#weight'] = 10;
+    break;
+  case 'ds_award_judging_node_form':
+    global $user;
+    $nnid = dsaward_next_application();
+    $count = db_result(db_query("SELECT COUNT(*) FROM node WHERE type='ds_award_judging' AND uid = %d", $user->uid));
+    if ( (!$nnid || $count >= 9)
+         && dsaward_judge_max_is_ten()
+       ) {
+      $form['#redirect'] = "grants/judge/dosomething-award/complete";
+    } else {
+      $form['#redirect'] = "node/$nnid";
+    }
+    break;
+  case 'editorial_notes_node_form':
+    //drupal_set_message("<pre>".print_r($form, TRUE)."</pre>");
+    $form['body_filter']['format']['#prefix'] = '<div class="hide-me">';
+    $form['body_filter']['format']['#suffix'] = '</div>';
+    $form['log']['#prefix'] = '<div class="hide-me">';
+    $form['log']['#suffix'] = '</div>';
+    $form['comment_settings']['#prefix'] = '<div class="hide-me">';
+    $form['comment_settings']['#suffix'] = '</div>';
+    $form['menu']['#prefix'] = '<div class="hide-me">';
+    $form['menu']['#suffix'] = '</div>';
+    $form['author']['#prefix'] = '<div class="hide-me">';
+    $form['author']['#suffix'] = '</div>';
+    $form['options']['#prefix'] = '<div class="hide-me">';
+    $form['options']['#suffix'] = '</div>';
+    $form['field_content_refernce']['#prefix'] = '<div class="hide-me">';
+    $form['field_content_refernce']['#suffix'] = '</div>';
+    $form['path']['#prefix'] = '<div class="hide-me">';
+    $form['path']['#suffix'] = '</div>';
+    break;
+  case 'grant_judge_node_form':
+    $form['field_grant_judge_nid']['#prefix'] = '<div class="hide-me">';
+    $form['field_grant_judge_nid']['#suffix'] = '</div>';
+    /* old way based on path
+    if (stristr(drupal_lookup_path('alias', 'node/'.arg(1)), "do-something-seed-grant")) {
+        $form['#redirect'] = "grants/judge/seed";
+    }
+    if (stristr(drupal_lookup_path('alias', 'node/'.arg(1)), "do-something-growth-grant")) {
+        $form['#redirect'] = "grants/judge/growth";
+    }
+     */
+    $qid = db_result(db_query("SELECT qid FROM {nodequeue_nodes} WHERE nid = ".arg(1)));
+    if ($qid == '50') {
+        $form['#redirect'] = "grants/judge/seed";
+    } else if ($qid == '51') {
+        $form['#redirect'] = "grants/judge/growth";
+    } else if ($qid == '63') {
+        $form['#redirect'] = "grants/judge/get-well-soon";
+    } else if ($qid == '64') {
+        $form['#redirect'] = "grants/judge/get-well-soon-2";
+    }
+    break;
+  /*case 'botb_node_form':
+    //if (user_access('administer nodes')) { drupal_set_message("<pre>".print_r($form, TRUE)."</pre>"); }
+    $form['taxonomy'][15]['#required'] = 1;
+    $form['#validate']['botb_form_validate'] = array();
+    break;
+  case 'campaign_bfb_2011_node_form':
+    $form['#validate']['botb_form_validate'] = array();
+    $type = $_GET['type'];
+    if (! $type && arg(2) == 'edit') {
+      $type = 'project';
+      //print '<!-- =form='.print_r($form,TRUE).'-->';
+      if ($form['#node']->field_botb_video[0]['embed']) {
+        $type = 'video';
+      }
+    }
+
+    if ($type == 'project'):
+      $form['group_your_song']['field_botb_cover']['#required'] = false;
+      $form['group_about_your_video']['field_botb_video'][0]['embed']['#required'] = false;
+      $form['group_about_your_video']['field_botb_style']['key']['#required'] = false;
+      $form['field_campaign_number_of_people'][0]['value']['#title'] = 'How many people were involved in your project?';
+      $form['field_campaign_essay_how'][0]['value']['#title'] = 'Tell us about your advocacy project.  What did you do?  What was the best part?';
+    else:
+      $form['field_campaign_number_of_people'][0]['value']['#title'] = 'How many people were involved in making your video?';
+      $form['field_campaign_essay_how'][0]['value']['#title'] = 'How did your video come together?  What was the best part?';
+    endif;
+    break;*/
+  case 'info_request_node_form':
+    //if (user_access('administer nodes')) { drupal_set_message("<pre>".print_r($form, TRUE)."</pre>"); }
+    $form['preview']['#access'] = false;
+    $form['submit']['#value'] = 'Next';
+    break;
+
+  case 'thumb_wars_sock_signup_node_form':
+    //if (user_access('administer nodes')) { drupal_set_message("<pre>".print_r($form, TRUE)."</pre>"); }
+    $form['#validate']['tw_form_validate'] = array();
+    $form['#redirect'] = 'thumb-wars/thumb-socks/thanks';
+    $form['preview']['#access'] = false;
+    break;
+
+  case 'thumb_wars_bumper_sticker_node_form':
+    $form['#validate']['tw_sticker_validate'] = array();
+    $form['#redirect'] = 'thumb-wars/bumper-stickers/thanks';
+    $form['preview']['#access'] = false;
+    break;
+
+  case 'ds101_action_kit_node_form':
+    $form['#validate']['ds101_action_kit_validate'] = array();
+    $form['#redirect'] = 'dosomething101/home';
+    $form['preview']['#access'] = false;
+    break;
+
+  case 'lost_found_node_form':
+    $form['#validate']['lost_found_validate'] = array();
+    $form['preview']['#access'] = false;
+    break;
+
+  case 'varsity_node_form':
+    $form['#validate']['varsity_form_validate'] = array();
+    break;
+
+  case 'hp_art_node_form':
+    $form['title']['#weight'] = -8;
+    $form['#validate']['hp_art_form_validate'] = array();
+    break;
+
+  case 'thumb_wars_sticker_order_node_form':
+    $form['title']['#weight'] = -8;
+    $form['#validate']['tw_sticker_form_validate'] = array();
+    $form['preview']['#access'] = false;
+    $form['#redirect'] = 'thumb-wars/bumper-stickers/order/thanks';
+    break;
+
+  case 'yacapp_node_form':
+    //drupal_set_message("<pre>".print_r($form, TRUE)."</pre>");
+    $form['#validate']['yacapp_validate'] = array();
+    $form['field_field_yac_app_varsity']['#prefix'] = '<div class="hide-me">';
+    $form['field_field_yac_app_varsity']['#suffix'] = '</div>';
+    break;
+
+  case 'healthy_schools_node_form':
+    $form['taxonomy'][15]['#required'] = 1;
+    $form['preview']['#access'] = false;
+    break;
+
+  case 'dsu_askprof_node_form':
+    $form['preview']['#access'] = false;
+    break;
+
+  case 'canned_food_node_form':
+    $form['field_fooddrive_photo-attach-url']['#access'] = FALSE;
+    $form['group_amount_of_food_raised']['field_fooddrive_photo']['#access'] = FALSE;
+    $form['field_embedded_video']['#collapsible'] = TRUE;
+    $form['field_embedded_video']['#collapsed'] = TRUE;
+    $form['group_all_contact_info_needed']['field_where_did_you_hear']['#access'] = false;
+    $form['group_info_about_the_drive']['field_cannedfood_students']['#access'] = FALSE;
+    break;
+
+  case 'custom_voting_node_form':
+    //drupal_set_message('<pre>'.print_r($form, true).'</pre>');
+    $form['field_select_celebrity']['keys']['#options'] = shuffle_assoc($form['field_select_celebrity']['keys']['#options']);
+    $form['#validate']['custom_voting_validate'] = array();
+    $form['preview']['#access'] = false;
+    break;
+  case 'campaign_gys_2011_node_form':
+    $form['#validate']['gys_2011_validate'] = array();
+    //drupal_set_message('<pre>'.print_r($form,TRUE).'</pre>');
+    break;
+  case 'gys_2011_node_form':
+    if (user_access('administer nodes')) {
+      //drupal_set_message('<pre>'.print_r($form, true).'</pre>');
+    }
+    if (! $_GET['enroll']) {
+      $form['body_filter']['body']['#required'] = 1;
+    }
+    $form['body_filter']['body']['#rows'] = 10;
+    $form['body_filter']['body']['#title'] .= '<div id="signup-description">5 outstanding plans will be selected to win an HP mini laptop!</div>';
+    break;
+
+  case 'tfj_contest_signup_node_form':
+    if (user_access('administer nodes')) {
+      //drupal_set_message('<pre>'.print_r($form, true).'</pre>');
+    }
+    $form['group_address']['field_campaign_address'][0]['value']['#required'] = true;
+    $form['group_address']['field_campaign_city'][0]['value']['#required'] = true;
+    $form['group_address']['field_campaign_state_0'][0]['value']['#required'] = true;
+    $form['group_address']['field_campaign_zip'][0]['value']['#required'] = true;
+    $form['group_address']['field_campaign_phone'][0]['value']['#required'] = true;
+
+    break;
+
+  }
+
+}
+
+function gys_2011_validate($form_id, $form_values) {
+}
+
+function dsaward_rec_validate($form_id, $form_values) {
+  if (!strlen($form_values['field_dsaward_recommendation'][0]['value']) &&
+      !strlen($form_values['field_dsaward_rec_pdf'][0]['filename'])) {
+    form_set_error('field_dsaward_recommendation', 'Please submit a text recommendation or upload a PDF.');
+  }
+}
+
+function yacapp_validate($form_id, $form_values) {
+  if ($form_values['field_yacapp_school_type']['key'] == '<school type>') {
+    form_set_error('field_yacapp_school_type', t('Please choose a school type.'));
+  }
+  if ($form_values['field_field_yac_app_community']['key'] == '<community type>') {
+    form_set_error('field_field_yac_app_community', t('Please choose a community type.'));
+  }
+}
+
+function dosomething_forms_fb_save_zip($form_id, $form_values) {
+  //we need to use this hack because the fbconnect module is rude and redirects
+  //after firing its own submit handler, but we need to set zip after it runs.
+  $_SESSION['fb_save_zip'] = $form_values['profile_zip'];
+}
+
+function dosomething_forms_menu($may_cache) {
+  global $user;
+  if (!$may_cache) {
+    if ($user->uid && $_SESSION['fb_save_zip']) {
+      //field 11 is zipcode
+      $fid = 11;
+      db_query("DELETE FROM {profile_values} WHERE fid = %d AND uid = %d", $fid, $user->uid);
+      db_query("INSERT INTO {profile_values} (fid, uid, value) VALUES (%d, %d, '%s')", $fid, $user->uid, $_SESSION['fb_save_zip']);
+      unset($_SESSION['fb_save_zip']);
+    }
+  }
+
+  $items = array();
+
+  // expose abc_family submission form through AJAX
+  $items[] = array(
+    'path' => 'abcfamily/form.js',
+    'callback' => '_dosomething_forms_abcfamily_form',
+    'type' => MENU_CALLBACK,
+    'access' => TRUE,
+  );
+    
+  // expose email -> username for AJAX
+  $items[] = array(
+    'path' => 'help/user/find',
+    'callback' => '_dosomething_forms_user_find',
+    'type' => MENU_CALLBACK,
+    'access' => user_access('administer nodes'),
+  );
+    
+  return $items;
+
+}
+
+function _dosomething_forms_abcfamily_form() {
+
+  // create a json string of the search form html
+  $node = new stdClass();
+  $node->type = 'abc_family';
+  $json = drupal_to_js(drupal_get_form('abc_family_node_form', $node));
+    
+  // format the json as a callback function
+  // see: http://docs.jquery.com/Ajax/jQuery.getJSON for more information
+  if ($_GET['jsoncallback']) {
+    $json = $_GET['jsoncallback'] . "(" . $json . ");";
+  }
+    
+  // output the json
+  //drupal_set_header('Content-Type: application/javascript; charset=utf-8');
+  print $json;
+
+  // stop the script, so the theme layer is not applied
+  die;
+}
+
+function _dosomething_forms_user_find($search_term) {
+
+  $users = array();
+
+  // create a json version of the search result
+  $result = db_query("SELECT mail, name, uid FROM {users} WHERE mail LIKE '%%%s%%'", $search_term);
+  while ($row = db_fetch_object($result)) {
+    $users[] = array("email" => $row->mail, "name" => $row->name, "link" => l($row->name, 'user/'.$row->uid));
+  }
+  $json = drupal_to_js($users);
+    
+  // format the json as a callback function
+  // see: http://docs.jquery.com/Ajax/jQuery.getJSON for more information
+  if ($_GET['jsoncallback']) {
+    $json = $_GET['jsoncallback'] . "(" . $json . ");";
+  }
+    
+  // output the json
+  // drupal_set_header('Content-Type: application/javascript; charset=utf-8');
+  print $json;
+  // print print_r($users, TRUE);
+
+  // stop the script, so the theme layer is not applied
+  die;
+}
+
+function _dosomething_forms_project_update_node_form_validate($form_id, &$form_values)
+{
+  if (!preg_match('/^[0-9,]+$/', $form_values['field_update_people_impacted'][0]['value']) || $form_values['field_update_people_impacted'][0]['value'] < 0) {
+    form_set_error('field_update_people_impacted', t('Please use numbers only (no text) to let us know how many new people were helped by your project'));
+  }
+  if (!preg_match('/^[0-9,]+$/', $form_values['field_update_people_involved'][0]['value']) || $form_values['field_update_people_involved'][0]['value'] < 0) {
+    form_set_error('field_update_people_involved', t('Please use numbers only (no text) to let us know how many new people were involved in your project'));
+  }
+}
+
+function _validate_birthdate_set_error($uid) {
+  $user_owner = user_load(array('uid' => $uid));
+  $birthdate = '';
+  if (isset($user_owner)) {
+    $birthdate = $user_owner->profile_bday;
+  }
+  $birthdate = preg_replace('/[^\d]+/', '-', $birthdate);
+  $birthdate_parts = explode('-', $birthdate);
+  $b_month = $birthdate_parts[0];
+  $b_day = $birthdate_parts[1];
+  $b_year = $birthdate_parts[2];
+  if (strlen($b_year) == 2) {
+    if ($b_year && $b_year > 40) {
+      $b_year += 1900;
+    } else {
+      $b_year += 2000;
+    }
+  }
+
+  if (! (strlen($b_year) == 4 &&
+      strlen($b_month) <= 2 &&
+      strlen($b_month) > 0 &&
+      strlen($b_day) > 0 && strlen($b_day) <= 2)) {
+     $path = '/user/'.$user_owner->uid.'/edit/Personal Information';
+     drupal_set_message(t('Oops!  We need to know your birthday, but it is missing from your profile.  <a href="'.$path.'" target="_blank">Click here</a> to open your profile in a new window.  You can submit this form after updating your birthday in your profile.'), 'error');
+  } else {
+    $b_time = strtotime($b_year.'-'.$b_month.'-'.$b_day);
+    $birthday_of_26_yr_old = strtotime('26 years ago');
+    //Check if under 26 to update projects
+    if ($b_time < $birthday_of_26_yr_old) {
+   //   form_set_error(t('You must be 25 or younger to add a project'));
+    }
+  }
+}
+
+function _dosomething_forms_project_node_form_validate($form_id, &$form_values)
+{
+  if (!preg_match('/^[0-9,]+$/', $form_values['field_num_people_involved'][0]['value']) || $form_values['field_num_people_involved'][0]['value'] < 0) {
+    form_set_error('field_num_people_involved', t('Please use numbers only (no text) to let us know how many people were involved in your project'));
+  }
+  if (!preg_match('/^[0-9,]+$/', $form_values['field_num_people_inspired'][0]['value']) || $form_values['field_num_people_inspired'][0]['value'] < 0) {
+    form_set_error('field_num_people_inspired', t('Please use numbers only (no text) to let us know how many people you inspired to take action'));
+  }
+  if (!preg_match('/^[0-9,]+$/', $form_values['field_num_people_impacted'][0]['value']) || $form_values['field_num_people_impacted'][0]['value'] < 0) {
+    form_set_error('field_num_people_impacted', t('Please use numbers only (no text) to let us know how many people your project helped'));
+  }
+  _validate_birthdate_set_error($form_values['uid']);
+}
+
+function _dosomething_forms_user_edit_validation($form_id, $form_values) {
+  _bday_regex_set_error($form_values['profile_bday']);
+}
+
+function _bday_regex_set_error($bday) {
+  if ($bday && ! preg_match('@(0?[1-9]|1[012])[- /.](0?[1-9]|[12][0-9]|3[01])[- /.](19|20)?[0-9]{2}$@', $bday)) {
+    form_set_error('profile_bday', t('Please enter your birthday in the format mm/dd/yyyy.'." You entered: $bday"));
+  }
+}
+
+function _dosomething_forms_extra_user_validation($form_id, $form_values)
+{
+	if(strlen(trim($_POST['profile_mobile']))) {
+		if(strlen(preg_replace('/[^\d]*/','',$_POST['profile_mobile']))!=9) {
+			form_set_error('profile_mobile',t('The phone number you entered doesn\'t seem to be valid. Did you include the area code?'));
+    }
+  }
+  _bday_regex_set_error($form_values['profile_bday']);
+}
+
+function _dosomething_forms_remove_privacy_notice(&$form)
+{
+	if(isset($form['#description']))
+		$form['#description'] = str_replace('The content of this field is kept private and will not be shown publicly.','',$form['#description']);
+	
+	if(is_array($form))
+		foreach($form as $k => $v)
+			_dosomething_forms_remove_privacy_notice($form[$k]);
+}
+
+
+function _dosomething_forms_unrequire(&$form, $current_key = '')
+{
+	$r = array();
+	if(is_array($form))
+	{
+		if(isset($form['#required']))
+		{
+			if(!is_array($form['#attributes']))
+				$form['#attributes'] = array('class' => '');
+			$current_class = $form['#attributes']['class'];
+			$current_class = trim($current_class . ' required-' . (($form['#required']==TRUE) ? 'yes' : 'no'));
+			$form['#attributes']['class'] = $current_class;
+		
+			$r[] = $current_key;
+			unset($form['#required']);
+		}
+		
+		foreach($form as $k => $v)
+			if(is_array($form[$k]))
+			{
+				$temp = _dosomething_forms_unrequire($form[$k], $k);
+				if(sizeof($temp))
+					$r[] = $temp;
+			}
+	}		
+
+	return $r;
+}
+
+function dosomething_forms_comment(&$a1, $op)
+{	
+	/*
+	// PRESERVED FOR THEMING
+	
+	global $theme;
+	if(!function_exists($theme . '_comment_wrapper'))
+	{
+		$func = <<<EOT
+	function {$theme}_comment_wrapper($content)
+	{		
+		if(strstr(\$_GET['q'],'node/'))
+		{
+			
+			\$node = node_load(array('nid' => str_replace('node/','',\$_GET['q'])));
+			if((\$node->type=='grant_application')&&(!user_access('administer grant applications')))
+			{
+				return '';
+			}
+			else
+			{
+				return \$content;//theme_comment_wrapper(\$content);
+			}
+		}
+		else
+		{
+			return \$content;//theme_comment_wrapper(\$content);
+		}
+	}
+EOT;
+		eval($func);
+	}
+	*/
+
+	switch($op)
+	{
+		case 'view':
+			if(!user_access('administer grant applications'))
+			{
+				unset($a1->subject);
+				unset($a1->comment);
+			}		
+			break;
+	}
+}
+
+/*
+GRANTS TODO:
++1. maintain some record of which fields are required through the post (construct this in form_alter)
++2. add a validation function to the form
++3. on validation, check which fields are required (as det. by hidden field) and run validation if checkbox is checked
+---
+4. CSV export
+5. Final grant update node type
+6. workflow notification on grant submission
++7. comments -- enabled but hidden on grants except for administrators (comment wrapper?)
+*/
+
+/* 
+WRAPPER FUNCTIONS FOR PROFILE MODULE FORM 
+
+The profile form is usually only available on the user editing form.
+Some wrapper functions are necessary to make it work elsewhere.
+*/
+function dosomething_profile_form($user,$category)
+{
+	if(module_exists('profile'))
+	{
+		$user = user_load(array('uid' => $user->uid));
+	
+		$edit = array();
+		foreach($user as $key => $value)
+
+			if(preg_match('/^profile_/',$key))
+				$edit[$key] = $value;		
+		
+		$form = profile_form_profile($edit, $user, $category);
+		
+		
+		// now let's pretend we're in hook_form_alter		
+		
+		// if we can, use location.module's country list and make the field a dropdown
+/*		
+		if(module_exists('location'))
+		{
+			$form['Personal Information']['profile_country']['#type'] = 'select';
+			$form['Personal Information']['profile_country']['#options'] = _location_get_iso3166_list();
+		}		
+*/		
+		// add a submit button
+		$form['op'] = array
+		(
+			'#weight' => '10',
+			'#type' => 'submit',
+			'#value' => t('Submit'),
+		);
+		
+		// pass along the $category parameter as a hidden value
+		$form['category'] = array
+		(
+			'#type' => 'hidden',
+			'#value' => $category,
+		);
+/*		if (!is_numeric($form['Personal Information']['profile_country']['#default_value'])) {
+			$init_val = $form['Personal Information']['profile_country']['#default_value'];
+			$long_val = _location_get_iso3166_long_value($init_val);
+			$country_list = _location_get_iso3166_list();
+			$found_country = array_search($long_val,$country_list);
+			$form['Personal Information']['profile_country']['#default_value'] = $found_country;
+		}
+*/
+		return $form;
+	}
+}
+
+function varsity_form_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  if ($form_values['field_varsity_which_mission']['key'] == '<select your mission>') {
+    form_set_error('field_varsity_which_mission', t('Please select your mission.'));
+  }
+  if ($form_values['field_varsity_gainedimpressions'][0]['value'] <= 0) {
+    form_set_error('field_varsity_gainedimpressions', t('Please use only digits in your impression numbers.'));
+  }
+  if (empty($form_values['field_varsity_photo']) &&
+      empty($form_values['field_varsity_text']) &&
+      empty($form_values['field_varsity_video'][0]['embed'])) {
+        form_set_error('field_varsity_photo', t('Provide at least one form of evidence for your mission.'));
+  }
+}
+
+function tw_sticker_form_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  global $user;
+  $error_text = "Oops! We need to know your ";
+  $error_end = "Click here to update your profile";
+  $personal_profile = l("$error_end", 'user/'.$user->uid.'/edit/Personal Information', NULL,
+    'destination=thumb-wars/bumper-stickers/order');
+  $location_profile = l("$error_end", 'user/'.$user->uid.'/edit/Location', NULL,
+    'destination=thumb-wars/bumper-stickers/order');
+  if (empty($user->profile_fname)) {
+    form_set_error('field_fn', "$error_text first name.  $personal_profile.");
+  }
+  if (empty($user->profile_lname)) {
+    form_set_error('field_ln', "$error_text last name.  $personal_profile.");
+  }
+  if (empty($user->profile_bday)) {
+    form_set_error('field_bday', "$error_text birthday.  $personal_profile.");
+  }
+  if (empty($user->profile_address1)) {
+    form_set_error('field_add', "$error_text address.  $location_profile.");
+  }
+  if (empty($user->profile_city)) {
+    form_set_error('field_city', "$error_text city.  $location_profile.");
+  }
+  if (empty($user->profile_state)) {
+    form_set_error('field_state', "$error_text state.  $location_profile.");
+  }
+  if (empty($user->profile_zip)) {
+    form_set_error('field_zip', "$error_text zip.  $location_profile.");
+  }
+}
+
+function dsaward_app_form_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  $today = getdate();
+  if (user_access('administer nodes')) {
+    //drupal_set_message('<pre>'.print_r($form_values, true).'</pre>');
+  }
+
+  // don't allow today's date, the default, as a valid birth date
+  if ($form_values['field_dsaward_app_birthdate'][0]['value']['mday'] == $today['mday']
+   && $form_values['field_dsaward_app_birthdate'][0]['value']['mon'] == $today['mon']
+   && $form_values['field_dsaward_app_birthdate'][0]['value']['year'] == $today['year']) {
+    form_set_error('field_dsaward_app_birthdate', t('Please choose a valid Birth Day.'));
+  }
+
+  // special checks for "complete" applications
+  if ($form_values['field_application_status']['key'] == 1) {
+    // make sure a project has been selected
+    if (!$form_values['field_plumgrant_project']['nids']) {
+      form_set_error('field_plumgrant_project', t('A project is required to submit a complete application. Choose a project under "Your Do Something Project Posting", or answer "No" to the question "Is this application complete?".'));
+    }
+  }
+
+}
+
+function hp_art_form_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  $today = getdate();
+  if ($form_values['field_campaign_birthdate'][0]['value']['mday'] == $today['mday']
+   && $form_values['field_campaign_birthdate'][0]['value']['mon'] == $today['mon']
+   && $form_values['field_campaign_birthdate'][0]['value']['year'] == $today['year']) {
+    form_set_error('field_campaign_birthdate', t('Please choose a valid Birth Day.'));
+  }
+  if (empty($form_values['taxonomy']['15']) && empty($form_values['field_hp_art_hear'][0]['value'])) {
+    form_set_error('taxonomy', t('Please let us know how you heard about <strong>Make Art. Save Art.</strong>'));
+  }
+}
+
+function lost_found_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  global $user;
+  $error_text = "Oops! We need to know your ";
+  $error_end = "Click here to update your profile";
+  $personal_profile = l("$error_end", 'user/'.$user->uid.'/edit/Personal Information', NULL,
+    'destination=node/564112');
+  $location_profile = l("$error_end", 'user/'.$user->uid.'/edit/Location', NULL,
+    'destination=node/564112');
+  if (empty($user->profile_fname)) {
+    form_set_error('field_lf_idea', "$error_text first name.  $personal_profile.");
+  }
+  if (empty($user->profile_lname)) {
+    form_set_error('field_lf_idea', "$error_text last name.  $personal_profile.");
+  }
+  if (empty($user->profile_bday)) {
+    form_set_error('field_lf_idea', "$error_text birthday.  $personal_profile.");
+  }
+  if (empty($user->profile_address1)) {
+    form_set_error('field_lf_idea', "$error_text address.  $location_profile.");
+  }
+  if (empty($user->profile_city)) {
+    form_set_error('field_lf_idea', "$error_text city.  $location_profile.");
+  }
+  if (empty($user->profile_state)) {
+    form_set_error('field_lf_idea', "$error_text state.  $location_profile.");
+  }
+  if (empty($user->profile_zip)) {
+    form_set_error('field_lf_idea', "$error_text zip.  $location_profile.");
+  }
+}
+
+function ds101_action_kit_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  global $user;
+  $error_text = "Oops! We need to know your ";
+  $error_end = "Click here to update your profile";
+  $personal_profile = l("$error_end", 'user/'.$user->uid.'/edit/Personal Information', NULL,
+    'destination=node/558388');
+  $location_profile = l("$error_end", 'user/'.$user->uid.'/edit/Location', NULL,
+    'destination=node/558388');
+  if (empty($user->profile_fname)) {
+    form_set_error('field_plans', "$error_text first name.  $personal_profile.");
+  }
+  if (empty($user->profile_lname)) {
+    form_set_error('field_plans', "$error_text last name.  $personal_profile.");
+  }
+  if (empty($user->profile_bday)) {
+    form_set_error('field_plans', "$error_text birthday.  $personal_profile.");
+  }
+  if (empty($user->profile_address1)) {
+    form_set_error('field_plans', "$error_text address.  $location_profile.");
+  }
+  if (empty($user->profile_city)) {
+    form_set_error('field_plans', "$error_text city.  $location_profile.");
+  }
+  if (empty($user->profile_state)) {
+    form_set_error('field_plans', "$error_text state.  $location_profile.");
+  }
+  if (empty($user->profile_zip)) {
+    form_set_error('field_plans', "$error_text zip.  $location_profile.");
+  }
+}
+
+function tw_sticker_validate($form_id, $form_values) {
+  //drupal_set_message("<pre>".print_r($form_values, TRUE)."</pre>");
+  global $user;
+  if ($form_values['field_bumper_sticker_rules']['keys'] == 0) {
+    form_set_error('field_bumper_sticker_rules', t('You must accept the contest rules to submit your design.'));
+  }
+  $error_text = "Oops! We need to know your ";
+  $error_end = "Click here to update your profile";
+  $personal_profile = l("$error_end", 'user/'.$user->uid.'/edit/Personal Information', NULL,
+    'destination=node/542802');
+  $location_profile = l("$error_end", 'user/'.$user->uid.'/edit/Location', NULL,
+    'destination=node/542802');
+  if (empty($user->profile_fname)) {
+    form_set_error('field_bumper_sticker_design', "$error_text first name.  $personal_profile.");
+  }
+  if (empty($user->profile_lname)) {
+    form_set_error('field_bumper_sticker_design', "$error_text last name.  $personal_profile.");
+  }
+  if (empty($user->profile_bday)) {
+    form_set_error('field_bumper_sticker_design', "$error_text birthday.  $personal_profile.");
+  }
+  if (empty($user->profile_address1)) {
+    form_set_error('field_bumper_sticker_design', "$error_text address.  $location_profile.");
+  }
+  if (empty($user->profile_city)) {
+    form_set_error('field_bumper_sticker_design', "$error_text city.  $location_profile.");
+  }
+  if (empty($user->profile_state)) {
+    form_set_error('field_bumper_sticker_design', "$error_text state.  $location_profile.");
+  }
+  if (empty($user->profile_zip)) {
+    form_set_error('field_bumper_sticker_design', "$error_text zip.  $location_profile.");
+  }
+}
+
+function tw_form_validate($form_id, $form_values) {
+  global $user;
+  $error_text = "Oops! We need to know your ";
+  $error_end = "Click here to update your profile";
+  $personal_profile = l("$error_end", 'user/'.$user->uid.'/edit/Personal Information', NULL,
+    'destination=node/538665');
+  $location_profile = l("$error_end", 'user/'.$user->uid.'/edit/Location', NULL,
+    'destination=node/538665');
+  if (empty($user->profile_fname)) {
+    form_set_error('field_campaign_group', "$error_text first name.  $personal_profile.");
+  }
+  if (empty($user->profile_lname)) {
+    form_set_error('field_campaign_group', "$error_text last name.  $personal_profile.");
+  }
+  if (empty($user->profile_bday)) {
+    form_set_error('field_campaign_group', "$error_text birthday.  $personal_profile.");
+  }
+  if (empty($user->profile_address1)) {
+    form_set_error('field_campaign_group', "$error_text address.  $location_profile.");
+  }
+  if (empty($user->profile_city)) {
+    form_set_error('field_campaign_group', "$error_text city.  $location_profile.");
+  }
+  if (empty($user->profile_state)) {
+    form_set_error('field_campaign_group', "$error_text state.  $location_profile.");
+  }
+  if (empty($user->profile_zip)) {
+    form_set_error('field_campaign_group', "$error_text zip.  $location_profile.");
+  }
+}
+
+function botb_form_validate($form_id, $form_values) {
+  //drupal_set_message('<pre>'.print_r($form_values, TRUE).'</pre>');
+  /*$today = getdate();
+  if ($form_values['field_campaign_birthdate'][0]['value']['mday'] == $today['mday']
+   && $form_values['field_campaign_birthdate'][0]['value']['mon'] == $today['mon']
+   && $form_values['field_campaign_birthdate'][0]['value']['year'] == $today['year']) {
+    form_set_error('field_campaign_birthdate', t('Please choose a valid Birth Date'));
+   }*/
+  if ($form_values['field_botb_agreement']['key'] == "no") {
+    form_set_error('field_botb_agreement', t('You must agree to the official contest rules to submit your entry.'));
+  }
+}
+
+function club_form_validate($form_id, $form_values) {
+  //drupal_set_message('<pre>'.print_r($form_values, TRUE).'</pre>');
+  $date_string = date('m/d/y');
+  if ($form_values['field_club_leader_birthdate'][0]['value'] == $date_string) {
+    form_set_error('field_club_leader_birthdate', t('Please choose a valid Birth Date'));
+  }
+  if ($form_values['field_club_intended_role']['key'] == '<role>') {
+    form_set_error('field_club_intended_role', t('Please choose an intended role'));
+  }
+  if ($form_values['field_club_meeting_frequency']['key'] == '<frequency>') {
+    form_set_error('field_club_meeting_frequency', t('Please choose how often your club will meet'));
+  }
+  if ($form_values['field_clubs_meeting_location']['key'] == '<where>') {
+    form_set_error('field_clubs_meeting_location', t('Please let us know where your club will hold meetings'));
+  }
+  if ($form_values['field_club_first_meeting']['key'] == '<reply>') {
+    form_set_error('field_club_first_meeting', t('Please let us know if your club has already had a meeting'));
+  }
+  if ($form_values['field_club_first_meeting']['key'] == 'no' &&
+    (empty($form_values['field_club_first_meeting_when'][0]['value']['mday'])
+    || empty($form_values['field_club_first_meeting_when'][0]['value']['mon'])
+    || empty($form_values['field_club_first_meeting_when'][0]['value']['year']))
+     ) {
+    form_set_error('field_club_first_meeting_when', t('Please let us know when you will hold your first meeting'));
+  }
+  if ($form_values['field_field_club_new']['key'] == '<yes/no>') {
+    form_set_error('field_field_club_new', t('Please let us know if your club has been in existence for more than a month.'));
+  }
+  if (!preg_match('/^[0-9,]+$/', $form_values['field_club_expected_members'][0]['value']) || $form_values['field_club_expected_members'][0]['value'] < 0) {
+        form_set_error('field_club_expected_members', t('Please use numbers only (no text) to let us know how many members you expect to have'));
+  }
+  if ($form_values['field_club_state']['key'] == '<state/province>') {
+    form_set_error('field_club_state', t('Please select a valid state or province.'));
+  }
+  if ($form_values['field_club_is_school']['key'] == '<reply>') {
+    form_set_error('field_club_is_school', t('Please indicate if this is a school address.'));
+  }
+  if (empty($form_values['taxonomy']['5'])) {
+    form_set_error('taxonomy', t('Please choose at least one issue your club will focus on.'));
+  }
+  if ($form_values['field_club_agreement']['keys'] == 0) {
+    form_set_error('field_club_agreement', t('Please accept the club agreement to continue.'));
+  }
+}
+
+function action_guide_form_validate($form_id, $form_values) {
+  if (! preg_match('/^(?:How To|Action Tips|Training):/', $form_values['title'])) {
+    form_set_error('title', t('Title of action guide must begin with "How To:", "Action Tips:" or "Training:"'));
+  }
+}
+
+function college_survey_form_validate($form_id, $form_values) {
+  if (! validEmail($form_values['field_email'][0]['value'])) {
+    form_set_error('field_email', t('Please provide a valid email address'));
+  }
+  if (! validUSAZip($form_values['field_zip_code'][0]['value'])) {
+    form_set_error('field_zip_code', t('Please provide a valid zip code'));
+  }
+  if (! validPhone($form_values['field_your_cell_phone_notrequir'][0]['value'])) {
+    form_set_error('field_your_cell_phone_notrequir', t('Please provide a valid ten-digit phone number'));
+  }
+}
+
+function user_field_form_validate($form_id, $form_values) {
+  $field_names = array(
+    'profile_fname' => 'First Name',
+    'profile_lname' => 'Last Name',
+    'profile_address1' => 'Address 1',
+    'profile_address2' => 'Address 2',
+    'profile_city' => 'City',
+    'profile_state' => 'State',
+    'profile_zip' => 'Zip',
+    'profile_cell' => 'Cell',
+    'profile_bday' => 'Birthday',
+  );
+
+  global $user;
+  $args = func_get_args();
+  $num_args = func_num_args();
+  for ($i = 3; $i < $num_args; $i++) {
+    $field = $args[$i];
+    //drupal_set_message('<pre>'.$i.': '.print_r($args[$i],TRUE).'</pre>');
+    if (! $user->$field) {
+      form_set_error($field, t('Please enter your '.$field_names[$field]));
+    }
+  }
+}
+
+function tackle_hunger_form_validate($form_id, $form_values) {
+  $pounds = $form_values['field_tackle_hunger_expected_lb'][0]['value'];
+  if (! $pounds || ! preg_match('/^[0-9]+$/', $pounds)) {
+    form_set_error('field_tackle_hunger_expected_lb', t('Please use numbers only.'));
+  }
+}
+
+function validPhone($phone) {
+  $newphone = preg_replace('/[^\d]*/','',$phone);
+  if (strlen($newphone) && strlen($newphone) != 10) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validUSAZip($zip_code) {
+  if(preg_match("/^([0-9]{5})(-[0-9]{4})?$/i",$zip_code))
+    return true;
+  else
+    return false;
+}
+
+/**
+Validate an email address.
+Provide email address (raw input)
+Returns true if the email address has the email 
+address format and the domain exists.
+*/
+function validEmail($email)
+{
+   $isValid = true;
+   $atIndex = strrpos($email, "@");
+   if (is_bool($atIndex) && !$atIndex) {
+      $isValid = false;
+   } else {
+      $domain = substr($email, $atIndex+1);
+      $local = substr($email, 0, $atIndex);
+      $localLen = strlen($local);
+      $domainLen = strlen($domain);
+      if ($localLen < 1 || $localLen > 64) {
+         // local part length exceeded
+         $isValid = false;
+      } else if ($domainLen < 1 || $domainLen > 255) {
+         // domain part length exceeded
+         $isValid = false;
+      } else if ($local[0] == '.' || $local[$localLen-1] == '.') {
+         // local part starts or ends with '.'
+         $isValid = false;
+      } else if (preg_match('/\\.\\./', $local)) {
+         // local part has two consecutive dots
+         $isValid = false;
+      } else if (!preg_match('/^[A-Za-z0-9\\-\\.]+$/', $domain)) {
+         // character not valid in domain part
+         $isValid = false;
+      } else if (preg_match('/\\.\\./', $domain)) {
+         // domain part has two consecutive dots
+         $isValid = false;
+      }
+      else if (!preg_match('/^(\\\\.|[A-Za-z0-9!#%&`_=\\/$\'*+?^{}|~.-])+$/',
+                str_replace("\\\\","",$local))) {
+         // character not valid in local part unless 
+         // local part is quoted
+         if (!preg_match('/^"(\\\\"|[^"])+"$/',
+             str_replace("\\\\","",$local))) {
+            $isValid = false;
+         }
+      } if ($isValid && !(checkdnsrr($domain,"MX") || 
+          checkdnsrr($domain,"A"))) {
+         // domain not found in DNS
+         $isValid = false;
+      }
+   }
+   return $isValid;
+}
+
+/*function grant_form_validate($form_id, $form_values) {
+  $today = getdate();
+  if ($form_values['field_recipient_birthdate'][0]['value']['mday'] == $today['mday']
+   && $form_values['field_recipient_birthdate'][0]['value']['mon'] == $today['mon']
+   && $form_values['field_recipient_birthdate'][0]['value']['year'] == $today['year']) {
+    form_set_error('field_recipient_birthdate', t('Please choose a valid Birth Date'));
+  }
+}*/
+
+function dosomething_profile_form_validate($form_id,$form_values)
+{
+	if(module_exists('profile'))
+	{
+		if((strlen(trim($form_values['profile_zipcode']))) && (!is_numeric(trim($form_values['profile_zipcode']))))
+			form_set_error('profile][zipcode',t('Zipcode must be numeric'));
+
+		if(!strlen($form_values['profile_fname']))
+			form_set_error('profile][fname',t('First name is required'));
+		
+		if(!strlen($form_values['profile_lname']))
+			form_set_error('profile][lname',t('Last name is required'));
+
+		return profile_validate_profile($form_values, $form_values['category']);	
+	}
+}
+
+function dosomething_profile_form_submit($form_id,$form_values)
+{	
+	$user = user_load(array('uid'=>arg(1)));
+	
+	if(module_exists('profile'))
+	{
+		// save the changed profile info
+		$account = $form_values;
+		$r = user_save($user,$account);
+				$r = profile_save_profile($form_values, $user, $form_values['category']);
+
+		// reload the user with the new info
+		$user = user_load(array('uid' => $user->uid));
+
+		// geocode, if applicable
+//		_clinton_geocode_user($user);
+
+		// re-save the user with the new info
+//		user_save($user, array(
+//			'profile_state' => $user->profile_state,
+//			'profile_city' => $user->profile_city,		
+//		));
+		
+		// go back to pretending we're a normal form
+		return 'user/'.arg(1);
+	}
+}
+
+/* 
+END WRAPPER FUNCTIONS FOR PROFILE MODULE FORM 
+*/
+
+/*
+Checks if node deserves badges, returns associative arrays
+*/
+function dosomething_badge_check($node){
+  $badge_queue = array('grantwinner' => 9, 'projofday' => 34);
+  $queue_badge = array_flip($badge_queue);
+  $qid_str = implode(',', array_values($badge_queue));
+	if(is_numeric($node->nid)){
+		$badges = array();
+		//print_r($node);
+		
+		//search for grant attached to project, and see if it is award winner
+		//$query = "SELECT n.title, n.type, n.nid from content_field_project p, node n WHERE p.field_project_nid = $node->nid AND n.nid=p.nid AND n.vid=p.vid AND n.type='grant_application'";
+		$query = "SELECT nq.nid,ep.field_project_reference_nid as 'refnid', nq.qid
+              FROM nodequeue_nodes nq
+              LEFT JOIN content_type_editorial_project ep ON nq.nid=ep. nid
+              WHERE (nq.nid =$node->nid OR ep.field_project_reference_nid=$node->nid )
+              AND nq.qid IN ($qid_str)";
+
+		//print $query;
+		$result = mysql_query($query);
+		$badges['grantwinner'] = FALSE;
+		while($row=mysql_fetch_object($result)){
+			//is it a winner?
+			/*
+			$grant_node = node_load($row['nid']);
+			if($grant_node->field_grant_application_status[0][value]=="Grant Winner"){
+				$badges['grantwinner'] = TRUE;
+			}else{
+				$badges['grantwinner'] = FALSE;
+			}
+       */
+			$badges[$queue_badge[$row->qid]] = TRUE;
+		}
+		unset($query);
+		unset($result);
+		
+		//search for club attached to project
+		$query = "select o.nid from og_ancestry o inner join node n on o.group_nid=n.nid where n.type='club' and n.status>0 and o.nid=$node->nid";
+		$result = mysql_query($query);
+		$badges['clubproject'] = FALSE;
+		
+		while($row=mysql_fetch_array($result)){
+			$badges['clubproject'] = TRUE;
+		}
+
+		// also include clubs mentioned in the Club Projects nodequeue
+		// $query = "select o.nid from og_ancestry o inner join node n on o.group_nid=n.nid where n.type='club' and n.status>0 and o.nid=$node->nid";
+		$query = "SELECT n.nid from nodequeue_nodes n WHERE n.nid = $node->nid AND n.qid = 10";
+		$result = mysql_query($query);
+
+		while($row=mysql_fetch_array($result)){
+			$badges['clubproject'] = TRUE;
+		}
+		
+		//check DS award flag.
+		if($node->field_dosomething_award_winner[0]['value']=='Yes'){
+			$badges['dsaward'] = TRUE;
+		}else{
+			$badges['dsaward'] = FALSE;
+		}
+		
+		return $badges;
+	}
+}
+
+/* User hook to curl user info to DiA */
+function dosomething_forms_user($op, $edit, $account){
+
+	switch($op){
+		case 'insert':
+			/*		foreach($_POST as $key=>$item){
+			drupal_set_message("$key => $item");
+			//$items[] = "$key=".$item;
+			}*/
+
+			if($_POST['profile_newsletter']==1){
+				//Curl data to DiA
+				$ch = curl_init();
+
+				$data = array('Email' => $_POST['mail'],
+				'First_Name' => $_POST['profile_fname'],
+				'Last_Name' => $_POST['profile_lname'],
+				'Zip' => $_POST['profile_zip'],
+				'State' => $_POST['profile_state'],
+				'link' => 'groups',
+				'linkKey' => '56863',
+				'table' => 'supporter',
+				'organization_KEY' => '5216');
+
+				$items = array();
+
+				foreach($data as $key=>$item){
+					//drupal_set_message("$key => $item");
+					$items[] = "$key=".$item;
+				}
+
+				$string = "?".implode('&',$items);
+				//drupal_set_message($string);
+				curl_setopt($ch, CURLOPT_URL, 'http://org2.democracyinaction.org/dia/api/process.jsp'.$string);
+				/*		curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);*/
+
+        curl_exec($ch);
+			}
+			break;
+	}
+}
+
+/*
+   Contains a list of judges that can judge more than ten applications
+ */
+
+function dsaward_judge_max_is_ten() {
+  global $user;
+  return ! in_array($user->name, array(
+                                       'test-grant-reviewer',
+                                       'dsawardjudge0052',
+  ));
+}
+
+/*
+  takes the nid of the current application
+  returns the nid of next app to judge
+  or NULL if this judge has scored 10 apps
+  or NULL if there are no unjudged apps left for this judge
+*/
+
+function dsaward_next_application() {
+
+  global $user;
+
+  $next_app_id = db_result(db_query("
+    SELECT nid
+    FROM nodequeue_nodes nn
+    WHERE qid = 66
+     AND
+    nid NOT IN (SELECT field_application_judged_nid FROM node n INNER JOIN content_type_ds_award_judging dsaj ON n.vid = dsaj.vid AND n.uid = %d)
+     AND
+    nid != %d
+    ORDER BY (SELECT COUNT(*) FROM node n INNER JOIN content_type_ds_award_judging dsaj ON n.vid = dsaj.vid WHERE dsaj.field_application_judged_nid = nn.nid)
+    LIMIT 1", $user->uid, arg(1)));
+
+  $count = db_result(db_query("SELECT COUNT(*) FROM node WHERE type='ds_award_judging' AND uid = %d", $user->uid));
+
+  if ($count >= 10 && dsaward_judge_max_is_ten()) {
+    return NULL;
+  }
+  return $next_app_id;
+
+}
+
+function custom_voting_validate($form_id, $form_values) {
+  $count = 0;
+  foreach ($form_values['field_select_celebrity']['keys'] as $celeb) {
+    if ($celeb) {
+      $count++;
+    }
+  }
+  if ($count > 10 || $count < 1) {
+    form_set_error('field_select_celebrity', 'Choose no more than 10 celebrities.');
+  }
+}
+
+function shuffle_assoc($list) { 
+  if (!is_array($list)) { return $list; }
+  $keys = array_keys($list); 
+  shuffle($keys); 
+  $random = array(); 
+  foreach ($keys as $key) {
+    $random[$key] = $list[$key]; 
+  }
+  return $random; 
+}

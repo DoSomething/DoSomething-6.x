@@ -1,9 +1,15 @@
+tr.even, tr.odd, tbody, thead th, th {
+  background: none !important;
+  border: none !important;
+}
+
 div#container div#main p {
   color: black;
 }
 
 form fieldset {
   width: auto !important;
+  overflow: visible !important;
 }
 
 div.submit-button {

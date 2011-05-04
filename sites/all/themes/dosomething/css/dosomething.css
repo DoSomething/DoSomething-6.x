@@ -1,3 +1,7 @@
+.hide-me {
+  display: none;
+}
+
 /* Additions to zen base that don't need to be overwrittern (e.g. widths in layout-fixed.css */
 
 body {

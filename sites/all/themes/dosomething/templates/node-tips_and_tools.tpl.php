@@ -87,6 +87,6 @@
 
   <hr />
 
-  <div class="cause-links"><?php print $cause_links; ?></div>
+  <?php print $cause_links; ?>
 
 </div> <!-- /.node -->

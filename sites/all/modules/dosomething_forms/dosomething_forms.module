@@ -7,6 +7,8 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
   //
   // contenttype node form
   //
+  global $user;
+  $user = user_load($user->uid);
   $form['#attributes']['class'] .= ' ' . $form_id;
   if (substr($form_id, -10) == '_node_form') {
 
@@ -18,15 +20,20 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['body_field']['teaser_js'] = NULL;
     $form['body_field']['teaser_include'] = NULL;
   }
-  switch ($form_id) {
-    case 'scholarships_att_node_form':
-      $form['group_your_media']['field_scholarship_att_pic']['#prefix'] = '<p>Picture (recommended): show us a picture of yourself showcasing your personality, style, and excitement about a DoSomething.org/AT&T scholarship!</p>';
-      $form['preview']['#access'] = false;
-      $form['group_your_media']['field_scholarship_att_pic']['#suffix'] = '<div class="media-upload-note">The video and/or picture you upload in connection with your application will be posted on our gallery tab which is viewable to the public.  By uploading your video and/or picture to this site, you represent and warrant: (i) you have obtained all rights, licenses, consents and permission to use the content featured in the video/photo, including but not limited to, those of any persons that may have participated in the video or are recognizable in the photo; (ii) the video, in whole or in part, has not been released commercially; and (iii) the video/photo does not and will not violate any third party rights.</div>';
 
-    break;
+  switch($form_id) {
+    case 'help_ticket_node_form':
+      global $user;
+      if($user->uid>0)
+        $form['title']['#default_value'] = $user->mail;
+      $form['field_phone_number']['#access'] = false;
+      break;
+
+    case 'grant_application_node_form':
+      if(!user_access('administer grant applications'))
+        unset($form['field_grant_application_status']);
+      break;
   }
-
 }
 
 function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
@@ -43,9 +50,95 @@ function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
                  ));
       }
     break;
+    case 'project_update':
+      // mark the parent project node as updated
+      if($op=='insert')
+      {
+        if(is_numeric($node->field_project[0]['nid']))
+        {
+          if($project_node = node_load(array('nid' => intval($node->field_project[0]['nid']))))
+          {
+            $project_node->changed = time();
+            node_save($project_node);
+          }
+
+        }
+      }
+    break;
   }
 
 }
+
+function _validate_birthdate_set_error($uid) {
+  $user_owner = user_load(array('uid' => $uid));
+  $birthdate = '';
+  if (isset($user_owner)) {
+    $birthdate = $user_owner->profile_bday;
+  }
+  $birthdate = preg_replace('/[^\d]+/', '-', $birthdate);
+  $birthdate_parts = explode('-', $birthdate);
+  $b_month = $birthdate_parts[0];
+  $b_day = $birthdate_parts[1];
+  $b_year = $birthdate_parts[2];
+  if (strlen($b_year) == 2) {
+    if ($b_year && $b_year > 40) {
+      $b_year += 1900;
+    } else {
+      $b_year += 2000;
+    }
+  }
+
+  if (! (strlen($b_year) == 4 &&
+      strlen($b_month) <= 2 &&
+      strlen($b_month) > 0 &&
+      strlen($b_day) > 0 && strlen($b_day) <= 2)) {
+     $path = '/user/'.$user_owner->uid.'/edit/Personal Information';
+     drupal_set_message(t('Oops!  We need to know your birthday, but it is missing from your profile.  <a href="'.$path.'" target="_blank">Click here</a> to open your profile in a new window.  You can submit this form after updating your birthday in your profile.'), 'error');
+  } else {
+    $b_time = strtotime($b_year.'-'.$b_month.'-'.$b_day);
+    $birthday_of_26_yr_old = strtotime('26 years ago');
+    //Check if under 26 to update projects
+    if ($b_time < $birthday_of_26_yr_old) {
+   //   form_set_error(t('You must be 25 or younger to add a project'));
+    }
+  }
+}
+
+
+function user_field_form_validate($form_id, $form_values) {
+  $field_names = array(
+    'profile_fname' => 'First Name',
+    'profile_lname' => 'Last Name',
+    'profile_address1' => 'Address 1',
+    'profile_address2' => 'Address 2',
+    'profile_city' => 'City',
+    'profile_state' => 'State',
+    'profile_zip' => 'Zip',
+    'profile_cell' => 'Cell',
+    'profile_bday' => 'Birthday',
+  );
+
+  global $user;
+  $args = func_get_args();
+  $num_args = func_num_args();
+  for ($i = 3; $i < $num_args; $i++) {
+    $field = $args[$i];
+    //drupal_set_message('<pre>'.$i.': '.print_r($args[$i],TRUE).'</pre>');
+    if (! $user->$field) {
+      form_set_error($field, t('Please enter your '.$field_names[$field]));
+    }
+  }
+}
+
+function grant_form_validate($form_id, $form_values) {
+  $today = getdate();
+  if ($form_values['field_recipient_birthdate'][0]['value']['mday'] == $today['mday']
+   && $form_values['field_recipient_birthdate'][0]['value']['mon'] == $today['mon']
+   && $form_values['field_recipient_birthdate'][0]['value']['year'] == $today['year']) {
+    form_set_error('field_recipient_birthdate', t('Please choose a valid Birth Date'));
+  }
+}
+
 
 
 function dia_signup ($args = array()) {

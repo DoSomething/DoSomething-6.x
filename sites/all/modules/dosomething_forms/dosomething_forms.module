@@ -10,6 +10,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
   global $user;
   $user = user_load($user->uid);
   $form['#attributes']['class'] .= ' ' . $form_id;
+
   if (substr($form_id, -10) == '_node_form') {
 
     //$form['body_field']['body']['#rows'] = 5;
@@ -19,6 +20,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['body_field']['#after_build'] = NULL;
     $form['body_field']['teaser_js'] = NULL;
     $form['body_field']['teaser_include'] = NULL;
+    $form['buttons']['#weight'] = 100;
   }
 
   switch($form_id) {

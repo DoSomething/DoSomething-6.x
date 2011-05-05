@@ -43,10 +43,10 @@ function ds_actnow_views_default_views() {
       'empty_zero' => 0,
       'link_to_node' => 0,
       'label_type' => 'none',
-      'format' => '50x50_default',
+      'format' => '50x50_linked',
       'multiple' => array(
         'group' => 1,
-        'multiple_number' => '1',
+        'multiple_number' => '',
         'multiple_from' => '',
         'multiple_reversed' => 0,
       ),
@@ -484,7 +484,7 @@ function ds_actnow_views_default_views() {
       ),
     ),
     'tid_1' => array(
-      'default_action' => 'not found',
+      'default_action' => 'ignore',
       'style_plugin' => 'default_summary',
       'style_options' => array(),
       'wildcard' => '*',
@@ -515,6 +515,7 @@ function ds_actnow_views_default_views() {
         '5' => 0,
         '4' => 0,
         '11' => 0,
+        '14' => 0,
         '6' => 0,
         '12' => 0,
       ),
@@ -525,7 +526,6 @@ function ds_actnow_views_default_views() {
       'default_argument_php' => '',
       'validate_argument_node_type' => array(
         'poll' => 0,
-        'panel' => 0,
         'forum' => 0,
         '1in3_abuse_old' => 0,
         '301_redirects' => 0,
@@ -540,8 +540,12 @@ function ds_actnow_views_default_views() {
         'bc_financial_aid' => 0,
         'bc_financial_aid_grantalumni' => 0,
         'blank_page' => 0,
+        'bootcampx' => 0,
         'boot_camp_app' => 0,
         'botb' => 0,
+        'campaign_bfb_2011' => 0,
+        'campaign_ebd_2011' => 0,
+        'campaign_gys_2011' => 0,
         'campaign_shellproj' => 0,
         'campaign_tfj_2011' => 0,
         'canned_food' => 0,
@@ -566,6 +570,7 @@ function ds_actnow_views_default_views() {
         'dsu_materials' => 0,
         'ds_award_judging' => 0,
         'easy_idea' => 0,
+        'ebd_signup' => 0,
         'editorial_notes' => 0,
         'editorial_project' => 0,
         'enviro_grant' => 0,
@@ -581,6 +586,7 @@ function ds_actnow_views_default_views() {
         'grant_alumni_update_form' => 0,
         'grant_application' => 0,
         'grant_judge' => 0,
+        'gys_2011' => 0,
         'healthy_schools' => 0,
         'healthy_schools_report' => 0,
         'help_ticket' => 0,
@@ -597,6 +603,7 @@ function ds_actnow_views_default_views() {
         'lost_found' => 0,
         'mdvoltage_application' => 0,
         'page' => 0,
+        'pitch_grant' => 0,
         'plum_grant_app' => 0,
         'press' => 0,
         'project' => 0,
@@ -605,6 +612,7 @@ function ds_actnow_views_default_views() {
         'rant_rave' => 0,
         'reporter' => 0,
         'save_our_music' => 0,
+        'scholarships_att' => 0,
         'scroller' => 0,
         'sixflags_scholarships_app' => 0,
         'som_judge' => 0,
@@ -619,6 +627,7 @@ function ds_actnow_views_default_views() {
         'testimonial' => 0,
         'test_grant_app' => 0,
         'tfj_contest_signup' => 0,
+        'throwaway_type' => 0,
         'thumb_wars_bumper_sticker' => 0,
         'thumb_wars_sock_signup' => 0,
         'thumb_wars_sticker_order' => 0,
@@ -646,11 +655,7 @@ function ds_actnow_views_default_views() {
         '17' => 0,
         '15' => 0,
         '4' => 0,
-        '13' => 0,
-        '12' => 0,
         '16' => 0,
-        '8' => 0,
-        '7' => 0,
         '2' => 0,
       ),
       'validate_argument_type' => 'tid',
@@ -660,9 +665,13 @@ function ds_actnow_views_default_views() {
       'override' => array(
         'button' => 'Override',
       ),
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'club' => 0,
+      ),
     ),
     'tid_3' => array(
-      'default_action' => 'not found',
+      'default_action' => 'ignore',
       'style_plugin' => 'default_summary',
       'style_options' => array(),
       'wildcard' => '*',
@@ -693,6 +702,7 @@ function ds_actnow_views_default_views() {
         '5' => 0,
         '4' => 0,
         '11' => 0,
+        '14' => 0,
         '6' => 0,
         '12' => 0,
       ),
@@ -703,7 +713,6 @@ function ds_actnow_views_default_views() {
       'default_argument_php' => '',
       'validate_argument_node_type' => array(
         'poll' => 0,
-        'panel' => 0,
         'forum' => 0,
         '1in3_abuse_old' => 0,
         '301_redirects' => 0,
@@ -718,8 +727,12 @@ function ds_actnow_views_default_views() {
         'bc_financial_aid' => 0,
         'bc_financial_aid_grantalumni' => 0,
         'blank_page' => 0,
+        'bootcampx' => 0,
         'boot_camp_app' => 0,
         'botb' => 0,
+        'campaign_bfb_2011' => 0,
+        'campaign_ebd_2011' => 0,
+        'campaign_gys_2011' => 0,
         'campaign_shellproj' => 0,
         'campaign_tfj_2011' => 0,
         'canned_food' => 0,
@@ -744,6 +757,7 @@ function ds_actnow_views_default_views() {
         'dsu_materials' => 0,
         'ds_award_judging' => 0,
         'easy_idea' => 0,
+        'ebd_signup' => 0,
         'editorial_notes' => 0,
         'editorial_project' => 0,
         'enviro_grant' => 0,
@@ -759,6 +773,7 @@ function ds_actnow_views_default_views() {
         'grant_alumni_update_form' => 0,
         'grant_application' => 0,
         'grant_judge' => 0,
+        'gys_2011' => 0,
         'healthy_schools' => 0,
         'healthy_schools_report' => 0,
         'help_ticket' => 0,
@@ -775,6 +790,7 @@ function ds_actnow_views_default_views() {
         'lost_found' => 0,
         'mdvoltage_application' => 0,
         'page' => 0,
+        'pitch_grant' => 0,
         'plum_grant_app' => 0,
         'press' => 0,
         'project' => 0,
@@ -783,6 +799,7 @@ function ds_actnow_views_default_views() {
         'rant_rave' => 0,
         'reporter' => 0,
         'save_our_music' => 0,
+        'scholarships_att' => 0,
         'scroller' => 0,
         'sixflags_scholarships_app' => 0,
         'som_judge' => 0,
@@ -797,6 +814,7 @@ function ds_actnow_views_default_views() {
         'testimonial' => 0,
         'test_grant_app' => 0,
         'tfj_contest_signup' => 0,
+        'throwaway_type' => 0,
         'thumb_wars_bumper_sticker' => 0,
         'thumb_wars_sock_signup' => 0,
         'thumb_wars_sticker_order' => 0,
@@ -823,11 +841,7 @@ function ds_actnow_views_default_views() {
         '17' => 0,
         '15' => 0,
         '4' => 0,
-        '13' => 0,
-        '12' => 0,
         '16' => 0,
-        '8' => 0,
-        '7' => 0,
         '2' => 0,
         '3' => 0,
       ),
@@ -837,6 +851,10 @@ function ds_actnow_views_default_views() {
       'validate_argument_php' => '',
       'override' => array(
         'button' => 'Override',
+      ),
+      'validate_argument_is_member' => 'OG_VIEWS_DO_NOT_VALIDATE_MEMBERSHIP',
+      'validate_argument_group_node_type' => array(
+        'club' => 0,
       ),
     ),
   ));
@@ -907,6 +925,23 @@ function ds_actnow_views_default_views() {
       'field' => 'delta',
       'relationship' => 'none',
     ),
+    'field_is_content_general_value_many_to_one' => array(
+      'operator' => 'not',
+      'value' => array(
+        'yes' => 'yes',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'field_is_content_general_value_many_to_one',
+      'table' => 'node_data_field_is_content_general',
+      'field' => 'field_is_content_general_value_many_to_one',
+      'relationship' => 'none',
+      'reduce_duplicates' => 1,
+    ),
   ));
   $handler->override_option('access', array(
     'type' => 'none',
@@ -914,14 +949,19 @@ function ds_actnow_views_default_views() {
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler->override_option('header_format', '2');
+  $handler->override_option('header', '<h3>Easy Ideas</h3>');
+  $handler->override_option('header_format', '3');
   $handler->override_option('header_empty', 0);
   $handler->override_option('items_per_page', 3);
   $handler->override_option('use_pager', '0');
   $handler->override_option('use_more', 0);
   $handler->override_option('use_more_always', 0);
   $handler->override_option('use_more_text', '');
+  $handler->override_option('link_display', 'page_1');
   $handler->override_option('distinct', 1);
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+  ));
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->override_option('filters', array(
     'type' => array(
@@ -972,6 +1012,24 @@ function ds_actnow_views_default_views() {
       'field' => 'status',
       'relationship' => 'none',
     ),
+    'delta' => array(
+      'operator' => 'not empty',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'delta',
+      'table' => 'node_data_field_picture',
+      'field' => 'delta',
+      'relationship' => 'none',
+    ),
     'field_is_content_general_value_many_to_one' => array(
       'operator' => 'not',
       'value' => array(
@@ -986,11 +1044,8 @@ function ds_actnow_views_default_views() {
       'id' => 'field_is_content_general_value_many_to_one',
       'table' => 'node_data_field_is_content_general',
       'field' => 'field_is_content_general_value_many_to_one',
-      'override' => array(
-        'button' => 'Use default',
-      ),
       'relationship' => 'none',
-      'reduce_duplicates' => 0,
+      'reduce_duplicates' => 1,
     ),
   ));
   $handler->override_option('header', '<h3>How To Guides</h3>');
@@ -1051,9 +1106,9 @@ function ds_actnow_views_default_views() {
   $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_2');
   $handler->override_option('header', '<h3>Action Tips</h3>');
-  $handler->override_option('header_format', '4');
   $handler->override_option('use_more', 1);
   $handler->override_option('use_more_text', 'More Action Tips');
+  $handler->override_option('link_display', 'page_2');
   $handler->override_option('pane_title', 'Action Tips Action Guides');
   $handler->override_option('pane_description', '');
   $handler->override_option('pane_category', array(
@@ -1108,7 +1163,109 @@ function ds_actnow_views_default_views() {
   $handler->override_option('link_to_view', 0);
   $handler->override_option('inherit_panels_path', 0);
   $handler = $view->new_display('page', 'Page', 'page_1');
-  $handler->override_option('path', 'test/%/%/%/%');
+  $handler->override_option('sorts', array(
+    'title' => array(
+      'order' => 'ASC',
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'action_guide' => 'action_guide',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'title' => array(
+      'operator' => 'starts',
+      'value' => 'How To',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 1,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+    'delta' => array(
+      'operator' => 'not empty',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'delta',
+      'table' => 'node_data_field_picture',
+      'field' => 'delta',
+      'relationship' => 'none',
+    ),
+    'field_is_content_general_value_many_to_one' => array(
+      'operator' => 'not',
+      'value' => array(
+        'yes' => 'yes',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'field_is_content_general_value_many_to_one',
+      'table' => 'node_data_field_is_content_general',
+      'field' => 'field_is_content_general_value_many_to_one',
+      'relationship' => 'none',
+      'reduce_duplicates' => 1,
+    ),
+  ));
+  $handler->override_option('title', 'How To Guides');
+  $handler->override_option('header', '');
+  $handler->override_option('items_per_page', 10);
+  $handler->override_option('offset', 3);
+  $handler->override_option('use_pager', 'mini');
+  $handler->override_option('path', 'actnow/howto/%/%/%/%');
   $handler->override_option('menu', array(
     'type' => 'none',
     'title' => '',
@@ -1123,6 +1280,167 @@ function ds_actnow_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+  $handler = $view->new_display('page', 'Page', 'page_2');
+  $handler->override_option('sorts', array(
+    'title' => array(
+      'order' => 'ASC',
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('title', 'Action Tips');
+  $handler->override_option('header', '');
+  $handler->override_option('items_per_page', 10);
+  $handler->override_option('offset', 3);
+  $handler->override_option('use_pager', 'mini');
+  $handler->override_option('path', 'actnow/actiontips/%/%/%/%');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_3');
+  $handler->override_option('fields', array(
+    'title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'exclude' => 0,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'body' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '[body] ',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '130',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'exclude' => 0,
+      'id' => 'body',
+      'table' => 'node_revisions',
+      'field' => 'body',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'easy_idea' => 'easy_idea',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'relationship' => 'none',
+    ),
+  ));
+  $handler->override_option('style_plugin', 'list');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'type' => 'ul',
+  ));
+  $handler->override_option('pane_title', 'Easy Ideas');
+  $handler->override_option('pane_description', '');
+  $handler->override_option('pane_category', array(
+    'name' => 'View panes',
+    'weight' => 0,
+  ));
+  $handler->override_option('allow', array(
+    'use_pager' => FALSE,
+    'items_per_page' => FALSE,
+    'offset' => FALSE,
+    'link_to_view' => FALSE,
+    'more_link' => FALSE,
+    'path_override' => FALSE,
+    'title_override' => FALSE,
+    'exposed_form' => FALSE,
+    'fields_override' => FALSE,
+  ));
+  $handler->override_option('argument_input', array());
+  $handler->override_option('link_to_view', 0);
+  $handler->override_option('inherit_panels_path', 0);
 
   $views[$view->name] = $view;
 

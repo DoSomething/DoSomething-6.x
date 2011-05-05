@@ -595,3 +595,8 @@ tr.odd .form-item, tr.even .form-item {
 tr.even, tr.odd {
   background-color: white;
 }
+
+div.item-list ul li {
+  list-style-type: none;
+  list-style-image: url("/sites/all/themes/zen/dosomething/./images/logobullet.gif");
+}

@@ -40,6 +40,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
     case 'action_guide_node_form':
       $form['#validate'][] = 'action_guide_form_validate';
       break;
+    case 'ebd_signup_node_form':
     case 'campaign_ebd_2011_node_form':
       $form['#validate'][] = 'user_field_form_validate';
       $form['#validate_args'] = array(

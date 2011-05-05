@@ -587,3 +587,11 @@ div.block h3 {
 tr.odd .form-item, tr.even .form-item {
   white-space: normal;
 }
+
+.alignleft {
+  float: left;
+}
+
+tr.even, tr.odd {
+  background-color: white;
+}

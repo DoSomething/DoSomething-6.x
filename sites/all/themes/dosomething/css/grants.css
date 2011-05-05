@@ -1,0 +1,20 @@
+.view-grant-alumni td,
+.view-grant-alumni th {
+  padding: 0px 5px;
+}
+
+select#edit-tid-1 {
+  width: 156px;
+}
+
+div.view-content tbody tr {
+  border-bottom: 1px solid #def3f9;
+}
+
+div.view-content tbody tr:hover {
+  background-color: #def3f9;
+}
+
+div.view-content thead th {
+  border-bottom: 3px solid #fec333;
+}

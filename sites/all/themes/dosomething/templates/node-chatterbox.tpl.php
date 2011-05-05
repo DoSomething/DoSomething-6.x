@@ -97,7 +97,7 @@
       <?php endif; ?>
 
       <?php if ($terms): ?>
-        <div class="cause-links"><?php print $cause_links; ?></div>
+        <?php print $cause_links; ?>
       <?php endif; ?>
 
     </div>

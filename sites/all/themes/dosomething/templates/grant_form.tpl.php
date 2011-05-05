@@ -15,12 +15,11 @@ $node = node_load(arg(1));
 if (arg(1) == 534583 ||
     $node->type = 'grant' &&
     $node->field_which_grant[0]['value'] === 'Animal Action') { // Animal Action Grants
-
-  // add in the new fields
+ // add in the new fields
   $form['group_additional_info']['field_grant_optional_number_1'][0]['value']['#title'] = 'How many animals are predicted to be impacted by this grant?';
   $form['group_additional_info']['field_grant_optional_essay_1'][0]['value']['#title'] = 'Are you or your project involved with a local shelter?';
   $form['group_additional_info']['field_grant_optional_essay_1'][0]['value']['#description'] = 'If so, describe your involvement and how long you have been involved.';
-  $form['preview']['#access'] = false;
+  $form['buttons']['preview']['#access'] = false;
   /*
      $form['group_project_info'] =
      array_merge($form['group_project_info'], $form['field_grant_optional_number_1']);
@@ -32,6 +31,7 @@ if (arg(1) == 534583 ||
   $form['field_which_grant']['key']['#value'] = 'Animal Action';
 } else if (arg(1) == 591579) { // Club Grant Application
   //print '<pre>'; print_r($form); print '</pre>';
+  $form['field_budget_0']['#suffix'] = "<p>Please provide us with a rough outline of what the $250 will be used for. Indicate the different things you will use the money for and how much money each item costs. If you need help check out our <a target='_blank' href='/clubs/budget'>sample budget</a>. Note: this $250 can be used for the project described above and your Club in general throughout the year.</p>";
   $form['group_personal_info']['field_which_grant']['key']['#value'] = 'Club Grant';
   $form['field_which_grant']['#prefix'] = '<div class="hide-me">';
   $form['field_which_grant']['#suffix'] = '</div>';
@@ -45,6 +45,7 @@ if (arg(1) == 534583 ||
   $form['group_additional_info']['#access'] = false;
 } else if (arg(1) == 591689) { // Club Startup Grant Application
   //print '<pre>'; print_r($form); print '</pre>';
+  $form['field_budget_0']['#suffix'] = "<p>Please provide us with a rough outline of what the $250 will be used for. Indicate the different things you will use the money for and how much money each item costs. If you need help check out our <a target='_blank' href='/clubs/budget'>sample budget</a>. Note: this $250 can be used for the project described above and your Club in general throughout the year.</p>";
   $form['field_which_grant']['key']['#value'] = 'Club Startup Grant';
   $form['field_which_grant']['#prefix'] = '<div class="hide-me">';
   $form['field_which_grant']['#suffix'] = '</div>';
@@ -90,5 +91,9 @@ if (arg(1) == 534583 ||
 
 $form['#validate']['grant_form_validate'] = array();
 
+$preview = drupal_render($form['buttons']['preview']);
+$submit = drupal_render($form['buttons']['submit']);
+
 print drupal_render($form);
+print $preview.$submit;
 ?>

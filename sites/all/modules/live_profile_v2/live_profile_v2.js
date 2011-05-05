@@ -14,7 +14,7 @@ function updateProfile(theForm) {
       /*if ( $(this).attr('id') == 'state-select' ) {
         field = 'profile_state';
       }*/
-      var path = '/live_profile_v2_router/' + field + '/' + encodeURIComponent(new_value);
+      var path = '/live_profile_v2_router/' + field + 'ASjfMA2319M' + encodeURIComponent(new_value);
       //console.log("%o", path);
       $.ajax({
           cache: 'false',
@@ -28,6 +28,9 @@ function updateProfile(theForm) {
             } else if (returnVal != false) {
               returnVal=true;
             }
+          },
+          error: function(data) {
+            returnVal = false;
           }
       });
     });

@@ -2,18 +2,18 @@
 
 function live_profile_v2_menu() {
   $items = array();
-  $items['live_profile_v2_router/%/%'] = array(
+  $items['live_profile_v2_router/%'] = array(
     'page callback' => 'live_profile_v2_router',
     'type' => MENU_CALLBACK,
-    'page arguments' => array(1,2),
+    'page arguments' => array(1),
     'access callback' => 'user_access',
     'access arguments' => array('access content'),
   );
   return $items;
 }
 
-function live_profile_v2_router($field, $value) {
-
+function live_profile_v2_router($args = '') {
+  list($field, $value) = explode('ASjfMA2319M', $args);
   global $user;
   $resp = array(); 
   $field = rawurldecode($field);

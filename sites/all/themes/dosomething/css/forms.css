@@ -5,6 +5,9 @@
  * Form Styling
  */
 
+select {
+  max-width: 400px;
+}
 
 .form-item,
 .form-checkboxes,

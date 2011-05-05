@@ -1,8 +1,5 @@
 <?
 
-// remove fields from all versions of the application
-unset($form['group_personal_info']['field_where_did_you_hear']);
-
 // hide "Which grant are you applying for?" question
 $form['group_personal_info']['field_which_grant']['#prefix'] = '<div class="hide-me">';
 $form['group_personal_info']['field_which_grant']['#suffix'] = '</div>';
@@ -91,9 +88,5 @@ if (arg(1) == 534583 ||
 
 $form['#validate']['grant_form_validate'] = array();
 
-$preview = drupal_render($form['buttons']['preview']);
-$submit = drupal_render($form['buttons']['submit']);
-
 print drupal_render($form);
-print $preview.$submit;
 ?>

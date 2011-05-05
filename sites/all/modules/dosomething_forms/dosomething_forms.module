@@ -9,6 +9,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
   //
   global $user;
   $user = user_load($user->uid);
+  $form['#ds_data']['user'] = $user;
   $form['#attributes']['class'] .= ' ' . $form_id;
 
   if (substr($form_id, -10) == '_node_form') {
@@ -25,15 +26,30 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
 
   switch($form_id) {
     case 'help_ticket_node_form':
-      global $user;
       if($user->uid>0)
         $form['title']['#default_value'] = $user->mail;
       $form['field_phone_number']['#access'] = false;
       break;
-
     case 'grant_application_node_form':
       if(!user_access('administer grant applications'))
         unset($form['field_grant_application_status']);
+      break;
+    case 'grant_node_form':
+      $form['group_personal_info']['field_where_did_you_hear']['#access'] = false;
+      break;
+    case 'action_guide_node_form':
+      $form['#validate'][] = 'action_guide_form_validate';
+      break;
+    case 'campaign_ebd_2011_node_form':
+      $form['#validate'][] = 'user_field_form_validate';
+      $form['#validate_args'] = array(
+          'profile_fname',
+          'profile_lname',
+          'mail',
+          'profile_cell',
+          'profile_state',
+          'profile_zip',
+          );
       break;
   }
 }
@@ -107,7 +123,8 @@ function _validate_birthdate_set_error($uid) {
 }
 
 
-function user_field_form_validate($form_id, $form_values) {
+function user_field_form_validate($form, &$form_values) {
+  $user = $form['#ds_data']['user'];
   $field_names = array(
     'profile_fname' => 'First Name',
     'profile_lname' => 'Last Name',
@@ -120,12 +137,8 @@ function user_field_form_validate($form_id, $form_values) {
     'profile_bday' => 'Birthday',
   );
 
-  global $user;
-  $args = func_get_args();
-  $num_args = func_num_args();
-  for ($i = 3; $i < $num_args; $i++) {
-    $field = $args[$i];
-    //drupal_set_message('<pre>'.$i.': '.print_r($args[$i],TRUE).'</pre>');
+  $args = $form['#validate_args'];
+  foreach ($args as $field) {
     if (! $user->$field) {
       form_set_error($field, t('Please enter your '.$field_names[$field]));
     }
@@ -141,7 +154,11 @@ function grant_form_validate($form_id, $form_values) {
   }
 }
 
-
+function action_guide_form_validate($form, &$form_state) {
+  if (! preg_match('/^(?:How To|Action Tips|Training):/', $form_values['title'])) {
+    form_set_error('title', t('Title of action guide must begin with "How To:", "Action Tips:" or "Training:"'));
+  }
+}
 
 function dia_signup ($args = array()) {
 

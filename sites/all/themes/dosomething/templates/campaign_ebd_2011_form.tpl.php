@@ -1,12 +1,4 @@
 <?
-$form['#validate']['user_field_form_validate'] = array(
-    'profile_fname',
-    'profile_lname',
-    'mail',
-    'profile_cell',
-    'profile_state',
-    'profile_zip',
-    );
 $form['body_filter']['body']['#required'] = 1;
 
 $form['options']['sticky'] = NULL;

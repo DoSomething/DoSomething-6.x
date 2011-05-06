@@ -256,5 +256,71 @@ function _dosomething_forms_user_find($search_term) {
   die;
 }
 
+/*
+Checks if node deserves badges, returns associative arrays
+*/
+function dosomething_badge_check($node) {
+  $badge_queue = array('grantwinner' => 9, 'projofday' => 34);
+  $queue_badge = array_flip($badge_queue);
+  $qid_str = implode(',', array_values($badge_queue));
+  if(is_numeric($node->nid)){
+    $badges = array();
+    //print_r($node);
+
+    //search for grant attached to project, and see if it is award winner
+    //$query = "SELECT n.title, n.type, n.nid from content_field_project p, node n WHERE p.field_project_nid = $node->nid AND n.nid=p.nid AND n.vid=p.vid AND n.type='grant_application'";
+    $query = "SELECT nq.nid,ep.field_project_reference_nid as 'refnid', nq.qid
+              FROM nodequeue_nodes nq
+              LEFT JOIN content_type_editorial_project ep ON nq.nid=ep. nid
+              WHERE (nq.nid =$node->nid OR ep.field_project_reference_nid=$node->nid )
+              AND nq.qid IN ($qid_str)";
+
+    //print $query;
+    $result = mysql_query($query);
+    $badges['grantwinner'] = FALSE;
+    while($row=mysql_fetch_object($result)){
+      //is it a winner?
+      /*
+      $grant_node = node_load($row['nid']);
+      if($grant_node->field_grant_application_status[0][value]=="Grant Winner"){
+        $badges['grantwinner'] = TRUE;
+      }else{
+        $badges['grantwinner'] = FALSE;
+      }
+       */
+      $badges[$queue_badge[$row->qid]] = TRUE;
+    }
+    unset($query);
+    unset($result);
+
+    //search for club attached to project
+    $query = "select o.nid from og_ancestry o inner join node n on o.group_nid=n.nid where n.type='club' and n.status>0 and o.nid=$node->nid";
+    $result = mysql_query($query);
+    $badges['clubproject'] = FALSE;
+
+    while($row=mysql_fetch_array($result)){
+      $badges['clubproject'] = TRUE;
+    }
+
+    // also include clubs mentioned in the Club Projects nodequeue
+    // $query = "select o.nid from og_ancestry o inner join node n on o.group_nid=n.nid where n.type='club' and n.status>0 and o.nid=$node->nid";
+    $query = "SELECT n.nid from nodequeue_nodes n WHERE n.nid = $node->nid AND n.qid = 10";
+    $result = mysql_query($query);
+
+    while($row=mysql_fetch_array($result)){
+      $badges['clubproject'] = TRUE;
+    }
+
+    //check DS award flag.
+    if($node->field_dosomething_award_winner[0]['value']=='Yes'){
+      $badges['dsaward'] = TRUE;
+    }else{
+      $badges['dsaward'] = FALSE;
+    }
+
+    return $badges;
+  }
+}
+
 
 ?>

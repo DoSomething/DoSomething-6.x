@@ -30,18 +30,27 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
         $form['title']['#default_value'] = $user->mail;
       $form['field_phone_number']['#access'] = false;
       break;
+    case 'project_node_form':
+      $form['field_dosomething_award_winner'][0]['value']['#required'] = FALSE;
+      $form['taxonomy'][variable_get('dosomething_causes_vid',5)]['#required'] = TRUE;
+      $form['taxonomy'][variable_get('dosomething_how_long_vid',4)]['#required'] = TRUE;
+      $form['taxonomy'][variable_get('dosomething_who_vid',3)]['#required'] = TRUE;
+      _validate_birthdate_set_error($user->uid);
+      break;
     case 'grant_application_node_form':
       if(!user_access('administer grant applications'))
         unset($form['field_grant_application_status']);
       break;
     case 'grant_node_form':
       $form['group_personal_info']['field_where_did_you_hear']['#access'] = false;
+      $form['#validate']['grant_form_validate'] = array();
       break;
     case 'action_guide_node_form':
       $form['#validate'][] = 'action_guide_form_validate';
       break;
     case 'ebd_signup_node_form':
     case 'campaign_ebd_2011_node_form':
+      $form['body_filter']['body']['#required'] = 1;
       $form['#validate'][] = 'user_field_form_validate';
       $form['#validate_args'] = array(
           'profile_fname',
@@ -86,6 +95,18 @@ function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
     break;
   }
 
+}
+
+function dosomething_forms_menu() {
+  $items = array();
+  $items['help/user/find/%'] = array(
+    'page callback' => '_dosomething_forms_user_find',
+    'type' => MENU_CALLBACK,
+    'page arguments' => array(3),
+    'access callback' => 'user_access',
+    'access arguments' => array('administer nodes'),
+  );
+  return $items;
 }
 
 function _validate_birthdate_set_error($uid) {
@@ -146,7 +167,7 @@ function user_field_form_validate($form, &$form_values) {
   }
 }
 
-function grant_form_validate($form_id, $form_values) {
+function grant_form_validate($form, &$form_values) {
   $today = getdate();
   if ($form_values['field_recipient_birthdate'][0]['value']['mday'] == $today['mday']
    && $form_values['field_recipient_birthdate'][0]['value']['mon'] == $today['mon']
@@ -207,6 +228,32 @@ function dia_signup ($args = array()) {
 
   return $return;
 
+}
+
+
+function _dosomething_forms_user_find($search_term) {
+
+  $users = array();
+  // create a json version of the search result
+  $result = db_query("SELECT mail, name, uid FROM {users} WHERE mail LIKE '%%%s%%'", $search_term);
+  while ($row = db_fetch_object($result)) {
+    $users[] = array("email" => $row->mail, "name" => $row->name, "link" => l($row->name, 'user/'.$row->uid));
+  }
+  $json = drupal_to_js($users);
+
+  // format the json as a callback function
+  // see: http://docs.jquery.com/Ajax/jQuery.getJSON for more information
+  if ($_GET['jsoncallback']) {
+    $json = $_GET['jsoncallback'] . "(" . $json . ");";
+  }
+
+  // output the json
+  // drupal_set_header('Content-Type: application/javascript; charset=utf-8');
+  print $json;
+  // print print_r($users, TRUE);
+
+  // stop the script, so the theme layer is not applied
+  die;
 }
 
 

@@ -53,8 +53,7 @@ if (!$page) {
     <p><?=$teaser_txt;?></p>
   </div>
 <? } else {
-drupal_add_js('sites/all/themes/zen/dosomething/FB.Share', 'theme', 'footer', TRUE);
-
+drupal_add_js(path_to_theme().'/js/FB.Share', 'theme', 'footer', TRUE);
 //Full view ?>
   <div class="node <?=$node->type ?> campaign project">
       <div id="topicons">

@@ -757,10 +757,10 @@ function dosomething_forms_form_alter($form_id,&$form)
 
       break;*/
       
-	  case 'action_guide_node_form':
+	  /*case 'action_guide_node_form':
       $form['#validate']['action_guide_form_validate'] = array();
 
-      break;
+      break;*/
     /*case 'ebd_signup_node_form':
       $form['#validate']['user_field_form_validate'] = array(
                                                                'profile_fname',
@@ -1525,7 +1525,7 @@ function dosomething_forms_fb_save_zip($form_id, $form_values) {
   $_SESSION['fb_save_zip'] = $form_values['profile_zip'];
 }
 
-function dosomething_forms_menu($may_cache) {
+/*function dosomething_forms_menu($may_cache) {
   global $user;
   if (!$may_cache) {
     if ($user->uid && $_SESSION['fb_save_zip']) {
@@ -1557,7 +1557,7 @@ function dosomething_forms_menu($may_cache) {
     
   return $items;
 
-}
+}*/
 
 function _dosomething_forms_abcfamily_form() {
 
@@ -1580,6 +1580,7 @@ function _dosomething_forms_abcfamily_form() {
   die;
 }
 
+/*
 function _dosomething_forms_user_find($search_term) {
 
   $users = array();
@@ -1605,8 +1606,9 @@ function _dosomething_forms_user_find($search_term) {
   // stop the script, so the theme layer is not applied
   die;
 }
+*/
 
-function _dosomething_forms_project_update_node_form_validate($form_id, &$form_values)
+/*function _dosomething_forms_project_update_node_form_validate($form_id, &$form_values)
 {
   if (!preg_match('/^[0-9,]+$/', $form_values['field_update_people_impacted'][0]['value']) || $form_values['field_update_people_impacted'][0]['value'] < 0) {
     form_set_error('field_update_people_impacted', t('Please use numbers only (no text) to let us know how many new people were helped by your project'));
@@ -1649,9 +1651,9 @@ function _validate_birthdate_set_error($uid) {
    //   form_set_error(t('You must be 25 or younger to add a project'));
     }
   }
-}
+}*/
 
-function _dosomething_forms_project_node_form_validate($form_id, &$form_values)
+/*function _dosomething_forms_project_node_form_validate($form_id, &$form_values)
 {
   if (!preg_match('/^[0-9,]+$/', $form_values['field_num_people_involved'][0]['value']) || $form_values['field_num_people_involved'][0]['value'] < 0) {
     form_set_error('field_num_people_involved', t('Please use numbers only (no text) to let us know how many people were involved in your project'));
@@ -1663,7 +1665,7 @@ function _dosomething_forms_project_node_form_validate($form_id, &$form_values)
     form_set_error('field_num_people_impacted', t('Please use numbers only (no text) to let us know how many people your project helped'));
   }
   _validate_birthdate_set_error($form_values['uid']);
-}
+}*/
 
 function _dosomething_forms_user_edit_validation($form_id, $form_values) {
   _bday_regex_set_error($form_values['profile_bday']);
@@ -2112,13 +2114,13 @@ function club_form_validate($form_id, $form_values) {
   }
 }
 
-function action_guide_form_validate($form_id, $form_values) {
+/*function action_guide_form_validate($form_id, $form_values) {
   if (! preg_match('/^(?:How To|Action Tips|Training):/', $form_values['title'])) {
     form_set_error('title', t('Title of action guide must begin with "How To:", "Action Tips:" or "Training:"'));
   }
-}
+}*/
 
-function college_survey_form_validate($form_id, $form_values) {
+/*function college_survey_form_validate($form_id, $form_values) {
   if (! validEmail($form_values['field_email'][0]['value'])) {
     form_set_error('field_email', t('Please provide a valid email address'));
   }
@@ -2128,9 +2130,9 @@ function college_survey_form_validate($form_id, $form_values) {
   if (! validPhone($form_values['field_your_cell_phone_notrequir'][0]['value'])) {
     form_set_error('field_your_cell_phone_notrequir', t('Please provide a valid ten-digit phone number'));
   }
-}
+}*/
 
-function user_field_form_validate($form_id, $form_values) {
+/*function user_field_form_validate($form_id, $form_values) {
   $field_names = array(
     'profile_fname' => 'First Name',
     'profile_lname' => 'Last Name',
@@ -2153,14 +2155,14 @@ function user_field_form_validate($form_id, $form_values) {
       form_set_error($field, t('Please enter your '.$field_names[$field]));
     }
   }
-}
+}*/
 
-function tackle_hunger_form_validate($form_id, $form_values) {
+/*function tackle_hunger_form_validate($form_id, $form_values) {
   $pounds = $form_values['field_tackle_hunger_expected_lb'][0]['value'];
   if (! $pounds || ! preg_match('/^[0-9]+$/', $pounds)) {
     form_set_error('field_tackle_hunger_expected_lb', t('Please use numbers only.'));
   }
-}
+}*/
 
 function validPhone($phone) {
   $newphone = preg_replace('/[^\d]*/','',$phone);

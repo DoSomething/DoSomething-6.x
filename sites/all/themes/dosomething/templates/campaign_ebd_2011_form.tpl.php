@@ -1,6 +1,4 @@
 <?
-$form['body_filter']['body']['#required'] = 1;
-
 $form['options']['sticky'] = NULL;
 $form['buttons']['preview']['#access'] = false;
 $form['locations']['#access'] = false;

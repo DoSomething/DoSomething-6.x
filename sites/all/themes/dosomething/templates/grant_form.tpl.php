@@ -86,7 +86,5 @@ if (arg(1) == 534583 ||
 
 }
 
-$form['#validate']['grant_form_validate'] = array();
-
 print drupal_render($form);
 ?>

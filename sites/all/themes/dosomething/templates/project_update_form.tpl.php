@@ -14,8 +14,6 @@ if(isset($_GET['nid']))
   }
 }
 
-$form['#validate']['_dosomething_forms_project_update_node_form_validate'] = array();
-
 print drupal_render($form);
 
 ?>

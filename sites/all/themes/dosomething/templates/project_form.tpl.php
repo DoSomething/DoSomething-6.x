@@ -27,22 +27,7 @@ $issues_vid = variable_get('dosomething_causes_vid',0);
 
 $form['taxonomy']['#attributes']['class'] .= ' project-node-form-taxonomy';
 
-// don't require the do something award winner field
-$form['field_dosomething_award_winner'][0]['value']['#required'] = FALSE;
-
-// mark some fields as required
-$form['group_explain_your_project']['field_essay_see_it'][0]['value']['#required'] = TRUE;
-$form['group_explain_your_project']['field_essay_believe_it'][0]['value']['#required'] = TRUE;
-$form['group_explain_your_project']['field_essay_build_it'][0]['value']['#required'] = TRUE;
-$form['taxonomy'][variable_get('dosomething_causes_vid',5)]['#required'] = TRUE;
-$form['taxonomy'][variable_get('dosomething_how_long_vid',4)]['#required'] = TRUE;
-$form['taxonomy'][variable_get('dosomething_who_vid',3)]['#required'] = TRUE;
-
 $form['field_project_photo']['#description'] = '<p>Upload photos that are relevant to your project here. Be sure to upload photos from your project and you could be featured on the DoSomething.org home page.</p><p>The first photo will be used on the site when linking to your project, so make sure it\'s good!</p>';
-
-// custom validation
-$form['#validate']['_dosomething_forms_project_node_form_validate'] = array();
-
 
 
 print drupal_render($form);

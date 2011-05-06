@@ -3,6 +3,8 @@
 $current_path = drupal_get_path_alias(request_uri());
 
 $nodePath = drupal_get_path_alias('node/'.$node->nid);
+global $user;
+$user = user_load(array('uid' => $user->uid));
 
 $type = 'project';
 if ($node->field_botb_video[0]['embed']) {
@@ -55,7 +57,6 @@ drupal_add_js('sites/all/themes/zen/dosomething/FB.Share', 'theme', 'footer', TR
 
 //Full view ?>
   <div class="node <?=$node->type ?> campaign project">
-      <h2 class="title"><?=$title;?></h2>
       <div id="topicons">
         <div class="campaignbadge">
         <a href="/battle/gallery" title="Battle for the Bands"><img class="badge" src="/nd/botb/bftb-badge.png"/></a>
@@ -76,6 +77,9 @@ drupal_add_js('sites/all/themes/zen/dosomething/FB.Share', 'theme', 'footer', TR
   <div style="clear:both"></div>
   <link rel="stylesheet" href="/nd/projects/campaign_projects.css" type="text/css" media="all" />
 <?
+    if (in_array('grant reviewer', array_values($user->roles))) { ?>
+       <a href="#judging-form" style="color:red;">Jump to the judging form</a><br/>
+  <? }
 
   if ($type == 'video') {
     $view = $node->field_botb_video[0]['view'];
@@ -119,9 +123,13 @@ drupal_add_js('sites/all/themes/zen/dosomething/FB.Share', 'theme', 'footer', TR
   foreach ($node->field_campaign_video as $video) {
     print $video['view'];
   }
+    if (in_array('grant reviewer', array_values($user->roles))) { ?>
+<div id="judge-wrap" style="padding-top: 360px">
+<iframe id="judging-form" src="https://spreadsheets.google.com/embeddedform?formkey=dFhkUC0yQmEtdWl1clNkSzBndFphSVE6MQ" width="760" height="1301" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+</div>
+
+<? }
+
 ?> 
-<?
-//print '<pre>'.print_r ($node,TRUE).'</pre>';
-?>
  </div>
 <? } ?>

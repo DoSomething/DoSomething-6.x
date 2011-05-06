@@ -7,87 +7,6 @@ function ds_projects_default_page_manager_pages() {
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
-  $page->name = 'Project_map';
-  $page->task = 'page';
-  $page->admin_title = 'Project_map';
-  $page->admin_description = '';
-  $page->path = 'project/map';
-  $page->access = array();
-  $page->menu = array(
-    'type' => 'none',
-    'title' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-    'parent' => array(
-      'type' => 'none',
-      'title' => '',
-      'weight' => 0,
-      'name' => 'navigation',
-    ),
-  );
-  $page->arguments = array();
-  $page->conf = array();
-  $page->default_handlers = array();
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
-  $handler->name = 'page_Project_map_panel_context';
-  $handler->task = 'page';
-  $handler->subtask = 'Project_map';
-  $handler->handler = 'panel_context';
-  $handler->weight = 0;
-  $handler->conf = array(
-    'title' => 'Panel',
-    'no_blocks' => '0',
-    'pipeline' => 'standard',
-    'css_id' => '',
-    'css' => NULL,
-    'contexts' => array(),
-    'relationships' => array(),
-  );
-  $display = new panels_display;
-  $display->layout = 'DoSomething Projects Page';
-  $display->layout_settings = '';
-  $display->panel_settings = array();
-  $display->cache = array();
-  $display->title = '';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'top';
-    $pane->type = 'block';
-    $pane->subtype = 'views-projects_bigmap';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'views',
-      'delta' => 'projects_bigmap',
-      'block_visibility' => 0,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'style' => 'default',
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['top'][0] = 'new-1';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
-  $handler->conf['display'] = $display;
-  $page->default_handlers[$handler->name] = $handler;
-  $pages['Project_map'] = $page;
-
-  $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
-  $page->api_version = 1;
   $page->name = 'projects';
   $page->task = 'page';
   $page->admin_title = 'projects';
@@ -837,199 +756,6 @@ return false; });
   $page = new stdClass;
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
-  $page->name = 'projects_beta';
-  $page->task = 'page';
-  $page->admin_title = 'projects_beta';
-  $page->admin_description = '';
-  $page->path = 'devtest/projects/beta';
-  $page->access = array();
-  $page->menu = array(
-    'type' => 'none',
-    'title' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-    'parent' => array(
-      'type' => 'none',
-      'title' => '',
-      'weight' => 0,
-      'name' => 'navigation',
-    ),
-  );
-  $page->arguments = array();
-  $page->conf = array();
-  $page->default_handlers = array();
-  $handler = new stdClass;
-  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
-  $handler->api_version = 1;
-  $handler->name = 'page_projects_beta_panel_context';
-  $handler->task = 'page';
-  $handler->subtask = 'projects_beta';
-  $handler->handler = 'panel_context';
-  $handler->weight = 0;
-  $handler->conf = array(
-    'title' => 'Panel',
-    'no_blocks' => '0',
-    'pipeline' => 'standard',
-    'css_id' => 'projects-beta',
-    'css' => '',
-    'contexts' => array(),
-    'relationships' => array(),
-  );
-  $display = new panels_display;
-  $display->layout = 'DoSomething Projects Page';
-  $display->layout_settings = '';
-  $display->panel_settings = array(
-    'style' => 'default',
-    'style_settings' => array(),
-    'edit_style' => 'Edit style settings',
-    'did' => '17',
-    'top' => array(
-      'style' => '',
-      'edit_style' => 'Edit style settings',
-    ),
-    'bottom' => array(
-      'style' => '',
-      'edit_style' => 'Edit style settings',
-    ),
-  );
-  $display->cache = array();
-  $display->title = '';
-  $display->content = array();
-  $display->panels = array();
-    $pane = new stdClass;
-    $pane->pid = 'new-1';
-    $pane->panel = 'top';
-    $pane->type = 'block';
-    $pane->subtype = 'block-191';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => '<img src="/files/layout/projects.jpg">',
-      'module' => 'block',
-      'delta' => '191',
-      'block_visibility' => 0,
-      'block_settings' => array(
-        'info' => 'Projects Beta',
-        'body' => '<?php
-
-$view = views_get_view(\'projects_beta\');
-
-$view->is_cacheable = 0;
-
-$base_arg = 3;
-
-switch(arg($base_arg)) {
-case \'hits\':
-$view->sort[0][\'field\'] = \'node_counter.totalcount\';
-$view->sort[0][\'id\'] = \'node_counter.totalcount\';
-break;
-case \'comments\':
-$view->sort[0][\'field\'] = \'node_comment_statistics.comment_count\';
-$view->sort[0][\'id\'] = \'node_comment_statistics.comment_count\';
-break;
-default:
-break;
-}
-
-$args = array(
-arg($base_arg + 1) ? arg($base_arg + 1) : \'*\', 
-arg($base_arg + 2) ? arg($base_arg + 2) : \'*\', 
-arg($base_arg + 3) ? arg($base_arg + 3) : \'*\', 
-arg($base_arg + 4) ? arg($base_arg + 4) : \'*\'
-);
-
-if (arg($base_arg + 4) == \'video\') {
-    $view->filter[] = array(
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'node_data_field_embedded_video.field_embedded_video_embed_not null\',
-        \'value\' => 1,
-        \'operator\' => \'=\',
-        \'options\' => \'\',
-        \'position\' => 4,
-        \'id\' => \'node_data_field_embedded_video.field_embedded_video_embed_not null\'
-    );
-}
-
-if (arg($base_arg + 5) == \'pictures\' || arg($base_arg + 5) == \'*\' || arg($base_arg + 5) == \'\') {
-    $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'node_data_field_project_photo.field_project_photo_fid_not null\',
-        \'value\' => 1,
-        \'operator\' => \'=\',
-        \'options\' => \'\',
-        \'position\' => 5,
-        \'id\' => \'node_data_field_project_photo.field_project_photo_fid_not null\',
-    );
-}
-
-if (arg($base_arg + 8) != \'*\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'node_data_field_essay_see_it.field_essay_see_it_value_like\',
-        \'value\' => arg($base_arg + 8),
-        \'operator\' => \'contains\',
-        \'options\' => \'\',
-        \'id\' => \'node_data_field_essay_see_it.field_essay_see_it_value_like\',
-  );
-}
-
-if (arg($base_arg + 6) == \'clubs\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'og_ancestry.gtype\',
-        \'value\' => array( 0 => \'club\'),
-        \'operator\' => \'OR\',
-        \'options\' => \'\',
-        \'id\' => \'og_ancestry.gtype\',
-  );
-}
-
-if (arg($base_arg + 7) == \'grants\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'nodequeue_nodes.qid\',
-        \'value\' => array( 0 => 9),
-        \'operator\' => \'OR\',
-        \'options\' => \'\',
-        \'id\' => \'nodequeue_nodes.qid\',
-  );
-}
-
-print views_build_view(\'page\', $view, $args, TRUE, 10);
-
-//print "<hr /><pre>".print_r($view, TRUE)."</pre>";
-
-?>',
-        'format' => '2',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'style' => 'default',
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['top'][0] = 'new-1';
-  $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = '0';
-  $handler->conf['display'] = $display;
-  $page->default_handlers[$handler->name] = $handler;
-  $pages['projects_beta'] = $page;
-
-  $page = new stdClass;
-  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
-  $page->api_version = 1;
   $page->name = 'projects_search';
   $page->task = 'page';
   $page->admin_title = 'projects_search';
@@ -1069,62 +795,21 @@ print views_build_view(\'page\', $view, $args, TRUE, 10);
     'relationships' => array(),
   );
   $display = new panels_display;
-  $display->layout = 'DoSomething Projects Page';
+  $display->layout = 'onecol';
   $display->layout_settings = '';
-  $display->panel_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
   $display->cache = array();
   $display->title = '';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
     $pane->pid = 'new-1';
-    $pane->panel = 'bottom';
-    $pane->type = 'block';
-    $pane->subtype = 'block-15';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'block',
-      'delta' => '15',
-      'block_visibility' => 0,
-      'block_settings' => array(
-        'info' => 'Projects Page RSS Subscriber',
-        'body' => '<div class="block pink colwide plain">
-                <h2><a href="">Subscribe</a></h2>
-
-                <div class="content">
-                    <p>Be in the know when someone\'s doing something about your thing! Choose your cause to subscribe to the RSS feed:</p>
-
-                    <form action="" method="get" class="subscribe niceform">
-                        <label>
-                            <select name="what" id="cause" class="width_445_height_200">
-                              <option>Choose your cause</option>
-                            </select>
-                            <span>Animal Welfare, Discrimination, Education, Environment, Poverty, etc.</span>
-                        </label>
-
-                        <p align="right"><input type="image" src="images/form_submit_subscribe.png" onmouseover="javascript:this.src=\'images/form_submit_subscribe_ovr.png\';" onmouseout="javascript:this.src=\'images/form_submit_subscribe.png\';"  name="submit" value="subscribe" alt="subscribe" class="submit" /></p>
-                    </form>
-                </div>
-            </div>',
-        'format' => '2',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array();
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['bottom'][0] = 'new-1';
-    $pane = new stdClass;
-    $pane->pid = 'new-2';
-    $pane->panel = 'top';
+    $pane->panel = 'middle';
     $pane->type = 'block';
     $pane->subtype = 'block-252';
     $pane->shown = TRUE;
@@ -1150,6 +835,7 @@ print views_build_view(\'page\', $view, $args, TRUE, 10);
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
@@ -1157,11 +843,11 @@ print views_build_view(\'page\', $view, $args, TRUE, 10);
     );
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-2'] = $pane;
-    $display->panels['top'][0] = 'new-2';
+    $display->content['new-1'] = $pane;
+    $display->panels['middle'][0] = 'new-1';
     $pane = new stdClass;
-    $pane->pid = 'new-3';
-    $pane->panel = 'top';
+    $pane->pid = 'new-2';
+    $pane->panel = 'middle';
     $pane->type = 'block';
     $pane->subtype = 'block-251';
     $pane->shown = TRUE;
@@ -1362,6 +1048,7 @@ return false; });
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
@@ -1369,11 +1056,11 @@ return false; });
     );
     $pane->extras = array();
     $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['top'][1] = 'new-3';
+    $display->content['new-2'] = $pane;
+    $display->panels['middle'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'top';
+    $pane->pid = 'new-3';
+    $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
     $pane->shown = FALSE;
@@ -1433,6 +1120,7 @@ function MM_swapImage() { //v3.0
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
@@ -1440,174 +1128,64 @@ function MM_swapImage() { //v3.0
     );
     $pane->extras = array();
     $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['top'][2] = 'new-4';
+    $display->content['new-3'] = $pane;
+    $display->panels['middle'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'top';
-    $pane->type = 'block';
-    $pane->subtype = 'views-projects_by_date_short';
-    $pane->shown = FALSE;
+    $pane->pid = 'new-4';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'projects_search-panel_pane_1';
+    $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'views',
-      'delta' => 'projects_by_date_short',
-      'block_visibility' => 0,
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
-      'style' => 'block',
+      'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 3;
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][3] = 'new-5';
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][3] = 'new-4';
     $pane = new stdClass;
-    $pane->pid = 'new-6';
-    $pane->panel = 'top';
+    $pane->pid = 'new-5';
+    $pane->panel = 'middle';
     $pane->type = 'block';
-    $pane->subtype = 'block-191';
+    $pane->subtype = 'block-15';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 0,
       'override_title_text' => '',
       'module' => 'block',
-      'delta' => '191',
+      'delta' => '15',
       'block_visibility' => 0,
       'block_settings' => array(
-        'info' => 'Projects View (built with args)',
-        'body' => '<?php
+        'info' => 'Projects Page RSS Subscriber',
+        'body' => '<div class="block pink colwide plain">
+                <h2><a href="">Subscribe</a></h2>
 
-$view = views_get_view(\'projects\');
+                <div class="content">
+                    <p>Be in the know when someone\'s doing something about your thing! Choose your cause to subscribe to the RSS feed:</p>
 
-$view->is_cacheable = 0;
+                    <form action="" method="get" class="subscribe niceform">
+                        <label>
+                            <select name="what" id="cause" class="width_445_height_200">
+                              <option>Choose your cause</option>
+                            </select>
+                            <span>Animal Welfare, Discrimination, Education, Environment, Poverty, etc.</span>
+                        </label>
 
-$base_arg = 1;
-
-switch(arg($base_arg)) {
-case \'hits\':
-$view->sort[0][\'field\'] = \'node_counter.totalcount\';
-$view->sort[0][\'id\'] = \'node_counter.totalcount\';
-break;
-case \'comments\':
-$view->sort[0][\'field\'] = \'node_comment_statistics.comment_count\';
-$view->sort[0][\'id\'] = \'node_comment_statistics.comment_count\';
-break;
-default:
-break;
-}
-
-$args = array(
-arg($base_arg + 1) ? arg($base_arg + 1) : \'*\', 
-arg($base_arg + 2) ? arg($base_arg + 2) : \'*\', 
-arg($base_arg + 3) ? arg($base_arg + 3) : \'*\', 
-arg($base_arg + 4) ? arg($base_arg + 4) : \'*\'
-);
-
-if (arg($base_arg + 4) == \'video\') {
-    $view->filter[] = array(
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'node_data_field_embedded_video.field_embedded_video_embed_not null\',
-        \'value\' => 1,
-        \'operator\' => \'=\',
-        \'options\' => \'\',
-        \'position\' => 4,
-        \'id\' => \'node_data_field_embedded_video.field_embedded_video_embed_not null\'
-    );
-}
-
-if (arg($base_arg + 5) == \'pictures\' || arg($base_arg + 5) == \'*\' || arg($base_arg + 5) == \'\') {
-    $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'node_data_field_project_photo.field_project_photo_fid_not null\',
-        \'value\' => 1,
-        \'operator\' => \'=\',
-        \'options\' => \'\',
-        \'position\' => 5,
-        \'id\' => \'node_data_field_project_photo.field_project_photo_fid_not null\',
-    );
-}
-
-if (arg($base_arg + 8) != \'*\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'temp_search_results.word\',
-        \'value\' => arg($base_arg + 8),
-        \'operator\' => \'=\',
-        \'options\' => \'\',
-        \'id\' => \'temp_search_results.word\',
-  );
-}
-
-if (arg($base_arg + 6) == \'clubs\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'og_ancestry.gtype\',
-        \'value\' => array( 0 => \'club\'),
-        \'operator\' => \'OR\',
-        \'options\' => \'\',
-        \'id\' => \'og_ancestry.gtype\',
-  );
-}
-
-if (arg($base_arg + 7) == \'grants\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'nodequeue_nodes.qid\',
-        \'value\' => array( 0 => 9),
-        \'operator\' => \'OR\',
-        \'options\' => \'\',
-        \'id\' => \'nodequeue_nodes.qid\',
-  );
-}
-
-if (arg($base_arg + 10) != \'*\' && arg($base_arg + 10) != \'\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'location.proximity\',
-        \'operator\' => arg($base_arg + 9),
-        \'options\' => \'\',
-        \'value\' => arg($base_arg + 10),
-        \'id\' => \'location.proximity\',
-  );
-}
-
-if (arg($base_arg + 11) == \'project-of-the-day\') {
-  $view->filter[] = array (
-        \'vid\' => 137,
-        \'tablename\' => \'\',
-        \'field\' => \'nodequeue_nodes.qid\',
-        \'value\' => array( 0 => 34),
-        \'operator\' => \'OR\',
-        \'options\' => \'\',
-        \'id\' => \'nodequeue_nodes.qid\',
-  );
-}
-
-print views_build_view(\'page\', $view, $args, TRUE, 10);
-
-//print "<hr /><pre>".print_r($view, TRUE)."</pre>";
-
-?>',
+                        <p align="right"><input type="image" src="images/form_submit_subscribe.png" onmouseover="javascript:this.src=\'images/form_submit_subscribe_ovr.png\';" onmouseout="javascript:this.src=\'images/form_submit_subscribe.png\';"  name="submit" value="subscribe" alt="subscribe" class="submit" /></p>
+                    </form>
+                </div>
+            </div>',
         'format' => '2',
       ),
     );
     $pane->cache = array();
     $pane->style = array(
-      'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
@@ -1615,8 +1193,8 @@ print views_build_view(\'page\', $view, $args, TRUE, 10);
     );
     $pane->extras = array();
     $pane->position = 4;
-    $display->content['new-6'] = $pane;
-    $display->panels['top'][4] = 'new-6';
+    $display->content['new-5'] = $pane;
+    $display->panels['middle'][4] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

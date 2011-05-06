@@ -1,4 +1,7 @@
-
+div.node-type-project .badges .badge {
+  display: inline;
+  padding: 0 5px;
+}
 
 /* BEGIN INDIVIDUAL PROJECT */
 body.section-project #page {

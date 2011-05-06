@@ -75,6 +75,7 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   $hooks['primary_links'] = array();
   $hooks['signup_block'] = array();
   $hooks['header'] = array();
+  $hooks['badges'] = array();
   
   $templates_path = drupal_get_path('theme', 'dosomething') . '/templates';
   $ds_forms = array(
@@ -531,6 +532,40 @@ EOT;
 
 	return $r;
 }
+
+function dosomething_badges($badges){
+  //$images = array('grantwinner' => 'DS_badge_grantWinner.png', "dsaward" => "DS_badge_awardWinner.png", "clubproject" => "DS_badge_clubProject.png");
+  //$images = array('grantwinner' => 'grantwinner.png', 'dsaward' => 'grantwinner.png', 'clubproject' => 'clubproject.png', 'projofday' => 'projofday.png');
+  $badge_meta = array( 'grantwinner' => array('image' => 'grantwinner.png',
+                                              'link' => '/projects-search/*/*/*/*/*/all/*/grants/*/*/*',
+                                              'title' => 'Grant Winner'),
+                       'dsaward'     => array('image' => 'grantwinner.png',
+                                              'link' => '/projects-search/*/*/*/*/*/all/*/grants/*/*/*',
+                                              'title' => 'Grant Winner'),
+                       'projofday'   => array('image' => 'projofday.png',
+                                              'link' => '/projects-search/*/*/*/*/*/all/*/*/*/*/*/project-of-the-day',
+                                              'title' => 'Project of the Day'),
+                       'clubproject' => array('image' => 'clubproject.png',
+                                              'link' => '/projects-search/*/*/*/*/*/all/clubs/*/*/*/*',
+                                              'title' => 'Club Project'));
+  $out = '<div class="badges">';
+  foreach($badges as $badge=>$value){
+    if($value == 1){
+      //$out .= '<div class="badge"><img src="/'.path_to_subtheme()."/images/".$images[$badge].'" /></div>';
+      $out .= '<div class="badge">';
+      if ($badge_meta[$badge]['link'])
+         $out .= '<a href="'.$badge_meta[$badge]['link'].'">';
+
+      $out .= '<img src="/nd/projects/badges/'.$badge_meta[$badge]['image'].'" title="'.$badge_meta[$badge]['title'].'"/></div>';
+      if ($badge_meta[$badge]['link'])
+         $out .= '</a>';
+    }
+  }
+  $out .= '</div>';
+
+  return $out;
+}
+
 
 /* Function to drop in Addthis links */
 

@@ -2186,7 +2186,7 @@ Provide email address (raw input)
 Returns true if the email address has the email 
 address format and the domain exists.
 */
-function validEmail($email)
+/*function validEmail($email)
 {
    $isValid = true;
    $atIndex = strrpos($email, "@");
@@ -2231,7 +2231,7 @@ function validEmail($email)
       }
    }
    return $isValid;
-}
+}*/
 
 /*function grant_form_validate($form_id, $form_values) {
   $today = getdate();

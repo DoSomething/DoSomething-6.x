@@ -10,7 +10,11 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
   global $user;
   $user = user_load($user->uid);
   $form['#ds_data']['user'] = $user;
-  $form['#attributes']['class'] .= ' ' . $form_id;
+  if (isset($form['#attributes']['class'])) {
+    $form['#attributes']['class'] .= ' ' . $form_id;
+  } else {
+    $form['#attributes']['class'] = $form_id;
+  }
 
   if (substr($form_id, -10) == '_node_form') {
 

@@ -1,12 +1,16 @@
 $(document).ready(function() {
-  $('#profiler-main').cycle({
+  var settings = {
     pause: true,
     pauseOnPagerHover: true,
     pager: '#profiler-thumbnails',
     pagerAnchorBuilder: function(idx, slide) { 
       return '#profiler-thumbnails div:eq(' + idx + ')';
     }
-  });
+  };
+  if ($.browser.msie) { // ie has weird text-popping with cleartype on
+    settings.cleartype = false;
+  }
+  $('#profiler-main').cycle(settings);
   $('#sign-up a').click( function() {
     Shadowbox.open({
       content:    Drupal.logintoboggan_toggleboggan(),

@@ -98,9 +98,6 @@ function ds_front_default_page_manager_pages() {
 
 </div>
       
-<object type="application/x-shockwave-flash" data="http://www.dosomething.org/swf/sponsors.swf" width="190" height="120" id="sponsors" style="visibility: visible; "></object>
-
-
 	            </div>',
       'format' => '4',
       'substitute' => TRUE,

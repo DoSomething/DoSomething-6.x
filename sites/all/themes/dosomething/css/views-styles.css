@@ -49,17 +49,27 @@
 }
 
 .view-front-scroller .slide {
-  width: 445px;
-  height: 395px;
+  width: 445px !important;
+  height: 395px !important;
+  display: none;
+}
+
+.view-front-scroller .row-0 {
+  display: block;
 }
 
 .view-front-scroller .slide .text {
   position: absolute;
   bottom: 0px;
+  background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.8);
   padding: 10px;
   margin: 10px;
   width: 405px;
+}
+
+.view-front-scroller .slide a {
+  display: block;
 }
 
 .view-front-scroller .slide .text h2,

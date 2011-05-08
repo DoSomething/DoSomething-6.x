@@ -61,7 +61,8 @@ if (!$page) {
 <?
 
     if (sizeof($photos) > 0) {
-      print theme('imagecache','project_highlighted_photo',$photos[0]['filepath'],'','');
+      print '<img src="/'.imagecache_create_path('project_highlighted_photo',$photos[0]['filepath']).'"/>';
+      //theme('imagecache','project_highlighted_photo',$photos[0]['filepath'],'','');
     }/* else {
       print '<div style="text-align: center;">'.theme('imagecache','project_highlighted_photo','nd/ebd/epic-logo.png','','').'</div>';
     }*/

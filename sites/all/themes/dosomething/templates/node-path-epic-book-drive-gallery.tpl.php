@@ -3,7 +3,7 @@
 $current_path = drupal_get_path_alias(request_uri());
 $last_path_item = array_pop(explode('/', $current_path));
 
-drupal_add_js('sites/all/themes/zen/dosomething/FB.Share', 'theme', 'footer', TRUE);
+drupal_add_js(path_to_theme().'/js/FB.Share', 'theme', 'footer', TRUE);
 
 $is_plan = preg_match('|^/epic-book-drive/sign-up/|', $current_path);
 $node_prefix = '';

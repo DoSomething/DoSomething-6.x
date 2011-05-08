@@ -126,7 +126,7 @@ $last_arg = array_pop($args);
    <img id="logo" src="/<?=$ds_micro;?>/att/dosomething-logo.png"/>
    </a>
   <a class="nav <?php if (arg(1) == 635473) print "active"; ?>" id="home" href="/att#"></a>
-  <a class="nav <?php if (arg(1) == 637823) print "active"; ?>" id="apply" href="/att/apply#"></a>
+  <a class="nav <?php if (arg(1) == 637823) print "active"; ?>" id="apply" href="#"></a>
   <a class="nav <?php if (arg(1) == 635636) print "active"; ?>" id="gallery" href="/att/gallery#"></a>
   <img id="topnav" src="/<?=$ds_micro;?>/att/topnav2.png"/>
 

@@ -2,14 +2,14 @@
 
 function dosomething_feeds_menu() {
   $items = array();
-  $items['news/feed2'] = array(
+  $items['news/feed'] = array(
     'title' => 'DoSomething.org News Feed',
     'page callback' => 'dosomething_feed_news',
     'access callback' => TRUE,
     'description' => 'DoSomething.org News',
     'type' => MENU_CALLBACK,
   );
-  $items['cgg/rss2'] = array(
+  $items['cgg/rss'] = array(
     'title' => 'Celebs Gone Good',
     'page callback' => 'dosomething_feed_cgg',
     'access callback' => TRUE,

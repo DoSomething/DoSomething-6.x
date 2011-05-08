@@ -31,14 +31,21 @@
   background: #0f3b70 url(../images/actnow_time.png) no-repeat top right;
 }
 
+div#block-dosomething_matrix-1 {
+  margin-top: 2em;
+}
+
+div#block-dosomething_matrix-1 h2.pane-title,
 div.pane-dosomething-matrix-1 h2.pane-title {
   display: none;
 }
 
+div#block-dosomething_matrix-1 #action-matrix p,
 div.pane-dosomething-matrix-1 #action-matrix p {
   color: #666;
 }
 
+#block-dosomething_matrix-1 #action-matrix .customStyleSelectBox,
 .pane-dosomething-matrix-1 #action-matrix .customStyleSelectBox {
   width: 428px;
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);

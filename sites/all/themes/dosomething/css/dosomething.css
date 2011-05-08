@@ -600,3 +600,7 @@ div.item-list ul li {
   list-style-type: none;
   list-style-image: url("../images/logobullet.gif");
 }
+
+div.clear {
+  clear: both;
+}

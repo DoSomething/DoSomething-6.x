@@ -307,6 +307,7 @@ function dosomething_preprocess_block(&$vars, $hook) {
 
 function dosomething_cause_links($links, $attributes = array('class' => 'links'), $heading = '') {
 
+  //dpm($links);
   global $language;
   $output = '';
 
@@ -351,7 +352,7 @@ function dosomething_cause_links($links, $attributes = array('class' => 'links')
       //$output .= '<li'. drupal_attributes(array('class' => $class)) .'>';
 
       if (isset($link['href'])) {
-        $link_list[] = '<a href="whatsyourthing/'.str_replace(' ', '+', $link['title']).'">'.$link['title'].'</a>';
+        $link_list[] = '<a href="/whatsyourthing/'.str_replace(' ', '+', $link['title']).'">'.$link['title'].'</a>';
       }
 
       $i++;

@@ -237,7 +237,8 @@ function dosomething_preprocess_page(&$vars, $hook) {
  */
 function dosomething_preprocess_node(&$vars, $hook) {
 
-  $vars['cause_links'] = '<div class="cause-links">' . dosomething_cause_links($vars['taxonomy'], array('class' => 'links inline'), format_plural(count($vars['taxonomy']), 'Related:', 'Related Causes:')) . '</div>';
+  //$vars['cause_links'] = '<div class="cause-links">' . dosomething_cause_links($vars['taxonomy'], array('class' => 'links inline'), format_plural(count($vars['taxonomy']), 'Related:', 'Related Causes:')) . '</div>';
+  $vars['cause_links'] = '';
 
   $when = time() - $vars['node']->changed;
   if ($when < (60 * 60 * 24 * 7)) { // less than one week ago

@@ -307,7 +307,6 @@ function dosomething_preprocess_block(&$vars, $hook) {
 
 function dosomething_cause_links($links, $attributes = array('class' => 'links'), $heading = '') {
 
-  //dpm($links);
   global $language;
   $output = '';
 
@@ -351,8 +350,15 @@ function dosomething_cause_links($links, $attributes = array('class' => 'links')
       }
       //$output .= '<li'. drupal_attributes(array('class' => $class)) .'>';
 
+      $cause = '';
+      $tid_parts = explode('/', $link['href']);
+      $parents = taxonomy_get_parents($tid_parts[2]);
+      if (count($parents)) {
+        $parent = array_shift($parents);
+        $cause = str_replace(' ', '+', $parent->name) . '/';
+      }
       if (isset($link['href'])) {
-        $link_list[] = '<a href="/whatsyourthing/'.str_replace(' ', '+', $link['title']).'">'.$link['title'].'</a>';
+        $link_list[] = '<a href="/whatsyourthing/'. $cause . str_replace(' ', '+', $link['title']).'">'.$link['title'].'</a>';
       }
 
       $i++;

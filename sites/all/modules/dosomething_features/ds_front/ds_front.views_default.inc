@@ -236,7 +236,7 @@ function ds_front_views_default_views() {
         'alter_text' => 0,
         'text' => '',
         'make_link' => 0,
-        'path' => '',
+        'path' => '[field_link_url]',
         'link_class' => '',
         'alt' => '',
         'prefix' => '',
@@ -262,11 +262,14 @@ function ds_front_views_default_views() {
         'multiple_from' => '',
         'multiple_reversed' => FALSE,
       ),
-      'exclude' => 1,
+      'exclude' => 0,
       'id' => 'field_description_value',
       'table' => 'node_data_field_description',
       'field' => 'field_description_value',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'field_picture_fid' => array(
       'label' => '',
@@ -300,11 +303,14 @@ function ds_front_views_default_views() {
         'multiple_from' => '',
         'multiple_reversed' => 0,
       ),
-      'exclude' => 1,
+      'exclude' => 0,
       'id' => 'field_picture_fid',
       'table' => 'node_data_field_picture',
       'field' => 'field_picture_fid',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'title' => array(
       'label' => '',
@@ -373,6 +379,9 @@ function ds_front_views_default_views() {
       'table' => 'node_data_field_link',
       'field' => 'field_link_url',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
     'field_picture_fid_1' => array(
       'label' => '',
@@ -381,7 +390,7 @@ function ds_front_views_default_views() {
         'text' => '',
         'make_link' => 1,
         'path' => '[field_link_url]',
-        'link_class' => '',
+        'link_class' => 'profiler_image',
         'alt' => '',
         'prefix' => '',
         'suffix' => '',
@@ -406,11 +415,14 @@ function ds_front_views_default_views() {
         'multiple_from' => '',
         'multiple_reversed' => 0,
       ),
-      'exclude' => 1,
+      'exclude' => 0,
       'id' => 'field_picture_fid_1',
       'table' => 'node_data_field_picture',
       'field' => 'field_picture_fid',
       'relationship' => 'none',
+      'override' => array(
+        'button' => 'Override',
+      ),
     ),
   ));
   $handler->override_option('sorts', array(

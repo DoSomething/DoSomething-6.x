@@ -199,9 +199,9 @@ function club_profile_content_table($uid, $name, $title, $query, $empty_msg) {
   while ($result = db_fetch_object($results)) {
     $node = node_load($result->nid);
     $rows[] = array(
-      array('data'=> l($node->title,'node/'.$node->field_did_nid[0]['value'])),
+      array('data'=> l($node->title, 'node/' . $node->nid)),
       date('F j, Y',$node->created),
-      array('data'=> l('Edit','node/'.$node->nid . '/edit')),
+      array('data'=> l('Edit','node/' . $node->nid . '/edit')),
     );
   }
   $header = array('Title', 'Date Created', 'Edit');

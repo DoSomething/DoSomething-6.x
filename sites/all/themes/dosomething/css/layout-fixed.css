@@ -49,6 +49,8 @@ body {
 }
 
 #search-box {
+  position: relative;
+  top: -4px;
 }
 
 .region-header {
@@ -59,11 +61,16 @@ body {
  * Main (container for everything else)
  */
 #header,
-#main-wrapper,
-#footer {
+#main-wrapper {
   position: relative;
   margin: 0 35px;
   padding: 0 15px;
+}
+
+#footer {
+  position: relative;
+  margin: 0 35px;
+  padding: 0;
 }
 
 #main {

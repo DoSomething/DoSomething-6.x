@@ -64,11 +64,12 @@ a:hover {
 #footer ul {
   list-style-type: none;
   list-style-image: none;
+  padding: 0;
 }
 
 #footer ul li {
   float: left;
-  padding: 0 10px 0 10px;
+  padding: 0 6px;
   color: white;
   border-right: 1px solid #48bcdc;
 }
@@ -433,7 +434,7 @@ div.callout {
 div.block ul li {
   float: left;
   padding: 0 7px 0 5px;
-  background: url("/sites/all/themes/zen/dosomething/./images/ul_divider.png") no-repeat right;
+  background: url("../images/ul_divider.png") no-repeat right;
 }
 
 div.block ul li.first {
@@ -497,7 +498,7 @@ div.block ul {
   font-size: 0.85em;
 }
 ul.logolist {
-  list-style-image: url("/sites/all/themes/zen/dosomething/./images/logobullet.gif") !important;
+  list-style-image: url("../images/logobullet.gif") !important;
   padding-left: 20px !important;
 }
 
@@ -598,5 +599,9 @@ tr.even, tr.odd {
 
 div.item-list ul li {
   list-style-type: none;
-  list-style-image: url("/sites/all/themes/zen/dosomething/./images/logobullet.gif");
+  list-style-image: url("../images/logobullet.gif");
+}
+
+.clear {
+  clear: both;
 }

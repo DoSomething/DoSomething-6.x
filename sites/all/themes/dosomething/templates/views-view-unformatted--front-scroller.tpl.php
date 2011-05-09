@@ -17,8 +17,9 @@
   $main = '<div id="profiler-main">';
 
   foreach ($view->style_plugin->rendered_fields as $id => $row) {
+    //dpm($row);
     $thumbnails .= "<div class='row-$id'>{$row['field_picture_fid']}</div>";
-    $main .= "<div class='row-$id slide'>{$row['field_picture_fid_1']}<div class='text'><h2>{$row['title']}</h2>{$row['field_description_value']}</div></div>";
+    $main .= "<div class='row-$id slide'>{$row['field_picture_fid_1']}<div class='text'><h2>{$row['title']}</h2><a href='{$row['field_link_url']}'>{$row['field_description_value']}</a></div></div>";
   }
 
   print $thumbnails.'</div>'.$main.'</div>';

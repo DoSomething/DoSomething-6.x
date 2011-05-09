@@ -74,8 +74,6 @@
  */
 ?>
 
-<?php dsm($node); ?>
-
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
 
   <?php if ($unpublished): ?>
@@ -90,7 +88,7 @@
     <p><?php print $node->og_description; ?></p>
   </div>
 
-  <?php print $content; ?>
+  <?php //print $content; ?>
 
   <?php print $links; ?>
 

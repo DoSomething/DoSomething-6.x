@@ -1,0 +1,23 @@
+#ds-mobile-anon-form > div {
+  zoom: 1;
+}
+
+#sign-up input[type=submit] {
+  padding-top: 19px;
+}
+
+#sign-up input.submit {
+  margin-bottom: 4px;
+}
+
+#sign-up input#edit-submit {
+  margin-top: 2px;
+}
+
+#sign-up #edit-zip-wrapper {
+  float: left;
+}
+
+#sign-up input.form-submit {
+  float: left;
+}

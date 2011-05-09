@@ -8,7 +8,6 @@ $create_date = '2011-05-15';
 $proj_date = '2010-12-23';
 
 $sql = "
-
 SELECT
 
 n.title AS club_name,
@@ -48,12 +47,12 @@ cc.field_club_expected_members_value AS expected_members,
 (SELECT DATE(FROM_UNIXTIME(changed)) FROM og_ancestry ogp INNER JOIN node pn ON pn.nid = ogp.nid WHERE ogp.group_nid = cc.nid AND pn.type = 'project' GROUP BY pn.nid ORDER BY changed DESC LIMIT 0,1) AS p1_updated,
 (SELECT DATE(FROM_UNIXTIME(created)) FROM og_ancestry ogp INNER JOIN node pn ON pn.nid = ogp.nid WHERE ogp.group_nid = cc.nid AND pn.type = 'project' GROUP BY pn.nid ORDER BY changed DESC LIMIT 1,1) AS p2_created,
 (SELECT DATE(FROM_UNIXTIME(changed)) FROM og_ancestry ogp INNER JOIN node pn ON pn.nid = ogp.nid WHERE ogp.group_nid = cc.nid AND pn.type = 'project' GROUP BY pn.nid ORDER BY changed DESC LIMIT 1,1) AS p2_updated,
-(SELECT name FROM `term_node` tn INNER JOIN term_data td ON tn.tid = td.tid WHERE nid = cc.nid AND (vid = 15 OR vid = 17) ORDER BY tn.tid DESC LIMIT 0,1) AS heard_about,
+(SELECT name FROM `term_node` tn INNER JOIN term_data td ON tn.tid = td.tid WHERE nid = cc.nid AND (tn.vid = 15 OR tn.vid = 17) ORDER BY tn.tid DESC LIMIT 0,1) AS heard_about,
 (SELECT GROUP_CONCAT(IF(nid, name, '') SEPARATOR ':')
 FROM term_hierarchy th
 INNER JOIN term_data td ON th.tid = td.tid
 LEFT JOIN term_node tn ON tn.tid = th.tid
-WHERE th.parent = 0 AND vid = 5 AND nid = cc.nid
+WHERE th.parent = 0 AND td.vid = 5 AND nid = cc.nid
 ORDER BY name) AS causes
 
 FROM
@@ -77,7 +76,8 @@ WHERE
 n.type = 'club'
  AND
 DATE(FROM_UNIXTIME(n.created)) > '$create_date' OR (SELECT DATE(FROM_UNIXTIME(changed)) FROM og_ancestry ogp INNER JOIN node pn ON pn.nid = ogp.nid WHERE ogp.group_nid = cc.nid AND pn.type = 'project' GROUP BY pn.nid ORDER BY changed DESC LIMIT 0,1) > '$proj_date'
-GROUP BY cc.nid";
+GROUP BY cc.nid
+";
 
 $result = db_query($sql);
 

@@ -82,9 +82,9 @@
         </ul>
       </li>
     </ul>
-    <form action="#">
+    <form action="/u/search">
       <div id="search-box" class="search">
-        <input type="text" value="search" />
+        <input type="text" name="keys" value="search" />
       </div>
     </form>
   </div> <!-- header -->

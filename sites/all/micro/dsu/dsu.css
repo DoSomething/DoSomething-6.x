@@ -1,0 +1,587 @@
+#wrapper {
+  width: 970px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+  font-family: Verdana, sans-serif;
+}
+
+#wrapper a {
+  color: black;
+  text-decoration: underline;
+}
+
+#top {
+  background: url(divider.png) 0 100% no-repeat;
+  padding-bottom: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#top .where {
+  float: left;
+  padding-left: 15px;
+}
+
+#top .sign-up {
+  float: right;
+  padding-right: 15px;
+}
+
+#wrapper img {
+  border-width: 0px;
+}
+
+#chase {
+  margin: 1em auto;
+}
+
+#header {
+  background: url(header.png) 0 0 no-repeat;
+  height: 180px;
+  position: relative;
+  z-index: 100;
+}
+
+#header #top-nav {
+  position: absolute;
+  left: 153px;
+  top: 110px;
+}
+
+#top-nav {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+#top-nav .header {
+  color: black;
+  font-size: 30px;
+  text-transform: uppercase;
+  padding-left: 40px;
+  cursor: pointer;
+  background: url(small_arrow.png) 0 6px no-repeat;
+  text-decoration: none;
+}
+
+#top-nav li {
+  float: left;
+  padding-right: 15px;
+}
+
+#top-nav ul {
+  display: none;
+}
+
+#header .header-ds,
+#header .header-u {
+  text-indent: -9999em;
+  position: absolute;
+}
+
+#header .header-ds {
+  top: 8px;
+  left: 152px;
+  width: 639px;
+  height: 83px;
+}
+
+#header .header-u {
+  top: 10px;
+  left: 813px;
+  width: 134px;
+  height: 149px;
+}
+
+#header form {
+  position: absolute;
+  width: 251px;
+  height: 47px;
+  left: 554px;
+  top: 107px;
+  background: url(search_bg.png) 0 0 no-repeat;
+}
+
+#header form .search {
+  position: relative;
+}
+
+#header form input {
+  border: 0px solid black;
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  width: 170px;
+}
+
+#footer {
+  margin-top: 3em;
+  border-top: 1px solid #999;
+  background-color: #ccc;
+}
+
+#footer .footer-list {
+  width: 200px;
+  margin: 1em 0;
+  padding: 0 50px;
+  float: left;
+}
+
+#footer .middle {
+  border-right: 1px solid #999;
+  border-left: 1px solid #999;
+}
+
+#footer .left {
+  padding-left: 80px;
+}
+
+#footer .right {
+  padding-right: 80px;
+}
+
+#footer .footer-list h2 {
+  font-size: 15px;
+  margin: 0.5em 0;
+}
+
+#footer .footer-list ul {
+  list-style-type: none;
+  padding-left: 5px;
+  margin: 0;
+  font-size: 13px;
+  font-style: italic;
+}
+
+#main {
+  width: 674px;
+  float: left;
+  margin-left: 15px;
+}
+
+#sidebar h2,
+#main h2 {
+  margin-top: 0.5em;
+  font-size: 27px;
+  border-bottom: 1px dotted black;
+  padding-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+#main h3 {
+  font-size: 21px;
+  color: #999;
+  margin: 0.5em 0 0.5em 20px;
+}
+
+#main ul {
+  list-style: none;
+  padding-left: 40px;
+}
+
+#main .dsu_guides ul {
+  list-style-type: disc;
+  padding-left: 40px;
+}
+
+#main .dsu_guides li {
+  margin: 0.5em 0;
+}
+
+#main .guide-body p {
+  /* padding-left: 135px; */
+}
+
+#main ul li.video {
+  background: url(icon_video.png) 0 0 no-repeat;
+  padding-left: 28px;
+  min-height: 25px;
+}
+
+#sidebar {
+  width: 264px;
+  float: left;
+  margin-bottom: 1em;
+}
+
+#scroller {
+  position: relative;
+  width: 664px;
+  height: 484px;
+  background: url(frame_main.png) 0 0 no-repeat;
+}
+
+#scroller-content {
+  position: relative;
+  left: 15px;
+  top: 13px;
+  width: 633px;
+  height: 355px;
+}
+
+.scroller-main {
+  position: relative;
+  display: none;
+}
+
+.scroller-main a {
+  display: block;
+  line-height: 0;
+}
+
+#scroller-content .first {
+  display: block;
+}
+
+.scroller-box {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 633px;
+  height: 76px;
+  background-color: #fff;
+  opacity: 0.62;
+}
+
+.scroller-text {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 633px;
+  height: 76px;
+}
+
+#play {
+  position: absolute;
+  left: 253px;
+  top: 101px;
+  width: 157px;
+  height: 155px;
+  z-index: 10;
+}
+
+#scroller .scroller-text h2 {
+  font-size: 21px;
+  margin: 0px;
+  padding: 13px 0 0;
+  border-width: 0px;
+  text-align: center;
+}
+
+#scroller .scroller-text h3 {
+  font-size: 18px;
+  margin: 0px;
+  padding: 0px;
+  border-width: 0px;
+  color: black;
+  font-weight: normal;
+  text-align: center;
+}
+
+#scroller .thumb-holder {
+  position: absolute;
+  bottom: 14px;
+  width: 149px;
+  height: 96px;
+}
+
+#scroller #th1 {
+  left: 15px;
+}
+
+#scroller #th2 {
+  left: 175px;
+}
+
+#scroller #th3 {
+  left: 335px;
+}
+
+#scroller #th4 {
+  left: 495px;
+}
+
+#scroller .thumbframe
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+#scroller .thumbnail {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+
+#sidebar .enroll {
+  font-size: 60px;
+  text-transform: uppercase;
+  margin: 0px;
+  padding: 0px;
+  border-width: 0px;
+}
+
+#sidebar .enroll-text {
+  margin-bottom: 1em;
+}
+
+#sidebar p {
+  margin: 0px;
+  font-size: 13px;
+}
+
+#sidebar .input-box {
+  width: 251px;
+  height: 52px;
+  background: url(input.png) 0 0 no-repeat;
+  margin: 0.25em 0;
+}
+
+#sidebar input {
+  font-size: 21px;
+  color: #999;
+  border-width: 0px;
+  padding: 0px;
+  margin: 10px 0 0 15px;
+  width: 200px;
+}
+
+#sidebar h2 {
+  margin-bottom: 0px;
+}
+
+#sidebar ul {
+  margin: 0px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+#related-content ul li {
+  list-style-type: none;
+  margin: 0px;
+}
+
+#sidebar li {
+  background-color: #ccc;
+  padding: 15px;
+  font-size: 12px;
+}
+
+#sidebar li.odd {
+  background-color: #e6e6e6;
+}
+
+/* superfish overrides */
+
+#top-nav li {
+  background-color: transparent;
+}
+
+#top-nav a {
+  padding: 0px;
+  margin: 0px;
+  border-width: 0px;
+}
+
+#top-nav li li {
+  font-size: 12px;
+  background-color: #ccc;
+}
+
+#top-nav li li a {
+  margin: 5px 0;
+  padding: 0 5px;
+}
+
+#top-nav li li a:hover {
+  background: transparent;
+}
+
+#top-nav .sf-sub-indicator {
+  display: none;
+}
+
+#content {
+  margin: 0 30px 0 15px;
+}
+
+#guide-top {
+  font-size: 14px;
+  border-bottom: 1px dotted black;
+  padding-bottom: 0.5em;
+  min-height: 30px;
+}
+
+#breadcrumbs {
+  float: left;
+  padding-top: 15px;
+}
+
+#sharing {
+  float: right;
+}
+#content ol.big-numbers {
+  clear: both;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+#content ol.big-numbers li {
+  line-height: 14px;
+  margin: 0.5em;
+  color: #666;
+}
+
+#content ol.big-numbers li span.not-big-numbers {
+  font-size: 16px;
+  font-weight: normal;
+  color: black;
+  position: relative;
+  top: -12px;
+}
+
+.view-dsu-written .views-field-body,
+.view-dsu-video .views-field-body,
+.view-dsu-search .views-field-body,
+.view-dsu-majors .views-field-body {
+  margin: 0 0 0 135px;
+}
+
+#main .view-dsu-written .views-field-title,
+#main .view-dsu-video .views-field-title,
+#main .view-dsu-search .views-field-title,
+#main .view-dsu-majors .views-field-title {
+  font-size: 14px;
+  border-bottom: none;
+  margin: 0em 0 0em 135px;
+  padding: 5px 0;
+}
+
+.view-dsu-written .views-row-odd,
+.view-dsu-video .views-row-odd,
+.view-dsu-search .views-row-odd,
+.view-dsu-majors .views-row-odd {
+  background-color: #e6e6e6;
+}
+
+.view-dsu-written .even,
+.view-dsu-video .even,
+.view-dsu-search .even,
+.view-dsu-majors .even {
+  background-color: #ccc;
+}
+
+.views-field {
+  float: left;
+  line-height: 0px;
+}
+
+.views-field-field-dsu-picture-fid {
+  float: left;
+  padding: 0 15px 0 0;
+}
+
+.views-field-field-dsu-picture-fid a {
+  display: block;
+  line-height: 0;
+}
+
+.dsu_guides h3 {
+  clear: both;
+}
+
+#messages {
+  background-color: #666;
+  border: 2px solid red;
+  color: white;
+  margin: 15px;
+  padding: 15px;
+}
+
+ul.pager {
+  margin: 1em 0;
+  text-align: center;
+}
+
+ul.pager li {
+  display: inline;
+}
+
+ul.pager li.pager-current {
+  margin: 0 10px 0 0;
+}
+
+ul.pager a,
+ul.pager strong {
+  margin: 0 10px 0 0;
+}
+
+#views-filters {
+  display: none;
+}
+
+.view-dsu-prof td,
+.view-dsu-prof th {
+  padding: 5px 10px;
+}
+
+.view-field-node-comment-statistics-comment-count {
+  display: none;
+}
+
+.page tr.dropbox-entry td {
+  padding: 10px;
+}
+
+.page tr.dropbox-entry.odd {
+  background-color: #666;
+  color: white;
+}
+
+#wrapper div.error {
+  color: auto;
+  border: 0px;
+  background: transparent;
+  color: white;
+}
+
+#sidebar .ask-prof {
+  margin: 0.5em 0;
+}
+
+#user-login .item-list {
+  display: none;
+}
+
+#comment-form fieldset {
+  display: none;
+}
+
+#comments h2 {
+  font-size: 18px;
+}
+
+#comments h3 {
+  font-size: 15px;
+}
+
+#main ul,
+#main ol,
+#main p {
+  font-size: 16px;
+}
+
+#guide-share {
+  margin: 0.5em;
+}
+
+#sidebar .item-list ul li {
+  list-style-type: none;
+  margin: 0px;
+}
+
+.view-dsu-video .view-filters {
+  display: none;
+}

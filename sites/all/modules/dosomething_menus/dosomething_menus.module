@@ -70,7 +70,7 @@ function _dosomething_menu($class, $menu, $header = NULL) {
   if ($header) {
     $result .= $header;
   }
-  $result .= theme('links', menu_navigation_links($menu));
+  $result .= menu_tree($menu);
   $result .= '<div class="btm"></div>';
   $result .= '</div>';
   return $result;

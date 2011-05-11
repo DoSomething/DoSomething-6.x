@@ -31,7 +31,7 @@
 #secondary ul li.active-trail {
   padding-top: 5px;
   padding-bottom: 9px;
-  font-size: 20px;
+  font-size: 18px;
   background: url(../images/subnav_li_active.png) no-repeat 0 1px;
 }
 
@@ -39,23 +39,38 @@
   color: white;
 }
 
-#secondary ul li ul {
+#secondary ul li ul,
+#secondary.actnow ul li ul,
+#secondary.sharesomething ul li ul {
   margin: 1em 0;
   padding: 0;
   list-style-type: none;
 }
 
-#secondary ul li ul li {
-  margin: 0.5em 0;
+#secondary ul li ul li,
+#secondary.actnow ul li ul li,
+#secondary.sharesomething ul li ul li {
+  background: transparent;
+  margin: 0.4em 0;
   padding: 0 0 0 15px;
   list-style-type: none;
+  font-size: 14px;
 }
 
-#secondary ul li ul li.active-trail {
-  margin: 0.5em 0;
+#secondary ul li ul li.active-trail,
+#secondary.actnow ul li ul li.active-trail,
+#secondary.sharesomething ul li ul li.active-trail {
+  margin: 0.4em 0;
   padding: 0 0 0 15px;
   font-size: 1em;
   background: transparent;
+}
+
+#secondary.actnow ul li ul a.active,
+#secondary.actnow ul li ul a:hover,
+#secondary.sharesomething ul li ul a.active,
+#secondary.sharesomething ul li ul a:hover {
+  color: white;
 }
 
 #secondary .breadcrumbs {
@@ -116,7 +131,7 @@
   text-decoration: none;
 }
 
-#secondary.actnow ul li.active {
+#secondary.actnow ul li.active-trail {
   background: url(../images/subnav_li_active_actnow.png) no-repeat 0 1px;
 }
 
@@ -138,7 +153,7 @@
   text-decoration: none;
 }
 
-#secondary.sharesomething ul li.active {
+#secondary.sharesomething ul li.active-trail {
   background: url(../images/subnav_li_active_sharesomething.png) no-repeat 0 1px;
 }
 
@@ -153,6 +168,10 @@
 
 #secondary.plain li {
   background: url(../images/subnav_li.png) 0 0 no-repeat;
+}
+
+#secondary.plain li li {
+  background: transparent;
 }
 
 #secondary.plain ul a {

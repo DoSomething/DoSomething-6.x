@@ -54,7 +54,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       break;
     case 'ebd_signup_node_form':
     case 'campaign_ebd_2011_node_form':
-      $form['body_filter']['body']['#required'] = 1;
+      $form['body_field']['body']['#required'] = 1;
       $form['#validate'][] = 'user_field_form_validate';
       $form['#validate_args'] = array(
           'profile_fname',

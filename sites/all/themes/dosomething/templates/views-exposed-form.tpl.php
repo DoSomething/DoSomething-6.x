@@ -42,7 +42,7 @@
       </div>
     <?php endforeach; ?>
     <div class="button views-exposed-widget">
-      <?php print $button ?>
+      <?php print str_replace('value="Apply"','value="Search"',$button); ?>
     </div>
   </div>
 </div>

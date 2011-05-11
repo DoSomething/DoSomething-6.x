@@ -57,7 +57,7 @@ function _dosomething_menu_whatsyourthing($header = NULL) {
   $result .= '<div id="secondary" class="whatsyourthing">';
   $result .= '<ul>';
   foreach ($causes as $cause) {
-    $result .= '<li><a href="/whatsyourthing/'.str_replace(' ', '+', $cause->name).'">'.$cause->name.'</a></li>';
+    $result .= '<li><a href="/whatsyourthing/'.str_replace(' ', '+', $cause->name).'">'.str_replace(' And ', ' and ', $cause->name).'</a></li>';
   }
   $result .= '</ul>';
   $result .= '<div class="whatsyourthing-bottom"></div>';

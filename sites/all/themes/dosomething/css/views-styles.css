@@ -5,6 +5,22 @@
  * Views Styling
  */
 
+#views-exposed-form-grant-database-page-1 {
+  padding: 5px;
+  background: #EEE;
+}
+
+.view-grant-database #edit-keys-wrapper input[type=text] {
+  width: 400px;
+}
+
+.view-rants-archive .title {
+  font-size: 2em;
+  font-weight: bold;
+  padding-bottom: 5px;
+  line-height: normal;
+}
+
 .view-front-scroller {
   background-color: #48bcdc;
   margin-left: -59px;

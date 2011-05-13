@@ -1,12 +1,15 @@
 <?php
 
+/*
+ * Dynamically add filters to projects search per arguments.
+ */
 function dosomething_projects_views_pre_view(&$view) {
 
   if ($view->name != 'projects_search') {
     return;
   }
 
-  // decide which filters to use based on the path
+  // determine which filters to use
   $state_filter = (arg(3) && arg(3) != '*') ? TRUE : FALSE;
   $state = arg(3);
   $project_type_filter = (arg(4) && arg(4) != '*') ? TRUE : FALSE;
@@ -16,10 +19,10 @@ function dosomething_projects_views_pre_view(&$view) {
   $require_clubs = (arg(7) == 'clubs') ? TRUE : FALSE;
   $require_grants = (arg(8) == 'grants') ? TRUE : FALSE;
   $search_filter = (arg(9) && arg(9) != '*') ? TRUE : FALSE;
-  $search_term = arg(9);
   $distance_filter = (arg(10) && arg(11) && arg(10) != '*' && arg(11) != '*') ? TRUE : FALSE;
   $distance = arg(10);
   $distance_postal_code = arg(11);
+  $project_of_the_day_filter = (arg(12) && arg(12) != '*') ? TRUE : FALSE;
 
   if ($require_video) {
     $view->display['default']->handler->options['filters']['require_video'] = array(
@@ -123,15 +126,14 @@ function dosomething_projects_views_pre_view(&$view) {
   if ($search_filter) {
     $view->display['default']->handler->options['filters']['search_filter'] = array(
       'operator' => 'optional',
-      'value' => array('Haiti' => 'Haiti'),
       'group' => '0',
-      'exposed' => FALSE,
+      'value' => array('Haiti' => 'Haiti'),
+      'exposed' => TRUE,
       'expose' => array(
         'use_operator' => 0,
-        'value' => array('Haiti' => 'Haiti'),
         'operator' => 'keys_op',
         'identifier' => 'keys',
-        'label' => 'Search: Search Terms',
+        'label' => 'Search: asdf',
         'optional' => 1,
         'remember' => 0,
       ),
@@ -178,15 +180,33 @@ function dosomething_projects_views_pre_view(&$view) {
     );
   }
 
-  dpm($view);
+  if ($project_of_the_day_filter) {
+    $view->display['default']->handler->options['relationships']['require_pod'] = array(
+      'label' => 'Project of the Day',
+      'required' => 1,
+      'limit' => 1,
+      'qids' => array(
+        '34' => 34,
+      ),
+      'id' => 'nodequeue_rel',
+      'table' => 'node',
+      'field' => 'nodequeue_rel',
+      'relationship' => 'none',
+    );
+  }
 
 }
 
 /*
- * TODO: make this work with all states
+ * Search filters work differently, so we need to expose a form, hide it, and
+ * feed arguments to it in the background
  */
-function _dosomething_projects_state_lookup($state) {
-  return 'Minnesota';
+function dosomething_projects_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-projects-search-panel-pane-1') {
+    $form['#prefix'] = '<div class="hide-me">';
+    $form['#suffix'] = '</div>';
+    $form['keys']['#value'] = arg(9);
+  }
 }
 
 /*
@@ -196,5 +216,78 @@ function _dosomething_projects_country_lookup($postal_code) {
   return 'us';
 }
 
+/*
+ * TODO: make this work with all states
+ */
+function _dosomething_projects_state_lookup($state) {
+  $state_abbr_map = array(
+    "AL" => "Alabama",
+    "AK" => "Alaska",
+    "AZ" => "Arizona",
+    "AR" => "Arkansas",
+    "CA" => "California",
+    "CO" => "Colorado",
+    "CT" => "Connecticut",
+    "DE" => "Delaware",
+    "DC" => "District Of Columbia",
+    "FL" => "Florida",
+    "GA" => "Georgia",
+    "HI" => "Hawaii",
+    "ID" => "Idaho",
+    "IL" => "Illinois",
+    "IN" => "Indiana",
+    "IA" => "Iowa",
+    "KS" => "Kansas",
+    "KY" => "Kentucky",
+    "LA" => "Louisiana",
+    "ME" => "Maine",
+    "MD" => "Maryland",
+    "MA" => "Massachusetts",
+    "MI" => "Michigan",
+    "MN" => "Minnesota",
+    "MS" => "Mississippi",
+    "MO" => "Missouri",
+    "MT" => "Montana",
+    "NE" => "Nebraska",
+    "NV" => "Nevada",
+    "NH" => "New Hampshire",
+    "NJ" => "New Jersey",
+    "NM" => "New Mexico",
+    "NY" => "New York",
+    "NC" => "North Carolina",
+    "ND" => "North Dakota",
+    "OH" => "Ohio",
+    "OK" => "Oklahoma",
+    "OR" => "Oregon",
+    "PA" => "Pennsylvania",
+    "RI" => "Rhode Island",
+    "SC" => "South Carolina",
+    "SD" => "South Dakota",
+    "TN" => "Tennessee",
+    "TX" => "Texas",
+    "UT" => "Utah",
+    "VT" => "Vermont",
+    "VA" => "Virginia",
+    "WA" => "Washington",
+    "WV" => "West Virginia",
+    "WI" => "Wisconsin",
+    "WY" => "Wyoming",
+    "AS" => "American Samoa",
+    "FM" => "Federated States of Micronesia",
+    "GU" => "Guam",
+    "MH" => "Marshall Islands",
+    "MP" => "Northern Mariana Islands",
+    "PW" => "Palau",
+    "PR" => "Puerto Rico",
+    "VI" => "Virgin Islands"
+  );
+
+  if ($state_abbr_map[$state]) {
+    return $state_abbr_map[$state];
+  }
+
+  return $state;
+
+}
 
 ?>

@@ -1,6 +1,293 @@
 <?php
 
+/*
+ * Dynamically add filters to projects search per arguments.
+ */
 function dosomething_projects_views_pre_view(&$view) {
+
+  if ($view->name != 'projects_search') {
+    return;
+  }
+
+  // determine which filters to use
+  $state_filter = (arg(3) && arg(3) != '*') ? TRUE : FALSE;
+  $state = arg(3);
+  $project_type_filter = (arg(4) && arg(4) != '*') ? TRUE : FALSE;
+  $project_type = arg(4);
+  $require_video = (arg(5) == 'video') ? TRUE : FALSE;
+  $unrequire_pictures = (arg(6) == 'all') ? TRUE : FALSE;
+  $require_clubs = (arg(7) == 'clubs') ? TRUE : FALSE;
+  $require_grants = (arg(8) == 'grants') ? TRUE : FALSE;
+  $search_filter = (arg(9) && arg(9) != '*') ? TRUE : FALSE;
+  $distance_filter = (arg(10) && arg(11) && arg(10) != '*' && arg(11) != '*') ? TRUE : FALSE;
+  $distance = arg(10);
+  $distance_postal_code = arg(11);
+  $project_of_the_day_filter = (arg(12) && arg(12) != '*') ? TRUE : FALSE;
+
+  if ($require_video) {
+    $view->display['default']->handler->options['filters']['require_video'] = array(
+      'operator' => 'not empty',
+      'value' => '',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'case' => 0,
+      'id' => 'field_embedded_video_embed',
+      'table' => 'node_data_field_embedded_video',
+      'field' => 'field_embedded_video_embed',
+      'relationship' => 'none',
+    );
+  }
+
+  if ($unrequire_pictures) {
+    unset($view->display['default']->handler->options['relationships']['field_project_photo_fid']);
+  }
+
+  if ($state_filter) {
+    $view->display['default']->handler->options['filters']['state'] = array(
+      'operator' => 'is',
+      'value' => _dosomething_projects_state_lookup($state),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => 'province_op',
+        'label' => 'Location: Province',
+        'use_operator' => 0,
+        'identifier' => 'province',
+        'optional' => 1,
+        'single' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'province',
+      'table' => 'location',
+      'field' => 'province',
+      'relationship' => 'none',
+    );
+  }
+
+  if ($project_type_filter) {
+    $view->display['default']->handler->options['filters']['project_type'] = array(
+      'operator' => 'or',
+      'value' => array(
+        $project_type => $project_type
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => 'field_type_of_project_value_many_to_one_op',
+        'label' => 'Content: Is this a... (field_type_of_project) - Allowed values',
+        'use_operator' => 0,
+        'identifier' => 'field_type_of_project_value_many_to_one',
+        'optional' => 1,
+        'single' => 1,
+        'remember' => 0,
+        'reduce' => 0,
+      ),
+      'id' => 'field_type_of_project_value_many_to_one',
+      'table' => 'node_data_field_type_of_project',
+      'field' => 'field_type_of_project_value_many_to_one',
+      'override' => array(
+        'button' => 'Override',
+        ),
+      'relationship' => 'none',
+      'reduce_duplicates' => 0,
+    );
+  }
+
+  if ($require_clubs) {
+    $view->display['default']->handler->options['relationships']['require_clubs'] = array(
+      'label' => 'Group node (post)',
+      'required' => 1,
+      'id' => 'group_nid',
+      'table' => 'og_ancestry',
+      'field' => 'group_nid',
+      'relationship' => 'none',
+    );
+  }
+
+  if ($require_grants) {
+    $view->display['default']->handler->options['relationships']['require_grants'] = array(
+      'label' => 'Grant Winner',
+      'required' => 1,
+      'limit' => 1,
+      'qids' => array(
+        '9' => 9,
+      ),
+      'id' => 'nodequeue_rel',
+      'table' => 'node',
+      'field' => 'nodequeue_rel',
+      'relationship' => 'none',
+    );
+  }
+
+  if ($search_filter) {
+    $view->display['default']->handler->options['filters']['search_filter'] = array(
+      'operator' => 'optional',
+      'group' => '0',
+      'value' => array('Haiti' => 'Haiti'),
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'keys_op',
+        'identifier' => 'keys',
+        'label' => 'Search: asdf',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'keys',
+      'table' => 'search_index',
+      'field' => 'keys',
+      'relationship' => 'none',
+    );
+  }
+
+  if ($distance_filter) {
+    $view->display['default']->handler->options['filters']['distance_filter'] = array(
+      'operator' => 'mbr',
+      'value' => array(
+        'latitude' => '',
+        'longitude' => '',
+        'postal_code' => $distance_postal_code,
+        'country' => _dosomething_projects_country_lookup($distance_postal_code),
+        'php_code' => '',
+        'nid_arg' => 'null',
+        'nid_loc_field' => 'node',
+        'uid_arg' => 'null',
+        'search_distance' => $distance,
+        'search_units' => 'mile',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => 'distance_op',
+        'label' => 'Location: Distance / Proximity',
+        'use_operator' => 0,
+        'identifier' => 'distance',
+        'user_location_choose' => 0,
+        'optional' => 0,
+        'remember' => 0,
+      ),
+      'identifier' => 'dist',
+      'origin' => 'postal',
+      'id' => 'distance',
+      'table' => 'location',
+      'field' => 'distance',
+      'relationship' => 'none',
+      'gmap_macro' => '',
+    );
+  }
+
+  if ($project_of_the_day_filter) {
+    $view->display['default']->handler->options['relationships']['require_pod'] = array(
+      'label' => 'Project of the Day',
+      'required' => 1,
+      'limit' => 1,
+      'qids' => array(
+        '34' => 34,
+      ),
+      'id' => 'nodequeue_rel',
+      'table' => 'node',
+      'field' => 'nodequeue_rel',
+      'relationship' => 'none',
+    );
+  }
+
+}
+
+/*
+ * Search filters work differently, so we need to expose a form, hide it, and
+ * feed arguments to it in the background
+ */
+function dosomething_projects_form_alter(&$form, &$form_state, $form_id) {
+  if ($form['#id'] == 'views-exposed-form-projects-search-panel-pane-1') {
+    $form['#prefix'] = '<div class="hide-me">';
+    $form['#suffix'] = '</div>';
+    $form['keys']['#value'] = arg(9);
+  }
+}
+
+/*
+ * TODO: Make this detect Canadian postal codes
+ */
+function _dosomething_projects_country_lookup($postal_code) {
+  return 'us';
+}
+
+/*
+ * TODO: make this work with all states
+ */
+function _dosomething_projects_state_lookup($state) {
+  $state_abbr_map = array(
+    "AL" => "Alabama",
+    "AK" => "Alaska",
+    "AZ" => "Arizona",
+    "AR" => "Arkansas",
+    "CA" => "California",
+    "CO" => "Colorado",
+    "CT" => "Connecticut",
+    "DE" => "Delaware",
+    "DC" => "District Of Columbia",
+    "FL" => "Florida",
+    "GA" => "Georgia",
+    "HI" => "Hawaii",
+    "ID" => "Idaho",
+    "IL" => "Illinois",
+    "IN" => "Indiana",
+    "IA" => "Iowa",
+    "KS" => "Kansas",
+    "KY" => "Kentucky",
+    "LA" => "Louisiana",
+    "ME" => "Maine",
+    "MD" => "Maryland",
+    "MA" => "Massachusetts",
+    "MI" => "Michigan",
+    "MN" => "Minnesota",
+    "MS" => "Mississippi",
+    "MO" => "Missouri",
+    "MT" => "Montana",
+    "NE" => "Nebraska",
+    "NV" => "Nevada",
+    "NH" => "New Hampshire",
+    "NJ" => "New Jersey",
+    "NM" => "New Mexico",
+    "NY" => "New York",
+    "NC" => "North Carolina",
+    "ND" => "North Dakota",
+    "OH" => "Ohio",
+    "OK" => "Oklahoma",
+    "OR" => "Oregon",
+    "PA" => "Pennsylvania",
+    "RI" => "Rhode Island",
+    "SC" => "South Carolina",
+    "SD" => "South Dakota",
+    "TN" => "Tennessee",
+    "TX" => "Texas",
+    "UT" => "Utah",
+    "VT" => "Vermont",
+    "VA" => "Virginia",
+    "WA" => "Washington",
+    "WV" => "West Virginia",
+    "WI" => "Wisconsin",
+    "WY" => "Wyoming",
+    "AS" => "American Samoa",
+    "FM" => "Federated States of Micronesia",
+    "GU" => "Guam",
+    "MH" => "Marshall Islands",
+    "MP" => "Northern Mariana Islands",
+    "PW" => "Palau",
+    "PR" => "Puerto Rico",
+    "VI" => "Virgin Islands"
+  );
+
+  if ($state_abbr_map[$state]) {
+    return $state_abbr_map[$state];
+  }
+
+  return $state;
+
 }
 
 ?>

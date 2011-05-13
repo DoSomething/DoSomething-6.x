@@ -133,7 +133,10 @@ function ds_actnow_default_page_manager_pages() {
   $page->admin_title = 'Act Now Matrix';
   $page->admin_description = '';
   $page->path = 'actnow/matrix/!time/!where/!who/!issue';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array(
     'time' => array(

@@ -1,0 +1,27 @@
+#events-calendar .loading {
+  padding-right: 20px;
+  background: url('/misc/throbber.gif') 100% -18px no-repeat;
+}
+
+#events-calendar ul {
+  padding: 0px;
+  margin: 0 0 1em;
+}
+
+#events-calendar ul li {
+  list-style-type: none;
+  margin: 0.5em 0;
+  background: none;
+  float: none;
+}
+
+#events-calendar ul li img {
+  display: inline;
+  padding: 0 5px 5px 0;
+  vertical-align: middle;
+}
+
+#events-calendar .date {
+  font-size: 1.1em;
+  font-weight: bold;
+}

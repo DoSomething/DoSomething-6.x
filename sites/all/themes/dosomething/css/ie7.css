@@ -21,3 +21,11 @@
 #sign-up input.form-submit {
   float: left;
 }
+
+body #page-wrapper #footer {
+  margin: 0 15px;
+}
+
+body #page-wrapper #footer a {
+  zoom: 1;
+}

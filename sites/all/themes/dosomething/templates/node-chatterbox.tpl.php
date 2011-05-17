@@ -104,6 +104,13 @@
 
   <?php endif; ?>
 
+  <div style="display: none">
+  <?php
+    $view = views_get_view('field_reporter');
+    print $view->execute_display('default', array($node->uid));
+  ?>
+  </div>
+
   <?php if (strlen($node->field_picture[0]['view'])): ?>
     <div class="chatterbox-photo"><?php print $node->field_picture[0]['view']; ?></div>
   <?php endif; ?>

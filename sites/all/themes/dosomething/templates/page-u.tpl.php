@@ -99,61 +99,63 @@
       <div id="scroller">
         <div id="scroller-content">
           <div class="scroller-main first">
-            <a href="u/video/video-how-to-pitch-potential-investor"><img alt="image" src="/nd/dsu/charles_large.jpg" /></a>
+            <a href="/u/video/video-how-to-build-network"><img alt="image" src="/nd/dsu/interns_large.jpg" /></a>
             <div class="scroller-box"></div>
             <div class="scroller-text">
-              <h2>"How to Pitch a Potential Investor"</h2>
-              <h3>Charles Best, Founder and CEO, &ldquo;DonorsChoose&rdquo;</h3>
+              <h2>"How To Build A Network"</h2>
+              <h3>Samantha Smith, DoSomething Intern</h3> <!-- spacing is correct, do not adjust -->
             </div>
           </div>
           <div class="scroller-main">
-            <a href="u/video/video-how-to-save-your-organization-crisis"><img alt="image" src="/nd/dsu/ami_large.jpg" /></a>
+            <a href="/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else"><img alt="image" src="/nd/dsu/elevator_large.jpg" /></a>
             <div class="scroller-box"></div>
             <div class="scroller-text">
-              <h2>"How to Save Your Organization in a Crisis"</h2>
-              <h3>Ami Dar, Executive Director, &ldquo;Idealist&rdquo;</h3>
+              <h2>"How To Pitch Your Project"</h2>
+              <h3>Amanda Ashton and Sam Smith, DoSomething.org</h3> <!-- spacing is correct, do not adjust -->
+            </div>
+          </div>
+           <div class="scroller-main">
+            <a href="/u/video/video-how-to-get-corporate-sponsors-to-love-you"><img alt="image" src="/nd/dsu/aria_large.jpg" /></a>
+            <div class="scroller-box"></div>
+            <div class="scroller-text">
+              <h2>"How to Get Corporate Sponsors"</h2>
+              <h3>Aria Finger, Chief Operating Officer</h3>
             </div>
           </div>
           <div class="scroller-main">
-            <a href="u/video/how-to-get-people-to-vote-online"><img alt="image" src="/nd/dsu/chad_large.jpg" /></a>
+            <a href="/u/video/video-how-to-manage-not-profit-money"><img alt="image" src="/nd/dsu/kenia_large.jpg" /></a>
             <div class="scroller-box"></div>
             <div class="scroller-text">
-              <h2>"How to Get People to Vote Online"</h2>
-              <h3>Chad Bullock, Founder & Director, &ldquo;helloCHANGE&rdquo;</h3>
-            </div>
-          </div>
-          <div class="scroller-main">
-            <a href="/u/video/video-how-to-use-social-media-good"><img alt="image" src="/nd/dsu/monique_large.jpg" /></a>
-            <div class="scroller-box"></div>
-            <div class="scroller-text">
-              <h2>"How to Use Social Media for Good"</h2>
-              <h3>Monique Coleman, Host and Executive Producer, &ldquo;GimmeMo&rdquo;</h3>
+              <h2>"How to Manage Not-for-Profit Money"</h2>
+              <h3>Kenia Ortiz, Director of Finance</h3>
             </div>
           </div>
         </div> <!-- scroller content -->
 
         <!-- <img alt="image" id="play" src="/nd/dsu/play_button.png" /> -->
+
         <div id="th1" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/charles_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/interns_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small_selected.png" />
         </div>
 
         <div id="th2" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/ami_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/elevator_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 
         <div id="th3" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/chad_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/aria_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 
         <div id="th4" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/monique_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/kenia_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 
       </div> <!-- scroller -->
+
       <?php endif; ?>
 
       <div id="content">
@@ -184,12 +186,25 @@
           <p class="enroll-text"><a href="/u/register/confirm">Enable Do Something U access on your account</a> for free downloads, access to professors and other exclusive content!</p>
         <?php endif; ?>
       <?php endif; ?>
+
       <div id="related-content">
-        <?php 
+
+        <?php
+
+          if (arg(1) == '613569' // home page
+           || arg(1) == '615719' // register/confirm
+           || arg(2) == 'Technology') {
+                print '<a href="/u/free-web-help"><img style="margin: 1em 0;" src="/files/dsu-web-help.png" alt="Free Web Help" /></a>';
+          }
+
           $terms = taxonomy_node_get_terms($node->nid);
           $tids = array();
           foreach ($terms as $term) {
             if ($term->vid == 18) {
+              // if this is a tech guide, add tech help block
+              if ($term->tid == 9012) {
+                print '<a href="/u/free-web-help"><img style="margin: 1em 0;" src="/files/dsu-web-help.png" alt="Free Web Help" /></a>';
+              }
               $tids[] = $term->tid;
             }
           }

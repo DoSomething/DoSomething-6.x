@@ -9,26 +9,27 @@
   text-transform: uppercase;
   padding: 5px 31px 5px 5px;
   margin-bottom: 2px;
+  background: #fec333 url(../images/actnow_arrows.png) no-repeat 100% 0;
+  height: 14px;
 }
 
 #action-matrix .customStyleSelectBoxInner {
   width: 185px;
 }
 
-#action-matrix .cs-cause {
-  background: #fec333 url(../images/actnow_cause.png) no-repeat top right;
-}
-
 #action-matrix .cs-who {
-  background: #48bcdc url(../images/actnow_who.png) no-repeat top right;
+  background-color: #48bcdc;
+  background-position: 100% -24px;
 }
 
 #action-matrix .cs-where {
-  background: #32889e url(../images/actnow_where.png) no-repeat top right;
+  background-color: #32889e;
+  background-position: 100% -48px;
 }
 
 #action-matrix .cs-time {
-  background: #0f3b70 url(../images/actnow_time.png) no-repeat top right;
+  background-color: #0f3b70;
+  background-position: 100% -72px;
 }
 
 div#block-dosomething_matrix-1 {

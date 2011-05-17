@@ -10,9 +10,14 @@ $(document).ready(function() {
       value = value.replace(/\+{2,}/,'+');
       value = value.replace(/^\++/,'');
       value = value.replace(/\++$/,'');
-      if(value.length==0)
+      if(value.length == 0) {
         value = '*';
+      }
       args.push(value);
+    }
+    // fix weird IE7 bug where extra '*' is put into path
+    if (args.length == 5) {
+      args.shift();
     }
     window.location.href = '/actnow/matrix/' + args.join('/');
     return false;

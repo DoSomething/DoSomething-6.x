@@ -1,5 +1,12 @@
 <?php
 
+function dosomething_matrix_init() {
+  $base_path = drupal_get_path('module', 'dosomething_matrix');
+  drupal_add_css($base_path . '/css/dosomething_matrix.css', 'module', 'all', TRUE);
+  drupal_add_js($base_path . '/js/customSelect.jquery.js', 'module', 'footer');
+  drupal_add_js($base_path . '/js/dosomething_matrix.js', 'module', 'footer');
+}
+
 function dosomething_matrix_block($op = 'list', $delta = 0, $edit = array()) {
 
   $blocks = array();
@@ -29,11 +36,6 @@ function dosomething_matrix_block($op = 'list', $delta = 0, $edit = array()) {
 function _dosomething_matrix_form() {
 
   $base_path = drupal_get_path('module', 'dosomething_matrix');
-  
-  drupal_add_css($base_path . '/css/dosomething_matrix.css', 'module', 'all', FALSE);
-
-  drupal_add_js($base_path . '/js/customSelect.jquery.js', 'module', 'header', FALSE);
-  drupal_add_js($base_path . '/js/dosomething_matrix.js', 'module', 'footer', FALSE);
 
   $time  = _dosomething_matrix_select(4, 'time', 'How Long?');
   $where = _dosomething_matrix_select(2, 'where', 'Where?');
@@ -57,11 +59,6 @@ function _dosomething_matrix_form() {
 function _dosomething_matrix_large_form() {
 
   $base_path = drupal_get_path('module', 'dosomething_matrix');
-  
-  drupal_add_css($base_path . '/css/dosomething_matrix.css', 'module', 'all', FALSE);
-
-  drupal_add_js($base_path . '/js/customSelect.jquery.js', 'module', 'header', FALSE);
-  drupal_add_js($base_path . '/js/dosomething_matrix.js', 'module', 'footer', FALSE);
 
   $time  = _dosomething_matrix_select(4, 'time', 'How Long?');
   $where = _dosomething_matrix_select(2, 'where', 'Where?');

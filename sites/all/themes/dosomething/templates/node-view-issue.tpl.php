@@ -22,6 +22,7 @@
         <li><span><?php print l($item['safe']['title'], 'node/'.$item['safe']['nid']); ?></span></li>
       <?php endforeach; ?>
     </ol>
+    <p><a href="/issue_resources/<?=str_replace(' ','+',arg(2));?>" class="more">More resources</a></p>
   </div>
 
   <div class="blue actnow">
@@ -32,6 +33,7 @@
         <li><span><?php print l($item['safe']['title'], 'node/'.$item['safe']['nid']); ?></span></li>
       <?php endforeach; ?>
     </ol>
+    <p><a href="/issue_action_guides/<?=str_replace(' ','+',arg(2));?>" class="more">More ways to make a difference</a></p>
   </div>
 
 </div> <!-- /.node -->

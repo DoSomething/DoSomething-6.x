@@ -573,6 +573,11 @@ ul.pager strong {
   font-size: 16px;
 }
 
+.guide-image {
+  float: left;
+  padding: 0 15px 15px 0;
+}
+
 #guide-share {
   margin: 0.5em;
 }
@@ -584,4 +589,13 @@ ul.pager strong {
 
 .view-dsu-video .view-filters {
   display: none;
+}
+
+div.comment img.comment-top {
+  display: none;
+}
+
+.view-dsu-prof .views-field {
+  float: none;
+  line-height: normal;
 }

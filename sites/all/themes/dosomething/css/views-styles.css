@@ -94,3 +94,25 @@
 .view-Projects .views-row-odd {
   background: #def3f9;
 }
+
+.view-field-reporter {
+  float: right;
+  background-color: #def3f9;
+  padding: 10px;
+  width: 200px;
+  margin: 15px 0 15px 15px;
+}
+
+.view-field-reporter .views-field-field-reporter-photo-fid {
+  float: left;
+  padding: 0 5px 5px 0;
+}
+
+.view-field-reporter .views-field-title {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.chatterbox-photo {
+  clear: right;
+}

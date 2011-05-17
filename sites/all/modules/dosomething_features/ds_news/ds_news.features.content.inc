@@ -349,6 +349,8 @@ Video',
       '12' => 0,
     ),
     'referenceable_status' => 1,
+    'advanced_view' => '',
+    'advanced_view_args' => '',
     'widget' => array(
       'default_value' => array(
         '0' => array(

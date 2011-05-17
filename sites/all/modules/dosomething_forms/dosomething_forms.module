@@ -181,9 +181,11 @@ function grant_form_validate($form, &$form_values) {
 }
 
 function action_guide_form_validate($form, &$form_state) {
+  /*
   if (! preg_match('/^(?:How To|Action Tips|Training):/', $form_values['title'])) {
     form_set_error('title', t('Title of action guide must begin with "How To:", "Action Tips:" or "Training:"'));
   }
+   */
 }
 
 function dia_signup ($args = array()) {

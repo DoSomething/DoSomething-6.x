@@ -10,8 +10,16 @@
 <?php if (!empty($title)): ?>
   <h3><?php print $title; ?></h3>
 <?php endif; ?>
-<?php foreach ($rows as $id => $row): ?>
-  <div class="<?php print $classes[$id]; ?>">
-    <?php print $row; ?>
+<?php
+  $rownum = 1;
+  $numrows = count($rows);
+  foreach ($rows as $id => $row):
+    $middle = '';
+    if ($rownum != 1 && $rownum != $numrows) {
+      $middle = 'views-row-middle';
+    }
+  ?>
+  <div class="<?php print $classes[$id].' '.$middle; ?>">
+    <?php print $row; $rownum++; ?>
   </div>
 <?php endforeach; ?>

@@ -8,14 +8,9 @@ function updateProfile(theForm) {
     var returnVal=true;
     var errorString='';
     $(theForm).find('div.live-profile .field').each( function() {
-      //var field = $(this).prev().attr('class').split(' ')[2];
       var field = $(this).attr('id');
       var new_value = $(this).val();
-      /*if ( $(this).attr('id') == 'state-select' ) {
-        field = 'profile_state';
-      }*/
       var path = '/live_profile_v2_router/' + field + 'ASjfMA2319M' + encodeURIComponent(new_value);
-      //console.log("%o", path);
       $.ajax({
           cache: 'false',
           url: path,

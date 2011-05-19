@@ -306,6 +306,14 @@ a.more {
   background: url("../images/more.png") no-repeat center right;
 }
 
+a.more2 {
+  display: inline-block;
+  padding: 0 13px 1px 0;
+  font-weight: bold;
+  color: #48BCDC;
+  background: url("../images/more.png") no-repeat center right;
+}
+
 div.block.features a.more {
   font-size: 1em;
   background-image: url("../images/more_feature.png");

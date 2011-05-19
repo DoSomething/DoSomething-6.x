@@ -1,31 +1,3 @@
-div.view-projects-search.view-display-id-panel_pane_2 div.controls {
-  text-align: right;
-  padding: 0 10px 5px 0;
-}
-
-div.view-projects-search.view-display-id-panel_pane_2 div.item-list ul li {
-  list-style-image: none;
-}
-
-div.view-projects-search.view-display-id-panel_pane_2 {
-  background: #DEF3F9;
-  padding: 5px 8px;
-}
-
-div.view-projects-search.view-display-id-panel_pane_2 div.view-content {
-  min-height: 100px;
-}
-
-div.view-projects-search.view-display-id-panel_pane_2 .view-header {
-  position: relative;
-}
-
-div.view-projects-search.view-display-id-panel_pane_2 .view-header h2 {
-  position: absolute;
-  top: -29px;
-  left: 5px;
-}
-
 div#search-box label { font-weight: bold; font-size: 1em; }
 div#search-box div#filterSelects label { display: block; }
 div#search-box div#filterSelects label[for=postal-code] {display: inline;}

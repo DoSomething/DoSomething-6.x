@@ -5,6 +5,110 @@
  * Views Styling
  */
 
+
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-last hr {
+  display: none;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row hr {
+  border-top: 1px solid #DEF3F9;
+  width: 150px;
+  margin-left: 48px;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 .views-field-field-embedded-video-embed,
+div.view-projects-search.view-display-id-panel_pane_3 .views-field-field-project-photo-fid
+{
+  float: left;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 .views-field-title-1 {
+  padding-left: 46px;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row {
+  padding: 2px 6px;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 {
+  border: 2px solid #DEF3F9;
+  padding-bottom: 10px;
+}
+
+body.page-projects div.panels-flexible-row {
+  padding: 18px 0px;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first .views-field-field-embedded-video-embed,
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first .views-field-field-project-photo-fid {
+  width: 99%;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first {
+  padding-top: 20px !important;
+  padding-bottom: 6px !important;
+  margin-bottom: 10px;
+  background-color: #DEF3F9;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first div.views-field-title {
+  text-align: center;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-middle div.views-field-title,
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-last div.views-field-title,
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first div.views-field-title-1 {
+  display: none;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first img.play {
+  position: absolute;
+  padding: 15px 0px 0px 82px;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-middle img,
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-last img {
+  width: auto !important;
+  height: 26px !important;
+}
+
+div.view-projects-search.view-display-id-panel_pane_3 div.view-content div.views-row-first img {
+  display: block;
+  margin: 0 auto;
+  padding: 3px 0;
+}
+
+
+div.view-projects-search.view-display-id-panel_pane_2 div.controls {
+  text-align: right;
+  padding: 0 10px 5px 0;
+}
+
+div.view-projects-search.view-display-id-panel_pane_2 div.item-list ul li {
+  list-style-image: none;
+  clear: both;
+}
+
+div.view-projects-search.view-display-id-panel_pane_2 {
+  background-color: #DEF3F9;
+  padding: 5px 8px;
+}
+
+div.view-projects-search.view-display-id-panel_pane_2 div.view-content {
+  min-height: 100px;
+}
+
+div.view-projects-search .view-header {
+  position: relative;
+}
+
+div.view-projects-search .view-header h2 {
+  position: absolute;
+  top: -29px;
+  left: 5px;
+}
+
 #views-exposed-form-grant-database-page-1 {
   padding: 5px;
   background: #EEE;
@@ -111,7 +215,7 @@
   background: #def3f9;
 }
 
-.view-field-reporter {
+.view-field-reporter .view-content {
   float: right;
   background-color: #def3f9;
   padding: 10px;
@@ -121,12 +225,16 @@
 
 .view-field-reporter .views-field-field-reporter-photo-fid {
   float: left;
-  padding: 0 5px 5px 0;
+  padding: 0 10px 1px 0;
 }
 
 .view-field-reporter .views-field-title {
   font-size: 1.1em;
   font-weight: bold;
+}
+
+.view-field-reporter .views-field-body {
+  padding-top: 5px;
 }
 
 .chatterbox-photo {

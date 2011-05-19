@@ -1,1 +1,1 @@
-views-view-unformatted--projects_search.tpl.php
+views-view-unformatted--projects-search.tpl.php

@@ -123,7 +123,11 @@ if ($node->locations[0]) {
           <h2 id="video">videos:</h2>
         <?
           foreach ($field_embedded_video as $video) {
-            print $video['view'];
+            if ($video['view']) {
+              print $video['view'];
+            } else {
+              print '<a target="_blank" href="'.$video['embed'].'">'.$video['embed'].'</a>';
+            }
           } ?>
         </div>
     <?  } ?>

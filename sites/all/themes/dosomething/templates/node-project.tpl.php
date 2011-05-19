@@ -47,7 +47,7 @@ if ($node->locations[0]) {
   <div class="content">
     <?=theme('badges',$badges);?>
     <div class="project-media">
-    <?php if ($field_project_photo):
+    <?php if ($field_project_photo && $field_project_photo[0]['filepath']):
        $first_photo = array_shift($field_project_photo);
        $full_size = image_get_info('/var/www/html/'.$first_photo['filepath']);
        $resized_path = imagecache_create_path('project_highlighted_photo', $first_photo['filepath']);

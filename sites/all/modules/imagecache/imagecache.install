@@ -1,5 +1,4 @@
 <?php
-// $Id: imagecache.install,v 1.27 2009/05/01 15:02:29 drewish Exp $
 
  function imagecache_requirements($phase) {
   $requirements = array();
@@ -320,22 +319,4 @@ function imagecache_update_6001() {
   $ret = array();
   db_change_field($ret, 'imagecache_action', 'weight', 'weight', array('type' => 'int', 'not null' => TRUE, 'default' => 0));
   return $ret;
-}
-
-function imagecache_update_6002() {
-
-  $ret = array();
-
-  // fix imagecache_preset
-  db_change_field($ret, 'imagecache_preset', 'presetname', 'presetname',
-    array('type' => 'varchar', 'length' => 255, 'not null' => TRUE));
-
-  // fix imagecache_action
-  db_change_field($ret, 'imagecache_action', 'action', 'action',
-    array('type' => 'varchar', 'length' => 255, 'not null' => TRUE));
-  db_change_field($ret, 'imagecache_action', 'data', 'data',
-    array('type' => 'text', 'size' => 'big', 'not null' => TRUE));
-
-  return $ret;
-
 }

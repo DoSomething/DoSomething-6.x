@@ -87,7 +87,7 @@
 
   <?php if ($page && ($display_submitted || $terms)): ?>
     <div class="meta">
-      <?php if ($display_submitted): ?>
+      <?php if (false && $display_submitted): ?>
         <span class="submitted">
           <?php
             print t('Submitted by !username on !datetime',
@@ -104,12 +104,12 @@
 
   <?php endif; ?>
 
-  <div style="display: none">
   <?php
-    $view = views_get_view('field_reporter');
-    print $view->execute_display('default', array($node->uid));
+    if ($page) {
+      $view = views_get_view('field_reporter');
+      print $view->execute_display('default', array($node->uid));
+    }
   ?>
-  </div>
 
   <?php if (strlen($node->field_picture[0]['view'])): ?>
     <div class="chatterbox-photo"><?php print $node->field_picture[0]['view']; ?></div>

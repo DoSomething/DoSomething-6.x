@@ -87,6 +87,10 @@ div.panel-pane .node-type-project.node-teaser {
   padding: 0;
 }
 
+.node-type-project .view-display-id-block_1 h3 {
+  color: black;
+}
+
 .node-type-project.node-teaser h3 {
   font-size: 13px;
   font-weight: bold;
@@ -101,6 +105,16 @@ div.panel-pane .node-type-project.node-teaser {
   padding: 15px;
 }
 
+.view-project-updates label, .view-project-updates .views-field-title {
+  font-weight: bold;
+}
+
+.view-project-updates .views-field-field-project-photo-fid .field-item {
+  float: left;
+  padding: 3px;
+}
+
+.view-project-updates .views-field-created,
 .project-update-date {
   text-align: right;
   font-size: 0.9em;

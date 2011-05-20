@@ -111,9 +111,12 @@ if ($node->locations[0]) {
     <h2>how you can get involved:</h2>
       <?php print check_markup($field_others_involved[0]['value']); ?>
     </div>
+    <h2>project updates:</h2>
+    <div class="box">
+      <?php print views_embed_view('project_updates', 'block_1', $nid); ?>
+    </div>
 
     <div class="box">
-    <h2>project updates:</h2>
       <?php print views_embed_view('project_updates', 'default', $nid); ?>
     </div>
 

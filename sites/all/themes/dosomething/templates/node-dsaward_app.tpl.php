@@ -84,11 +84,11 @@
             $rec = node_load($result->nid);
             $rec = node_build_content($rec);
             print '<h3>Recommendation 1</h3>';
-            if ($rec->field_dsaward_recommendation[0]['view']) {
-            print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_recommendation[0]['view']."</div>";
+            if ($rec->field_dsaward_recommendation[0]['safe']) {
+            print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_recommendation[0]['safe']."</div>";
             }
-            if ($rec->field_dsaward_rec_pdf[0]['view']) {
-              print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_rec_pdf[0]['view']."</div>";
+            if ($rec->field_dsaward_rec_pdf[0]['safe']) {
+              print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_rec_pdf[0]['safe']."</div>";
             }
           }
 
@@ -110,11 +110,11 @@
             $rec = node_load($result->nid);
             $rec = node_build_content($rec);
             print '<h3>Recommendation 2</h3>';
-            if ($rec->field_dsaward_recommendation[0]['view']) {
-            print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_recommendation[0]['view']."</div>";
+            if ($rec->field_dsaward_recommendation[0]['safe']) {
+            print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_recommendation[0]['safe']."</div>";
             }
-            if ($rec->field_dsaward_rec_pdf[0]['view']) {
-              print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_rec_pdf[0]['view']."</div>";
+            if ($rec->field_dsaward_rec_pdf[0]['safe']) {
+              print "<div style=\"margin: 1em 0\">".$rec->field_dsaward_rec_pdf[0]['safe']."</div>";
             }
           }
 

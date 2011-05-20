@@ -1,3 +1,30 @@
+
+/* image file is specified in the panel pane to avoid loading on every page */
+.sponsor-logos {
+  background-repeat: no-repeat;
+}
+
+.sponsor-logos .logo {
+  width: 250px;
+  height: 250px;
+}
+
+.sponsor-wrapper h3 {
+  text-align: center;
+}
+
+.sponsor-logos .s1 { background-position: 0 0px; display:none; }
+.sponsor-logos .s2 { background-position: 0 -250px; display:none; }
+.sponsor-logos .s3 { background-position: 0 -500px; display:none; }
+.sponsor-logos .s4 { background-position: 0 -750px; display:none; }
+.sponsor-logos .s5 { background-position: 0 -1000px; display:none; }
+.sponsor-logos .s6 { background-position: 0 -1250px; display:none; }
+.sponsor-logos .s7 { background-position: 0 -1500px; display:none; }
+.sponsor-logos .s8 { background-position: 0 -1750px; display:none; }
+.sponsor-logos .s9 { background-position: 0 -2000px; display:none; }
+.sponsor-logos .s10 { background-position: 0 -2250px; display:none; }
+.sponsor-logos .s11 { background-position: 0 -2500px; display:none; }
+
 .hide-me {
   display: none;
 }

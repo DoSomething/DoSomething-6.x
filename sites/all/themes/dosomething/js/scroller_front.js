@@ -21,4 +21,9 @@ $(document).ready(function() {
     });
     return false;
   });
+  $('div.sponsor-logos .logo').not(':first-child').hide();
+  $('div.sponsor-logos').cycle({
+    containerResize: 0,
+    pause: 1,
+  });
 });

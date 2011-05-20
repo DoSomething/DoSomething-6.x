@@ -1,4 +1,4 @@
-#action-matrix select {
+#block-dosomething_matrix-0 #action-matrix select {
   width: 238px;
 }
 
@@ -48,7 +48,12 @@ div.pane-dosomething-matrix-1 #action-matrix p {
 
 #block-dosomething_matrix-1 #action-matrix .customStyleSelectBox,
 .pane-dosomething-matrix-1 #action-matrix .customStyleSelectBox {
-  width: 428px;
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  width: 428px;
   margin-bottom: 4px;
+}
+
+.pane-dosomething-matrix-1 #action-matrix select {
+  max-width: none;
+  width: 465px;
 }

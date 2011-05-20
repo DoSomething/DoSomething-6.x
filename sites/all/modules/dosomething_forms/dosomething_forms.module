@@ -49,6 +49,21 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['group_personal_info']['field_where_did_you_hear']['#access'] = false;
       $form['#validate']['grant_form_validate'] = array();
       break;
+    case 'grant_judge_node_form':
+      $form['field_grant_judge_nid']['#prefix'] = '<div class="hide-me">';
+      $form['field_grant_judge_nid']['#suffix'] = '</div>';
+      $qid = db_result(db_query("SELECT qid FROM {nodequeue_nodes} WHERE nid = %d",arg(1)));
+      if ($qid == '50') {
+        $form['#redirect'] = "grants/judge/seed";
+      } else if ($qid == '51') {
+        $form['#redirect'] = "grants/judge/growth";
+      } else if ($qid == '63') {
+        $form['#redirect'] = "grants/judge/get-well-soon";
+      } else if ($qid == '64') {
+        $form['#redirect'] = "grants/judge/get-well-soon-2";
+      }
+      break;
+
     case 'action_guide_node_form':
       $form['#validate'][] = 'action_guide_form_validate';
       break;

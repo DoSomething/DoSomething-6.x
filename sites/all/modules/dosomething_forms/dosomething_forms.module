@@ -89,6 +89,12 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
           'profile_zip',
           );
       break;
+    case 'club_node_form':
+      $form['og_selective']['#prefix'] = '<div class="hide-me">';
+      $form['og_selective']['#suffix'] = '</div>';
+      $form['og_selective']['#default_value'] = 1;
+      break;
+
   }
 }
 

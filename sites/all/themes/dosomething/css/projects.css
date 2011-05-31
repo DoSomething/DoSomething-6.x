@@ -164,3 +164,8 @@ div.node-type-project div.box {
   padding-bottom: 5px;
   padding-top: 15px;
 }
+
+#node-form fieldset.group-explain-your-project ul.tips,
+#node-form fieldset.group-explain-your-project p {
+  display: none;
+}

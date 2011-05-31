@@ -40,6 +40,15 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['taxonomy'][variable_get('dosomething_how_long_vid',4)]['#required'] = TRUE;
       $form['taxonomy'][variable_get('dosomething_who_vid',3)]['#required'] = TRUE;
       _validate_birthdate_set_error($user->uid);
+      $form['og_nodeapi']['visible']['og_groups']['#title'] = 'Did you do this project with the Do Something Club listed below?';
+      $form['og_nodeapi']['visible']['og_groups']['#description'] = 'If this is a Club project, make sure the box has a check in it so that the project shows up on your Club\'s profile';
+      if (count($form['og_nodeapi']['visible']['og_groups']['#options'])) {
+        $defaults = array();
+        foreach (array_keys($form['og_nodeapi']['visible']['og_groups']['#options']) as $gid) {
+          $defaults[] = $gid;
+        }
+        $form['og_nodeapi']['visible']['og_groups']['#default_value'] = $defaults;
+      }
       break;
     case 'grant_application_node_form':
       if(!user_access('administer grant applications'))

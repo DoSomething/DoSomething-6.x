@@ -1,0 +1,21 @@
+body.node-type-club #map_canvas {
+  width: 500px;
+  height: 350px;
+}
+
+#block-og-0 {
+  background: #DEF3F9;
+}
+
+#block-og-0 ul {
+  padding: 0 0 0 2em;
+}
+
+#block-og-0 ul li {
+  background: none;
+  float: none;
+}
+
+#block-og-0 h2.title a {
+  color: #0F3B70;
+}

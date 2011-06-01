@@ -118,9 +118,11 @@
   <div class="content">
     <?php print $content; ?>
   </div>
-
+  
   <?php if (!$page): ?>
     <hr />
+  <?php elseif (count($taxonomy)): ?>
+    <div class="taxonomy"><?php print t('Tags:') . $terms; ?></div>
   <?php endif; ?>
 
 </div> <!-- /.node -->

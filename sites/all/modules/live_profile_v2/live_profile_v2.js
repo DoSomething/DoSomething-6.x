@@ -1,8 +1,8 @@
-$(document).ready( function() {
+/*$(document).ready( function() {
   $('div.live-profile .field').show();
   $('div.live-profile div.profile-value').hide();
   $('div.live-profile div.no-javascript-info').hide();
-});
+});*/
 
 function updateProfile(theForm) {
     var returnVal=true;

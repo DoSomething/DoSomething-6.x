@@ -129,6 +129,12 @@ function live_profile_v2_show($fields = array(
                                 'footer',
                                 FALSE,
                                 FALSE );
+  drupal_add_js(drupal_get_path('module', 'live_profile_v2').'/json2.js',
+                                'module',
+                                'footer',
+                                FALSE,
+                                FALSE );
+
 
 }
 

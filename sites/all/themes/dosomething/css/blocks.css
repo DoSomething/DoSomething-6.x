@@ -117,6 +117,9 @@ div.block.blue h2 a {
 }
 
 div#main div.region-right div.block-block {
-  margin: 0;
   padding: 0;
+}
+
+body.front div#main div.region-right div.block-block {
+  margin: 0;
 }

@@ -685,3 +685,7 @@ div.profile h3 {
 div.profile table th {
   border-bottom: 3px solid #fec333;
 }
+
+div.social-share {
+  padding: 20px 0;
+}

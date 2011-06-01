@@ -46,6 +46,7 @@ stylesheets[all][]   = css/secondary_nav.css
 stylesheets[all][]   = css/whatsyourthing.css
 stylesheets[all][]   = css/actnow.css
 stylesheets[all][]   = css/projects.css
+stylesheets[all][]   = css/clubs.css
 stylesheets[all][]   = css/programs.css
 stylesheets[all][]   = css/front.css
 stylesheets[all][]   = css/grants.css

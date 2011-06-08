@@ -7,6 +7,7 @@
   <?php print $styles; ?>
   <link rel="stylesheet" href="/<?=$ds_micro.'/sfs/staples-for-students.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
+  <script type="text/javascript" src="/<?=$ds_micro.'/sfs/staples-for-students.js';?>"></script>
 </head>
 
 <body class="<?php print $classes; ?>">
@@ -21,7 +22,26 @@
 
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
      <img id="header-message" src="/<?=$ds_micro;?>/sfs/drop-off.jpg"/>
-
+      <?php // REMOVE THIS IF AND ENDIF ONCE THE NAVIGATION GOES LIVE ?>
+      <?php if (drupal_get_path_alias(request_uri()) != '/staples-for-students'): ?>
+      <div id="staples-nav">
+      <?php
+        $base = '/staples-for-students';
+        $items = array(array('home', $base),
+                       array('join the cast', $base.'/pretty-little-liars'),
+                       array('run a drive', $base.'/run-a-drive'),
+                       array('gallery', $base.'/gallery'),
+                       array('testimonials', $base.'/testimonials'),
+                       array('prizes', $base.'/prizes')
+                      );
+        foreach ($items as $i) {
+          $currPath = drupal_get_path_alias(request_uri());
+          $class = (strncmp($i[1], $currPath, strlen($currPath)) == 0) ? 'active' : '';
+          printf('<a href="%s" class="%s">%s</a>', $i[1], $class, $i[0]);
+        }
+       ?>
+      </div>
+      <?php endif; ?>
       <div id="content" class="column"><div class="section">
 
         <?php print $highlight; ?>

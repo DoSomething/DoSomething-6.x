@@ -85,6 +85,8 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
                  'project_update',
                  'grant',
                  'staples_2011_signup',
+                 'staples_reason',
+                 'scavenger_2011_signup',
                  );
   //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
   foreach ($ds_forms as $name) {

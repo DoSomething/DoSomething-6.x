@@ -1,0 +1,142 @@
+.tabs {
+  position: absolute;
+  right:0px;
+  top: 0px;
+  width: 210px;
+}
+
+#header-message {
+  position: absolute;
+  top: -61px;
+  top: -31px; /* override while tabs are not in place */
+  left: 258px;
+}
+
+#hunt {
+  background-color: #333;
+  width: 846px;
+  padding: 13px 17px;
+  margin: 135px auto 0 auto;
+}
+
+#main-wrapper, #header {
+  padding: 0;
+}
+
+#main #content {
+  margin: 0;
+}
+
+.node.node-unpublished {
+  background-color: transparent;
+}
+
+.bgimage-gradient {
+  background: url(background.jpg) repeat 0 0;
+}
+
+.shadow {
+  -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.rounded {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px; /* future proofing */
+  -khtml-border-radius: 8px; /* for old Konqueror browsers */
+}
+
+#node-form input[type="text"] {
+  width: 230px;
+}
+
+#hunt-signup {
+  background-color: #333;
+  color: #FFF;
+  padding: 10px;
+  float: right;
+  margin-left: 20px;
+}
+
+#hunt-signup input[type="submit"] {
+  background-color: #F22E1A;
+  border: 0;
+}
+
+#page #hunt a.button,
+#page #hunt a.button:link,
+#page #hunt a.button:visited,
+#page #hunt a.button:hover,
+#page #hunt a.button:active {
+  color: white;
+  text-decoration: none;
+}
+
+#page #hunt input.button-medium,
+#page #hunt a.button-medium {
+  font-size: 1.75em;
+  line-height: 1.4em;
+  padding: 0 12px;
+}
+
+#hunt-logo {
+  position: absolute;
+  top: 7px;
+}
+
+#hunt-nav {
+  position: absolute;
+  top: 105px;
+  height: 30px;
+  width: 880px;
+  background: red;
+}
+
+#hunt .content {
+  min-height: 500px;
+}
+
+#hunt .content #hunt-node-body {
+  padding: 10px 37px;
+}
+
+ul.map-marker {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+ul.map-marker li {
+  background-image: url(list-icon-marker.png);
+  background-repeat: no-repeat;
+  background-position: 1em 0;
+  padding-left: 2.8em;
+  padding-top: 6px;
+  min-height: 22px;
+}
+
+#main #content p {
+  color: #000;
+}
+
+#main #content a {
+  color: #962120;
+}
+
+img.header {
+  margin-left: -37px;
+  margin-bottom: -17px;
+}
+
+img.social {
+  vertical-align: top;
+  padding-top: 4px;
+}
+
+div.messages.status {
+  background-color: #E7E8E9;
+  background-image: none;
+  border: none;
+}

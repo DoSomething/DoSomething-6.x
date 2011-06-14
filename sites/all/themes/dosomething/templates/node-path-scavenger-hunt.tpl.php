@@ -73,6 +73,7 @@
  * @see zen_process()
  */
 ?>
+  <div class="bg-body-top rounded"></div>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
   <?php print $user_picture; ?>
 <?
@@ -92,14 +93,21 @@ $last_path_item = preg_replace('/[?#].*/','',
 
   <div class="content">
   <div id="hunt-signup">
-<img src="/sites/all/micro/hunt/register-your-team.jpg" alt="Register your team (step 1 of 2)"/>
+  <div class="longline"></div>
 
 <?
- module_load_include('inc', 'node', 'node.pages');
- $node = new stdClass();
- $node ->type = 'staples_2011_signup';
- $node ->name = $user->name;
- print drupal_get_form('staples_2011_signup_node_form', $node);
+
+if ($_GET['signedup']) {
+  print '<p>Great, you are signed up!</p>';
+} else { ?>
+  <img src="/sites/all/micro/hunt/register-your-team.jpg" alt="Register your team (step 1 of 2)"/>
+<?
+  module_load_include('inc', 'node', 'node.pages');
+  $node = new stdClass();
+  $node ->type = 'scavenger_2011_signup';
+  $node ->name = $user->name;
+  print drupal_get_form('scavenger_2011_signup_node_form', $node);
+}
 ?>
   </div>
   <div id="hunt-node-body">
@@ -109,3 +117,4 @@ $last_path_item = preg_replace('/[?#].*/','',
 
   <?php print $links; ?>
 </div> <!-- /.node -->
+ <div class="bg-body-bottom rounded"></div>

@@ -111,7 +111,9 @@
 ?>
 
 <?
-  $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
+$current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
+$last_path_item = preg_replace('/[?#].*/','',
+                  array_pop(explode('/', $current_path)));
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -143,9 +145,12 @@
                               'top_right' => $top_right,
                               )); ?>
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
-      <img id="header-message" src="/<?=$ds_micro;?>/hunt/header-message.jpg"/>
-      <div id="hunt-nav"></div>
-      <div id="content" class="column"><div class="section">
+      <img id="header-message" src="/<?=$ds_micro;?>/hunt/scav-header.png"/>
+      <a class="lenovo" target="_blank" href="http://www.lenovo.com">Lenovo.com</a>
+      <div id="content" class="column">
+
+      
+      <div class="section">
 
         <?php if ($tabs): ?>
           <div class="tabs"><?php print $tabs; ?></div>
@@ -161,10 +166,18 @@
 
         <?php print $content_top; ?>
 
+
         <div id="content-area">
         <div id="hunt">
-        <?php print $messages; ?>
-        <img id="hunt-logo" src="/<?=$ds_micro;?>/hunt/logo.jpg"/>
+        <div id="huntnav">
+        <a class="home <?if ($last_path_item=='scavenger-hunt') { print 'active';}?>" href="/scavenger-hunt#">Scavenger Hunt Home</a>
+        <a class="challenges <?if ($last_path_item=='challenges') { print 'active';}?>" href="/scavenger-hunt/challenges#">Challenges</a>
+        <a class="leaderboard <? //if ($last_path_item=='leaderboard') { print 'active';}?>" href="#" title="Check back on July 11th!">Leaderboard</a>
+        <a class="faqs <?if ($last_path_item=='faq') { print 'active';}?>" href="/scavenger-hunt/faq#">Frequently Asked Questions</a>
+        <a class="prizes <?if ($last_path_item=='prizes') { print 'active';}?>" href="/scavenger-hunt/prizes#">Prizes</a>
+        </div>
+
+        <?php if (! $_GET['signedup']) { print $messages; } ?>
         <div id="home-main" class="bgimage-gradient shadow rounded clearfix">
           <?php print $content; ?>
         </div>

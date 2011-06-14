@@ -7,9 +7,8 @@
 
 #header-message {
   position: absolute;
-  top: -61px;
-  top: -31px; /* override while tabs are not in place */
-  left: 258px;
+  top: -63px;
+  left: 0px;
 }
 
 #hunt {
@@ -17,6 +16,7 @@
   width: 846px;
   padding: 13px 17px;
   margin: 135px auto 0 auto;
+  position: relative;
 }
 
 #main-wrapper, #header {
@@ -24,7 +24,7 @@
 }
 
 #main #content {
-  margin: 0;
+  margin: -10px 0 0 0;
 }
 
 .node.node-unpublished {
@@ -32,7 +32,8 @@
 }
 
 .bgimage-gradient {
-  background: url(background.jpg) repeat 0 0;
+  /*background: url(background.jpg) repeat 0 0;*/
+  background-color: #E2E2E2;
 }
 
 .shadow {
@@ -53,6 +54,8 @@
 }
 
 #hunt-signup {
+  position: relative;
+  z-index: 4;
   background-color: #333;
   color: #FFF;
   padding: 10px;
@@ -60,9 +63,16 @@
   margin-left: 20px;
 }
 
+#main #content #hunt-signup p {
+  color: #FFF;
+}
+
 #hunt-signup input[type="submit"] {
-  background-color: #F22E1A;
+  background-color: #DC291E;
   border: 0;
+  cursor: pointer;
+  float: right;
+  margin-right: 25px;
 }
 
 #page #hunt a.button,
@@ -76,14 +86,36 @@
 
 #page #hunt input.button-medium,
 #page #hunt a.button-medium {
-  font-size: 1.75em;
+  font-size: 1.45em;
   line-height: 1.4em;
   padding: 0 12px;
+  width: 112px;
+  height: 38px;
+  color: white;
 }
+
+#page #hunt a.button-long {
+  font-size: 1.05em;
+  line-height: 1.4em;
+  padding: 3px 40px 3px 20px;
+  width: 135px;
+  height: 26px;
+  color: white;
+  background-color: #DC291E;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#page #hunt a.learn-more {
+  margin-left: 75px;
+}
+
+
 
 #hunt-logo {
   position: absolute;
-  top: 7px;
+  top: 0px;
 }
 
 #hunt-nav {
@@ -99,13 +131,19 @@
 }
 
 #hunt .content #hunt-node-body {
-  padding: 10px 37px;
+  padding: 10px 17px;
+  z-index: 3;
+  position: relative;
 }
 
 ul.map-marker {
   list-style-type: none;
   padding: 0;
   margin-top: 0;
+}
+
+body.page-scavenger-hunt ul.map-marker {
+  margin-left: -20px;
 }
 
 ul.map-marker li {
@@ -117,16 +155,12 @@ ul.map-marker li {
   min-height: 22px;
 }
 
-#main #content p {
-  color: #000;
-}
-
 #main #content a {
-  color: #962120;
+  color: #DC291E;
 }
 
 img.header {
-  margin-left: -37px;
+  margin-left: -33px;
   margin-bottom: -17px;
 }
 
@@ -139,4 +173,137 @@ div.messages.status {
   background-color: #E7E8E9;
   background-image: none;
   border: none;
+}
+
+div.longline {
+  position: absolute;
+  right: -6px;
+  top: 0px;
+  height: 100%;
+  width: 8px;
+  background-color: #333;
+}
+
+img.whodo {
+  float: left;
+  padding-right: 30px;
+  padding-left: 20px;
+}
+
+div.whodo-rightspace {
+  padding-bottom: 50px;
+}
+
+body.page-scavenger-hunt div.share {
+  padding-left: 150px;
+}
+
+div.col-begin {
+  width: 285px;
+  float: left;
+}
+
+div.hunt-col {
+  width: 31%;
+  float: left;
+}
+
+div.col-grand-prize {
+  padding: 0 23px;
+}
+
+body div#page-wrapper #page #main-wrapper #main, body div#page-wrapper #page p {
+  font-family: Arial,Helvetica,sans-serif;
+  color: #545454;
+}
+
+#huntnav {
+  position: absolute;
+  top: -54px;
+  left: -26px;
+  width: 1000px;
+}
+
+#huntnav a {
+  background: url(top-nav.png) no-repeat;
+  display: block;
+  float: left;
+  height: 62px;
+  text-indent: -99em;
+}
+
+#huntnav a.home {
+  width: 152px;
+  background-position: 0 -70px;
+}
+
+#huntnav a.home.active, #huntnav a.home:hover {
+  background-position: 0 0;
+}
+
+#huntnav a.challenges {
+  width: 225px;
+  background-position: -153px -70px;
+}
+
+#huntnav a.challenges.active, #huntnav a.challenges:hover {
+  background-position: -153px 0;
+}
+
+#huntnav a.leaderboard {
+  width: 265px;
+  background-position: -379px -70px;
+}
+
+/*#huntnav a.leaderboard.active, #huntnav a.leaderboard:hover {
+    background-position: -379px 0;
+}*/
+
+#huntnav a.faqs {
+  width: 120px;
+  background-position: -645px -70px;
+}
+
+#huntnav a.faqs.active, #huntnav a.faqs:hover {
+    background-position: -645px 0;
+}
+
+#huntnav a.prizes {
+  width: 161px;
+  background-position: -766px -70px;
+}
+
+#huntnav a.prizes.active, #huntnav a.prizes:hover {
+  background-position: -766px 0;
+}
+
+#home-main {
+  position: relative;
+}
+
+div.bg-body-top {
+  background: url(bg-body-top.png) no-repeat;
+  width: 846px;
+  height: 83px;
+  position: absolute;
+  z-index: 2;
+}
+
+div.bg-body-bottom {
+  background: url(bg-body-bottom.png) no-repeat;
+  width: 846px;
+  height: 160px;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+}
+
+a.lenovo {
+  position: absolute;
+  display: block;
+  height: 69px;
+  width: 217px;
+  text-indent: -99em;
+  right: 0px;
+  top: 0px;
 }

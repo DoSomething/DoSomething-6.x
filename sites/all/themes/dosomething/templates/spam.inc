@@ -45,9 +45,16 @@ INNER JOIN {node} n ON n.nid = c.nid
 WHERE c.status = 0 AND (c.comment LIKE '%href%' OR c.comment LIKE '%http%') AND u.uid NOT IN (".implode(',', $whitelisted_uids).')';
 
 $result = pager_query(db_rewrite_sql($sql . tablesort_sql($header)), 10, 0, $count);
+
+$distinct_uids = array();
+
 while ($data = db_fetch_object($result)) {
- $rows[] = array($data->post_date, array('data'=> l($data->n_title, 'node/'.$data->n_nid)), array('data' => $data->comment, 'class' => 'comment'), l($data->user_name, 'user/'.$data->user_id), $data->user_id . '<br />' . l('Unpublish comments from: '.$data->user_name, 'comment-spam', array('query' => 'bad_uid='.$data->user_id)));
+  $rows[] = array($data->post_date, array('data'=> l($data->n_title, 'node/'.$data->n_nid)), array('data' => $data->comment, 'class' => 'comment'), l($data->user_name, 'user/'.$data->user_id), $data->user_id . '<br />' . l('Unpublish comments from: '.$data->user_name, 'comment-spam', array('query' => 'bad_uid='.$data->user_id)));
+  $distinct_uids[$data->user_id] = 1;
 }
+
+print '<h3>List of user ids that appear in the table below</h3>';
+print '<p>'.implode(',', array_keys($distinct_uids)).'</p>';
 
 print theme('table', $header, $rows);
 print theme('pager', NULL, 10);

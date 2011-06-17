@@ -71,8 +71,7 @@
   background-color: #DC291E;
   border: 0;
   cursor: pointer;
-  float: right;
-  margin-right: 25px;
+  margin-left: 122px;
 }
 
 #page #hunt a.button,
@@ -97,9 +96,7 @@
 #page #hunt a.button-long {
   font-size: 1.05em;
   line-height: 1.4em;
-  padding: 3px 40px 3px 20px;
-  width: 135px;
-  height: 26px;
+  padding: 3px 20px;
   color: white;
   background-color: #DC291E;
   border: 0;
@@ -108,7 +105,8 @@
 }
 
 #page #hunt a.learn-more {
-  margin-left: 75px;
+  float: right;
+  margin-right: 13px;
 }
 
 
@@ -160,7 +158,7 @@ ul.map-marker li {
 }
 
 img.header {
-  margin-left: -33px;
+  margin-left: -17px;
   margin-bottom: -17px;
 }
 
@@ -255,9 +253,9 @@ body div#page-wrapper #page #main-wrapper #main, body div#page-wrapper #page p {
   background-position: -379px -70px;
 }
 
-/*#huntnav a.leaderboard.active, #huntnav a.leaderboard:hover {
+#huntnav a.leaderboard.active, #huntnav a.leaderboard:hover {
     background-position: -379px 0;
-}*/
+}
 
 #huntnav a.faqs {
   width: 120px;
@@ -306,4 +304,201 @@ a.lenovo {
   text-indent: -99em;
   right: 0px;
   top: 0px;
+}
+
+#main-wrapper div.computer p {
+  width: 400px;
+  margin: 0 auto;
+}
+
+table.computers p strong {
+  color: #EB2626;
+}
+
+table.computers {
+  text-align: center;
+}
+
+img.youre-going {
+  float: left;
+  padding-right: 18px;
+}
+
+.center {
+  text-align: center;
+}
+
+p.trip-descrip {
+  line-height: normal;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+img.grand-prize-photo {
+  display: block;
+  margin: 0 auto;
+}
+
+div.grand-prize {
+  padding-top: 40px;
+}
+
+img.joined-forces {
+  padding-bottom: 30px;
+}
+
+img.subheader {
+  padding-bottom: 15px;
+}
+
+img.computers {
+  padding-top: 60px;
+}
+
+table.computers tr.row1 td.col2 img {
+  margin-bottom: -26px;
+}
+
+table.computers tr.row2 td.col2 img {
+  margin-bottom: -23px;
+}
+
+div.computers div.col1 {
+  padding-right: 10px;
+}
+
+body.page-scavenger-hunt iframe {
+  padding-bottom: 50px;
+}
+
+div.sub-nav {
+  height: 28px;
+  background-color: #EB2626;
+  float: right;
+  margin-right: -6px;
+}
+
+div.teammates {
+  position: relative;
+  background-color: #EB2626;
+  float: right;
+  width: 265px;
+  margin-right: 2px;
+  margin-top: 40px;
+}
+
+div.teammates div.top {
+  position: absolute;
+  right: -19px;
+  border-bottom: 20px solid #EB2626;
+  border-right: 20px solid #E2E2E2;
+  font-size: 0px;
+  line-height: 0%;
+}
+
+div.teammates div.bottom {
+  position: absolute;
+  right: -19px;
+  border-bottom: 20px solid #E2E2E2;
+  border-right: 20px solid #EB2626;
+  font-size: 0px;
+  line-height: 0%;
+}
+
+div.teammates div.middle {
+  background-color: #EB2626;
+  width: 284px;
+  min-height: 72px;
+  padding-bottom: 17px;
+}
+
+div.teammates div.middle img {
+  padding-bottom: 10px;
+}
+
+div.teammates div.name {
+  padding-left: 15px;
+  padding-bottom: 5px;
+  color: #FFF;
+  font-size: 1.3em;
+}
+
+img.rhombus {
+  float: right;
+  margin-right: -14px;
+  margin-top: -5px;
+}
+
+#main #content div.sub-nav a {
+  color: #FFF;
+  text-decoration: underline;
+}
+
+div.sub-nav a.next {
+  padding-right: 25px;
+}
+
+div.sub-nav div.space {
+  height: 5px;
+}
+
+#main #content h2 {
+  color: #000;
+  font-size: 2.5em;
+}
+
+body.page-scavenger-hunt-leaderboard #main #content div#hunt-node-body {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+body.page-scavenger-hunt-leaderboard h3 {
+  margin: 0;
+  font-size: 1.3em;
+}
+
+h2.team-name {
+  padding-top: 26px;
+}
+
+body.page-scavenger-hunt-leaderboard div.number, body.page-scavenger-hunt-leaderboard img.rankheader {
+  float: left;
+}
+
+body.page-scavenger-hunt-leaderboard div.number {
+  color: #000;
+  font-size: 2.3em;
+  padding-top: 12px;
+}
+
+body.page-scavenger-hunt-leaderboard div.place div.number {
+  padding-right: 30px;
+}
+
+body.page-scavenger-hunt-leaderboard div.points div.number {
+  padding-left: 30px;
+}
+
+body.page-scavenger-hunt-leaderboard div.place img.rankheader {
+  padding-right: 45px;
+}
+
+div.leaderboard-school-info {
+  padding-left: 25px;
+  padding-top: 35px;
+  float: left;
+}
+
+div#map_canvas {
+  width: 470px;
+  height: 300px;
+  margin-top: 30px;
+}
+
+div.challenges div.description {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-left: -20px;
+  padding-top: 28px;
 }

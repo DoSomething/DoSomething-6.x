@@ -100,7 +100,6 @@ $last_path_item = preg_replace('/[?#].*/','',
 if ($_GET['signedup']) {
   print '<p>Great, you are signed up!</p>';
 } else { ?>
-  <img src="/sites/all/micro/hunt/register-your-team.jpg" alt="Register your team (step 1 of 2)"/>
 <?
   module_load_include('inc', 'node', 'node.pages');
   $node = new stdClass();

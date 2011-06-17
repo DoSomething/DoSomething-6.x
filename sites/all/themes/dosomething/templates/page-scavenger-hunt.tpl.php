@@ -132,6 +132,7 @@ $last_path_item = preg_replace('/[?#].*/','',
   <?php print $head; ?>
   <?php print $styles; ?>
   <link rel="stylesheet" href="/<?=$ds_micro.'/hunt/hunt.css';?>" type="text/css" media="all" />
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <?php print $scripts; ?>
 </head>
 
@@ -172,7 +173,7 @@ $last_path_item = preg_replace('/[?#].*/','',
         <div id="huntnav">
         <a class="home <?if ($last_path_item=='scavenger-hunt') { print 'active';}?>" href="/scavenger-hunt#">Scavenger Hunt Home</a>
         <a class="challenges <?if ($last_path_item=='challenges') { print 'active';}?>" href="/scavenger-hunt/challenges#">Challenges</a>
-        <a class="leaderboard <? //if ($last_path_item=='leaderboard') { print 'active';}?>" href="#" title="Check back on July 11th!">Leaderboard</a>
+        <a class="leaderboard <? if ($last_path_item=='leaderboard') { print 'active';}?>" href="/scavenger-hunt/leaderboard#">Leaderboard</a>
         <a class="faqs <?if ($last_path_item=='faq') { print 'active';}?>" href="/scavenger-hunt/faq#">Frequently Asked Questions</a>
         <a class="prizes <?if ($last_path_item=='prizes') { print 'active';}?>" href="/scavenger-hunt/prizes#">Prizes</a>
         </div>

@@ -61,6 +61,12 @@
   padding: 10px;
   float: right;
   margin-left: 20px;
+  min-height: 200px;
+}
+
+#main #content #hunt-signup a {
+  color: #FFF;
+  text-decoration: underline;
 }
 
 #main #content #hunt-signup p {
@@ -363,8 +369,16 @@ table.computers tr.row2 td.col2 img {
   margin-bottom: -23px;
 }
 
-div.computers div.col1 {
+table.computers .col1 {
   padding-right: 10px;
+}
+
+table.computers .row3 .col2 img {
+  margin-bottom: 16px;
+}
+
+table.computers .row4 .col2 img {
+  margin-bottom: 40px;
 }
 
 body.page-scavenger-hunt iframe {
@@ -399,7 +413,7 @@ div.teammates div.top {
 div.teammates div.bottom {
   position: absolute;
   right: -19px;
-  border-bottom: 20px solid #E2E2E2;
+  border-bottom: 20px solid transparent;
   border-right: 20px solid #EB2626;
   font-size: 0px;
   line-height: 0%;

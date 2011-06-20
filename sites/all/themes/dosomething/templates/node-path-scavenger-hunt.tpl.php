@@ -98,15 +98,14 @@ $last_path_item = preg_replace('/[?#].*/','',
 <?
 
 if ($_GET['signedup']) {
-  print '<p>Great, you are signed up!</p>';
-} else { ?>
+  drupal_set_message('Great, you are signed up!  To invite more teammates, share the link to this page with your friends by using the facebook and twitter icons below, or send them an email!');
+} ?>
 <?
   module_load_include('inc', 'node', 'node.pages');
   $node = new stdClass();
   $node ->type = 'scavenger_2011_signup';
   $node ->name = $user->name;
   print drupal_get_form('scavenger_2011_signup_node_form', $node);
-}
 ?>
   </div>
   <div id="hunt-node-body">

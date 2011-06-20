@@ -4,6 +4,7 @@ $team = $_GET['team_name'];
 $zip = $_GET['zip'];
 $title_field = '';
 $zip_field = '';
+$existing_team_link = '';
 
 if ($team && $zip) {?>
   <img src="/sites/all/micro/hunt/join-your-team.jpg" alt="Join your team (step 1 of 2)"/>
@@ -18,6 +19,7 @@ if ($team && $zip) {?>
 <?
   $title_field = drupal_render($form['title']);
   $zip_field = drupal_render($form['locations'][0]['postal_code']);
+  $existing_team_link = '<br><a href="/scavenger-hunt/leaderboard">Join an existing team</a>';
 }
   $form['buttons']['submit']['#value'] = 'next';
   $form['buttons']['submit']['#attributes'] = array('class' => 'button button-medium shadow rounded');
@@ -33,6 +35,7 @@ if ($team && $zip) {?>
   print drupal_render($form['field_campaign_phone']);
   print $zip_field;
   print drupal_render($form['buttons']['submit']);
+  print $existing_team_link;
   
 ?>
 

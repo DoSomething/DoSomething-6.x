@@ -37,17 +37,35 @@ if ($team_name && $zip) {
     $team_obj['lat'] = $result->latitude;
     $team_obj['lon'] = $result->longitude;
   }
+  $emails_cell_seen = array();
+  $normalized_email = strtolower(trim($result->email));
+  $normalized_cell = preg_replace('/[^\d]/', '', $result->cell);
+
+  $emails_cell_seen[$normalized_email] = 1;
+  $emails_cell_seen[$normalized_cell] = 1;
   $team_obj['teammates'] = array();
   $team_obj['teammates'][
-    strtolower($result->first).'+'.
-    strtolower($result->last).'+'.
-    strtolower($result->email).'+'.
-    strtolower($result->cell)
-    ] = $result->first;
+    strtolower(trim($result->first)).'+'.
+    strtolower(trim($result->last)).'+'.
+    $normalized_email.'+'.
+    $normalized_cell
+    ] = trim($result->first);
+  while ($result = db_fetch_object($indiv_team_lookup)) {
+    $normalized_email = strtolower(trim($result->email));
+    $normalized_cell = preg_replace('/[^\d]/', '', $result->cell);
+    if (! $emails_cell_seen[$normalized_email] &&
+        ! $emails_cell_seen[$normalized_cell] ) {
+      $team_obj['teammates'][
+        strtolower(trim($result->first)).'+'.
+        strtolower(trim($result->last)).'+'.
+        $normalized_email.'+'.
+        $normalized_cell
+        ] = trim($result->first);
+      $emails_cell_seen[$normalized_email] = 1;
+      $emails_cell_seen[$normalized_cell] = 1;
+    }
+  }
   ksort($team_obj['teammates']);
-  /*if (user_access('administer nodes')) {
-    drupal_set_message('<pre>'.print_r($team_obj['teammates'],1).'</pre>');
-  }*/
 }
 
 if ($team_obj) {
@@ -83,41 +101,41 @@ if ($team_obj) {
   print '</div>'; 
   print '<div class="bottom"></div></div>';
 
-if ($team_obj['lat'] && $team_obj['lon']) {
-  $lat_lng_str = $team_obj['lat'].','.$team_obj['lon'];
-?>
-  <script type="text/javascript">
-    function initialize() {
-      var myLatlng = new google.maps.LatLng(<?=$lat_lng_str;?>);
-      var myOptions = {
-        zoom: 4,
-        center: myLatlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      }
-      var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+  if ($team_obj['lat'] && $team_obj['lon']) {
+    $lat_lng_str = $team_obj['lat'].','.$team_obj['lon'];
+  ?>
+    <script type="text/javascript">
+      function initialize() {
+        var myLatlng = new google.maps.LatLng(<?=$lat_lng_str;?>);
+        var myOptions = {
+          zoom: 4,
+          center: myLatlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
-      var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          title:"<?=$team_obj['name'];?>"
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"<?=$team_obj['name'];?>"
+        });
+      }
+      $(document).ready(function() {
+        initialize();
       });
-    }
-    $(document).ready(function() {
-      initialize();
-    });
-  </script>
-  <br style="clear:both">
-<? }
+    </script>
+    <br style="clear:both">
+  <? }
 
 } else {
-  $team_lookup = db_query("select title,l.postal_code from node n
+  $team_lookup = db_query("select title,l.city,l.province,l.postal_code from node n
   inner join location_instance li on n.nid=li.nid and n.vid=li.vid
   inner join location l on l.lid=li.lid
   where n.type='scavenger_2011_signup'");
 
   $teams = array();
   while ($result = db_fetch_object($team_lookup)) {
-    $teams[strtolower(trim($result->title)).'++'.$result->postal_code] = array('name' => $result->title, 'zip' => $result->postal_code);
+    $teams[strtolower(trim($result->title)).'++'.$result->postal_code] = array('name' => $result->title, 'zip' => $result->postal_code,'city' => $result->city, 'province' => $result->province);
   }
 
   ksort($teams);
@@ -126,7 +144,7 @@ if ($team_obj['lat'] && $team_obj['lon']) {
 
   print '<ul class="map-marker">';
   foreach ($teams as $team) {
-    print '<li><a href="/scavenger-hunt/leaderboard?team_name='.urlencode($team['name']).'&zip='.urlencode($team['zip']).'">'.trim($team['name']).'</a></li>';
+    print '<li><a href="/scavenger-hunt/leaderboard?team_name='.urlencode($team['name']).'&zip='.urlencode($team['zip']).'">'.trim($team['name']).'</a> - '.$team['city'].', '.$team['province'].'</li>';
   }
   print '</ul>';
 }

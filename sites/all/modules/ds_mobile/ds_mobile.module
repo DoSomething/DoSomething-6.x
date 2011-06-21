@@ -287,6 +287,15 @@ function ds_mobile_anon_optout_form_submit($form, &$form_state) {
   drupal_set_message(t('Your mobile information has been removed successfully.'));
 }
 
+function ds_mobile_mcommons_optin_campaign($mobile, $campaign_id, $opt_in_id) {
+  $valid_phone = ds_mobile_check($mobile);
+  if ($valid_phone && $campaign_id && $opt_in_id) {
+    $data = 'person[phone]='.urlencode($mobile);
+    $action = 'https://dosomething.mcommons.com/campaigns/'.$campaign_id.'/subscriptions?opt_in_path='.$opt_in_id;
+    $response = drupal_http_request($action, array("Content-Type" => "application/x-www-form-urlencoded"), 'POST', $data, false);
+  }
+}
+
 function ds_mobile_mcommons_optin($mobile, $zip, $uid, $category) {
   // What mCommons expect:
   /*  <form class="mcommons_iframe js_validateForm" action="http://dosomething.mcommons.com/campaigns/3531/subscriptions?opt_in_path=4701" method="post" target="_top">

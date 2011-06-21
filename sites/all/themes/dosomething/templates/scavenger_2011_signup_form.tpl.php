@@ -1,4 +1,5 @@
 <?
+unset($form['field_hunt_subscriptions']['value']['#title']);
 
 $team = $_GET['team_name'];
 $zip = $_GET['zip'];
@@ -37,6 +38,7 @@ if ($team && $zip) {?>
   print drupal_render($form['field_email']);
   print drupal_render($form['field_campaign_phone']);
   print $zip_field;
+  print drupal_render($form['field_hunt_subscriptions']);
   print drupal_render($form['buttons']['submit']);
   print $extra_links;
   

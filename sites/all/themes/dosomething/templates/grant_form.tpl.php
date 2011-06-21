@@ -77,9 +77,11 @@ if (arg(1) == 534583 ||
 
   // Add type of grant as h2
   preg_match('/key\]=(.*)$/', $form['#action'], $matches);
-  $grant_type = strtoupper(urldecode($matches[1]));
-  $form['#prefix'] = '<h2>'.($grant_type ? $grant_type : 'GRANT APPLICATION').'</h2>';
-
+  if (isset($_GET['type'])) $grant_type = urldecode($_GET['type']);
+  else if ($matches[1]) $grant_type = urldecode($matches[1]);
+  $form['#prefix'] = '<h2>'.($grant_type ? strtoupper($grant_type) : 'GRANT APPLICATION').'</h2>';
+  $form['group_personal_info']['field_which_grant']['value']['#value'] = $grant_type;
+  
   // Hide custom fields from general grant apps
   $form['group_additional_info']['#access'] = false;
   $form['field_optional_checkbox']['#access'] = false;

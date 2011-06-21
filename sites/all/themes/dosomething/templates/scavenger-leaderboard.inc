@@ -1,18 +1,19 @@
 <?
 
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
-$twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? http://dsorg.us/iSmD9x #DShunt";
+$twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? Join my team! #DShunt";
 ?>
 
 <img class="header" src="/sites/all/micro/hunt/headers/leaderboard.png" alt="Leaderboard"/>
 <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
-<a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>
+<a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url='.urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>
 
 
 <?
 
 $team_name = $_GET['team_name'];
 $zip = $_GET['zip'];
+$found_team = 0;
 $team_obj = '';
 
 if ($team_name && $zip) {
@@ -31,6 +32,7 @@ if ($team_name && $zip) {
     where n.type='scavenger_2011_signup' and n.title='%s' and l.postal_code='%s'", $team_name, $zip);
   $result = db_fetch_object($indiv_team_lookup);
   if ($result) {
+    $found_team = 1;
     $team_obj['name'] = $result->title;
     $team_obj['city'] = $result->city;
     $team_obj['province'] = $result->province;
@@ -68,7 +70,7 @@ if ($team_name && $zip) {
   ksort($team_obj['teammates']);
 }
 
-if ($team_obj) {
+if ($found_team) {
   print '<p>To join this team, complete the form on the right.</p>';
   $city_province = '';
   if ($team_obj['city'] && $team_obj['province']) {

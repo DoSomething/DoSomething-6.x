@@ -49,7 +49,7 @@
   -khtml-border-radius: 8px; /* for old Konqueror browsers */
 }
 
-#node-form input[type="text"] {
+#node-form input[type="text"], #webform-client-form-651742 input[type="text"] {
   width: 230px;
 }
 
@@ -219,6 +219,10 @@ div.col-grand-prize {
 body div#page-wrapper #page #main-wrapper #main, body div#page-wrapper #page p {
   font-family: Arial,Helvetica,sans-serif;
   color: #545454;
+}
+
+body div#page-wrapper #page label {
+  font-family: Arial,Helvetica,sans-serif;
 }
 
 #huntnav {
@@ -516,3 +520,21 @@ div.challenges div.description {
   margin-left: -20px;
   padding-top: 28px;
 }
+
+#webform-client-form-651742 #webform-component-your-friends-emails {
+  border: 0;
+}
+
+#webform-component-your-email {
+  padding: 0 .5em .5em .5em;
+}
+
+#edit-submitted-your-email-wrapper {
+  margin-top: 0;
+}
+
+#webform-component-your-friends-emails {
+  padding-top: 0;
+}
+
+

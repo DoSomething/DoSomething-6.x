@@ -178,7 +178,7 @@ $last_path_item = preg_replace('/[?#].*/','',
         <a class="prizes <?if ($last_path_item=='prizes') { print 'active';}?>" href="/scavenger-hunt/prizes#">Prizes</a>
         </div>
 
-        <?php if (! $_GET['signedup']) { print $messages; } ?>
+        <?php print $messages; ?>
         <div id="home-main" class="bgimage-gradient shadow rounded clearfix">
           <?php print $content; ?>
         </div>

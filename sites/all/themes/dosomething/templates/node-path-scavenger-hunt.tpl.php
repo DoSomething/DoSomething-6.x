@@ -98,14 +98,24 @@ $last_path_item = preg_replace('/[?#].*/','',
 <?
 
 if ($_GET['signedup']) {
-  drupal_set_message('Great, you are signed up!  To invite more teammates, share the link to this page with your friends by using the facebook and twitter icons below, or send them an email!');
+  drupal_set_message('Great, you are signed up!  Here is your team page.  To invite more teammates, share the link to this page with your friends by using the facebook and twitter icons below, or send them an email!');
 } ?>
 <?
-  module_load_include('inc', 'node', 'node.pages');
-  $node = new stdClass();
-  $node ->type = 'scavenger_2011_signup';
-  $node ->name = $user->name;
-  print drupal_get_form('scavenger_2011_signup_node_form', $node);
+  if ($_GET['invite']) {
+    $node = node_load(651742);
+    $node->title = '';
+    $submission = array();
+    $enabled = TRUE;
+    $preview = FALSE;
+    $form = drupal_get_form('webform_client_form_651742', $node, $submission, $enabled, $preview);
+    print $form; 
+  } else {
+    module_load_include('inc', 'node', 'node.pages');
+    $node = new stdClass();
+    $node ->type = 'scavenger_2011_signup';
+    $node ->name = $user->name;
+    print drupal_get_form('scavenger_2011_signup_node_form', $node);
+  }
 ?>
   </div>
   <div id="hunt-node-body">

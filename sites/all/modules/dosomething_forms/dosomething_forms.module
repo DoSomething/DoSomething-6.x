@@ -76,6 +76,10 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
     case 'action_guide_node_form':
       $form['#validate'][] = 'action_guide_form_validate';
       break;
+    case 'scavenger_2011_signup_node_form':
+      $form['field_email'][0]['#required'] = 0;
+      $form['#validate'][] = 'validate_email_or_phone';
+      break;
     case 'ebd_signup_node_form':
     case 'campaign_ebd_2011_node_form':
       $form['body_field']['body']['#required'] = 1;
@@ -90,6 +94,7 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
           );
       break;
     case 'club_node_form':
+      $form['title']['#description'] = 'Put the Name of your School/Town Do Something Club; Ex: Franklin High School Do Something Club or Westfield Do Something Club; calling yourself a Do Something Club in your community will help attract members and let everyone know that you\'re all about action!';
       $form['og_selective']['#prefix'] = '<div class="hide-me">';
       $form['og_selective']['#suffix'] = '</div>';
       $form['og_selective']['#default_value'] = 1;
@@ -110,8 +115,26 @@ function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
                      'linkKey' => 100755,
                      'Organization' => $_POST['title'],
                  ));
-      }
-    break;
+       }
+      break;
+    case 'scavenger_2011_signup':
+      if ($op == 'presave') {
+        if ($user->uid == 454869) {
+          drupal_set_message('<pre>'.print_r($_POST,1).'</pre>');
+        }
+        dia_signup(array(
+                     'link' => 'groups',
+                     'table' => 'supporter',
+                     'linkKey' => 103519,
+                     'Organization' => $_POST['title'],
+                     'First_Name' => $_POST['field_campaign_first_name'][0]['value'],
+                     'Last_Name' => $_POST['field_campaign_last_name'][0]['value'],
+                     'Email' => $_POST['field_email'][0]['value'],
+                     'Phone' => $_POST['field_campaign_phone'][0]['value'],
+                     'Zip' => $_POST['locations'][0]['postal_code']
+                 ));
+        }
+      break;
     case 'project_update':
       // mark the parent project node as updated
       if($op=='insert')
@@ -411,5 +434,11 @@ function validEmail($email)
    return $isValid;
 }
 
+function validate_email_or_phone($form, &$form_values) {
+  global $user;
+  if (! $form_values['values']['field_email'][0]['value'] && ! ds_mobile_check($form_values['values']['field_campaign_phone'][0]['value']) ) {
+    form_set_error('field_campaign_phone', 'Either an email address or a 10-digit cell phone number must be given to enter this campaign.');
+  }
+}
 
 ?>

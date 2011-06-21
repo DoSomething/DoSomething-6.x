@@ -1,0 +1,4 @@
+name = "Webform Modifications"
+description = "Modify Webform submission workflow"
+core = 6.x
+package = DoSomething

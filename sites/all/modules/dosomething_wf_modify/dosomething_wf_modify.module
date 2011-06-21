@@ -1,0 +1,42 @@
+<?php
+
+function dosomething_wf_modify_webform_submission_insert($node, $submission) {
+  /*
+   * Staples 2011 Sweepstakes submission
+   */
+  if ($node->nid == 650379) {
+    $map = _dosomething_wf_modify_webform_component_mapping($node);
+    
+    if ($submission->data[$map['share']]['value'][0] != '')
+    {
+      $node = new StdClass();
+      $node->type = 'staples_reason';
+      $node->created = time();
+      $node->changed = $node->created;
+      $node->status = 1;
+      $node->promote = 0;
+      $node->sticky = 0;
+      $node->uid = 1;
+      $node->title = $submission->data[$map['share']]['value'][0];
+      
+      $node->field_name_f[0]['value'] = $submission->data[$map['first_name']]['value'][0];
+      $node->field_name_l[0]['value'] = $submission->data[$map['last_name']]['value'][0];
+      $node->customGenerated = true;
+      node_save($node);
+    }
+  }
+}
+
+function _dosomething_wf_modify_webform_component_mapping($node) {
+  $mapping = array();
+  $components = $node->webform['components'];
+  foreach ($components as $i => $component) {
+    $key = $component['form_key'];
+    $mapping[$key] = $i;
+  }
+  return $mapping;
+}
+
+
+
+?>

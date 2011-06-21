@@ -22,7 +22,7 @@
   </div>
 
   <div id="home-footer-prizes">
-    <!-- <a class="button button-medium rounded shadow blue-gradient" href="/staples-for-students/enter">enter</a> -->
+    <a class="button button-medium rounded shadow blue-gradient" href="/staples-for-students/prizes">enter</a>
   </div>
 
 

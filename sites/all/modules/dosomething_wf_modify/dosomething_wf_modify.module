@@ -21,6 +21,7 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
       
       $node->field_name_f[0]['value'] = $submission->data[$map['first_name']]['value'][0];
       $node->field_name_l[0]['value'] = $submission->data[$map['last_name']]['value'][0];
+      $node->field_thirteen[0]['value'] = 'yes';
       $node->customGenerated = true;
       node_save($node);
     }

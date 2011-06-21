@@ -1,0 +1,179 @@
+
+#content-wrapper {
+  background-repeat: no-repeat;
+  padding-left: 250px;
+  margin-left: -40px;
+  height: 740px;
+  position: relative;
+  z-index: 2;
+}
+
+#girl-sticky {
+  width: 190px;
+  height: 180px;
+  background-repeat: no-repeat;
+  padding: 25px 30px 100px 300px;
+  position: relative;
+  font-size: 1.3em;
+  line-height: 1.3em;
+}
+
+#girl-sticky .why-you-care-quote {
+  top: 30px;
+  left: 310px;
+}
+
+#you-share {
+  text-align: right;
+}
+
+#pll-enter-win {
+  margin-top: -20px !important;
+  padding-top: 20px;
+  border-top: none !important;
+}
+
+.liar {
+  padding-bottom: 0 !important;
+}
+
+#products {
+  position: relative;
+  margin-top: -20px;
+  z-index: 1;
+  height: 252px;
+  width: 857px;
+  margin: -25px -18px 0;
+  clear: both;
+}
+
+#products a {
+  position: absolute;
+  bottom: 35px;
+  right: 25px;
+}
+
+#pll-wrapper {
+  margin: -18px;
+  padding: 18px;
+}
+
+.ashley {
+  background-color: #a14db5;
+  background-image: -webkit-gradient(radial, 50% 75%, 0, 50% 50%, 700, from(#d29fcf), to(#a14db5));
+  background-image: -moz-radial-gradient(50% 75%, circle cover, #d29fcf, #a14db5);
+}
+
+.ashley #pll-wrapper {
+  background: url('girls/ashley-bg.png') top left no-repeat;
+}
+
+.ashley #girl-sticky {
+  background-image: url('girls/ashley-share-care.png');
+}
+
+.ashley #content-wrapper {
+  background-image: url('girls/ashley.png');
+}
+
+.ashley #products {
+  background: url('girls/ashley-products.png');
+}
+
+.lucy {
+  background-color: #62ae2d;
+  background-image: -webkit-gradient(radial, 50% 75%, 0, 50% 50%, 700, from(#b2e981), to(#62ae2d));
+  background-image: -moz-radial-gradient(50% 75%, circle cover, #b2e981, #62ae2d);
+}
+
+.lucy #pll-wrapper {
+  background: url('girls/lucy-bg.png') top left no-repeat;
+}
+
+.lucy #girl-sticky {
+  background-image: url('girls/lucy-share-care.png');
+}
+
+.lucy #content-wrapper {
+  background-image: url('girls/lucy.png');
+}
+
+.lucy #products {
+  background: url('girls/lucy-products.png');
+}
+
+.troian {
+  background-color: #3676aa;
+  background-image: -webkit-gradient(radial, 50% 75%, 0, 50% 50%, 700, from(#aec8cf), to(#3676aa));
+  background-image: -moz-radial-gradient(50% 75%, circle cover, #aec8cf, #3676aa);
+}
+
+.troian #pll-wrapper {
+  background: url('girls/troian-bg.png') top left no-repeat;
+}
+
+.troian #girl-sticky {
+  background-image: url('girls/troian-share-care.png');
+}
+
+.troian #content-wrapper {
+  background-image: url('girls/troian.png');
+}
+
+.troian #products {
+  background: url('girls/troian-products.png');
+}
+
+.shay {
+  background-color: #1a9cc1;
+  background-image: -webkit-gradient(radial, 50% 75%, 0, 50% 50%, 700, from(#2ab6d5), to(#1a9cc1));
+  background-image: -moz-radial-gradient(50% 75%, circle cover, #2ab6d5, #1a9cc1);
+}
+
+.shay #pll-wrapper {
+  background: url('girls/shay-bg.png') top left no-repeat;
+}
+
+.shay #girl-sticky {
+  background-image: url('girls/shay-share-care.png');
+}
+
+.shay #content-wrapper {
+  background-image: url('girls/shay.png');
+}
+
+.shay #products {
+  background: url('girls/shay-products.png');
+}
+
+#flip-quote {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 10px;
+  top: 185px;
+}
+
+#sb-title {
+  overflow: visible;
+}
+
+.page-staples-for-students-pretty-little-liar-lucy .staples_reason_node_form #edit-title-wrapper,
+.page-staples-for-students-pretty-little-liar-lucy .custom-sticky {
+  background: url('girls/lucy-input-sticky.png');
+}
+
+.page-staples-for-students-pretty-little-liar-ashley.staples_reason_node_form #edit-title-wrapper,
+.page-staples-for-students-pretty-little-liar-ashley .custom-sticky {
+  background: url('girls/ashley-input-sticky.png');
+}
+
+.page-staples-for-students-pretty-little-liar-troian .staples_reason_node_form #edit-title-wrapper,
+.page-staples-for-students-pretty-little-liar-troian .custom-sticky {
+  background: url('girls/troian-input-sticky.png');
+}
+
+.page-staples-for-students-pretty-little-liar-shay .staples_reason_node_form #edit-title-wrapper,
+.page-staples-for-students-pretty-little-liar-shay .custom-sticky {
+  background: url('girls/shay-input-sticky.png');
+}

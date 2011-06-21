@@ -49,7 +49,7 @@
   <!--
   <ul id="start-links" class="clearfix">
     <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/run-a-drive">1. run a drive</a></li>
-    <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/join-the-cast">2. join the cast</a></li>
+    <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/join-the-stars">2. join the stars</a></li>
     <li class="last"><a class="button rounded shadow blue-gradient" href="/staples-for-students/report-back">3. report back</a></li>
   </ul>
   -->
@@ -60,20 +60,18 @@
 
 </div>
 
-<!--
 <div id="home-pll" class="orange-gradient shadow rounded clearfix">
 
   <img alt="Join a Pretty Little Liar Team Up to Help Kids In Need" src="/<?=$ds_micro;?>/sfs/team-up.png" />
 
   <ul>
-    <li><a href="/staples-for-students/pretty-little-liars/ashley"><img alt="Ashley" src="/<?=$ds_micro;?>/sfs/pll-box-ashley.png" /></a></li>
-    <li><a href="/staples-for-students/pretty-little-liars/lucy"><img alt="Lucy" src="/<?=$ds_micro;?>/sfs/pll-box-lucy.png" /></a></li>
-    <li><a href="/staples-for-students/pretty-little-liars/troian"><img alt="Troian" src="/<?=$ds_micro;?>/sfs/pll-box-troian.png" /></a></li>
-    <li><a href="/staples-for-students/pretty-little-liars/shay"><img alt="Shay" src="/<?=$ds_micro;?>/sfs/pll-box-shay.png" /></a></li>
+    <li><a href="/staples-for-students/pretty-little-liars"><img alt="Ashley" src="/<?=$ds_micro;?>/sfs/pll-box-ashley.png" /></a></li>
+    <li><a href="/staples-for-students/pretty-little-liars"><img alt="Lucy" src="/<?=$ds_micro;?>/sfs/pll-box-lucy.png" /></a></li>
+    <li><a href="/staples-for-students/pretty-little-liars"><img alt="Troian" src="/<?=$ds_micro;?>/sfs/pll-box-troian.png" /></a></li>
+    <li><a href="/staples-for-students/pretty-little-liars"><img alt="Shay" src="/<?=$ds_micro;?>/sfs/pll-box-shay.png" /></a></li>
   </ul>
 
 </div>
--->
 
 <?php include_once 'staples-bottom.php'; ?>
 <?php include_once 'staples-footer.php'; ?>

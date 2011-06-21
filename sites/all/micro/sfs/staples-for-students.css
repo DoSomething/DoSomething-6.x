@@ -42,6 +42,7 @@
 	-khtml-border-radius-topleft: 0px; /* for old Konqueror browsers */
 }
 
+
 #home-pll {
 	margin: 1em 0;
 }
@@ -73,6 +74,9 @@
 }
 
 
+.floral-bg {
+  background-image: url('img-bg.png');
+}
 
 .shadow {
 	-moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
@@ -87,7 +91,7 @@
 	-khtml-border-radius: 8px; /* for old Konqueror browsers */
 }
 
-#page #staples .button {
+#page #staples .button, #sb-container .button {
 	background-color: #007380;
 	padding: 9px 14px;
 	font-size: 2em;
@@ -118,7 +122,8 @@
 }
 
 #page #staples input.button-medium,
-#page #staples a.button-medium {
+#page #staples a.button-medium,
+#sb-container a.button-medium {
 	font-size: 1.75em;
 	line-height: 1.4em;
 	padding: 0 12px;
@@ -271,7 +276,7 @@ a > img {
 
 #home-footer-prizes a {
 	position: absolute;
-	right: 32px;
+	left: 45px;
 	bottom: 24px;
 }
 
@@ -295,21 +300,21 @@ a > img {
 	width: 280px;
 }
 
-#node-form {
+#sfs-sign-up #node-form {
 	font-size: 12px;
 	line-height: 14px;
 }
 
-#node-form img {
+#sfs-sign-up #node-form img {
 	margin-top: -2px;
 	margin-left: 65px;
 }
 
-#node-form input[type="text"] {
+#sfs-sign-up #node-form input[type="text"] {
 	width: 230px;
 }
 
-#node-form input[type="submit"] {
+#sfs-sign-up #node-form input[type="submit"] {
 	margin-left: 137px;
 	margin-top: 3px;
 	border-width: 0px;
@@ -421,6 +426,7 @@ body div#page-wrapper #page #staples h2 {
 #pll-stickies {
   margin: 0 -45px 0 -5px;
   line-height: 0;
+  position: relative;
 }
 
 #pll-join {
@@ -447,16 +453,27 @@ body div#page-wrapper #page #staples h2 {
 #pll-share-stickies {
   position: relative;
   height: 255px;
+  z-index: 0;
 }
+
 #pll-why-she-cares {
-  background: url('/sites/all/micro/sfs/pll-why-lucy-cares.png') no-repeat;
-  background-position: 25px 10px;
-  width: 250px;
+  background: url('/sites/all/micro/sfs/sticky-ashley-sm.png') no-repeat;
+  background-position: 0 8px;
+  width: 270px;
+  height: 285px;
   text-align: left;
   z-index: 1;
   position: absolute;
   top: 0;
   right: 180px;
+}
+
+#sticky-changer-g {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 10px;
+  top: 170px;
 }
 
 #pll-why-you-care {
@@ -465,11 +482,22 @@ body div#page-wrapper #page #staples h2 {
   top: 0;
   right: 0;
   background: url('/sites/all/micro/sfs/pll-why-care-sticky.png') no-repeat right top;
-  width: 160px;
+  width: 210px;
   height: 250px;
-  padding: 20px 20px 20px 30px;
   font-size: 1.2em;
   line-height: 1.2em;
+}
+
+.why-you-care-quote {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 160px;
+  display: none;
+}
+
+.visible {
+  display: block;
 }
 
 #pll-share {
@@ -481,6 +509,8 @@ body div#page-wrapper #page #staples h2 {
   text-align: right;
   margin-top: 50px;
   float: left;
+  z-index: 1;
+  position: relative;
 }
 
 #pll-home-footer {
@@ -512,6 +542,39 @@ body div#page-wrapper #page #staples h2 {
   height: 345px;
   position: relative;
   z-index: 1;
+  margin-top: -20px;
+}
+
+#pll-hovers {
+  position: absolute;
+  top: -100px;
+  left: 0;
+}
+
+#hover-ashley, #hover-lucy,
+#hover-troian, #hover-shay {
+  position: absolute;
+  display: none;
+}
+
+#hover-ashley {
+  top: -21px;
+  left: 11px;
+}
+
+#hover-lucy {
+  top: -19px;
+  left: 189px;
+}
+
+#hover-troian {
+  left: 413px;
+  top: -18px;
+}
+
+#hover-shay {
+  top: -18px;
+  left: 600px;
 }
 
 .campaign-header {
@@ -532,7 +595,6 @@ body div#page-wrapper #page #staples h2 {
 
 .testimonials blockquote {
   margin: 0;
-  text-align: center;
 }
 
 .testimonials .attribution {
@@ -650,4 +712,195 @@ body div#page-wrapper #page #staples h2 {
 
 .page-staples-for-students-pretty-little-liars #home-main {
   padding-bottom: 0;
+}
+
+#share-reason-form {
+  display: none;
+}
+
+#sb-wrapper-inner {
+  border: 0;
+}
+
+#sb-body {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -khtml-border-radius: 20px;
+  padding: 0;background-color: #fce599;
+  background-image: -moz-linear-gradient(#f8cc38, #fce599);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fce599), to(#f8cc38));
+  background-image: -webkit-linear-gradient(#f8cc38, #fce599);
+  background-image: -o-linear-gradient(#f8cc38, #fce599);
+}
+
+#sb-body-inner {
+  text-align: center;
+}
+
+#sb-player {
+  padding: 10px;
+}
+
+.staples_reason_node_form #edit-title-wrapper,
+.custom-sticky {
+  width: 170px;
+  height: 190px;
+  background-image: url('/sites/all/micro/sfs/popup-sticky.png');
+  padding: 20px 30px 0 20px;
+  margin: 0 auto !important;
+  text-align: left;
+}
+
+.staples_reason_node_form #edit-title-wrapper {
+  float: left;
+}
+
+.staples_reason_node_form #edit-title-wrapper textarea {
+  width: 100%;
+  height: 105px;
+}
+
+.staples_reason_node_form input {
+  text-align: center;
+}
+
+.staples_reason_node_form .form-submit {
+  cursor: pointer;
+  background-color: #007380;
+	padding: 9px 14px;
+	font-size: 2em;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+  font-family: Helvetica, Arial, sans-serif;
+  border: 0;
+}
+
+#sweeps-header {
+  text-align: center;
+  font-size: 1.5em;
+  width: 80%;
+  margin: 0 auto;
+  line-height: 1.2em;
+}
+
+#sweeps-prizes {
+  float: left;
+  width: 40%;
+  padding-left: 5%
+}
+
+#webform-client-form-650379 {
+  margin-left: 60%;
+  margin-bottom: 100px;
+  width: 250px;
+}
+
+.page-staples-for-students-pretty-little-liars-sweeps #home-main {
+  padding-bottom: 0;
+}
+
+.page-staples-for-students-pretty-little-liars-sweeps #pll-enter-win {
+  padding-bottom: 30px;
+  position: relative;
+  height: 200px;
+}
+
+#webform-client-form-650379 #webform-component-share {
+  width: 170px;
+  height: 190px;
+  background-image: url('/sites/all/micro/sfs/popup-sticky.png');
+  padding: 20px 30px 0 20px;
+  text-align: left;
+}
+
+#webform-client-form-650379 #webform-component-share textarea {
+  width: 170px;
+  height: 80px;
+}
+
+#cast, #enter-text, #enter-join {
+  position: absolute;
+}
+
+#cast {
+  top: -175px;
+  left: 75px;
+}
+
+#enter-text {
+  top: 20px;
+  right: 75px;
+}
+
+#enter-join {
+  top: 125px;
+  right: 75px;
+}
+#webform-client-form-650379 .form-item, #webform-client-form-650379 .form-checkboxes {
+  margin: .2em 0;
+}
+
+#webform-client-form-650379 input[type="checkbox"] {
+  float: left;
+  margin-right: 5px;
+  clear: both;
+}
+
+#webform-client-form-650379 #edit-submit {
+  font-size: 1.75em;
+  line-height: 1.4em;
+  padding: 0 12px;
+  background-color: #007380;
+  font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  -khtml-border-radius: 8px;
+  -moz-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  background-color: #007380;
+  background-image: -moz-linear-gradient(#007380, #005E69);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#005E69), to(#007380));
+  background-image: -webkit-linear-gradient(#007380, #005E69);
+  background-image: -o-linear-gradient(#007380, #005E69);
+  border: 0;
+  color: white;
+  float: right;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#girl-count {
+  width: 210px;
+  text-align: center;
+  height: 48px;
+  padding: 10px 0;
+  font-size: 2em;
+  line-height: 38px;
+  float: right;
+}
+
+#pll-why-you-care #flip-quote {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 5px;
+  top: 150px;
+}
+
+#fb-link {
+  display: block;
+  width: 183px;
+  height: 40px;
+  background: url('fb-share.png');
+  margin: 10px auto;
+  text-align: center;
+}
+
+#edit-field-thirteen-value-wrapper {
+  font-size: .6em;
 }

@@ -1,8 +1,10 @@
-Shadowbox.init({skipSetup:true});
+Shadowbox.init({skipSetup:true, enableKeys:false, handleOversize: "none"});
 $(document).ready(function () {
   prizeInit();
   galleryInit();
   hashInit();
+  pllInit();
+  girlInit();
 });
 
 function loadImage() {
@@ -23,10 +25,81 @@ function loadImage() {
     }).attr('src', img_src);
 }
 
+function girlInit() {
+  hash = location.hash.substring(1);
+  if (hash == 'popup') {
+    $(window).load(function () {
+      girl_popup();
+    });
+  }
+}
+
+function girl_popup() {
+  if ($('#share-reason-form #edit-title-wrapper').children().length < 2)
+  {
+    newDiv = document.createElement('div');
+    $(newDiv).css('font-size', '.8em')
+    .css('letter-spacing', '-1px')
+    .css('width', '150px')
+    .html('<strong>Don\'t keep it a secret!</strong><br />Share your reason for helping kids in need.');
+    $('#share-reason-form #edit-title-wrapper').append(newDiv);
+  }
+  Shadowbox.open({
+    content:        $('#share-reason-form').html(),
+    player:         "html",
+    width:          450,
+    height:         450,
+    title:          $('#sb-hidden-title').html()
+  });
+  return false;
+}
+
+function pllInit() {
+  $('.why-you-care-quote.visible').css('display', 'block');
+  $('#pll-stickies img').not('#pll-hovers img').mouseenter(function () {
+    // mousein
+    $('#pll-hovers img').hide();
+    var idx = $('#pll-stickies img').index(this);
+    $('#pll-hovers img').eq(idx).show();
+  });
+  $('#pll-hovers img').mouseleave(function () {
+    // mouseout
+    $('#pll-hovers img').hide();
+  });
+  $('#share-your-reason').click(function () {
+    Shadowbox.open({
+        content:        $('#share-reason-form').html(),
+        player:         "html",
+        width:          450,
+        height:         450
+    });
+    return false;
+  });
+  
+  var gStickies = ['http://www.dosomething.org/sites/all/micro/sfs/sticky-ashley-sm.png',
+                   'http://www.dosomething.org/sites/all/micro/sfs/sticky-lucy-sm.png',
+                   'http://www.dosomething.org/sites/all/micro/sfs/sticky-troian-sm.png',
+                   'http://www.dosomething.org/sites/all/micro/sfs/sticky-shay-sm.png'
+                  ];
+  var cache = [];
+  for (var i = gStickies.length; i--;) {
+    var ci = document.createElement('img');
+    ci.src = gStickies[i];
+    cache.push(ci);
+  }
+  $('#sticky-changer-g').click(function () {
+    var current = $(this).parent().css('background-image');
+    var pattern = /http:(.*)png/i;
+    current = current.match(pattern)[0];
+    loc = $.inArray(current, gStickies);
+    loc = (loc == gStickies.length-1) ? 0 : loc+1;
+    $(this).parent().css('background-image', 'url('+gStickies[loc]+')');
+    return false;
+  });
+}
 function hashInit() {
   var hash = location.hash.substring(1);
   if (hash == 'confirm') {
-    console.log(Shadowbox);
     $(window).load(function () {
       Shadowbox.open({
           content:    "Thanks! We got your submission. You're now entered to win one of our awesome campaign giveaways.",
@@ -36,6 +109,58 @@ function hashInit() {
       })
     });
   }
+  else if (hash.substr(0, 6) == "quote=")
+  {
+    var quoteData = hash.substring(6).split('|');
+    quote = quoteData[0];
+    name_f = quoteData[1];
+    name_l = quoteData[2].substr(0, 1) + '.';
+    state = quoteData[3];
+    var att = '';
+    if (name_f != '')
+      att = name_f;
+    if (name_f != '' && name_l != '')
+      att += ' ' + name_l + '.';
+    if (name_f != '' && state != '')
+      att += ', ';
+    if (state != '')
+      att += state;
+    $(window).load(function () {
+      Shadowbox.open({
+          content:    '<img src="/sites/all/micro/sfs/popup-confirm.png" alt="Thanks!" />'
+                      + '<br /><div class="custom-sticky">"'
+                      + quote + '"<br />- ' + att + '</div><div style="text-align:center;margin-top:10px;">Spread the word!<br />Post your reason on Facebook.</div>'
+                      + fbLink(),
+          player:     "html",
+          height:     450,
+          width:      450,
+          title:      $('#sb-hidden-title').html()
+      });
+    });
+  }
+}
+
+function fbLink()
+{
+  baseU = 'http://dosomething.org/staples-for-students';
+  u = location.href.split('/');
+  tester = u[u.length-2];
+  if (tester == 'pretty-little-liar')
+  {
+    u = '?girl='+u[u.length-1];
+    u = u.split('#');
+    u = u[0];
+  }
+  else u = '';
+  u = baseU+u;
+  var str = '<a id="fb-link" onclick="return fbPopup(\''+u+'\');" target="_blank" rel="nofollow" href="http://www.facebook.com/share.php?u='+u+'"></a>';
+  return str;
+}
+
+function fbPopup(u)
+{
+  window.open('http://www.facebook.com/sharer.php?u='+u,'sharer','toolbar=0,status=0,width=626,height=436');
+  return false;
 }
 
 function prizeInit() {
@@ -96,4 +221,27 @@ function galleryInit() {
   });
   
   $('.gallery-page').not('#gallery-page-0').hide();
+  
+  $('#gallery-page-0 a:first-child').addClass('active-image');
+}
+
+function flipQuote() {
+    var current = $('.why-you-care-quote.visible');
+    dsLog(current);
+    current.fadeOut(function () {
+      current.removeClass('visible');
+      var next;
+      if (current.next().is('div'))
+        next = current.next();
+      else
+        next = current.parent().children(':first-child');
+      dsLog(next);
+      next.fadeIn().addClass('visible');
+    });
+  return false;
+}
+
+function dsLog(item) {
+  if (console)
+    console.log(item);
 }

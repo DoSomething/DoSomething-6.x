@@ -11,6 +11,10 @@
   left: 0px;
 }
 
+#block-ds_signup-0 {
+  z-index: 1;
+}
+
 #hunt {
   background-color: #333;
   width: 846px;

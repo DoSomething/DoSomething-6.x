@@ -438,8 +438,11 @@ function validEmail($email)
 
 function validate_email_or_phone($form, &$form_values) {
   global $user;
-  if (! $form_values['values']['field_email'][0]['value'] && ! ds_mobile_check($form_values['values']['field_campaign_phone'][0]['value']) ) {
+  $valid_mobile = ds_mobile_check($form_values['values']['field_campaign_phone'][0]['value']);
+  if (! $form_values['values']['field_email'][0]['value'] && ! $valid_mobile ) {
     form_set_error('field_campaign_phone', 'Either an email address or a 10-digit cell phone number must be given to enter this campaign.');
+  } else if ($form_values['values']['field_campaign_phone'][0]['value'] && ! $valid_mobile) {
+    form_set_error('field_campaign_phone', 'Phone number must be 10 digits.  Either an email address or a 10-digit cell phone number must be given to enter this campaign.');
   }
 }
 

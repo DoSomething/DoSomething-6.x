@@ -134,7 +134,7 @@
 
         <?php print $highlight; ?>
 
-        <?php if ($title && !in_array($node->type, array('page', 'chatterbox', 'campaign_ebd_2011'))): ?>
+        <?php if ($title && !in_array($node->type, array('page', 'chatterbox', 'campaign_ebd_2011', 'celebs_gone_good', 'awards_archive'))): ?>
           <h1 class="title"><?php print $title; ?></h1>
         <?php endif; ?>
 

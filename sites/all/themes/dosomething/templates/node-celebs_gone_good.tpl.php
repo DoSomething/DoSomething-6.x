@@ -20,7 +20,6 @@
     
 <div class="node <?=$node->type ?>">
 
-  <h2 class='header-<?=$node->type ?>'>&nbsp;</h2>
   <h2><?=$title;?></h2>
 
   <?php if ($submitted): ?>

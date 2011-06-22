@@ -43,7 +43,7 @@ function _ds_signup_block() {
       <input type="hidden" name="redirect" value="http://www.dosomething.org/thankyou">
       <input type="text" id="email" name="Email" value="email" maxlength="" class="short" onClick="if (this.value == this.defaultValue) { this.value=\'\'; }" onBlur="if (this.value == \'\') { this.value=this.defaultValue; }" />
       <input type="submit" name="go" value="Go" alt="go" class="submit" /></form>
-    <p><a href="#">Volunteer info</a> on ur cell</a></p>'.
+    <p><a href="/volunteer">Volunteer info</a> on ur cell</a></p>'.
     drupal_get_form('ds_mobile_anon_form').
     '</div></div>';
   return $block_str;

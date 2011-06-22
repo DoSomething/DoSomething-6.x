@@ -1,0 +1,3 @@
+* * * * * /home/dosomething/drush/drush php-eval "`cat /var/www/html/sites/all/micro/front/calendar.php`" > /tmp/abcdefg; mv /tmp/abcdefg /var/www/html/files/cached-pages/calendar-list.html
+# 1 0 * * * curl http://developers.facebook.com/tools/lint/?url=http://www.dosomething.org/actnow/holiday?day=$(date '+\%_d') >& /dev/null
+0 0 * * * wget --spider http://localhost/pod_cron.php

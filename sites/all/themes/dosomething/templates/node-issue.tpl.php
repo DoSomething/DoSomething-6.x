@@ -15,8 +15,19 @@
 
   ?>
 
-  <h3><a href="/whatsyourthing/<?php print str_replace(' ', '+', $cause_name.'/'.$issue_name); ?>"><?php print $issue_name; ?></a></h3>
-  <?php print $node->field_intro_text_photo[0]['view']; ?>
+  <a href="/whatsyourthing/<?php print str_replace(' ', '+', $cause_name.'/'.$issue_name); ?>"><h3><?php print $issue_name; ?></h3>
+  <?php print $node->field_intro_text_photo[0]['view']; ?></a>
   <p><?php print node_teaser(strip_tags($node->field_intro_text[0]['value']), NULL, 120); ?></p>
+
+<? if ($cause_name == 'Animal Welfare' ) { ?>
+    <br style="clear:both">
+    <script>utmx_section("<?=$issue_name;?>")</script>
+    <a href='/issue_resources/<?=str_replace(' ', '+', $issue_name);?>'><img style="width: 80px; padding-top: 8px;" src='/nd/getthefacts.jpg'/ alt="Get the facts!"></a>
+    <br style="clear:both">
+    <a href='/issue_action_guides/<?=str_replace(' ', '+', $issue_name);?>'><img style="width: 70px; padding-top: 5px;" src='/nd/takeaction.jpg' alt="Take action!"/></a>
+    </noscript>
+
+<? } ?>
+
 
 </div> <!-- /.node -->

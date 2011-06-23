@@ -55,8 +55,26 @@ if ($team_name && $zip) {
   while ($result = db_fetch_object($indiv_team_lookup)) {
     $normalized_email = strtolower(trim($result->email));
     $normalized_cell = preg_replace('/[^\d]/', '', $result->cell);
-    if (! $emails_cell_seen[$normalized_email] &&
-        ! $emails_cell_seen[$normalized_cell] ) {
+    $email_is_unique = 0;
+    $cell_is_unique = 0;
+
+    /*
+    If the email is unique and cell is unique, add user
+
+    How is email unique?
+
+    ( (Email is defined and doesn't already appear) OR email is not defined)
+    */
+    if (($normalized_email && ! $emails_cell_seen[$normalized_email]) ||
+         ! $normalized_email) {
+      $email_is_unique = 1;
+    }
+    if (($normalized_cell && ! $emails_cell_seen[$normalized_cell]) ||
+         ! $normalized_cell) {
+      $cell_is_unique = 1;
+    }
+    if ($email_is_unique &&
+        $cell_is_unique ) {
       $team_obj['teammates'][
         strtolower(trim($result->first)).'+'.
         strtolower(trim($result->last)).'+'.

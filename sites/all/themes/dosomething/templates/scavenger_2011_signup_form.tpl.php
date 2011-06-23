@@ -19,7 +19,7 @@ if ($team && $zip) {?>
   $zip_field = '<b>Postal code:</b> '.$zip.'<br/><br/>';
   $extra_links = '<br><a href="/scavenger-hunt/leaderboard?team_name='.$_GET['team_name'].'&zip='.$_GET['zip'].'&invite=yes">Invite teammates</a>';
 } else { ?>
-  <img src="/sites/all/micro/hunt/register-your-team.jpg" alt="Register your team (step 1 of 2)"/>
+  <img class="register" src="/sites/all/micro/hunt/register-your-team.jpg" alt="Register your team (step 1 of 2)"/>
 <?
   $title_field = drupal_render($form['title']);
   $zip_field = drupal_render($form['locations'][0]['postal_code']);

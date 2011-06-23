@@ -228,6 +228,13 @@ function dosomething_preprocess_page(&$vars, $hook) {
       $vars['template_files'][] = $template_name;
     }
   }
+  
+  if (strstr($alias, 'staples-for-students'))
+  {
+    $device = mobile_tools_is_mobile_device();
+    if ($device['type'] == 'mobile')
+      drupal_goto('http://m.dosomething.org/staples');
+  }
 }
 
 /**

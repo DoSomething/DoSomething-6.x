@@ -40,8 +40,9 @@ if ($team && $zip) {?>
   print $zip_field;
   print drupal_render($form['field_hunt_subscriptions']);
   print drupal_render($form['buttons']['submit']);
+  print drupal_render($form['buttons']['delete']);
   print $extra_links;
-  
+  print '<br><br><p>Sign up by July 11th and receive a free pair of shades! <span class="small">*while supplies last, US residents only</span></p>';  
 ?>
 
 <div style="display:none">

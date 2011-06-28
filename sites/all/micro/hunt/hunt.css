@@ -7,7 +7,7 @@
 
 #header-message {
   position: absolute;
-  top: -63px;
+  top: -18px;
   left: 0px;
 }
 
@@ -28,7 +28,7 @@
 }
 
 #main #content {
-  margin: -10px 0 0 0;
+  margin: 40px 0 0 0;
 }
 
 .node.node-unpublished {
@@ -194,13 +194,19 @@ div.longline {
 }
 
 img.whodo {
-  float: left;
+  /*float: left;*/
   padding-right: 30px;
   padding-left: 20px;
 }
 
-div.whodo-rightspace {
+/*div.whodo-rightspace {
   padding-bottom: 50px;
+}*/
+
+#hunt-node-body .opening {
+  width: 436px;
+  padding-left: 30px;
+  padding-bottom: 20px;
 }
 
 body.page-scavenger-hunt div.share {
@@ -390,9 +396,9 @@ table.computers .row4 .col2 img {
   margin-bottom: 40px;
 }
 
-body.page-scavenger-hunt iframe {
-  padding-bottom: 128px;
-}
+/*body.page-scavenger-hunt iframe {
+  margin-bottom: 128px;
+}*/
 
 div.sub-nav {
   height: 28px;
@@ -482,6 +488,7 @@ body.page-scavenger-hunt-leaderboard h3 {
 
 h2.team-name {
   padding-top: 26px;
+  max-width: 500px;
 }
 
 body.page-scavenger-hunt-leaderboard div.number, body.page-scavenger-hunt-leaderboard img.rankheader {
@@ -542,4 +549,49 @@ div.challenges div.description {
   padding-top: 0;
 }
 
+#twitter-fb-links {
+  display: inline;
+}
 
+#sb-body {
+  background: white;
+  padding: 10px;
+  color: black;
+}
+
+#sb-body-inner {
+  position: static;
+}
+
+#sb-loading {
+  background: white;
+}
+
+#sb-loading-inner {
+  color: black;
+}
+
+#sb-wrapper-inner {
+  border: 0;
+}
+
+#sb-body {
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  -khtml-border-radius: 20px;
+  padding: 0;
+  background-color: #E2E2E2;
+}
+
+#sb-body-inner {
+  text-align: center;
+}
+
+#sb-player {
+  padding: 10px;
+}
+
+#hunt-signup .small {
+  font-size: .75em;
+}

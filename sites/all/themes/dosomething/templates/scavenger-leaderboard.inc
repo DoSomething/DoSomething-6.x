@@ -1,15 +1,15 @@
+<img class="header" src="/sites/all/micro/hunt/headers/leaderboard.png" alt="Leaderboard"/>
 <?
 
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
 $twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? Join my team! #DShunt";
-?>
 
-<img class="header" src="/sites/all/micro/hunt/headers/leaderboard.png" alt="Leaderboard"/>
-<a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
-<a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url='.urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>
+$fb_twitter_links = '
+<a target="_blank" href="http://facebook.com/sharer.php?u='.urlencode('http://www.dosomething.org/'.$current_path).'"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
+<a target="_blank" href="http://twitter.com/intent/tweet?text='.urlencode($twitter_text).'&url='.urlencode('http://www.dosomething.org/'.$current_path).'"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>';
 
-
-<?
+print $fb_twitter_links;
+print '<div style="display: none;"><div id="twitter-fb-links">'.$fb_twitter_links.'</div></div>';
 
 $team_name = $_GET['team_name'];
 $zip = $_GET['zip'];
@@ -89,6 +89,13 @@ if ($team_name && $zip) {
 }
 
 if ($found_team) {
+  if ($_GET['signedup']) {
+  ?>
+    <script type="text/javascript">
+    sharePopup();
+    </script>
+  <?
+  }
   print '<p>To join this team, complete the form on the right.</p>';
   $city_province = '';
   if ($team_obj['city'] && $team_obj['province']) {
@@ -96,6 +103,7 @@ if ($found_team) {
   }
   
   print '<div class="sub-nav"><a href="/scavenger-hunt/leaderboard"><div class="space"></div>&lt;&lt;Back to Leaderboard</a>&nbsp;&nbsp;&nbsp;<a class="prev" href="#">Prev</a>&nbsp;&nbsp;<a class="next" href="#">Next</a><img class="rhombus" src="/sites/all/micro/hunt/rhombus.png"/></div>';
+  print '<div style="display:none;"><h2 class="team-name-for-sb">'.$team_obj['name'].'</h2></div>';
   print '<h2 class="team-name">'.$team_obj['name'].'</h2>';
   print '<h3>'.$city_province.'</h3>';
   print '<div class="leaderboard-school-info clearfix">';

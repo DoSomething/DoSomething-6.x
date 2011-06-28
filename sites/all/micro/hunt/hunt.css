@@ -210,7 +210,8 @@ img.whodo {
 }
 
 body.page-scavenger-hunt div.share {
-  padding-left: 150px;
+  float: right;
+  padding-right: 36px;
 }
 
 div.col-begin {

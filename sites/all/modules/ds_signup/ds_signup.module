@@ -25,7 +25,7 @@ function _ds_signup_block() {
   $block_str .= '<div class="blue">'.
     '<img class="need-help" src="/sites/all/themes/dosomething/images/need-help.png"/>'.
     '<p><span class="lightblue">Text </span> HELPME to 30644</p>'.
-    '<p><span class="lightblue"><a href="mailto:help@dosomething.org">Email</a> </span> helpme@dosomething.org</p>'.
+    '<p><span class="lightblue"><a href="mailto:help@dosomething.org">Email</a> </span> help@dosomething.org</p>'.
     '</div>';
   if ($user->uid) {
     $block_str .= l('My Account', 'user/' . $user->uid).' | <a href="/logout">Log Out</a>';

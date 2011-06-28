@@ -111,29 +111,39 @@
 ?>
 
 <?
-$current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
-$last_path_item = preg_replace('/[?#].*/','',
-                  array_pop(explode('/', $current_path)));
+  $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
+  $last_path_item = preg_replace('/[?#].*/','',
+  array_pop(explode('/', $current_path)));
+
+  $modified_title = $head_title;
+  $facebook_text = "The scavenger hunt for those who do.  Register before July 11, and check out @Do Something and @Lenovo";
+  $on_school_page = preg_match('|^scavenger-hunt/leaderboard\?|',$current_path);
+  if ($on_school_page) {
+    $modified_title = urldecode($_GET['team_name']).' | DoSomething.org';
+    $facebook_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? Join my team!";
+  }
+
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
-  <meta property="og:title" content="<?=$head_title;?>"/>
+  <meta property="og:title" content="<?=$modified_title;?>"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />
   <meta property="og:type" content="non_profit"/>
   <meta property="og:url" content="http://www.dosomething.org/<?=$current_path;?>"/>
   <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/hunt/logo.jpg" />
   <meta property="og:site_name" content="DoSomething.org"/>
-  <meta property="og:description" content="The scavenger hunt for those who do.  Register before July 11, and check out @Do Something and @Lenovo"/>
+  <meta property="og:description" content="<?=$facebook_text;?>"/>
   <title><?php print $head_title; ?></title>
   <?php print $head; ?>
   <?php print $styles; ?>
   <link rel="stylesheet" href="/<?=$ds_micro.'/hunt/hunt.css';?>" type="text/css" media="all" />
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <?php print $scripts; ?>
+  <script type="text/javascript" src="/<?=$ds_micro.'/hunt/hunt.js';?>"></script>
 </head>
 
 <body class="<?php print $classes; ?>">
@@ -177,7 +187,9 @@ $last_path_item = preg_replace('/[?#].*/','',
         <a class="faqs <?if ($last_path_item=='faq') { print 'active';}?>" href="/scavenger-hunt/faq#">Frequently Asked Questions</a>
         <a class="prizes <?if ($last_path_item=='prizes') { print 'active';}?>" href="/scavenger-hunt/prizes#">Prizes</a>
         </div>
-
+        <!--[if lte IE 6]>
+        <div class="messages status">You are using an outdated version of Internet Explorer.  This website is best viewed in Chrome, Firefox 3+, or Internet Explorer 8+.</div>
+        <![endif]-->
         <?php print $messages; ?>
         <div id="home-main" class="bgimage-gradient shadow rounded clearfix">
           <?php print $content; ?>

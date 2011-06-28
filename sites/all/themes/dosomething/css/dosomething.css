@@ -80,6 +80,10 @@ li a.active {
   text-decoration: none;
 }
 
+.lightblue {
+  color: #48BCDC;
+}
+
 a:hover {
   color: #48bcdc;
   text-decoration: underline;
@@ -164,9 +168,11 @@ a:hover {
 
 #sign-up {
   position: absolute;
-  width: 177px;
-  top: -38px;
-  right: -30px;
+  width: 202px;
+  top: 15px;
+  right: -23px;
+  font-size: 0.85em;
+  z-index: 500;
 }
 
 #sign-up .blue {
@@ -568,6 +574,7 @@ div.block h4 {
   margin: 0 0 0.5em;
   font-size: 1em;
   line-height: 1.2em;
+  color: #0F3B70;
 }
 
 div.block {
@@ -688,4 +695,38 @@ div.profile table th {
 
 div.social-share {
   padding: 20px 0;
+}
+
+.comment .shout {
+  background-color: #4AC1E1;
+  padding: 7px;
+}
+
+.comment .shout p {
+  color: white;
+}
+
+.comment .content ul li a {
+  color: #48BCDC;
+}
+
+div#content div.block.comment p.source {
+  margin-bottom: 0;
+  font-size: 0.85em;
+  color: black;
+  margin-top: 7px;
+}
+
+div.view-cause-videos .views-field-title h2 {
+  font-size: 1em;
+}
+
+div.view-cause-videos div.views-field-field-cause-video-description-value {
+  padding-bottom: 10px;
+}
+
+#sign-up img.need-help {
+  display: block;
+  margin-top: -22px;
+  margin-left: -10px;
 }

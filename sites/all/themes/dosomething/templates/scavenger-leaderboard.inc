@@ -73,7 +73,7 @@ if ($team_name && $zip) {
          ! $normalized_cell) {
       $cell_is_unique = 1;
     }
-    if ($email_is_unique &&
+    if ($email_is_unique ||
         $cell_is_unique ) {
       $team_obj['teammates'][
         strtolower(trim($result->first)).'+'.

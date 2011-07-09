@@ -1,13 +1,24 @@
 <?php
-
 //NID of api/projects is 620842
+
+$view_name = 'api_projects';
+$display_id = 'feed_1';
 
 $prefix = '<?xml version="1.0" encoding="utf-8"?><ds-api>';
 $suffix = '</ds-api>';
+
 $maxnum = trim($_GET['maxnum']);
 $key = trim($_GET['key']);
 $zip = $_GET['zip'];
-$province = $_GET['province'];
+$country = $_GET['country'];
+$province = 'all';
+if (isset($_GET['province'])) {
+  $province = $_GET['province'];
+}
+$cause = 'all';
+if (isset ($_GET['cause'])) {
+  $cause = $_GET['cause'];
+}
 $distance = 10;
 $page = 0;
 $cause = $_GET['cause'];
@@ -16,11 +27,14 @@ if (isset($_GET['distance'])) {
   $distance = $_GET['distance'];
 }
 
+$keyword = '*';
+if ($_GET['keyword']) {
+  $keyword = $_GET['keyword'];
+}
+
 if (isset($_GET['page']) && preg_match('/^\d+$/', $_GET['page']) && $_GET['page'] > 0) {
   $page = $_GET['page']-1;
 }
-
-$_GET['page'] = $page;
 
 if (isset($maxnum) && $maxnum && preg_match('/^[0-9]+$/', $maxnum)) {
    if ($maxnum > 100 || $maxnum < 1) {
@@ -43,24 +57,18 @@ if ($key) {
 }
 if ($key_valid) {
   db_query("UPDATE content_type_api_key SET field_query_count_value=field_query_count_value+1 WHERE nid='%d'",$nid);
-  $view = views_get_view('api_projects');
+  $view = views_get_view($view_name);
 
-  $view->is_cacheable = 0;
-  if (isset($zip)) {
-    $view->filter[3]['value'] = $zip;
-    $view->filter[3]['operator'] = $distance;
-  }
-  if (isset($province) && $province != '*') {
-    $view->filter[4]['value'] = $province;
-  }
-  if (isset($cause) && $cause != '*') {
-    $view->filter[5]['value'] = $cause;
-  }
-  //$xml = views_build_view('page', $view, array(), TRUE, $maxnum, $page);
-  $xml = views_build_view('page', $view, array(), TRUE, $maxnum);
-  //print $xml;
-  //print $prefix.preg_replace('|<div[^>]*>|','',preg_replace('|</div.*|s', '', $xml)).$suffix;
-  print $prefix.preg_replace('@</div.*|<div[^>]*>@s', '', $xml).$suffix;
+ if (isset($zip) && isset($country)) {
+    $filter = $view->get_item($display_id,'filter','distance');
+    $filter['value']['postal_code'] = $zip;
+    $filter['value']['country'] = $country;
+    $filter['value']['search_distance'] = $distance;
+    $view->set_item($display_id, 'filter', 'distance', $filter);
+ }
+  
+  $view->set_current_page($page);
+  print $view->preview($display_id, array($cause, $province, $keyword));
 } else {
   $error = '<error>Maximum number of queries hit or key is invalid</error>';
   print $prefix.$error.$suffix;

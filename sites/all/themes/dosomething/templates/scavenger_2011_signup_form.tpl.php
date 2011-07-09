@@ -8,7 +8,7 @@ $zip_field = '';
 $extra_links = '';
 
 if ($team && $zip) {?>
-  <img src="/sites/all/micro/hunt/join-your-team.jpg" alt="Join your team (step 1 of 2)"/>
+  <img src="/sites/all/micro/hunt/join-this-team.png" alt="Join this team (step 1 of 2)"/>
 <?
   if (! $_GET['signedup']) {
     drupal_set_message('Welcome to the Scavenger Hunt!  Sign up with your team on the right side of this page.');
@@ -42,7 +42,7 @@ if ($team && $zip) {?>
   print drupal_render($form['buttons']['submit']);
   print drupal_render($form['buttons']['delete']);
   print $extra_links;
-  print '<br><br><p>Sign up by July 11th and receive a free pair of shades! <span class="small">*while supplies last, US residents only</span></p>';  
+  print '<br><br><span class="small">Due to overwhelming demand, we have run out of sunglasses.  We still have tons of great prizes like Lenovo laptops and scholarships, so join the hunt!</span>';  
 ?>
 
 <div style="display:none">

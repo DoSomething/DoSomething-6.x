@@ -7,7 +7,7 @@
 
 #header-message {
   position: absolute;
-  top: -18px;
+  top: -70px;
   left: 0px;
 }
 
@@ -28,7 +28,7 @@
 }
 
 #main #content {
-  margin: 40px 0 0 0;
+  margin: -12px 0 0 0;
 }
 
 .node.node-unpublished {
@@ -104,6 +104,17 @@
   color: white;
 }
 
+#page #hunt input.button-wide,
+#page #hunt a.button-wide {
+  font-size: 1.45em;
+  line-height: 1.4em;
+  padding: 0 12px;
+  width: 190px;
+  height: 38px;
+  color: white;
+}
+
+
 #page #hunt a.button-long {
   font-size: 1.05em;
   line-height: 1.4em;
@@ -151,6 +162,10 @@ ul.map-marker {
   margin-top: 0;
 }
 
+ul.map-marker li.bonus {
+  background-image: none;
+}
+
 body.page-scavenger-hunt ul.map-marker {
   margin-left: -20px;
 }
@@ -166,6 +181,16 @@ ul.map-marker li {
 
 #main #content a {
   color: #DC291E;
+}
+
+.lenovo-red {
+  color: #DC291E;
+}
+
+.section-scavenger-hunt #hunt input#edit-submit[type="submit"] {
+  background-color: #DC291E;
+  border: 0;
+  cursor: pointer;
 }
 
 img.header {

@@ -1,4 +1,4 @@
-<img class="header" src="/sites/all/micro/hunt/headers/leaderboard.png" alt="Leaderboard"/>
+<img class="header" src="/sites/all/micro/hunt/headers/teams.png" alt="Teams"/>
 <?
 
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
@@ -108,7 +108,8 @@ if ($found_team) {
   $filter['value'] = $zip;
   $view->set_item('default', 'filter', 'postal_code', $filter);
 
-  print '<div class="sub-nav"><a href="/scavenger-hunt/leaderboard"><div class="space"></div>&lt;&lt;Back to Leaderboard</a>&nbsp;&nbsp;&nbsp;<a class="prev" href="#">Prev</a>&nbsp;&nbsp;<a class="next" href="#">Next</a><img class="rhombus" src="/sites/all/micro/hunt/rhombus.png"/></div>';
+  //No longer calling it a leaderboard
+  //print '<div class="sub-nav"><a href="/scavenger-hunt/leaderboard"><div class="space"></div>&lt;&lt;Back to Leaderboard</a>&nbsp;&nbsp;&nbsp;<a class="prev" href="#">Prev</a>&nbsp;&nbsp;<a class="next" href="#">Next</a><img class="rhombus" src="/sites/all/micro/hunt/rhombus.png"/></div>';
   print '<div style="display:none;"><h2 class="team-name-for-sb">'.$team_obj['name'].'</h2></div>';
   print '<h2 class="team-name">'.$team_obj['name'].'</h2>';
   print '<h3>'.$city_province.'</h3>';
@@ -120,7 +121,11 @@ if ($found_team) {
   print '<img class="rankheader" src="/sites/all/micro/hunt/total-points.png" /><div class="number">'.'n/a'.'</div>';
   print '</div>-->';
   print '<br style="clear:both">';
-  print '<div id="map_canvas"></div>';
+  print '<div id="map_wrapper">';
+  if (! preg_match('/^_/', $zip)) {
+    print '<div id="map_canvas"></div>';
+  }
+  print '</div>';
   print '<div class="challenges">';
   print '<a class="button button-wide shadow rounded" href="/scavenger-hunt/challenges">Report Back</a>';
   print '<div class="description">Number of challenges completed</div>';
@@ -176,11 +181,16 @@ if ($found_team) {
 
   ksort($teams);
 
-  print '<p>To join your team, click the name of your team below, or register a new team with the form on the right.  On July 11th, check this page to see points standings.</p>';
+  print '<p>To join your team, click the name of your team below, or register a new team with the form on the right</p>';
 
   print '<ul class="map-marker">';
   foreach ($teams as $team) {
-    print '<li><a href="/scavenger-hunt/leaderboard?team_name='.urlencode($team['name']).'&zip='.urlencode($team['zip']).'">'.trim($team['name']).'</a> - '.$team['city'].', '.$team['province'].'</li>';
+    if (! preg_match('/^_/', $team['zip'])) {
+      print '<li><a href="/scavenger-hunt/leaderboard?team_name='.urlencode($team['name']).'&zip='.urlencode($team['zip']).'">'.trim($team['name']).'</a> - '.$team['city'].', '.$team['province'].'</li>';
+    } else {
+      print '<li>'.trim($team['name']).' (Mobile signup)</li>';
+    }
+
   }
   print '</ul>';
 }

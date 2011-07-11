@@ -266,7 +266,7 @@ body div#page-wrapper #page label {
 #huntnav {
   position: absolute;
   top: -54px;
-  left: -26px;
+  left: -15px;
   width: 1000px;
 }
 
@@ -288,7 +288,7 @@ body div#page-wrapper #page label {
 }
 
 #huntnav a.challenges {
-  width: 225px;
+  width: 257px;
   background-position: -153px -70px;
 }
 
@@ -297,30 +297,30 @@ body div#page-wrapper #page label {
 }
 
 #huntnav a.leaderboard {
-  width: 265px;
-  background-position: -379px -70px;
+  width: 200px;
+  background-position: -402px -70px;
 }
 
 #huntnav a.leaderboard.active, #huntnav a.leaderboard:hover {
-    background-position: -379px 0;
+    background-position: -402px 0;
 }
 
 #huntnav a.faqs {
   width: 120px;
-  background-position: -645px -70px;
+  background-position: -614px -70px;
 }
 
 #huntnav a.faqs.active, #huntnav a.faqs:hover {
-    background-position: -645px 0;
+    background-position: -614px 0;
 }
 
 #huntnav a.prizes {
-  width: 161px;
-  background-position: -766px -70px;
+  width: 190px;
+  background-position: -733px -70px;
 }
 
 #huntnav a.prizes.active, #huntnav a.prizes:hover {
-  background-position: -766px 0;
+  background-position: -733px 0;
 }
 
 #home-main {

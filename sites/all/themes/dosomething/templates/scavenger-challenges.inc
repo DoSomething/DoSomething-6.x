@@ -1,6 +1,9 @@
 <?
 global $current_day;
-$current_day = (date("d"))-9;
+$current_day = (date("d"))-10;
+if ($current_day < 1) {
+  $current_day = 1;
+}
 //This should increment up to 11, then stop at 11
 if ($current_day > 11) {
   $current_day = 11;

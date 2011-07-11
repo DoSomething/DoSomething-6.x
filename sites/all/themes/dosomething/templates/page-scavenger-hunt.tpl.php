@@ -183,7 +183,7 @@
         <div id="huntnav">
         <a class="home <?if ($last_path_item=='scavenger-hunt') { print 'active';}?>" href="/scavenger-hunt#">Scavenger Hunt Home</a>
         <a class="challenges <?if ($last_path_item=='challenges' || $last_path_item=='report-back') { print 'active';}?>" href="/scavenger-hunt/challenges#">Challenges</a>
-        <a class="leaderboard <? if ($last_path_item=='leaderboard') { print 'active';}?>" href="/scavenger-hunt/leaderboard#">Leaderboard</a>
+        <a class="leaderboard <? if ($last_path_item=='leaderboard') { print 'active';}?>" href="/scavenger-hunt/leaderboard#">Teams</a>
         <a class="faqs <?if ($last_path_item=='faq') { print 'active';}?>" href="/scavenger-hunt/faq#">Frequently Asked Questions</a>
         <a class="prizes <?if ($last_path_item=='prizes') { print 'active';}?>" href="/scavenger-hunt/prizes#">Prizes</a>
         </div>

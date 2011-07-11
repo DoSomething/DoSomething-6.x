@@ -99,11 +99,19 @@
       <div id="scroller">
         <div id="scroller-content">
           <div class="scroller-main first">
+            <a href="/u/video/video-how-to-create-strong-partnerships-1"><img alt="image" src="/nd/dsu/albert_large.png" /></a>
+            <div class="scroller-box"></div>
+            <div class="scroller-text">
+              <h2>"How to Create Strong Partnerships"</h2>
+              <h3>Albert Ruiz, Jet Blue Airways</h3>
+            </div>
+          </div>
+          <div class="scroller-main">
             <a href="/u/video/video-how-to-build-network"><img alt="image" src="/nd/dsu/interns_large.jpg" /></a>
             <div class="scroller-box"></div>
             <div class="scroller-text">
               <h2>"How To Build A Network"</h2>
-              <h3>Samantha Smith, DoSomething Intern</h3> <!-- spacing is correct, do not adjust -->
+              <h3>Samantha Smith, DoSomething Intern</h3>
             </div>
           </div>
           <div class="scroller-main">
@@ -111,7 +119,7 @@
             <div class="scroller-box"></div>
             <div class="scroller-text">
               <h2>"How To Pitch Your Project"</h2>
-              <h3>Amanda Ashton and Sam Smith, DoSomething.org</h3> <!-- spacing is correct, do not adjust -->
+              <h3>Amanda Ashton and Sam Smith, DoSomething.org</h3>
             </div>
           </div>
            <div class="scroller-main">
@@ -122,35 +130,26 @@
               <h3>Aria Finger, Chief Operating Officer</h3>
             </div>
           </div>
-          <div class="scroller-main">
-            <a href="/u/video/video-how-to-manage-not-profit-money"><img alt="image" src="/nd/dsu/kenia_large.jpg" /></a>
-            <div class="scroller-box"></div>
-            <div class="scroller-text">
-              <h2>"How to Manage Not-for-Profit Money"</h2>
-              <h3>Kenia Ortiz, Director of Finance</h3>
-            </div>
-          </div>
         </div> <!-- scroller content -->
 
         <!-- <img alt="image" id="play" src="/nd/dsu/play_button.png" /> -->
-
         <div id="th1" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/interns_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/albert_small.png" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small_selected.png" />
         </div>
-
+ 
         <div id="th2" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/elevator_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/interns_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 
         <div id="th3" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/aria_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/elevator_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 
         <div id="th4" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/kenia_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/aria_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 

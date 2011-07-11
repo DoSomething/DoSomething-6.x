@@ -101,22 +101,30 @@ if ($found_team) {
   if ($team_obj['city'] && $team_obj['province']) {
     $city_province = $team_obj['city'].', '.$team_obj['province'];
   }
-  
+
+  $view = views_get_view('scavenger_hunt_team_reportbacks');
+
+  $filter = $view->get_item('default','filter','postal_code');
+  $filter['value'] = $zip;
+  $view->set_item('default', 'filter', 'postal_code', $filter);
+
   print '<div class="sub-nav"><a href="/scavenger-hunt/leaderboard"><div class="space"></div>&lt;&lt;Back to Leaderboard</a>&nbsp;&nbsp;&nbsp;<a class="prev" href="#">Prev</a>&nbsp;&nbsp;<a class="next" href="#">Next</a><img class="rhombus" src="/sites/all/micro/hunt/rhombus.png"/></div>';
   print '<div style="display:none;"><h2 class="team-name-for-sb">'.$team_obj['name'].'</h2></div>';
   print '<h2 class="team-name">'.$team_obj['name'].'</h2>';
   print '<h3>'.$city_province.'</h3>';
   print '<div class="leaderboard-school-info clearfix">';
-  print '<div class="place">';
+  print '<!--<div class="place">';
   print '<div class="number">'.'n/a'.'</div>'.'<img class="rankheader" src="/sites/all/micro/hunt/current-place.png"/>';
   print '</div>';
   print '<div class="points">';
   print '<img class="rankheader" src="/sites/all/micro/hunt/total-points.png" /><div class="number">'.'n/a'.'</div>';
-  print '</div>';
+  print '</div>-->';
   print '<br style="clear:both">';
   print '<div id="map_canvas"></div>';
   print '<div class="challenges">';
+  print '<a class="button button-wide shadow rounded" href="/scavenger-hunt/challenges">Report Back</a>';
   print '<div class="description">Number of challenges completed</div>';
+  print $view->preview('default', array($team_obj['name']));
   print '</div>';
   print '</div>';
 

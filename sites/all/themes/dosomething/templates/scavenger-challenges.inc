@@ -1,6 +1,6 @@
 <?
 global $current_day;
-$current_day = 1;
+$current_day = (date("d"))-9;
 //This should increment up to 11, then stop at 11
 if ($current_day > 11) {
   $current_day = 11;
@@ -101,7 +101,7 @@ if (isset($_POST['email_or_cell'])) {
     if (count($teams)) {
       $found_team = 1;
    } else {
-      drupal_set_message("We were unable to find your team.  Did you register with a different email address or cell phone number?  Make sure you register first!");
+      drupal_set_message("We were unable to find your team.  Did you register with a different email address or cell phone number?  Make sure you register first!", 'error');
     }
   } else {
     drupal_set_message("Please provide the email or cell phone number you used during signup.",'error');
@@ -112,6 +112,10 @@ if ($found_team) {
   $selected_day = $_POST['selected_day'];
   print '<h2>Day '.$selected_day.' - '.$challenges[$selected_day]['name'].'</h2>';
   print drupal_get_form('report_form_part_two');
+  print '<style type="text/css">
+    #hunt-signup { display: none; }
+    div.challenge.not-selected { display: none; }
+    </style>';
 } else {
   print drupal_get_form('report_form_part_one');
 }
@@ -129,7 +133,7 @@ function report_form_part_one($form_state) {
   );
   $form['selected_day'] = array(
     '#type' => 'select',
-    '#title' => t('Select a challenge'),
+    '#title' => t('Select a day'),
     '#default_value' => '',
     '#options' => $available_challenge_selections,
   );

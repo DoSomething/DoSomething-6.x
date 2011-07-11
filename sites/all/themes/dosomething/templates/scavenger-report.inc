@@ -12,7 +12,7 @@
   $node = new stdClass();
   $node ->type = 'campaign_hunt_2011';
   $node ->name = $user->name;
-  $node ->field_campaign_project_type[0]['value'] = 'day'.$selected_day.'-'.$challenge;
+  $node ->field_campaign_project_type[0]['value'] = 'Day '.$selected_day.' - '.$challenge;
   $node ->field_email[0]['value'] = $email_or_cell;
   if ($selected_day != 11) {
     $node ->taxonomy = array($tid => taxonomy_get_term($tid));

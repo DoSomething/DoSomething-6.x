@@ -103,10 +103,16 @@ if ($found_team) {
   }
 
   $view = views_get_view('scavenger_hunt_team_reportbacks');
+  $view2 = views_get_view('scavenger_hunt_team_reportbacks');
 
   $filter = $view->get_item('default','filter','postal_code');
   $filter['value'] = $zip;
   $view->set_item('default', 'filter', 'postal_code', $filter);
+
+  $filter = $view2->get_item('block_1','filter','postal_code');
+  $filter['value'] = $zip;
+  $view2->set_item('block_1', 'filter', 'postal_code', $filter);
+
 
   //No longer calling it a leaderboard
   //print '<div class="sub-nav"><a href="/scavenger-hunt/leaderboard"><div class="space"></div>&lt;&lt;Back to Leaderboard</a>&nbsp;&nbsp;&nbsp;<a class="prev" href="#">Prev</a>&nbsp;&nbsp;<a class="next" href="#">Next</a><img class="rhombus" src="/sites/all/micro/hunt/rhombus.png"/></div>';
@@ -128,6 +134,9 @@ if ($found_team) {
   print '</div>';
   print '<div class="challenges">';
   print '<a class="button button-wide shadow rounded" href="/scavenger-hunt/challenges">Report Back</a>';
+  print '<div class="clearfix team-photos">';
+  print $view2->preview('block_1', array($team_obj['name']));
+  print '</div>';
   print '<div class="description">Number of challenges completed</div>';
   print $view->preview('default', array($team_obj['name']));
   print '</div>';

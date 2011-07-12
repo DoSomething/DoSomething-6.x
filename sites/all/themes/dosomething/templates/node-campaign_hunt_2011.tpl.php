@@ -50,26 +50,27 @@ $(document).ready(function() {
     <br/><a href="#video">Check out our videos!</a>
     <?php endif;?>
 
-
+    <? if ($field_campaign_essay_how[0]['value']): ?>
     <div class="box blue">
       <h2>how we tackled the challenge:</h2>
       <?php print check_markup($field_campaign_essay_how[0]['value']); ?>
     </div>
+    <? endif; ?>
 
-    <div class="box">
-    <h2>why it's important:</h2>
-      <?php print check_markup($field_campaign_essay_why[0]['value']); ?>
-    </div>
+    <? if ($field_campaign_essay_why[0]['value']): ?>
+      <div class="box">
+      <h2>why it's important:</h2>
+        <?php print check_markup($field_campaign_essay_why[0]['value']); ?>
+      </div>
+    <? endif; ?>
 
+    <? if ($field_campaign_essay_challenge[0]['value']): ?>
     <div class="box">
     <h2>the biggest challenge:</h2>
       <?php print check_markup($field_campaign_essay_challenge[0]['value']); ?>
     </div>
+    <? endif; ?>
 
-    <div class="box">
-    <h2>how you can get involved:</h2>
-      <?php print check_markup($field_others_involved[0]['value']); ?>
-    </div>
      <?php
         if ($field_campaign_video && $field_campaign_video[0]['embed']) { ?>
           <div class="box">

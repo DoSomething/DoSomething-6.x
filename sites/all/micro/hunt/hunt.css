@@ -624,10 +624,40 @@ div.challenges div.description {
   text-align: center;
 }
 
-#sb-player {
-  padding: 10px;
-}
-
 #hunt-signup .small {
   font-size: .75em;
+}
+
+.view-scavenger-hunt-team-reportbacks .photo-wrapper {
+  float: left;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.view-scavenger-hunt-team-reportbacks .photo-wrapper > a {
+  padding: 2px 0px;
+  display: block;
+}
+
+
+.view-scavenger-hunt-team-reportbacks.view-display-id-block_1 {
+  max-width: 500px;
+  padding-top: 10px;
+}
+
+.gallery-header {
+  display: inline;
+  padding-right: 10px;
+}
+
+.submissions .header {
+  padding-left: 8px;
+}
+
+.submissions .view-scavenger-hunt-team-reportbacks {
+  margin-left: 8px;
+}
+
+.submissions {
+  padding-bottom: 30px;
 }

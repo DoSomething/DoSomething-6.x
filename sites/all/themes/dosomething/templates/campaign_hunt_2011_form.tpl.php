@@ -22,6 +22,7 @@ print drupal_render($form['field_campaign_number_of_people']);
 print drupal_render($form['field_campaign_essay_how']);
 print drupal_render($form['group_share_optional']);
 print drupal_render($form['buttons']['submit']);
+print drupal_render($form['buttons']['delete']);
 
 
 print '<div style="display:none;">'.drupal_render($form).'</div>';

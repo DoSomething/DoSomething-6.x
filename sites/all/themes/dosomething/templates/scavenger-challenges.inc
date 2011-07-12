@@ -1,69 +1,16 @@
 <?
-global $current_day;
-$current_day = (date("d"))-10;
-if ($current_day < 1) {
-  $current_day = 1;
-}
-//This should increment up to 11, then stop at 11
-if ($current_day > 11) {
-  $current_day = 11;
-}
+include 'sites/all/themes/dosomething/templates/scavenger-globals.inc';
 
-global $challenges;
-$challenges = array(
-  1 => array( 'name' => 'Environment',
-              'tid' => 20,
-            ),
-  2 => array( 'name' => 'Education',
-              'tid' => 25,
-            ),
-  3 => array( 'name' => 'Violence and Bullying',
-              'tid' => 28,
-            ),
-  4 => array( 'name' => 'Disaster Response and Relief',
-              'tid' => 27,
-            ),
-  5 => array( 'name' => 'Health and Fitness',
-              'tid' => 26,
-            ),
-  6 => array( 'name' => 'Animal Welfare',
-              'tid' => 29,
-            ),
-  7 => array( 'name' => 'Poverty and Homelessness',
-              'tid' => 21,
-            ),
-  8 => array( 'name' => 'Access to Tech',
-              'tid' => 25, //tid for education
-            ),
-  9 => array( 'name' => 'Troops',
-              'tid' => 24,
-            ),
-  10 => array( 'name' => 'Environment',
-               'tid' => 25,
-            ),
-  11 => array( 'name' => 'Wildcard',
-            ),
- 
-          );
-
-$temp_array = array();
+$available_challenge_selections = array();
+global $available_challenge_selections;
 foreach ($challenges as $i => $c) {
   if ($i > $current_day) {
     break;
   }
-  $temp_array[$i] = 'Day '.$i.' - '.$c['name'];
+  $available_challenge_selections[$i] = 'Day '.$i.' - '.$c['name'];
 }
 
-rsort($temp_array);
-
-$available_challenge_selections = array();
-global $available_challenge_selections;
-
-
-foreach ($temp_array as $i => $c) {
-  $available_challenge_selections[($current_day - $i)] = $c;
-}
-
+krsort($available_challenge_selections);
 
 $found_team = 0;
 

@@ -5,18 +5,23 @@ $current_day = (date("d"))-10;
 if ($current_day < 1) {
   $current_day = 1;
 }
+
+$current_day = 2; //hardcoding for now
+
+if (user_access('administer nodes')) {
+  $current_day++;
+}
+
 //This should increment up to 11, then stop at 11
 if ($current_day > 11) {
   $current_day = 11;
 }
 
-if (user_access('administer nodes')) {
-  //$current_day = 11;
-}
 global $challenges;
 $challenges = array(
   1 => array( 'name' => 'Environment',
               'tid' => 20,
+              'link' => '',
               'challenge' => <<<EOD
 <li>Challenge #1: Collect 20 cans and recycle them <span class="lenovo-red">[+5 points]</span></li>
 <li>Challenge #2: Create a work of art out of recyclables and put it in a public place to raise awareness about proper recycling. <span class="lenovo-red">[+15 points]</span></li>
@@ -34,6 +39,11 @@ EOD
             ),
   3 => array( 'name' => 'Violence and Bullying',
               'tid' => 28,
+              'challenge' => <<<EOD
+<li>Challenge #1: 1 in 3 teens will be abused in a relationship. Share this stat on Facebook and tag @Do Something to raise awareness<span class="lenovo-red"> [+10 points]</span></li>
+<li>Challenge #2: Brainstorm 3 ways to prevent bullying in your school.<span class="lenovo-red"> [+15 points]</span></li>
+<li class="bonus"><strong>BONUS:</strong> E-mail your ideas to <a href="mailto:brainstorm@dosomething.org">brainstorm@dosomething.org</a> for a chance to win a Lenovo laptop. </li>
+EOD
             ),
   4 => array( 'name' => 'Disaster Response and Relief',
               'tid' => 27,

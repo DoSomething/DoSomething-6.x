@@ -10,8 +10,9 @@ $day = $current_day;
 
 
 while ($day > 0) {
-  $more_link = '<a href="/scavenger-hunt/gallery/day?day='.$day.'">(see more)</a>';
-  print '<h2 class="gallery-header">Day '.$day.' - '.$challenges[$day]['name'].'</h2>'.$more_link;
+  $full_challenge_name = 'Day '.$day.' - '.$challenges[$day]['name'];
+  $more_link = '<a href="/scavenger-hunt/gallery/day/'.urlencode($full_challenge_name).'">(see more)</a>';
+  print '<h2 class="gallery-header">'.$full_challenge_name.'</h2>'.$more_link;
   $view = views_get_view('scavenger_hunt_team_reportbacks');
   $filter = $view->get_item('block_2','filter','field_campaign_project_type_value');
   $filter['value'] = 'Day '.$day;

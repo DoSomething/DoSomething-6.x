@@ -10,7 +10,7 @@ $twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11.
 <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
 <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>
 
-<p>The hunt has begun!  Each day will be dedicated to a different cause and a new chance for your team to win some pretty cool stuff.  To report back, enter the email address or cell phone number you used during sign up:</p>
+<p>The hunt has begun!  Challenges will be revealed on this page daily at 10:45am EST.  Each day will be dedicated to a different cause and a new chance for your team to win some pretty cool stuff.  To report back, enter the email address or cell phone number you used during sign up:</p>
 
 <?
 include 'sites/all/themes/dosomething/templates/scavenger-challenges.inc';
@@ -22,12 +22,17 @@ $day = $current_day;
 while ($day > 0):
   $selected = 'not-selected'; if ($day == $selected_day) {$selected = 'selected';}?>
 <div class="challenge <?=$selected;?>">
-<h3>Day <?=$day.' - '.$challenges[$day]['name'];?></h3>
+<? $full_challenge_name = 'Day '.$day.' - '.$challenges[$day]['name']; ?>
+<h3><?=$full_challenge_name;
+if (user_access('administer nodes') && $current_day == $day) {
+  print ' (only viewable by admins of dosomething.org)';
+}
+?></h3>
 <ul class="map-marker">
 <?=$challenges[$day]['challenge'];?>
 </ul>
 <div class="submissions">
-<h3 class="header">Recent Submissions <a href="/scavenger-hunt/gallery/day?day=<?=$day;?>">(more)</a></h3>
+<h3 class="header">Recent Submissions <a href="/scavenger-hunt/gallery/day/<?=urlencode($full_challenge_name);?>">(more)</a></h3>
 
 <?
 

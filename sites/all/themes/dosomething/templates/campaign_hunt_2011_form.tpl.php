@@ -1,5 +1,5 @@
 <?
-
+include 'sites/all/themes/dosomething/templates/scavenger-globals.inc';
 list($team,$postal_code,$email_or_cell) = explode('HnzMneI', urldecode($_GET['team']));
 $selected_day = urldecode($_GET['selected_day']);
 $challenge = urldecode($_GET['challenge']);
@@ -15,6 +15,7 @@ if (arg(2) !='edit') {
 $form['buttons']['submit']['#attributes'] = array('class' => 'button button-medium shadow rounded');
 
 print '<h2>'.$heading.'</h2>';
+print '<ul class="map-marker">'.$challenges[$selected_day]['challenge'].'</ul>';
 print '<h3>'.$team.'</h3>';
 print drupal_render($form['field_which_challenge']);
 print drupal_render($form['group_show_us_what_you_did']);

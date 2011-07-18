@@ -171,13 +171,14 @@ body.page-scavenger-hunt ul.map-marker {
   margin-left: -20px;
 }
 
-ul.map-marker li {
+body.section-scavenger-hunt #hunt ul.map-marker li {
   background-image: url(list-icon-marker.png);
   background-repeat: no-repeat;
   background-position: 1em 0;
   padding-left: 2.8em;
   padding-top: 6px;
   min-height: 22px;
+  list-style-image: none;
 }
 
 #main #content a {
@@ -664,4 +665,21 @@ div.challenges div.description {
 
 .view-id-scavenger_hunt_team_reportbacks.view-display-id-page_1 {
   padding: 10px;
+}
+
+#main #content a.underline {
+  color: #545454;
+  text-decoration: underline;
+}
+
+.view-scavenger-signups .view-content {
+  margin-top: -228px;
+}
+
+.views-exposed-form .views-exposed-widget {
+  float: none;
+}
+
+.view-scavenger-signups.view-display-id-block_1 input[type="text"] {
+  width: 138px;
 }

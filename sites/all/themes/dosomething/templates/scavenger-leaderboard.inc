@@ -178,29 +178,8 @@ if ($found_team) {
   <? }
 
 } else {
-  $team_lookup = db_query("select title,l.city,l.province,l.postal_code from node n
-  inner join location_instance li on n.nid=li.nid and n.vid=li.vid
-  inner join location l on l.lid=li.lid
-  where n.type='scavenger_2011_signup'");
-
-  $teams = array();
-  while ($result = db_fetch_object($team_lookup)) {
-    $teams[strtolower(trim($result->title)).'++'.$result->postal_code] = array('name' => $result->title, 'zip' => $result->postal_code,'city' => $result->city, 'province' => $result->province);
-  }
-
-  ksort($teams);
-
   print '<p>To join your team, click the name of your team below, or register a new team with the form on the right</p>';
+  print views_embed_view('scavenger_signups','block_1');
 
-  print '<ul class="map-marker">';
-  foreach ($teams as $team) {
-    if (! preg_match('/^_/', $team['zip'])) {
-      print '<li><a href="/scavenger-hunt/leaderboard?team_name='.urlencode($team['name']).'&zip='.urlencode($team['zip']).'">'.trim($team['name']).'</a> - '.$team['city'].', '.$team['province'].'</li>';
-    } else {
-      print '<li>'.trim($team['name']).' (Mobile signup)</li>';
-    }
-
-  }
-  print '</ul>';
 }
 ?>

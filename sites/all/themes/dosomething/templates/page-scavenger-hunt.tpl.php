@@ -116,11 +116,17 @@
   array_pop(explode('/', $current_path)));
 
   $modified_title = $head_title;
-  $facebook_text = "The scavenger hunt for those who do.  Register before July 11, and check out @Do Something and @Lenovo";
+  $facebook_text = "The scavenger hunt for those who do.  Register now, and check out @Do Something and @Lenovo";
   $on_school_page = preg_match('|^scavenger-hunt/leaderboard\?|',$current_path);
   if ($on_school_page) {
     $modified_title = urldecode($_GET['team_name']).' | DoSomething.org';
-    $facebook_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? Join my team!";
+    $facebook_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt. Are you signed up yet? Join my team!";
+  }
+
+  $redirect = '';
+  if ($last_path_item == 'signedup') {
+    $team_page = preg_replace('|^scavenger-hunt/signedup|','scavenger-hunt/leaderboard',$current_path);
+    $redirect = '<META HTTP-EQUIV="refresh" CONTENT=3;URL="/'.$team_page.'">';
   }
 
 ?>
@@ -129,6 +135,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
+  <?=$redirect;?>
   <meta property="og:title" content="<?=$modified_title;?>"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />

@@ -2,10 +2,10 @@
 <?
 
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
-$twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? Join my team! #DShunt";
+$twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt. Are you signed up yet? Join my team! #DShunt";
 
 $fb_twitter_links = '
-<a target="_blank" href="http://facebook.com/sharer.php?u='.urlencode('http://www.dosomething.org/'.$current_path).'"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
+<a target="_blank" href="http://facebook.com/sharer.php?u='.urlencode('http://www.dosomething.org/').$current_path.'"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
 <a target="_blank" href="http://twitter.com/intent/tweet?text='.urlencode($twitter_text).'&url='.urlencode('http://www.dosomething.org/'.$current_path).'"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>';
 
 print $fb_twitter_links;

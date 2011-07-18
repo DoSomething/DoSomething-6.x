@@ -99,6 +99,14 @@
       <div id="scroller">
         <div id="scroller-content">
           <div class="scroller-main first">
+            <a href="/u/video/video-how-to-get-pro-bono-legal-help"><img alt="image" src="/nd/dsu/delaney_large.jpg" /></a>
+            <div class="scroller-box"></div>
+            <div class="scroller-text">
+              <h2>"How to Get Pro-Bono Legal Help"</h2>
+              <h3>Sean Delaney, Lawyer's Alliance of NY</h3>
+            </div>
+          </div>
+          <div class="scroller-main">
             <a href="/u/video/video-how-to-create-strong-partnerships-1"><img alt="image" src="/nd/dsu/albert_large.png" /></a>
             <div class="scroller-box"></div>
             <div class="scroller-text">
@@ -122,34 +130,26 @@
               <h3>Amanda Ashton and Sam Smith, DoSomething.org</h3>
             </div>
           </div>
-           <div class="scroller-main">
-            <a href="/u/video/video-how-to-get-corporate-sponsors-to-love-you"><img alt="image" src="/nd/dsu/aria_large.jpg" /></a>
-            <div class="scroller-box"></div>
-            <div class="scroller-text">
-              <h2>"How to Get Corporate Sponsors"</h2>
-              <h3>Aria Finger, Chief Operating Officer</h3>
-            </div>
-          </div>
         </div> <!-- scroller content -->
 
         <!-- <img alt="image" id="play" src="/nd/dsu/play_button.png" /> -->
         <div id="th1" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/albert_small.png" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/delaney_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small_selected.png" />
         </div>
- 
+
         <div id="th2" class="thumb-holder">
+          <img alt="image" class="thumbnail" src="/nd/dsu/albert_small.png" />
+          <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
+        </div>
+ 
+        <div id="th3" class="thumb-holder">
           <img alt="image" class="thumbnail" src="/nd/dsu/interns_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 
-        <div id="th3" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/elevator_small.jpg" />
-          <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
-        </div>
-
         <div id="th4" class="thumb-holder">
-          <img alt="image" class="thumbnail" src="/nd/dsu/aria_small.jpg" />
+          <img alt="image" class="thumbnail" src="/nd/dsu/elevator_small.jpg" />
           <img alt="image" class="thumbframe" src="/nd/dsu/frame_small.png" />
         </div>
 

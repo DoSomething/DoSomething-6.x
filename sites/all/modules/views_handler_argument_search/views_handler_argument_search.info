@@ -1,0 +1,4 @@
+name = "Views Search Term Argument Handler"
+description = "Creates a Search Term handler for use in Views Arguments."
+core = 6.x
+package = Views

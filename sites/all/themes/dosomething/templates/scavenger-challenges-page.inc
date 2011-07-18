@@ -1,7 +1,7 @@
 <?
 
 $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
-$twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt on 7/11. Are you signed up yet? http://dsorg.us/iSmD9x #DShunt";
+$twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt! Are you signed up yet? http://dsorg.us/iSmD9x #DShunt";
 
 ?>
 
@@ -23,16 +23,17 @@ while ($day > 0):
   $selected = 'not-selected'; if ($day == $selected_day) {$selected = 'selected';}?>
 <div class="challenge <?=$selected;?>">
 <? $full_challenge_name = 'Day '.$day.' - '.$challenges[$day]['name']; ?>
-<h3><?=$full_challenge_name;
-if (user_access('administer nodes') && $current_day == $day) {
+<h3>Day <?=$day;?> - <a class="underline" href="/<?=$challenges[$day]['link'];?>"><?=$challenges[$day]['name'];?>
+<?
+if (user_access('administer nodes') && $day > $actual_day) {
   print ' (only viewable by admins of dosomething.org)';
 }
-?></h3>
+?></a></h3>
 <ul class="map-marker">
 <?=$challenges[$day]['challenge'];?>
 </ul>
 <div class="submissions">
-<h3 class="header">Recent Submissions <a href="/scavenger-hunt/gallery/day/<?=urlencode($full_challenge_name);?>">(more)</a></h3>
+<h3 class="header"><a class="underline" href="/scavenger-hunt/gallery/day/<?=urlencode($full_challenge_name);?>">Recent Submissions</a></h3>
 
 <?
 

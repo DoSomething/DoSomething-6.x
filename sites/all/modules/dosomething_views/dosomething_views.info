@@ -1,0 +1,5 @@
+name = Views
+description = "Handling for views on Do Something"
+package = DoSomething
+version = 6.x-1.0
+core = 6.x

@@ -80,6 +80,10 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['field_email'][0]['#required'] = 0;
       $form['#validate'][] = 'validate_email_or_phone';
       break;
+    case 'campaign_hunt_2011_node_form':
+      $form['field_campaign_essay_how'][0]['#required'] = 0;
+      $form['field_email'][0]['#required'] = 0;
+      break;
     case 'ebd_signup_node_form':
     case 'campaign_ebd_2011_node_form':
       $form['body_field']['body']['#required'] = 1;
@@ -134,6 +138,35 @@ function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
         }
         if ($_POST['field_hunt_subscriptions']['value']['text']) {
           ds_mobile_mcommons_optin_campaign($_POST['field_campaign_phone'][0]['value'], 58651, 72861);
+        }
+        if ($node->field_campaign_phone[0]['value']) {
+          $node->field_campaign_phone[0]['value'] = preg_replace('/[^0-9]*/','',$node->field_campaign_phone[0]['value']);
+        }
+      }
+      break;
+    case 'staples_2011_signup':
+      if ($op == 'presave')
+      {
+        if ($_POST['field_sfs_subscriptions']['value']['email'])
+        {
+          $fullname = $_POST['title'];
+          $fullname = explode(' ', $fullname);
+          $name_f = $fullname[0];
+          unset($fullname[0]);
+          $name_l = implode(' ', array_values($fullname));
+          dia_signup(array(
+                       'link' => 'groups',
+                       'table' => 'supporter',
+                       'linkKey' => 103606,
+                       'First_Name' => $name_f,
+                       'Last_Name' => $name_l,
+                       'Email' => $_POST['field_campaign_email'][0]['value'],
+                       'Phone' => $_POST['field_campaign_phone_0'][0]['value']
+                     ));
+        }
+        if ($_POST['field_sfs_subscriptions']['value']['text'])
+        {
+          ds_mobile_mcommons_optin_campaign($_POST['field_campaign_phone_0'][0]['value'], 58151, 73041);
         }
       }
       break;
@@ -446,4 +479,8 @@ function validate_email_or_phone($form, &$form_values) {
   }
 }
 
+function dosomething_forms_og_links_alter(&$links, $group_node) {
+    if ($links['must_login'])
+        $links['must_login'] = t('You must <a href="!register">register</a> or <a href="!login">login</a> in order to request membership in this group.', array('!register' => url("user/register", array('query' => $dest)), '!login' => url("user/login", array('query' => $dest))));
+}
 ?>

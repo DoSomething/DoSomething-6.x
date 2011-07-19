@@ -35,17 +35,12 @@ if ($node->locations[0]) {
   <div class="content clear-block">
     <?php print $field_club_picture[0]['view']; ?>
     <?php print $cause_links; ?>
-    <? if (user_access('administer nodes')) { ?>
-<div class="social-share">
-<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=152294931506668&amp;xfbml=1"></script><fb:like href="" send="false" width="200" show_faces="true" font=""></fb:like>
-<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dosomething">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-</div>
-
-<? } ?>
+    <?=theme_fb_tw_g();?>
     <strong>Location: </strong><?=$field_club_city[0]['view'].', '.$field_club_state[0]['view']; ?>
     <p><?php print $node->og_description; ?></p>
     <h3>Projects</h3>
     <?=views_embed_view('projects_search', 'block_2', $node->nid);?>
+    <?= $field_club_video[0]['view']; ?>
     <h3>Location</h3>
     <div id="map_canvas"></div>
   </div>

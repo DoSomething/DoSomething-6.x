@@ -585,7 +585,8 @@ function dosomething_badges($badges){
 function theme_fb_tw_g() {
 
   return '<div class="social-share">'.
-    theme_google_plusone_button(array('css' => 'display:inline;float:left;' )).
+    theme_google_plusone_button(array('css' => 'display:inline;float:left;',
+                                      'url' => 'http://www.dosomething.org'.drupal_get_path_alias(request_uri()) )).
     '<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=152294931506668&amp;xfbml=1"></script><fb:like href="" send="false" width="200" show_faces="true" font=""></fb:like>'.
     '<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dosomething">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'.
     '</div>';

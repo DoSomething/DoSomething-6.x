@@ -171,6 +171,8 @@ function emfield_implement_types($cached = TRUE) {
 function emfield_parse_embed($field, $embed = '', $module) {
   $providers = emfield_allowed_providers($field, $module);
   foreach ($providers as $provider) {
+    $new_embed = emfield_include_invoke($module, $provider->name, 'convert', trim($embed), $field);
+    if (!is_null($newEmbed)) $embed = $new_embed;
     $success = emfield_include_invoke($module, $provider->name, 'extract', trim($embed), $field);
 
     // We've been given an array of regex strings, so try to find a match.

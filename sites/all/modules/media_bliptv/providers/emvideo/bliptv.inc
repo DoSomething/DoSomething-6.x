@@ -356,3 +356,26 @@ function emvideo_bliptv_content_generate() {
     'http://blip.tv/file/2312026/',
   );
 }
+
+function  emvideo_bliptv_convert($embed = NULL) {
+  $url = 'http://blip.tv/play/';
+  if ($url == substr($embed, 0, strlen($url))) {
+    return $embed;
+  }
+  
+  $url = 'http://blip.tv/';
+  if ($url == substr($embed, 0, strlen($url))) {
+    module_load_include('inc', 'emfield', 'includes/emfield.xml');
+    $info = _emfield_retrieve_xml($embed . "?skin=rss");
+    if (!empty($info['channel']['item']['link'])) {
+      return $info['channel']['item']['link'];
+    }
+    else {
+      return $embed;
+    }
+  }
+  else {
+    return $embed;
+  }
+  return $embed;
+}

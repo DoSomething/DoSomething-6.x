@@ -87,6 +87,7 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
                  'staples_2011_signup',
                  'staples_reason',
                  'scavenger_2011_signup',
+                 'campaign_hunt_2011',
                  );
   //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
   foreach ($ds_forms as $name) {
@@ -189,11 +190,15 @@ function dosomething_form_element($element, $value) {
  * @param $hook
  *   The name of the template being rendered (name of the .tpl.php file.)
  */
-/*
 function dosomething_preprocess(&$vars, $hook) {
-  //$vars['sample_variable'] = t('Lorem ipsum.');
+  if (strstr($alias, 'staples-for-students'))
+  {
+    $device = mobile_tools_is_mobile_device();
+    if ($device['type'] == 'mobile')
+      drupal_goto('http://m.dosomething.org/staples', null, null, 301);
+  }
 }
-*/
+
 
 /**
  * Override or insert variables into the page templates.
@@ -227,13 +232,6 @@ function dosomething_preprocess_page(&$vars, $hook) {
       $template_name .= '-' . $path_element;
       $vars['template_files'][] = $template_name;
     }
-  }
-  
-  if (strstr($alias, 'staples-for-students'))
-  {
-    $device = mobile_tools_is_mobile_device();
-    if ($device['type'] == 'mobile')
-      drupal_goto('http://m.dosomething.org/staples');
   }
 }
 
@@ -584,10 +582,18 @@ function dosomething_badges($badges){
   return $out;
 }
 
+function theme_fb_tw_g() {
+
+  return '<div class="social-share">'.
+    theme_google_plusone_button(array('css' => 'display:inline;float:left;' )).
+    '<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=152294931506668&amp;xfbml=1"></script><fb:like href="" send="false" width="200" show_faces="true" font=""></fb:like>'.
+    '<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dosomething">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>'.
+    '</div>';
+
+}
 
 /* Function to drop in Addthis links */
 
-//function theme_addthis($additional_class = "") {
 function theme_addthis($additional_class = "addthis_32x32_style") {
   $addthis = "
 <!-- ADDTHIS BUTTON BEGIN -->
@@ -613,4 +619,17 @@ var addthis_share = {
 <script type=\"text/javascript\" src=\"http://s7.addthis.com/js/250/addthis_widget.js\"></script>
 <!-- ADDTHIS BUTTON END -->";
   return $addthis;
+}
+
+function dosomething_numberc($num, $padding = false, $places = 7) {
+  $output = '';
+  if ($padding) {
+    $text = sprintf("%0{$places}d", $num);
+  } else {
+    $text = sprintf("%d", $num);
+  }
+  for ($i = 0; $i < strlen($text); $i++) {
+    $output .= "<span class=\"number number{$text[$i]}\"></span>\n";
+  }
+  return $output;
 }

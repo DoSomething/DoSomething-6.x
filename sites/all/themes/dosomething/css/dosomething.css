@@ -730,3 +730,20 @@ div.view-cause-videos div.views-field-field-cause-video-description-value {
   margin-top: -22px;
   margin-left: -10px;
 }
+
+
+#counter .number {
+background-image: url(../../../../../nd/ftn/numbers.png);
+display: block; float: left;
+width: 28px; height: 36px;
+margin-right: 1px;
+}
+#counter .number1  { background-position: -28px 0px; }
+#counter .number2  { background-position: -56px 0px; }
+#counter .number3  { background-position: -84px 0px; }
+#counter .number4  { background-position: -112px 0px; }
+#counter .number5  { background-position: -140px 0px; }
+#counter .number6  { background-position: -168px 0px; }
+#counter .number7  { background-position: -196px 0px; }
+#counter .number8  { background-position: -224px 0px; }
+#counter .number9  { background-position: -250px 0px; }

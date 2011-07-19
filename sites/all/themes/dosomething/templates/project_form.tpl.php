@@ -14,7 +14,7 @@ $form['og_nodeapi']['visible']['og_public']['#prefix'] = '<div class="hide-me">'
 $form['og_nodeapi']['visible']['og_public']['#suffix'] = '</div>';
 $form['field_embedded_video']['#collapsible'] = TRUE;
 $form['field_embedded_video']['#collapsed'] = TRUE;
-_validate_birthdate_set_error($form['uid']['#value']);
+//_validate_birthdate_set_error($form['uid']['#value']);
 
 $form['field_project_age']['#access'] = false;
 $form['field_related_action_guide']['#access'] = false;

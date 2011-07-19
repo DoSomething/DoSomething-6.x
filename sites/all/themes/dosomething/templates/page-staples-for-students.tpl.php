@@ -45,14 +45,19 @@
 <div id="home-main" class="orange-gradient shadow rounded clearfix">
 
   <img alt="Get Started" src="/<?=$ds_micro;?>/sfs/get-started.png" id="get-started" />
-
-  <!--
+  <div style="position:relative; top: -75px; left: 400px; height:0px">
+<a href="https://www.facebook.com/sharer/sharer.php?u=dosomething.org%2Fstaples-for-students"><img
+    src="/<?=$ds_micro;?>/sfs/icon-fb.png" alt="Share on Facebook" style="margin: 0 0 15px 10px;" /></a>
+  <a href="http://twitter.com/share"
+      data-url="http://www.dosomething.org/staples-for-students"
+      data-text="I took action for #education w/ @dosomething. get involved: staplesforstudents.org"><img
+        src="/<?=$ds_micro;?>/sfs/icon-twitter.png" alt="Twitter share" style="margin: 0 0 15px 5px;"/></a> 
+   </div>
   <ul id="start-links" class="clearfix">
     <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/run-a-drive">1. run a drive</a></li>
-    <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/join-the-stars">2. join the stars</a></li>
-    <li class="last"><a class="button rounded shadow blue-gradient" href="/staples-for-students/report-back">3. report back</a></li>
+    <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/pretty-little-liars">2. join the stars</a></li>
+    <li class="last"><a class="button rounded shadow blue-gradient" href="/node/add/sfs-report-gallery">3. report back</a></li>
   </ul>
-  -->
 
   <div id="intro" class="clearfix">
     <?php print $content; ?>

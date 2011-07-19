@@ -12,6 +12,8 @@
     if ($girl)
       echo '<meta name="description" content="I just teamed up with '.$girl.' from Pretty Little Liars to help Staples for Students
             provide pens, notebooks, backpacks and other supplies for students who can\'t afford them. You should, too!" />';
+    else
+      echo '<meta name="description" content="I just took action for education with DoSomething.org, get on board at staplesforstudents.org" />';
   ?>
   <meta property="og:url" content="http://dosomething.org/staples-for-students/" />
   <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/sfs/logo-sfs.png" />

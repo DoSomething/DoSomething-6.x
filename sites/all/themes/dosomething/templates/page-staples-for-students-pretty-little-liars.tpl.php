@@ -119,7 +119,7 @@
 
 <?php include_once 'staples-bottom.php'; ?>
 <div id="share-reason-form">
-  <img src="/<?=$ds_micro;?>/sfs/pll-thanks-for-joining.png" alt="Tell the world!" />
+  <img src="/<?=$ds_micro;?>/sfs/popup-header.png" alt="Tell the world!" />
   <?php
     module_load_include('inc', 'node', 'node.pages');
     $node = new stdClass();

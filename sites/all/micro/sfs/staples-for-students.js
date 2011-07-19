@@ -29,12 +29,12 @@ function girlInit() {
   hash = location.hash.substring(1);
   if (hash == 'popup') {
     $(window).load(function () {
-      girl_popup();
+      girl_popup(true);
     });
   }
 }
 
-function girl_popup() {
+function girl_popup(donated) {
   if ($('#share-reason-form #edit-title-wrapper').children().length < 2)
   {
     newDiv = document.createElement('div');
@@ -43,6 +43,16 @@ function girl_popup() {
     .css('width', '150px')
     .html('<strong>Don\'t keep it a secret!</strong><br />Share your reason for helping kids in need.');
     $('#share-reason-form #edit-title-wrapper').append(newDiv);
+  }
+  if (donated)
+  {
+    $('#img-donated').show();
+    $('#img-no-donated').hide();
+  }
+  else
+  {
+    $('#img-donated').hide();
+    $('#img-no-donated').show();
   }
   Shadowbox.open({
     content:        $('#share-reason-form').html(),
@@ -227,7 +237,6 @@ function galleryInit() {
 
 function flipQuote() {
     var current = $('.why-you-care-quote.visible');
-    dsLog(current);
     current.fadeOut(function () {
       current.removeClass('visible');
       var next;
@@ -235,13 +244,12 @@ function flipQuote() {
         next = current.next();
       else
         next = current.parent().children(':first-child');
-      dsLog(next);
       next.fadeIn().addClass('visible');
     });
   return false;
 }
 
 function dsLog(item) {
-  if (console)
+  if (window.console)
     console.log(item);
 }

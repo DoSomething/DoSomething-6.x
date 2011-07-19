@@ -1,25 +1,29 @@
 <?php include_once 'staples-header.php'; ?>
 
 <?php
-  /*
-   * This is a bad place for this code. This probably shouldn't be here.
-   */
-  $sql = 'SELECT nid FROM {node} WHERE type=\'sfs_report_gallery\';';
+  $sql = 'SELECT nid FROM {node} WHERE type=\'sfs_report_gallery\' ORDER BY created DESC;';
   $results = db_query($sql);
   $nodes = array();
-  while ($nid = db_result($results)) {
-    $nodes[] = node_load($nid);
+  while ($fetch = db_fetch_array($results)) {
+    $nodes[] = $fetch;
   }
 ?>
 <div id="home-main" class="orange-gradient shadow rounded clearfix">
 
   <img src="/<?=$ds_micro;?>/sfs/drives.png" />
+  <a href="https://www.facebook.com/sharer/sharer.php?u=dosomething.org%2Fstaples-for-students"><img
+    src="/<?=$ds_micro;?>/sfs/icon-fb.png" alt="Share on Facebook" style="margin: 0 0 15px 10px;" /></a>
+  <a href="http://twitter.com/share"
+      data-url="http://www.dosomething.org/staples-for-students"
+      data-text="I took action for #education w/ @dosomething. get involved: staplesforstudents.org"><img
+        src="/<?=$ds_micro;?>/sfs/icon-twitter.png" alt="Twitter share" style="margin: 0 0 15px 5px;"/></a> 
   <div class="clearfix" style="text-align: center;">
     <script type="text/javascript">
       <?php
         $items = array();
-        foreach ($nodes as $node) {
-          foreach ($node->field_image as $img) {
+        foreach ($nodes as $nodeID) {
+          $node = node_load($nodeID['nid']);
+          foreach ($node->field_campaign_pictures as $img) {
             $filename = explode('/', $img['filepath']);
             $filename = $filename[count($filename)-1];
             $add['file'] = $filename;

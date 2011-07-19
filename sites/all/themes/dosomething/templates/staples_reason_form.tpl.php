@@ -17,15 +17,7 @@
   $currPath = drupal_get_path_alias(str_replace('/edit', '', $_GET['q']));
   $endPath = explode('/', $currPath);
   if ($endPath[count($endPath)-2] == 'pretty-little-liar')
-  {
     $hasGirl = true;
-    $img = 'girls/'.$endPath[count($endPath)-1].'-node-submit.png';
-  }
-  else
-    $img = 'popup-submit-text.png';
-?>
-  <img src="/sites/all/micro/sfs/<?=$img;?>" style="display: block; margin: 0 auto;" />
-<?php
   print drupal_render($form['buttons']['submit']);
   if ($hasGirl) :
 ?>

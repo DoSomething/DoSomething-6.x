@@ -80,6 +80,10 @@
   background: url('girls/ashley-products.png');
 }
 
+.ashley #pll-enter-win-sub {
+  background-image: url('girls/ashley-enter.png');
+}
+
 .lucy {
   background-color: #62ae2d;
   background-image: -webkit-gradient(radial, 50% 75%, 0, 50% 50%, 700, from(#b2e981), to(#62ae2d));
@@ -100,6 +104,10 @@
 
 .lucy #products {
   background: url('girls/lucy-products.png');
+}
+
+.lucy #pll-enter-win-sub {
+  background-image: url('girls/lucy-enter.png');
 }
 
 .troian {
@@ -124,6 +132,10 @@
   background: url('girls/troian-products.png');
 }
 
+.troian #pll-enter-win-sub {
+  background-image: url('girls/troian-enter.png');
+}
+
 .shay {
   background-color: #1a9cc1;
   background-image: -webkit-gradient(radial, 50% 75%, 0, 50% 50%, 700, from(#2ab6d5), to(#1a9cc1));
@@ -144,6 +156,18 @@
 
 .shay #products {
   background: url('girls/shay-products.png');
+}
+
+.shay #pll-enter-win-sub {
+  background-image: url('girls/shay-enter.png');
+}
+
+.lucy #pll-enter-win-sub,
+.ashley #pll-enter-win-sub,
+.troian #pll-enter-win-sub,
+.shay #pll-enter-win-sub {
+  height: 354px;
+  margin-top: -30px;
 }
 
 #flip-quote {

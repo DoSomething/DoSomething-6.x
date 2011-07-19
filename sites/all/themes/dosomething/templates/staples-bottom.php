@@ -17,7 +17,7 @@
 
     </form>
 
-    <a href="https://foursquare.com/search?q=staples"><img src="/<?=$ds_micro;?>/sfs/foursquare.png" /></a>
+    <a href="https://foursquare.com/search?q=staples"><img src="/<?=$ds_micro;?>/sfs/foursquare.png" /></a><a href="/sites/all/micro/sfs/Staples_Foursquare_Legal.pdf" target="_blank" style="top:147px;left:92px">Terms</a>
 
   </div>
 

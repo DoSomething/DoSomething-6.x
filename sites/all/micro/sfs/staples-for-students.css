@@ -339,7 +339,7 @@ div.error {
 }
 
 body div#page-wrapper #page #staples p {
-  font-family: Arial, Helvetica, sans-serif;
+  /*font-family: Arial, Helvetica, sans-serif;*/
   color: black;
 }
 
@@ -529,10 +529,11 @@ body div#page-wrapper #page #staples h2 {
 
 #pll-enter-win {
   background-color: #fce599;
-  background-image: -moz-linear-gradient(#fce599, #f8cc38);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f8cc38), to(#fce599));
-  background-image: -webkit-linear-gradient(#fce599, #f8cc38);
-  background-image: -o-linear-gradient(#fce599, #f8cc38);
+  background-image: url('contest-bg.png'), -moz-linear-gradient(#fce599, #f8cc38);
+  background-image: url('contest-bg.png'), -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f8cc38), to(#fce599));
+  background-image: url('contest-bg.png'), -webkit-linear-gradient(#fce599, #f8cc38);
+  background-image: url('contest-bg.png'), -o-linear-gradient(#fce599, #f8cc38);
+  background-position: bottom left, top left;
   border-top: 5px solid #e1592f;
   margin: 0 -18px -20px;
 }
@@ -769,7 +770,7 @@ body div#page-wrapper #page #staples h2 {
   cursor: pointer;
   background-color: #007380;
 	padding: 9px 14px;
-	font-size: 2em;
+	font-size: 1.2em;
 	color: white;
 	font-weight: bold;
 	text-decoration: none;

@@ -71,7 +71,7 @@
       <a href="#" onClick="javascript:return flipQuote();" id="flip-quote"></a>
     </div>
     <div id="you-share">
-      <a href="#" onclick="javascript:return girl_popup();"><img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-you-share.png" /></a>
+      <a href="#" onclick="javascript:return girl_popup(false);"><img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-you-share.png" /></a>
     </div>
   </div>
   </div>
@@ -84,7 +84,7 @@
   <div id="pll-enter-win">
     <div id="pll-enter-win-sub">
       <img src="/<?=$ds_micro;?>/sfs/pll-etw-sticky.png" style="position: absolute; left: -20px; top: 10px;" />
-      <a href="/staples-for-students/pretty-little-liars/sweeps" style="position:absolute; left: 450px; top: 225px;"><img src="/<?=$ds_micro;?>/sfs/pll-etw-button.png" /></a>
+      <a href="/staples-for-students/pretty-little-liars/sweeps" style="position:absolute; left: 425px; top: 240px;"><img src="/<?=$ds_micro;?>/sfs/pll-etw-button.png" /></a>
     </div>
   </div>
   <div id="pll-home-footer"></div>
@@ -106,7 +106,8 @@
 ?>
 </div>
 <div id="share-reason-form">
-  <img src="/<?=$ds_micro;?>/sfs/pll-thanks-for-joining.png" alt="Tell the world!" />
+  <img src="/<?=$ds_micro;?>/sfs/pll-thanks-for-joining.png" alt="Tell the world!" id="img-donated" />
+  <img src="/<?=$ds_micro;?>/sfs/popup-header.png" alt="Tell the world!" id="img-no-donated" />
   <?php
     module_load_include('inc', 'node', 'node.pages');
     $node = new stdClass();

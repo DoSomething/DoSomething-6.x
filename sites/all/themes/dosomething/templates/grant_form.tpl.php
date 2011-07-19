@@ -29,7 +29,7 @@ if (arg(1) == 534583 ||
 } else if (arg(1) == 591579) { // Club Grant Application
   //print '<pre>'; print_r($form); print '</pre>';
   $form['field_budget_0']['#suffix'] = "<p>Please provide us with a rough outline of what the $250 will be used for. Indicate the different things you will use the money for and how much money each item costs. If you need help check out our <a target='_blank' href='/clubs/budget'>sample budget</a>. Note: this $250 can be used for the project described above and your Club in general throughout the year.</p>";
-  $form['group_personal_info']['field_which_grant']['key']['#value'] = 'Club Grant';
+  $form['group_personal_info']['field_which_grant']['value']['#value'] = 'Club Grant';
   $form['field_which_grant']['#prefix'] = '<div class="hide-me">';
   $form['field_which_grant']['#suffix'] = '</div>';
   $form['group_personal_info']['field_plumgrant_highschool'][0]['value']['#title'] = 'Name of School (if applicable)';
@@ -64,6 +64,7 @@ if (arg(1) == 534583 ||
   unset($form['field_budget_0']['new']['field_budget_0_upload']['#description']);
   $form['group_additional_info']['field_grant_optional_essay_1'][0]['value']['#title'] = 'How long has your Club been active for?';
   $form['group_additional_info']['field_grant_optional_number_1']['#access'] = false;
+  $form['group_personal_info']['field_which_grant']['value']['#value'] = 'Club Startup Grant';
 
 } else if (arg(1) == 626921) { // PBTeen Grant
   //print '<!-- <pre>'.print_r($form, true).'</pre> -->';
@@ -74,14 +75,13 @@ if (arg(1) == 534583 ||
   $form['group_additional_info']['#access'] = false;
   $form['field_optional_checkbox']['#access'] = false;
 } else { // General grant apps
-
   // Add type of grant as h2
   preg_match('/key\]=(.*)$/', $form['#action'], $matches);
   if (isset($_GET['type'])) $grant_type = urldecode($_GET['type']);
   else if ($matches[1]) $grant_type = urldecode($matches[1]);
   $form['#prefix'] = '<h2>'.($grant_type ? strtoupper($grant_type) : 'GRANT APPLICATION').'</h2>';
-  $form['group_personal_info']['field_which_grant']['value']['#value'] = $grant_type;
-  
+  if ($grant_type)
+    $form['group_personal_info']['field_which_grant']['value']['#value'] = $grant_type;
   // Hide custom fields from general grant apps
   $form['group_additional_info']['#access'] = false;
   $form['field_optional_checkbox']['#access'] = false;

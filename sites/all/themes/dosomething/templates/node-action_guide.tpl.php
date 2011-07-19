@@ -1,77 +1,43 @@
 <?php
 // $Id: node.tpl.php,v 1.10 2009/11/02 17:42:27 johnalbin Exp $
 
-/**
- * @file
- * Theme implementation to display a node.
- *
- * Available variables:
- * - $title: the (sanitized) title of the node.
- * - $content: Node body or teaser depending on $teaser flag.
- * - $user_picture: The node author's picture from user-picture.tpl.php.
- * - $date: Formatted creation date. Preprocess functions can reformat it by
- *   calling format_date() with the desired parameters on the $created variable.
- * - $name: Themed username of node author output from theme_username().
- * - $node_url: Direct url of the current node.
- * - $terms: the themed list of taxonomy term links output from theme_links().
- * - $display_submitted: whether submission information should be displayed.
- * - $links: Themed links like "Read more", "Add new comment", etc. output
- *   from theme_links().
- * - $classes: String of classes that can be used to style contextually through
- *   CSS. It can be manipulated through the variable $classes_array from
- *   preprocess functions. The default values can be one or more of the
- *   following:
- *   - node: The current template type, i.e., "theming hook".
- *   - node-[type]: The current node type. For example, if the node is a
- *     "Blog entry" it would result in "node-blog". Note that the machine
- *     name will often be in a short form of the human readable label.
- *   - node-teaser: Nodes in teaser form.
- *   - node-preview: Nodes in preview mode.
- *   The following are controlled through the node publishing options.
- *   - node-promoted: Nodes promoted to the front page.
- *   - node-sticky: Nodes ordered above other non-sticky nodes in teaser
- *     listings.
- *   - node-unpublished: Unpublished nodes visible only to administrators.
- *   The following applies only to viewers who are registered users:
- *   - node-by-viewer: Node is authored by the user currently viewing the page.
- *
- * Other variables:
- * - $node: Full node object. Contains data that may not be safe.
- * - $type: Node type, i.e. story, page, blog, etc.
- * - $comment_count: Number of comments attached to the node.
- * - $uid: User ID of the node author.
- * - $created: Time the node was published formatted in Unix timestamp.
- * - $classes_array: Array of html class attribute values. It is flattened
- *   into a string within the variable $classes.
- * - $zebra: Outputs either "even" or "odd". Useful for zebra striping in
- *   teaser listings.
- * - $id: Position of the node. Increments each time it's output.
- *
- * Node status variables:
- * - $build_mode: Build mode, e.g. 'full', 'teaser'...
- * - $teaser: Flag for the teaser state (shortcut for $build_mode == 'teaser').
- * - $page: Flag for the full page state.
- * - $promote: Flag for front page promotion state.
- * - $sticky: Flags for sticky post setting.
- * - $status: Flag for published status.
- * - $comment: State of comment settings for the node.
- * - $readmore: Flags true if the teaser content of the node cannot hold the
- *   main body content.
- * - $is_front: Flags true when presented in the front page.
- * - $logged_in: Flags true when the current user is a logged-in member.
- * - $is_admin: Flags true when the current user is an administrator.
- *
- * The following variables are deprecated and will be removed in Drupal 7:
- * - $picture: This variable has been renamed $user_picture in Drupal 7.
- * - $submitted: Themed submission information output from
- *   theme_node_submitted().
- *
- * @see template_preprocess()
- * @see template_preprocess_node()
- * @see zen_preprocess()
- * @see zen_preprocess_node()
- * @see zen_process()
- */
+
+ if (is_numeric(arg(1)) && arg(0) == 'node') {
+				$n = node_load(arg(1));
+				$tax = taxonomy_get_tree('5','0','-1',1);
+				foreach($tax as $junk=>$parent) {
+					$parents[$parent->tid] = $parent->name;
+				}
+				foreach ($n->taxonomy as $tid=>$term) {
+					if ($term->vid == 5) {//We're good to go
+						if(in_array($term->name,$parents)) {//Parent term. set active cause.
+							$active_cause = $term->name;
+						} else {//Child term? Making assumptions here...
+							$active_issue = $term->name;
+						}
+					}
+				}
+			}
+      if (!$active_cause) { $active_cause = 'Animal Welfare'; }
+      if (!$active_issue) { $active_issue = 'Animal Homelessness'; }
+			
+			
+			
+			$pic_rendered = FALSE;
+			
+			//Get node for active issue.
+			$issue_node_q = db_fetch_object(db_query("SELECT nid FROM node where title = '%s'",$active_issue));
+			if ($issue_node_q->nid) {
+				if(sizeof($issue->field_intro_text_photo))
+					$pic_path = $issue->field_intro_text_photo[0]['filepath'];
+				if(sizeof($node->field_picture))
+					$pic_path = $node->field_picture[0]['filepath'];
+				$pic_html = theme('imagecache','111',$pic_path,'Photo','Photo',array('class' => 'alignleft', 'width' => '111', 'height' => '111'));
+			
+				$pic_rendered = TRUE;
+			
+				$issue = node_load($issue_node_q->nid);
+      }
 ?>
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
 
@@ -84,9 +50,40 @@
   <div class="content">
     <?php print $node->content['body']['#value']; ?>
   </div>
+  
+  <br />
 
-  <hr />
+  <div style="background-color: rgb(255, 245, 222) ! important; position: relative;" class="box ididthis gainlayout">
+            <h2>Take Action</h2>
 
+<?php $total = db_result(db_query("SELECT COUNT(*) AS total FROM {content_type_ididthis} WHERE field_did_nid_value = $node->nid")); ?>
+<div style="position: absolute; right: 10px; top: 10px; margin: 0px; padding: 0px;" class="box gainlayout">
+<div id="counter" style="width: 116px; height: 36px; margin-bottom: 0.5em;">
+<?=dosomething_numberc($total, true, 4);?>
+</div>
+  <p><?php 
+        if ($total > 0) {
+          print format_plural($total, "person has", "people have")." done this&hellip;";
+        } else { 
+          print "people have done this&hellip;<br />Be the first!";
+        }
+     ?>
+  </p>
+<div class="clear:both;"></div>
+</div>
+
+<ol class="big-blue"> 
+    <li><span class="not-so-big-blue">Let us know if you're going to do this... 		<?php print drupal_get_form('ididthis_form', $node->nid); ?>
+ </span></li>
+  <li><span class="not-so-big-blue"><?=l('Email a friend','forward',array('query' => 'path=node/'.arg(1))).' about this idea.';?></span></li>
+ <li><span class="not-so-big-blue">Find more info on other causes:</span></li>
+			 				        <div>
+				  
+				 <p style="margin: 1em 0;"><a href="/whatsyourthing/<?=$active_cause;?>/<?=$active_issue;?>"><?=$active_issue;?></a>: <?=$issue->field_intro_text[0]['value'];?></p>
+				          <div class="clearfix"></div></div>
+
+				    </ol>
+		</div>  
   <?php print $cause_links; ?>
 
 </div> <!-- /.node -->

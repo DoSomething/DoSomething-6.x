@@ -17,6 +17,8 @@ function dosomething_menus_block($op = 'list', $delta = 0, $edit = array()) {
     $blocks[4]['cache'] = BLOCK_NO_CACHE;
     $blocks[5]['info'] = 'About Us Nav';
     $blocks[5]['cache'] = BLOCK_NO_CACHE;
+    $blocks[6]['info'] = 'Games Nav';
+    $blocks[6]['cache'] = BLOCK_NO_CACHE;
   } else if ($op == 'view') {
     switch ($delta) {
       case 0:
@@ -42,6 +44,10 @@ function dosomething_menus_block($op = 'list', $delta = 0, $edit = array()) {
       case 5:
         $blocks['subject'] = 'About Us Nav';
         $blocks['content'] = _dosomething_menu('plain', 'menu-about-us');
+        break;
+      case 6:
+        $blocks['subject'] = 'Games Nav';
+        $blocks['content'] = _dosomething_menu('plain', 'menu-games');
         break;
     }
   }
@@ -77,7 +83,23 @@ function _dosomething_menu($class, $menu, $header = NULL) {
 }
 
 function _dosomething_menu_clubs_header() {
-  $result = <<< EOF
+  global $user;
+  $nid = db_result(db_query("SELECT nid FROM {og_uid} WHERE uid = '%s'", $user->uid));
+  $nid_html = '';
+  if ($user->uid > 0 && $nid > 0) {
+    $nd_html = '<span id="club-info" style="display:none;">'.$nid.'</span>';
+  }
+  $result = $nd_html;
+  $result .= <<< EOF
+    <script type="text/javascript">
+$(document).ready(function() {
+  if ($('#club-info').size()) {
+    $('#block-dosomething_menus-2 ul.menu li:first a').attr('href', '/node/' + $('#club-info').html());
+    $('#block-dosomething_menus-2 ul.menu li:first a').html('My Club');
+  }
+});
+</script>
+
     <div class="breadcrumbs">
       <span class="link"><a href="/programs">Our Programs</a></span>
       <span class="sep">&raquo;</span>

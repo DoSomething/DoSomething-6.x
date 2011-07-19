@@ -91,6 +91,9 @@ function ds_grants_default_page_manager_pages() {
       'title' => 'Grants to fund your project',
       'body' => '<h3>Want to make change, but lack the funds? We can help.</h3>
 
+
+
+
 <div class="box blue" style="margin-top: 30px;">
 	<h2>$500 Do Something Seed Grants</h2>
 <a href= "/grants/seedgrants"><img src= "http://www.dosomething.org/files/Logo_SeedGrants_web_Smaller2.jpg" align="left" hspace="5px"></a>
@@ -100,35 +103,21 @@ function ds_grants_default_page_manager_pages() {
 	<img src="http://www.dosomething.org/files/AXP_sm.gif" align="left">
 	</div>
 	<p><strong>Deadline:</strong> None! Apply now! You will be notified whether or not you have won within 2-3 months after submission.</p>
-	<a href="/grants/seedgrants" class="more"><strong>Learn More and Apply</strong></a><br style="clear:both;">
+	<a href="/grants/seedgrants" class="more">
+<strong>Learn More and Apply</strong></a><br>  
+<strong><a class="more" href="/grants/seedgrants/winners">Read About Past Winners</a></strong><br style="clear:both;">
 </div>
 
 
 <div class="box blue" style="margin-top: 30px;">
-	<h2>Project Pitch Grants</h2>
-<p><img class="goleft"  src= "/files/projectpitchlogo.png" width="111" >
-In order to take your project or organization to the next level, you need to have nailed your project pitch. Watch our Do Something U video, <b><a href = "/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else">How to Pitch Your Project</b></a>, for tips and then upload your best pitch for a chance to win one of five $250 grants! </p>
+	<h2>$250 DSU Project Pitch Grants</h2>
+<p><a href = "http://www.dosomething.org/u/pitch-grants"><img class="goleft"  src= "/files/projectpitchlogo.png" width="111" ></a>
+In order to take your project or organization to the next level, you need nail your project pitch first. <b><a href = "http://www.dosomething.org/u/pitch-grants">Upload your best pitch</a></b> for a chance to win one of five $250 grants! (Check out our Do Something U video, "<a href = "/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else">How to Pitch Your Project</a>," for tips.)</p>
 <a href = "http://www.dosomething.org/u/pitch-grants" class="more"><b>Learn more and submit your project pitch.</b></a><br><br>
-<b> Deadline:</b> Upload your pitch through May, 6 2011</p>
+<b> Deadline:</b> The first round has closed, but the second round is open until July 7th. Apply now! You will be notified whether or not you have won on a rolling basis.</p>
 </div>
 
 
-<div class="box blue"> 
-<h3> We <3 Action Scholarships</h3>
-<p><img class="goleft"  src= "/nd/att/dosomething-logo.png" width="111" >
-DoSomething.org and AT&T are teaming up to offer $35,000 in college scholarships to students committed to rethinking what\'s possible and making a difference. want to get in on the action? Apply online by telling us why the community action you do is awesome! </p>
-<b><a href = "/att">APPLY NOW!</b></a><br><br>
-<b> Application Deadline:</b> April 26th, 2011</p>
-</div>
-
-
-<div class="box blue" style="margin-top: 30px;">
-	<h2>Clubs Madness</h2>
-<p>  Clubs Madness is an annual event in which Do Something Clubs show off their amazing projects in a tournament for ultimate glory...and a little community impact on the side. The Final Four Clubs in the tournament will each win a $500 grant, and the Club Madness champ will win a total of $1000! For details, check out DoSomething.org/clubs/madness</p>
-		<p><strong>Deadline:</strong> Submit your project now through March 26th!</p>
-	<a href="/clubs/madness" class="more"><strong>Learn More and Apply!</strong></a>
-<p> Not an official Do Something Club? <a href="/clubs/resources/what-you-get">Check us out</a><br style="clear:both;">
-</div>
 
 
 <div class="box blue" style="margin-top: 30px;">
@@ -157,6 +146,7 @@ DoSomething.org and AT&T are teaming up to offer $35,000 in college scholarships
 <p>Grab the code and add it to your myspace or website.</p>
 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0" type="application/x-shockwave-flash" width="300px" height="323px" id="InsertWidget_d741edd5-4393-4d08-ab96-fd021635abd8" align="middle"><param name="movie" value="http://widgetserver.com/syndication/flash/wrapper/InsertWidget.swf"/><param name="quality" value="high" /><param name="wmode" value="transparent" /><param name="menu" value="false" /><param name="flashvars" value="r=2&appId=d741edd5-4393-4d08-ab96-fd021635abd8" /><param name="allowScriptAccess" value="sameDomain" /> <embed src="http://widgetserver.com/syndication/flash/wrapper/InsertWidget.swf"  name="InsertWidget_d741edd5-4393-4d08-ab96-fd021635abd8"  width="300px" height="323px" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" wmode="transparent" align="middle"  allowScriptAccess="sameDomain" flashvars="r=2&appId=d741edd5-4393-4d08-ab96-fd021635abd8" /></object>',
       'format' => '2',
+      'admin_title' => '',
     );
     $pane->cache = array();
     $pane->style = array(

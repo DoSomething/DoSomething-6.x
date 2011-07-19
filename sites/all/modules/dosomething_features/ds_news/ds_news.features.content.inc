@@ -199,7 +199,7 @@ Video',
     'module' => 'filefield',
     'active' => '1',
     'list_field' => '0',
-    'list_default' => '1',
+    'list_default' => 1,
     'description_field' => '0',
     'widget' => array(
       'max_resolution' => '0',

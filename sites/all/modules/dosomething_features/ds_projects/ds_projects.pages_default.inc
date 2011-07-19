@@ -91,7 +91,14 @@ function ds_projects_default_page_manager_pages() {
   );
   $display->panel_settings = array(
     'style' => 'default',
-    'style_settings' => array(),
+    'style_settings' => array(
+      'default' => NULL,
+      'row_1_1' => NULL,
+      'row_2_1' => NULL,
+      'row_3_1' => NULL,
+      'row_3_2' => NULL,
+      'row_4_1' => NULL,
+    ),
     'edit_style' => 'Edit style settings',
     'did' => '20',
     'row_1_1' => array(
@@ -122,6 +129,45 @@ function ds_projects_default_page_manager_pages() {
     $pane = new stdClass;
     $pane->pid = 'new-1';
     $pane->panel = 'row_1_1';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Custom redirect if projects/*',
+      'title' => '',
+      'body' => '<?
+$i = 1;
+$baseUrl=\'projects-search/\';
+$newUrl = $baseUrl;
+while ($arg = arg($i)) {
+   if (isset($arg)) {
+      $newUrl .= $arg . \'/\';
+   } else {
+      break;
+   }
+   $i++;
+}
+
+if ($newUrl != $baseUrl) {
+   drupal_goto($newUrl);
+}
+?>',
+      'format' => '2',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $display->content['new-1'] = $pane;
+    $display->panels['row_1_1'][0] = 'new-1';
+    $pane = new stdClass;
+    $pane->pid = 'new-2';
+    $pane->panel = 'row_1_1';
     $pane->type = 'block';
     $pane->subtype = 'block-252';
     $pane->shown = TRUE;
@@ -147,17 +193,18 @@ function ds_projects_default_page_manager_pages() {
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 0;
-    $display->content['new-1'] = $pane;
-    $display->panels['row_1_1'][0] = 'new-1';
+    $pane->position = 1;
+    $display->content['new-2'] = $pane;
+    $display->panels['row_1_1'][1] = 'new-2';
     $pane = new stdClass;
-    $pane->pid = 'new-2';
+    $pane->pid = 'new-3';
     $pane->panel = 'row_1_1';
     $pane->type = 'block';
     $pane->subtype = 'block-251';
@@ -366,17 +413,18 @@ return false; });
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-2'] = $pane;
-    $display->panels['row_1_1'][1] = 'new-2';
+    $pane->position = 2;
+    $display->content['new-3'] = $pane;
+    $display->panels['row_1_1'][2] = 'new-3';
     $pane = new stdClass;
-    $pane->pid = 'new-3';
+    $pane->pid = 'new-4';
     $pane->panel = 'row_1_1';
     $pane->type = 'block';
     $pane->subtype = 'block-249';
@@ -536,130 +584,63 @@ return false; });
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
       'css_class' => '',
     );
     $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-3'] = $pane;
-    $display->panels['row_1_1'][2] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'row_2_1';
-    $pane->type = 'block';
-    $pane->subtype = 'views-projects_landing_recent';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'views',
-      'delta' => 'projects_landing_recent',
-      'block_visibility' => 0,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'style' => 'default',
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 3;
     $display->content['new-4'] = $pane;
-    $display->panels['row_2_1'][0] = 'new-4';
+    $display->panels['row_1_1'][3] = 'new-4';
     $pane = new stdClass;
     $pane->pid = 'new-5';
-    $pane->panel = 'row_3_1';
-    $pane->type = 'block';
-    $pane->subtype = 'views-projects_landing_video';
+    $pane->panel = 'row_2_1';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'projects_search-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'views',
-      'delta' => 'projects_landing_video',
-      'block_visibility' => 0,
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
-      'style' => 'default',
+      'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-5'] = $pane;
-    $display->panels['row_3_1'][0] = 'new-5';
+    $display->panels['row_2_1'][0] = 'new-5';
     $pane = new stdClass;
     $pane->pid = 'new-6';
     $pane->panel = 'row_3_1';
-    $pane->type = 'custom_php';
-    $pane->subtype = 'custom_php';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'projects_boxes-panel_pane_3';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'context' => 'empty',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'title' => '',
-      'body' => '$i = 1;
-$baseUrl=\'projects-search/\';
-$newUrl = $baseUrl;
-while ($arg = arg($i)) {
-   print \'one arg<br/>\';
-   if (isset($arg)) {
-      $newUrl .= $arg . \'/\';
-   } else {
-      break;
-   }
-   $i++;
-}
-
-if ($newUrl != $baseUrl) {
-   drupal_goto($newUrl);
-}',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
-      'style' => 'default',
+      'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $display->content['new-6'] = $pane;
-    $display->panels['row_3_1'][1] = 'new-6';
+    $display->panels['row_3_1'][0] = 'new-6';
     $pane = new stdClass;
     $pane->pid = 'new-7';
     $pane->panel = 'row_3_2';
-    $pane->type = 'block';
-    $pane->subtype = 'views-projects_landing_clubs';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'projects_boxes-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'views',
-      'delta' => 'projects_landing_clubs',
-      'block_visibility' => 0,
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
-      'style' => 'default',
+      'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $display->content['new-7'] = $pane;
@@ -738,6 +719,7 @@ return false; });
     $pane->cache = array();
     $pane->style = array(
       'style' => 'default',
+      'settings' => NULL,
     );
     $pane->css = array(
       'css_id' => '',
@@ -1147,54 +1129,6 @@ function MM_swapImage() { //v3.0
     $pane->position = 3;
     $display->content['new-4'] = $pane;
     $display->panels['middle'][3] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
-    $pane->panel = 'middle';
-    $pane->type = 'block';
-    $pane->subtype = 'block-15';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'module' => 'block',
-      'delta' => '15',
-      'block_visibility' => 0,
-      'block_settings' => array(
-        'info' => 'Projects Page RSS Subscriber',
-        'body' => '<div class="block pink colwide plain">
-                <h2><a href="">Subscribe</a></h2>
-
-                <div class="content">
-                    <p>Be in the know when someone\'s doing something about your thing! Choose your cause to subscribe to the RSS feed:</p>
-
-                    <form action="" method="get" class="subscribe niceform">
-                        <label>
-                            <select name="what" id="cause" class="width_445_height_200">
-                              <option>Choose your cause</option>
-                            </select>
-                            <span>Animal Welfare, Discrimination, Education, Environment, Poverty, etc.</span>
-                        </label>
-
-                        <p align="right"><input type="image" src="images/form_submit_subscribe.png" onmouseover="javascript:this.src=\'images/form_submit_subscribe_ovr.png\';" onmouseout="javascript:this.src=\'images/form_submit_subscribe.png\';"  name="submit" value="subscribe" alt="subscribe" class="submit" /></p>
-                    </form>
-                </div>
-            </div>',
-        'format' => '2',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
-    $pane->extras = array();
-    $pane->position = 4;
-    $display->content['new-5'] = $pane;
-    $display->panels['middle'][4] = 'new-5';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

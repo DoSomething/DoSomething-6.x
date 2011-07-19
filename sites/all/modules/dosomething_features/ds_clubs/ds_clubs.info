@@ -1,5 +1,7 @@
 core = "6.x"
+dependencies[] = "content"
 dependencies[] = "features"
+dependencies[] = "location"
 dependencies[] = "og_views"
 dependencies[] = "page_manager"
 dependencies[] = "views_content"

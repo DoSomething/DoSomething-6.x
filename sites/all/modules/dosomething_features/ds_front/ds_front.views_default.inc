@@ -94,6 +94,25 @@ function ds_front_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('filters', array(
+    'status' => array(
+      'operator' => '=',
+      'value' => '1',
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'status',
+      'table' => 'node',
+      'field' => 'status',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('access', array(
     'type' => 'none',
   ));
@@ -103,6 +122,7 @@ function ds_front_views_default_views() {
   $handler->override_option('header', '<img src="http://www.dosomething.org/nd/front/tell_us_something.png">');
   $handler->override_option('header_format', '2');
   $handler->override_option('header_empty', 0);
+  $handler->override_option('items_per_page', 1);
   $handler->override_option('row_plugin', 'node');
   $handler->override_option('row_options', array(
     'relationship' => 'none',

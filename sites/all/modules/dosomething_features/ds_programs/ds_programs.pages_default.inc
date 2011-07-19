@@ -58,7 +58,7 @@ function ds_programs_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Our Programs';
+  $display->title = 'OUR PROGRAMS';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass;
@@ -219,6 +219,12 @@ function ds_programs_default_page_manager_pages() {
 </div>
 </div>
 
+<div class="block blue" style="clear:both; width: 100%; margin-top: -5px;"> 
+<a href="/scholarships"><h2>Scholarships</h2></a>	
+<div style="clear:both;"></div>
+<a href="/scholarships"><img src="http://www.dosomething.org/files/change_3.jpg" class="goleft"/ style="margin-top:-15px;"></a>
+<p style="margin-bottom:2em;padding-left:135px;">Looking for money to pay for school? <a href= "/scholarships">Apply </a>for a Do Something Scholarship! <br> <br>Most scholarship programs focus on the best students, or the all-star athletes, <a href="/scholarships">Do Something Scholarships</a></b> recognize and reward the teens who are social action leaders in their community.<br><br></p>
+</div>
 
 <div class="block blue" style="clear:both; width: 100%; margin-top: -5px;"> 
 <h2>Do Something U</h2>
@@ -230,34 +236,19 @@ function ds_programs_default_page_manager_pages() {
 
 <div class="block blue" style="clear:both; width: 100%; margin-top: -5px;"> 
 <h2>Campaigns</h2>
-<div style="clear:both;"></div>
-<a href="http://www.epicbookdrive.com"><img src="http://www.dosomething.org/nd/ebd/epic-logo.png" class="goleft" />
-<p style="margin-bottom:2em;padding-left:135px;"><a href="http://www.epicbookdrive.com">Epic Book Drive</a></b>. In low-income neighborhoods of New Orleans there\'s 1 book for every 300 kids. DoSomething.org and Better World Books have teamed to help you change that, and it\'s gonna be Epic. Join the Epic Book Drive to re-stock the libraries of the Recovery School District in New Orleans. Register your drive at EpicBookDrive.com and shipping\'s on us. Visit <a href="http://www.epicbookdrive.com">www.epicbookdrive.com</a> or Text EPIC to 30644 to learn more and get started.</p>
-
 
 <div style="clear:both;"></div>
-<a href="http://www.dosomething.org/greenyourschool"><img src="http://www.dosomething.org/files/gysc-logo_07_final_146x67.png" class="goleft" width="115px"/>
-<p style="margin-bottom:2em;padding-left:135px;"><a href="http://www.dosomething.org/greenyourschool">Green Your School Challenge</a></b>. HP and DoSomething.org believe you have what it takes to Green Your School. Prove us right! Join the Green Your School Challenge. Text GREEN to 30644 to get started. Schools with the most people involved, best innovation and use of technology, and biggest impact on their school will win great prizes including up to $5000 in grant funding and up to 5 HP Pavilion DM1 laptops! To learn more, sign up & post projects visit <a href="http://www.dosomething.org/greenyourschool">www.DoSomething.org/ GreenYourSchool</a>.</p>
+<a href="http://www.dosomething.org/scavenger-hunt"><img src="http://www.dosomething.org/sites/all/micro/hunt/logo.png" class="goleft" style="width:110px" />
+<p style="margin-bottom:2em;padding-left:135px;"><a href="http://www.dosomething.org/scavenger-hunt">Scavenger Hunt</a></b>. We\'ve teamed up with Lenovo on a cause-y Scavenger Hunt: 11 days of challenges that can make the world a better place and get you some seriously cool prizes. Join now at <a href="http://www.dosomething.org/scavenger-hunt">DoSomething.org/Hunt</a> or by texting <strong>HUNT</strong> to 30644.</p>
 
 <div style="clear:both;"></div>
+<a href="http://www.staplesforstudents.org"><img src="http://www.dosomething.org/files/imagefield_thumbs/s4s-logo_01_130x82px_1.png?1306358453" class="goleft" />
+<p style="margin-bottom:2em;padding-left:135px;"><a href="http://www.staplesforstudents.org">Staples for Students</a></b>. 13 million kids return to school every year without proper school supplies. This summer, Staples and Do Something are teaming up for our fourth annual Staples for Students campaign to collect school supplies for deserving kids in your local community. Visit <a href="http://www.staplesforstudents.org">www.staplesforstudents.org</a> or Text SUPPLIES to 30644 to learn more and get started.</p>
 
-<a href="http://www.dosomething.org/battle"><img src="http://www.dosomething.org/files/bftb-logo_01_146x160_0.png" class="goleft" width="115px"/></a>
-
-<p style="margin-bottom:2em;padding-left:135px;"><a href="http://www.dosomething.org/battle">Battle for the Bands</a>. Do Something to Save the Music. We\'ve teamed up with the VH1 Save The Music Foundation so you can advocate for music education. Join the Battle for the Bands campaign. You can get involved by: </p>
-
-<p style="margin-bottom:2em;padding-left:135px;">
-<span class="blue">1. Creating a music video of your group performing with a message about music education</span><br>
-<span class="blue">2. Running a music education advocacy project in your community
-</span></p>
-<p style="margin-bottom:2em;padding-left:135px;">The top videos and projects will win great prizes like up to $5000 for your school music program, concert tickets, and more. Visit <a href="http://www.dosomething.org/battle">www.DoSomething.org/battle</a> to get started.</p>
 
 <div style="clear:both;"></div>
-
-<div style="clear:both;"></div>
-
 <a href="http://www.dosomething.org/emission">
 <img src="http://www.dosomething.org/files/emission.png" class="goleft" /></a>
-
 <p style="margin-bottom:2em;padding-left:135px;"><a href="http://www.dosomething.org/emission">Play eMission today!</a></b>  eMission is our brand-new Facebook game that we launched with support from the EPA\'s ENERGY STAR program.   You can advance in the game by taking offline action around energy efficiency. Our goal is to get 100,000 people playing and saving our planet, so spread the word today.  For more information, check out <a href="http://www.DoSomething.org/Games/eMission">DoSomething.org/ Games/eMission</a>.</p>
 
 
@@ -265,7 +256,9 @@ function ds_programs_default_page_manager_pages() {
 <p>For more information on past and upcoming campaigns, including the ones below, check out our <a href="/campaigns">campaigns page</a>!
 <ul class="logolist">
 <li><a href="/teensforjeans">Teens For Jeans</a></li>
-<li><a href="/dosomething101">Do Something 101</a></li>
+<li><a href="/greenyourschool">The Green Your School Challenge</a></li>
+<li><a href="/battle">Battle for the Bands</a></li>
+<li><a href="/epic">Epic Book Drive</a></li>
 <li><a href="/dating-abuse/home">Teen Dating Abuse</a></li>
 <li><a href="challenge">The Do Something Now! Challenge</a></li>
 <li><a href="troops">Support Our Troops</a></li>

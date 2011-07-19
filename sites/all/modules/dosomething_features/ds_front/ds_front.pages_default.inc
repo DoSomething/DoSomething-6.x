@@ -60,19 +60,25 @@ function ds_front_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => '',
       'title' => '',
-      'body' => '<div class="block col" style="clear:left;">
-	                <h2 class="img"><a href="/whatsyourthing"><img src="/sites/all/themes/zen/dosomething/images/header_whatsyourthing.png" width="182" height="33" alt="What\'s Your Thing?"></a></h2>
+      'body' => '<style type="text/css">
+.sponsor-logos .logo {
+  background-image: url(\'/sites/all/micro/front/sponsors-all-one-file.jpg\');
+}
+</style>
+
+<div class="block col" style="clear:left;">
+	                <h2 class="img"><a href="/whatsyourthing"><img src="/sites/all/themes/dosomething/images/header_whatsyourthing.png" width="182" height="33" alt="What\'s Your Thing?"></a></h2>
 
 
 
 
 <div class="story">
 
-<h3>Green Your School Challenge</h3>
+<h3><a href="/scavenger-hunt">Scavenger Hunt</a></h3>
 
-<a href="/greenyourschool"><img src="files/gysc-logo_07_final_146x67.png" alt="Green Your School" style="float: left; padding: 0 10px 10px 0;"></a>
-
-<p>Join the <a href="/greenyourschool">Green Your School Challenge</a>. Launch eco-projects at school and win grants, scholarships and HP computers. <a href="/greenyourschool">Get started now</a>!</p>
+<a href="/scavenger-hunt"><img src="http://www.dosomething.org/sites/all/micro/hunt/logo.jpg" alt="Scavenger Hunt" style="float: left; padding: 0 10px 10px 0;"/></a>
+<br>
+<p>We\'ve teamed up with Lenovo on a cause-y Scavenger Hunt: 11 days of challenges that can make the world a better place and get you some seriously cool prizes.  Join now at <a href="/scavenger-hunt">DoSomething.org/Hunt</a></p>
 
 </div>
 <div class="hr"><hr></div>
@@ -90,16 +96,42 @@ function ds_front_default_page_manager_pages() {
 	                <div class="hr"><hr></div>
 
 
+<?php 
+
+//drupal_add_js(\'nd/front/events_calendar.js\', \'theme\', \'footer\', FALSE, FALSE);
+
+?>
+
 <div id="events-calendar-holder" style="">
  <img src="/nd/front/events.png" alt="events">
- <div id="events-calendar"><ul><li><a href="http://twitter.com/home?status=02%2F03+-+Chinese+New+Year+"><img src="/nd/logos/twitter.jpg" title="Tweet This" alt="Tweet This"></a><span class="date">02/03 -</span> Chinese New Year <a href=""></a></li><li><a href="http://twitter.com/home?status=02%2F05+-+San+Francisco+Boot+Camp+http%3A%2F%2Fbit.ly%2FcmK56k"><img src="/nd/logos/twitter.jpg" title="Tweet This" alt="Tweet This"></a><span class="date">02/05 -</span> San Francisco Boot Camp <a href="http://bit.ly/cmK56k">http://bit.ly/cmK56k</a></li><li><a href="http://twitter.com/home?status=02%2F06+-+Super+Bowl+%28have+game+face+ready%29+"><img src="/nd/logos/twitter.jpg" title="Tweet This" alt="Tweet This"></a><span class="date">02/06 -</span> Super Bowl (have game face ready) <a href=""></a></li><li><a href="http://twitter.com/home?status=02%2F09+-+Summer+intern+apps+available+http%3A%2F%2Fbit.ly%2FfFjQdK"><img src="/nd/logos/twitter.jpg" title="Tweet This" alt="Tweet This"></a><span class="date">02/09 -</span> Summer intern apps available <a href="http://bit.ly/fFjQdK">http://bit.ly/fFjQdK</a></li><li><a href="http://twitter.com/home?status=02%2F11+-+Taylor+Lautner%27s+Birthday+"><img src="/nd/logos/twitter.jpg" title="Tweet This" alt="Tweet This"></a><span class="date">02/11 -</span> Taylor Lautner\'s Birthday <a href=""></a></li></ul><a class="more" href="/calendar">More events</a></div>
+ <div id="events-calendar"><?=file_get_contents(\'files/cached-pages/calendar-list.html\');?><a class="more" href="/calendar">More events</a></div>
+
 
 <div class="hr"><hr></div>
 
+
+
+
+
 </div>
-      
+<div class="sponsor-wrapper">
+<h3>sponsors who rock</h3>
+<div class="sponsor-logos">
+<div class="logo s1"></div>
+<div class="logo s2"></div>
+<div class="logo s3"></div>
+<div class="logo s4"></div>
+<div class="logo s5"></div>
+<div class="logo s6"></div>
+<div class="logo s7"></div>
+<div class="logo s8"></div>
+<div class="logo s9"></div>
+<div class="logo s10"></div>
+<div class="logo s11"></div>
+</div></div>
+
 	            </div>',
-      'format' => '4',
+      'format' => '2',
       'substitute' => TRUE,
     );
     $pane->cache = array();
@@ -126,24 +158,21 @@ function ds_front_default_page_manager_pages() {
 <div class="block col pink frontRR" style="width: 200px;"> <!-- cause videos -->
 <a href="/video"><h2 class="img" style="height: 36px; left: -45px; top: -32px;"><img alt="Online Videos" src="/files/Images/cause-videos_fp.gif"/ ></h2></a>
 	<div class="node story">
-    	<h3><a href="http://www.dosomething.org/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else">How to Pitch Your Project</a></h3>
-	<p><b><a href="http://www.dosomething.org/u">Do Something U</a></b> experts provide these helpful tips for pitching your project or organization to people that you meet.</p>
+    	<h3><a href="http://www.dosomething.org/scavenger-hunt">Community Cast Members Want You...</a></h3>
+	<p>...to sign up for our Scavenger Hunt, that is. Watch TV stars Alison Brie and Danny Pudi from <i>Community</i> goof off in our newest PSA and get the how/when/why scoop!</a></b>.</p>
 <div >  
-<a  href="http://www.dosomething.org/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else" target="_blank">
-<img src="http://www.dosomething.org/files/speedpitch4dsorg.JPG" width="110px" />
+<a  href="http://www.dosomething.org/scavenger-hunt" target="_blank">
+<img src="http://www.dosomething.org/files/communitystill061611.jpg" width="110px" />
 </a> <br>
- <a  href="http://www.dosomething.org/u/video/video-how-to-pitch-your-project-elevator-or-anywhere-else" target="_blank" style="padding-left: 60px;">Watch the video</em></a>   
+ <a  href="http://www.dosomething.org/scavenger-hunt" target="_blank" style="padding-left: 60px;">Watch the video</em></a>   
+
 </div> 
 
 </div>
 <br>
-<h3>More on Do Something U</h3>
+<h3>Start Hunting</h3>
 <ul class="logolist">
-<li>How to start a <a href="http://www.dosomething.org/u/video/video-how-to-start-community-action-project">community action project</a>.</li>
-<li>11 things to know about <a href="http://www.dosomething.org/u/information/11-things-to-know-about-event-fundraising">event fundraising</a>.</li>
-<li>How to get <a href="http://www.dosomething.org/u/video/video-how-to-get-corporate-sponsors-to-love-you">corporate sponsors</a>.</li>
-<li>Tips for using <a href="http://www.dosomething.org/u/tips/tip-using-google-maps">Google Maps</a>.</li>
-<li>How to seek <a href="http://www.dosomething.org/u/tips/tips-getting-kind-donations">in-kind</a> donations.</li>
+<li>Text HUNT to 30644 to get started</li>
 </ul>
 
 <a href="/video" class="more">Online cause videos</a>
@@ -168,7 +197,7 @@ function ds_front_default_page_manager_pages() {
 
 
 <div class="block col pink" style="width: 200px; position: relative;"> <!-- share something -->
- <h2><img src="/sites/all/themes/zen/dosomething/images/header_sharesomething.png" alt="Share"></h2>
+ <h2><img src="/sites/all/themes/dosomething/images/header_sharesomething.png" alt="Share"></h2>
  <h3>Post A Video</h3>
  <p><a href="/node/add/rant-rave">Upload or embed a video about your cause.</a></p>
  <h3>Submit a Guide for Action</h3>
@@ -194,58 +223,6 @@ function ds_front_default_page_manager_pages() {
     $display->panels['right'][0] = 'new-2';
     $pane = new stdClass;
     $pane->pid = 'new-3';
-    $pane->panel = 'right';
-    $pane->type = 'views';
-    $pane->subtype = 'newsbox_recent';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_pager_settings' => 0,
-      'use_pager' => 0,
-      'nodes_per_page' => '5',
-      'pager_id' => '',
-      'offset' => '0',
-      'more_link' => 0,
-      'feed_icons' => 0,
-      'panel_args' => 0,
-      'link_to_view' => 0,
-      'args' => '',
-      'url' => '',
-      'display' => 'block_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $display->content['new-3'] = $pane;
-    $display->panels['right'][1] = 'new-3';
-    $pane = new stdClass;
-    $pane->pid = 'new-4';
-    $pane->panel = 'right';
-    $pane->type = 'block';
-    $pane->subtype = 'block-8';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 2;
-    $display->content['new-4'] = $pane;
-    $display->panels['right'][2] = 'new-4';
-    $pane = new stdClass;
-    $pane->pid = 'new-5';
     $pane->panel = 'top';
     $pane->type = 'views_panes';
     $pane->subtype = 'front_scroller-panel_pane_1';
@@ -262,8 +239,35 @@ function ds_front_default_page_manager_pages() {
     );
     $pane->extras = array();
     $pane->position = 0;
-    $display->content['new-5'] = $pane;
-    $display->panels['top'][0] = 'new-5';
+    $display->content['new-3'] = $pane;
+    $display->panels['top'][0] = 'new-3';
+    $pane = new stdClass;
+    $pane->pid = 'new-4';
+    $pane->panel = 'top';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = FALSE;
+    $pane->access = array(
+      'plugins' => array(),
+    );
+    $pane->configuration = array(
+      'admin_title' => 'Ustream dosomething channel embed',
+      'title' => '',
+      'body' => '<p>DoSomething Awards Kickoff is LIVE!  Check out the Ustream broadcast below and find out who the 5 finalists will be. </p>
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="480" height="296" id="utv195190"><param name="flashvars" value="autoplay=true&amp;brand=embed&amp;cid=5816367&amp;v3=1"/><param name="allowfullscreen" value="true"/><param name="allowscriptaccess" value="always"/><param name="movie" value="http://www.ustream.tv/flash/viewer.swf"/><embed flashvars="autoplay=true&amp;brand=embed&amp;cid=5816367&amp;v3=1" width="480" height="296" allowfullscreen="true" allowscriptaccess="always" id="utv195190" name="utv_n_581614" src="http://www.ustream.tv/flash/viewer.swf" type="application/x-shockwave-flash" /></object><br /><a href="http://www.ustream.tv/" style="padding: 2px 0px 4px; width: 400px; background: #ffffff; display: block; color: #000000; font-weight: normal; font-size: 10px; text-decoration: underline; text-align: center;" target="_blank">Live Video streaming by Ustream</a>
+<iframe width="468" scrolling="no" height="586" frameborder="0" style="border: 0px none transparent;" src="http://www.ustream.tv/socialstream/5816367"></iframe>',
+      'format' => '2',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $display->content['new-4'] = $pane;
+    $display->panels['top'][1] = 'new-4';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

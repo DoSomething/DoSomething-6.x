@@ -1,6 +1,17 @@
 <div class="node project grant-alumni">
-
-  <img src="/files/layout/GrantAlum.jpg" > <br />
+<? $photos = array(
+      'grant' => 'GrantAlum.jpg',
+      'scholarship' => 'scholarship-alumni.jpg'
+    );
+    $photo_file = $photos['grant'];
+    $type = 'grant';
+    if ($field_money_for[0]['value']) {
+      $type = $field_money_for[0]['value'];
+      $photo_file = $photos[$type];
+    }
+?>
+  
+  <img src="/files/layout/<?=$photo_file;?>" > <br />
 
   <?php
     if(sizeof($node->field_picture)) {
@@ -76,6 +87,6 @@
   <?= $cause_links; ?>
 
   <br />
-  <p><a href="/grants/alumni">&laquo; Back to Grant Alumni</a></p>
+    <p><a href="/<?=$type;?>s/alumni">&laquo; Back to <?=ucfirst($type);?> Alumni</a></p>
 
 </div>

@@ -10,7 +10,7 @@ if (!$page) {//Teaser?>
       <div class="photo-and-essay">
       <?
          print '<a href="/'.$url.'">';
-         if (sizeof($photos) > 0) {
+         if (sizeof($photos) > 0 && $photos[0]['filepath']) {
            print theme('imagecache','project_thumbnail',$photos[0]['filepath'],'','');
          } elseif ($node->field_scholarship_att_video[0]['embed']) {
            print $node->field_scholarship_att_video[0]['view'];

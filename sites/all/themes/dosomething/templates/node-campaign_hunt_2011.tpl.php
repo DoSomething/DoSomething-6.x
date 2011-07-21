@@ -75,6 +75,7 @@ $(document).ready(function() {
         if ($field_campaign_video && $field_campaign_video[0]['embed']) { ?>
           <div class="box">
           <h2 id="video">videos:</h2>
+          <b>Youtube user:</b> <?=$field_youtube_username[0]['value'];?><br><br>
         <?
           foreach ($field_campaign_video as $video) {
             if ($video['view']) {

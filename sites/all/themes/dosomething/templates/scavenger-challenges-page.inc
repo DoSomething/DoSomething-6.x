@@ -33,16 +33,26 @@ if (user_access('administer nodes') && $day > $actual_day) {
 <?=$challenges[$day]['challenge'];?>
 </ul>
 <div class="submissions">
-<h3 class="header"><a class="underline" href="/scavenger-hunt/gallery/day/<?=urlencode($full_challenge_name);?>">Recent Submissions</a></h3>
 
 <?
+$gallery = 'gallery';
+if ($day == 11) {
+  $gallery = 'gallery-video';
+} ?>
 
+<h3 class="header"><a class="underline" href="/scavenger-hunt/<?=$gallery;?>/day/<?=urlencode($full_challenge_name);?>">Recent Submissions</a></h3>
+
+<?
+  $view_pane = 'block_2';
+  if ($day == 11) {
+    $view_pane = 'block_3';
+  }
   $view = views_get_view('scavenger_hunt_team_reportbacks');
-  $filter = $view->get_item('block_2','filter','field_campaign_project_type_value');
+  $filter = $view->get_item($view_pane,'filter','field_campaign_project_type_value');
   $filter['value'] = 'Day '.$day;
-  $view->set_item('block_2', 'filter', 'field_campaign_project_type_value', $filter);
+  $view->set_item($view_pane, 'filter', 'field_campaign_project_type_value', $filter);
   print '<div class="clearfix">';
-  print $view->preview('block_2');
+  print $view->preview($view_pane);
   print '</div>';
 ?>
 </div>

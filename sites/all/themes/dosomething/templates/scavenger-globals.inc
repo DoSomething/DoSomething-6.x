@@ -118,12 +118,23 @@ EOD
                'tid' => 25,
                'link' => 'whatsyourthing/Environment',
               'challenge' => <<<EOD
-
+<li>Challenge #1: Slay vampire energy. Unplug appliances that aren't being used.<span class="lenovo-red"> [+5 points]</span></li>
+<li>Challenge #2: Turn the AC settings to no lower than 78 degrees Farenheit to maximize energy efficiency.<span class="lenovo-red"> [+10 points]</span></li>
+<li>Challenge #3: Hold a mini Earth Hour in your community. Switch all lights off and use candles for 1 hr after sunset tonight.<span class="lenovo-red"> [+10 points]</span></li>
+<li class="bonus"><strong>BONUS:</strong> Send a picture to <a href="mailto:earthhour@dosomething.org">earthhour@dosomething.org</a> for a chance to win a Lenovo laptop.</li>
 EOD
             ),
   11 => array( 'name' => 'Wildcard',
               'challenge' => <<<EOD
-
+<li>Show us how much you love taking action.  Make a video (max. 2 min) about WHY YOU DO SOMETHING.  Upload your video to youtube, and include the link to your video along with your youtube username (for voting) when reporting back.</li>
+<li><b>SCORING: </b>Views (1pt each), creativity (up to 100pts), people involved (5pts each), and votes (5pts each). In your video, ask viewers to text VOTING to 30644 to learn how to vote for you !</li>
+<li><b>TIPS:</b>
+<ul>
+<li>Be Creative, be funny, and mention Do Something in your video.</li>
+<li>Include your friends!</li>
+<li>Have your friends vote for you.  Say "text VOTING to 30644" and the end of your video to make it easy for your friends to vote.  They'll need your youtube username to vote for you.</li>
+</ul>
+</li>
 EOD
             ),
 

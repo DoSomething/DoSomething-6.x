@@ -163,7 +163,7 @@ ul.map-marker {
   margin-top: 0;
 }
 
-ul.map-marker li.bonus {
+body.section-scavenger-hunt #hunt ul.map-marker li.bonus {
   background-image: none;
 }
 
@@ -171,7 +171,7 @@ body.page-scavenger-hunt ul.map-marker {
   margin-left: -20px;
 }
 
-body.section-scavenger-hunt #hunt ul.map-marker li {
+body.section-scavenger-hunt #hunt ul.map-marker > li {
   background-image: url(list-icon-marker.png);
   background-repeat: no-repeat;
   background-position: 1em 0;

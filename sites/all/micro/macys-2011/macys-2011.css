@@ -226,10 +226,10 @@ p.centered-small {
 	padding: 0px;
 	width: 355px;
 }
-#quiz-questions fieldset#q4f, #quiz-questions fieldset#q5f, #quiz-questions fieldset#q8f {
+/*#quiz-questions fieldset#q4f, #quiz-questions fieldset#q5f, #quiz-questions fieldset#q8f {
 	margin-left: -10px;
 	}
-#quiz-questions fieldset#q7f {margin-left: -5px;}
+#quiz-questions fieldset#q7f {margin-left: -5px;}*/
 #quiz-questions input {
 	display: inline;
 	margin: 0 auto;

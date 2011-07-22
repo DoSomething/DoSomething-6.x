@@ -614,8 +614,10 @@ var addthis_share = {
 <a class=\"addthis_button_myspace\"></a>
 <a class=\"addthis_button_digg\"></a>
 <a class=\"addthis_button_email\"></a>
-<a class=\"addthis_button_print\"></a>
-</div>
+<a class=\"addthis_button_print\"></a>".
+    theme_google_plusone_button(array('css' => 'display:inline;float:left;',
+                                      'url' => 'http://www.dosomething.org'.drupal_get_path_alias(request_uri()) )).
+"</div>
 
 <script type=\"text/javascript\" src=\"http://s7.addthis.com/js/250/addthis_widget.js\"></script>
 <!-- ADDTHIS BUTTON END -->";

@@ -2,8 +2,8 @@ $(document).ready( function() {
 	var current_position = 0;
 	var quiz_values = new Object;
 	var quiz_num_questions = 5;
-	var slide_width = 355;
-	$.getJSON("http://spreadsheets.google.com/feeds/list/tUrkK102yxQPlqQZgSTK9YQ/1/public/values?alt=json-in-script&callback=?", function(data) {
+	var slide_width = 350;
+	$.getJSON("http://spreadsheets.google.com/feeds/list/toIcrIWqljUzH2RRUPACV7A/1/public/values?alt=json-in-script&callback=?", function(data) {
     quiz_num_questions = data.feed.entry[0].gsx$numquestions.$t;
 		$.each(data.feed.entry, function (i, item) {
 			if (!item.gsx$questions.$t) { return false; }
@@ -97,8 +97,7 @@ $(document).ready( function() {
     }
 
 		var result_string = 'aN' + maxIntCode + 'N' + maxCauseCode + 'b22';
-
-		window.open('http://www.dosomething.org/projects/results?result=' + result_string, 'surge');
+		window.open('http://www.dosomething.org/dev/nh/macys-fb-quizresults?result=' + result_string, 'surge');		
 		return false;
 	});
 

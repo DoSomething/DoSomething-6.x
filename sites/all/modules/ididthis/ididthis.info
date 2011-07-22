@@ -1,0 +1,5 @@
+; $Id$
+name = ididthis
+description = Make it easy to add ididthis form to nodes
+core=6.x
+package=DoSomething

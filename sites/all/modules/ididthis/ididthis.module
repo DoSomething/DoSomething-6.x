@@ -1,0 +1,82 @@
+<?php
+
+function ididthis_form($form_state, $nid, $node_type = 'ididthis', $button_text = NULL, $did_html = NULL) {
+  global $user;
+  $form = array();
+  if (ididthis_already($nid, $node_type) || (is_array($_SESSION['didthis']) && in_array($nid, $_SESSION['didthis']))) {
+    $form['didit'] = array(
+      '#type' => 'markup',
+      '#value' => ($did_html === NULL) ? '<p class="didthis">Sweet. I am going to do this</p>' : $did_html,
+    );
+  }
+  else {
+    $form['nid'] = array(
+      '#type' => 'value',
+      '#value' => $nid,
+    );
+    $form['type'] = array(
+      '#type' => 'value',
+      '#value' => $node_type,
+    );
+    if ($user->uid == 0) {
+      drupal_add_js(drupal_get_path('module', 'ididthis') . '/ididthis.js');
+      $form['email'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Email'),
+        '#size' => 15,
+        '#maxlength' => 128,
+        '#description' => t("If you aren't logged into dosomething.org, you have to enter your email address before clicking this."),
+      );
+    }
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => ($button_text === NULL) ? t('Absolutely') : $button_text,
+      '#attributes' => array('onclick' => "javascript: return ididthis_checkEmail();"),
+    ); 
+    //$form['#attributes']['onsubmit'] = "javascript: pageTracker._trackPageview('/goal/ididthis/$nid');";
+  }
+  return $form;
+}
+
+function ididthis_form_validate($form, &$form_state) {
+  if (!ctype_digit($form_state['values']['nid'])) {
+    form_set_error('nid', t('NID must be an integer. Contact administrator with this error.'));
+  }
+  if (isset($form_state['values']['email']) && !valid_email_address($form_state['values']['email'])) {
+    form_set_error('email', t('The email address you entered was invalid.'));
+  }
+}
+
+function ididthis_form_submit($form_id, &$form_state) {
+  global $user;
+  $did = db_result(db_query('SELECT title FROM {node} WHERE nid=%d', $form_state['values']['nid']));
+  $new_node = new StdClass();
+  $new_node->type = $form_state['values']['type'];
+  if (!isset($form_state['values']['email']) && $user->uid != 0)
+    $email = $user->mail;
+  else
+    $email = $form_state['values']['email'];
+  $new_node->title = $did;
+  $new_node->uid = $user->uid;
+  $new_node->field_did_nid[0]['value'] = $form_state['values']['nid'];
+  $new_node->field_email_1[0]['value'] = $email;
+  if ($user->uid != 0) {
+    $new_node->name = $user->name;
+  }
+  else {
+    if (!is_array($_SESSION['didthis'])) {
+      $_SESSION['didthis'] = array();
+    }
+    $_SESSION['didthis'][] = $form_state['values']['nid'];
+  }
+  node_save($new_node);
+  //drupal_execute($form_state['values']['type'] . '_node_form', $values, $new_node);
+  unset($_SESSION['messages']);
+}
+
+function ididthis_already($nid, $type) {
+  global $user;
+  if ($user->uid == 0) return FALSE;
+  $table = 'content_type_' . $type;
+  return db_result(db_query('SELECT n.nid FROM {node} n INNER JOIN {' .$table .'} t ON n.nid=t.nid WHERE t.field_did_nid_value=%d AND n.uid=%d', $nid, $user->uid));
+}

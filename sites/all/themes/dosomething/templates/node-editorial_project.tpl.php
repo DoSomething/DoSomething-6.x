@@ -77,7 +77,7 @@
 
                 <ul>
                     <li class="first"><a href="/projects">All Projects</a></li>
-                    <li class="last"><a href="/projects">Have your work featured here</a></li>
+                    <li class="last"><a href="/node/add/project">Have your work featured here</a></li>
                 </ul>
   
   </div>

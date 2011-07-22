@@ -1,0 +1,288 @@
+h4.title {
+	display: none;
+}
+.tabs {
+	position: relative;
+	top: -100px;
+}
+.unpublished {
+	color: transparent;
+	display: none;
+}
+.tabs {
+	margin-top: -2000px;
+	position: absolute;
+}
+#main-wrapper {
+	color: #000 !important;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 100%;
+}
+#node-666494 h2.title {
+	background: url("http://www.DoSomething.org/sites/all/micro/macys-2011/title.png") no-repeat;
+	color: #000;
+	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 0em;
+	height: 140px;
+	text-align: center;
+	width: 760px;
+}
+#node-67109 h2.title {display:none;}
+h3 {
+	color: #F03;
+	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 3.75em;
+}
+h3 img {
+	margin-left: -20px;
+}
+a.socialmedia {
+	left: 200px;
+	position: relative;
+	top: -80px;
+}
+.node-type-page h3 {
+	margin: 0;
+}
+h4 {
+	color: #F03;
+	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 300%;
+	line-height: 50%;
+}
+#macys-membershipBody ul {
+	list-style-type: none;
+}
+#macys-membershipBody li {
+	background: url("star.png") no-repeat;
+	background-position: 0 .2em;
+	font-weight: bold;
+	padding-left: 1.25em;
+}
+p {
+	font-size: 125%;
+	font-weight: normal;
+}
+p.centered-small {
+	font-size: 100%;
+	text-align: center;
+}
+#container a:link, #container a:visited {
+	color: #F03 !important;
+	text-decoration: none;
+}
+#container a:active, #container a:hover {
+	color: #F03;
+	text-decoration: underline;
+}
+#container {
+	color: #000;
+	height: auto;
+	margin-left: 3em;
+	padding: .5em;
+	width: 800px;
+}
+#macys-membershipBody {
+	background-color: #E0E0E0;
+	border-radius: 20px;
+	box-shadow: inset 0 0 10px #888;
+	color: #000;
+	float: left;
+	height: auto;
+	margin-left: -60px;
+	moz-border-radius: 20px;
+	moz-box-shadow: inset 0 0 10px #888;
+	padding: 0 3%;
+	position: relative;
+	webkit-border-radius: 20px;
+	webkit-box-shadow: inset 0 0 10px #888;
+	width: 785px;
+}
+#macys-membershipIntro {
+	position: relative;
+}
+#macys-membershipIntro p {
+	color: #000;
+	font-size: 150%;
+	line-height: 150%;
+	position: relative;
+	top: -80px;
+	width: 550px;
+}
+#image {
+	border-bottom: #fff 15px solid;
+	border-left: #fff 15px solid;
+	border-radius: 5px;
+	box-shadow: -3px 3px 5px #888;
+	float: right;
+	left: 26px;
+	moz-border-radius: 5px;
+	moz-box-shadow: -3px 3px 5px #888;
+	position: relative;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: -3px 3px 5px #888;
+}
+#macys-membershipPSA {
+	background: url("psa_quiz_bg.png") no-repeat;
+	border-bottom: #fff 15px solid;
+	border-radius: 5px;
+	border-right: #fff 15px solid;
+	border-top: #fff 15px solid;
+	box-shadow: 3px 3px 5px #888;
+	float: left;
+	height: 282px;
+	margin-left: -2em;
+	moz-border-radius: 5px;
+	moz-box-shadow: 3px 3px 5px #888;
+	position: relative;
+	top: -80px;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: 3px 3px 5px #888;
+	width: 430px;
+}
+#macys-membershipPSA object {
+	margin-left: 22px;
+}
+#macys-membershipPSA embed {
+	margin-top: 22px;
+}
+#macys-membershipFAQIntro {
+	float: right;
+	max-width: 320px;
+	position: relative;
+	top: -120px;
+}
+#macys-membershipFAQIntro ul li {
+	line-height: 150%;
+	margin-left: -25px;
+}
+#macys-membershipFAQIntro p, #macys-membershipPrizing p, #macys-membershipBody p {
+	color: #000;
+}
+#macys-membershipPrizing {
+	position: relative;
+	top: -60px;
+	width: 300px;
+}
+#macys-membershipPrizing ul li {
+	line-height: 150%;
+	margin-left: -25px;
+}
+#macys-membershipQuiz {
+	background: url("psa_quiz_bg.png") no-repeat;
+	border-bottom: #fff 15px solid;
+	border-left: #fff 15px solid;
+	border-radius: 5px;
+	border-top: #fff 15px solid;
+	box-shadow: -3px 3px 5px #888;
+	float: right;
+	height: 282px;
+	margin-right: -2em;
+	moz-border-radius: 5px;
+	moz-box-shadow: -3px 3px 5px #888;
+	position: relative;
+	top: -300px;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: -3px 3px 5px #888;
+	width: 430px;
+}
+#quiz-questions .answer-box {
+	display: block;
+	margin: 0.4em 0;
+}
+#quiz-container {
+	float: left;
+	overflow: hidden;
+	width: 350px;
+}
+#quiz-container a {
+	margin: 7px -40px 0 20px;
+	}
+#quiz-window {
+	float: left;
+	width: 25000px;
+}
+#quiz-questions {
+	color: #fff;
+	font-size: 13px;
+	padding: 25px 0 0 20px;
+	line-height: 95%;
+}
+#quiz-questions legend {
+	font-size: 15px;
+	line-height: 100%;
+	whitespace: normal;
+}
+#quiz-questions #q7f legend { font-size: 14px; }
+#quiz-questions .guide {
+	font-size: 10px;
+	padding-bottom: 5px;
+}
+#quiz-questions fieldset {
+	border: none;
+	float: left;
+	max-height: 244px;
+	margin: 0px;
+	padding: 0px;
+	width: 355px;
+}
+#quiz-questions fieldset#q4f, #quiz-questions fieldset#q5f, #quiz-questions fieldset#q8f {
+	margin-left: -10px;
+	}
+#quiz-questions fieldset#q7f {margin-left: -5px;}
+#quiz-questions input {
+	display: inline;
+	margin: 0 auto;
+}
+#quiz-questions label {
+	display: inline;
+	margin: 0 0 0 5px;
+	vertical-align: top;
+}
+#quiz-container .arrow.right {
+	background: url(next_question.png) no-repeat;
+	display: block;
+	float: left;
+	height: 30px;
+	outline: none;
+	text-indent: -9999em;
+	width: 140px;
+}
+#quiz-container .arrow.left {
+	background: url(previous.png) no-repeat;
+	display: block;
+	float: left;
+	height: 30px;
+	padding: 17px 20px;
+	text-indent: -9999em;
+	width: 140px;
+}
+#quiz-container #quiz-end {
+	background: url(results.png) no-repeat;
+	display: block;
+	float: left;
+	height: 30px;
+	outline: none;
+	text-indent: -9999em;
+	width: 140px;
+}
+#macys-membershipButtons {
+	border-radius: 5px;
+	bottom: -300px;
+	box-shadow: 0 0 15px #888;
+	display: inline-block;
+	height: 180px !important;
+	margin-top: 65px;
+	moz-border-radius: 5px;
+	moz-box-shadow: 0 0 15px #888;
+	position: relative !important;
+	text-align: center;
+	top: -300px;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: 0 0 15px #888;
+	width: 800px !important;
+}
+#macys-membershipButtons img {
+	margin: 0.5em 3em;
+	position: inherit;
+}

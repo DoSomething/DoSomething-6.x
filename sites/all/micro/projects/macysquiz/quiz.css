@@ -2,7 +2,7 @@
 #quiz-container { width: 350px; float: left; overflow: hidden; }
 #quiz-window { width: 25000px; float: left; }
 #quiz-questions { font-size: 13px; }
-#quiz-questions legend { font-size: 15px; white-space: normal; width: 350px; }
+#quiz-questions legend { font-size: 15px; }
 #quiz-questions .guide { font-size: 11px; padding-bottom: 8px; }
 #quiz-questions fieldset { float: left; border: none; width: 350px; padding: 0px; margin: 0px;}
 #quiz-questions input { display: inline; }

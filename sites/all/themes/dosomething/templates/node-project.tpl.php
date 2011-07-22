@@ -38,11 +38,7 @@ if ($node->locations[0]) {
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
-  <?php if ($display_submitted) : ?>
-    <div class="meta">
-        <span class="submitted"><?php print $updated; ?></span>
-    </div>
-  <?php endif; ?>
+  <?=theme_fb_tw_g();?>
 
   <div class="content">
     <?=theme('badges',$badges);?>
@@ -112,6 +108,11 @@ if ($node->locations[0]) {
       <?php print check_markup($field_others_involved[0]['value']); ?>
     </div>
     <h2>project updates:</h2>
+	
+	<div class="box">
+      <?php print views_embed_view('project_updates', 'block_2', $nid); ?>
+    </div>
+	
     <div class="box">
       <?php print views_embed_view('project_updates', 'block_1', $nid); ?>
     </div>
@@ -119,6 +120,8 @@ if ($node->locations[0]) {
     <div class="box">
       <?php print views_embed_view('project_updates', 'default', $nid); ?>
     </div>
+
+	
 
      <?php
         if ($field_embedded_video && $field_embedded_video[0]['embed']) { ?>

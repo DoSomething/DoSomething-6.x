@@ -473,10 +473,10 @@ function _mobile_tools_site_detection() {
   }
   // If this doesn't return an answer, we will have to do a comparison of the mobile and desktop url!
   $mobile = variable_get('mobile_tools_mobile_url', mobile_tools_create_mobile_url($base_url));
-  $mobile_url  = parse_url($mobile);
+  $mobile_url  = @parse_url($mobile);
   $mobile_url['host'] = mobile_tools_prepare_url($mobile_url['host']);
   $desktop = variable_get('mobile_tools_desktop_url', $base_url);
-  $desktop_url = parse_url($desktop);
+  $desktop_url = @parse_url($desktop);
   $desktop_url['host'] = mobile_tools_prepare_url($desktop_url['host']);
   
   if (!array_key_exists('path', $desktop_url)) {
@@ -595,8 +595,8 @@ function mobile_tools_get_redirect_url($destination_site) {
  *  the mobile url     
  */
 function mobile_tools_create_mobile_url($url) {
-  $url_parsed = parse_url($url);
-  if (!array_key_exists('path', $url_parsed)) {
+  $url_parsed = @parse_url($url);
+  if (!@array_key_exists('path', $url_parsed)) {
     $url_parsed['path'] = "";
   }
   $url = $url_parsed['host'];

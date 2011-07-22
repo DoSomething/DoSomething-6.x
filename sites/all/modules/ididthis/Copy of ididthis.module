@@ -1,0 +1,58 @@
+<?php
+
+function ididthis_form($nid, $node_type = 'ididthis', $button_text = NULL, $did_html = NULL) {
+  $form = array();
+  if (ididthis_already($nid, $node_type) || $_SESSION['didthis']) {
+    $form['didit'] = array(
+      '#type' => 'markup',
+      '#value' => ($did_html === NULL) ? '<p class="didthis">I already did this!</p>' : $did_html,
+    );
+  }
+  else {
+    $form['nid'] = array(
+      '#type' => 'value',
+      '#value' => $nid,
+    );
+    $form['type'] = array(
+      '#type' => 'value',
+      '#value' => $node_type,
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => ($button_text === NULL) ? t('I did this') : $button_text,
+    );  
+  }
+  return $form;
+}
+
+function ididthis_form_validate($form_id, $form_values) {
+  if (!ctype_digit($form_values['nid'])) {
+    form_set_error('nid', t('NID must be an integer. Contact administrator with this error.'));
+  }
+}
+
+function ididthis_form_submit($form_id, $form_values) {
+  global $user;
+  $did = db_result(db_query('SELECT title FROM {node} WHERE nid=%d', $form_values['nid']));
+  $new_node = array('type' => $form_values['type']);
+  $values = array(
+    'title' => $did,
+    'uid' => $user->uid,
+    'field_did_nid' => array(0 => array('value' => $form_values['nid'])),
+  );
+  if ($user->uid != 0) {
+    $values['name'] = $user->name;
+  }
+  else {
+    $_SESSION['didthis'] = TRUE;
+  }
+  drupal_execute($form_values['type'] . "_node_form", $values, $new_node);
+  unset($_SESSION['messages']);
+}
+
+function ididthis_already($nid, $type) {
+  global $user;
+  if ($user->uid == 0) return FALSE;
+  $table = 'content_type_' . $type;
+  return db_result(db_query('SELECT n.nid FROM {node} n INNER JOIN {' .$table .'} t ON n.nid=t.nid WHERE t.field_did_nid_value=%d AND n.uid=%d', $nid, $user->uid));
+}

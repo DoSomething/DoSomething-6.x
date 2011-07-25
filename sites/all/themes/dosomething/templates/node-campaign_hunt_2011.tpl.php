@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 <div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix">
   <h3><?=$field_campaign_project_type[0]['value'];?></h3>
-  <a href="/scavenger-hunt/leaderboard?team_name=<?=$title;?>&zip=<?=$location['postal_code'];?>"><img src="/sites/all/micro/hunt/logo.jpg" style="height: 75px;"/>&lt;&lt; Back to our team page</a>
+  <a href="/scavenger-hunt/leaderboard?team_name=<?=$title;?>&zip=<?=$location['postal_code'];?>"><img src="/sites/all/micro/hunt/logo.jpg" style="height: 75px;"/>&lt;&lt; Check out our team page</a>
   <?php if ($unpublished): ?>
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>

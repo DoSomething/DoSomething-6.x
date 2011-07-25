@@ -135,6 +135,7 @@ EOD
 <li>Have your friends vote for you.  Say "text VOTING to 30644" and the end of your video to make it easy for your friends to vote.  They'll need your youtube username to vote for you.</li>
 </ul>
 </li>
+<li>Check out all the videos on our <a target="_blank" href="http://www.youtube.com/user/DoSomething1#p/c/7D78DDF5D046E01E">YouTube channel</a> under Playlists &gt; Scavenger Hunt Day 11. Share with your friends!</li>
 EOD
             ),
 

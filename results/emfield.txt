@@ -1,0 +1,155 @@
+Executing emfield_update_6001                                        [1;32;40m[1m[success][0m
+Executing emfield_update_6002                                        [1;32;40m[1m[success][0m
+DELETE FROM {cache_views}                                            [1;32;40m[1m[success][0m
+Executing emfield_update_6003                                        [1;32;40m[1m[success][0m
+Executing emfield_update_6004                                        [1;32;40m[1m[success][0m
+Executing emfield_update_6005                                        [1;32;40m[1m[success][0m
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_club_video</em> field.  [1;32;40m[1m[success][0m
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_celebrity_psa</em>      [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_botb_video</em> field.  [1;32;40m[1m[success][0m
+Added provider data version to the <em>field_campaign_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_whitehouse_video</em>   [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_cause_video_url</em>    [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_staff_blog_video</em>   [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_botb_video</em> field.  [1;32;40m[1m[success][0m
+Added provider data version to the <em>field_embedded_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_varsity_video</em>      [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_campaign_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_dsu_video</em> field.   [1;32;40m[1m[success][0m
+Added provider data version to the <em>field_campaign_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_campaign_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_pitch_grant_video</em>  [1;32;40m[1m[success][0m
+field.
+Added provider data version to the <em>field_campaign_video</em>     [1;32;40m[1m[success][0m
+field.
+Added provider data version to the                                   [1;32;40m[1m[success][0m
+<em>field_scholarship_att_video</em> field.
+Added provider data version to the <em>field_campaign_video</em>     [1;32;40m[1m[success][0m
+field.
+Add duration to the <em>field_embedded_video</em> field.             [1;32;40m[1m[success][0m
+Add duration to the <em>field_club_video</em> field.                 [1;32;40m[1m[success][0m
+Add duration to the <em>field_celebrity_psa</em> field.              [1;32;40m[1m[success][0m
+Add duration to the <em>field_botb_video</em> field.                 [1;32;40m[1m[success][0m
+Add duration to the <em>field_campaign_video</em> field.             [1;32;40m[1m[success][0m
+Add duration to the <em>field_whitehouse_video</em> field.           [1;32;40m[1m[success][0m
+Add duration to the <em>field_cause_video_url</em> field.            [1;32;40m[1m[success][0m
+Add duration to the <em>field_staff_blog_video</em> field.           [1;32;40m[1m[success][0m
+Add duration to the <em>field_varsity_video</em> field.              [1;32;40m[1m[success][0m
+Add duration to the <em>field_dsu_video</em> field.                  [1;32;40m[1m[success][0m
+Add duration to the <em>field_pitch_grant_video</em> field.          [1;32;40m[1m[success][0m
+Add duration to the <em>field_scholarship_att_video</em> field.      [1;32;40m[1m[success][0m
+Retrieved current provider data for the <em>field_embedded_video</em>[1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the <em>field_club_video</em>    [1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the <em>field_celebrity_psa</em> [1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the <em>field_botb_video</em>    [1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the <em>field_campaign_video</em>[1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the                              [1;32;40m[1m[success][0m
+<em>field_whitehouse_video</em> field.
+Retrieved current provider data for the                              [1;32;40m[1m[success][0m
+<em>field_cause_video_url</em> field.
+Retrieved current provider data for the                              [1;32;40m[1m[success][0m
+<em>field_staff_blog_video</em> field.
+Retrieved current provider data for the <em>field_varsity_video</em> [1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the <em>field_dsu_video</em>     [1;32;40m[1m[success][0m
+field.
+Retrieved current provider data for the                              [1;32;40m[1m[success][0m
+<em>field_pitch_grant_video</em> field.
+Retrieved current provider data for the                              [1;32;40m[1m[success][0m
+<em>field_scholarship_att_video</em> field.
+Executing emfield_update_6006                                        [1;32;40m[1m[success][0m
+Executing emfield_update_6200                                        [1;32;40m[1m[success][0m
+CREATE TABLE {cache_emfield_xml} (                                   [1;32;40m[1m[success][0m
+`cid` VARCHAR(255) NOT NULL DEFAULT &#039;&#039;, 
+`data` LONGBLOB DEFAULT NULL, 
+`expire` INT NOT NULL DEFAULT 0, 
+`created` INT NOT NULL DEFAULT 0, 
+`headers` TEXT DEFAULT NULL, 
+`serialized` SMALLINT NOT NULL DEFAULT 0, 
+PRIMARY KEY (cid), 
+INDEX expire (expire)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing emfield_update_6201                                        [1;32;40m[1m[success][0m
+Executing emfield_update_6202                                        [1;32;40m[1m[success][0m
+Added media availability status to the <em>field_embedded_video</em> [1;32;40m[1m[success][0m
+field.
+Added media availability status to the <em>field_club_video</em>     [1;32;40m[1m[success][0m
+field.
+Added media availability status to the <em>field_celebrity_psa</em>  [1;32;40m[1m[success][0m
+field.
+Added media availability status to the <em>field_botb_video</em>     [1;32;40m[1m[success][0m
+field.
+Added media availability status to the <em>field_campaign_video</em> [1;32;40m[1m[success][0m
+field.
+Added media availability status to the                               [1;32;40m[1m[success][0m
+<em>field_whitehouse_video</em> field.
+Added media availability status to the <em>field_cause_video_url</em>[1;32;40m[1m[success][0m
+field.
+Added media availability status to the                               [1;32;40m[1m[success][0m
+<em>field_staff_blog_video</em> field.
+Added media availability status to the <em>field_varsity_video</em>  [1;32;40m[1m[success][0m
+field.
+Added media availability status to the <em>field_dsu_video</em>      [1;32;40m[1m[success][0m
+field.
+Added media availability status to the                               [1;32;40m[1m[success][0m
+<em>field_pitch_grant_video</em> field.
+Added media availability status to the                               [1;32;40m[1m[success][0m
+<em>field_scholarship_att_video</em> field.
+Executing emfield_update_6203                                        [1;32;40m[1m[success][0m
+DELETE FROM {cache_views}                                            [1;32;40m[1m[success][0m
+Executing emfield_update_6204                                        [1;32;40m[1m[success][0m
+Embedded Media Field no longer offers default third party media      [1;32;40m[1m[success][0m
+providers. If you have not already done so, you will most likely need
+to visit the <a href="http://drupal.org/project/emfield"
+target="_blank">Embedded Media Field</a> project page and install the
+module(s) supporting the provider(s) you wish to include.
+Executing emthumb_update_6002                                        [1;32;40m[1m[success][0m
+DELETE FROM {cache_views}                                            [1;32;40m[1m[success][0m
+DELETE FROM {cache_content}                                          [1;32;40m[1m[success][0m
+Embedded Media Field no longer offers default third party media      [1;33;40m[1m[warning][0m
+providers. If you have not already done so, you will most likely need
+to visit the Embedded Media Field project page and install the
+module(s) supporting the provider(s) you wish to include.
+WD php: Warning: unlink(files/js/gmap_markers.js): Permission denied [31;40m[1m[error][0m
+in file_delete() (line 509 of /var/www/html/includes/file.inc).
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+unlink(files/js/gmap_markers.js): Permission denied in file_delete() [1;33;40m[1m[warning][0m
+(line 509 of /var/www/html/includes/file.inc).
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

@@ -1,0 +1,82 @@
+Executing nodequeue_update_5205                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} DROP PRIMARY KEY                       [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} CHANGE `qid` `qid` INT NOT NULL        [1;32;40m[1m[success][0m
+auto_increment, ADD PRIMARY KEY (qid)
+ALTER TABLE {nodequeue_subqueue} DROP PRIMARY KEY                    [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_subqueue} CHANGE `sqid` `sqid` INT NOT NULL   [1;32;40m[1m[success][0m
+auto_increment, ADD PRIMARY KEY (sqid)
+Executing nodequeue_update_6000                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} CHANGE `link` `link` VARCHAR(40)       [1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {nodequeue_queue} CHANGE `link_remove` `link_remove`     [1;32;40m[1m[success][0m
+VARCHAR(40) DEFAULT NULL
+Executing nodequeue_update_6001                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} ADD `i18n` TINYINT DEFAULT 1           [1;32;40m[1m[success][0m
+Executing nodequeue_update_6003                                      [1;32;40m[1m[success][0m
+No invalid entries found in the {nodequeue_nodes} table.             [1;32;40m[1m[success][0m
+Executing nodequeue_update_6004                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_nodes} ADD INDEX {nodequeue_nodes}_qid_nid_idx[1;32;40m[1m[success][0m
+(qid, nid)
+Executing nodequeue_update_6005                                      [1;32;40m[1m[success][0m
+UPDATE {system} set name = &#039;nodequeue_view_per_queue&#039; where[1;32;40m[1m[success][0m
+name = &#039;nodequeue_automatic_views_generation&#039;
+Executing nodequeue_update_6006                                      [1;32;40m[1m[success][0m
+WD php: User warning: Can't DROP 'nodequeue_subqueue_nid_idx'; check [31;40m[1m[error][0m
+that column/key exists
+query: ALTER TABLE nodequeue_nodes DROP INDEX
+nodequeue_subqueue_nid_idx in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+ALTER TABLE {nodequeue_roles} DROP INDEX nodequeue_roles_qid_idx     [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_roles} DROP INDEX nodequeue_roles_rid_idx     [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_types} DROP INDEX nodequeue_types_qid_idx     [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_types} DROP INDEX nodequeue_types_type_idx    [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_subqueue} DROP INDEX                          [1;32;40m[1m[success][0m
+nodequeue_subqueue_qid_idx
+ALTER TABLE {nodequeue_subqueue} DROP INDEX                          [1;32;40m[1m[success][0m
+nodequeue_subqueue_reference_idx
+ALTER TABLE {nodequeue_subqueue} DROP INDEX                          [1;32;40m[1m[success][0m
+nodequeue_subqueue_title_idx
+ALTER TABLE {nodequeue_nodes} DROP INDEX nodequeue_nodes_sqid_idx    [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_nodes} DROP INDEX nodequeue_nodes_qid_nid_idx [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_nodes} DROP INDEX nodequeue_subqueue_nid_idx  [31;40m[1m[error][0m
+ALTER TABLE {nodequeue_roles} ADD INDEX qid (qid)                    [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_roles} ADD INDEX rid (rid)                    [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_types} ADD INDEX qid (qid)                    [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_types} ADD INDEX type (type)                  [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_subqueue} ADD INDEX qid (qid)                 [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_subqueue} ADD INDEX reference (reference)     [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_subqueue} ADD INDEX title (title)             [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_nodes} ADD INDEX sqid (sqid, position)        [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_nodes} ADD INDEX qid_nid (qid, nid)           [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_nodes} ADD INDEX nid (nid)                    [1;32;40m[1m[success][0m
+Executing nodequeue_update_6007                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} ADD `name` VARCHAR(128) DEFAULT NULL   [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} ADD UNIQUE KEY name (name)             [1;32;40m[1m[success][0m
+UPDATE {nodequeue_queue} SET name = CONCAT(&#039;queue&#039;, qid)   [1;32;40m[1m[success][0m
+Executing nodequeue_update_6008                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} CHANGE `qid` `qid` INT unsigned NOT    [1;32;40m[1m[success][0m
+NULL auto_increment
+ALTER TABLE {nodequeue_queue} CHANGE `size` `size` INT DEFAULT 0     [1;32;40m[1m[success][0m
+ALTER TABLE {nodequeue_queue} CHANGE `owner` `owner` VARCHAR(255)    [1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {nodequeue_queue} CHANGE `show_in_ui` `show_in_ui`       [1;32;40m[1m[success][0m
+TINYINT DEFAULT 1
+ALTER TABLE {nodequeue_queue} CHANGE `show_in_tab` `show_in_tab`     [1;32;40m[1m[success][0m
+TINYINT DEFAULT 1
+ALTER TABLE {nodequeue_queue} CHANGE `show_in_links` `show_in_links` [1;32;40m[1m[success][0m
+TINYINT DEFAULT 1
+ALTER TABLE {nodequeue_roles} CHANGE `qid` `qid` BIGINT unsigned NOT [1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {nodequeue_roles} CHANGE `rid` `rid` BIGINT unsigned NOT [1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {nodequeue_types} CHANGE `qid` `qid` BIGINT unsigned NOT [1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {nodequeue_subqueue} CHANGE `sqid` `sqid` INT unsigned   [1;32;40m[1m[success][0m
+NOT NULL auto_increment
+Can&amp;#039;t DROP &amp;#039;nodequeue_subqueue_nid_idx&amp;#039;;  [31;40m[1m[error][0m
+check that column/key exists
+query: ALTER TABLE nodequeue_nodes DROP INDEX
+nodequeue_subqueue_nid_idx in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

@@ -1,0 +1,21 @@
+Executing devel_update_6001                                          [1;32;40m[1m[success][0m
+INSERT INTO {menu_custom} (menu_name, title, description) VALUES     [1;32;40m[1m[success][0m
+(&#039;devel&#039;, &#039;Development&#039;, &#039;Development
+links.&#039;)
+Executing devel_update_6002                                          [1;32;40m[1m[success][0m
+Executing devel_update_6003                                          [1;32;40m[1m[success][0m
+Executing jquery_update_update_6100                                  [1;32;40m[1m[success][0m
+UPDATE {system} SET weight = 99 WHERE name =                         [1;32;40m[1m[success][0m
+&#039;jquery_update&#039; and type = &#039;module&#039;
+Executing jquery_update_update_6200                                  [1;32;40m[1m[success][0m
+WD php: Notice: Undefined index:  api in _ctools_features_get_info() [31;40m[1m[error][0m
+(line 213 of
+/var/www/html/sites/all/modules/features/includes/features.ctools.inc).
+WD php: Notice: Undefined index:  api in _ctools_features_get_info() [31;40m[1m[error][0m
+(line 216 of
+/var/www/html/sites/all/modules/features/includes/features.ctools.inc).
+WD php: Notice: Undefined index:  api in _ctools_features_get_info() [31;40m[1m[error][0m
+(line 217 of
+/var/www/html/sites/all/modules/features/includes/features.ctools.inc).
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

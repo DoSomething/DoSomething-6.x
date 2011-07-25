@@ -1,0 +1,55 @@
+Executing date_update_6000                                           [1;32;40m[1m[success][0m
+date.module has updates and is available in the modules folder but is[31;40m[1m[error][0m
+not enabled.<br />If and when it is enabled, you will need to re-run
+the update script. You will continue to see this message until the
+module is enabled and updates are run.
+Executing date_api_update_6000                                       [1;32;40m[1m[success][0m
+Executing date_api_update_6001                                       [1;32;40m[1m[success][0m
+Executing date_api_update_6002                                       [1;32;40m[1m[success][0m
+CREATE TABLE {date_format_types} (                                   [1;32;40m[1m[success][0m
+`type` VARCHAR(200) NOT NULL, 
+`title` VARCHAR(255) NOT NULL, 
+`locked` TINYINT NOT NULL DEFAULT 0, 
+PRIMARY KEY (type)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+CREATE TABLE {date_format} (                                         [1;32;40m[1m[success][0m
+`dfid` INT unsigned NOT NULL auto_increment, 
+`format` VARCHAR(100) NOT NULL, 
+`type` VARCHAR(200) NOT NULL, 
+`locked` TINYINT NOT NULL DEFAULT 0, 
+PRIMARY KEY (dfid), 
+UNIQUE KEY format (format, type)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+CREATE TABLE {date_format_locale} (                                  [1;32;40m[1m[success][0m
+`format` VARCHAR(255) NOT NULL, 
+`type` VARCHAR(200) NOT NULL, 
+`language` VARCHAR(12) NOT NULL, 
+PRIMARY KEY (type, language)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing date_api_update_6003                                       [1;32;40m[1m[success][0m
+ALTER TABLE {date_format_types} CHANGE `type` `type` VARCHAR(200) NOT[1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {date_format} CHANGE `type` `type` VARCHAR(200) NOT NULL [1;32;40m[1m[success][0m
+ALTER TABLE {date_format} CHANGE `format` `format` VARCHAR(100) NOT  [1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {date_format_locale} CHANGE `type` `type` VARCHAR(200)   [1;32;40m[1m[success][0m
+NOT NULL
+ALTER TABLE {date_format_locale} CHANGE `format` `format`            [1;32;40m[1m[success][0m
+VARCHAR(100) NOT NULL
+ALTER TABLE {date_format} DROP KEY format                            [1;32;40m[1m[success][0m
+ALTER TABLE {date_format} ADD UNIQUE KEY format (format, type)       [1;32;40m[1m[success][0m
+Executing date_api_update_6004                                       [1;32;40m[1m[success][0m
+ALTER TABLE {date_format} DROP KEY format                            [1;32;40m[1m[success][0m
+ALTER TABLE {date_format} RENAME TO {date_formats}                   [1;32;40m[1m[success][0m
+ALTER TABLE {date_formats} ADD UNIQUE KEY formats (format, type)     [1;32;40m[1m[success][0m
+Executing date_api_update_6005                                       [1;32;40m[1m[success][0m
+ALTER TABLE {date_formats} CHANGE format format VARCHAR( 100 )       [1;32;40m[1m[success][0m
+CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+ALTER TABLE {date_format_locale} CHANGE format format VARCHAR( 100 ) [1;32;40m[1m[success][0m
+CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
+Executing date_api_update_6006                                       [1;32;40m[1m[success][0m
+Updates for CCK-related modules are not run until the modules are    [1;33;40m[1m[warning][0m
+enabled on the administer modules page. When you enable them, you'll
+need to return to update.php and run the remaining updates.
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

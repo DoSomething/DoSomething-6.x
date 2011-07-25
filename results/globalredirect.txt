@@ -1,0 +1,5 @@
+Executing globalredirect_update_6100                                 [1;32;40m[1m[success][0m
+There was no "deslah" option to fix... Nothingto do. Issue #348120   [1;32;40m[1m[success][0m
+does not apply.
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

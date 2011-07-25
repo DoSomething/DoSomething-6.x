@@ -1,0 +1,853 @@
+Executing imagefield_update_6001                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6002                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6003                                     [1;32;40m[1m[success][0m
+UPDATE {content_node_field} SET type = &#039;filefield&#039;, module [1;32;40m[1m[success][0m
+= &#039;filefield&#039;, active = 1 WHERE module =
+&#039;imagefield&#039; OR type = &#039;image&#039;
+UPDATE {content_node_field_instance} SET widget_type =               [1;32;40m[1m[success][0m
+&#039;imagefield_widget&#039;, widget_module =
+&#039;imagefield&#039;, widget_active = 1 WHERE widget_type =
+&#039;image&#039; OR widget_type = &#039;imagefield_widget&#039;
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_act_now_photo} CHANGE                     [1;32;40m[1m[success][0m
+`field_act_now_photo_fid` `field_act_now_photo_fid` INT DEFAULT NULL
+UPDATE {content_field_act_now_photo} SET field_act_now_photo_fid =   [1;32;40m[1m[success][0m
+NULL WHERE field_act_now_photo_fid = 0
+UPDATE {content_field_act_now_photo} SET field_act_now_photo_fid =   [1;32;40m[1m[success][0m
+NULL WHERE field_act_now_photo_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_act_now_photo} ADD                        [1;32;40m[1m[success][0m
+`field_act_now_photo_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_field_act_now_photo} ADD                        [1;32;40m[1m[success][0m
+`field_act_now_photo_data` TEXT DEFAULT NULL
+ALTER TABLE {content_field_learn_photo} CHANGE                       [1;32;40m[1m[success][0m
+`field_learn_photo_fid` `field_learn_photo_fid` INT DEFAULT NULL
+UPDATE {content_field_learn_photo} SET field_learn_photo_fid = NULL  [1;32;40m[1m[success][0m
+WHERE field_learn_photo_fid = 0
+UPDATE {content_field_learn_photo} SET field_learn_photo_fid = NULL  [1;32;40m[1m[success][0m
+WHERE field_learn_photo_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_learn_photo} ADD `field_learn_photo_list` [1;32;40m[1m[success][0m
+TINYINT DEFAULT NULL
+ALTER TABLE {content_field_learn_photo} ADD `field_learn_photo_data` [1;32;40m[1m[success][0m
+TEXT DEFAULT NULL
+ALTER TABLE {content_field_intro_text_photo} CHANGE                  [1;32;40m[1m[success][0m
+`field_intro_text_photo_fid` `field_intro_text_photo_fid` INT DEFAULT
+NULL
+UPDATE {content_field_intro_text_photo} SET                          [1;32;40m[1m[success][0m
+field_intro_text_photo_fid = NULL WHERE field_intro_text_photo_fid =
+0
+UPDATE {content_field_intro_text_photo} SET                          [1;32;40m[1m[success][0m
+field_intro_text_photo_fid = NULL WHERE field_intro_text_photo_fid
+NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_intro_text_photo} ADD                     [1;32;40m[1m[success][0m
+`field_intro_text_photo_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_field_intro_text_photo} ADD                     [1;32;40m[1m[success][0m
+`field_intro_text_photo_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_hp_art} CHANGE `field_hp_art_design_fid`   [1;32;40m[1m[success][0m
+`field_hp_art_design_fid` INT DEFAULT NULL
+UPDATE {content_type_hp_art} SET field_hp_art_design_fid = NULL WHERE[1;32;40m[1m[success][0m
+field_hp_art_design_fid = 0
+UPDATE {content_type_hp_art} SET field_hp_art_design_fid = NULL WHERE[1;32;40m[1m[success][0m
+field_hp_art_design_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_hp_art} ADD `field_hp_art_design_list`     [1;32;40m[1m[success][0m
+TINYINT DEFAULT NULL
+ALTER TABLE {content_type_hp_art} ADD `field_hp_art_design_data` TEXT[1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {content_field_picture} CHANGE `field_picture_fid`       [1;32;40m[1m[success][0m
+`field_picture_fid` INT DEFAULT NULL
+UPDATE {content_field_picture} SET field_picture_fid = NULL WHERE    [1;32;40m[1m[success][0m
+field_picture_fid = 0
+UPDATE {content_field_picture} SET field_picture_fid = NULL WHERE    [1;32;40m[1m[success][0m
+field_picture_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_picture} ADD `field_picture_list` TINYINT [1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {content_field_picture} ADD `field_picture_data` TEXT    [1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {content_field_project_photo} CHANGE                     [1;32;40m[1m[success][0m
+`field_project_photo_fid` `field_project_photo_fid` INT DEFAULT NULL
+UPDATE {content_field_project_photo} SET field_project_photo_fid =   [1;32;40m[1m[success][0m
+NULL WHERE field_project_photo_fid = 0
+UPDATE {content_field_project_photo} SET field_project_photo_fid =   [1;32;40m[1m[success][0m
+NULL WHERE field_project_photo_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_project_photo} ADD                        [1;32;40m[1m[success][0m
+`field_project_photo_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_field_project_photo} ADD                        [1;32;40m[1m[success][0m
+`field_project_photo_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_canned_food} CHANGE                        [1;32;40m[1m[success][0m
+`field_fooddrive_photo_fid` `field_fooddrive_photo_fid` INT DEFAULT
+NULL
+UPDATE {content_type_canned_food} SET field_fooddrive_photo_fid =    [1;32;40m[1m[success][0m
+NULL WHERE field_fooddrive_photo_fid = 0
+UPDATE {content_type_canned_food} SET field_fooddrive_photo_fid =    [1;32;40m[1m[success][0m
+NULL WHERE field_fooddrive_photo_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_canned_food} ADD                           [1;32;40m[1m[success][0m
+`field_fooddrive_photo_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_type_canned_food} ADD                           [1;32;40m[1m[success][0m
+`field_fooddrive_photo_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_cause} CHANGE                              [1;32;40m[1m[success][0m
+`field_further_description_photo_fid`
+`field_further_description_photo_fid` INT DEFAULT NULL
+UPDATE {content_type_cause} SET field_further_description_photo_fid =[1;32;40m[1m[success][0m
+NULL WHERE field_further_description_photo_fid = 0
+UPDATE {content_type_cause} SET field_further_description_photo_fid =[1;32;40m[1m[success][0m
+NULL WHERE field_further_description_photo_fid NOT IN (SELECT fid
+FROM {files})
+ALTER TABLE {content_type_cause} ADD                                 [1;32;40m[1m[success][0m
+`field_further_description_photo_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_type_cause} ADD                                 [1;32;40m[1m[success][0m
+`field_further_description_photo_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_club} CHANGE `field_club_picture_fid`      [1;32;40m[1m[success][0m
+`field_club_picture_fid` INT DEFAULT NULL
+UPDATE {content_type_club} SET field_club_picture_fid = NULL WHERE   [1;32;40m[1m[success][0m
+field_club_picture_fid = 0
+UPDATE {content_type_club} SET field_club_picture_fid = NULL WHERE   [1;32;40m[1m[success][0m
+field_club_picture_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_club} ADD `field_club_picture_list` TINYINT[1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {content_type_club} ADD `field_club_picture_data` TEXT   [1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {content_field_celebrity_picture} CHANGE                 [1;32;40m[1m[success][0m
+`field_celebrity_picture_fid` `field_celebrity_picture_fid` INT
+DEFAULT NULL
+UPDATE {content_field_celebrity_picture} SET                         [1;32;40m[1m[success][0m
+field_celebrity_picture_fid = NULL WHERE field_celebrity_picture_fid
+= 0
+UPDATE {content_field_celebrity_picture} SET                         [1;32;40m[1m[success][0m
+field_celebrity_picture_fid = NULL WHERE field_celebrity_picture_fid
+NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_celebrity_picture} ADD                    [1;32;40m[1m[success][0m
+`field_celebrity_picture_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_field_celebrity_picture} ADD                    [1;32;40m[1m[success][0m
+`field_celebrity_picture_data` TEXT DEFAULT NULL
+ALTER TABLE {content_field_campaign_pictures} CHANGE                 [1;32;40m[1m[success][0m
+`field_campaign_pictures_fid` `field_campaign_pictures_fid` INT
+DEFAULT NULL
+UPDATE {content_field_campaign_pictures} SET                         [1;32;40m[1m[success][0m
+field_campaign_pictures_fid = NULL WHERE field_campaign_pictures_fid
+= 0
+UPDATE {content_field_campaign_pictures} SET                         [1;32;40m[1m[success][0m
+field_campaign_pictures_fid = NULL WHERE field_campaign_pictures_fid
+NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_campaign_pictures} ADD                    [1;32;40m[1m[success][0m
+`field_campaign_pictures_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_field_campaign_pictures} ADD                    [1;32;40m[1m[success][0m
+`field_campaign_pictures_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_bc_bio_form} CHANGE                        [1;32;40m[1m[success][0m
+`field_bc_photo_upload_fid` `field_bc_photo_upload_fid` INT DEFAULT
+NULL
+UPDATE {content_type_bc_bio_form} SET field_bc_photo_upload_fid =    [1;32;40m[1m[success][0m
+NULL WHERE field_bc_photo_upload_fid = 0
+UPDATE {content_type_bc_bio_form} SET field_bc_photo_upload_fid =    [1;32;40m[1m[success][0m
+NULL WHERE field_bc_photo_upload_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_bc_bio_form} ADD                           [1;32;40m[1m[success][0m
+`field_bc_photo_upload_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_type_bc_bio_form} ADD                           [1;32;40m[1m[success][0m
+`field_bc_photo_upload_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_thumb_wars_bumper_sticker} CHANGE          [1;32;40m[1m[success][0m
+`field_bumper_sticker_design_fid` `field_bumper_sticker_design_fid`
+INT DEFAULT NULL
+UPDATE {content_type_thumb_wars_bumper_sticker} SET                  [1;32;40m[1m[success][0m
+field_bumper_sticker_design_fid = NULL WHERE
+field_bumper_sticker_design_fid = 0
+UPDATE {content_type_thumb_wars_bumper_sticker} SET                  [1;32;40m[1m[success][0m
+field_bumper_sticker_design_fid = NULL WHERE
+field_bumper_sticker_design_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_thumb_wars_bumper_sticker} ADD             [1;32;40m[1m[success][0m
+`field_bumper_sticker_design_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_type_thumb_wars_bumper_sticker} ADD             [1;32;40m[1m[success][0m
+`field_bumper_sticker_design_data` TEXT DEFAULT NULL
+ALTER TABLE {content_field_varsity_photo} CHANGE                     [1;32;40m[1m[success][0m
+`field_varsity_photo_fid` `field_varsity_photo_fid` INT DEFAULT NULL
+UPDATE {content_field_varsity_photo} SET field_varsity_photo_fid =   [1;32;40m[1m[success][0m
+NULL WHERE field_varsity_photo_fid = 0
+UPDATE {content_field_varsity_photo} SET field_varsity_photo_fid =   [1;32;40m[1m[success][0m
+NULL WHERE field_varsity_photo_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_field_varsity_photo} ADD                        [1;32;40m[1m[success][0m
+`field_varsity_photo_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_field_varsity_photo} ADD                        [1;32;40m[1m[success][0m
+`field_varsity_photo_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_staples_design} CHANGE                     [1;32;40m[1m[success][0m
+`field_staples_design_image_fid` `field_staples_design_image_fid` INT
+DEFAULT NULL
+UPDATE {content_type_staples_design} SET                             [1;32;40m[1m[success][0m
+field_staples_design_image_fid = NULL WHERE
+field_staples_design_image_fid = 0
+UPDATE {content_type_staples_design} SET                             [1;32;40m[1m[success][0m
+field_staples_design_image_fid = NULL WHERE
+field_staples_design_image_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_staples_design} ADD                        [1;32;40m[1m[success][0m
+`field_staples_design_image_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_type_staples_design} ADD                        [1;32;40m[1m[success][0m
+`field_staples_design_image_data` TEXT DEFAULT NULL
+ALTER TABLE {content_type_dsu_guides} CHANGE `field_dsu_picture_fid` [1;32;40m[1m[success][0m
+`field_dsu_picture_fid` INT DEFAULT NULL
+UPDATE {content_type_dsu_guides} SET field_dsu_picture_fid = NULL    [1;32;40m[1m[success][0m
+WHERE field_dsu_picture_fid = 0
+UPDATE {content_type_dsu_guides} SET field_dsu_picture_fid = NULL    [1;32;40m[1m[success][0m
+WHERE field_dsu_picture_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_dsu_guides} ADD `field_dsu_picture_list`   [1;32;40m[1m[success][0m
+TINYINT DEFAULT NULL
+ALTER TABLE {content_type_dsu_guides} ADD `field_dsu_picture_data`   [1;32;40m[1m[success][0m
+TEXT DEFAULT NULL
+ALTER TABLE {content_type_reporter} CHANGE `field_reporter_photo_fid`[1;32;40m[1m[success][0m
+`field_reporter_photo_fid` INT DEFAULT NULL
+UPDATE {content_type_reporter} SET field_reporter_photo_fid = NULL   [1;32;40m[1m[success][0m
+WHERE field_reporter_photo_fid = 0
+UPDATE {content_type_reporter} SET field_reporter_photo_fid = NULL   [1;32;40m[1m[success][0m
+WHERE field_reporter_photo_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_reporter} ADD `field_reporter_photo_list`  [1;32;40m[1m[success][0m
+TINYINT DEFAULT NULL
+ALTER TABLE {content_type_reporter} ADD `field_reporter_photo_data`  [1;32;40m[1m[success][0m
+TEXT DEFAULT NULL
+ALTER TABLE {content_type_scholarships_att} CHANGE                   [1;32;40m[1m[success][0m
+`field_scholarship_att_pic_fid` `field_scholarship_att_pic_fid` INT
+DEFAULT NULL
+UPDATE {content_type_scholarships_att} SET                           [1;32;40m[1m[success][0m
+field_scholarship_att_pic_fid = NULL WHERE
+field_scholarship_att_pic_fid = 0
+UPDATE {content_type_scholarships_att} SET                           [1;32;40m[1m[success][0m
+field_scholarship_att_pic_fid = NULL WHERE
+field_scholarship_att_pic_fid NOT IN (SELECT fid FROM {files})
+ALTER TABLE {content_type_scholarships_att} ADD                      [1;32;40m[1m[success][0m
+`field_scholarship_att_pic_list` TINYINT DEFAULT NULL
+ALTER TABLE {content_type_scholarships_att} ADD                      [1;32;40m[1m[success][0m
+`field_scholarship_att_pic_data` TEXT DEFAULT NULL
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_act_now_photo} DROP                       [1;32;40m[1m[success][0m
+field_act_now_photo_alt
+ALTER TABLE {content_field_act_now_photo} DROP                       [1;32;40m[1m[success][0m
+field_act_now_photo_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_learn_photo} DROP field_learn_photo_alt   [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_learn_photo} DROP field_learn_photo_title [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_intro_text_photo} DROP                    [1;32;40m[1m[success][0m
+field_intro_text_photo_alt
+ALTER TABLE {content_field_intro_text_photo} DROP                    [1;32;40m[1m[success][0m
+field_intro_text_photo_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_hp_art} DROP field_hp_art_design_alt       [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_hp_art} DROP field_hp_art_design_title     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_picture} DROP field_picture_alt           [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_picture} DROP field_picture_title         [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_project_photo} DROP                       [1;32;40m[1m[success][0m
+field_project_photo_alt
+ALTER TABLE {content_field_project_photo} DROP                       [1;32;40m[1m[success][0m
+field_project_photo_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_canned_food} DROP field_fooddrive_photo_alt[1;32;40m[1m[success][0m
+ALTER TABLE {content_type_canned_food} DROP                          [1;32;40m[1m[success][0m
+field_fooddrive_photo_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_cause} DROP                                [1;32;40m[1m[success][0m
+field_further_description_photo_alt
+ALTER TABLE {content_type_cause} DROP                                [1;32;40m[1m[success][0m
+field_further_description_photo_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_club} DROP field_club_picture_alt          [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_club} DROP field_club_picture_title        [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_celebrity_picture} DROP                   [1;32;40m[1m[success][0m
+field_celebrity_picture_alt
+ALTER TABLE {content_field_celebrity_picture} DROP                   [1;32;40m[1m[success][0m
+field_celebrity_picture_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_campaign_pictures} DROP                   [1;32;40m[1m[success][0m
+field_campaign_pictures_alt
+ALTER TABLE {content_field_campaign_pictures} DROP                   [1;32;40m[1m[success][0m
+field_campaign_pictures_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_bc_bio_form} DROP field_bc_photo_upload_alt[1;32;40m[1m[success][0m
+ALTER TABLE {content_type_bc_bio_form} DROP                          [1;32;40m[1m[success][0m
+field_bc_photo_upload_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_thumb_wars_bumper_sticker} DROP            [1;32;40m[1m[success][0m
+field_bumper_sticker_design_alt
+ALTER TABLE {content_type_thumb_wars_bumper_sticker} DROP            [1;32;40m[1m[success][0m
+field_bumper_sticker_design_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_varsity_photo} DROP                       [1;32;40m[1m[success][0m
+field_varsity_photo_alt
+ALTER TABLE {content_field_varsity_photo} DROP                       [1;32;40m[1m[success][0m
+field_varsity_photo_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_staples_design} DROP                       [1;32;40m[1m[success][0m
+field_staples_design_image_alt
+ALTER TABLE {content_type_staples_design} DROP                       [1;32;40m[1m[success][0m
+field_staples_design_image_title
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_dsu_guides} DROP field_dsu_picture_alt     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_dsu_guides} DROP field_dsu_picture_title   [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_reporter} DROP field_reporter_photo_alt    [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_reporter} DROP field_reporter_photo_title  [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+Executing imagefield_update_6004                                     [1;32;40m[1m[success][0m
+ALTER TABLE {content_type_scholarships_att} DROP                     [1;32;40m[1m[success][0m
+field_scholarship_att_pic_alt
+ALTER TABLE {content_type_scholarships_att} DROP                     [1;32;40m[1m[success][0m
+field_scholarship_att_pic_title
+Executing imagefield_update_6005                                     [1;32;40m[1m[success][0m
+Deleted admin thumbnails distributed throughout files directory. All [1;32;40m[1m[success][0m
+thumbnails are now stored in the "imagefield_thumbs" directory.
+Executing imagefield_update_6006                                     [1;32;40m[1m[success][0m
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

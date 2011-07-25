@@ -1,0 +1,92 @@
+Executing content_update_6000                                        [1;32;40m[1m[success][0m
+ALTER TABLE {node_field} ADD `module` VARCHAR(127) NOT NULL DEFAULT  [1;32;40m[1m[success][0m
+&#039;&#039;
+ALTER TABLE {node_field} ADD `db_columns` MEDIUMTEXT DEFAULT NULL    [1;32;40m[1m[success][0m
+UPDATE {node_field} SET db_columns = &#039;%s&#039; ()               [1;32;40m[1m[success][0m
+ALTER TABLE {node_field} CHANGE `db_columns` `db_columns` MEDIUMTEXT [1;32;40m[1m[success][0m
+NOT NULL
+ALTER TABLE {node_field} ADD `active` TINYINT NOT NULL DEFAULT 0     [1;32;40m[1m[success][0m
+ALTER TABLE {node_field_instance} ADD `widget_module` VARCHAR(127)   [1;32;40m[1m[success][0m
+NOT NULL DEFAULT &#039;&#039;
+ALTER TABLE {node_field_instance} ADD `widget_active` TINYINT NOT    [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+DROP TABLE {cache_content}                                           [1;32;40m[1m[success][0m
+CREATE TABLE {cache_content} (                                       [1;32;40m[1m[success][0m
+`cid` VARCHAR(255) NOT NULL DEFAULT &#039;&#039;, 
+`data` LONGBLOB DEFAULT NULL, 
+`expire` INT NOT NULL DEFAULT 0, 
+`created` INT NOT NULL DEFAULT 0, 
+`headers` TEXT DEFAULT NULL, 
+`serialized` SMALLINT NOT NULL DEFAULT 0, 
+PRIMARY KEY (cid), 
+INDEX expire (expire)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+DELETE FROM {cache}                                                  [1;32;40m[1m[success][0m
+Executing content_update_6001                                        [1;32;40m[1m[success][0m
+ALTER TABLE {node_field} RENAME TO {content_node_field}              [1;32;40m[1m[success][0m
+ALTER TABLE {node_field_instance} RENAME TO                          [1;32;40m[1m[success][0m
+{content_node_field_instance}
+Executing content_update_6002                                        [1;32;40m[1m[success][0m
+Executing content_update_6003                                        [1;32;40m[1m[success][0m
+Executing content_update_6004                                        [1;32;40m[1m[success][0m
+Executing content_update_6005                                        [1;32;40m[1m[success][0m
+ALTER TABLE {content_node_field} ADD `locked` TINYINT NOT NULL       [1;32;40m[1m[success][0m
+DEFAULT 0
+Executing content_update_6006                                        [1;32;40m[1m[success][0m
+ALTER TABLE {content_node_field} CHANGE `locked` `locked` TINYINT NOT[1;32;40m[1m[success][0m
+NULL DEFAULT 0
+Executing content_update_6007                                        [1;32;40m[1m[success][0m
+Executing content_update_6008                                        [1;32;40m[1m[success][0m
+Executing content_update_6009                                        [1;32;40m[1m[success][0m
+Executing content_update_6010                                        [1;32;40m[1m[success][0m
+Executing fieldgroup_update_6000                                     [1;32;40m[1m[success][0m
+fieldgroup.module has updates and is available in the modules folder [31;40m[1m[error][0m
+but is not enabled.<br />If and when it is enabled, you will need to
+re-run the update script. You will continue to see this message until
+the module is enabled and updates are run.
+Executing nodereference_update_6000                                  [1;32;40m[1m[success][0m
+nodereference.module has updates and is available in the modules     [31;40m[1m[error][0m
+folder but is not enabled.<br />If and when it is enabled, you will
+need to re-run the update script. You will continue to see this
+message until the module is enabled and updates are run.
+Executing number_update_6000                                         [1;32;40m[1m[success][0m
+number.module has updates and is available in the modules folder but [31;40m[1m[error][0m
+is not enabled.<br />If and when it is enabled, you will need to
+re-run the update script. You will continue to see this message until
+the module is enabled and updates are run.
+Executing optionwidgets_update_6000                                  [1;32;40m[1m[success][0m
+optionwidgets.module has updates and is available in the modules     [31;40m[1m[error][0m
+folder but is not enabled.<br />If and when it is enabled, you will
+need to re-run the update script. You will continue to see this
+message until the module is enabled and updates are run.
+Executing text_update_6000                                           [1;32;40m[1m[success][0m
+text.module has updates and is available in the modules folder but is[31;40m[1m[error][0m
+not enabled.<br />If and when it is enabled, you will need to re-run
+the update script. You will continue to see this message until the
+module is enabled and updates are run.
+Executing userreference_update_6000                                  [1;32;40m[1m[success][0m
+userreference.module has updates and is available in the modules     [31;40m[1m[error][0m
+folder but is not enabled.<br />If and when it is enabled, you will
+need to re-run the update script. You will continue to see this
+message until the module is enabled and updates are run.
+Updates for CCK-related modules are not run until the modules are    [1;33;40m[1m[warning][0m
+enabled on the administer modules page. When you enable them, you'll
+need to return to update.php and run the remaining updates.
+WD php: Warning: unlink(files/js/gmap_markers.js): Permission denied [31;40m[1m[error][0m
+in file_delete() (line 509 of /var/www/html/includes/file.inc).
+WD php: User warning: Table 'dosomething_prod.node_field_instance'   [31;40m[1m[error][0m
+doesn't exist
+query: SELECT * FROM node_field_instance nfi  LEFT JOIN node_field
+nf ON nf.field_name = nfi.field_name WHERE nf.active = 1 AND
+nfi.widget_active = 1 in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+unlink(files/js/gmap_markers.js): Permission denied in file_delete() [1;33;40m[1m[warning][0m
+(line 509 of /var/www/html/includes/file.inc).
+Table &amp;#039;dosomething_prod.node_field_instance&amp;#039;       [31;40m[1m[error][0m
+doesn&amp;#039;t exist
+query: SELECT * FROM node_field_instance nfi  LEFT JOIN node_field
+nf ON nf.field_name = nfi.field_name WHERE nf.active = 1 AND
+nfi.widget_active = 1 in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

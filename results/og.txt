@@ -1,0 +1,37 @@
+Executing og_update_6000                                             [1;32;40m[1m[success][0m
+Executing og_update_6001                                             [1;32;40m[1m[success][0m
+UPDATE {blocks} SET module = &#039;og_views&#039;, delta =           [1;32;40m[1m[success][0m
+&#039;1&#039; WHERE module = &#039;og&#039; AND delta = &#039;5&#039;
+Executing og_update_6002                                             [1;32;40m[1m[success][0m
+ALTER TABLE {og} CHANGE `selective` `og_selective` INT NOT NULL      [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {og} CHANGE `register` `og_register` TINYINT NOT NULL    [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {og} CHANGE `theme` `og_theme` VARCHAR(255) DEFAULT NULL [1;32;40m[1m[success][0m
+ALTER TABLE {og} CHANGE `directory` `og_directory` TINYINT NOT NULL  [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {og} CHANGE `description` `og_description` VARCHAR(255)  [1;32;40m[1m[success][0m
+DEFAULT NULL
+ALTER TABLE {og} CHANGE `language` `og_language` VARCHAR(12) NOT NULL[1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {og} CHANGE `private` `og_private` TINYINT NOT NULL      [1;32;40m[1m[success][0m
+DEFAULT 0
+Executing og_update_6203                                             [1;32;40m[1m[success][0m
+ALTER TABLE {og_ancestry} DROP is_public                             [1;32;40m[1m[success][0m
+CREATE TABLE {og_ancestry_new} (                                     [1;32;40m[1m[success][0m
+`nid` INT NOT NULL, 
+`group_nid` INT NOT NULL
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+INSERT INTO {og_ancestry_new} SELECT DISTINCT * FROM {og_ancestry}   [1;32;40m[1m[success][0m
+DROP TABLE {og_ancestry}                                             [1;32;40m[1m[success][0m
+ALTER TABLE {og_ancestry_new} RENAME TO {og_ancestry}                [1;32;40m[1m[success][0m
+ALTER TABLE {og_ancestry} ADD PRIMARY KEY (nid, group_nid)           [1;32;40m[1m[success][0m
+Executing og_update_6204                                             [1;32;40m[1m[success][0m
+ALTER TABLE {og_uid} CHANGE `og_role` `og_role` TINYINT NOT NULL     [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {og_uid} CHANGE `is_active` `is_active` TINYINT NOT NULL [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {og_uid} CHANGE `is_admin` `is_admin` TINYINT NOT NULL   [1;32;40m[1m[success][0m
+DEFAULT 0
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

@@ -1,0 +1,249 @@
+Executing link_update_6000                                           [1;32;40m[1m[success][0m
+Executing link_update_6001                                           [1;32;40m[1m[success][0m
+ALTER TABLE {content_field_project_website_0} CHANGE                 [1;32;40m[1m[success][0m
+`field_project_website_0_url` `field_project_website_0_url`
+VARCHAR(2048) DEFAULT NULL
+UPDATE {content_field_project_website_0} SET                         [1;32;40m[1m[success][0m
+field_project_website_0_url = NULL WHERE field_project_website_0_url
+= &#039;&#039; OR field_project_website_0_url = &#039;N;&#039;
+ALTER TABLE {content_field_project_website_0} CHANGE                 [1;32;40m[1m[success][0m
+`field_project_website_0_title` `field_project_website_0_title`
+VARCHAR(255) DEFAULT NULL
+UPDATE {content_field_project_website_0} SET                         [1;32;40m[1m[success][0m
+field_project_website_0_title = NULL WHERE
+field_project_website_0_title = &#039;&#039; OR
+field_project_website_0_title = &#039;N;&#039;
+ALTER TABLE {content_field_project_website_0} CHANGE                 [1;32;40m[1m[success][0m
+`field_project_website_0_attributes`
+`field_project_website_0_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_field_project_website_0} SET                         [1;32;40m[1m[success][0m
+field_project_website_0_attributes = NULL WHERE
+field_project_website_0_attributes = &#039;&#039; OR
+field_project_website_0_attributes = &#039;N;&#039;
+ALTER TABLE {content_field_photo_album_url} CHANGE                   [1;32;40m[1m[success][0m
+`field_photo_album_url_url` `field_photo_album_url_url` VARCHAR(2048)
+DEFAULT NULL
+UPDATE {content_field_photo_album_url} SET field_photo_album_url_url [1;32;40m[1m[success][0m
+= NULL WHERE field_photo_album_url_url = &#039;&#039; OR
+field_photo_album_url_url = &#039;N;&#039;
+ALTER TABLE {content_field_photo_album_url} CHANGE                   [1;32;40m[1m[success][0m
+`field_photo_album_url_title` `field_photo_album_url_title`
+VARCHAR(255) DEFAULT NULL
+UPDATE {content_field_photo_album_url} SET                           [1;32;40m[1m[success][0m
+field_photo_album_url_title = NULL WHERE field_photo_album_url_title
+= &#039;&#039; OR field_photo_album_url_title = &#039;N;&#039;
+ALTER TABLE {content_field_photo_album_url} CHANGE                   [1;32;40m[1m[success][0m
+`field_photo_album_url_attributes` `field_photo_album_url_attributes`
+MEDIUMTEXT DEFAULT NULL
+UPDATE {content_field_photo_album_url} SET                           [1;32;40m[1m[success][0m
+field_photo_album_url_attributes = NULL WHERE
+field_photo_album_url_attributes = &#039;&#039; OR
+field_photo_album_url_attributes = &#039;N;&#039;
+ALTER TABLE {content_field_alt_project_url} CHANGE                   [1;32;40m[1m[success][0m
+`field_alt_project_url_url` `field_alt_project_url_url` VARCHAR(2048)
+DEFAULT NULL
+UPDATE {content_field_alt_project_url} SET field_alt_project_url_url [1;32;40m[1m[success][0m
+= NULL WHERE field_alt_project_url_url = &#039;&#039; OR
+field_alt_project_url_url = &#039;N;&#039;
+ALTER TABLE {content_field_alt_project_url} CHANGE                   [1;32;40m[1m[success][0m
+`field_alt_project_url_title` `field_alt_project_url_title`
+VARCHAR(255) DEFAULT NULL
+UPDATE {content_field_alt_project_url} SET                           [1;32;40m[1m[success][0m
+field_alt_project_url_title = NULL WHERE field_alt_project_url_title
+= &#039;&#039; OR field_alt_project_url_title = &#039;N;&#039;
+ALTER TABLE {content_field_alt_project_url} CHANGE                   [1;32;40m[1m[success][0m
+`field_alt_project_url_attributes` `field_alt_project_url_attributes`
+MEDIUMTEXT DEFAULT NULL
+UPDATE {content_field_alt_project_url} SET                           [1;32;40m[1m[success][0m
+field_alt_project_url_attributes = NULL WHERE
+field_alt_project_url_attributes = &#039;&#039; OR
+field_alt_project_url_attributes = &#039;N;&#039;
+ALTER TABLE {content_field_project_links} CHANGE                     [1;32;40m[1m[success][0m
+`field_project_links_url` `field_project_links_url` VARCHAR(2048)
+DEFAULT NULL
+UPDATE {content_field_project_links} SET field_project_links_url =   [1;32;40m[1m[success][0m
+NULL WHERE field_project_links_url = &#039;&#039; OR
+field_project_links_url = &#039;N;&#039;
+ALTER TABLE {content_field_project_links} CHANGE                     [1;32;40m[1m[success][0m
+`field_project_links_title` `field_project_links_title` VARCHAR(255)
+DEFAULT NULL
+UPDATE {content_field_project_links} SET field_project_links_title = [1;32;40m[1m[success][0m
+NULL WHERE field_project_links_title = &#039;&#039; OR
+field_project_links_title = &#039;N;&#039;
+ALTER TABLE {content_field_project_links} CHANGE                     [1;32;40m[1m[success][0m
+`field_project_links_attributes` `field_project_links_attributes`
+MEDIUMTEXT DEFAULT NULL
+UPDATE {content_field_project_links} SET                             [1;32;40m[1m[success][0m
+field_project_links_attributes = NULL WHERE
+field_project_links_attributes = &#039;&#039; OR
+field_project_links_attributes = &#039;N;&#039;
+ALTER TABLE {content_field_personal_project_website} CHANGE          [1;32;40m[1m[success][0m
+`field_personal_project_website_url`
+`field_personal_project_website_url` VARCHAR(2048) DEFAULT NULL
+UPDATE {content_field_personal_project_website} SET                  [1;32;40m[1m[success][0m
+field_personal_project_website_url = NULL WHERE
+field_personal_project_website_url = &#039;&#039; OR
+field_personal_project_website_url = &#039;N;&#039;
+ALTER TABLE {content_field_personal_project_website} CHANGE          [1;32;40m[1m[success][0m
+`field_personal_project_website_title`
+`field_personal_project_website_title` VARCHAR(255) DEFAULT NULL
+UPDATE {content_field_personal_project_website} SET                  [1;32;40m[1m[success][0m
+field_personal_project_website_title = NULL WHERE
+field_personal_project_website_title = &#039;&#039; OR
+field_personal_project_website_title = &#039;N;&#039;
+ALTER TABLE {content_field_personal_project_website} CHANGE          [1;32;40m[1m[success][0m
+`field_personal_project_website_attributes`
+`field_personal_project_website_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_field_personal_project_website} SET                  [1;32;40m[1m[success][0m
+field_personal_project_website_attributes = NULL WHERE
+field_personal_project_website_attributes = &#039;&#039; OR
+field_personal_project_website_attributes = &#039;N;&#039;
+ALTER TABLE {content_type_scroller} CHANGE `field_link_url`          [1;32;40m[1m[success][0m
+`field_link_url` VARCHAR(2048) DEFAULT NULL
+UPDATE {content_type_scroller} SET field_link_url = NULL WHERE       [1;32;40m[1m[success][0m
+field_link_url = &#039;&#039; OR field_link_url = &#039;N;&#039;
+ALTER TABLE {content_type_scroller} CHANGE `field_link_title`        [1;32;40m[1m[success][0m
+`field_link_title` VARCHAR(255) DEFAULT NULL
+UPDATE {content_type_scroller} SET field_link_title = NULL WHERE     [1;32;40m[1m[success][0m
+field_link_title = &#039;&#039; OR field_link_title = &#039;N;&#039;
+ALTER TABLE {content_type_scroller} CHANGE `field_link_attributes`   [1;32;40m[1m[success][0m
+`field_link_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_type_scroller} SET field_link_attributes = NULL WHERE[1;32;40m[1m[success][0m
+field_link_attributes = &#039;&#039; OR field_link_attributes =
+&#039;N;&#039;
+ALTER TABLE {content_type_grants_database} CHANGE                    [1;32;40m[1m[success][0m
+`field_grantsdb_link_url` `field_grantsdb_link_url` VARCHAR(2048)
+DEFAULT NULL
+UPDATE {content_type_grants_database} SET field_grantsdb_link_url =  [1;32;40m[1m[success][0m
+NULL WHERE field_grantsdb_link_url = &#039;&#039; OR
+field_grantsdb_link_url = &#039;N;&#039;
+ALTER TABLE {content_type_grants_database} CHANGE                    [1;32;40m[1m[success][0m
+`field_grantsdb_link_title` `field_grantsdb_link_title` VARCHAR(255)
+DEFAULT NULL
+UPDATE {content_type_grants_database} SET field_grantsdb_link_title =[1;32;40m[1m[success][0m
+NULL WHERE field_grantsdb_link_title = &#039;&#039; OR
+field_grantsdb_link_title = &#039;N;&#039;
+ALTER TABLE {content_type_grants_database} CHANGE                    [1;32;40m[1m[success][0m
+`field_grantsdb_link_attributes` `field_grantsdb_link_attributes`
+MEDIUMTEXT DEFAULT NULL
+UPDATE {content_type_grants_database} SET                            [1;32;40m[1m[success][0m
+field_grantsdb_link_attributes = NULL WHERE
+field_grantsdb_link_attributes = &#039;&#039; OR
+field_grantsdb_link_attributes = &#039;N;&#039;
+ALTER TABLE {content_type_grants_database} CHANGE                    [1;32;40m[1m[success][0m
+`field_organization_website_url` `field_organization_website_url`
+VARCHAR(2048) DEFAULT NULL
+UPDATE {content_type_grants_database} SET                            [1;32;40m[1m[success][0m
+field_organization_website_url = NULL WHERE
+field_organization_website_url = &#039;&#039; OR
+field_organization_website_url = &#039;N;&#039;
+ALTER TABLE {content_type_grants_database} CHANGE                    [1;32;40m[1m[success][0m
+`field_organization_website_title` `field_organization_website_title`
+VARCHAR(255) DEFAULT NULL
+UPDATE {content_type_grants_database} SET                            [1;32;40m[1m[success][0m
+field_organization_website_title = NULL WHERE
+field_organization_website_title = &#039;&#039; OR
+field_organization_website_title = &#039;N;&#039;
+ALTER TABLE {content_type_grants_database} CHANGE                    [1;32;40m[1m[success][0m
+`field_organization_website_attributes`
+`field_organization_website_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_type_grants_database} SET                            [1;32;40m[1m[success][0m
+field_organization_website_attributes = NULL WHERE
+field_organization_website_attributes = &#039;&#039; OR
+field_organization_website_attributes = &#039;N;&#039;
+ALTER TABLE {content_field_youtube_or_video_url} CHANGE              [1;32;40m[1m[success][0m
+`field_youtube_or_video_url_url` `field_youtube_or_video_url_url`
+VARCHAR(2048) DEFAULT NULL
+UPDATE {content_field_youtube_or_video_url} SET                      [1;32;40m[1m[success][0m
+field_youtube_or_video_url_url = NULL WHERE
+field_youtube_or_video_url_url = &#039;&#039; OR
+field_youtube_or_video_url_url = &#039;N;&#039;
+ALTER TABLE {content_field_youtube_or_video_url} CHANGE              [1;32;40m[1m[success][0m
+`field_youtube_or_video_url_title` `field_youtube_or_video_url_title`
+VARCHAR(255) DEFAULT NULL
+UPDATE {content_field_youtube_or_video_url} SET                      [1;32;40m[1m[success][0m
+field_youtube_or_video_url_title = NULL WHERE
+field_youtube_or_video_url_title = &#039;&#039; OR
+field_youtube_or_video_url_title = &#039;N;&#039;
+ALTER TABLE {content_field_youtube_or_video_url} CHANGE              [1;32;40m[1m[success][0m
+`field_youtube_or_video_url_attributes`
+`field_youtube_or_video_url_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_field_youtube_or_video_url} SET                      [1;32;40m[1m[success][0m
+field_youtube_or_video_url_attributes = NULL WHERE
+field_youtube_or_video_url_attributes = &#039;&#039; OR
+field_youtube_or_video_url_attributes = &#039;N;&#039;
+ALTER TABLE {content_type_enviro_grant} CHANGE                       [1;32;40m[1m[success][0m
+`field_you_tube_or_video_url_url` `field_you_tube_or_video_url_url`
+VARCHAR(2048) DEFAULT NULL
+UPDATE {content_type_enviro_grant} SET                               [1;32;40m[1m[success][0m
+field_you_tube_or_video_url_url = NULL WHERE
+field_you_tube_or_video_url_url = &#039;&#039; OR
+field_you_tube_or_video_url_url = &#039;N;&#039;
+ALTER TABLE {content_type_enviro_grant} CHANGE                       [1;32;40m[1m[success][0m
+`field_you_tube_or_video_url_title`
+`field_you_tube_or_video_url_title` VARCHAR(255) DEFAULT NULL
+UPDATE {content_type_enviro_grant} SET                               [1;32;40m[1m[success][0m
+field_you_tube_or_video_url_title = NULL WHERE
+field_you_tube_or_video_url_title = &#039;&#039; OR
+field_you_tube_or_video_url_title = &#039;N;&#039;
+ALTER TABLE {content_type_enviro_grant} CHANGE                       [1;32;40m[1m[success][0m
+`field_you_tube_or_video_url_attributes`
+`field_you_tube_or_video_url_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_type_enviro_grant} SET                               [1;32;40m[1m[success][0m
+field_you_tube_or_video_url_attributes = NULL WHERE
+field_you_tube_or_video_url_attributes = &#039;&#039; OR
+field_you_tube_or_video_url_attributes = &#039;N;&#039;
+ALTER TABLE {content_type_bootcampx} CHANGE                          [1;32;40m[1m[success][0m
+`field_bootcampx_youtube_url` `field_bootcampx_youtube_url`
+VARCHAR(2048) DEFAULT NULL
+UPDATE {content_type_bootcampx} SET field_bootcampx_youtube_url =    [1;32;40m[1m[success][0m
+NULL WHERE field_bootcampx_youtube_url = &#039;&#039; OR
+field_bootcampx_youtube_url = &#039;N;&#039;
+ALTER TABLE {content_type_bootcampx} CHANGE                          [1;32;40m[1m[success][0m
+`field_bootcampx_youtube_title` `field_bootcampx_youtube_title`
+VARCHAR(255) DEFAULT NULL
+UPDATE {content_type_bootcampx} SET field_bootcampx_youtube_title =  [1;32;40m[1m[success][0m
+NULL WHERE field_bootcampx_youtube_title = &#039;&#039; OR
+field_bootcampx_youtube_title = &#039;N;&#039;
+ALTER TABLE {content_type_bootcampx} CHANGE                          [1;32;40m[1m[success][0m
+`field_bootcampx_youtube_attributes`
+`field_bootcampx_youtube_attributes` MEDIUMTEXT DEFAULT NULL
+UPDATE {content_type_bootcampx} SET                                  [1;32;40m[1m[success][0m
+field_bootcampx_youtube_attributes = NULL WHERE
+field_bootcampx_youtube_attributes = &#039;&#039; OR
+field_bootcampx_youtube_attributes = &#039;N;&#039;
+Executing link_update_6002                                           [1;32;40m[1m[success][0m
+UPDATE {content_field_project_website_0} SET                         [1;32;40m[1m[success][0m
+field_project_website_0_attributes = NULL WHERE
+field_project_website_0_attributes = &#039;%s&#039;
+UPDATE {content_field_photo_album_url} SET                           [1;32;40m[1m[success][0m
+field_photo_album_url_attributes = NULL WHERE
+field_photo_album_url_attributes = &#039;%s&#039;
+UPDATE {content_field_alt_project_url} SET                           [1;32;40m[1m[success][0m
+field_alt_project_url_attributes = NULL WHERE
+field_alt_project_url_attributes = &#039;%s&#039;
+UPDATE {content_field_project_links} SET                             [1;32;40m[1m[success][0m
+field_project_links_attributes = NULL WHERE
+field_project_links_attributes = &#039;%s&#039;
+UPDATE {content_field_personal_project_website} SET                  [1;32;40m[1m[success][0m
+field_personal_project_website_attributes = NULL WHERE
+field_personal_project_website_attributes = &#039;%s&#039;
+UPDATE {content_type_scroller} SET field_link_attributes = NULL WHERE[1;32;40m[1m[success][0m
+field_link_attributes = &#039;%s&#039;
+UPDATE {content_type_grants_database} SET                            [1;32;40m[1m[success][0m
+field_grantsdb_link_attributes = NULL WHERE
+field_grantsdb_link_attributes = &#039;%s&#039;
+UPDATE {content_type_grants_database} SET                            [1;32;40m[1m[success][0m
+field_organization_website_attributes = NULL WHERE
+field_organization_website_attributes = &#039;%s&#039;
+UPDATE {content_field_youtube_or_video_url} SET                      [1;32;40m[1m[success][0m
+field_youtube_or_video_url_attributes = NULL WHERE
+field_youtube_or_video_url_attributes = &#039;%s&#039;
+UPDATE {content_type_enviro_grant} SET                               [1;32;40m[1m[success][0m
+field_you_tube_or_video_url_attributes = NULL WHERE
+field_you_tube_or_video_url_attributes = &#039;%s&#039;
+UPDATE {content_type_bootcampx} SET                                  [1;32;40m[1m[success][0m
+field_bootcampx_youtube_attributes = NULL WHERE
+field_bootcampx_youtube_attributes = &#039;%s&#039;
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

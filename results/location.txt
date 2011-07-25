@@ -1,0 +1,123 @@
+Executing location_update_6301                                       [1;32;40m[1m[success][0m
+WD php: User warning: Can't DROP 'PRIMARY'; check that column/key    [31;40m[1m[error][0m
+exists
+query: ALTER TABLE zipcodes DROP PRIMARY KEY in _db_query() (line
+149 of /var/www/html/includes/database.mysql.inc).
+DROP TABLE {cache_location}                                          [1;32;40m[1m[success][0m
+CREATE TABLE {cache_location} (                                      [1;32;40m[1m[success][0m
+`cid` VARCHAR(255) NOT NULL DEFAULT &#039;&#039;, 
+`data` LONGBLOB DEFAULT NULL, 
+`expire` INT NOT NULL DEFAULT 0, 
+`created` INT NOT NULL DEFAULT 0, 
+`headers` TEXT DEFAULT NULL, 
+`serialized` SMALLINT NOT NULL DEFAULT 0, 
+PRIMARY KEY (cid), 
+INDEX expire (expire)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+ALTER TABLE {location} DROP PRIMARY KEY                              [1;32;40m[1m[success][0m
+ALTER TABLE {location} CHANGE `lid` `lid` INT unsigned NOT NULL      [1;32;40m[1m[success][0m
+auto_increment, ADD PRIMARY KEY (lid)
+ALTER TABLE {location_instance} DROP INDEX                           [1;32;40m[1m[success][0m
+{location_instance}_nid_idx
+ALTER TABLE {location_instance} DROP INDEX                           [1;32;40m[1m[success][0m
+{location_instance}_vid_idx
+ALTER TABLE {location_instance} DROP INDEX                           [1;32;40m[1m[success][0m
+{location_instance}_uid_idx
+ALTER TABLE {location_instance} DROP INDEX                           [1;32;40m[1m[success][0m
+{location_instance}_genid_idx
+ALTER TABLE {location_instance} DROP INDEX                           [1;32;40m[1m[success][0m
+{location_instance}_lid_idx
+UPDATE {location_instance} SET nid = 0 WHERE nid IS NULL             [1;32;40m[1m[success][0m
+UPDATE {location_instance} SET vid = 0 WHERE vid IS NULL             [1;32;40m[1m[success][0m
+UPDATE {location_instance} SET uid = 0 WHERE uid IS NULL             [1;32;40m[1m[success][0m
+UPDATE {location_instance} SET genid = &#039;&#039; WHERE genid IS   [1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {location_instance} CHANGE `nid` `nid` INT unsigned NOT  [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+ALTER TABLE {location_instance} CHANGE `vid` `vid` INT unsigned NOT  [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+ALTER TABLE {location_instance} CHANGE `uid` `uid` INT unsigned NOT  [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+ALTER TABLE {location_instance} CHANGE `genid` `genid` VARCHAR(255)  [1;32;40m[1m[success][0m
+NOT NULL DEFAULT &#039;&#039;
+ALTER TABLE {location_instance} CHANGE `lid` `lid` INT unsigned NOT  [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+ALTER TABLE {location_instance} ADD INDEX nid (nid)                  [1;32;40m[1m[success][0m
+ALTER TABLE {location_instance} ADD INDEX vid (vid)                  [1;32;40m[1m[success][0m
+ALTER TABLE {location_instance} ADD INDEX uid (uid)                  [1;32;40m[1m[success][0m
+ALTER TABLE {location_instance} ADD INDEX genid (genid)              [1;32;40m[1m[success][0m
+ALTER TABLE {location_instance} ADD INDEX lid (lid)                  [1;32;40m[1m[success][0m
+ALTER TABLE {zipcodes} DROP PRIMARY KEY                              [31;40m[1m[error][0m
+Executing location_update_6302                                       [1;32;40m[1m[success][0m
+UPDATE {location} SET is_primary = 0 WHERE is_primary IS NULL        [1;32;40m[1m[success][0m
+ALTER TABLE {location} CHANGE `is_primary` `is_primary` TINYINT NOT  [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+UPDATE {zipcodes} SET zip = 0 WHERE zip IS NULL                      [1;32;40m[1m[success][0m
+ALTER TABLE {zipcodes} CHANGE `zip` `zip` VARCHAR(16) NOT NULL       [1;32;40m[1m[success][0m
+DEFAULT &#039;0&#039;
+UPDATE {zipcodes} SET latitude = 0.0 WHERE latitude IS NULL          [1;32;40m[1m[success][0m
+UPDATE {zipcodes} SET longitude = 0.0 WHERE longitude IS NULL        [1;32;40m[1m[success][0m
+ALTER TABLE {zipcodes} CHANGE `latitude` `latitude` DECIMAL(10, 6)   [1;32;40m[1m[success][0m
+NOT NULL DEFAULT 0
+ALTER TABLE {zipcodes} CHANGE `longitude` `longitude` DECIMAL(10, 6) [1;32;40m[1m[success][0m
+NOT NULL DEFAULT 0
+UPDATE {zipcodes} SET country = &#039;&#039; WHERE country IS NULL   [1;32;40m[1m[success][0m
+ALTER TABLE {zipcodes} CHANGE `country` `country` CHAR(2) NOT NULL   [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+UPDATE {location} SET name = &#039;&#039; WHERE name IS NULL         [1;32;40m[1m[success][0m
+UPDATE {location} SET street = &#039;&#039; WHERE street IS NULL     [1;32;40m[1m[success][0m
+UPDATE {location} SET additional = &#039;&#039; WHERE additional IS  [1;32;40m[1m[success][0m
+NULL
+UPDATE {location} SET city = &#039;&#039; WHERE city IS NULL         [1;32;40m[1m[success][0m
+UPDATE {location} SET province = &#039;&#039; WHERE province IS NULL [1;32;40m[1m[success][0m
+UPDATE {location} SET postal_code = &#039;&#039; WHERE postal_code IS[1;32;40m[1m[success][0m
+NULL
+UPDATE {location} SET country = &#039;&#039; WHERE country IS NULL   [1;32;40m[1m[success][0m
+UPDATE {location} SET latitude = 0.0 WHERE latitude IS NULL          [1;32;40m[1m[success][0m
+UPDATE {location} SET longitude = 0.0 WHERE longitude IS NULL        [1;32;40m[1m[success][0m
+UPDATE {location} SET source = 0 WHERE source IS NULL                [1;32;40m[1m[success][0m
+ALTER TABLE {location} CHANGE `name` `name` VARCHAR(255) NOT NULL    [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `street` `street` VARCHAR(255) NOT NULL[1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `additional` `additional` VARCHAR(255) [1;32;40m[1m[success][0m
+NOT NULL DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `city` `city` VARCHAR(255) NOT NULL    [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `province` `province` VARCHAR(16) NOT  [1;32;40m[1m[success][0m
+NULL DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `postal_code` `postal_code` VARCHAR(16)[1;32;40m[1m[success][0m
+NOT NULL DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `country` `country` CHAR(2) NOT NULL   [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {location} CHANGE `latitude` `latitude` DECIMAL(10, 6)   [1;32;40m[1m[success][0m
+NOT NULL DEFAULT 0
+ALTER TABLE {location} CHANGE `longitude` `longitude` DECIMAL(10, 6) [1;32;40m[1m[success][0m
+NOT NULL DEFAULT 0
+ALTER TABLE {location} CHANGE `source` `source` TINYINT NOT NULL     [1;32;40m[1m[success][0m
+DEFAULT 0
+Executing location_update_6303                                       [1;32;40m[1m[success][0m
+Executing location_update_6304                                       [1;32;40m[1m[success][0m
+Executing location_update_6305                                       [1;32;40m[1m[success][0m
+Executing location_update_6306                                       [1;32;40m[1m[success][0m
+Executing location_update_6307                                       [1;32;40m[1m[success][0m
+Executing location_update_6308                                       [1;32;40m[1m[success][0m
+Executing location_update_6309                                       [1;32;40m[1m[success][0m
+Can&amp;#039;t DROP &amp;#039;PRIMARY&amp;#039;; check that          [31;40m[1m[error][0m
+column/key exists
+query: ALTER TABLE zipcodes DROP PRIMARY KEY in _db_query() (line
+149 of /var/www/html/includes/database.mysql.inc).
+Note: Location.module update 6301 will generate several              [1;32;40m[1m[status][0m
+warnings/failures regarding indexes and primary keys if you are
+upgrading from one of the 6.x test releases. These warnings can be
+safely disregarded in this case.
+Note: Location module has now split off user location support into a [1;32;40m[1m[status][0m
+seperate module, called User Locations. It has been enabled for you.
+If you don't want user locations, visit the modules page and disable
+it.
+Note: Location module has now split off node location support into a [1;32;40m[1m[status][0m
+seperate module, called Node Locations. It has been enabled for you.
+If you don't want node locations, visit the modules page and disable
+it.
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

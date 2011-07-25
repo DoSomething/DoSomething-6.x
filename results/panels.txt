@@ -1,0 +1,85 @@
+Executing panels_update_5299                                         [1;32;40m[1m[success][0m
+DELETE FROM {panels_pane} WHERE pid = 0                              [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} DROP PRIMARY KEY                           [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} CHANGE `pid` `pid` INT NOT NULL            [1;32;40m[1m[success][0m
+auto_increment, ADD PRIMARY KEY (pid)
+ALTER TABLE {panels_display} DROP PRIMARY KEY                        [1;32;40m[1m[success][0m
+ALTER TABLE {panels_display} CHANGE `did` `did` INT NOT NULL         [1;32;40m[1m[success][0m
+auto_increment, ADD PRIMARY KEY (did)
+Executing panels_update_6290                                         [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} CHANGE `access` `access` LONGTEXT DEFAULT  [1;32;40m[1m[success][0m
+NULL
+ALTER TABLE {panels_pane} DROP visibility                            [1;32;40m[1m[success][0m
+DROP TABLE {panels_object_cache}                                     [1;32;40m[1m[success][0m
+DELETE FROM {system} WHERE name IN (&#039;panels_page&#039;,         [1;32;40m[1m[success][0m
+&#039;panels_views&#039;)
+Executing panels_update_6291                                         [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} ADD `style` LONGTEXT DEFAULT NULL          [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} ADD `css` LONGTEXT DEFAULT NULL            [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} ADD `extras` LONGTEXT DEFAULT NULL         [1;32;40m[1m[success][0m
+Executing panels_update_6292                                         [1;32;40m[1m[success][0m
+Executing panels_update_6292                                         [1;32;40m[1m[success][0m
+Executing panels_update_6292                                         [1;32;40m[1m[success][0m
+Panel panes were updated                                             [1;32;40m[1m[success][0m
+Executing panels_update_6293                                         [1;32;40m[1m[success][0m
+Panel displays were updated                                          [1;32;40m[1m[success][0m
+Executing panels_update_6300                                         [1;32;40m[1m[success][0m
+Executing panels_update_6302                                         [1;32;40m[1m[success][0m
+DROP TABLE {panels_page}                                             [1;32;40m[1m[success][0m
+UPDATE {panels_pane} SET type = CONCAT(type, &#039;_&#039;, subtype) [1;32;40m[1m[success][0m
+WHERE type = &#039;node_form&#039;
+UPDATE {panels_pane} SET type = &#039;node_form_path&#039; WHERE type[1;32;40m[1m[success][0m
+= &#039;node_form_url_path&#039;
+Executing panels_update_6303                                         [1;32;40m[1m[success][0m
+Executing panels_update_6304                                         [1;32;40m[1m[success][0m
+Executing panels_update_6305                                         [1;32;40m[1m[success][0m
+ALTER TABLE {panels_display} ADD `title_pane` INT DEFAULT 0          [1;32;40m[1m[success][0m
+Executing panels_update_6306                                         [1;32;40m[1m[success][0m
+Executing panels_update_6307                                         [1;32;40m[1m[success][0m
+Executing panels_update_6308                                         [1;32;40m[1m[success][0m
+CREATE TABLE {panels_layout} (                                       [1;32;40m[1m[success][0m
+`lid` INT NOT NULL auto_increment, 
+`name` VARCHAR(255) DEFAULT NULL, 
+`admin_title` VARCHAR(255) DEFAULT NULL, 
+`admin_description` LONGTEXT DEFAULT NULL, 
+`category` VARCHAR(255) DEFAULT NULL, 
+`plugin` VARCHAR(255) DEFAULT NULL, 
+`settings` LONGTEXT DEFAULT NULL, 
+PRIMARY KEY (lid)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing panels_update_6309                                         [1;32;40m[1m[success][0m
+CREATE TABLE {panels_renderer_pipeline} (                            [1;32;40m[1m[success][0m
+`rpid` INT NOT NULL auto_increment, 
+`name` VARCHAR(255) DEFAULT NULL, 
+`admin_title` VARCHAR(255) DEFAULT NULL, 
+`admin_description` LONGTEXT DEFAULT NULL, 
+`weight` SMALLINT DEFAULT 0, 
+`settings` LONGTEXT DEFAULT NULL, 
+PRIMARY KEY (rpid)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing panels_update_6310                                         [1;32;40m[1m[success][0m
+Executing panels_update_6311                                         [1;32;40m[1m[success][0m
+ALTER TABLE {panels_display} CHANGE `layout` `layout` VARCHAR(32)    [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {panels_display} CHANGE `title` `title` VARCHAR(255)     [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {panels_display} CHANGE `hide_title` `hide_title` TINYINT[1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {panels_pane} CHANGE `panel` `panel` VARCHAR(32) DEFAULT [1;32;40m[1m[success][0m
+&#039;&#039;
+ALTER TABLE {panels_pane} CHANGE `type` `type` VARCHAR(32) DEFAULT   [1;32;40m[1m[success][0m
+&#039;&#039;
+ALTER TABLE {panels_pane} CHANGE `subtype` `subtype` VARCHAR(64)     [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {panels_pane} CHANGE `shown` `shown` TINYINT DEFAULT 1   [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} CHANGE `position` `position` SMALLINT      [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {panels_pane} DROP INDEX did                             [1;32;40m[1m[success][0m
+ALTER TABLE {panels_pane} ADD INDEX did_idx (did)                    [1;32;40m[1m[success][0m
+Please note that the Panels upgrade from Drupal 5 to Drupal 6 is far [1;32;40m[1m[status][0m
+from perfect, especially where Views and CCK are involved. Please
+check all your panels carefully and compare them against the
+originals. You may need to do some rework to regain your original
+functionality.
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

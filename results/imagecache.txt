@@ -1,0 +1,27 @@
+Executing imagecache_update_6000                                     [1;32;40m[1m[success][0m
+DELETE FROM {sequences} WHERE name =                                 [1;32;40m[1m[success][0m
+&#039;{imagecache_preset}_presetid&#039;
+ALTER TABLE {imagecache_preset} CHANGE `presetid` `presetid` INT     [1;32;40m[1m[success][0m
+unsigned NOT NULL auto_increment
+DELETE FROM {sequences} WHERE name =                                 [1;32;40m[1m[success][0m
+&#039;{imagecache_action}_actionid&#039;
+ALTER TABLE {imagecache_action} CHANGE `actionid` `actionid` INT     [1;32;40m[1m[success][0m
+unsigned NOT NULL auto_increment
+ALTER TABLE {imagecache_action} ADD `module` VARCHAR(255) DEFAULT    [1;32;40m[1m[success][0m
+NULL
+UPDATE {imagecache_action} SET module = &#039;%s&#039; (imagecache)  [1;32;40m[1m[success][0m
+ALTER TABLE {imagecache_action} CHANGE `module` `module` VARCHAR(255)[1;32;40m[1m[success][0m
+NOT NULL
+ALTER TABLE {imagecache_action} ADD INDEX presetid (presetid)        [1;32;40m[1m[success][0m
+Executing imagecache_update_6001                                     [1;32;40m[1m[success][0m
+ALTER TABLE {imagecache_action} CHANGE `weight` `weight` INT NOT NULL[1;32;40m[1m[success][0m
+DEFAULT 0
+Executing imagecache_update_6002                                     [1;32;40m[1m[success][0m
+ALTER TABLE {imagecache_preset} CHANGE `presetname` `presetname`     [1;32;40m[1m[success][0m
+VARCHAR(255) NOT NULL
+ALTER TABLE {imagecache_action} CHANGE `action` `action` VARCHAR(255)[1;32;40m[1m[success][0m
+NOT NULL
+ALTER TABLE {imagecache_action} CHANGE `data` `data` LONGTEXT NOT    [1;32;40m[1m[success][0m
+NULL
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

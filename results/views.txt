@@ -1,0 +1,210 @@
+Executing views_update_6000                                          [1;32;40m[1m[success][0m
+DROP TABLE {cache_views}                                             [1;32;40m[1m[success][0m
+CREATE TABLE {views_view} (                                          [1;32;40m[1m[success][0m
+`vid` INT unsigned NOT NULL auto_increment, 
+`name` VARCHAR(32) NOT NULL DEFAULT &#039;&#039;, 
+`description` VARCHAR(255) DEFAULT &#039;&#039;, 
+`tag` VARCHAR(255) DEFAULT &#039;&#039;, 
+`view_php` BLOB DEFAULT NULL, 
+`base_table` VARCHAR(32) NOT NULL DEFAULT &#039;&#039;, 
+`is_cacheable` TINYINT DEFAULT 0, 
+PRIMARY KEY (vid)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+CREATE TABLE {views_display} (                                       [1;32;40m[1m[success][0m
+`vid` INT unsigned NOT NULL DEFAULT 0, 
+`id` VARCHAR(64) NOT NULL DEFAULT &#039;&#039;, 
+`display_title` VARCHAR(64) NOT NULL DEFAULT &#039;&#039;, 
+`display_plugin` VARCHAR(64) NOT NULL DEFAULT &#039;&#039;, 
+`position` INT DEFAULT 0, 
+`display_options` BLOB DEFAULT NULL, 
+INDEX vid (vid, position)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+CREATE TABLE {cache_views} (                                         [1;32;40m[1m[success][0m
+`cid` VARCHAR(255) NOT NULL DEFAULT &#039;&#039;, 
+`data` LONGBLOB DEFAULT NULL, 
+`expire` INT NOT NULL DEFAULT 0, 
+`created` INT NOT NULL DEFAULT 0, 
+`headers` TEXT DEFAULT NULL, 
+`serialized` SMALLINT NOT NULL DEFAULT 0, 
+PRIMARY KEY (cid), 
+INDEX expire (expire)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+CREATE TABLE {views_object_cache} (                                  [1;32;40m[1m[success][0m
+`sid` VARCHAR(64) DEFAULT NULL, 
+`name` VARCHAR(32) DEFAULT NULL, 
+`obj` VARCHAR(32) DEFAULT NULL, 
+`updated` INT unsigned NOT NULL DEFAULT 0, 
+`data` BLOB DEFAULT NULL, 
+INDEX sid_obj_name (sid, obj, name), 
+INDEX updated (updated)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing views_update_6001                                          [1;32;40m[1m[success][0m
+UPDATE {blocks} SET delta = &#039;og_comments_recent-block_1&#039;   [1;32;40m[1m[success][0m
+WHERE bid = 1
+UPDATE {blocks} SET delta = &#039;nodequeue_12-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 2
+UPDATE {blocks} SET delta = &#039;forward_forwards-block_1&#039;     [1;32;40m[1m[success][0m
+WHERE bid = 3
+UPDATE {blocks} SET delta = &#039;forward_clickthroughs-block_1&#039;[1;32;40m[1m[success][0m
+WHERE bid = 4
+UPDATE {blocks} SET delta = &#039;comments_recent-block_1&#039; WHERE[1;32;40m[1m[success][0m
+bid = 5
+UPDATE {blocks} SET delta = &#039;archive-block_1&#039; WHERE bid = 6[1;32;40m[1m[success][0m
+UPDATE {blocks} SET delta = &#039;projects_map_nearzip-block_1&#039; [1;32;40m[1m[success][0m
+WHERE bid = 7
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;projects_landing_clubs-block_1&#039; WHERE bid = 8
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;projects_landing_video-block_1&#039; WHERE bid = 9
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;projects_landing_recent-block_1&#039; WHERE bid = 10
+UPDATE {blocks} SET delta = &#039;Newsbox_dev-block_1&#039; WHERE bid[1;32;40m[1m[success][0m
+= 11
+UPDATE {blocks} SET delta = &#039;actnow_training-block_1&#039; WHERE[1;32;40m[1m[success][0m
+bid = 12
+UPDATE {blocks} SET delta = &#039;actnow_howto-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 13
+UPDATE {blocks} SET delta = &#039;actnow_easyideas-block_1&#039;     [1;32;40m[1m[success][0m
+WHERE bid = 14
+UPDATE {blocks} SET delta = &#039;actnow_actiontips-block_1&#039;    [1;32;40m[1m[success][0m
+WHERE bid = 15
+UPDATE {blocks} SET delta = &#039;actnow_general-block_1&#039; WHERE [1;32;40m[1m[success][0m
+bid = 16
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;grant_alumnihome_slider-block_1&#039; WHERE bid = 17
+UPDATE {blocks} SET delta = &#039;alumni_rotator-block_1&#039; WHERE [1;32;40m[1m[success][0m
+bid = 18
+UPDATE {blocks} SET delta = &#039;actguides_anycause-block_1&#039;   [1;32;40m[1m[success][0m
+WHERE bid = 19
+UPDATE {blocks} SET delta = &#039;actguides_easyideas-block_1&#039;  [1;32;40m[1m[success][0m
+WHERE bid = 20
+UPDATE {blocks} SET delta = &#039;actguides_actiontips-block_1&#039; [1;32;40m[1m[success][0m
+WHERE bid = 21
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;4803fcb519c646b50bb98e00a127705f&#039; WHERE bid = 22
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;d17e0553a23c4193d04ce831e37bc1bb&#039; WHERE bid = 23
+UPDATE {blocks} SET delta = &#039;newsbox_recent-block_1&#039; WHERE [1;32;40m[1m[success][0m
+bid = 24
+UPDATE {blocks} SET delta = &#039;project_keyword_date-block_1&#039; [1;32;40m[1m[success][0m
+WHERE bid = 25
+UPDATE {blocks} SET delta = &#039;Newsbox_rss-block_1&#039; WHERE bid[1;32;40m[1m[success][0m
+= 26
+UPDATE {blocks} SET delta = &#039;project_keyword-block_1&#039; WHERE[1;32;40m[1m[success][0m
+bid = 27
+UPDATE {blocks} SET delta = &#039;cgg_actions-block_1&#039; WHERE bid[1;32;40m[1m[success][0m
+= 28
+UPDATE {blocks} SET delta = &#039;featured_alumni-block_1&#039; WHERE[1;32;40m[1m[success][0m
+bid = 29
+UPDATE {blocks} SET delta = &#039;video_cause_display-block_1&#039;  [1;32;40m[1m[success][0m
+WHERE bid = 30
+UPDATE {blocks} SET delta = &#039;abc_family_ideas-block_1&#039;     [1;32;40m[1m[success][0m
+WHERE bid = 31
+UPDATE {blocks} SET delta = &#039;som_videos-block_1&#039; WHERE bid [1;32;40m[1m[success][0m
+= 32
+UPDATE {blocks} SET delta = &#039;abc_family_actions-block_1&#039;   [1;32;40m[1m[success][0m
+WHERE bid = 33
+UPDATE {blocks} SET delta = &#039;rants_archive_reorder-block_1&#039;[1;32;40m[1m[success][0m
+WHERE bid = 34
+UPDATE {blocks} SET delta = &#039;cause_videos-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 35
+UPDATE {blocks} SET delta = &#039;afterschool_projects-block_1&#039; [1;32;40m[1m[success][0m
+WHERE bid = 36
+UPDATE {blocks} SET delta = &#039;cause_quiz-block_1&#039; WHERE bid [1;32;40m[1m[success][0m
+= 37
+UPDATE {blocks} SET delta = &#039;clubs_slider-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 38
+UPDATE {blocks} SET delta = &#039;grants_judge_dsaward-block_1&#039; [1;32;40m[1m[success][0m
+WHERE bid = 39
+UPDATE {blocks} SET delta = &#039;IYG_judge-block_1&#039; WHERE bid =[1;32;40m[1m[success][0m
+40
+UPDATE {blocks} SET delta = &#039;newsbox_cause_display-block_1&#039;[1;32;40m[1m[success][0m
+WHERE bid = 41
+UPDATE {blocks} SET delta = &#039;disaster_action_guide-block_1&#039;[1;32;40m[1m[success][0m
+WHERE bid = 42
+UPDATE {blocks} SET delta = &#039;disaster_projects-block_1&#039;    [1;32;40m[1m[success][0m
+WHERE bid = 43
+UPDATE {blocks} SET delta = &#039;education_projects-block_1&#039;   [1;32;40m[1m[success][0m
+WHERE bid = 44
+UPDATE {blocks} SET delta = &#039;press-block_1&#039; WHERE bid = 45 [1;32;40m[1m[success][0m
+UPDATE {blocks} SET delta = &#039;test_map-block_1&#039; WHERE bid = [1;32;40m[1m[success][0m
+46
+UPDATE {blocks} SET delta = &#039;projects_bigmap_sucks-block_1&#039;[1;32;40m[1m[success][0m
+WHERE bid = 47
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;projects_by_date_short-block_1&#039; WHERE bid = 48
+UPDATE {blocks} SET delta = &#039;grant_alumni_slider-block_1&#039;  [1;32;40m[1m[success][0m
+WHERE bid = 49
+UPDATE {blocks} SET delta = &#039;issue_action_guides-block_1&#039;  [1;32;40m[1m[success][0m
+WHERE bid = 50
+UPDATE {blocks} SET delta = &#039;poll_listing-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 51
+UPDATE {blocks} SET delta = &#039;clubs_learn_block-block_1&#039;    [1;32;40m[1m[success][0m
+WHERE bid = 52
+UPDATE {blocks} SET delta = &#039;clubs_map-block_1&#039; WHERE bid =[1;32;40m[1m[success][0m
+53
+UPDATE {blocks} SET delta = &#039;rants_archive-block_1&#039; WHERE  [1;32;40m[1m[success][0m
+bid = 54
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;23d018d04d0c162050def69814d8da93&#039; WHERE bid = 55
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;7905dfefac015a9af79a112555d60633&#039; WHERE bid = 56
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;0d865916d8ceab53f8e0795459add050&#039; WHERE bid = 57
+UPDATE {blocks} SET delta = &#039;projects_map-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 58
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;3a1ceb86295408908c9d36f7eebf50cc&#039; WHERE bid = 59
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;most_recent_chatterbox-block_1&#039; WHERE bid = 60
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;projects_recent_updates-block_1&#039; WHERE bid = 61
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;0e82e086d58d3266af3eb7366d92bd0e&#039; WHERE bid = 62
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;2009d60cf0d003f13066f289679fe902&#039; WHERE bid = 63
+UPDATE {blocks} SET delta = &#039;front_page_project-block_1&#039;   [1;32;40m[1m[success][0m
+WHERE bid = 64
+UPDATE {blocks} SET delta = &#039;grants_judge-block_1&#039; WHERE   [1;32;40m[1m[success][0m
+bid = 65
+UPDATE {blocks} SET delta = &#039;Chatterbox_rating-block_1&#039;    [1;32;40m[1m[success][0m
+WHERE bid = 66
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;e4d954a0aa000f57b86d7f3293b80ed3&#039; WHERE bid = 67
+UPDATE {blocks} SET delta =                                          [1;32;40m[1m[success][0m
+&#039;environmental_projects-block_1&#039; WHERE bid = 68
+UPDATE {blocks} SET delta = &#039;Newsbox-block_1&#039; WHERE bid =  [1;32;40m[1m[success][0m
+69
+UPDATE {blocks} SET delta = &#039;Varsity_leadboard-block_1&#039;    [1;32;40m[1m[success][0m
+WHERE bid = 70
+Executing views_update_6003                                          [1;32;40m[1m[success][0m
+ALTER TABLE {views_view} ADD UNIQUE KEY name (name)                  [1;32;40m[1m[success][0m
+Executing views_update_6004                                          [1;32;40m[1m[success][0m
+ALTER TABLE {views_object_cache} DROP data                           [1;32;40m[1m[success][0m
+ALTER TABLE {views_object_cache} ADD `data` LONGTEXT DEFAULT NULL    [1;32;40m[1m[success][0m
+Executing views_update_6005                                          [1;32;40m[1m[success][0m
+ALTER TABLE {views_view} CHANGE `base_table` `base_table` VARCHAR(64)[1;32;40m[1m[success][0m
+NOT NULL DEFAULT &#039;&#039;
+Executing views_update_6006                                          [1;32;40m[1m[success][0m
+CREATE TABLE {cache_views_data} (                                    [1;32;40m[1m[success][0m
+`cid` VARCHAR(255) NOT NULL DEFAULT &#039;&#039;, 
+`data` LONGBLOB DEFAULT NULL, 
+`expire` INT NOT NULL DEFAULT 0, 
+`created` INT NOT NULL DEFAULT 0, 
+`headers` TEXT DEFAULT NULL, 
+`serialized` SMALLINT NOT NULL DEFAULT 1, 
+PRIMARY KEY (cid), 
+INDEX expire (expire)
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing views_update_6007                                          [1;32;40m[1m[success][0m
+Executing views_update_6008                                          [1;32;40m[1m[success][0m
+ALTER TABLE {views_display} ADD PRIMARY KEY (vid, id)                [1;32;40m[1m[success][0m
+Executing views_update_6009                                          [1;32;40m[1m[success][0m
+ALTER TABLE {views_display} CHANGE `display_options`                 [1;32;40m[1m[success][0m
+`display_options` LONGTEXT DEFAULT NULL
+WD php: Warning: unlink(files/js/gmap_markers.js): Permission denied [31;40m[1m[error][0m
+in file_delete() (line 509 of /var/www/html/includes/file.inc).
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+unlink(files/js/gmap_markers.js): Permission denied in file_delete() [1;33;40m[1m[warning][0m
+(line 509 of /var/www/html/includes/file.inc).
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

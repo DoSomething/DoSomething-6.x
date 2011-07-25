@@ -1,0 +1,209 @@
+Executing date_update_6000                                           [1;32;40m[1m[success][0m
+Executing date_update_6001                                           [1;32;40m[1m[success][0m
+Executing date_update_6002                                           [1;32;40m[1m[success][0m
+Executing date_update_6003                                           [1;32;40m[1m[success][0m
+Executing date_update_6004                                           [1;32;40m[1m[success][0m
+Executing date_update_6005                                           [1;32;40m[1m[success][0m
+WD php: Notice: Undefined variable: type in                          [31;40m[1m[error][0m
+date_install_create_format() (line 382 of
+/var/www/html/sites/all/modules/date/date/date.install).
+WD php: Notice: Undefined variable: type in                          [31;40m[1m[error][0m
+date_install_create_format() (line 382 of
+/var/www/html/sites/all/modules/date/date/date.install).
+WD php: Notice: Undefined variable: type in                          [31;40m[1m[error][0m
+date_install_create_format() (line 382 of
+/var/www/html/sites/all/modules/date/date/date.install).
+WD php: Notice: Undefined variable: type in                          [31;40m[1m[error][0m
+date_install_create_format() (line 382 of
+/var/www/html/sites/all/modules/date/date/date.install).
+WD php: Notice: Undefined variable: type in                          [31;40m[1m[error][0m
+date_install_create_format() (line 382 of
+/var/www/html/sites/all/modules/date/date/date.install).
+WD php: Notice: Undefined variable: type in                          [31;40m[1m[error][0m
+date_install_create_format() (line 382 of
+/var/www/html/sites/all/modules/date/date/date.install).
+WD php: User warning: Duplicate entry 'm/d/Y-custom' for key 2       [31;40m[1m[error][0m
+query: INSERT INTO date_formats (format, type, locked)
+VALUES('m/d/Y', 'custom', 0) in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+WD php: User warning: Duplicate entry 'm/d/Y-custom' for key 2       [31;40m[1m[error][0m
+query: INSERT INTO date_formats (format, type, locked)
+VALUES('m/d/Y', 'custom', 0) in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+WD php: User warning: Duplicate entry 'm/d/Y-custom' for key 2       [31;40m[1m[error][0m
+query: INSERT INTO date_formats (format, type, locked)
+VALUES('m/d/Y', 'custom', 0) in _db_query() (line 149 of
+/var/www/html/includes/database.mysql.inc).
+Field <em>field_application_deadline_2</em> formats were converted to[1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_application_deadline_2</em> was converted to the new format
+type <em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_application_deadline_2</em> was converted to the new format
+type <em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_application_deadline_2</em> was converted to the new format
+type <em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_application_deadline_2</em> was converted to the new format
+type <em>short</em>.
+The display settings for field <em>field_application_deadline_2</em> [1;32;40m[1m[success][0m
+in content type <em>grants_database</em> were updated.
+Field <em>field_recipient_birthdate</em> formats were converted to   [1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_recipient_birthdate</em> was converted to the new format
+type <em>field_recipient_birthdate_short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_recipient_birthdate</em> was converted to the new format
+type <em>field_recipient_birthdate_medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_recipient_birthdate</em> was converted to the new format
+type <em>field_recipient_birthdate_long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_recipient_birthdate</em> was converted to the new format
+type <em>field_recipient_birthdate_short</em>.
+The display settings for field <em>field_recipient_birthdate</em> in [1;32;40m[1m[success][0m
+content type <em>awards_archive</em> were updated.
+The display settings for field <em>field_recipient_birthdate</em> in [1;32;40m[1m[success][0m
+content type <em>grant</em> were updated.
+The display settings for field <em>field_recipient_birthdate</em> in [1;32;40m[1m[success][0m
+content type <em>grant_alumni</em> were updated.
+Field <em>field_publication_date</em> formats were converted to      [1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_publication_date</em> was converted to the new format type
+<em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_publication_date</em> was converted to the new format type
+<em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_publication_date</em> was converted to the new format type
+<em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_publication_date</em> was converted to the new format type
+<em>field_publication_date_default</em>.
+The display settings for field <em>field_publication_date</em> in    [1;32;40m[1m[success][0m
+content type <em>press</em> were updated.
+Field <em>field_club_first_meeting_when</em> formats were converted  [1;32;40m[1m[success][0m
+to custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_club_first_meeting_when</em> was converted to the new
+format type <em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_club_first_meeting_when</em> was converted to the new
+format type <em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_club_first_meeting_when</em> was converted to the new
+format type <em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_club_first_meeting_when</em> was converted to the new
+format type <em>short</em>.
+The display settings for field <em>field_club_first_meeting_when</em>[1;32;40m[1m[success][0m
+in content type <em>club</em> were updated.
+Field <em>field_campaign_birthdate</em> formats were converted to    [1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_campaign_birthdate</em> was converted to the new format
+type <em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_campaign_birthdate</em> was converted to the new format
+type <em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_campaign_birthdate</em> was converted to the new format
+type <em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_campaign_birthdate</em> was converted to the new format
+type <em>field_campaign_birthdate_default</em>.
+The display settings for field <em>field_campaign_birthdate</em> in  [1;32;40m[1m[success][0m
+content type <em>botb</em> were updated.
+The display settings for field <em>field_campaign_birthdate</em> in  [1;32;40m[1m[success][0m
+content type <em>canned_food</em> were updated.
+The display settings for field <em>field_campaign_birthdate</em> in  [1;32;40m[1m[success][0m
+content type <em>hp_art</em> were updated.
+Field <em>field_club_leader_birthdate</em> formats were converted to [1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_club_leader_birthdate</em> was converted to the new format
+type <em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_club_leader_birthdate</em> was converted to the new format
+type <em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_club_leader_birthdate</em> was converted to the new format
+type <em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_club_leader_birthdate</em> was converted to the new format
+type <em>field_club_leader_birthdate_default</em>.
+The display settings for field <em>field_club_leader_birthdate</em>  [1;32;40m[1m[success][0m
+in content type <em>action_guide_submission</em> were updated.
+The display settings for field <em>field_club_leader_birthdate</em>  [1;32;40m[1m[success][0m
+in content type <em>club</em> were updated.
+Field <em>field_dsaward_app_birthdate</em> formats were converted to [1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_dsaward_app_birthdate</em> was converted to the new format
+type <em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_dsaward_app_birthdate</em> was converted to the new format
+type <em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_dsaward_app_birthdate</em> was converted to the new format
+type <em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_dsaward_app_birthdate</em> was converted to the new format
+type <em>short</em>.
+The display settings for field <em>field_dsaward_app_birthdate</em>  [1;32;40m[1m[success][0m
+in content type <em>dsaward_app</em> were updated.
+Field <em>field_bootcampx_dob</em> formats were converted to custom  [1;32;40m[1m[success][0m
+formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_bootcampx_dob</em> was converted to the new format type
+<em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_bootcampx_dob</em> was converted to the new format type
+<em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_bootcampx_dob</em> was converted to the new format type
+<em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_bootcampx_dob</em> was converted to the new format type
+<em>field_bootcampx_dob_default</em>.
+The display settings for field <em>field_bootcampx_dob</em> in       [1;32;40m[1m[success][0m
+content type <em>bootcampx</em> were updated.
+Field <em>field_bootcampx_expecteddate</em> formats were converted to[1;32;40m[1m[success][0m
+custom formats.
+The old format type <em>short</em> for field                         [1;32;40m[1m[success][0m
+<em>field_bootcampx_expecteddate</em> was converted to the new format
+type <em>short</em>.
+The old format type <em>medium</em> for field                        [1;32;40m[1m[success][0m
+<em>field_bootcampx_expecteddate</em> was converted to the new format
+type <em>medium</em>.
+The old format type <em>long</em> for field                          [1;32;40m[1m[success][0m
+<em>field_bootcampx_expecteddate</em> was converted to the new format
+type <em>long</em>.
+The old format type <em>default</em> for field                       [1;32;40m[1m[success][0m
+<em>field_bootcampx_expecteddate</em> was converted to the new format
+type <em>short</em>.
+The display settings for field <em>field_bootcampx_expecteddate</em> [1;32;40m[1m[success][0m
+in content type <em>bootcampx</em> were updated.
+Duplicate entry &amp;#039;m/d/Y-custom&amp;#039; for key 2           [31;40m[1m[error][0m
+query: INSERT INTO date_formats (format, type, locked)
+VALUES(&amp;#039;m/d/Y&amp;#039;, &amp;#039;custom&amp;#039;, 0) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+Duplicate entry &amp;#039;m/d/Y-custom&amp;#039; for key 2           [31;40m[1m[error][0m
+query: INSERT INTO date_formats (format, type, locked)
+VALUES(&amp;#039;m/d/Y&amp;#039;, &amp;#039;custom&amp;#039;, 0) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+Duplicate entry &amp;#039;m/d/Y-custom&amp;#039; for key 2           [31;40m[1m[error][0m
+query: INSERT INTO date_formats (format, type, locked)
+VALUES(&amp;#039;m/d/Y&amp;#039;, &amp;#039;custom&amp;#039;, 0) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+The database has been updated to correct the stored timezone for     [1;32;40m[1m[status][0m
+fields using timezone 'none'.
+Date display formats are now included with the system date and time  [1;32;40m[1m[status][0m
+settings. Please visit the Date and time format page to see the new
+format types.
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

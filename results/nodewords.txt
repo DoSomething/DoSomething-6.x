@@ -1,0 +1,322 @@
+Executing nodewords_update_6100                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} CHANGE `content` `content` LONGTEXT NOT NULL [1;32;40m[1m[success][0m
+Created new setting variables                                        [1;32;40m[1m[success][0m
+Executing nodewords_update_6102                                      [1;32;40m[1m[success][0m
+INSERT INTO {nodewords} (type, id, name, content) VALUES             [1;32;40m[1m[success][0m
+(&#039;default&#039;, &#039;&#039;, &#039;copyright&#039;,
+&#039;&#039;)
+INSERT INTO {nodewords} (type, id, name, content) VALUES             [1;32;40m[1m[success][0m
+(&#039;default&#039;, &#039;&#039;, &#039;geourl&#039;,
+&#039;0,0&#039;)
+INSERT INTO {nodewords} (type, id, name, content) VALUES             [1;32;40m[1m[success][0m
+(&#039;default&#039;, &#039;&#039;, &#039;keywords&#039;,
+&#039;&#039;)
+INSERT INTO {nodewords} (type, id, name, content) VALUES             [1;32;40m[1m[success][0m
+(&#039;default&#039;, &#039;&#039;, &#039;robots&#039;, &#039;&#039;)
+The default meta tags values have been updated; verify they have the [1;32;40m[1m[success][0m
+correct values at
+http://default/admin/content/nodewords/meta-tags/default
+Executing nodewords_update_6103                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET name = &#039;revisit-after&#039; WHERE name = [1;32;40m[1m[success][0m
+&#039;Revisit-After&#039;
+UPDATE {nodewords} SET name = &#039;dc.title&#039; WHERE name =      [1;32;40m[1m[success][0m
+&#039;DC.Title&#039;
+UPDATE {nodewords} SET type = &#039;frontpage&#039; WHERE type =     [1;32;40m[1m[success][0m
+&#039;page&#039; AND id = &#039;&#039;
+Executing nodewords_update_6104                                      [1;32;40m[1m[success][0m
+Updated the module settings                                          [1;32;40m[1m[success][0m
+Executing nodewords_update_6106                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET name = &#039;location&#039; WHERE name =      [1;32;40m[1m[success][0m
+&#039;geourl&#039;
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} RENAME TO {nodewords_tmp}                    [1;32;40m[1m[success][0m
+CREATE TABLE {nodewords} (                                           [1;32;40m[1m[success][0m
+`mtid` INT NOT NULL auto_increment, 
+`type` VARCHAR(16) NOT NULL DEFAULT &#039;&#039;, 
+`id` VARCHAR(255) NOT NULL DEFAULT &#039;&#039;, 
+`name` VARCHAR(32) NOT NULL DEFAULT &#039;&#039;, 
+`content` LONGTEXT NOT NULL, 
+PRIMARY KEY (mtid), 
+UNIQUE KEY tin (type, id, name), 
+INDEX nodewords_id (id(6)), 
+INDEX nodewords_type (type(6))
+) /*!40100 DEFAULT CHARACTER SET utf8 */
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6113                                      [1;32;40m[1m[success][0m
+DROP TABLE {nodewords_tmp}                                           [1;32;40m[1m[success][0m
+Executing nodewords_update_6115                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6117                                      [1;32;40m[1m[success][0m
+DELETE FROM {nodewords} WHERE type IN (&#039;views&#039;,            [1;32;40m[1m[success][0m
+&#039;panels&#039;)
+The support for Views, and Panels have been changed; visit           [1;32;40m[1m[success][0m
+http://default/admin/content/nodewords/meta-tags/other to edit the
+meta tags for those pages
+Executing nodewords_update_6120                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP KEY tin                                 [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} CHANGE `type` `type` VARCHAR(16) NOT NULL    [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {nodewords} CHANGE `id` `id` VARCHAR(255) NOT NULL       [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {nodewords} CHANGE `name` `name` VARCHAR(32) NOT NULL    [1;32;40m[1m[success][0m
+DEFAULT &#039;&#039;
+ALTER TABLE {nodewords} ADD UNIQUE KEY tin (type, id, name)          [1;32;40m[1m[success][0m
+Executing nodewords_update_6128                                      [1;32;40m[1m[success][0m
+DELETE FROM {nodewords} WHERE type = &#039;offline&#039;             [1;32;40m[1m[success][0m
+Executing nodewords_update_6131                                      [1;32;40m[1m[success][0m
+Updated the module settings                                          [1;32;40m[1m[success][0m
+Executing nodewords_update_6136                                      [1;32;40m[1m[success][0m
+UPDATE {system} SET status = 1 WHERE type = 'module' AND name =      [1;32;40m[1m[success][0m
+'nodewords_basic'
+UPDATE {system} SET status = 1 WHERE type = 'module' AND name =      [1;32;40m[1m[success][0m
+'nodewords_extra'
+Executing nodewords_update_6137                                      [1;32;40m[1m[success][0m
+WD php: User warning: Duplicate key name 'nodewords_id'              [31;40m[1m[error][0m
+query: ALTER TABLE nodewords ADD INDEX nodewords_id (id(6)) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+WD php: User warning: Duplicate key name 'nodewords_type'            [31;40m[1m[error][0m
+query: ALTER TABLE nodewords ADD INDEX nodewords_type (type(6)) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+ALTER TABLE {nodewords} ADD INDEX nodewords_id (id(6))               [31;40m[1m[error][0m
+ALTER TABLE {nodewords} ADD INDEX nodewords_type (type(6))           [31;40m[1m[error][0m
+Executing nodewords_update_6140                                      [1;32;40m[1m[success][0m
+Updated the module settings                                          [1;32;40m[1m[success][0m
+Executing nodewords_update_6143                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6145                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP KEY tin                                 [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP INDEX nodewords_id                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP INDEX nodewords_type                    [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD `language` VARCHAR(12) NOT NULL DEFAULT  [1;32;40m[1m[success][0m
+&#039;&#039;
+ALTER TABLE {nodewords} ADD INDEX nodewords_lang (language(6))       [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD INDEX nodewords_name (name(6))           [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD INDEX nodewords_type_id (type(6), id(6)) [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD UNIQUE KEY nodewords_type_id_name_lang   [1;32;40m[1m[success][0m
+(type, id, name, language)
+Executing nodewords_update_6146                                      [1;32;40m[1m[success][0m
+DELETE FROM {nodewords} WHERE type = &#039;4&#039;                   [1;32;40m[1m[success][0m
+Executing nodewords_update_6147                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP KEY nodewords_type_id_name_lang         [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP INDEX nodewords_lang                    [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP language                                [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD UNIQUE KEY nodewords_type_id_name (type, [1;32;40m[1m[success][0m
+id, name)
+Executing nodewords_update_6149                                      [1;32;40m[1m[success][0m
+Updated the module settings                                          [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6158                                      [1;32;40m[1m[success][0m
+Executing nodewords_update_6159                                      [1;32;40m[1m[success][0m
+Corrected the values saved in the database                           [1;32;40m[1m[success][0m
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;1&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;default&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;2&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;errorpage&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;3&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;frontpage&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;5&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;node&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;10&#039; WHERE type =            [1;32;40m[1m[success][0m
+&#039;page&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;4&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;pager&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;6&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;term&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;7&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;tracker&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;8&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;user&#039;
+Executing nodewords_update_6160                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;9&#039; WHERE type =             [1;32;40m[1m[success][0m
+&#039;vocabulary&#039;
+Executing nodewords_update_6164                                      [1;32;40m[1m[success][0m
+Updated the module settings                                          [1;32;40m[1m[success][0m
+Executing nodewords_update_6167                                      [1;32;40m[1m[success][0m
+UPDATE {nodewords} SET type = &#039;0&#039; WHERE type = &#039;&#039;[1;32;40m[1m[success][0m
+DELETE FROM {nodewords} WHERE type = &#039;0&#039;                   [1;32;40m[1m[success][0m
+Executing nodewords_update_6169                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP INDEX nodewords_type_id                 [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP KEY nodewords_type_id_name              [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} CHANGE `type` `type` SMALLINT unsigned NOT   [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+ALTER TABLE {nodewords} ADD INDEX nodewords_type_id (type, id)       [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD UNIQUE KEY nodewords_type_id_name (type, [1;32;40m[1m[success][0m
+id, name)
+Executing nodewords_update_6170                                      [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP INDEX nodewords_type_id                 [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} DROP KEY nodewords_type_id_name              [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} CHANGE `type` `type` SMALLINT unsigned NOT   [1;32;40m[1m[success][0m
+NULL DEFAULT 0
+ALTER TABLE {nodewords} CHANGE `id` `id` INT unsigned NOT NULL       [1;32;40m[1m[success][0m
+DEFAULT 0
+ALTER TABLE {nodewords} ADD INDEX nodewords_type_id (type, id)       [1;32;40m[1m[success][0m
+ALTER TABLE {nodewords} ADD UNIQUE KEY nodewords_type_id_name (type, [1;32;40m[1m[success][0m
+id, name)
+Executing nodewords_update_6176                                      [1;32;40m[1m[success][0m
+The code has been re-organized in new modules that have been enabled [1;32;40m[1m[success][0m
+Removed obsolete persistent variables                                [1;32;40m[1m[success][0m
+The settings page for the front page meta tags has been removed      [1;32;40m[1m[success][0m
+Duplicate key name &amp;#039;nodewords_id&amp;#039;                  [31;40m[1m[error][0m
+query: ALTER TABLE nodewords ADD INDEX nodewords_id (id(6)) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+Duplicate key name &amp;#039;nodewords_type&amp;#039;                [31;40m[1m[error][0m
+query: ALTER TABLE nodewords ADD INDEX nodewords_type (type(6)) in
+_db_query() (line 149 of /var/www/html/includes/database.mysql.inc).
+'all' cache was cleared                                              [1;32;40m[1m[success][0m
+Finished performing updates.                                         [1;32;40m[1m[ok][0m

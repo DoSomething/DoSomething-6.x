@@ -5,3 +5,4 @@ Maildir
 .ssh
 .subversion
 .gitconfig
+.viminfo

@@ -18,7 +18,7 @@ h4.title {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 	font-size: 100%;
 }
-#node-666494 h2.title {
+#node-666494 h2.title, #node-671092 h2.title {
 	background: url("http://www.DoSomething.org/sites/all/micro/macys-2011/title.png") no-repeat;
 	color: #000;
 	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
@@ -27,7 +27,7 @@ h4.title {
 	text-align: center;
 	width: 760px;
 }
-#node-67109 h2.title {display:none;}
+
 h3 {
 	color: #F03;
 	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
@@ -57,8 +57,10 @@ h4 {
 	background: url("star.png") no-repeat;
 	background-position: 0 .2em;
 	font-weight: bold;
+	line-height: 200%;
 	padding-left: 1.25em;
 }
+
 p {
 	font-size: 125%;
 	font-weight: normal;
@@ -67,6 +69,8 @@ p.centered-small {
 	font-size: 100%;
 	text-align: center;
 }
+#macys-membershipBody ul li p {line-height: 100%;}
+
 #container a:link, #container a:visited {
 	color: #F03 !important;
 	text-decoration: none;
@@ -168,6 +172,15 @@ p.centered-small {
 	line-height: 150%;
 	margin-left: -25px;
 }
+#macys-membershipQuizResults {
+	background: url("psa_quiz_bg.png") no-repeat;
+	border-bottom: #fff 15px solid;
+	border-radius: 5px;
+	border-right: #fff 15px solid;
+	border-top: #fff 15px solid;
+	box-shadow: 3px 3px 5px #888;
+	float: left;
+	}
 #macys-membershipQuiz {
 	background: url("psa_quiz_bg.png") no-repeat;
 	border-bottom: #fff 15px solid;
@@ -211,7 +224,7 @@ p.centered-small {
 #quiz-questions legend {
 	font-size: 15px;
 	line-height: 100%;
-	whitespace: normal;
+	white-space: normal;
 }
 #quiz-questions #q7f legend { font-size: 14px; }
 #quiz-questions .guide {
@@ -267,22 +280,38 @@ p.centered-small {
 	width: 140px;
 }
 #macys-membershipButtons {
-	border-radius: 5px;
-	bottom: -300px;
-	box-shadow: 0 0 15px #888;
-	display: inline-block;
-	height: 180px !important;
-	margin-top: 65px;
-	moz-border-radius: 5px;
-	moz-box-shadow: 0 0 15px #888;
 	position: relative !important;
 	text-align: center;
-	top: -300px;
-	webkit-border-radius: 5px;
-	webkit-box-shadow: 0 0 15px #888;
-	width: 800px !important;
+	width: 900px;
+	display: inline-block;
+	margin-left: -40px;
+	margin-right: -800px;
+	padding-top: 30px;
 }
-#macys-membershipButtons img {
+#macys-membershipButtons img, #macy-membershipButtons a {
 	margin: 0.5em 3em;
 	position: inherit;
 }
+
+#locate  {
+	position: absolute;
+	top: 92px;
+	left: 379px;
+	}
+	
+#locate input#ZIP {
+	width: 75px;
+	height: 20px;
+	background-color: #eaeaea;
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ffffff), color-stop(1.0, #eaeaea));
+	border: 1px solid #cacaca;
+	}
+	
+#locate input[type="submit"] {
+	background: url("bigstar.png") no-repeat !important;
+	height: 55px;
+	width: 55px;
+	border: none;
+	padding: 0;
+	}

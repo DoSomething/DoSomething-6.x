@@ -4,11 +4,10 @@
 <head>
   <title><?php print $head_title; ?></title>
   <meta property="og:title" content="Macys Campaign | Do Something"/>    
-  <meta property="fb:admins" content="642356930" /> 
-  <meta property="fb:app_id" content="7630216751" />   
+  <meta property="fb:admins" content="642356930" />    
   <meta property="og:type" content="non_profit"/> 
   <meta property="og:url" content="http://www.dosomething.org/macys/"/>   
-  <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/hunt/logo.jpg" />   
+  <meta property="og:image" content="http://www.dosomething.org/sites/all/themes/dosomething/images/logo.png" />   
   <meta property="og:site_name" content="DoSomething.org"/> 
   <meta property="og:description" content="Amazing DoSomething with Macys"/> 
   <?php print $head; ?>

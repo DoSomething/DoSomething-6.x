@@ -1,9 +1,4 @@
-
-	
-	</div><!--Content Area-->
-	</div>
-	
-        <?php print $content_bottom; ?>
+<?php print $content_bottom; ?>
 			
 
         <?php if ($feed_icons): ?>

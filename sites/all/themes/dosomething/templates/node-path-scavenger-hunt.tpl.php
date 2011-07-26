@@ -109,12 +109,41 @@ if ($_GET['signedup']) {
     $preview = FALSE;
     $form = drupal_get_form('webform_client_form_651742', $node, $submission, $enabled, $preview);
     print $form; 
+  } elseif ($_GET['key']) {
+?>
+  <p>Sweet, you're signed up!  We'll give you a heads before the next scavenger hunt.</p>
+  <p>For now, stay tuned to our <a href="/campaigns">campaigns page</a> to participate in similar programs.  Share how you are taking action in your community and have a chance to win grants, scholarships, and other prizes.</p>
+<?
   } else {
-    module_load_include('inc', 'node', 'node.pages');
+?>
+<form id="dia-signup" action="http://org2.democracyinaction.org/dia/api/process.jsp" method="get">
+<h3>Sign up for more info</h3>
+<p>Wow, you guys rocked the scavenger hunt!  Be sure to check out photos on the <a href="/scavenger-hunt">home</a> and <a href="/scavenger-hunt/challenges">challenges</a> pages.  Sign up below to receive updates on the next hunt.</p>
+<input type="hidden" value="supporter" name="table"/>
+<input type="hidden" value="5216" name="organization_KEY"/>
+<input type="hidden" value="groups" name="link"/>
+<input type="hidden" value="103519" name="linkKey"/>
+<input type="hidden" value="" target="_blank" name="redirect"/>
+<label for="signup-fname">First Name:</label>
+<input class="styled" id="signup-fname" type="text" name="First_Name" value="<?=$first;?>" />
+<label for="signup-lname">Last Name:</label>
+<input class="styled" id="signup-lname" type="text" name="Last_Name" value="<?=$last;?>" />
+<label for="signup-email">Email:</label>
+<input class="styled" id="signup-email" type="text" name="Email" value="<?=$email;?>"  />
+<label for="signup-cell">Cell:</label>
+<input class="styled" id="signup-cell" type="text" name="Cell_Phone" value="<?=$cell;?>"  />
+<label for="signup-zip">Postal code:</label>
+<input class="styled" id="signup-zip" type="text" name="Zip" value="<?=$zip;?>" />
+<br/>
+<input class="button button-wide shadow rounded" id="signup-button" type="submit" value="keep me posted" />
+</form>
+
+<?
+/*    module_load_include('inc', 'node', 'node.pages');
     $node = new stdClass();
     $node ->type = 'scavenger_2011_signup';
     $node ->name = $user->name;
-    print drupal_get_form('scavenger_2011_signup_node_form', $node);
+    print drupal_get_form('scavenger_2011_signup_node_form', $node);*/
   }
 ?>
   </div>

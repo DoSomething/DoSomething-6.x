@@ -10,7 +10,7 @@ $twitter_text = "I'm pumped for @DoSomething & @Lenovo's Scavenger Hunt! Are you
 <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="social" src="/sites/all/micro/hunt/fb-small.png" alt="Share this on Facebook" /></a>
 <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="social" src="/sites/all/micro/hunt/tw-small.png" alt="Share this on Twitter" /></a>
 
-<p>The hunt has begun!  Challenges will be revealed on this page daily at 10:45am EST.  Each day will be dedicated to a different cause and a new chance for your team to win some pretty cool stuff.  To report back, enter the email address or cell phone number you used during sign up:</p>
+<p>The hunt has finished!  Check out the challenges and photos below.  To recap, each day we revealed a new challenge dedicated to a different cause, and each day you responded with some great results.  Be sure to click into the photos below and see how other teams performed.  Winners will be notified by 8/1 and announced on the <a href="/scavenger-hunt">Scavenger Hunt home page</a>.</p>
 
 <?
 include 'sites/all/themes/dosomething/templates/scavenger-challenges.inc';
@@ -18,8 +18,8 @@ include 'sites/all/themes/dosomething/templates/scavenger-challenges.inc';
 
 <br><br><br>
 <?
-$day = $current_day;
-while ($day > 0):
+$day = 1;
+while ($day <= 11 ):
   $selected = 'not-selected'; if ($day == $selected_day) {$selected = 'selected';}?>
 <div class="challenge <?=$selected;?>">
 <? $full_challenge_name = 'Day '.$day.' - '.$challenges[$day]['name']; ?>
@@ -58,7 +58,7 @@ if ($day == 11) {
 </div>
 
 </div>
-<? $day--; ?>
+<? $day++; ?>
 <? endwhile; ?>
 
 

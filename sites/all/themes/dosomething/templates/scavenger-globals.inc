@@ -19,7 +19,7 @@ if ($current_day < 1) {
 if ($current_day > 11) {
   $current_day = 11;
 }
-
+$current_day = 11; //Now that the campaign is over, always show all challenges..
 $actual_day = $current_day;
 
 if (user_access('administer nodes')) {

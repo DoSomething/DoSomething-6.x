@@ -67,7 +67,7 @@ if ($found_team) {
     div.challenge.not-selected { display: none; }
     </style>';
 } else {
-  print drupal_get_form('report_form_part_one');
+  //print drupal_get_form('report_form_part_one');
 }
 
 

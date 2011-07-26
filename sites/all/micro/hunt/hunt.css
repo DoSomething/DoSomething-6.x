@@ -53,7 +53,10 @@
   -khtml-border-radius: 8px; /* for old Konqueror browsers */
 }
 
-#node-form input[type="text"], #webform-client-form-651742 input[type="text"] {
+#node-form input[type="text"],
+#webform-client-form-651742 input[type="text"],
+#dia-signup input[type="text"]
+{
   width: 230px;
 }
 
@@ -66,7 +69,7 @@
   float: right;
   margin-left: 20px;
   min-height: 200px;
-  max-width: 262px;
+  width: 262px;
 }
 
 #main #content #hunt-signup a {
@@ -236,10 +239,10 @@ img.whodo {
   padding-bottom: 20px;
 }
 
-body.page-scavenger-hunt div.share {
+/*body.page-scavenger-hunt div.share {
   float: right;
   padding-right: 36px;
-}
+}*/
 
 div.col-begin {
   width: 285px;
@@ -262,6 +265,26 @@ body div#page-wrapper #page #main-wrapper #main, body div#page-wrapper #page p {
 
 body div#page-wrapper #page label {
   font-family: Arial,Helvetica,sans-serif;
+}
+
+#dia-signup label {
+  font-weight: bold;
+  display: block;
+}
+
+#dia-signup h3 {
+  font-size: 1.8em;
+  margin-top: 0;
+}
+
+#hunt-signup #dia-signup input[type="submit"] {
+  margin-left: 0;
+  margin-top: 23px;
+}
+
+#dia-signup label {
+  padding-top: 10px;
+  padding-bottom: 2px;
 }
 
 #huntnav {
@@ -656,7 +679,7 @@ div.challenges div.description {
 }
 
 .submissions .view-scavenger-hunt-team-reportbacks {
-  margin-left: 8px;
+  margin-left: 2px;
 }
 
 .submissions {

@@ -38,6 +38,12 @@ if ($node->locations[0]) {
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
+  <span class="submitted">
+      <?php
+        print t('Submitted by !username on !datetime',
+          array('!username' => $name, '!datetime' => $date));
+      ?>
+    </span>
   <?=theme_fb_tw_g();?>
 
   <div class="content">

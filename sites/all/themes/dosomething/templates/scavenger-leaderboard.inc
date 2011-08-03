@@ -17,19 +17,21 @@ $found_team = 0;
 $team_obj = '';
 
 if ($team_name && $zip) {
-  $indiv_team_lookup = db_query("select title,l.city,l.province,l.latitude,l.longitude,
+  $indiv_team_lookup = db_query("select title,l.city,l.province,l.latitude,l.longitude,field_team_points_value as 'points',
     f.field_campaign_first_name_value as 'first',
     last.field_campaign_last_name_value as 'last',
     e.field_email_value as 'email',
-    p.field_campaign_phone_value as 'cell'
+    p.field_campaign_phone_value as 'cell',
+    n.nid as 'nid'
     from node n
     inner join location_instance li on n.nid=li.nid and n.vid=li.vid
     inner join location l on l.lid=li.lid
     inner join content_field_campaign_first_name f on f.nid=n.nid and f.vid=n.vid
     inner join content_field_campaign_last_name last on last.nid=n.nid and last.vid=n.vid
+    inner join content_type_scavenger_2011_signup signup on signup.vid=n.vid
     left join content_field_email e on e.nid=n.nid and e.vid=n.vid
     left join content_field_campaign_phone p on p.nid=n.nid and p.vid=n.vid
-    where n.type='scavenger_2011_signup' and n.title='%s' and l.postal_code='%s'", $team_name, $zip);
+    where n.type='scavenger_2011_signup' and n.title='%s' and l.postal_code='%s' order by n.created asc", $team_name, $zip);
   $result = db_fetch_object($indiv_team_lookup);
   if ($result) {
     $found_team = 1;
@@ -38,6 +40,8 @@ if ($team_name && $zip) {
     $team_obj['province'] = $result->province;
     $team_obj['lat'] = $result->latitude;
     $team_obj['lon'] = $result->longitude;
+    $team_obj['points'] = $result->points;
+    $team_obj['leadernid'] = $result->nid;
   }
   $emails_cell_seen = array();
   $normalized_email = strtolower(trim($result->email));
@@ -122,10 +126,16 @@ if ($found_team) {
   print '<div class="leaderboard-school-info clearfix">';
   print '<!--<div class="place">';
   print '<div class="number">'.'n/a'.'</div>'.'<img class="rankheader" src="/sites/all/micro/hunt/current-place.png"/>';
-  print '</div>';
-  print '<div class="points">';
-  print '<img class="rankheader" src="/sites/all/micro/hunt/total-points.png" /><div class="number">'.'n/a'.'</div>';
   print '</div>-->';
+  global $user;
+  if (in_array('administrator', array_values($user->roles))) {
+    print '<p>Admin only: <a href="/node/'.$team_obj['leadernid'].'/edit">Edit points</a>'; 
+  }
+  if ($team_obj['points']) {
+    print '<div class="points">';
+    print '<img class="rankheader" src="/sites/all/micro/hunt/total-points.png" /><div class="number">'.number_format($team_obj['points']).'</div>';
+    print '</div>';
+  }
   print '<br style="clear:both">';
   print '<div id="map_wrapper">';
   if (! preg_match('/^_/', $zip)) {

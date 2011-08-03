@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'QlassikBoldRegular';
+    src: url('QlassikBold_TB-webfont.eot');
+    src: url('QlassikBold_TB-webfont.eot?#iefix') format('embedded-opentype'),
+         url('QlassikBold_TB-webfont.woff') format('woff'),
+         url('QlassikBold_TB-webfont.ttf') format('truetype'),
+         url('QlassikBold_TB-webfont.svg#QlassikBoldRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 h4.title {
 	display: none;
 }
@@ -13,66 +25,52 @@ h4.title {
 	margin-top: -2000px;
 	position: absolute;
 }
+#footer-message {max-width: 880px;}
 #main-wrapper {
-	color: #000 !important;
-	font-family: "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 100%;
-}
-#node-666494 h2.title, #node-671092 h2.title {
-	background: url("http://www.DoSomething.org/sites/all/micro/macys-2011/title.png") no-repeat;
 	color: #000;
-	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 0em;
-	height: 140px;
-	text-align: center;
-	width: 760px;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 125%;
+	height: 100%;
 }
+h2 {
+	color: #F03 !important;
+	font-family: "QlassikBoldRegular", "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 6em !important;
+	line-height: 70%;
+	text-align: center;
+	width: 800px;
+	filter: dropshadow(color=#000, offx=3, offy=3); 
+	-moz-text-shadow: 3px 3px 3px #000;
+	-webkit-text-shadow: 3px 3px 3px #000;
+	text-shadow: 3px 3px 3px #000;
 
+}
 h3 {
 	color: #F03;
-	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 3.75em;
-}
-h3 img {
-	margin-left: -20px;
-}
-a.socialmedia {
-	left: 200px;
-	position: relative;
-	top: -80px;
-}
-.node-type-page h3 {
-	margin: 0;
-}
-h4 {
-	color: #F03;
-	font-family: "ParmaPetit", "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 300%;
-	line-height: 50%;
-}
+	font-family: "QlassikBoldRegular", "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 4em;
+	line-height: 2em;
+	margin-top: -50px !important;
+	}
 #macys-membershipBody ul {
 	list-style-type: none;
 }
-#macys-membershipBody li {
+#macys-membershipBody ul li {
 	background: url("star.png") no-repeat;
 	background-position: 0 .2em;
 	font-weight: bold;
 	line-height: 200%;
 	padding-left: 1.25em;
 }
-
-p {
-	font-size: 125%;
-	font-weight: normal;
-}
-p.centered-small {
+.centered-small {
 	font-size: 100%;
 	text-align: center;
 }
-#macys-membershipBody ul li p {line-height: 100%;}
+p.socialmedia img {width: 70px; position: relative; top: 110px;}
+#macys-membershipBody ul li p {line-height: 100%; font-weight: normal;}
 
 #container a:link, #container a:visited {
-	color: #F03 !important;
+	color: #F03;
 	text-decoration: none;
 }
 #container a:active, #container a:hover {
@@ -86,62 +84,61 @@ p.centered-small {
 	padding: .5em;
 	width: 800px;
 }
-#macys-membershipBody {
+#macys-membershipBody  {
 	background-color: #E0E0E0;
+	webkit-border-radius: 20px;
+	webkit-box-shadow: inset 0 0 10px #888;
+	moz-border-radius: 20px;
+	moz-box-shadow: inset 0 0 10px #888;
 	border-radius: 20px;
 	box-shadow: inset 0 0 10px #888;
-	color: #000;
 	float: left;
 	height: auto;
 	margin-left: -60px;
-	moz-border-radius: 20px;
-	moz-box-shadow: inset 0 0 10px #888;
 	padding: 0 3%;
 	position: relative;
-	webkit-border-radius: 20px;
-	webkit-box-shadow: inset 0 0 10px #888;
 	width: 785px;
-}
+	height: 1325px;
+	}
+#macys-membershipBody p {color: #000;}
 #macys-membershipIntro {
 	position: relative;
 }
 #macys-membershipIntro p {
-	color: #000;
-	font-size: 150%;
-	line-height: 150%;
+	line-height: 100%%;
 	position: relative;
-	top: -80px;
-	width: 550px;
+	width: 525px;
+	padding-top: 20px;
 }
 #image {
+	background: url("http://www.DoSomething.org/sites/all/micro/macys-2011/img2.png") no-repeat;
 	border-bottom: #fff 15px solid;
 	border-left: #fff 15px solid;
-	border-radius: 5px;
-	box-shadow: -3px 3px 5px #888;
-	float: right;
-	left: 26px;
 	moz-border-radius: 5px;
 	moz-box-shadow: -3px 3px 5px #888;
-	position: relative;
 	webkit-border-radius: 5px;
 	webkit-box-shadow: -3px 3px 5px #888;
+	border-radius: 5px;
+	box-shadow: -3px 3px 5px #888;
+	position: absolute;
+	left: 631px;
+	width: 187px;
+	height: 177px;
 }
 #macys-membershipPSA {
 	background: url("psa_quiz_bg.png") no-repeat;
 	border-bottom: #fff 15px solid;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: 3px 3px 5px #888;
 	border-radius: 5px;
 	border-right: #fff 15px solid;
 	border-top: #fff 15px solid;
-	box-shadow: 3px 3px 5px #888;
-	float: left;
-	height: 282px;
-	margin-left: -2em;
 	moz-border-radius: 5px;
 	moz-box-shadow: 3px 3px 5px #888;
+	box-shadow: 3px 3px 5px #888;
+	height: 282px;
 	position: relative;
-	top: -80px;
-	webkit-border-radius: 5px;
-	webkit-box-shadow: 3px 3px 5px #888;
+	left: -1.75em;
 	width: 430px;
 }
 #macys-membershipPSA object {
@@ -151,155 +148,177 @@ p.centered-small {
 	margin-top: 22px;
 }
 #macys-membershipFAQIntro {
-	float: right;
-	max-width: 320px;
+	max-width: 340px;
 	position: relative;
-	top: -120px;
+	left: 440px;
+	top: -300px;
 }
-#macys-membershipFAQIntro ul li {
+#macys-membershipBody ul { margin-top: -90px; }
+#macys-membershipBody ul li {
 	line-height: 150%;
 	margin-left: -25px;
+	width: 330px;
 }
-#macys-membershipFAQIntro p, #macys-membershipPrizing p, #macys-membershipBody p {
-	color: #000;
-}
+#macysmembershipFAQIntro ul  {position: relative; top: -30px;}
 #macys-membershipPrizing {
 	position: relative;
-	top: -60px;
-	width: 300px;
+	top: -260px;
+	width: 280px;
 }
-#macys-membershipPrizing ul li {
-	line-height: 150%;
-	margin-left: -25px;
-}
-#macys-membershipQuizResults {
+.macys-membershipQuizResults {
 	background: url("psa_quiz_bg.png") no-repeat;
-	border-bottom: #fff 15px solid;
+	border: #fff 15px solid;
 	border-radius: 5px;
-	border-right: #fff 15px solid;
-	border-top: #fff 15px solid;
-	box-shadow: 3px 3px 5px #888;
-	float: left;
+	-moz-box-shadow: 0px 0px 5px 10px #888;
+	-webkit-box-shadow: 0px 0px 5px 10px #888;
+	box-shadow: 0px 0px 5px 10px #888;
+	height: 282px;
+	width: 430px;
+	padding: 5px;
 	}
-#macys-membershipQuiz {
+.macys-membershipQuizResults a {color: #fff !important; text-decoration: underline !important;}
+#macys-membershipQuiz h3 { position: relative;
+	top: -615px;
+	left: 315px;
+	line-height: 25%;
+	} 
+	#macys-membershipQuiz h4 {position: relative; top: -655px; left: 370px; }
+.webform-client-form , #QuizQuiz {
 	background: url("psa_quiz_bg.png") no-repeat;
 	border-bottom: #fff 15px solid;
 	border-left: #fff 15px solid;
-	border-radius: 5px;
 	border-top: #fff 15px solid;
-	box-shadow: -3px 3px 5px #888;
-	float: right;
 	height: 282px;
-	margin-right: -2em;
 	moz-border-radius: 5px;
-	moz-box-shadow: -3px 3px 5px #888;
+	moz-box-shadow: -3px 3px 5px 5px #888;
 	position: relative;
-	top: -300px;
+	top: -645px;
+	left: 365px;
 	webkit-border-radius: 5px;
-	webkit-box-shadow: -3px 3px 5px #888;
+	webkit-box-shadow: -3px 3px 5px 5px #888;
+	border-radius: 5px;
+	box-shadow: -3px 3px 5px 5px #888;
 	width: 430px;
-}
-#quiz-questions .answer-box {
-	display: block;
-	margin: 0.4em 0;
-}
-#quiz-container {
-	float: left;
-	overflow: hidden;
-	width: 350px;
-}
-#quiz-container a {
-	margin: 7px -40px 0 20px;
-	}
-#quiz-window {
-	float: left;
-	width: 25000px;
-}
-#quiz-questions {
-	color: #fff;
-	font-size: 13px;
-	padding: 25px 0 0 20px;
-	line-height: 95%;
-}
-#quiz-questions legend {
-	font-size: 15px;
-	line-height: 100%;
 	white-space: normal;
+	font-size: inherit;
+	padding-left: 20px;
 }
-#quiz-questions #q7f legend { font-size: 14px; }
-#quiz-questions .guide {
-	font-size: 10px;
-	padding-bottom: 5px;
-}
-#quiz-questions fieldset {
-	border: none;
-	float: left;
-	max-height: 244px;
-	margin: 0px;
-	padding: 0px;
-	width: 355px;
-}
-/*#quiz-questions fieldset#q4f, #quiz-questions fieldset#q5f, #quiz-questions fieldset#q8f {
-	margin-left: -10px;
+#QuizQuiz {padding: 20px;}
+#macys-membershipQuizResults p {	padding: 10px;}
+.panel-pane p, .node p, .panel-pane a, .node a {color: #fff;}
+.webform-client-form form {
+	padding: 5px 0 0 30px;
 	}
-#quiz-questions fieldset#q7f {margin-left: -5px;}*/
-#quiz-questions input {
-	display: inline;
-	margin: 0 auto;
-}
-#quiz-questions label {
-	display: inline;
-	margin: 0 0 0 5px;
-	vertical-align: top;
-}
-#quiz-container .arrow.right {
-	background: url(next_question.png) no-repeat;
-	display: block;
+.webform-client-form label, legend, .guide {
+	color: #fff;
+	}
+.guide { font-size: 95% !important; line-height: 100%;}
+.guide { font-size: 95% !important; line-height: 100%;}
+.answer-box { display:block; margin: 0.4em 0; }
+.answer {color: #fff;}
+#quiz-container { width: 350px; float: left; overflow: hidden; }
+#quiz-window { width: 25000px; float: left; }
+#quiz-questions { font-size: 13px; padding: 20px; }
+#quiz-questions legend { font-size: 15px; white-space: normal; width: 350px; }
+#quiz-questions .guide { font-size: 11px; padding-bottom: 8px; }
+#quiz-questions fieldset { float: left; border: none; width: 350px; padding: 0px; margin: 0px;}
+#quiz-questions input { display: inline; }
+#quiz-questions label { display: inline; vertical-align: top; margin: 0 0 0 5px; }
+/* #quiz-container #quiz-end { outline: none; float: left; display: block; width: 81px; height: 30px; text-indent: -9999em; } */
+
+#webform-client-form-674268 {font-family: "Helvetica Neue", Helvetica, sans-serif; font-size: 95%; line-height: 95%}
+
+.webform-client-form input {
+	background-color: #eaeaea;
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ffffff), color-stop(1.0, #eaeaea));
+	border: 1px solid #333;
+	}
+.webform-client-form input:hover, .webform-client-form input:active, .webform-client-form input:focus {
+	border: 1px #eaeaea solid;
+	}
+.webform-client-form #edit-submit, #quiz-end, .arrow {
+	padding: 1px 10px;
+	margin: 5px 0 0 100px;
+	color: #F03;
+	background-color: #eaeaea;
+	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #ffffff), color-stop(1.0, #eaeaea));
+	border: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	-webkit-box-shadow: 1px 1px 1px 1px #333;
+	-moz-box-shadow: 1px 1px 1px 1px #333;
+	box-shadow: 1px 1px 1px 1px #333; 
+	min-width: 70px;
+	text-align: center;
 	float: left;
-	height: 30px;
-	outline: none;
-	text-indent: -9999em;
-	width: 140px;
-}
-#quiz-container .arrow.left {
-	background: url(previous.png) no-repeat;
-	display: block;
-	float: left;
-	height: 30px;
-	padding: 17px 20px;
-	text-indent: -9999em;
-	width: 140px;
-}
-#quiz-container #quiz-end {
-	background: url(results.png) no-repeat;
-	display: block;
-	float: left;
-	height: 30px;
-	outline: none;
-	text-indent: -9999em;
-	width: 140px;
-}
+	font-family: "QlassikBoldRegular", "Helvetica Neue", Helvetica, sans-serif;
+	font-variant: small-caps;
+	}
+.webform-client-form #edit-submit:hover {
+	border: 1px #F03 solid;
+	}
+.group-show-us-what-you-did legend {color: #000;}
+div.error {background: #F03;
+	color: #fff;
+	width: 750px;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	line-height: 200%;
+	moz-border-radius: 10px;
+	moz-box-shadow: -3px 3px 5px #888;
+	webkit-border-radius: 10px;
+	webkit-box-shadow: -3px 3px 5px #888;
+	border-radius: 10px;
+	box-shadow: -3px 3px 5px #888;
+	}
+div.error:before {
+	content: "Ooops!";
+	}
+div.error:after {
+	content: " Try that again, okay?"
+	}
+div.status {
+	background: #f8c43c;
+	color: #000;
+	width: 750px;
+	font-weight: bold;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	line-height: 200%;
+	moz-border-radius: 10px;
+	moz-box-shadow: -3px 3px 5px #888;
+	webkit-border-radius: 10px;
+	webkit-box-shadow: -3px 3px 5px #888;
+	border-radius: 10px;
+	box-shadow: -3px 3px 5px #888;
+	}
+div.status:before {
+	content: "Yay! ";
+	}
+div.status:after {
+	content: " Let's find out what cause you're passionate about!";
+	}
 #macys-membershipButtons {
-	position: relative !important;
+	position: relative;
 	text-align: center;
 	width: 900px;
 	display: inline-block;
-	margin-left: -40px;
+	margin-left: -60px;
 	margin-right: -800px;
-	padding-top: 30px;
 }
 #macys-membershipButtons img, #macy-membershipButtons a {
 	margin: 0.5em 3em;
-	position: inherit;
 }
 
 #locate  {
 	position: absolute;
-	top: 92px;
+	top: 52px;
 	left: 379px;
 	}
 	
-#locate input#ZIP {
+#ZIP {
 	width: 75px;
 	height: 20px;
 	background-color: #eaeaea;
@@ -308,14 +327,14 @@ p.centered-small {
 	border: 1px solid #333;
 	}
 	
-#locate input#ZIP:hover, input#ZIP:active, input#ZIP:focus {
+#ZIP:hover, #ZIP:active, #ZIP:focus {
 	border: 1px #F03 solid;
 	}
 	
 #locate input[type="submit"] {
-	background: url("bigstar.png") no-repeat !important;
+	background: url("big_star.png") no-repeat !important;
 	height: 55px;
-	width: 55px;
+	width: 43px;
 	border: none;
-	padding: 0;
+	margin-top: 10px;
 	}

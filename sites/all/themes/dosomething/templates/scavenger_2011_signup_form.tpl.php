@@ -33,6 +33,9 @@ if ($team && $zip) {?>
 //  drupal_set_message('<pre>'.print_r($form['field_email'],1).'</pre>');
 //}
   print $title_field;
+  if (user_access('administer nodes')) {
+    print drupal_render($form['field_team_points']);
+  }
   print drupal_render($form['field_campaign_first_name']);
   print drupal_render($form['field_campaign_last_name']);
   print drupal_render($form['field_email']);

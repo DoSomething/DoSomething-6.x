@@ -5,12 +5,13 @@
 <title><?php print $head_title; ?></title>
 <?php print $head; ?>
 <?php print $styles; ?>
+<?php print $scripts; ?>
 
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <style type="text/css">
   html { height: 100% }
   body { height: 100%; margin: 0px; padding: 0px; background-color: white; }
-  #map_canvas { height: 100% }
+  #map_canvas { height: 100%; width: 70%; float:right; }
   .result { min-height:50px; padding: 5px 5px 10px 5px}
 </style>
 <script type="text/javascript"
@@ -34,6 +35,7 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
     google.maps.event.trigger(map, "resize");
     geocoder = new google.maps.Geocoder();
+    $('#spinner').hide();
 }
 
 function myclick(i) {
@@ -61,7 +63,6 @@ function buildSearchUrl(page,zip) {
   // TODO: Should probably do some error checking here too.
   var url = "http://www.dosomething.org/api/projects?key=11276fce3cf6ea958c0f842934802121&cause="+cause+
             "&zip="+zip+"&keyword="+keyword+"&distance="+distance+"&maxnum="+maxnum+"&page="+page+latlng+"&province="+province;
-  //alert(url);
   return url;
   //return "http://www.dosomething.org/sites/all/micro/projects/projects-new";
 }
@@ -100,18 +101,21 @@ function ellipsize(text, size) {
 }
 
 function search() {
-
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
-  }
-  else
-  {// code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+        writeResults(xmlhttp);
+        $('#spinner').hide();
+      }
+    };
   }
   //TODO: Make page numbers dynamic based on clicks for next/previous link.
-  xmlhttp.open("GET", buildSearchUrl(1), false);
+  xmlhttp.open("GET", buildSearchUrl(1), true);
   xmlhttp.send();
+}
+function writeResults(xmlhttp) {
   xmlTxt=xmlhttp.response;
   if (window.DOMParser)
   {
@@ -129,18 +133,17 @@ function search() {
   
   currentWindow = null;
   nodes = xmlDoc.getElementsByTagName("node");
-  if (nodes.length > 0) {
-    // Clear existing markers
-    for (i = 0; i < markers.length; ++i) {
-      markers[i].setMap(null);
-    }
-
-    // Clear existing results
-    results = document.getElementById("results");
-    while(results.childNodes.length > 0) {
-      results.removeChild(results.childNodes[0]);
-    }
+  // Clear existing markers
+  for (i = 0; i < markers.length; ++i) {
+    markers[i].setMap(null);
   }
+
+  // Clear existing results
+  results = document.getElementById("results");
+  while(results.childNodes.length > 0) {
+    results.removeChild(results.childNodes[0]);
+  }
+  var bounds = new google.maps.LatLngBounds();
   for (i = 0; i < nodes.length; ++i) {
     node = nodes[i];
     lat = node.getElementsByTagName("location_lat")[0].childNodes[0].nodeValue;
@@ -155,14 +158,14 @@ function search() {
     // InfoWindow html content
     var content = "<div><h3><a href=\""+url+"\">" + title + "</a></h3></div><div id=\"descrip_" + i + "\">" +
         infowindowText + "</div><div><a href=\""+url+"\">More details...</a></div>";
-      
+    var newPoint = new google.maps.LatLng(lat, lng); 
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(lat, lng),
+      position: newPoint,
       map: map,
       content: content,
 	    title: title});
     markers[i] = marker;
-
+    bounds.extend(newPoint);
     // Create result element
     var result = document.createElement("div");
     result.setAttribute("class", "result");
@@ -190,13 +193,20 @@ function search() {
       currentWindow.open(map,this);
     });
   }
+  if (nodes.length > 0) {
+    map.fitBounds(bounds);
+  } else {
+    var noresult = document.createElement("p");
+    noresult.innerHTML = '<em>No results found!</em> Try expanding your search.';
+    document.getElementById("results").appendChild(noresult);
+  }
 }              
 
 </script>
 </head>
 <body onload="initialize()">
 <div id="search_bar" style="width:25%; height:100%;float:left">
-	<div id="search-box" class="box blue gainlayout" style="width:300px; float:left">
+	<div id="search-box" class="box blue gainlayout" style="float:left">
 		<form id="proj-search">
 			<label for="search-keyword">Keyword</label>
 			<input type="text" id="search-keyword" name="search-keyword"/>
@@ -285,8 +295,10 @@ function search() {
 						<option value="Canada">Canada</option>
 					</select>
 					<span style="position:relative">
-					<a href="javascript:search()"><img src="http://www.dosomething.org/nd/buttons/search.png" border="0"/></a>
-					<span style="position:absolute;padding:15px 0px 0px 10px;"><a href="#" onclick="$('#proj-search')[0].reset(); return false;">reset</a></span>
+          <a href="javascript:$('#spinner').css({'display':'inline'});search();"><img src="http://www.dosomething.org/nd/buttons/search.png" border="0"/></a>
+          <img id="spinner" src="/<?=path_to_theme();?>/images/spinner.gif"  />
+          
+					<!--<span style="position:absolute;padding:15px 0px 0px 10px;"><a href="#" onclick="$('#proj-search')[0].reset(); return false;">reset</a></span>-->
 					</span>
 				</div>
 			</div>
@@ -299,5 +311,9 @@ function search() {
 </div>
 <div id="map_canvas" style=" height:100%">
 </div>
+  <?php print $page_closure; ?>
+
+  <?php print $closure; ?>
+
 </body>
 </html>

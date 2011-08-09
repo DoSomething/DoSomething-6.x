@@ -87,6 +87,7 @@ if ($key_valid) {
   }
   
   $view->set_current_page($page);
+//  $view->set_items_per_page($maxnum);
   print $view->preview($display_id, array($cause, $province, $keyword));
 } else {
   $error = '<error>Maximum number of queries hit or key is invalid</error>';

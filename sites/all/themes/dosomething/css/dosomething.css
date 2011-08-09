@@ -654,6 +654,10 @@ div.item-list ul li {
 }
 
 div.block .col_right.post {
+  width: 102px;
+}
+
+body.front div.block .col_right.post {
   width: 125px;
 }
 

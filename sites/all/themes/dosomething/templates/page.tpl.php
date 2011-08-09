@@ -214,6 +214,12 @@
 
         <?php print $footer; ?>
 
+         <div style="text-align:center;">
+           <a target="_blank" href="http://nytm.org/made" style="color: white;">Made in NYC</a>
+         </div>
+         <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" style="padding-top: 4px; display: block; width: 88px; margin: 0 auto;"><img src="/sites/all/themes/dosomething/images/cc.png" alt="Creative Commons"></a>
+
+
       </div></div> <!-- /.section, /#footer -->
     <?php endif; ?>
 

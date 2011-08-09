@@ -81,6 +81,13 @@
 
   <?php print theme_addthis(); ?>
 
+  <?php if ( strlen($node->field_picture[0]['view']) && 
+            ! preg_match('/<img/',$node->content['body']['#value'])
+           ): ?>
+    <div class="chatterbox-photo"><?php print $node->field_picture[0]['view']; ?></div>
+  <?php endif; ?>
+
+
   <div class="content">
     <?php print $node->content['body']['#value']; ?>
   </div>

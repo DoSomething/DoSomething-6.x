@@ -13,11 +13,13 @@
   body { height: 100%; margin: 0px; padding: 0px; background-color: white; }
   #map_canvas { height: 100%; width: 70%; float:right; }
   .result { min-height:50px; padding: 5px 5px 10px 5px}
+  #search_bar { width:25%; height:100%; position:absolute; }
 </style>
 <script type="text/javascript"
     src="http://maps.google.com/maps/api/js?sensor=true">
 </script>
 <script type="text/javascript">
+
 var max_infowindow_length = 100;
 var max_result_length = 500;
 var map = null;
@@ -25,7 +27,6 @@ var geocoder = null;
 var markers = new Array();
 
 function initialize() {
-    // TODO: Need to pick a better center location to start with.
     var latlng = new google.maps.LatLng(48.57479,-115.839844);
     var myOptions = {
       zoom: 3,
@@ -59,8 +60,6 @@ function buildSearchUrl(page,zip) {
     latlng = '&lat='+center.lat()+'&lng='+center.lng();
     distance = myGetRadius()*.6; //padding, make sure all results appear in viewable window
   }
-  // Assumes API can handle blank values.
-  // TODO: Should probably do some error checking here too.
   var url = "http://www.dosomething.org/api/projects?key=11276fce3cf6ea958c0f842934802121&cause="+cause+
             "&zip="+zip+"&keyword="+keyword+"&distance="+distance+"&maxnum="+maxnum+"&page="+page+latlng+"&province="+province;
   return url;
@@ -103,6 +102,7 @@ function ellipsize(text, size) {
 function search() {
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
+    $('#spinner').show();
     xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -110,13 +110,13 @@ function search() {
         $('#spinner').hide();
       }
     };
+    //TODO: Make page numbers dynamic based on clicks for next/previous link.
+    xmlhttp.open("GET", buildSearchUrl(1), true);
+    xmlhttp.send();
   }
-  //TODO: Make page numbers dynamic based on clicks for next/previous link.
-  xmlhttp.open("GET", buildSearchUrl(1), true);
-  xmlhttp.send();
 }
 function writeResults(xmlhttp) {
-  xmlTxt=xmlhttp.response;
+  xmlTxt=xmlhttp.responseText;
   if (window.DOMParser)
   {
     parser=new DOMParser();
@@ -129,8 +129,6 @@ function writeResults(xmlhttp) {
     xmlDoc.loadXML(xmlTxt); 
   }
 
-  // TODO: Need to recenter map based on results.
-  
   currentWindow = null;
   nodes = xmlDoc.getElementsByTagName("node");
   // Clear existing markers
@@ -139,9 +137,9 @@ function writeResults(xmlhttp) {
   }
 
   // Clear existing results
-  results = document.getElementById("results");
-  while(results.childNodes.length > 0) {
-    results.removeChild(results.childNodes[0]);
+  var resultsVar = document.getElementById("results");
+  while(resultsVar.childNodes.length > 0) {
+    resultsVar.removeChild(resultsVar.childNodes[0]);
   }
   var bounds = new google.maps.LatLngBounds();
   for (i = 0; i < nodes.length; ++i) {
@@ -205,11 +203,12 @@ function writeResults(xmlhttp) {
 </script>
 </head>
 <body onload="initialize()">
-<div id="search_bar" style="width:25%; height:100%;float:left">
+<div id="search_bar" style="">
 	<div id="search-box" class="box blue gainlayout" style="float:left">
-		<form id="proj-search">
+		<form id="proj-search" onsubmit="search();return false;" >
 			<label for="search-keyword">Keyword</label>
-			<input type="text" id="search-keyword" name="search-keyword"/>
+      <input type="text" id="search-keyword" name="search-keyword"/>
+      <input type="submit" style="display:none"/>
 			<div id="search-filter-box" class="clicktip">
 				<div id="filterSelects">
 					<input type="text" id="input-proximity" value="10" name="input-proximity" size="1" maxlength="5" style="text-align:right;">
@@ -295,7 +294,7 @@ function writeResults(xmlhttp) {
 						<option value="Canada">Canada</option>
 					</select>
 					<span style="position:relative">
-          <a href="javascript:$('#spinner').css({'display':'inline'});search();"><img src="http://www.dosomething.org/nd/buttons/search.png" border="0"/></a>
+          <a href="javascript:search();"><img src="http://www.dosomething.org/nd/buttons/search.png" border="0"/></a>
           <img id="spinner" src="/<?=path_to_theme();?>/images/spinner.gif"  />
           
 					<!--<span style="position:absolute;padding:15px 0px 0px 10px;"><a href="#" onclick="$('#proj-search')[0].reset(); return false;">reset</a></span>-->
@@ -305,7 +304,6 @@ function writeResults(xmlhttp) {
 		</form>
 	</div>
 	<div id="results" style="clear:both; height: 400px; overflow:auto">
-  <!--TODO: Additional stylizing of this div; maybe scrollbar on the div instead of on the page?-->
   <!--TODO: Dynamically add next/previous results page links-->
   </div>
 </div>

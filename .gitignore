@@ -6,3 +6,4 @@ Maildir
 .subversion
 .gitconfig
 .viminfo
+.mysql_history

@@ -18,9 +18,11 @@
     <?php print theme('imagecache', '207x138', $node->field_learn_photo[0]['filepath']); ?>
     <h3>Top Resources</h3>
     <ol class="learn">
-      <?php foreach ($node->field_learn_items as $item) : ?>
+      <?php foreach ($node->field_learn_items as $item) : 
+              if ($item['safe']['status'] == 1) { ?> 
         <li><span><?php print l($item['safe']['title'], 'node/'.$item['safe']['nid']); ?></span></li>
-      <?php endforeach; ?>
+      <?php   }
+            endforeach; ?>
     </ol>
     <p><a href="/issue_resources/<?=str_replace(' ','+',arg(2));?>" class="more">More resources</a></p>
   </div>
@@ -29,9 +31,11 @@
     <?php print theme('imagecache', '207x138', $node->field_act_now_photo[0]['filepath']); ?>
     <h3>Top Ways To Take Action</h3>
     <ol class="act now">
-      <?php foreach ($node->field_act_now_items as $item) : ?>
+      <?php foreach ($node->field_act_now_items as $item) : 
+              if ($item['safe']['status'] == 1) { ?>
         <li><span><?php print l($item['safe']['title'], 'node/'.$item['safe']['nid']); ?></span></li>
-      <?php endforeach; ?>
+      <?php   }
+            endforeach; ?>
     </ol>
     <p><a href="/issue_action_guides/<?=str_replace(' ','+',arg(2));?>" class="more">More ways to make a difference</a></p>
   </div>

@@ -9,6 +9,11 @@ function dosomething_views_views_pre_execute(&$view) {
   }
 }
 
+function dosomething_views_views_post_render(&$view, &$output, &$cache) {
+  if ($view->name == 'thanks_911_signups' && $view->current_display == 'paged_feed_1') {
+    $output = json_encode((array) simplexml_load_string($output));
+  }
+}
 
 
 ?>

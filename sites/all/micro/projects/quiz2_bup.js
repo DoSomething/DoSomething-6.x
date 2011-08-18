@@ -105,7 +105,7 @@ $(document).ready( function() {
     }
 
 		var result_string = 'aN' + maxIntCode + 'N' + maxCauseCode + 'b22';
-		window.open('http://www.dosomething.org/macys-quizresults?result=' + result_string, 'surge');		
+		window.open('http://www.dosomething.org/macys/quizresults?result=' + result_string, 'surge');		
 		/*
 		window.open('http://www.dosomething.org?result=' + result_string, 'surge');		
 		*/

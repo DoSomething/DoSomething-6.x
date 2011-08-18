@@ -7,7 +7,6 @@
          url('QlassikBold_TB-webfont.svg#QlassikBoldRegular') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 h4.title {
@@ -48,42 +47,15 @@ h2 {
 h3 {
 	color: #F03;
 	font-family: "QlassikBoldRegular", "Helvetica Neue", Helvetica, sans-serif;
-	font-size: 4em;
-	line-height: 2em;
-	margin-top: -50px !important;
+	font-size: 2em;
+	line-height: 10%;
+	padding-left: 30px;
+	margin-bottom: .25em !important;
 	}
-#macys-membershipBody ul {
-	list-style-type: none;
-}
-#macys-membershipBody ul li {
-	background: url("star.png") no-repeat;
-	background-position: 0 .2em;
-	font-weight: bold;
-	line-height: 200%;
-	padding-left: 1.25em;
-}
-.centered-small {
-	font-size: 100%;
+h4 { font-style: italic;
 	text-align: center;
-}
-p.socialmedia img {width: 70px; position: relative; top: 110px;}
-#macys-membershipBody ul li p {line-height: 100%; font-weight: normal;}
-
-#container a:link, #container a:visited {
-	color: #F03;
-	text-decoration: none;
-}
-#container a:active, #container a:hover {
-	color: #F03;
-	text-decoration: underline;
-}
-#container {
-	color: #000;
-	height: auto;
-	margin-left: 3em;
-	padding: .5em;
-	width: 800px;
-}
+	font-size: 1.5em;
+	}
 #macys-membershipBody  {
 	background-color: #E0E0E0;
 	webkit-border-radius: 20px;
@@ -98,17 +70,52 @@ p.socialmedia img {width: 70px; position: relative; top: 110px;}
 	padding: 0 3%;
 	position: relative;
 	width: 785px;
-	height: 1325px;
+	height: 1450px;
 	}
+#macys-membershipBody ul {
+	list-style-type: none;
+}	
+#macys-membershipBody ul li {
+	line-height: 125%;
+	margin-left: -25px;
+	width: 330px;
+	background: url("star.png") no-repeat;
+	background-position: 0 .2em;
+	font-weight: bold;
+	padding-left: 1.25em;
+}
+#macys-membershipBody ul li p {line-height: 100%; font-weight: normal;}
+#macys-membershipBody ul.faqcont li {width: 715px; }
+.centered-small {
+	font-size: 100%;
+	text-align: center;
+}
+p.socialmedia img {width: 50px; position: relative; top:-20px;left: -25px;}
+.twitter {margin-left: -15px;}
+
+#container a:link, #container a:visited {
+	color: #F03;
+	text-decoration: none;
+}
+#container a:active, #container a:hover {
+	color: #F03;
+	text-decoration: underline;
+	text-decoration: underline;
+}
+#container {
+	height: auto;
+	margin-left: 3em;
+	padding: .5em;
+	width: 800px;
+}
 #macys-membershipBody p {color: #000;}
 #macys-membershipIntro {
 	position: relative;
 }
-#macys-membershipIntro p {
-	line-height: 100%%;
-	position: relative;
-	width: 525px;
-	padding-top: 20px;
+#macysmembershipIntro ul { margin-top: 0; }
+#macys-membershipIntro ul li {
+	width: 565px;
+	font-weight: normal;
 }
 #image {
 	background: url("http://www.DoSomething.org/sites/all/micro/macys-2011/img2.png") no-repeat;
@@ -151,20 +158,15 @@ p.socialmedia img {width: 70px; position: relative; top: 110px;}
 	max-width: 340px;
 	position: relative;
 	left: 440px;
-	top: -300px;
-}
-#macys-membershipBody ul { margin-top: -90px; }
-#macys-membershipBody ul li {
-	line-height: 150%;
-	margin-left: -25px;
-	width: 330px;
+	top: -340px;
 }
 #macysmembershipFAQIntro ul  {position: relative; top: -30px;}
 #macys-membershipPrizing {
 	position: relative;
-	top: -260px;
-	width: 280px;
+	top: -300px;
+	width: 330px;
 }
+	#macys-membershipPrizing ul li {max-width: 300px !important;}
 .macys-membershipQuizResults {
 	background: url("psa_quiz_bg.png") no-repeat;
 	border: #fff 15px solid;
@@ -177,33 +179,31 @@ p.socialmedia img {width: 70px; position: relative; top: 110px;}
 	padding: 5px;
 	}
 .macys-membershipQuizResults a {color: #fff !important; text-decoration: underline !important;}
-#macys-membershipQuiz h3 { position: relative;
-	top: -615px;
-	left: 315px;
-	line-height: 25%;
-	} 
-	#macys-membershipQuiz h4 {position: relative; top: -655px; left: 370px; }
+#macys-membershipQuiz {margin-top: -90px; }
+#macys-membershipQuiz h3 { position: relative; top: -810px; left: 480px; margin-top: 0;  }
+
+	#macys-membershipQuiz h4 { position: relative; top: 17px;}
 .webform-client-form , #QuizQuiz {
 	background: url("psa_quiz_bg.png") no-repeat;
+	border-top: #fff 15px solid;
+	border-right: none !important;
 	border-bottom: #fff 15px solid;
 	border-left: #fff 15px solid;
-	border-top: #fff 15px solid;
-	height: 282px;
+	height: 262px;
 	moz-border-radius: 5px;
-	moz-box-shadow: -3px 3px 5px 5px #888;
+	moz-box-shadow: -3px 3px 5px #888;
 	position: relative;
-	top: -645px;
+	/*top: -745px; */
 	left: 365px;
 	webkit-border-radius: 5px;
-	webkit-box-shadow: -3px 3px 5px 5px #888;
+	webkit-box-shadow: -3px 3px 5px #888;
 	border-radius: 5px;
-	box-shadow: -3px 3px 5px 5px #888;
+	box-shadow: -3px 3px 5px #888;
 	width: 430px;
 	white-space: normal;
 	font-size: inherit;
-	padding-left: 20px;
+	padding: 0 0 0 20px;
 }
-#QuizQuiz {padding: 20px;}
 #macys-membershipQuizResults p {	padding: 10px;}
 .panel-pane p, .node p, .panel-pane a, .node a {color: #fff;}
 .webform-client-form form {
@@ -239,7 +239,7 @@ p.socialmedia img {width: 70px; position: relative; top: 110px;}
 	}
 .webform-client-form #edit-submit, #quiz-end, .arrow {
 	padding: 1px 10px;
-	margin: 5px 0 0 100px;
+	margin: 0 0 0 100px;
 	color: #F03;
 	background-color: #eaeaea;
 	background: -moz-linear-gradient(top, #ffffff, #eaeaea);
@@ -256,6 +256,7 @@ p.socialmedia img {width: 70px; position: relative; top: 110px;}
 	float: left;
 	font-family: "QlassikBoldRegular", "Helvetica Neue", Helvetica, sans-serif;
 	font-variant: small-caps;
+	z-index: 150;
 	}
 .webform-client-form #edit-submit:hover {
 	border: 1px #F03 solid;
@@ -297,11 +298,14 @@ div.status {
 div.status:before {
 	content: "Yay! ";
 	}
+	/*
 div.status:after {
-	content: " Let's find out what cause you're passionate about!";
+	content: " Now take our cause quiz to be entered to win a $250 Macy's shopping spree!";
 	}
+	*/
 #macys-membershipButtons {
 	position: relative;
+	top: -175px;
 	text-align: center;
 	width: 900px;
 	display: inline-block;
@@ -314,8 +318,8 @@ div.status:after {
 
 #locate  {
 	position: absolute;
-	top: 52px;
-	left: 379px;
+	top: 90px;
+	left: 395px;
 	}
 	
 #ZIP {
@@ -336,5 +340,5 @@ div.status:after {
 	height: 55px;
 	width: 43px;
 	border: none;
-	margin-top: 10px;
+	padding-bottom: 17px;
 	}

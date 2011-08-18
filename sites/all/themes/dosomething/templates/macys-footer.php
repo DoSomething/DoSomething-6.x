@@ -31,7 +31,13 @@
       <?php //print $sidebar_first; ?>
 
       <?php //print $sidebar_second; ?>
-
+	
+	<?php // killing the value of x;
+		$disp="";
+		$rest="";
+		//variable_del('disp');
+		//tc
+	?>
 
     </div> </div> <!-- /#main, /#main-wrapper -->	
 	        <?php if ($footer || $footer_message || $secondary_links): ?>
@@ -59,7 +65,7 @@
         <?php endif; ?>
 
         <?php print $footer; ?>
-
+		
       </div></div> <!-- /.section, /#footer -->
     <?php endif; ?>
   </div></div> <!-- /#page, /#page-wrapper -->

@@ -7,14 +7,15 @@
   <meta property="fb:admins" content="642356930" />    
   <meta property="og:type" content="non_profit"/> 
   <meta property="og:url" content="http://www.dosomething.org/macys/"/>   
-  <meta property="og:image" content="http://www.dosomething.org/sites/all/themes/dosomething/images/logo.png" />   
+  <meta property="og:image" content="http://www.dosomething.org/sites/all/themes/dosomething/images/ds_logo.png" />   
   <meta property="og:site_name" content="DoSomething.org"/> 
-  <meta property="og:description" content="Amazing DoSomething with Macys"/> 
+  <meta property="og:description" content="Do Good, Look Good. Find Your Cause and Win a Shopping Spree with Macy's"/> 
   <?php print $head; ?>
   <?php print $styles; ?>
   
   <link rel="stylesheet" href="/<?=$ds_micro.'/macys-2011/macys-2011.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
+  
 </head>
 
 <body class="<?php print $classes; ?>">
@@ -50,11 +51,31 @@
 	
 	
 
-      <?php print $messages; ?>
+      <?php 	  
+	    print $messages;
+		/*
+		$mcheck='<div class ="messages status"><p>Your entry has been submitted.</p></div>';
+		echo $rest = substr($messages, 21,6);
+		 
+		/*
+		$mstatus="messages status";
+		$mcheck='<div class ="messages status"><p>Your entry has been submitted.</p></div>';
+		
+		if($rest == "status")
+		{
+			$x=1;
+			echo "I am here";
+			 
+			$display='<div id="newform" style="display:none">';
+			
+			print "x is " + $x;
+			$div="<div>";
+		}	
+*/		
+	?>
 	  
 <?php if ($tabs): ?>
-          <div class="tabs"><?php print $tabs; ?></div>
-		  
+          <div class="tabs"><?php print $tabs; ?></div>  
 		  
         <?php endif; ?>
 		

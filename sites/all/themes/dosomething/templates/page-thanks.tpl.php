@@ -33,18 +33,17 @@
                               'top_right' => $top_right,
                               )); ?>
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
+        <?php if ($tabs): ?> <div class="tabs"><?php print $tabs; ?></div> <?php endif; ?>
      <a href="http://www.DoSomething.org/thanks"><img class="header-message" src="/<?=$ds_micro;?>/decade/decade_logo.png"/></a>
 	 <img class="header-message" id="banner" src="/<?=$ds_micro;?>/decade/banner.png"/>
+      <?php print $messages; ?>
     <?php if ($right) print $right; ?>
     <div id="map_canvas"></div>
 
       <div id="content" class="column"><div class="section">
-
+      <div style="clear:both"></div>
         <?php print $highlight; ?>
 
-        <?php if ($tabs): ?>
-          <div class="tabs"><?php print $tabs; ?></div>
-        <?php endif; ?>
 
         <?php print $help; ?>
 
@@ -52,7 +51,6 @@
 
         <div id="content-area">
 
-      <?php print $messages; ?>
     
     
     <h2 class="title"><?php print $title; ?></h2>

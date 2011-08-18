@@ -7,10 +7,13 @@
   url('us101-webfont.svg#US101Regular') format('svg');
   font-weight: normal;
   font-style: normal;
-
 }
 
 /* DEVELOPER CRUD */
+[if lt IE 9]
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+[endif]
+
 .tabs
 {
   position: absolute;
@@ -76,7 +79,7 @@ div.buttons h3 {
   filter: dropshadow(color=#333333, offx=0, offy=0); 
 }
 
-.content .fauxbutton {
+.fauxbutton {
   background: #00ADEE; /*blue */
   height: 250px;
   margin: 0;
@@ -88,14 +91,14 @@ div.buttons h3 {
 }
 
 
-.content .fauxbutton p {
+.fauxbutton p {
   color: #fff;
 }
 
-.content .fauxbutton a {
-  background-color: #BE1E2D;
+.fauxbutton a {
   background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, from(#EC1C24), to(#BE1E2D));
   background: -moz-radial-gradient(50% 50%, farthest-side, #EC1C24, #BE1E2D);
+  background-color: #BE1E2D;
   border: 2px #fff solid;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -168,7 +171,7 @@ div.buttons h3 {
   background: blue;
 }
 
-#map_canvas, #webform-client-form-678942 {
+#map_canvas {
   height: 414px;
   margin-left: 15px;
 }
@@ -180,18 +183,19 @@ div.buttons h3 {
 
 /* SHARE YOUR THANKS FORM */
 
-#webform-client-form-678942{
+.decade_2011_signup_node_form #signup-block-title {
+  text-align: center;
+}
+
+.decade_2011_signup_node_form {
   background: #BABCBE;
   color: #fff;
   padding-left: 10px;
   width: 320px;
 }
 
-#webform-client-form-678942 h3.blocktitle {
+.decade_2011_signup_node_form #signup-block-title {
   padding-top: 10px;
-}
-
-#webform-client-form-678942 h3{
   color: #fff;
   font-size: 180%;
   margin: 0;
@@ -200,11 +204,15 @@ div.buttons h3 {
   filter: dropshadow(color=#333333, offx=0, offy=0); 
 }
 
-#webform-client-form-678942 label {
+.decade_2011_signup_node_form input[type="text"], .decade_2011_signup_node_form select {
+  width: 80%;
+}
+
+.decade_2011_signup_node_form label {
   font-weight: normal;
 }
 
-#webform-client-form-678942 div.form-actions input#edit-submit {
+.decade_2011_signup_node_form input#edit-submit {
   background-color: #BE1E2D;
   background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, from(#EC1C24), to(#BE1E2D));
   background: -moz-radial-gradient(50% 50%, farthest-side, #EC1C24, #BE1E2D);
@@ -221,8 +229,11 @@ div.buttons h3 {
   font-size: 100%;
   margin: -5px 10px 0 0;
   text-transform: uppercase;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
-#webform-client-form-678942 div.form-actions input#edit-submit:hover {
+
+.decade_2011_signup_node_form div.form-actions input#edit-submit:hover {
   cursor: pointer;
 }
 

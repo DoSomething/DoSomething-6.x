@@ -1,7 +1,6 @@
 <?php if (!$page) : //Teaser ?>
 	<div class="node <?=$node->type ?>">
     <h2><a href="/<?php print drupal_get_path_alias('node/'.$node->nid);?>"><?php print $node->title;?></a></h2>
-
     <?php if ($submitted): ?>
       <div class="submitted" style="padding-bottom:10px;">
         <?php print $submitted; ?>
@@ -21,6 +20,7 @@
 <div class="node <?=$node->type ?>">
 
   <h2><?=$title;?></h2>
+   <?php print theme_addthis(); ?>
 
   <?php if ($submitted): ?>
     <div class="submitted">

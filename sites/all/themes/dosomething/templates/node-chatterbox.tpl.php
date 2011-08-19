@@ -85,6 +85,8 @@
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
+  <?php print theme_addthis(); ?>
+
   <?php if ($page && ($display_submitted || $terms)): ?>
     <div class="meta">
       <?php if (false && $display_submitted): ?>

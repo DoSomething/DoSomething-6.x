@@ -109,7 +109,7 @@ div.buttons h3 {
   text-transform: uppercase;	
 }
 
-.content .grey {
+.content .gallery {
   background: url("arrow.png") no-repeat #E6E7E8;
   background-position: 100px 50px;
   display: inline-block;
@@ -118,17 +118,17 @@ div.buttons h3 {
   padding: 0 10px;
   width: 310px;
 }
-.content .grey p {
-  color: #000;
-  padding-left: 0 !important;
-  text-align: center;
-  width: 125px;
-}
-.content .grey img {
+
+.content .gallery img {
   border:  5px #BABCBE solid;
   position: relative;
-  top: -135px;
-  left: 215px;
+  right: -108px;
+  top: -15px;
+}
+
+.gallery div.caption {
+  float: left;
+  width: 108px;
 }
 
 #page .region-right {

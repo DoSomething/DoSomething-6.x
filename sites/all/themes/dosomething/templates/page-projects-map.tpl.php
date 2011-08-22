@@ -37,6 +37,10 @@ function initialize() {
     google.maps.event.trigger(map, "resize");
     geocoder = new google.maps.Geocoder();
     $('#spinner').hide();
+    $('#search-keyword,#postal-code,#input-proximity').keypress(function(key) {
+      if (key.which == 13) search();
+    });
+
 }
 
 function myclick(i) {

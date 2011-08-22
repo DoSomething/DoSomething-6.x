@@ -6,6 +6,13 @@ var markers = [];
 var map;
 var data;
 
+function $_GET(q,s) { 
+  s = s ? s : window.location.search; 
+  var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i'); 
+  return (s=s.replace(/^\?/,'&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : undefined; 
+} 
+
+
 function initialize() {
   var myLatlng = new google.maps.LatLng(33.431441,7.03125);
   var myOptions = {
@@ -29,6 +36,11 @@ function plotPoints(data) {
   clearOverlays();
   deleteOverlays();
   data = data.node;
+  var nid=0;
+  var paramnid=$_GET('nid');
+  if (typeof paramnid !== 'undefined') {
+    nid=paramnid;
+  }
   if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
     console.log('%o',data);
   }
@@ -38,7 +50,7 @@ function plotPoints(data) {
       (function(signup) {
         setTimeout(function() {
           var marker = new google.maps.Marker({
-            title: signup.name,
+            title: signup.field_campaign_first_name_value,
             position: new google.maps.LatLng(signup.Latitude,signup.Longitude),
             map: map,
             draggable: false,
@@ -47,26 +59,45 @@ function plotPoints(data) {
             icon: '/nd/iyg-2011/hp_small.png',
             shadow: '/nd/iyg-2011/shadow_small.png'
           });
+            var locationStr = '';
+            if (typeof(signup.City) == "string") {
+              locationStr += signup.City;
+            }
+            if (typeof(signup.Province) == "string") {
+              locationStr += ', '+signup.Province;
+            }
+            if (typeof(signup.Country) == "string") {
+              locationStr += ', '+signup.Country;
+            }
+         var content=             '<div class="marker">'+
+                                  '<div class="body">'+
+                                  signup.Body+
+                                  '</div>'+
+                                  '<div class="name">'+
+                                   signup.field_campaign_first_name_value+
+                                  '</div>' +
+                                   '<div class="location">'+
+                                   locationStr+
+                                  '</div>' +
+                                  '</div>';
+  
           google.maps.event.addListener(marker, 'click', function(event) {
             var old_zindex = this.getZIndex();
             this.setZIndex(old_zindex - 900);
-            infowindow.setContent(
-                                  '<div class="marker">'+
-                                  '<h3>' +
-                                  signup.name_with_link +
-                                  '</h3>' +
-                                  '<div class="body">'+
-                                  signup.body+
-                                  '</div></div>'
-                                 );
+           infowindow.setContent(content);
             infowindow.setPosition(event.latLng);
             infowindow.open(map,marker);
           });
           markers.push(marker);
-        }, (5000 / data.length) * i );
+          //alert('nid is '+signup.nid);
+          if (signup.Nid == nid) {
+             infowindow.setContent(content);
+             infowindow.setPosition(new google.maps.LatLng(signup.Latitude,signup.Longitude));
+             infowindow.open(map,marker);
+          }
+        }, (1000 / data.length) * i );
       })(data[i]);
     }
-
   }
 }
 

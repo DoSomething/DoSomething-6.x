@@ -10,6 +10,9 @@
 }
 
 /* DEVELOPER CRUD */
+[if lt IE 9]
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+[endif]
 
 .tabs
 {
@@ -30,7 +33,6 @@
 
 #banner  {
   margin-left: -17px;
-  margin-bottom: -27px;
 }
 
 #main-wrapper {
@@ -53,11 +55,24 @@
   line-height: 125%;
   padding: 0 20px;
 }
-
+/* MAP STUFF */
+.marker h3 {
+	color: #00ADEE;
+	}
+	.marker h3:before {
+	content: "FROM ";
+	}
+	.marker h3:after {
+	content: ":"
+	}
+	
+div#map_canvas div.body {
+	text-transform: none;
+	}
 /* div.buttons contains steps two to four */
 
 div.buttons {
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 
 div.buttons section {
@@ -124,6 +139,11 @@ div.buttons h3 {
   text-align: center;
   width: 125px;
 }
+	.content .grey p:last-child {
+	position: relative;
+		top: -125px;
+	width: 300px;
+	}
 .content .grey img {
   border:  5px #BABCBE solid;
   position: relative;
@@ -140,8 +160,8 @@ div.buttons h3 {
   padding: 0;
 }
 
-#page div.region-right div#block-block-312 {
-  margin-bottom: 10px;
+#page #block-webform-client-block-678942 {
+  margin-bottom: 0;
 }
 
 #thanksat {
@@ -166,38 +186,12 @@ div.buttons h3 {
 
 #map_canvas {
   width: 505px;
-  height: 414px;
   background: blue;
+}
+
+#map_canvas, #webform-client-form-678942 {
+  height: 414px;
   margin-left: 15px;
-}
-
-#page #main div.marker {
-  text-transform: none;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-}
-
-#page #main div.marker p {
-  padding: 0;
-}
-
-div.marker .name, div.marker .location {
-  text-align: right;
-}
-
-#map-overlay {
-  width: 521px;
-  margin-left: 7px;
-  margin-top: -17px;
-}
-
-.overlay-container .share-thanks {
-  margin-left: 415px;
-  margin-top: -40px;
-}
-
-.share-thanks .twitter {
-  margin-left: 10px;
 }
 
 #page #content {
@@ -207,19 +201,18 @@ div.marker .name, div.marker .location {
 
 /* SHARE YOUR THANKS FORM */
 
-.decade_2011_signup_node_form #signup-block-title {
-  text-align: center;
-}
-
-.decade_2011_signup_node_form {
+#webform-client-form-678942{
   background: #BABCBE;
   color: #fff;
   padding-left: 10px;
   width: 320px;
 }
 
-.decade_2011_signup_node_form #signup-block-title {
+#webform-client-form-678942 h3.blocktitle {
   padding-top: 10px;
+}
+
+#webform-client-form-678942 h3{
   color: #fff;
   font-size: 180%;
   margin: 0;
@@ -228,15 +221,11 @@ div.marker .name, div.marker .location {
   filter: dropshadow(color=#333333, offx=0, offy=0); 
 }
 
-.decade_2011_signup_node_form input[type="text"], .decade_2011_signup_node_form select {
-  width: 80%;
-}
-
-.decade_2011_signup_node_form label {
+#webform-client-form-678942 label {
   font-weight: normal;
 }
 
-.decade_2011_signup_node_form input#edit-submit {
+#webform-client-form-678942 div.form-actions input#edit-submit {
   background-color: #BE1E2D;
   background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, from(#EC1C24), to(#BE1E2D));
   background: -moz-radial-gradient(50% 50%, farthest-side, #EC1C24, #BE1E2D);
@@ -253,11 +242,8 @@ div.marker .name, div.marker .location {
   font-size: 100%;
   margin: -5px 10px 0 0;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  cursor: pointer;
 }
-
-.decade_2011_signup_node_form div.form-actions input#edit-submit:hover {
+#webform-client-form-678942 div.form-actions input#edit-submit:hover {
   cursor: pointer;
 }
 

@@ -21,7 +21,15 @@
   <?php print $scripts; ?>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="/<?=$ds_micro.'/decade/decade.js';?>"></script>
+  <!-- [if lt IE 9]>
+    <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+  <![endif]-->
 </head>
+
+<?
+  $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
+  $twitter_text = "I'm honoring Emergency Service Workers during this Decade of Thanks with @DoSomething ! ";
+?>
 
 <body class="<?php print $classes; ?>">
 
@@ -34,12 +42,18 @@
                               )); ?>
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
         <?php if ($tabs): ?> <div class="tabs"><?php print $tabs; ?></div> <?php endif; ?>
-     <a href="http://www.DoSomething.org/thanks"><img class="header-message" src="/<?=$ds_micro;?>/decade/decade_logo.png"/></a>
-	 <img class="header-message" id="banner" src="/<?=$ds_micro;?>/decade/banner.png"/>
+     <a href="http://www.DoSomething.org/thanks"><img class="header-message" src="/<?=$ds_micro;?>/decade/decade_logo.png" alt="A Decade of Thanks: Honoring emergency service workers."/></a>
+   <img class="header-message" id="banner" src="/<?=$ds_micro;?>/decade/banner.png" alt="In remembrance of the 10th anniversary of 9/11,  Do Something wants to partner with YOU in creating the largest online collection of messages of gratitude towards Emergency Service Workers.  Show your thanks by leaving a message on our gratitude map."/>
       <?php print $messages; ?>
     <?php if ($right) print $right; ?>
     <div id="map_canvas"></div>
-
+    <div class="overlay-container">
+    <img id="map-overlay" src="<?=$ds_micro;?>/decade/map-overlay2.png" alt="Share our gratitude map!"/>
+    <div class="share-thanks">
+    <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="facebook" src="<?=$ds_micro;?>/decade/facebook.png" alt="Share this page on Facebook"/></a>
+    <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="twitter" src="<?=$ds_micro;?>/decade/twitter.png" alt="Share this page on Twitter"/></a>
+    </div>
+    </div>
       <div id="content" class="column"><div class="section">
       <div style="clear:both"></div>
         <?php print $highlight; ?>

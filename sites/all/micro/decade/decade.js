@@ -14,9 +14,9 @@ function $_GET(q,s) {
 
 
 function initialize() {
-  var myLatlng = new google.maps.LatLng(33.431441,7.03125);
+  var myLatlng = new google.maps.LatLng(39.607804, -97.536621);
   var myOptions = {
-    zoom: 1,
+    zoom: 3,
     center: myLatlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }

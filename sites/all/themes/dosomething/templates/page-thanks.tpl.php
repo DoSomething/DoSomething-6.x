@@ -48,10 +48,10 @@
     <?php if ($right) print $right; ?>
     <div id="map_canvas"></div>
     <div class="overlay-container">
-    <img id="map-overlay" src="<?=$ds_micro;?>/decade/map-overlay2.png" alt="Share our gratitude map!"/>
+    <img id="map-overlay" src="/<?=$ds_micro;?>/decade/map-overlay2.png" alt="Share our gratitude map!"/>
     <div class="share-thanks">
-    <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="facebook" src="<?=$ds_micro;?>/decade/facebook.png" alt="Share this page on Facebook"/></a>
-    <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="twitter" src="<?=$ds_micro;?>/decade/twitter.png" alt="Share this page on Twitter"/></a>
+    <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="facebook" src="/<?=$ds_micro;?>/decade/facebook.png" alt="Share this page on Facebook"/></a>
+    <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="twitter" src="/<?=$ds_micro;?>/decade/twitter.png" alt="Share this page on Twitter"/></a>
     </div>
     </div>
       <div id="content" class="column"><div class="section">

@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="/<?=$ds_micro.'/decade/decade.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-  <script type="text/javascript" src="/<?=$ds_micro.'/decade/decade-dev.js';?>"></script>
+  <script type="text/javascript" src="/<?=$ds_micro.'/decade/decade.js';?>"></script>
   <!-- [if lt IE 9]>
     <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
   <![endif]-->

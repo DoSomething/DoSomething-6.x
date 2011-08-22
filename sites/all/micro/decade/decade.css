@@ -168,7 +168,15 @@ div.buttons h3 {
   width: 505px;
   height: 414px;
   background: blue;
+}
+
+#map_canvas,form#thanks-search {
   margin-left: 15px;
+}
+
+#spinner {
+  display: none;
+  padding-left: 10px;
 }
 
 #page #main div.marker {

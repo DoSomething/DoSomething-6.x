@@ -7,7 +7,8 @@
   .views-admin-links { display: none;}
   body {text-align: center;}
   body div.views-field-country div.name-location {text-align: right;}
-  img.logo {margin: 30px 100px 0;}
+  img.logo {margin: 0px 10px 0;}
+  img.dslogo {height: 75px; }
   div.view-content {width: 80%; margin: 0 auto;}
   </style>
 </head>

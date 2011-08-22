@@ -46,12 +46,19 @@
    <img class="header-message" id="banner" src="/<?=$ds_micro;?>/decade/banner.png" alt="In remembrance of the 10th anniversary of 9/11,  Do Something wants to partner with YOU in creating the largest online collection of messages of gratitude towards Emergency Service Workers.  Show your thanks by leaving a message on our gratitude map."/>
       <?php print $messages; ?>
     <?php if ($right) print $right; ?>
+    <form id="thanks-search" onsubmit="querySignups();return false;" >
+      <input type="text" id="input-proximity" value="10" name="input-proximity" size="1" maxlength="5" style="text-align:right;">
+      <label for="postal-code">miles from Postal Code:</label>
+      <input type="text" id="postal-code" name="postal-code" size="10" style="display:inline">
+      <input type="submit" style="display:none"/>
+      <a href="javascript:querySignups();"><img src="http://www.dosomething.org/nd/buttons/search.png" border="0"/></a><img id="spinner" src="/<?=path_to_theme();?>/images/spinner.gif" />
+    </form>
     <div id="map_canvas"></div>
     <div class="overlay-container">
-    <img id="map-overlay" src="<?=$ds_micro;?>/decade/map-overlay2.png" alt="Share our gratitude map!"/>
+    <img id="map-overlay" src="/<?=$ds_micro;?>/decade/map-overlay2.png" alt="Share our gratitude map!"/>
     <div class="share-thanks">
-    <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="facebook" src="<?=$ds_micro;?>/decade/facebook.png" alt="Share this page on Facebook"/></a>
-    <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="twitter" src="<?=$ds_micro;?>/decade/twitter.png" alt="Share this page on Twitter"/></a>
+    <a target="_blank" href="http://facebook.com/sharer.php?u=<?=urlencode('http://www.dosomething.org/'.$current_path);?>"><img class="facebook" src="/<?=$ds_micro;?>/decade/facebook.png" alt="Share this page on Facebook"/></a>
+    <a target="_blank" href="http://twitter.com/intent/tweet?text=<?=urlencode($twitter_text).'&url=http://www.dosomething.org/'.$current_path;?>"><img class="twitter" src="/<?=$ds_micro;?>/decade/twitter.png" alt="Share this page on Twitter"/></a>
     </div>
     </div>
       <div id="content" class="column"><div class="section">

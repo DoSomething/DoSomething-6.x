@@ -22,11 +22,21 @@ function initialize() {
   }
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
   querySignups();
+  $('#postal-code,#input-proximity').keypress(function(key) {
+      if (key.which == 13) querySignups();
+  });
 }
 
 function querySignups() {
+  var zipStr = '';
+  zip = document.getElementById("postal-code").value;
+  distance = document.getElementById("input-proximity").value;
+  $('#spinner').show();
+  if (zip && distance) {
+    zipStr = '/'+zip+'_'+distance;
+  }
   $.ajax({
-    url: '/decade-of-thanks/signupsquery',
+    url: '/decade-of-thanks/signupsquery'+zipStr,
     dataType: 'json',
     success: function (data) {plotPoints(data);}
   });
@@ -41,13 +51,13 @@ function plotPoints(data) {
   if (typeof paramnid !== 'undefined') {
     nid=paramnid;
   }
-  if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-    console.log('%o',data);
-  }
   if (data && data.constructor == Array) {
     var infowindow = new google.maps.InfoWindow();
+    var bounds = new google.maps.LatLngBounds();
     for (i = 0; i < data.length; i++) {
       (function(signup) {
+        var newPoint = new google.maps.LatLng(signup.Latitude,signup.Longitude);
+        bounds.extend(newPoint);
         setTimeout(function() {
           var marker = new google.maps.Marker({
             title: signup.field_campaign_first_name_value,
@@ -98,7 +108,11 @@ function plotPoints(data) {
         }, (1000 / data.length) * i );
       })(data[i]);
     }
+    if (data.length > 0) {
+      map.fitBounds(bounds);
+    }
   }
+  $('#spinner').hide();
 }
 
 // Deletes all markers in the array by removing references to them

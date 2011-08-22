@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="/<?=$ds_micro.'/decade/decade.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-  <script type="text/javascript" src="/<?=$ds_micro.'/decade/decade.js';?>"></script>
+  <script type="text/javascript" src="/<?=$ds_micro.'/decade/decade-dev.js';?>"></script>
   <!-- [if lt IE 9]>
     <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
   <![endif]-->
@@ -46,6 +46,13 @@
    <img class="header-message" id="banner" src="/<?=$ds_micro;?>/decade/banner.png" alt="In remembrance of the 10th anniversary of 9/11,  Do Something wants to partner with YOU in creating the largest online collection of messages of gratitude towards Emergency Service Workers.  Show your thanks by leaving a message on our gratitude map."/>
       <?php print $messages; ?>
     <?php if ($right) print $right; ?>
+    <form id="thanks-search" onsubmit="querySignups();return false;" >
+      <input type="text" id="input-proximity" value="10" name="input-proximity" size="1" maxlength="5" style="text-align:right;">
+      <label for="postal-code">miles from Postal Code:</label>
+      <input type="text" id="postal-code" name="postal-code" size="10" style="display:inline">
+      <input type="submit" style="display:none"/>
+      <a href="javascript:querySignups();"><img src="http://www.dosomething.org/nd/buttons/search.png" border="0"/></a><img id="spinner" src="/<?=path_to_theme();?>/images/spinner.gif" />
+    </form>
     <div id="map_canvas"></div>
     <div class="overlay-container">
     <img id="map-overlay" src="/<?=$ds_micro;?>/decade/map-overlay2.png" alt="Share our gratitude map!"/>

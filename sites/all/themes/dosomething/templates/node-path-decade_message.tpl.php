@@ -23,6 +23,9 @@ $xml = new SimpleXMLElement($raw);
 $zip = $xml->profile->address->postal_code;*/
 
 $zip = $_GET['profile_postal_code'];
+if (! $zip) {
+  $zip = '16845';
+}
 $msg = $_GET['args'];
 $phone = $_GET['phone'];
 if ($zip && $msg && $phone) {

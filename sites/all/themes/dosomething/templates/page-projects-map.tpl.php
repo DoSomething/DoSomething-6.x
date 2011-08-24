@@ -26,6 +26,12 @@ var map = null;
 var geocoder = null;
 var markers = new Array();
 
+function $_GET(q,s) {
+  s = s ? s : window.location.search;
+  var re = new RegExp('&'+q+'(?:=([^&]*))?(?=&|$)','i');
+  return (s=s.replace(/^\?/,'&').match(re)) ? (typeof s[1] == 'undefined' ? '' : decodeURIComponent(s[1])) : undefined;
+}
+
 function initialize() {
     var latlng = new google.maps.LatLng(48.57479,-115.839844);
     var myOptions = {
@@ -40,6 +46,13 @@ function initialize() {
     $('#search-keyword,#postal-code,#input-proximity').keypress(function(key) {
       if (key.which == 13) search();
     });
+    zip = $_GET('zip');
+    province = $_GET('province');
+    if (zip || province) {
+      $('#postal-code').val(zip);
+      $('#filter-state').val(province);
+      search();
+    }
 
 }
 
@@ -51,7 +64,7 @@ function getSelectedOption(selectBox) {
   return selectBox.options[selectBox.selectedIndex].value;
 }
 
-function buildSearchUrl(page,zip) {
+function buildSearchUrl(page) {
   cause = getSelectedOption(document.getElementById("filter-cause"));
   keyword = document.getElementById("search-keyword").value;
   zip = document.getElementById("postal-code").value;

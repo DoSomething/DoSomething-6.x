@@ -1,0 +1,49 @@
+body.page-stepuptobullying #map_canvas {
+  width: 400px;
+  height: 250px;
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+body.page-stepuptobullying-gallery #map_canvas {
+  width: 600px;
+  height: 300px;
+  margin-bottom: 15px;
+  margin: 0 auto;
+}
+
+body.page-stepuptobullying-gallery div.map-results {
+  width: 360px;
+  margin: 0 auto;
+}
+
+body.page-stepuptobullying-gallery div#map-container {
+  padding-bottom: 20px;
+}
+
+body.page-stepuptobullying div.map-results {
+  height: 200px;
+  overflow: auto;
+}
+
+div.map-results div.quotation:hover {
+  background-color: #DEF3F9;
+}
+
+div.quotation {
+  margin-top: 10px;
+}
+
+div.redquote {
+  margin-left:20px !important;
+  border: 2px #69D6DC /* bright blue */ solid;
+  width: 250px;
+}
+
+div.bluequote {
+  margin-left:20px !important;
+  border: 2px #991630 /* dark red */ solid;
+  width: 250px;
+}
+

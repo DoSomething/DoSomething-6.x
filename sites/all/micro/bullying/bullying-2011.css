@@ -1,0 +1,405 @@
+@font-face {
+    font-family: 'Bold header';
+    src: url('typeface/CartoGothicStd-Book-webfont.eot');
+    src: url('typeface/CartoGothicStd-Book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('typeface/CartoGothicStd-Book-webfont.woff') format('woff'),
+         url('typeface/CartoGothicStd-Book-webfont.ttf') format('truetype'),
+         url('typeface/CartoGothicStd-Book-webfont.svg#CartoGothicStdBook') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Bold Italic header';
+    src: url('typeface/CartoGothicStd-BoldItalic-webfont.eot');
+    src: url('typeface/CartoGothicStd-BoldItalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('typeface/CartoGothicStd-BoldItalic-webfont.woff') format('woff'),
+         url('typeface/CartoGothicStd-BoldItalic-webfont.ttf') format('truetype'),
+         url('typeface/CartoGothicStd-BoldItalic-webfont.svg#CartoGothicStdBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* DEVELOPER CRUD */
+.tabs
+{
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 210px;
+}
+.title { display: none; }
+/* END DEVELOPER CRUD */
+
+/* GENERAL */
+/* RED:  #991630; */
+/* BLUE: #69D6DC; */
+
+#main-wrapper {
+	padding: 0;
+	}
+
+#main {
+	}
+
+#content {
+	width: 100%;
+	font-family: Arial, sans-serif;
+	font-size: 100%;
+	margin: 0;
+	}
+	
+.node {
+	width: 800px;
+	margin: 0;
+	}
+	
+h3 {
+	text-transform: uppercase;
+	margin: 0;
+	padding-left: 20px;
+	}
+	
+#content p {
+ 	line-height: 125%;
+	padding: 0 20px 10px;
+	}
+	
+a, a:link {
+	text-decoration: underline;
+	color: #991630; /* dark red */
+	}
+
+/* FAQs */
+#node-677858 ol li {
+	color: #fff;
+	font-weight: bold;
+	}
+	#node-677858 ol li p {
+		font-weight: normal;
+		}
+
+/* CLASSES */
+
+h3.major, a.major { 
+	text-transform: uppercase;
+	font-family: 'Bold header', Arial, sans-serif;
+	font-size: 200%;
+	color: #fff;
+	}
+a.active { 
+	background: #69D6DC;  /* bright blue */
+	text-decoration: none;
+	position: relative;
+	top: -10px;
+	}
+	a.major.active:first-child:before {
+		content: "";
+		border:0;
+	}
+	a.major.active:before {
+		content: "";
+		position: absolute;
+		top: 42px;
+		left: 0;
+		height: 0;
+		width: 0;
+		border-top: 5px solid #000;
+		border-left: 5px solid #000;
+		border-bottom: 5px solid rgba(234, 234, 234, 0);
+		border-right: 5px solid rgba(234, 234, 234, 0);
+	}
+	a.major.active:first-child:after {
+		content: "";
+		position: absolute;
+		top: 42px;
+		left: 145px;
+		width: 0;
+		height: 0;
+		border-top: 5px solid #000;
+		border-left: 5px solid rgba(234, 234, 234, 0);
+		border-bottom: 5px solid rgba(234, 234, 234, 0);
+		border-right: 5px solid #000;
+	}
+		a.major.active:nth-child(2):after {
+		content: "";
+		position: absolute;
+		top: 42px;
+		left: 163px;
+		width: 0;
+		height: 0;
+		border-top: 5px solid #000;
+		border-left: 5px solid rgba(234, 234, 234, 0);
+		border-bottom: 5px solid rgba(234, 234, 234, 0);
+		border-right: 5px solid #000;
+	}
+		a.major.active:nth-child(3):after {
+		content: "";
+		position: absolute;
+		top: 42px;
+		left: 175px;
+		width: 0;
+		height: 0;
+		border-top: 5px solid #000;
+		border-left: 5px solid rgba(234, 234, 234, 0);
+		border-bottom: 5px solid rgba(234, 234, 234, 0);
+		border-right: 5px solid #000;
+	}
+		a.major.active:nth-child(4):after {
+		content: "";
+		position: absolute;
+		top: 42px;
+		left: 147px;
+		width: 0;
+		height: 0;
+		border-top: 5px solid #000;
+		border-left: 5px solid rgba(234, 234, 234, 0);
+		border-bottom: 5px solid rgba(234, 234, 234, 0);
+		border-right: 5px solid #000;
+	}
+a.inactive { 
+	background: #991630; /* dark red */
+	text-decoration: none;
+	border-left: 3px #991630 solid;
+	}
+.copy {
+	}
+.red  { 
+	background: #991630; /* dark red */
+	}
+	.red p {
+		color: #fff;
+		}
+	.red a {
+		color: #fff;
+		}
+.blue {
+	background: #69D6DC; /* bright blue */
+	}
+	.blue p{
+		color: #fff;
+		}
+.white {
+	background: #eaeaea;
+	}
+	.white p{
+		color: #000;
+		}
+.fullwidth {
+	width: 880px;
+	margin: 0;
+	}
+.region-left {
+	width: 445px;
+	}
+.region-right {
+	width: 320px;
+	float: right;
+	margin: 0 -80px 0 10px !important;
+	}
+	div#gallery-quotes {
+	max-height: 325px;
+	position: relative;
+		top: -120px;
+		left: -120px;
+		}
+.quotation {
+	background: #fff;
+		-webkit-box-shadow: 0px 0px 3px 3px #eaeaea;
+		-moz-box-shadow: 0px 0px 3px 3px #eaeaea;
+	box-shadow: 0px 0px 3px 3px #eaeaea; 
+	color: #000 !important;
+	max-width: 300px;
+	padding-left: 40px;
+	text-transform: lowercase;
+	}
+p.redquote {
+	margin-left:20px !important;
+	border: 2px #69D6DC /* bright blue */ solid;
+	width: 250px;
+	}
+	.redquote:before {
+		content: url("redquoteleft.png");
+		position: relative;
+		left: -20px;
+		}
+	.redquote:after {
+		content: url("redquoteright.png");
+		position: relative;
+		padding-left: 20px;
+		}
+p.bluequote {
+	margin-left:20px !important;
+	border: 2px #991630 /* dark red */ solid;
+	width: 250px;
+	}
+	.bluequote:before {
+		content: url("bluequoteleft.png");
+		position: relative;
+		left: -20px;
+		}
+	.bluequote:after {
+		content: url("bluequoteright.png");
+		position: relative;
+		padding-left: 20px;
+		}
+	
+.project {
+	background: #69D6DC; /* bright blue */
+	color: #991630;
+	}
+	
+/* STEPS */
+
+.footprints img:first-child:hover {
+	background: url("footprintonehover.png") no-repeat;
+	}
+.footprints img#footprinttwo:hover{
+	background: url("footprinttwohover.png") no-repeat;
+	}
+.footprints img#footprintthree:hover {
+	background: url("footprintthreehover.png") no-repeat;
+	}
+	
+/* IDs */
+
+#header-message {
+	padding: 0 0 50px 10px;
+	}
+	
+.header-sponsor {
+	padding: 0 0 50px 100px;
+	}
+
+#menu {
+	background: #fff;
+	margin: 0 0 40px 14px;
+	padding-bottom: 7px;
+	text-align: center;
+	text-transform: uppercase;
+	}
+	#menu > a {
+		-webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.5);
+		-moz-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.5);
+	box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.5);
+ 	padding: 5px 40px; 
+		}
+	
+object {
+	text-align: center;
+	}
+	
+/* BULLY PROJECT BLOCK */
+
+#bullyproject {
+	position: relative;
+		left: -200px;
+		top: -10px;
+	}
+
+#block-block-307 h3 {
+	font-size: 22.75px;
+	}
+	
+/* SIGNUP FORM */
+
+#webform-client-form-677823  {
+	background: #69D6DC; /* bright blue */
+	margin-left: -150px;
+	padding: 20px 35px 20px 20px;
+	width: 320px;
+	}
+	
+	#webform-client-form-677823 a {
+		color: #991630; /* dark red */
+		}
+	
+#webform-component-sign-up {
+	background: #991630; /* dark red */
+	color: #fff;
+	font-size: 22.75px;
+	line-height: 125%;
+	margin: -20px 0 0 -20px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 375px;
+	}
+#webform-component-zip {
+	margin: -52px 0 0 150px;
+	}
+#webform-client-form-677823 div.form-actions input#edit-submit {
+	background: #991630; /* dark red */
+	border: 0;
+	color: #fff;
+	float: right;
+	font-size: 175%;
+	margin: 15px -35px 0 0;
+	padding: 0 20px 0 257px;
+	text-transform: uppercase;
+}
+	#webform-client-form-677823 div.form-actions input#edit-submit:hover {
+		color: #69D6DC; /* bright blue */
+		}
+		
+/*  SHARE YOUR STEPS REPORTBACK FORM */
+
+#webform-client-form-678267 {
+	background: #69D6DC; /* bright blue */
+	padding: 0 20px;
+	position: absolute;
+		left: -640px;
+		top: 208px;
+	width: 405px;
+	}
+#webform-client-form-678267 div.form-actions input#edit-submit {
+	background: #991630; /* dark red */
+	border: 0;
+	color: #fff;
+	float: right;
+	font-size: 175%;
+	margin: 15px -20px 0 0;
+	padding: 0 20px 0 327px;
+	text-transform: uppercase;
+}
+	#webform-client-form-678267 div.form-actions input#edit-submit:hover {
+		color: #69D6DC; /* bright blue */
+		}
+/* TERMS AND CONDITIONS */
+#node-679938 p { color: #000;}
+
+/* GIVE ME FOOTPRINTS REQUEST FORM */
+#node-679770 p {
+	color: #000;
+	padding: 20px;
+	}
+
+#webform-client-form-679770 {
+	background: #69D6DC; /* bright blue */
+	padding: 20px;
+	/*position: absolute;
+		left: -640px;
+		top: 220px;
+	width: 405px; */
+	}
+	
+#webform-client-form-679770	div.form-actions input#edit-submit {
+	background: #991630; /* dark red */
+	border: 0;
+	color: #fff;
+	font-size: 175%;
+	margin: 0;
+	padding: 0 20px;
+	text-transform: uppercase;
+}
+	#webform-client-form-679770 div.form-actions input#edit-submit:hover {
+		color: #69D6DC; /* bright blue */
+		}
+		
+/* SOMETHING ELSE TBD */
+	
+#node-677842 .white.fullwidth {
+	background: url("bigprints.png") no-repeat #eaeaea;
+	background-position: 670px 20px;
+	min-height: 290px;
+	}

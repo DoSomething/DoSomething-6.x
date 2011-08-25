@@ -29,12 +29,15 @@ function initialize() {
 
 function querySignups() {
   var zipStr = '';
+  zip = $("#postal-code").val();
+  distance = $("#input-proximity").val();
   $('#spinner').show();
   if (typeof(zip) !== 'undefined' && typeof(distance) !== 'undefined' && zip && distance) {
     zipStr = '/'+zip+'_'+distance;
   }
+  var url = '/stepuptobullying/signupsquery'+zipStr;
   $.ajax({
-    url: '/decade-of-thanks/signupsquery'+zipStr,
+    url: url,
     dataType: 'json',
     success: function (data) {plotPoints(data);}
   });
@@ -53,6 +56,9 @@ function plotPoints(data) {
   if (typeof paramnid !== 'undefined') {
     nid=paramnid;
   }
+  if (data && data.constructor != Array) {
+    data = [data];
+  }
   if (data && data.constructor == Array) {
     var infowindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();
@@ -63,7 +69,6 @@ function plotPoints(data) {
         bounds.extend(newPoint);
         setTimeout(function() {
           var marker = new google.maps.Marker({
-            title: signup.field_campaign_first_name_value,
             position: new google.maps.LatLng(signup.Latitude,signup.Longitude),
             map: map,
             draggable: false,
@@ -84,9 +89,6 @@ function plotPoints(data) {
                                   '<div class="body">'+
                                   signup.Body+
                                   '</div>'+
-                                  '<div class="name">'+
-                                   signup.field_campaign_first_name_value+
-                                  '</div>' +
                                    '<div class="location">'+
                                    locationStr+
                                   '</div>' +
@@ -146,5 +148,6 @@ function clearOverlays() {
       markers[i].setMap(null);
     }
   }
+  $('.map-results').html('');
 }
 

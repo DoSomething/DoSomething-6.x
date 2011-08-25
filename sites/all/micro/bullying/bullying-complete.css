@@ -45,7 +45,7 @@
 
 #content {
 	width: 100%;
-	font-family: Arial, sans-serif;
+	font-family:Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
 	font-size: 100%;
 	margin: 0;
 	}
@@ -163,8 +163,6 @@ a.inactive {
 	text-decoration: none;
 	border-left: 3px #991630 solid;
 	}
-.copy {
-	}
 .red  { 
 	background: #991630; /* dark red */
 	}
@@ -180,10 +178,16 @@ a.inactive {
 	.blue p{
 		color: #fff;
 		}
+	.blue a {
+		color: #fff;
+		}
 .white {
 	background: #eaeaea;
 	}
 	.white p{
+		color: #000;
+		}
+	.white a {
 		color: #000;
 		}
 .fullwidth {
@@ -202,7 +206,7 @@ a.inactive {
 	max-height: 325px;
 	position: relative;
 		top: -120px;
-		left: -120px;
+		left: -180px;
 		}
 .quotation {
 	background: #fff;
@@ -247,7 +251,117 @@ p.bluequote {
 .project {
 	background: #69D6DC; /* bright blue */
 	color: #991630;
-	}	
+	}
+	
+/* ROB'S CSS */
+	
+	body.page-stepuptobullying #map_canvas {
+  width: 400px;
+  height: 250px;
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+body.page-stepuptobullying-gallery #map_canvas {
+  width: 600px;
+  height: 300px;
+  margin-bottom: 15px;
+  margin: 0 auto;
+}
+
+body.page-stepuptobullying-gallery div.map-results {
+  width: 360px;
+  margin: 0 auto;
+}
+
+body.page-stepuptobullying-gallery div#map-container {
+  padding-bottom: 20px;
+}
+
+body.page-stepuptobullying div.map-results {
+  height: 200px;
+  overflow: auto;
+}
+
+body.page-stepuptobullying-stepup .region-left {
+  float: left;
+  margin-bottom: 20px;
+}
+
+body.page-stepuptobullying-stepup div#gallery-quotes {
+  position: static;
+}
+
+body.page-stepuptobullying-stepup .region-right {
+  margin: 0 !important;
+}
+
+
+div.map-results div.quotation:hover {
+  background-color: #DEF3F9;
+}
+
+div.quotation {
+  margin-top: 10px;
+}
+
+div.redquote {
+  margin-left:20px !important;
+  border: 2px #69D6DC /* bright blue */ solid;
+}
+
+div.bluequote {
+  margin-left:20px !important;
+  border: 2px #991630 /* dark red */ solid;
+}
+
+form.campaign_bully_2011_node_form {
+  background: #69D6DC; /* bright blue */
+  padding: 0 20px;
+  width: 405px;
+}
+form.campaign_bully_2011_node_form input#edit-submit {
+  background: #991630; /* dark red */
+  border: 0;
+  color: #fff;
+  float: right;
+  font-size: 175%;
+  margin: 15px -20px 0 0;
+  padding: 0 20px 0 327px;
+  text-transform: uppercase;
+}
+form.campaign_bully_2011_node_form input.edit-submit:hover {
+  color: #69D6DC; /* bright blue */
+}
+
+form.campaign_bully_2011_node_form label {
+  color: white;
+}
+form fieldset {
+  width: auto !important;
+  overflow: visible !important;
+}
+form.campaign_bully_2011_node_form input.field,
+form.campaign_bully_2011_node_form select,
+form.campaign_bully_2011_node_form input.form-text,
+form.campaign_bully_2011_node_form textarea  {
+  width: 90%;
+  border: 1px solid black;
+  background: transparent;
+  padding: 2px;
+}
+
+form.campaign_bully_2011_node_form tr.even,
+form.campaign_bully_2011_node_form tr.odd,
+form.campaign_bully_2011_node_form tbody,
+form.campaign_bully_2011_node_form thead th,
+form.campaign_bully_2011_node_form th {
+  background: none !important;
+  border: none !important;
+}
+ /* END ROB'S CSS */
+	
 /* STEPS */
 
 .footprints img:first-child:hover {
@@ -286,7 +400,6 @@ p.bluequote {
 	
 object {
 	text-align: center;
-	margin-left: 5px;
 	}
 	
 /* BULLY PROJECT BLOCK */

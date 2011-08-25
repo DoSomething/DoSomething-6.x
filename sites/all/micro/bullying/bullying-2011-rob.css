@@ -27,6 +27,20 @@ body.page-stepuptobullying div.map-results {
   overflow: auto;
 }
 
+body.page-stepuptobullying-stepup .region-left {
+  float: left;
+  margin-bottom: 20px;
+}
+
+body.page-stepuptobullying-stepup div#gallery-quotes {
+  position: static;
+}
+
+body.page-stepuptobullying-stepup .region-right {
+  margin: 0 !important;
+}
+
+
 div.map-results div.quotation:hover {
   background-color: #DEF3F9;
 }
@@ -38,12 +52,54 @@ div.quotation {
 div.redquote {
   margin-left:20px !important;
   border: 2px #69D6DC /* bright blue */ solid;
-  width: 250px;
 }
 
 div.bluequote {
   margin-left:20px !important;
   border: 2px #991630 /* dark red */ solid;
-  width: 250px;
 }
 
+form.campaign_bully_2011_node_form {
+  background: #69D6DC; /* bright blue */
+  padding: 0 20px;
+  width: 405px;
+}
+form.campaign_bully_2011_node_form input#edit-submit {
+  background: #991630; /* dark red */
+  border: 0;
+  color: #fff;
+  float: right;
+  font-size: 175%;
+  margin: 15px -20px 0 0;
+  padding: 0 20px 0 327px;
+  text-transform: uppercase;
+}
+form.campaign_bully_2011_node_form input.edit-submit:hover {
+  color: #69D6DC; /* bright blue */
+}
+
+form.campaign_bully_2011_node_form label {
+  color: white;
+}
+form fieldset {
+  width: auto !important;
+  overflow: visible !important;
+}
+form.campaign_bully_2011_node_form input.field,
+form.campaign_bully_2011_node_form select,
+form.campaign_bully_2011_node_form input.form-text,
+form.campaign_bully_2011_node_form textarea  {
+  width: 90%;
+  border: 1px solid black;
+  background: transparent;
+  padding: 2px;
+}
+
+form.campaign_bully_2011_node_form tr.even,
+form.campaign_bully_2011_node_form tr.odd,
+form.campaign_bully_2011_node_form tbody,
+form.campaign_bully_2011_node_form thead th,
+form.campaign_bully_2011_node_form th {
+  background: none !important;
+  border: none !important;
+}

@@ -1,0 +1,27 @@
+ google.load('visualization', '1', {'packages': ['geochart']});
+ google.setOnLoadCallback(drawRegionsMap);
+
+  function drawRegionsMap() {
+    var data = new google.visualization.DataTable();
+    data.addRows(1);
+    data.addColumn('string', 'City');
+    data.addColumn('number', 'Footprints');
+    data.setValue(0, 0, 'New York');
+    data.setValue(0, 1, 12);
+    /*data.setValue(2, 0, 'Brazil');
+    data.setValue(2, 1, 400);
+    data.setValue(3, 0, 'Canada');
+    data.setValue(3, 1, 500);
+    data.setValue(4, 0, 'France');
+    data.setValue(4, 1, 600);
+    data.setValue(5, 0, 'RU');
+    data.setValue(5, 1, 700);*/
+
+    var options = {region: 'US', backgroundColor: '#FFFFFF', colors:['#FFFFFF', '#FFFFFF'],showLegend: false,
+                   height: '100px', width: '200px',dataMode: 'markers'};
+
+    var container = document.getElementById('map_canvas');
+    var geochart = new google.visualization.GeoChart(container);
+    geochart.draw(data, options);
+};
+

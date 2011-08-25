@@ -51,6 +51,9 @@ function plotPoints(data) {
   if (typeof paramnid !== 'undefined') {
     nid=paramnid;
   }
+  if (data && data.constructor != Array) {
+    data = [data];
+  }
   if (data && data.constructor == Array) {
     var infowindow = new google.maps.InfoWindow();
     var bounds = new google.maps.LatLngBounds();

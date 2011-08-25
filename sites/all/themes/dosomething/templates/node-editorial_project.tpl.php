@@ -69,8 +69,8 @@
   
   
      <p style="clear: left;">Find projects 
-<form id="signup" method="get" action="/projects/location">
-    <input type="text" style="border: 1px solid rgb(74, 193, 225); width: 40px; height: 13px; margin-right: 2px;" onclick="if (this.value == 'zipcode') { this.value=''; }" class="styled short" maxlength="" value="zipcode" name="filter0" id="filter0"/><input id="go-projofday" type="image" style="margin-top: 1px;" class="submit" alt="go" value="go" name="go" mce_src="/sites/all/themes/dosomething/images/form_submit_go.png" src="/sites/all/themes/dosomething/images/form_submit_go.png"/>
+<form id="signup" method="get" action="/projects/map">
+    <input type="text" style="border: 1px solid rgb(74, 193, 225); width: 40px; height: 13px; margin-right: 2px;" onclick="if (this.value == 'zipcode') { this.value=''; }" class="styled short" maxlength="" value="zipcode" name="zip" id="filter0"/><input id="go-projofday" type="image" style="margin-top: 1px;" class="submit" alt="go" value="go" name="go" mce_src="/sites/all/themes/dosomething/images/form_submit_go.png" src="/sites/all/themes/dosomething/images/form_submit_go.png"/>
   
 <input type="hidden" value="10" name="op0"/>
   </form>   </p>
@@ -105,7 +105,7 @@
 
       }
        $('input#go-projofday').click(function(){
-          location.href = '/projects-search/*/' + buildUrlProjOfTheDay();
+          location.href = '/projects/map?zip=' + $('input#filter0').val();
           return false; });
       </script>
   

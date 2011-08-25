@@ -25,6 +25,8 @@ var max_result_length = 500;
 var map = null;
 var geocoder = null;
 var markers = new Array();
+var us_center = new google.maps.LatLng(48.57479,-115.839844);
+var us_northeast = new google.maps.LatLng(71.84253925611836,-28.60839868749997);
 
 function $_GET(q,s) {
   s = s ? s : window.location.search;
@@ -33,7 +35,7 @@ function $_GET(q,s) {
 }
 
 function initialize() {
-    var latlng = new google.maps.LatLng(48.57479,-115.839844);
+    var latlng = us_center;
     var myOptions = {
       zoom: 3,
       center: latlng,
@@ -78,17 +80,22 @@ function buildSearchUrl(page) {
     distance = myGetRadius()*.6; //padding, make sure all results appear in viewable window
   }
   var url = "http://www.dosomething.org/api/projects?key=11276fce3cf6ea958c0f842934802121&cause="+cause+
-            "&zip="+zip+"&keyword="+keyword+"&distance="+distance+"&maxnum="+maxnum+"&page="+page+latlng+"&province="+province;
+    "&zip="+zip+"&keyword="+keyword+"&distance="+distance+"&maxnum="+maxnum+"&page="+page+latlng+"&province="+province;
   return url;
   //return "http://www.dosomething.org/sites/all/micro/projects/projects-new";
 }
 
 function myGetRadius() {
   bounds = map.getBounds();
-
-  center = bounds.getCenter();
-  ne = bounds.getNorthEast();
-
+  var center;
+  var ne;
+  if (typeof bounds !== 'undefined') {
+    center = bounds.getCenter();
+    ne = bounds.getNorthEast();
+  } else {
+    center = us_center;
+    ne = us_northeast;
+  }
   // r = radius of the earth in statute miles
   var r = 3963.0;  
 
@@ -221,6 +228,7 @@ function writeResults(xmlhttp) {
 </head>
 <body onload="initialize()">
 <div id="search_bar" style="">
+  <a href="/">&lt;&lt; Back to DoSomething.org</a><br><a href="/projects">&lt;&lt; Back to all projects</a>
 	<div id="search-box" class="box blue gainlayout" style="float:left">
 		<form id="proj-search" onsubmit="search();return false;" >
 			<label for="search-keyword">Keyword</label>

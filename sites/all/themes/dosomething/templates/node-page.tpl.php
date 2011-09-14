@@ -88,6 +88,10 @@
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
+<?php if ($node->nid == 574937):
+        print theme_addthis();
+      endif; ?>
+
   <?php if ($display_submitted || $terms): ?>
     <div class="meta">
       <?php if ($display_submitted): ?>

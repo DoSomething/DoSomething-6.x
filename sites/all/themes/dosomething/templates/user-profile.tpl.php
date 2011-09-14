@@ -60,7 +60,7 @@
     FROM {node} n
     WHERE n.uid=%d AND n.type="ididthis"
     ORDER BY changed DESC';
-    $empty_msg = ($same ? 'You haven\'t' : $this_user->name . ' hasn\'t') . ' found something to do! Find an <a href="/actnow">action guide</a> and get started.'; 
+    $empty_msg = ($same ? 'You haven\'t' : $this_user->name . ' hasn\'t') . ' found something to do! Find an <a href="/clubs/resources/what-you-get">action guide</a> and get started.'; 
     print club_profile_content_table($this_user->uid, $this_user->name, $title, $query, $empty_msg);
 
     $title = 'Your Projects';

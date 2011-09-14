@@ -1,0 +1,490 @@
+@font-face {
+    font-family: 'CollegeBold';
+    src: url('COLLEGEB-webfont.eot');
+    src: url('COLLEGEB-webfont.eot?#iefix') format('embedded-opentype'),
+         url('COLLEGEB-webfont.woff') format('woff'),
+         url('COLLEGEB-webfont.ttf') format('truetype'),
+         url('COLLEGEB-webfont.svg#CollegeBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.title {
+    font-family: 'CollegeBold' !important;
+    text-transform: lowercase;
+}
+
+.college {
+    font-family: 'CollegeBold' !important;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+}
+
+.rotate-5 {
+    -moz-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -webkit-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -o-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -ms-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+}
+
+.rotate-3 {
+    -moz-transform: scale(1) rotate(-3deg) translate(0px, 0px) skew(deg, 0deg);
+    -webkit-transform: scale(1) rotate(-3deg) translate(0px, 0px) skew(deg, 0deg);
+    -o-transform: scale(1) rotate(-3deg) translate(0px, 0px) skew(deg, 0deg);
+    -ms-transform: scale(1) rotate(-3deg) translate(0px, 0px) skew(deg, 0deg);
+    transform: scale(1) rotate(-3deg) translate(0px, 0px) skew(deg, 0deg);
+}
+
+#main-wrapper {
+    padding: 0;
+}
+
+.orange {
+    color: #E04326;
+}
+
+#give-us-your-gear {
+    font-size: 30px;
+    text-align: center;
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    margin-left: -225px;
+    line-height: 1em;
+    top: -50px;
+}
+
+#give-us-your-gear .orange {
+    font-size: 50px;
+}
+
+#content {
+    background: #5f6060;
+    margin: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#content > .section {
+    background: #e9eaeb;
+    margin: 10px;
+}
+
+#content-area {
+    padding: 5px;
+}
+
+#sports {
+    border: 3px solid #8d8e8d;
+    background: #eee;
+    padding: 10px;
+    position: relative;
+}
+
+.tabs {
+    position: absolute;
+    top: -5px;
+    right: 0;
+    width: 200px;
+}
+
+#sports-nav {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin-top: 20px;
+}
+
+#sports-nav a {
+    display: block;
+    float: left;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px 3px 0 3px;
+    color: black;
+    font-family: 'CollegeBold';
+    margin: 0 5px;
+    width: 100px;
+}
+
+#sports-nav a:hover {
+    text-decoration: none;
+    color: #E04326;
+}
+
+#sports-nav a.active {
+    color: #E04326;
+}
+
+#sports-nav a:nth-child(odd) {
+    background: url('nav-circle.png') no-repeat center center;
+    width: 116px;
+    height: 52px;
+}
+
+#sports-nav a:nth-child(even) {
+    background: url('nav-rect.png') no-repeat center center;
+    width: 97px;
+    height: 47px;
+    margin-top: 10px;
+}
+
+#sports-nav a:last-child {
+    background: url('nav-circle-mini.png') no-repeat center center;
+    width: 71px;
+    height: 59px;
+    line-height: 2em;
+}
+
+#arrow-top {
+    position: absolute;
+    left: 325px;
+    top: -20px;
+}
+
+#arrow-bottom {
+    position: absolute;
+    left: 80px;
+    bottom: -25px;
+}
+
+#block-block-310 {
+    background: url('sign-up-box.png') no-repeat;
+    width: 285px;
+    height: 310px;
+}
+
+#block-block-310 h2.title {
+  width: 110px;
+  height: 60px;
+  top: -25px;
+  left: -35px;
+  background: url('sign-up.png') no-repeat;
+}
+
+#find-a-club {
+  background: url('bg-club.png') no-repeat;
+  width: 340px;
+  height: 320px;
+  text-align: center;
+}
+
+#find-a-club .content>div {
+  
+}
+
+#bgc-logo {
+  background: url('/sites/all/micro/sports/bg-logo-bg.png');
+  width: 279px;
+  height: 150px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 25px;
+}
+
+#find-a-club h2.title {
+  font-size: 18px;
+  width: 265px;
+  height: 65px;
+  padding: 10px;
+  line-height: 1.2em;
+  padding-top: 12px;
+  background: url('steps-title-bg.png') no-repeat;
+  left: -15px;
+}
+
+.block {
+  position: relative;
+  padding-top: 50px
+}
+
+.block .content {
+  padding: 40px 15px 10px 15px;
+}
+
+.block h2.title {
+    position: absolute;
+    display: block;
+    color: #E04326;
+    text-align: center;
+    line-height: 60px;
+    font-size: 26px;
+    -moz-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -webkit-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -o-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    -ms-transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+    transform: scale(1) rotate(-5deg) translate(0px, 0px) skew(0deg, 0deg);
+}
+
+#webform-client-form-679707 .form-submit, #find-a-club .form-submit {
+    background: url('go.png') no-repeat;
+    color: #E04326;
+    font-family: 'CollegeBold';
+    font-size: 20px;
+    border: 0;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#youtube-video {
+    padding: 30px;
+    background: url('youtube-wrapper.png') no-repeat;
+}
+
+.node h2.title,
+#intro h2.title {
+  display: none;
+}
+
+.node-type-campaign-sports-2011 #intro h2.title {
+    display: block;
+}
+
+#node-678244 #find-a-club,
+#node-678244 #steps {
+  float: left;
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+#node-678244 #find-a-club {
+  clear: both;
+}
+
+#steps h2.title {
+  padding: 15px 3px;
+  font-size: 16px;
+  line-height: 1.2em;
+  left: 85px;
+  top: 10px;
+  background: url('steps-title-bg.png') no-repeat;
+  width: 280px;
+  height: 65px;
+}
+
+#steps .content {
+  margin: 15px 70px;
+}
+
+#steps {
+  margin-left: 35px;
+}
+
+#find-a-club {
+  margin-left: 20px;
+}
+
+#node-678244 #steps {
+  background: url('steps-bg.png') no-repeat;
+  width: 428px;
+  height: 325px;
+}
+
+.block h2.title {
+  display: block !important;
+}
+
+#block-block-309 {
+  background: urL('marker.png') no-repeat;
+  width: 886px;
+  height: 98px;
+  padding-top: 0;
+  margin-left: -31px;
+  margin-bottom: -55px;
+}
+
+#block-block-309 .content {
+  padding-top: 30px;
+  padding-right: 75px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'CollegeBold';
+}
+
+#footer {
+  margin-top: 30px;
+}
+
+.right-arrow {
+  width: 68px;
+  height: 30px;
+  position: absolute;
+  background: url('red-arrow-right.png')
+}
+
+.se-arrow {
+  width: 116px;
+  height: 74px;
+  position: absolute;
+  background: url('red-arrow-SE.png');
+}
+
+.dub-x {
+  width: 85px;
+  height: 40px;
+  position: absolute;
+  background: url('double-x.png') no-repeat;
+}
+
+.under-arrow {
+  width: 166px;
+  height: 42px;
+  position: absolute;
+  background: url('arrow-right-down-up.png') no-repeat;
+}
+
+div.node h2 {
+    font-family: 'CollegeBold';
+    color: #E04326;
+    font-size: 20px;
+}
+
+div.section h1,
+.node-type-campaign-sports-2011 #intro h2.title {
+    font-family: 'CollegeBold';
+    color: #E04326;
+    font-size: 20px;
+    padding-top: 20px;
+    display: block;
+    text-transform: lowercase;
+}
+
+#node-679275 h1 {
+    background: url('run-a-drive-title.png') no-repeat;
+    text-align: center;
+    width: 306px;
+    height: 73px;
+    margin: 20px auto;
+}
+
+#prizing-bg {
+    background: url('prizes-separator.png') no-repeat;
+    width: 790px;
+    height: 332px;
+    padding: 40px 0 0;
+}
+
+#special-code {
+    font-size: 2em;
+    line-height: 1em;
+}
+
+.center {
+    text-align: center;
+}
+
+.jcarousel-container {
+    margin: 0 auto;
+}
+
+.node-type-campaign-sports-2011 #intro h2.title {
+    text-align: center;
+    font-size: 40px;
+    margin: 0 100px 20px 100px;
+}
+
+#text-info, #special-code {
+    font-size: 20px;
+    line-height: 1em;
+}
+
+#special-code {
+    margin: 10px 0 20px 0;
+    font-size: 40px;
+}
+
+div.view-content tbody tr {
+    border: 0;
+}
+
+.view-Sports-Project-List table {
+    width: 100%;
+}
+
+.view-Sports-Project-List td {
+    width: 25%;
+    text-align: center;
+}
+
+div.view-content tbody tr:hover {
+    background: none;
+}
+
+.node p {
+    color: black;
+}
+
+#main a:link, #main a:visited, #main a:hover, #main a:active, #main li a.active, #main #sports-nav a.active, #main #sports-nav a:hover {
+    color: #E04326;
+}
+
+
+#main #sports-nav a {
+    color: black;
+}
+
+.views-field-title {
+    font-weight: bold;
+}
+
+#webform-client-form-679707 input[type="text"] {
+    width: 115px;
+}
+
+.page-sports .webform-component-textfield, .page-sports .webform-component-email {
+    float: left;
+}
+
+.page-sports-action-kit h2.title {
+    display: block !important;
+}
+
+.form-item, .form-checkboxes, .form-radios {
+    margin: 0;
+}
+
+.form-checkboxes .form-item, .form-radios .form-item {
+    margin: 0;
+}
+
+.page-sports-run-a-drive div.node h2 {
+    margin-top: 10px;
+}
+
+#edit-submitted-awesome-drive {
+    width: 245px;
+}
+
+#webform-client-form-679707 {
+    overflow: hidden;
+    height: 125px;
+    position:relative;
+}
+
+#report-next {
+    float: right;
+    padding-right: 10px;
+}
+
+#webform-component-first-name, #webform-component-last-name,
+#webform-component-school-name, #webform-component-zip,
+#webform-component-email, #webform-component-phone
+{
+    height: 42px;
+}
+
+
+#edit-submitted-awesome-drive {
+    height: 80px;
+}
+
+#sports div.block ol li {
+    color: #E04326;
+}
+
+#intro {
+    margin-top: 25px;
+}

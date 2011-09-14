@@ -76,6 +76,7 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
   $hooks['signup_block'] = array();
   $hooks['header'] = array();
   $hooks['badges'] = array();
+  $hooks['addthis'] = array();
   
   $templates_path = drupal_get_path('theme', 'dosomething') . '/templates';
   $ds_forms = array(
@@ -88,6 +89,11 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
                  'staples_reason',
                  'scavenger_2011_signup',
                  'campaign_hunt_2011',
+                 'ewaste_signup_2011', 'campaign_ew_2011',
+                 'decade_2011_signup',
+                 'campaign_sports_2011',
+                 'campaign_bully_2011',
+		 'club'
                  );
   //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
   foreach ($ds_forms as $name) {
@@ -217,6 +223,7 @@ function dosomething_preprocess_page(&$vars, $hook) {
   // page-[content-type].tpl.php
   if ('node' == arg(0)) {
     $vars['template_files'][]  = 'page-' . $vars['node']->type;
+    $vars['template_files'][]  = 'node-'.arg(1).'-page';
   }
 
   /* page-[path].tpl.php and variations

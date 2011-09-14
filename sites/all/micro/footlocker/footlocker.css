@@ -1,0 +1,196 @@
+/* DEVELOPER CRUD */
+
+.tabs
+{
+  position: absolute;
+  top: -60px;
+  width: 210px;
+}
+.node-unpublished {background: none; }
+
+.title { display: none; }
+
+div#main { margin-top: -80px;}
+
+/* COLOR DEFINITIONS */
+/* RED: #F03 */
+
+/* END DEVELOPER CRUD */
+
+/* GENERAL */
+
+.header-message {text-align: center; height: 175px;	}
+
+div#main div.share {
+	float: right;
+	position: relative;
+		top: 80px; right: 20px;
+        }
+        
+#main-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#content-area {
+	padding: 0 20px 0 80px; }
+
+div#main-wrapper #content {
+	font-family:Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+	}
+h2 {
+	color: #fff !important;
+	font-family:'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 500% !important;
+	font-weight: lighter;
+	line-height: 80%;
+	text-transform: uppercase;
+}
+	#node-681149 h2 {
+	padding-left: 80px;}
+
+h3 {
+	color: #F03;
+	font-family:'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 150%;
+	text-transform: uppercase;
+	}
+
+h4 {
+	color: #fff;
+	font-size: 125%; }
+
+#content-area a,
+#content-area a:link,
+#content-area a:visited {color: #F03; }
+#content-area a:hover {text-decoration: underline; }
+
+legend, label {color: #fff; }
+
+#content .column {
+	font-family: Arial, sans-serif;
+	font-size: 125%;
+}
+#content {
+	background: url("footlocker-bg.png") repeat-y;
+	padding: 0;
+    margin: 0;
+	width: 100%;
+	}
+#content p { 
+	color: #fff;
+	line-height: 125%; }
+	/*#main-wrapper .content h3 {
+	padding-top: 20px;
+	}
+	#main-wrapper .content p {
+	color: #fff;
+	line-height: 125%;
+}
+	#main-wrapper .content p:last-child {
+	padding-bottom: 30px;
+	}*/
+	
+/* MENU */
+
+#menu a {
+	font-size: 30px;
+	line-height: 32px;
+	padding: 5px; }
+	
+#menu a.inactive {
+	color: #fff !important; }
+	
+/* LIST STUFF */
+	
+#main-wrapper .content ol, #main-wrapper ul {
+	color: #fff !important;
+	}
+	ol.big-blue li li, ol.big-blue li .not-so-big-blue {
+    color: #FFFFFF; font-weight: bold;
+	}
+		body.page-footlocker-tips ol li, #main-wrapper .content ul li { color: #fff !important; font-weight: lighter; }
+	
+	#main-wrapper .content ol li p {
+	font-weight: normal;
+	padding: 0 20px;}
+	
+/* HOME PAGE WEBFORMS */
+
+#block-webform-client-block-680696,
+#block-webform-client-block-680674,
+.region-left,
+.region-right
+    {
+        float: left;
+        width: 350px;
+    }
+    .region-content-bottom {
+        margin-left: 80px;
+    }
+	#webform-client-form-680696 #edit-actions input {
+	background: url('http://www.dosomething.org/sites/all/micro/footlocker/button-bg.png') #333;
+	border: 1px #333 solid;
+	color: #fff;
+	font-family:'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-weight: lighter;
+	font-size: 200%;
+	margin-left: 70px;
+	padding: 2px 5px;
+	text-align: center;
+	text-transform: uppercase;
+	}
+
+	#webform-client-form-680674 #edit-actions input {
+	background: url('http://www.dosomething.org/sites/all/micro/footlocker/button-bg.png') #333;
+	border: 1px #333 solid;
+	color: #fff;
+	font-family:'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 200%;
+	font-weight: lighter;
+	margin-left: 60px;
+	padding: 2px 5px;
+	text-transform: uppercase;
+	}
+		
+div.block-webform {
+	position: relative !important;}
+    
+    .clearfix {
+        clear: both;
+    }
+	
+/* ABOUT */
+
+.region-left,
+.region-right {
+	border: 2px #333 solid;
+	padding: 10px; }
+	
+/* JUDGES */
+/* MEDIA BLOCK from http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/ */
+
+.media { float: left; margin:10px; width: 45%;}
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+	.bd {border: 2px #333 solid; 
+	padding: 10px 10px 10px 60px; 
+	position: relative;
+		right: 60px;}
+.media .img { float:left; margin: 10px 0 0 0; width: 120px; height: 140px;}
+.media .img img{ display:block; width: 100px; height: 120px;}
+.media .imgExt{float:right; margin-left: 10px;}
+
+/* COLUMNS FROM http://dancameron.org/code/splitting-content-into-two-columns-e-g-word-wrap-with-php-or-css-javascript */
+
+/*.columns {
+-moz-column-count: 2;
+-moz-column-gap: 1.5em;
+-moz-column-rule: none;
+-webkit-column-count: 2;
+-webkit-column-gap: 1.5em;
+-webkit-column-rule: none;
+/* future proof
+column-count: 2;
+column-gap: 1.5em;
+column-rule: none;
+} */

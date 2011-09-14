@@ -1,7 +1,7 @@
 
 
 <?
-
+if (!user_access('administer nodes') || request_uri() == '/thanks' ):
 
 print '<div id="signup-block-title">[1] Share Your Thanks!</div>';
 
@@ -51,5 +51,7 @@ if (!$user->uid):
 <?
 
 endif;
-
+else:
+print drupal_render($form);
+endif;
 ?>

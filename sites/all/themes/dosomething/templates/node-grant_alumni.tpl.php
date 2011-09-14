@@ -30,9 +30,8 @@
   <?php endif; ?>
 
   <div class="box blue">
-
-  <h2><?php print $title;?></h2>			
-
+  
+  <h2><?php print($title); ?></h2>
   <?php if(strlen($pic_html)):?><?php print $pic_html;?><?php endif;?>
 
   <?php if(strlen($node->field_alumni_project[0]['view'])):?><strong>Project:</strong>&nbsp;<?php print $node->field_alumni_project[0]['view'];?>

@@ -27,6 +27,12 @@ function initialize() {
   });
 }
 
+function shrinkText(text) {
+    text = text.substring(0, 100);
+    text = text.substring(0, text.lastIndexOf(' '));
+    return text + '...';
+}
+
 function querySignups() {
   var zipStr = '';
   zip = $("#postal-code").val();
@@ -100,7 +106,10 @@ function plotPoints(data) {
           newResult = document.createElement("div");
           $(newResult).addClass(colorClass+" quotation id"+i).html(content);
           $(newResult).click(function() { myclick(i)});
-          if (i < 4) {
+          if (i < 2) {
+            $(newResult).find('p:gt(0)').remove();
+            var text = $(newResult).find('p').text();
+            $(newResult).find('p').html(shrinkText(text));
             resultsVar.append(newResult);
 
             /*resultsVar.append('<div class="'+colorClass+' quotation">'+
@@ -124,9 +133,7 @@ function plotPoints(data) {
         }, (1000 / data.length) * i );
       })(data[i],i);
     }
-    if (data.length > 0) {
-      map.fitBounds(bounds);
-    }
+
   }
   $('#spinner').hide();
 }

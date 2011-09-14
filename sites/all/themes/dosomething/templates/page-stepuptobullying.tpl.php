@@ -9,12 +9,17 @@
     if ($_SERVER['HTTP_USER_AGENT'] == 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)') :
   ?>
   <meta name="description" content="Step Up to Bullying!" />
+  <meta property="og:title" content="Step Up to Bullying! | Do Something"/>
   <meta property="og:url" content="http://dosomething.org/stepuptobullying" />
-  <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/stepuptobullying/bullying1.jpg" />
+  <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/bullying/stepup-logo-new.png" />
+  <meta property="og:description" content="I just Stepped Up to Bullying with DoSomething.org. Get in on the action at stepuptobullying.org!" />
+  <meta property="og:type" content="non_profit"/>
+  <meta property="fb:admins" content="508145411,603061,630191494" />
+  <meta property="fb:app_id" content="93836527897" />
+  <meta property="og:site_name" content="DoSomething.org"/>
   
   <?php endif; ?>
-  <link rel="stylesheet" href="/<?=$ds_micro.'/bullying/bullying-2011.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=$ds_micro.'/bullying/bullying-2011-rob.css';?>" type="text/css" media="all" />
+  <link rel="stylesheet" href="/<?=$ds_micro.'/bullying/bullying-2011-complete.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="/<?=$ds_micro.'/bullying/bullying.js';?>"></script>
@@ -71,10 +76,10 @@
     
     <?php if ($right) print $right; ?>
     
-    <!--<div id="intro" class="clearfix rounded shadow">-->
-    <div id="socialmedia" style="float: right;">
-        <a href="http://www.facebook.com/sharer.php?u=http://www.dosomething.org/steputobullying" target="_blank"><img src="/sites/all/micro/sfs/icon-fb.png" alt="FB Share" style="position: relative; top -5px; height: 30px;" /></a>
-        <a href="http://twitter.com/share?url=&text=I+just+steppedup+w/+@DoSomething's+anti-bullying+campaign,+will+you+be+next?+http://stepuptobullying.org" target="_blank"><img src="/sites/all/micro/sfs/icon-twitter.png" alt="Twitter share" style="position: relative; top -5px; height: 30px;" /></a>
+
+ <div id="socialnetworks" style="float: right; padding: 5px 10px 0 0;">
+        <a href="http://www.facebook.com/sharer.php?u=http://www.dosomething.org/stepuptobullying" target="_blank"><img src="/sites/all/micro/icon-fb.png" alt="FB Share" /></a>
+        <a href="http://twitter.com/share?url=&text=I+just+stepped+up+w/+@DoSomething's+anti-bullying+campaign,+will+you+be+next?+http://stepuptobullying.org" target="_blank"><img src="/sites/all/micro/icon-twitter.png" alt="Twitter share" /></a>
     </div>
 
     <h2 class="title"><?php print $title; ?></h2>

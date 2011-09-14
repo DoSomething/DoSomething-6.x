@@ -53,9 +53,9 @@
   <div id="pll-wrapper">
   <div id="content-wrapper">
     <img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-tagline.png" id="tagline" />
-    <a href="#" onclick="javascript:document.forms['webform-client-form-650471'].submit()"><img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-join.png" id="" /></a>
-    <div id="girl-count" style="background-image: url('/<?=$ds_micro;?>/sfs/pll-<?=$girl;?>-raised.png');">
-      $<?=($count) ? $count : 0;?>
+    <a href="#" onclick="javascript:document.forms['webform-client-form-650471'].submit()"><img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-join<?=($count <= 2500) ? '' : '-nocash';?>.png" id="" /></a>
+    <div id="girl-count" style="background-image: url('/<?=$ds_micro;?>/sfs/pll-<?=$girl;?>-<?=($count <= 2500) ? 'raised' : 'members';?>.png');">
+     <?=($count <= 2500) ? '$' : ''; ?><?= $count;?>
     </div>
     <img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-find-out.png" id="" />
     <div id="girl-sticky">

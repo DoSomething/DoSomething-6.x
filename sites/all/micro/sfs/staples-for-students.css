@@ -905,3 +905,7 @@ body div#page-wrapper #page #staples h2 {
 #edit-field-thirteen-value-wrapper {
   font-size: .6em;
 }
+
+#edit-field-sfs-subscriptions-value-kit-wrapper {
+    display: none;
+}

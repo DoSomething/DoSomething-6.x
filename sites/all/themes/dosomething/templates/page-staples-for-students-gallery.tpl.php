@@ -24,6 +24,7 @@
         foreach ($nodes as $nodeID) {
           $node = node_load($nodeID['nid']);
           foreach ($node->field_campaign_pictures as $img) {
+            if ($img != '') {
             $filename = explode('/', $img['filepath']);
             $filename = $filename[count($filename)-1];
             $add['file'] = $filename;
@@ -32,7 +33,7 @@
             $add['height'] = image_get_info($img['filepath']);
             $add['height'] = $add['height']['height'];
             $items[$filename] = $add;
-          }
+          }}
         }
         $startImg = reset($items);
         echo 'var galleryImages = ' . json_encode($items);

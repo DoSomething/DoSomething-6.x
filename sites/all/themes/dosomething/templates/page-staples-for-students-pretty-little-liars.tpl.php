@@ -67,19 +67,19 @@
   </div>
   <div id="pll-join">
     <a href="/staples-for-students/pretty-little-liar/ashley"><img
-      src="/<?=$ds_micro;?>/sfs/pll-ashley-join.png" alt="Join Ashley" /></a><a href="/staples-for-students/pretty-little-liar/lucy"><img
-      src="/<?=$ds_micro;?>/sfs/pll-lucy-join.png" alt="Join Lucy" /></a><a href="/staples-for-students/pretty-little-liar/troian"><img
-      src="/<?=$ds_micro;?>/sfs/pll-troian-join.png" alt="Join Troian" /></a><a href="/staples-for-students/pretty-little-liar/shay"><img
-      src="/<?=$ds_micro;?>/sfs/pll-shay-join.png" alt="Join Shay" /></a>
+      src="/<?=$ds_micro;?>/sfs/pll-ashley-join<?=($counts['ashley'] <= 2500) ? '' : '-member';?>.png" alt="Join Ashley" /></a><a href="/staples-for-students/pretty-little-liar/lucy"><img
+      src="/<?=$ds_micro;?>/sfs/pll-lucy-join<?=($counts['lucy'] <= 2500) ? '' : '-member';?>.png" alt="Join Lucy" /></a><a href="/staples-for-students/pretty-little-liar/troian"><img
+      src="/<?=$ds_micro;?>/sfs/pll-troian-join<?=($counts['troian'] <= 2500) ? '' : '-member';?>.png" alt="Join Troian" /></a><a href="/staples-for-students/pretty-little-liar/shay"><img
+      src="/<?=$ds_micro;?>/sfs/pll-shay-join<?=($counts['shay'] <= 2500) ? '' : '-member';?>.png" alt="Join Shay" /></a>
   </div><div id="pll-raised">
-    <div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-ashley-raised.png'); width:208px;">
-      $<?=($counts['ashley']) ? $counts['ashley'] : 0;?>
-    </div><div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-lucy-raised.png'); width:205px;">
-      $<?=($counts['lucy']) ? $counts['lucy'] : 0;?>
-    </div><div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-troian-raised.png'); width:203px;">
-      $<?=($counts['troian']) ? $counts['troian'] : 0;?>
-    </div><div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-shay-raised.png'); width:206px;">
-      $<?=($counts['shay']) ? $counts['shay'] : 0;?>
+    <div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-ashley-<?=($counts['ashley'] <= 2500) ? 'raised' : 'members';?>.png'); width:208px;">
+      <?=($counts['ashley'] <= 2500) ? '$' : '';?><?=$counts['ashley'];?>
+    </div><div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-lucy-<?=($counts['lucy'] <= 2500) ? 'raised' : 'members';?>.png'); width:205px;">
+      <?=($counts['lucy'] <= 2500) ? '$' : '';?><?=$counts['lucy'];?>
+    </div><div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-troian-<?=($counts['troian'] <= 2500) ? 'raised' : 'members';?>.png'); width:203px;">
+      <?=($counts['troian'] <= 2500) ? '$' : '';?><?=$counts['troian'];?>
+    </div><div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-shay-<?=($counts['shay'] <= 2500) ? 'raised' : 'members';?>.png'); width:206px;">
+      <?=($counts['shay'] <= 2500) ? '$' : '';?><?=$counts['shay'];?>
     </div>
   </div>
   <img src="/<?=$ds_micro;?>/sfs/pll-paper-callout.png" style="margin-left: -18px; padding-top: 20px;" />

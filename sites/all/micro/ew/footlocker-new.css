@@ -1,0 +1,281 @@
+#main-logo {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    margin-left: -160px;
+    width: 320px;
+}
+
+#sponsor-logo {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+}
+
+ul.tabs {
+    width: 270px;
+    position: absolute;
+    top: -40px;
+    right: 0;
+}
+
+#main-wrapper {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+}
+
+#content {
+    margin: 100px 0 0 12px;
+    background: black;
+    float: none;
+    width: 868px;
+    color: white;
+}
+
+#content p {
+    color: white;
+}
+
+#content-area, #content-area .section {
+    margin-left: 12px;
+    border-left: 12px solid white;
+    border-top: 12px solid #292C2B;
+}
+
+#content-area .section {
+    padding: 12px;
+}
+
+.block h2.title {
+    display: none;
+}
+
+
+#menu {
+    margin: 5px 0 5px 15px;
+}
+
+#menu a {
+    height: 34px;
+    display: block;
+    float: left;
+    font-size: 0;
+    text-decoration: none;
+}
+
+#menu-item-0 { background: url('nav/home.png'); width: 99px; }
+#menu-item-0.active, #menu-item-0:hover { background: url('nav/home-active.png'); }
+#menu-item-1 { background: url('nav/apply.png'); width: 115px; }
+#menu-item-1.active, #menu-item-1:hover { background: url('nav/apply-active.png'); }
+#menu-item-2 { background: url('nav/about.png'); width: 127px; }
+#menu-item-2.active, #menu-item-2:hover { background: url('nav/about-active.png'); }
+#menu-item-3 { background: url('nav/judges.png'); width: 144px; }
+#menu-item-3.active, #menu-item-3:hover { background: url('nav/judges-active.png'); }
+#menu-item-4 { background: url('nav/tips.png'); width: 227px; }
+#menu-item-4.active, #menu-item-4:hover { background: url('nav/tips-active.png'); }
+#menu-item-5 { background: url('nav/faqs.png'); width: 83px; }
+#menu-item-5.active, #menu-item-5:hover { background: url('nav/faqs-active.png'); }
+
+
+.node-unpublished {
+    background: none;
+}
+
+ol.big-blue li .not-so-big-blue {
+    color: white;
+}
+
+ol.big-blue li {
+    color: white;
+}
+
+.node h2.title, legend, .arial-mini, #content p.arial-mini, h3 {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #E31837;
+    letter-spacing: -1px;
+}
+
+h4 { text-transform: uppercase; }
+
+.node-type-page h3 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+}
+
+.node h2.title {
+    margin-bottom: 20px;
+}
+
+fieldset {
+    position: relative;
+    padding-top: 50px;
+    padding-left: 50px;
+    border: 3px solid #535353;
+}
+
+legend {
+    position: absolute;
+    top: 8px;
+    font-size: 2em;
+    left: 5px;
+}
+
+#block-webform-client-block-680696,
+#block-webform-client-block-680674
+{
+    float: left;
+    width: 260px;
+    margin-left: 100px;
+}
+
+.region-left,
+.region-right
+{
+    float: left;
+    border: 3px solid #535353;
+    padding: 5px 20px 20px 20px;
+    position: relative;
+    height: 225px;
+}
+
+.region-left {
+    width: 475px;
+}
+
+.region-right {
+    width: 210px;
+}
+
+.yes-box, .no-box {
+    width: 1em;
+    height: 1em;
+    margin-right: 10px;
+    background: #dd003d;
+    float: left;
+    margin-top: .5em;
+}
+
+.no-box {
+    background: white;
+}
+
+.page-footlocker-application-confirm li {
+    line-height: 2em;
+}
+
+.page-footlocker-faqs li {
+    list-style-type: none;
+}
+
+.page-footlocker-faqs ol.big-blue {
+    padding: 0;
+}
+
+.page-footlocker-faqs ol.big-blue li .not-so-big-blue {
+    color: #E31837;
+}
+
+.page-footlocker-faqs li p, ol.big-blue li li  {
+    color: white;
+}
+
+ol.big-blue li li {
+    list-style-type: disc;
+}
+
+a.funky-button {
+    background: url('button-bg.png');
+    display: block;
+    color: white;
+    font-size: 28px;
+    line-height: 50px;
+}
+
+a.funky-button:hover {
+    text-decoration: none;
+}
+
+.button-wrap {
+    padding: 2px;
+    border: 2px solid #363636;
+    margin: 0 auto;
+}
+
+#webform-component-recommendation--application-sid,
+#webform-component-recommendation--recommender-id
+{
+    display: none;
+}
+
+#edit-actions input {
+    background: url('button-bg.png');
+    border: 0;
+    color: white;
+    font-size: 28px;
+    line-height: 50px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    cursor: pointer;
+}
+
+#edit-actions {
+    text-align: right;
+}
+
+#webform-client-form-688464 {
+    position: relative;
+}
+
+#edit-draft {
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.media { float: left; margin:10px; width: 45%;}
+.media, .bd {overflow:hidden; _overflow:visible; zoom:1;}
+	.bd {border: 2px #333 solid; 
+	padding: 10px 10px 10px 60px; 
+	position: relative;
+		right: 60px;
+    z-index: 5;}
+.media .img { float:left; margin: 10px 0 0 0; width: 120px; height: 140px; position: relative; z-index:10;}
+.media .img img{ display:block; width: 100px; height: 120px;}
+.media .imgExt{float:right; margin-left: 10px;}
+
+#content a {
+    color: #E31837;
+}
+
+#content-area, #content .section {
+    position: relative;
+}
+
+.corner-triangle {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+}
+
+.share {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#apply-now-button {
+    position: absolute;
+    bottom: -30px;
+    right: 15px;
+}
+
+div.messages {
+    margin-right: 100px;
+}

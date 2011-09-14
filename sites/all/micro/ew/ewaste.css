@@ -1,0 +1,550 @@
+@font-face {
+    font-family: 'Maven Pro';
+    src: url('maven_pro_black-webfont.eot');
+    src: url('maven_pro_black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('maven_pro_black-webfont.woff') format('woff'),
+         url('maven_pro_black-webfont.ttf') format('truetype'),
+         url('maven_pro_black-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+#logo
+{
+    z-index: 100;
+}
+.tabs
+{
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 210px;
+}
+
+#header-message
+{
+    position: absolute;
+    top: -30px;
+    right: 80px;
+}
+
+#ewaste-nav
+{
+    background: #c1d72e;
+    margin-top: 125px;
+    text-align: center;
+}
+
+#header-text
+{
+    position: absolute;
+    right: 200px;
+    top: 105px;
+}
+
+#edit-field-campaign-subscriptions-value-kit-wrapper
+{
+    display: none;
+}
+
+#ewaste-nav a
+{
+    font-family: 'Maven Pro', sans-serif;
+    font-size: 2em;
+    line-height: 2.1em;
+    color: white;
+    padding: 0 20px;
+    text-shadow: -2px 1px 3px #000000;
+    filter: dropshadow(color=#000000, offx=-2, offy=1);
+    font-weight: 900;
+}
+
+#ewaste-nav a:hover
+{
+    color: #444;
+    text-decoration: none;
+    text-shadow: -2px 1px 3px #FFFFFF;
+    filter: dropshadow(color=#FFFFFF, offx=-2, offy=1);
+}
+
+#ewaste-nav a.active
+{
+    color: #333;
+    text-shadow: -2px 1px 3px #FFFFFF;
+    filter: dropshadow(color=#FFFFFF, offx=-2, offy=1);
+}
+
+#ewaste-logo
+{
+    position: absolute;
+    top: -40px;
+    left: 15px;
+}
+
+#content
+{
+    background: url('background.gif');
+    margin: 0;
+    width: 100%;
+}
+
+#content-area
+{
+    
+}
+
+#intro
+{
+    background: white;
+    margin: 10px;
+    padding: 15px 10px;
+    position: relative;
+}
+
+#intro h2.title
+{
+    font-size: 30px;
+    font-family: 'Maven Pro';
+    font-weight: 900;
+    color: #333;
+}
+
+body.sidebar-right #intro h2.title
+{
+    display: none;
+}
+
+body.sidebar-right #intro
+{
+    width: 465px;
+}
+
+body.sidebar-right #intro, .region-right
+{
+    height: 400px;
+    position: relative;
+}
+
+#main-wrapper
+{
+    padding: 20px 0 0 0;
+}
+
+.region-right
+{
+    width: 300px;
+    margin: 0 10px;
+    background: #2691D0;
+    padding: 15px 30px;
+    color: white;
+}
+
+.region-right div.block h2
+{
+    position: static;
+}
+
+.rounded, .region-right, .region-content-bottom .block
+{
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+.shadow, .region-right, .region-content-bottom .block
+{
+    -webkit-box-shadow: 0px 0px 20px -5px black;
+    -moz-box-shadow: 0px 0px 20px -5px black;
+    box-shadow: 0px 0px 20px -5px black;
+}
+
+div.node h2, div.block h2
+{
+    font-family: 'Maven Pro';
+    font-weight: 900;
+    font-size: 3em;
+}
+
+.node h2.title
+{
+    display: none;
+}
+
+div.node h2
+{
+    color: #333;
+}
+
+div.block h2
+{
+    color: white;
+}
+
+.node p
+{
+    color: black;
+}
+
+.region-content-bottom
+{
+    margin: 10px;
+}
+
+.region-content-bottom .block
+{
+    padding: 15px 15px;
+    margin-bottom: 20px;
+}
+
+#block-block-300
+{
+    background: #343434;
+    color: white;
+    position: relative;
+}
+
+#block-block-305, #block-block-304
+{
+    height: 230px;
+    width: 390px;
+    text-align: center;
+}
+
+#block-block-304 { margin-left: 20px; }
+
+#block-block-301, #block-block-305, #block-block-304
+{
+    float: left;
+    background: white;
+}
+
+#block-block-302
+{
+    background: #2691D0;
+    float: left;
+    margin-left: 20px;
+    width: 390px;
+    padding-top: 7px;
+    padding-bottom: 23px;
+}
+
+.page-ewaste-print-steps, .page-ewaste-print-ewaste
+{
+    font-family: 'maven pro';
+    line-height: 1.3em;
+}
+
+#block-block-302, #block-block-301
+{
+    height: 285px;
+}
+
+#block-block-302 h2.title
+{
+    font-size: 2.3em;
+}
+
+.ewaste_signup_2011_node_form input[type="text"]
+{
+    width: 100%;
+}
+
+.ewaste_signup_2011_node_form .form-item,
+.ewaste_signup_2011_node_form .form-checkboxes,
+.ewaste_signup_2011_node_form .form-radios
+{
+    margin: .2em 0;
+}
+
+.ewaste_signup_2011_node_form .form-submit
+{
+    position: absolute;
+    right: -5px;
+    bottom: -20px;
+    height: 73px;
+    width: 115px;
+    font-size: 0;
+    background: url('submit-grey.png');
+    border: 0;
+    cursor: pointer;
+}
+
+div.block h2
+{
+    position: static;
+}
+
+ol.big-blue li
+{
+    margin-bottom: 4px;
+    font-size: 12px;
+}
+
+#find-bb-search
+{
+    border: 0;
+    background: none;
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 900;
+    color: white;
+    cursor: pointer;
+}
+
+.signup-left
+{
+    float: left;
+}
+
+#edit-title
+{
+    width: 200px;
+}
+
+#edit-field-ewaste-items-collected-0-value-wrapper
+{
+    width: 105px;
+}
+
+#edit-field-zip-campaign-0-value-wrapper label
+{
+    margin-top: 16px;
+}
+#edit-field-campaign-phone-0-value-wrapper
+{
+    margin-bottom: 0;
+}
+
+#edit-title-wrapper, #edit-field-project-age-wrapper,
+#edit-field-zip-campaign-0-value-wrapper, #edit-field-ewaste-items-collected-0-value-wrapper
+{
+    float: left;
+}
+
+#edit-field-zip-campaign-0-value
+{
+    width: 100px;
+}
+
+#edit-field-ewaste-items-collected-0-value, #edit-field-ewaste-items-collected-0-value-wrapper label
+{
+    width: 140px;
+}
+
+#edit-field-zip-campaign-0-value
+{
+    margin-right: 10px;
+}
+
+#edit-field-project-age-0-value-wrapper
+{
+    padding-left: 210px;
+}
+
+#edit-field-project-age-0-value
+{
+    width: 40px;
+}
+
+#edit-field-project-name-0-value, #edit-field-ewaste-bestbuy-0-value, #edit-field-campaign-phone-0-value
+{
+    width: 250px;
+}
+
+#edit-field-ewaste-bestbuy-0-value-wrapper
+{
+    clear: both;
+}
+
+#edit-field-project-name-0-value-wrapper
+{
+    margin-bottom: 0;
+}
+
+.signup-right
+{
+    float: right;
+}
+
+#signup-page-1 .signup-right
+{
+    width: 500px;
+}
+
+#signup-page-2
+{
+    left: 860px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 300px;
+}
+
+#signup-page-2 .signup-right
+{
+    width: 400px;
+}
+
+#signup-page-2 .signup-left
+{
+    width: 400px;
+}
+
+#signup-page-1, #signup-page-2
+{
+    position: absolute;
+    width: 830px;
+}
+
+#block-block-300 #signup-wrapper
+{
+    overflow: hidden;
+    position: relative;
+    height: 300px;
+}
+
+#block-block-300 tr.even, #block-block-300 tr.odd
+{
+    background: none;
+}
+
+#signup-next-page
+{
+    background: url('next.png');
+    width: 113px;
+    height: 73px;
+}
+
+#block-block-300 #edit-submit
+{
+    background: url('submit-blue.png');
+    width: 115px;
+    height: 73px;
+    font-size: 0;
+    display: none;
+}
+
+#signup-next-page, #block-block-300 #edit-submit
+{
+    position: absolute;
+    right: -5px;
+    bottom: -20px;
+    border: none;
+    cursor: pointer;
+}
+
+#edit-field-campaign-video-single-0-embed
+{
+    width: 100%;
+}
+
+.filefield-element
+{
+    margin: 1em 0 0 0;
+}
+
+.grippie
+{
+    display: none;
+}
+
+.filefield-upload
+{
+    width: 350px;
+}
+
+#sb-body, #sb-loading
+{
+    background: #333;
+    color: white;
+    font-size: 12px;
+    border-radius: 15px;
+}
+
+#sb-wrapper-inner
+{
+    border: none;
+}
+
+#sb-player
+{
+    padding: 15px;
+    overflow: none;
+}
+
+#es-pledge
+{
+    position: absolute;
+    right: -10px;
+    bottom: -20px;
+}
+
+
+/* GALLERY */
+
+.gallery-image img {
+  padding: 5px;
+}
+
+.active-image img {
+  border: 5px solid #c1d72e;
+  padding: 0;
+}
+
+#image-title {
+  font-size: 2em;
+  margin: 0;
+}
+
+#image-description {
+  font-size: 1.5em;
+  margin-top: 1em !important;
+}
+
+#gallery-scroller {
+  position: relative;
+  height: 350px;
+  width: 650px;
+  margin: 0 auto;
+}
+
+#gallery-back {
+  float: left;
+}
+
+#gallery-next {
+  float: right;
+}
+
+.gallery-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#gallery-next,
+#gallery-back {
+  cursor: pointer;
+  margin-top: 145px;
+}
+
+#drive-gallery-link {
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+}
+
+#node-676260 .content {
+    text-align: center;
+}
+
+#sb-player li {
+    margin-bottom: 5px;
+}
+
+.page-ewaste #social-buttons {
+  margin-top: 12px;
+}
+
+div.block.with-block-editing {
+    position: static
+}

@@ -7,3 +7,4 @@ Maildir
 .gitconfig
 .viminfo
 .mysql_history
+sites/default/settings.php

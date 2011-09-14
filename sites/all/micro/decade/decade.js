@@ -120,7 +120,7 @@ function plotPoints(data) {
 
 // Deletes all markers in the array by removing references to them
 function deleteOverlays() {
-  if (markers) {
+  if (markers.length > 0) {
     for (i in markers) {
       markers[i].setMap(null);
     }
@@ -130,7 +130,7 @@ function deleteOverlays() {
 
 // Removes the overlays from the map, but keeps them in the array
 function clearOverlays() {
-  if (markers) {
+  if (markers.length > 0) {
     for (i in markers) {
       markers[i].setMap(null);
     }

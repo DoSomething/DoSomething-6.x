@@ -24,15 +24,17 @@ function _ds_signup_block() {
     <p class="text">';
   $block_str .= '<div class="blue">'.
     '<img class="need-help" src="/sites/all/themes/dosomething/images/need-help.png"/>'.
-    '<p><span class="lightblue">Text </span> HELPME to 30644</p>'.
+    '<p><span class="lightblue">Text </span> HELPME to 38383</p>'.
     '<p><span class="lightblue"><a href="mailto:helpme@dosomething.org">Email</a> </span> helpme@dosomething.org</p>'.
+    '<iframe src="http://www.facebook.com/plugins/like.php?href=facebook.com%2Fdosomething&amp;send=false&amp;layout=button_count&amp;width=85&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=trebuchet+ms&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:21px;" allowTransparency="true"></iframe> &nbsp;'.
+
     '</div>';
   if ($user->uid) {
     $block_str .= l('My Account', 'user/' . $user->uid).' | <a href="/logout">Log Out</a>';
   } else {
     $redirect = array( 'html' => true, 'query' => drupal_get_destination());
     $block_str .= l('Log In','user/login',$redirect).
-      ' | '.l('Join Us','user/register',$redirect);
+      ' | '.l('Join Us','user/register');
   }
 
   $block_str .= '</div>';

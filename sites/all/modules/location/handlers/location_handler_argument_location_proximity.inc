@@ -1,4 +1,5 @@
 <?php
+// $Id: location_handler_argument_location_proximity.inc,v 1.1.2.1 2010/07/04 10:34:04 rooby Exp $
 
 /**
  * @file
@@ -32,7 +33,7 @@ class location_handler_argument_location_proximity extends views_handler_argumen
         'latlon' => t('Decimal Latitude and Longitude coordinates, comma delimited'),
       ),
       '#default_value' => $this->options['type'],
-      '#description' => t('Type of center point.') . '<br />' . t('Postal code argument format: country_postcode_distance or postcode_distance') . '<br />' . t('Lat/Lon argument format: lat,lon_distance') . '<br />' . t('where distance is either a number or a comma delimited pair of decimal degrees'),
+      '#description' => t('Type of center point.') . '<br />' . t('Postal code argument format: country_postcode_distance or postcode_distance') . '<br />' . t('Lat/Lon argument format: lat,lon_distance'),
     );
 
     // Units used.

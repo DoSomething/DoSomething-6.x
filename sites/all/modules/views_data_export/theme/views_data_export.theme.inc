@@ -107,6 +107,17 @@ function template_preprocess_views_data_export_csv_header(&$vars) {
     if ($vars['options']['trim']) {
       $output = trim($output);
     }
+    if (!empty($vars['options']['encoding']) && function_exists('iconv')) {
+        switch($vars['options']['encoding']) {
+          case 'ASCII':
+            $converted = iconv("UTF-8", "ASCII//TRANSLIT", $output);
+            if ($converted !== FALSE) {
+              $output = $converted;
+            }
+            break;
+        }
+      }
+      
     $vars['header'][$key] = $wrap . str_replace('"', $replace_value, $output) . $wrap;
   }
 }
@@ -138,6 +149,20 @@ function template_preprocess_views_data_export_csv_body(&$vars) {
       $output = decode_entities(strip_tags($value));
       if ($vars['options']['trim']) {
         $output = trim($output);
+      }
+
+      if (!empty($vars['options']['encoding']) && function_exists('iconv')) {
+        switch($vars['options']['encoding']) {
+          case 'ASCII':
+            $converted = iconv("UTF-8", "ASCII//TRANSLIT", $output);
+            if ($converted !== FALSE) {
+              $output = $converted;
+            }
+            break;
+        }
+      }
+      if (!empty($vars['options']['replace_newlines'])) {
+        $output = str_replace("\n", $vars['options']['newline_replacement'], $output);
       }
       $vars['themed_rows'][$i][$j] = $wrap . str_replace('"', $replace_value, $output) . $wrap;
     }
@@ -175,6 +200,16 @@ function template_preprocess_views_data_export_csv(&$vars) {
     if ($vars['options']['trim']) {
       $output = trim($output);
     }
+    if (!empty($vars['options']['encoding']) && function_exists('iconv')) {
+      switch($vars['options']['encoding']) {
+        case 'ASCII':
+          $converted = iconv("UTF-8", "ASCII//TRANSLIT", $output);
+          if ($converted !== FALSE) {
+            $output = $converted;
+          }
+          break;
+      }
+    }
     $vars['header'][$key] = $wrap . str_replace('"', $replace_value, $output) . $wrap;
   }
 
@@ -184,6 +219,16 @@ function template_preprocess_views_data_export_csv(&$vars) {
       $output = decode_entities(strip_tags($value));
       if ($vars['options']['trim']) {
         $output = trim($output);
+      }
+      if (!empty($vars['options']['encoding']) && function_exists('iconv')) {
+        switch($vars['options']['encoding']) {
+          case 'ASCII':
+            $converted = iconv("UTF-8", "ASCII//TRANSLIT", $output);
+            if ($converted !== FALSE) {
+              $output = $converted;
+            }
+            break;
+        }
       }
       $vars['themed_rows'][$i][$j] = $wrap . str_replace('"', $replace_value, $output) . $wrap;
     }

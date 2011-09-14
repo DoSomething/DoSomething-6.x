@@ -1,5 +1,5 @@
 <?php
-// $Id: media_bliptv.variables.inc,v 1.1.2.1 2010/09/23 19:19:08 aaron Exp $
+// $Id: media_bliptv.variables.inc,v 1.1.2.2 2011/02/18 17:16:07 aaron Exp $
 
 /**
  * @file media_bliptv/includes/media_bliptv.admin.inc
@@ -18,7 +18,7 @@ define('MEDIA_BLIPTV_DEFAULT_RSS_TYPE', 'flv');
  *  we must increment this value, which will allow older content to be updated
  *  to the new version automatically.
  */
-define('MEDIA_BLIPTV_DATA_VERSION', 2);
+define('MEDIA_BLIPTV_DATA_VERSION', 3);
 
 /**
  * Wrapper for variable_get() that uses the Media: YouTube variable registry.
@@ -106,6 +106,17 @@ function media_bliptv_variable_default($name = NULL) {
 
   if (!isset($defaults)) {
     $defaults = array(
+      'width' => 624,
+      'height' => 380,
+      'autoplay' => FALSE,
+      'wmode' => 'opaque',
+      'allowfullscreen' => 'true',
+      'allowscriptaccess' => 'always',
+      'quality' => 'high',
+      'bgcolor' => '#FFFFFF',
+      'use_embed' => TRUE,
+      'src_url' => 'http://blip.tv/play/',
+      'noflash' => 'You must have Flash installed to view this content.',
       'rss_tag' => MEDIA_BLIPTV_DEFAULT_RSS_TYPE,
       'rss_format' => MEDIA_BLIPTV_DEFAULT_RSS_TYPE,
     );

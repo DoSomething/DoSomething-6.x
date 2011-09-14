@@ -1,0 +1,13 @@
+name = Spamicide
+project = "spamicide"
+description = "Provides yet another tool in the arsenal against spam."
+core = 6.x
+package = "Spam control"
+
+
+; Information added by drupal.org packaging script on 2011-04-29
+version = "6.x-1.10"
+core = "6.x"
+project = "spamicide"
+datestamp = "1304086617"
+

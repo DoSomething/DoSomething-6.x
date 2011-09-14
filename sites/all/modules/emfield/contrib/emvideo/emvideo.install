@@ -1,5 +1,4 @@
 <?php
-// $Id: emvideo.install,v 1.1.2.31.2.4 2010/09/21 20:17:53 aaron Exp $
 
 /**
  * @file
@@ -457,7 +456,7 @@ function _emvideo_update_get_duration($field, &$context) {
   }
 
   // Work our way through the field values 50 rows at a time.
-  $limit = 5000;
+  $limit = 50;
   $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid > %d AND {$context['sandbox']['col_duration']} = 0 ORDER BY vid ASC", $context['sandbox']['current_node'], 0, $limit);
   while ($row = db_fetch_array($result)) {
     // Fetch the duration from the provider.

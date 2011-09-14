@@ -1,5 +1,4 @@
 <?php
-// $Id: emfield.install,v 1.1.6.14.2.8 2010/10/20 20:15:54 aaron Exp $
 
 /**
  * @file
@@ -348,7 +347,6 @@ function _emfield_update_fix_data($field, $providers = array(), $old_data_keys =
   // to work with; I'm not sure if this value will work in the majority of
   // cases. Thanks, Aaron.
   $limit = variable_get('emfield_install_fix_data_rows', 50);
-  $limit = 5000;
   if (empty($context['sandbox']['providers'])) {
     $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid > %d ORDER BY vid ASC", $context['sandbox']['current_node'], 0, $limit);
   }

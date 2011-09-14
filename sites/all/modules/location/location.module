@@ -1,4 +1,5 @@
 <?php
+// $Id: location.module,v 1.222.2.39 2010/07/04 12:27:36 rooby Exp $
 
 /**
  * @file
@@ -323,7 +324,6 @@ function _location_expand_location($element) {
       '#size' => 16,
       '#attributes' => array('class' => 'container-inline'),
       '#maxlength' => 20,
-      '#required' => $fsettings['locpick']['collect'] == 2,
     );
     $element['locpick']['user_longitude'] = array(
       '#type' => 'textfield',
@@ -331,7 +331,6 @@ function _location_expand_location($element) {
       '#default_value' => isset($element['#default_value']['locpick']['user_longitude']) ? $element['#default_value']['locpick']['user_longitude'] : '',
       '#size' => 16,
       '#maxlength' => 20,
-      '#required' => $fsettings['locpick']['collect'] == 2,
     );
 
     $element['locpick']['instructions'] = array(
@@ -645,15 +644,7 @@ function location_locationapi(&$obj, $op, $a3 = NULL, $a4 = NULL, $a5 = NULL) {
 
         case 'province':
           drupal_add_js(drupal_get_path('module', 'location') .'/location_autocomplete.js');
-          if (isset($a5['country']) && is_string($a5['country'])) {
-            $country = $a5['country'];
-          }
-          elseif (isset($a5['country']['default']) && is_string($a5['country']['default'])) {
-            $country = $a5['country']['default'];
-          }
-          else {
-            $country = variable_get('site_default_country', 'us');
-          }
+          $country = $a5['country'] ? $a5['country'] : variable_get('location_default_country', 'us');
           return array(
             '#type' => 'textfield',
             '#title' => t('State/Province'),
@@ -930,7 +921,7 @@ function location_load_location($lid) {
 function _location_autocomplete($country, $string = '') {
   $counter = 0;
   $string   = strtolower($string);
-  $string   = '/^'. preg_quote($string) .'/';
+  $string   = '/^'. $string .'/';
   $matches  = array();
 
   if (strpos($country, ',') !== FALSE) {
@@ -1149,10 +1140,6 @@ function location_save(&$location, $cow = TRUE, $criteria = array()) {
   if (!empty($location['lid'])) {
     watchdog('location', 'Conserving lid %lid due to uniqueness.', array('%lid' => $location['lid']));
     drupal_write_record('location', $location, array('lid'));
-    if (!db_affected_rows()) {
-      watchdog('location', 'Update location failed. Trying insert.');
-      drupal_write_record('location', $location);
-    }
   }
   else {
     unset($location['lid']);
@@ -1458,17 +1445,16 @@ function location_token_list($type = 'all') {
 /**
  * Implementation of hook_search().
  * Implemented on behalf of location_search.module to make the urls not suck.
- *
- * This function is only declared if the location_search module is enabled,
- * otherwise the search module will create a search page for location even
- * when the lcoation_search module is disabled.
  */
-if (module_exists('location_search')) {
-  function location_search($op = 'search', $keys = NULL) {
+function location_search($op = 'search', $keys = null) {
+  if (module_exists('location_search')) {
     return _location_search($op, $keys);
   }
+  // When search.module asks for name, return FALSE to tell it that we're disabled.
+  if ($op == 'name') {
+    return FALSE;
+  }
 }
-
 /**
  * Theme preprocess function for a location.
  */
@@ -1528,12 +1514,6 @@ function template_preprocess_location(&$variables) {
   }
 
   // Display either the code or the full name for the province.
-  if (!isset($location['province'])) {
-    $location['province'] = '';
-  }
-  if (!isset($location['province_name'])) {
-    $location['province_name'] = '';
-  }
   $variables['province_print'] = variable_get('location_use_province_abbreviation', 1) ? $location['province'] : $location['province_name'];
 }
 

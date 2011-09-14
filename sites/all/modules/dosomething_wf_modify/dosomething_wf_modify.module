@@ -26,6 +26,28 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
       node_save($node);
     }
   }
+  else if ($node->nid == 679707) {
+    $map = _dosomething_wf_modify_webform_component_mapping($node);
+    $checks = $submission->data[$map['check_boxes']]['value'];
+    if (in_array('text', $checks)) {
+        ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 68611, 79611);
+    }
+    if (in_array('email', $checks)) {
+        dia_signup(array(
+                       'link' => 'groups',
+                       'table' => 'supporter',
+                       'linkKey' => 105245,
+                       'First_Name' => $submission->data[$map['first_name']][0]['value'],
+                       'Last_Name' => $submission->data[$map['last_name']][0]['value'],
+                       'Email' => $submission->data[$map['email']][0]['value'],
+                       'Phone' => $submission->data[$map['phone']][0]['value'],
+                       'Zip' => $submission->data[$map['zip']][0]['value']
+                     ));
+    }
+    if (in_array('action_kit', $checks)) {
+        $node->webform['redirect_url'] = 'sports/action-kit';
+    }
+  }
 }
 
 function _dosomething_wf_modify_webform_component_mapping($node) {
@@ -38,6 +60,29 @@ function _dosomething_wf_modify_webform_component_mapping($node) {
   return $mapping;
 }
 
+function dosomething_wf_modify_webform_select_options_info() {
+    $items = array();
+    $items['user_clubs'] = array(
+        'title' => t('User\'s clubs'),
+        'options callback' => 'dosomething_wf_modify_options_user_clubs'
+    );
+    return $items;
+}
+
+function dosomething_wf_modify_options_user_clubs() {
+    global $user;
+    $q = "SELECT n.nid, n.title FROM {og_uid} og JOIN {node} n ON og.nid=n.nid WHERE n.type='club' AND og.uid='{$user->uid}' AND og.is_active=1";
+    $rs = db_query($q);
+    
+    $options = array();
+    while ($club = db_fetch_array($rs)) {
+        $options[$club['nid']] = $club['title'];
+    }
+    
+    if (count($options) === 0)
+        $options[0] = '< Please create a club. >';
+    return $options;
+}
 
 
 ?>

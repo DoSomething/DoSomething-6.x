@@ -1,4 +1,5 @@
 <?php
+// $Id: location.ca.inc,v 1.11 2008/03/08 22:25:39 bdragon Exp $
 
 function location_province_list_ca() {
   return array(
@@ -59,15 +60,15 @@ function location_latlon_rough_ca($location = array()) {
   if (!isset($location['postal_code'])) {
     return NULL;
   }
-  $postal_code = $location['postal_code'];
-  while(strlen($postal_code) >= 3) {
-    $result = db_query("SELECT latitude, longitude FROM {zipcodes} WHERE country = '%s' AND zip LIKE '%s%'", $location['country'], $postal_code);
-    if ($row = db_fetch_object($result)) {
-      return array('lat' => $row->latitude, 'lon' => $row->longitude);
-    }
-    $postal_code = trim(substr($postal_code, 0, -1));
+
+  $result = db_query("SELECT latitude, longitude FROM {zipcodes} WHERE country = '%s' AND zip = '%s'", $location['country'], $location['postal_code']);
+
+  if ($row = db_fetch_object($result)) {
+    return array('lat' => $row->latitude, 'lon' => $row->longitude);
   }
-  return NULL;
+  else {
+    return NULL;
+  }
 }
 
 /**
@@ -385,18 +386,4 @@ function location_geocode_ca_geocoder($location = array()) {
       return NULL;
     }
   }
-}
-
-/**
- * Returns minimum and maximum latitude and longitude needed to create a bounding box.
- */
-function location_bounds_ca() {
-  // NaturalEarth 10m Admin 0 - Countries (v1.3.0)
-  // EPSG:900913
-  return array(
-    'minlng' => -141.00554,
-    'minlat' => 41.6690855,
-    'maxlng' => -52.615930,
-    'maxlat' => 83.1161164,
-  );
 }

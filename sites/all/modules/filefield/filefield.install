@@ -1,5 +1,4 @@
 <?php
-// $Id: filefield.install,v 1.42 2010/12/09 21:47:14 quicksketch Exp $
 /**
  * @file
  * FileField: Defines a CCK file field type.
@@ -294,7 +293,6 @@ function filefield_update_6104() {
  * Move the list and descriptions column into the serialized data column.
  */
 function _filefield_update_6001_move_operation($field, &$context) {
-
   // Setup the first through
   if (!isset($context['sandbox']['processed_files'])) {
     $db_info = content_database_info($field);
@@ -313,7 +311,8 @@ function _filefield_update_6001_move_operation($field, &$context) {
   $result = NULL;
   if ($field['multiple']) {
     $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE (vid = %d AND delta > %d) OR vid > %d ORDER BY vid ASC, delta ASC", $context['sandbox']['current_node'], $context['sandbox']['current_delta'], $context['sandbox']['current_node'], 0, $limit);
-  } else {
+  }
+  else {
     $result = db_query_range("SELECT * FROM {{$context['sandbox']['table']}} WHERE vid >= %d ORDER BY vid ASC", $context['sandbox']['current_node'], 0, $limit);
   }
   while ($row = db_fetch_array($result)) {
@@ -359,8 +358,6 @@ function _filefield_update_6001_drop_operation($field, &$context) {
   $ret = array();
   $db_info = content_database_info($field);
   // TODO: Now that the data has been migrated we can drop the columns.
-  if (strlen($db_info['columns']['description']['column'])) {
-    db_drop_field($ret, $db_info['table'], $db_info['columns']['description']['column']);
-  }
+  db_drop_field($ret, $db_info['table'], $db_info['columns']['description']['column']);
   $context['finished'] = 1;
 }

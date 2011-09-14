@@ -1,5 +1,4 @@
 <?php
-// $Id: features.content.inc,v 1.1.2.19 2010/08/04 22:39:55 yhahn Exp $
 
 /**
  * Implementation of hook_features_api().
@@ -153,7 +152,7 @@ function content_features_rebuild($module) {
       // fields too. We can't just pass $field to it as the fnc will add every
       // item of the array to the WHERE clause.
       $param = array('field_name' => $field['field_name'], 'type_name' => $field['type_name']);
-      $existing_instance = array_shift(content_field_instance_read($param, TRUE));
+      $existing_instance = content_field_instance_read($param, TRUE);
 
       if ($existing_instance) {
         // If this existing instance is inactive, we need to activate it before

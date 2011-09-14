@@ -1,4 +1,5 @@
 <?php
+// $Id: location.views.inc,v 1.16.2.3 2010/07/04 14:10:07 rooby Exp $
 
 /**
  * @file
@@ -36,7 +37,7 @@ function location_views_handlers() {
         'parent' => 'views_handler_field',
       ),
       'location_handler_filter_location_country' => array(
-        'parent' => 'views_handler_filter_in_operator',
+        'parent' => 'views_handler_filter',
       ),
       'location_handler_argument_location_country' => array(
         'parent' => 'views_handler_argument',
@@ -265,7 +266,7 @@ function location_views_data() {
       'click sortable' => TRUE,
     ),
     'filter' => array(
-      'handler' => 'views_handler_filter_float',
+      'handler' => 'views_handler_filter_numeric',
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',
@@ -279,7 +280,7 @@ function location_views_data() {
       'click sortable' => TRUE,
     ),
     'filter' => array(
-      'handler' => 'views_handler_filter_float',
+      'handler' => 'views_handler_filter_numeric',
     ),
     'sort' => array(
       'handler' => 'views_handler_sort',

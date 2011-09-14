@@ -1,5 +1,5 @@
 <?php
-// $Id: bliptv.inc,v 1.1.2.7 2010/11/01 15:26:20 aaron Exp $
+// $Id: bliptv.inc,v 1.1.2.8 2011/02/18 17:16:07 aaron Exp $
 
 /**
  * @file media_bliptv/providers/emvideo/bliptv.inc
@@ -43,93 +43,7 @@ function emvideo_bliptv_data_version() {
 }
 
 function emvideo_bliptv_data($field, $item) {
-  $data = array();
-
-  // we added new data fields to keep from having to reload the api/rss
-  // because the data is only stored on update/insert, however, we have to know which data type we're using
-  // this will just be an integer, increased when we make a change to data
-  $data['emvideo_bliptv_data_version'] = $data['emvideo_data_version'] = MEDIA_BLIPTV_DATA_VERSION;
-
-  // use the page id, since we'll have that in most cases (except in embed pastes, which gets parsed during extraction)
-  // we use this to get an rss feed w/ all the info for the video. interesting reading ;)
-  // some of our data we'll get from the api, like available files
-  $rss = emvideo_bliptv_request($item['value'], TRUE, 'rss');
-  $api = emvideo_bliptv_request($item['value'], TRUE, 'api');
-
-  // special handling for show/feature pages
-  // TODO: this is disabled for now.
-//   if (empty($rss) && empty($api) && preg_match('@http\://([^\.]+)\.blip\.tv/@i', $item['embed'], $matches)) {
-//     $show_rss = emvideo_bliptv_request($item['value'], TRUE, 'rss', TRUE);
-//     $data['thumbnail']['url'] = $rss['IMAGE']['URL'][0];
-//     $data['flv'] = array();
-//     $data['showpage'] = "http://{$item['value']}.blip.tv/";
-//     $data['is_show'] = TRUE;
-//     return $data;
-//   }
-
-  $data['is_show'] = FALSE;
-
-  // get our thumbnail url
-  $data['thumbnail']['url'] = $rss['ITEM']['MEDIA:THUMBNAIL'][1]['URL'];
-  // this gets sent to the player
-  foreach ((array)$api['MEDIA']['LINK'] as $x => $link) {
-    $x--;
-    $video_type = '';
-    switch ($link['TYPE']) {
-      case 'video/x-flv':
-        $video_type = 'flv';
-        break;
-      case 'video/x-m4v':
-        $video_type = 'm4v';
-        break;
-      case 'video/quicktime':
-        $video_type = 'mov';
-        break;
-    }
-    if ($video_type) {
-      $video_info = array();
-      $video_info['url'] = $link['HREF'];
-      $video_info['width'] = $api['MEDIA']['WIDTH'][$x];
-      $video_info['height'] = $api['MEDIA']['HEIGHT'][$x];
-      $video_info['duration'] = $api['MEDIA']['DURATION'][$x];
-      $video_info['size'] = $api['MEDIA']['SIZE'][$x];
-      $video_info['mime'] = $link['TYPE'];
-      $video_info['embed_code'] = $rss['ITEM']['BLIP:EMBEDLOOKUP'];
-
-      // we only store the last video of a particular type, for instance if two roles use .mov
-      $data[$video_type] = $video_info;
-
-      // however, we store the whole thing under role, so the information is still saved
-      // but our arrays may be out of synch...
-      $y = $x + 1;
-      if ($api['MEDIA']['ROLE'][$y]) {
-        $data[$video_type]['role'] = $api['MEDIA']['ROLE'][$y];
-        $data[$api['MEDIA']['ROLE'][$y]] = $video_info;
-        $data[$api['MEDIA']['ROLE'][$y]]['role'] = $api['MEDIA']['ROLE'][$y];
-      }
-    }
-  }
-  if (!$data['flv']) {
-    $data['flv'] = array();
-  }
-  if (!$data['flv']['url']) {
-    $data['flv']['url'] = $rss['ITEM']['ENCLOSURE'][1]['URL'];
-  }
-  $data['title'] = $api['en']['TITLE'][0] ? $api['en']['TITLE'][0] : $rss['2.0']['CHANNEL']['TITLE'][0];
-  $data['description'] = $api['en']['DESCRIPTION'][0] ? $api['en']['DESCRIPTION'][0] : $rss['ITEM']['BLIP:PUREDESCRIPTION'][0];
-  $data['blip_user']['uid'] = $api['CREATEDBY']['UID'][0] ? $api['CREATEDBY']['UID'][0] : $rss['ITEM']['BLIP:USERID'][0];
-  $data['blip_user']['username'] = $api['CREATEDBY']['LOGIN'][0] ? $api['CREATEDBY']['LOGIN'][0] : $rss['ITEM']['BLIP:USER'][0];
-  $data['blip_user']['url'] = $api['CREATEDBY']['LINKS']['LINK'][1] ? $api['CREATEDBY']['LINKS']['LINK'][1] : 'http://blip.tv/users/view/'. $data['blip_user']['username'];
-
-  $data['showpage'] = $rss['ITEM']['BLIP:SHOWPAGE'][0];
-  $data['embed_code'] = $rss['ITEM']['BLIP:EMBEDLOOKUP'];
-
-  // This is the code actually used by the player, even though it's different
-  // than for the page.
-  if ($rss['ITEM']['BLIP:POSTS_ID'][0]) {
-    $data['post_id'] = $rss['ITEM']['BLIP:POSTS_ID'][0];
-  }
-  return $data;
+  return media_bliptv_metadata($item['value']);
 }
 
 function emvideo_bliptv_request($code, $cacheable = TRUE, $skin = 'rss', $show = FALSE) {
@@ -251,64 +165,6 @@ function emvideo_bliptv_rss($item, $teaser = NULL) {
   }
 }
 
-function theme_media_bliptv_flash($code, $width, $height, $field, $item, $autoplay, $flv, $thumbnail, $options = array()) {
-  static $count;
-  if ($code) {
-    $count++;
-    $id = isset($options['id']) ? $options['id'] : "emfield_videocck_player_bliptv_$count";
-    $autoplay = $autoplay ? 'autostart=true' : 'autostart=false';
-
-    $rss = $item['data']['showpage'] ? "&amp;feedurl={$item['data']['showpage']}/rss" : '';
-    $post_id = $item['data']['post_id'];
-    // @TODO: Use the following if/when we allow featured shows to be embedded.
-    // $file = $item['data']['is_show'] ? "http://$code.blip.tv/rss/flash/" : 'http://blip.tv/rss/flash/'. $item['data']['post_id'];
-    if (isset($item['data']['flv']['embed_code']['0'])) {
-      $embed_code = $item['data']['flv']['embed_code']['0'];
-    }
-    else if (isset($item['data']['m4v']['embed_code']['0'])) {
-      $embed_code = $item['data']['m4v']['embed_code']['0'];
-    }
-    $file = 'http://blip.tv/rss/flash/'. $item['data']['post_id'];
-    $embed_file = 'http://blip.tv/scripts/flash/showplayer.swf?'. $autoplay .'&amp;enablejs=true'. $rss .'&amp;file='. $file .'&amp;showplayerpath=http://blip.tv/scripts/flash/showplayer.swf';
-
-    if ($item['data']['video_cck_bliptv_data_version'] == 1) {
-      // If this is an old version of the data, then we'll attempt to display.
-      // Bad on the admin, however; they need to run emfield's update.
-      $autoplay = $autoplay ? 'autoStart=true' : 'autoStart=false';
-      $embed_file = "http://blip.tv/scripts/flash/blipplayer.swf?$autoplay&amp;file=$flv%3Fsource%3D3";
-      // Now we'll resave the node so the data is saved properly in the future.
-      // @TODO: Do this in cron, or even in update?
-      // @NOTE: We now do this in an update.
-      // Query would be something like:
-      // SELECT nid FROM content_type_video WHERE field_video_provider = 'bliptv' AND field_video_data LIKE '%%"video_cck_bliptv_data_version";i:1;%%';
-      // except that we don't know types and fields...
-/*      if (($node = $options['node']) && $node->nid) {
-        emfield_operations_reload(array($options['node']->nid), FALSE);
-      }*/
-    }
-
-    $output .= '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" width="' . $width .'" height="'. $height .'">
-      <param name="movie" value="http://blip.tv/play/'. $embed_code . '" />
-      <param name="quality" value="high" />
-      <param name="bgcolor" value="#FFFFFF" />
-      <param name="wmode" value="transparent" />
-      <param name="allowfullscreen" value="true" />
-
-      <!--[if !IE]> <-->
-      <object data="http://blip.tv/play/'. $embed_code.'" width="'. $width .'" height="'. $height .'" type="application/x-shockwave-flash">
-      <param name="quality" value="high" />
-      <param name="bgcolor" value="#FFFFFF" />
-      <param name="allowfullscreen" value="true" />
-      <param name="pluginurl" value="http://www.adobe.com/go/getflashplayer" />
-      FAIL (the browser should render some flash content, not this).
-      </object>
-      <!--> <![endif]-->
-      </object>';
-  }
-
-  return $output;
-}
-
 function emvideo_bliptv_thumbnail($field, $item, $formatter, $node, $width, $height, $options = array()) {
   if (($item['data']['emvideo_bliptv_data_version'] >= 1) || isset($item['data']['thumbnail']['url'])) {
     $tn = $item['data']['thumbnail']['url'];
@@ -328,7 +184,7 @@ function emvideo_bliptv_video($code, $width, $height, $field, $item, $node, $aut
   }
   $thumbnail = emvideo_bliptv_thumbnail($field, $item, NULL, $node, $width, $height, $options);
 
-  $output = theme('media_bliptv_flash', $code, $width, $height, $field, $item, $autoplay, $flv, $thumbnail);
+  $output = theme('media_bliptv', array('media_id' => $code, 'width' => $width, 'height' => $height, 'field' => $field, 'item' => $item, 'autoplay' => $autoplay, 'flv' => $flv, 'thumbnail' => $thumbnail));
   return $output;
 }
 
@@ -341,7 +197,7 @@ function emvideo_bliptv_preview($code, $width, $height, $field, $item, $node, $a
     $flv = $item['data']['flv'];
     $thumbnail = $item['data']['thumbnail'];
   }
-  $output = theme('media_bliptv_flash', $code, $width, $height, $field, $item, $autoplay, $flv, $thumbnail);
+  $output = theme('media_bliptv', array('media_id' => $code, 'width' => $width, 'height' => $height, 'field' => $field, 'item' => $item, 'autoplay' => $autoplay, 'flv' => $flv, 'thumbnail' => $thumbnail));
   return $output;
 }
 
@@ -355,27 +211,4 @@ function emvideo_bliptv_content_generate() {
     'http://blip.tv/file/2015750/',
     'http://blip.tv/file/2312026/',
   );
-}
-
-function  emvideo_bliptv_convert($embed = NULL) {
-  $url = 'http://blip.tv/play/';
-  if ($url == substr($embed, 0, strlen($url))) {
-    return $embed;
-  }
-  
-  $url = 'http://blip.tv/';
-  if ($url == substr($embed, 0, strlen($url))) {
-    module_load_include('inc', 'emfield', 'includes/emfield.xml');
-    $info = _emfield_retrieve_xml($embed . "?skin=rss");
-    if (!empty($info['channel']['item']['link'])) {
-      return $info['channel']['item']['link'];
-    }
-    else {
-      return $embed;
-    }
-  }
-  else {
-    return $embed;
-  }
-  return $embed;
 }

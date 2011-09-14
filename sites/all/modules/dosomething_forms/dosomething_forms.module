@@ -1,5 +1,4 @@
 <?
-
 /**
  * Implementation of hook_form_alter()
 */
@@ -80,9 +79,17 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['field_email'][0]['#required'] = 0;
       $form['#validate'][] = 'validate_email_or_phone';
       break;
+    case 'decade_2011_signup_node_form':
+      $form['field_email'][0]['#required'] = 0;
+      $form['field_campaign_phone'][0]['#required'] = 0;
+      $form['#validate'][] = 'validate_email_or_phone';
+      break;
     case 'campaign_hunt_2011_node_form':
       $form['field_campaign_essay_how'][0]['#required'] = 0;
       $form['field_email'][0]['#required'] = 0;
+      break;
+    case 'campaign_bully_2011_node_form':
+      $form['body_field']['body']['#required'] = 1;
       break;
     case 'ebd_signup_node_form':
     case 'campaign_ebd_2011_node_form':
@@ -98,7 +105,10 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
           );
       break;
     case 'club_node_form':
+      $form['title']['#description'] = 'We\'re going to be unveiling some really cool features this winter around schools... trust us you\'ll like it. Not affiliated with a school? Put down the community, religious institution, etc. that you\'re working in. ';
+      /*
       $form['title']['#description'] = 'Put the Name of your School/Town Do Something Club; Ex: Franklin High School Do Something Club or Westfield Do Something Club; calling yourself a Do Something Club in your community will help attract members and let everyone know that you\'re all about action!';
+    */
       $form['og_selective']['#prefix'] = '<div class="hide-me">';
       $form['og_selective']['#suffix'] = '</div>';
       $form['og_selective']['#default_value'] = 1;
@@ -120,6 +130,56 @@ function dosomething_forms_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL) {
                      'Organization' => $_POST['title'],
                  ));
        }
+      break;
+    case 'decade_2011_signup':
+      if ($op == 'presave') {
+        if ($_POST['field_hunt_subscriptions']['value']['email']) {
+          dia_signup(array(
+                       'link' => 'groups',
+                       'table' => 'supporter',
+                       'linkKey' => 105242,
+                       'Organization' => $_POST['title'],
+                       'First_Name' => $_POST['field_campaign_first_name'][0]['value'],
+                       'Last_Name' => $_POST['field_campaign_last_name'][0]['value'],
+                       'Email' => $_POST['field_email'][0]['value'],
+                       'Phone' => $_POST['field_campaign_phone'][0]['value'],
+                       'Zip' => $_POST['locations'][0]['postal_code']
+                     ));
+        }
+        if ($_POST['field_hunt_subscriptions']['value']['text']) {
+          ds_mobile_mcommons_optin_campaign($_POST['field_campaign_phone'][0]['value'], 68671, 79591);
+        }
+        if ($node->field_campaign_phone[0]['value']) {
+          $node->field_campaign_phone[0]['value'] = preg_replace('/[^0-9]*/','',$node->field_campaign_phone[0]['value']);
+        }
+      }
+      break;
+    case 'ewaste_signup_2011':
+      if ($op == 'presave') {
+        if ($_POST['field_campaign_subscriptions']['value']['email']) {
+          $fullname = $_POST['title'];
+          $fullname = explode(' ', $fullname);
+          $name_f = $fullname[0];
+          unset($fullname[0]);
+          $name_l = implode(' ', array_values($fullname));
+          dia_signup(array(
+                       'link' => 'groups',
+                       'table' => 'supporter',
+                       'linkKey' => 104638,
+                       'Organization' => $_POST['title'],
+                       'First_Name' => $name_f,
+                       'Last_Name' => $name_l,
+                       'Email' => $_POST['field_campaign_email'][0]['value'],
+                       'Phone' => $_POST['field_campaign_phone_0'][0]['value']
+                     ));
+        }
+        if ($_POST['field_campaign_subscriptions']['value']['text']) {
+          ds_mobile_mcommons_optin_campaign($_POST['field_campaign_phone_0'][0]['value'], 67071, 77091);
+        }
+        if ($node->field_campaign_phone[0]['value']) {
+          $node->field_campaign_phone[0]['value'] = preg_replace('/[^0-9]*/','',$node->field_campaign_phone[0]['value']);
+        }
+      }
       break;
     case 'scavenger_2011_signup':
       if ($op == 'presave') {
@@ -473,7 +533,7 @@ function validate_email_or_phone($form, &$form_values) {
   global $user;
   $valid_mobile = ds_mobile_check($form_values['values']['field_campaign_phone'][0]['value']);
   if (! $form_values['values']['field_email'][0]['value'] && ! $valid_mobile ) {
-    form_set_error('field_campaign_phone', 'Either an email address or a 10-digit cell phone number must be given to enter this campaign.');
+    form_set_error('field_campaign_phone', 'Either an email address or a 10-digit cell phone number must be given to join this campaign.');
   } else if ($form_values['values']['field_campaign_phone'][0]['value'] && ! $valid_mobile) {
     form_set_error('field_campaign_phone', 'Phone number must be 10 digits.  Either an email address or a 10-digit cell phone number must be given to enter this campaign.');
   }

@@ -7,9 +7,9 @@ core = 6.x
 dependencies[] = emfield
 dependencies[] = emvideo
 
-; Information added by drupal.org packaging script on 2010-11-01
-version = "6.x-1.0-alpha2"
+; Information added by drupal.org packaging script on 2011-02-18
+version = "6.x-1.0-beta1"
 core = "6.x"
 project = "media_bliptv"
-datestamp = "1288625745"
+datestamp = "1298049725"
 

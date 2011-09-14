@@ -1,5 +1,4 @@
 <?php
-/* $Id: forward.module,v 1.55.2.45 2010/09/17 15:48:46 seanr Exp $ */
 
 /**
  * @file
@@ -61,7 +60,7 @@ function forward_menu() {
     'type'             => MENU_CALLBACK
   );
   $items['forward'] = array(
-    'title'            => variable_get('forward_page_title', 'Forward this page'),
+    'title'            => variable_get('forward_email_title', 'Forward this page'),
     'page callback'    => 'forward_page',
     'access arguments' => array('access forward'),
     'type'             => MENU_CALLBACK
@@ -356,7 +355,7 @@ function forward_admin_settings() {
   );
   $form['forward_epostcard_defaults']['forward_ad_footer'] = array(
     '#type' => 'textarea',
-    '#title' => t('Oranization Ad'),
+    '#title' => t('Organization Ad'),
     '#default_value' => variable_get('forward_ad_footer', " "),
     '#cols' => 40,
     '#rows' => 10,
@@ -416,6 +415,44 @@ function forward_admin_settings_submit($form, &$form_state) {
 /**
  * Email Tracker
  */
+function _forward_url_is_external($path) {
+  $colonpos = strpos($path, ':');
+  // Only call the slow drupal_strip_dangerous_protocols() if $path contains a
+  // ':' before any / ? or #.
+  return $colonpos !== FALSE && !preg_match('![/?#]!', substr($path, 0, $colonpos)) && _forward_strip_dangerous_protocols($path) == $path;
+}
+
+function _forward_strip_dangerous_protocols($uri) {
+  static $allowed_protocols;
+
+  if (!isset($allowed_protocols)) {
+    $allowed_protocols = array_flip(variable_get('filter_allowed_protocols', array('ftp', 'http', 'https', 'irc', 'mailto', 'news', 'nntp', 'rtsp', 'sftp', 'ssh', 'tel', 'telnet', 'webcal')));
+  }
+
+  // Iteratively remove any invalid protocol found.
+  do {
+    $before = $uri;
+    $colonpos = strpos($uri, ':');
+    if ($colonpos > 0) {
+      // We found a colon, possibly a protocol. Verify.
+      $protocol = substr($uri, 0, $colonpos);
+      // If a colon is preceded by a slash, question mark or hash, it cannot
+      // possibly be part of the URL scheme. This must be a relative URL, which
+      // inherits the (safe) protocol of the base document.
+      if (preg_match('![/?#]!', $protocol)) {
+        break;
+      }
+      // Check if this is a disallowed protocol. Per RFC2616, section 3.2.3
+      // (URI Comparison) scheme comparison must be case-insensitive.
+      if (!isset($allowed_protocols[strtolower($protocol)])) {
+        $uri = substr($uri, $colonpos + 1);
+      }
+    }
+  } while ($before != $uri);
+
+  return $uri;
+}
+
 function forward_tracker() {
   global $user;
   $form_state['values']['path'] = drupal_get_normal_path($_GET['path']);
@@ -432,7 +469,12 @@ function forward_tracker() {
 
   db_query("INSERT INTO {forward_log} (path, type, timestamp, uid, hostname) VALUES ('%s', '%s', %d, %d, '%s')", $form_state['values']['path'], 'REF', time(), $user->uid, ip_address());
 
-  drupal_goto(drupal_get_path_alias($form_state['values']['path']));
+  if (!_forward_url_is_external($form_state['values']['path'])) {
+    drupal_goto(drupal_get_path_alias($form_state['values']['path']));
+  }
+  else {
+    drupal_goto();
+  }
 }
 
 
@@ -451,6 +493,9 @@ function forward_page() {
   $nid = NULL;
   if (empty($_GET['path']) || ($_GET['path'] == 'node/0')) {
     return t('No path was selected to forward');
+  }
+  if (_forward_url_is_external($_GET['path'])) {
+    return t('You cannot forward an external URL.');
   }
 
   if (!empty($_GET['path'])) {
@@ -480,7 +525,7 @@ function forward_page() {
   
   if ($form_state['values']['path'] == 'epostcard') {
     $emailtype = 'postcard';
-    drupal_set_title(check_plain(variable_get('forward_epostcard_title', 'Send an e-Postcard')));
+    drupal_set_title(check_plain(t(variable_get('forward_epostcard_title', 'Send an e-Postcard'))));
   }
   else {
     $emailtype = 'page';
@@ -488,7 +533,7 @@ function forward_page() {
       $cid = '?cid='. $_GET['cid'];
     }
     $form_state['values']['path'] .= $cid;
-    drupal_set_title(check_plain(variable_get('forward_page_title', 'Forward this page')));
+    drupal_set_title(check_plain(t(variable_get('forward_email_title', 'Forward this page'))));
   }
   
   return drupal_get_form('forward_form', $form_state['values']['path'], $node->title);
@@ -591,10 +636,19 @@ function forward_form(&$form_state, $path = NULL, $title = NULL, $nodeapi = FALS
     '#type' => 'hidden',
     '#value' => variable_get('forward_footer', ''),
   );
-  $form['message']['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Send Message'),
-  );
+  if ($nodeapi) {
+    // Collapsible form, ensure submit button within collapsible section
+    $form['message']['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Send Message'),
+    );
+  } else {
+    // Standard linked page, allow optimal captcha placement
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => t('Send Message'),
+    );
+  }
 
   if ($user->uid != 0) {
     //$form['message']['email']['#default_value'] = $user->mail;
@@ -648,7 +702,7 @@ function forward_form_validate($form, &$form_state) {
   $bad_items = array('Content-Type:', 'MIME-Version:', 'Content-Transfer-Encoding:', 'bcc:', 'cc:');
   $bad_string = FALSE;
   foreach ($bad_items as $item) {
-    if (eregi($item, $form_state['values']['email'])) {
+    if (preg_match("/$item/i", $form_state['values']['email'])) {
       $bad_string = TRUE;
     }
   }
@@ -954,7 +1008,7 @@ function forward_link($type, $node=0, $teaser=0) {
         'title'      => $title,
         'href'       => 'forward',
         'html'       => $html,
-        'attributes' => array('title' => variable_get('forward_page_title', t('Forward this page to a friend')), 'class' => 'forward-page'),
+        'attributes' => array('title' => variable_get('forward_email_title', t('Forward this page to a friend')), 'class' => 'forward-page'),
         'query'      => array('path' => $form_state['values']['path']),
       );
       if (!empty($node->cid)) {
@@ -1158,7 +1212,7 @@ function forward_block($op = 'list', $delta = 0, $edit = array()) {
             '#type' => 'radios',
             '#title' => t('Display form in block'),
             '#default_value' => variable_get('forward_block_form', variable_get('forward_form_type', 'link')),
-            '#options' => array('form', 'link'),
+            '#options' => array('form' => 'form', 'link' => 'link'),
             '#description' => t('Choose whether to display the full form in the block or just an email this page link.'),
           );
           return $form;
@@ -1285,4 +1339,36 @@ function forward_views_api() {
   return array(
     'api' => 2,
   );
+}
+
+/**
+ * Implements hook_mollom_form_list().
+ */
+function forward_mollom_form_list() {
+  $forms['forward_form'] = array(
+    'title' => t('Email a friend form'),
+  );
+  return $forms;
+}
+
+/**
+ * Implements hook_mollom_form_info().
+ */
+function forward_mollom_form_info($form_id) {
+  switch ($form_id) {
+    case 'forward_form':
+      $form_info = array(
+        'mode' => MOLLOM_MODE_ANALYSIS,
+        'bypass access' => array('administer forward'),
+        'mail ids' => array('forward_forward_page'),
+        'elements' => array(
+          'message' => t('Personal Message'),
+        ),
+        'mapping' => array(
+          'author_name' => 'name',
+          'author_mail' => 'email',
+        ),
+      );
+      return $form_info;
+  }
 }

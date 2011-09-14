@@ -1,5 +1,4 @@
 <?php
-// $Id: forward.install,v 1.4.2.8 2010/08/30 21:00:21 seanr Exp $
 function forward_install() {
   drupal_install_schema('forward');
   variable_set('forward_theme_template', 1);

@@ -1,4 +1,5 @@
 <?php
+// $Id: location_handler_sort_location_distance.inc,v 1.1.2.1 2010/07/04 14:10:07 rooby Exp $
 
 /**
  * @file

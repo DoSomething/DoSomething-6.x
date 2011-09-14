@@ -48,7 +48,7 @@ print '<?xml version="1.0" encoding="UTF-8"?>
 <response>
  <reply>
   <text>
-   <![CDATA[Awesome!]]>
+   <![CDATA[Thanks for showing your support for 9/11 emergency responders. Fwd this msg to friends so they can text DECADE to 38383 + be a part of the movement, too.]]>
   </text>
  </reply>
 </response>';

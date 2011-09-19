@@ -15,7 +15,7 @@
   <meta property="og:type" content="non_profit"/>
   <meta property="og:url" content="http://www.dosomething.org/footlocker" />
   <meta property="og:site_name" content="DoSomething.org"/>
-  <meta property="og:description" content="Are you an athlete who has flexed your heart in your community? Win a $20,000 scholarship by applying to the Foot Locker Scholar Athletes scholarship program."/>
+  <meta property="og:description" content="Are you an athlete who has flexed your heart in your community? You could be one of 20 awarded a $20,000 scholarship by applying to the Foot Locker Scholar Athletes scholarship program."/>
   <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/footlocker/footlocker-logo.png" />
   
   <?php endif; ?>

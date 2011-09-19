@@ -425,9 +425,18 @@ function webform_validation_webform_validation_validate($validator_name, $items,
         $entryN = array();
         foreach($keys as $jj=>$kk) {
             if ($components[$kk]['type'] == 'file') { // Is it a file field?
-                $loc_form_key = $components[$kk]['form_key'];
+                $parent = array($components[$kk]['form_key']);
+                
+                $pid = $cid = $components[$kk]['cid'];
+                while ($pid = $components['item_'.$pid]['pid']) {
+                    $parent[] = $components['item_'.$pid]['form_key'];
+                }
+                $loc_form_key = implode('_',array_reverse($parent));
                 if ($_FILES['files']['size'][$loc_form_key] > 0) { // ensure that the file exists by file byte size > 0
                     $entryN[$jj] = $_FILES['files']['name'][$loc_form_key]; // sets with the file name
+                }
+                else if ($items['item_'.$cid]['_old'] != '') {
+                    $entryN[$jj] = $items['item_'.$cid]['_old'];
                 }
                 else { 
                     $entryN[$jj] = ''; // empty

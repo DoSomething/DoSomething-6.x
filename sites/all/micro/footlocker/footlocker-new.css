@@ -48,7 +48,8 @@ ul.tabs {
 }
 
 .block h2.title {
-    display: none;
+    font-size: 2.3em;
+    top: 0;
 }
 
 
@@ -90,7 +91,7 @@ ol.big-blue li {
     color: white;
 }
 
-.node h2.title, legend, .arial-mini, #content p.arial-mini, h3 {
+.node h2.title, legend, .arial-mini, #content p.arial-mini, h3, .block h2.title {
     font-family: 'Arial Narrow', Arial, sans-serif;
     text-transform: uppercase;
     font-weight: normal;
@@ -316,4 +317,13 @@ tr.even, tr.odd {
         top: -42px;
         left: -42px;
     }
+}
+
+.page-footlocker #edit-actions {
+    text-align: left;
+}
+
+#webform-component-essays,
+#webform-component-recommendations {
+    margin-top: 60px;
 }

@@ -30,7 +30,7 @@
                               'top_right' => $top_right,
                               )); ?>
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
-    <div id="give-us-your-gear" class="college"><span class="orange">give us your gear!</span><br />september 6 to october 10</div>
+    <div id="give-us-your-gear" class="college"><span class="orange">give us your gear!</span><br />september 6 to october 20</div>
       <div id="content" class="column"><div class="section">
 
         <?php print $highlight; ?>

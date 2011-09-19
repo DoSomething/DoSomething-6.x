@@ -99,26 +99,35 @@
       'general_grant_app' => t('General Grant'),
       'grant' => t('Grant Application'),
       'surge_scholarship' => t('Surge Scholarship'),
+      'Foot Locker Scholarship Application' => t('Foot Locker Scholarship Application'),
     );
+    
+    $webforms = array(688464);
 
     $valid_grants_string = "'" . (count($valid_grant_types) ? implode("', '", array_keys($valid_grant_types)) : 'no_valid_types') . "'";
-
+    $webforms_string = implode(',', $webforms);
+    
     $grants_q = db_query(
-      "select n.nid, n.title, n.status as nstatus, n.created, n.type 
+      "select n.nid, n.title, n.status as nstatus, n.created, n.type, NULL as sid 
        FROM {node} n 
        WHERE n.uid=%d AND n.type IN ($valid_grants_string)
-       ORDER BY changed DESC"
-      ,$this_user->uid);
+       UNION ALL
+       SELECT n.nid, n.title, IF(w.is_draft=1,0,1) as draft, w.submitted, n.title, w.sid
+       FROM node n JOIN webform_submissions w ON n.nid=w.nid
+       WHERE w.uid=%d AND n.nid IN ($webforms_string)
+       order by created desc"
+      ,$this_user->uid, $this_user->uid);
 
     while ($grants_rez = db_fetch_object($grants_q)) {
       unset($grant);
       $grant = $grants_rez;
+      $grant_text = ($grant->sid != NULL) ? '/submission/'.$grant->sid : '';
       $grant_status = (intval($grant->nstatus)==0) ? 'Draft' : 'Submitted';
       $rows[] = array(
-        array('data'=> l($grant->title,'node/'.$grant->nid)),
+        array('data'=> l($grant->title,'node/'.$grant->nid.$grant_text)),
         $valid_grant_types[$grant->type], 
         date('F j, Y',$grant->created),
-        array('data'=> l('Edit','node/'.$grant->nid . '/edit')),
+        array('data'=> l('Edit','node/'.$grant->nid . $grant_text . '/edit')),
       );
     }
     $header = array('Title', 'Grant', 'Date Created', 'Edit');

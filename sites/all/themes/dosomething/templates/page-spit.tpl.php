@@ -57,7 +57,7 @@
           else if ($i[1] == $base && $i[1] == $currPath)
             $class = 'active';
 			//if($i[0]=='HOME' || $i[0]=='TIPS&TOOLS') 
-			if($i[0]=='HOME') 
+			if($i[0]=='HOME' || $i[0]=='TIPS&TOOLS' || $i[0]=='FAQ' ) 
           printf('<a href="%s" class="%s">%s</a>', $i[1], $class, $i[0]);
 		  else
 		  printf('<a href="#" class="%s" title="Coming soon! October 2011">%s</a>', $class, $i[0]);

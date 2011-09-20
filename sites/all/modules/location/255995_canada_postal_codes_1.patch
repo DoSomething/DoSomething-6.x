@@ -1,0 +1,28 @@
+diff --git supported/location.ca.inc supported/location.ca.inc
+index 0686424..4bcf317 100644
+--- supported/location.ca.inc
++++ supported/location.ca.inc
+@@ -60,15 +60,15 @@ function location_latlon_rough_ca($location = array()) {
+   if (!isset($location['postal_code'])) {
+     return NULL;
+   }
+-
+-  $result = db_query("SELECT latitude, longitude FROM {zipcodes} WHERE country = '%s' AND zip = '%s'", $location['country'], $location['postal_code']);
+-
+-  if ($row = db_fetch_object($result)) {
+-    return array('lat' => $row->latitude, 'lon' => $row->longitude);
+-  }
+-  else {
+-    return NULL;
++  $postal_code = $location['postal_code'];
++  while(strlen($postal_code) >= 3) {
++    $result = db_query("SELECT latitude, longitude FROM {zipcodes} WHERE country = '%s' AND zip LIKE '%s%'", $location['country'], $postal_code);
++    if ($row = db_fetch_object($result)) {
++      return array('lat' => $row->latitude, 'lon' => $row->longitude);
++    }
++    $postal_code = trim(substr($postal_code, 0, -1));
+   }
++  return NULL;
+ }
+ 
+ /**

@@ -1,4 +1,4 @@
-/*Index + FAQ page*/
+/*Index +FAQ +tips*/
 @font-face {
     font-family: 'Chunk';
     src: url('Chunkfive-webfont.eot');
@@ -63,7 +63,72 @@
 body.section-spit div.content {
 	background: url('qtip-big.png') no-repeat scroll 345px 150px transparent;
 	/*margin-top: -90px; */}
-	
+
+/*The Faqs Page and Tips page*/
+/*For removing the background qtip*/
+#node-688072 div.content, #node-695338 div.content{
+ background: none;
+}
+
+/*Fitting the content*/
+#node-688072 div.content p {
+  width:780px;
+  max-width: 860px;
+  padding-top:10px;
+  font-weight:normal;
+}
+
+/*For the List*/
+#node-688072 div.content li {
+   padding-top: 10px;
+   width: 780px;
+   max-width: 860px;
+   font-weight:bold;
+}
+
+/*Tips page */
+/*For fitting the list accross the length and no wrap*/
+#node-695338 div.content li {
+  width : 780px;
+  max-width:860px;
+}
+
+/*For fitting the head text and its color*/
+#node-695338 p.headtext {
+font-size: 150%;
+white-space: nowrap;
+color: #FBDA0F;
+}
+
+/*For the Tips and Tools in black and white*/
+#node-695338 h3.blackflag{
+
+background: url("blackflag.png") no-repeat scroll 0 -14px transparent;
+}
+
+/*Testing the arrows stuff*/
+#node-695338 ul.triarrows {
+    /*margin-top: 5px;*/
+      list-style-type: none;
+        margin: 5px 0 0 10px;
+          padding: 0;
+}
+#node-695338 ul.triarrows li {
+    background: url('triangle-yellow-list.png') no-repeat 0 -5px;
+      padding: 0 0 15px 30px; }
+
+/* TIPS SOCIAL MEDIA BLOCK */
+.page-spit-tips #block-block-323 {
+        margin: 0;
+        position: relative;
+	top: 5px;
+	left: 175px;
+               /* left: -85px;*/
+                /*top: 60px; left: 410px;
+                /*top: -30px; */
+}
+
+
 #content {
 	padding: 0 20px;}
 
@@ -165,7 +230,9 @@ form#webform-client-form-682753 div.description p, form#webform-client-form-6827
 	color: #fff;}
 	.block-webform p {
 	width: 260px; }
-	
+ .webform-component-select select{
+  width:200px;
+}
 #block-webform-client-block-682753  input#edit-submit { 
 	background: url('arrow-yellow-submit.png') no-repeat;
 	border-width: 0px;
@@ -188,6 +255,8 @@ body.section-spit h3:first-child {
 	background: url("arrow-white.png") no-repeat scroll -20px 5px transparent;
 	margin-bottom: -20px;
     padding-bottom: 5px; }
+
+
 	
 /* ensuring the error messages are legible */
 div.status p, div.messages p,
@@ -199,5 +268,5 @@ div.status li, div.messages li { color: #000 !important; position: relative; z-i
 	position: relative;
 		left: -85px;
 		/*top: 60px; left: 410px;
-		/*top: -30px; */
-	width: 100px;}
+		/*top: -30px; *
+    / width: 100px;}

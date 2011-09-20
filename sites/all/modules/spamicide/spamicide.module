@@ -295,14 +295,12 @@ function spamicide_delete_confirm_submit($form, &$form_state) {
  * @param $form
  */
 function spamicide_form_alter(&$form, $form_state, $form_id) {
+  if(strpos($form_id, 'search') !== FALSE) {//ignore the search forms
+    return;
+  }
     $spamicide_field = _spamicide_get_field($form_id);
     if ($spamicide_field) {
-        if ($spamicide_field == 'feed_me') {
-          drupal_add_css(drupal_get_path('module', 'spamicide') .'/feed_me.css');
-        }
-        else {
-          drupal_add_css(file_directory_path() .'/spamicide/'. $spamicide_field .'.css');
-        }
+        $form['#pre_render'][] = '_spamicide_pre_render';
         $spamicide_description = _spamicide_get_description();
         $form[$spamicide_field] = array(
           '#type' => 'textfield',
@@ -333,6 +331,17 @@ function spamicide_form_alter(&$form, $form_state, $form_id) {
     else {
       return;
     }
+}
+
+function _spamicide_pre_render($form) {
+  $spamicide_field = _spamicide_get_field($form['form_id']['#value']);
+  if ($spamicide_field == 'feed_me') {
+    drupal_add_css(drupal_get_path('module', 'spamicide') .'/feed_me.css');
+  }
+  else {
+    drupal_add_css(file_directory_path() .'/spamicide/'. $spamicide_field .'.css');
+  }
+  return $form;
 }
 
 /**

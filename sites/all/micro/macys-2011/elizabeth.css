@@ -1,0 +1,16 @@
+div#content-area .content {
+	background-color: #67328D;
+	background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 100, from(#902A8A), to(#67328D));
+	background: -moz-radial-gradient(50% 50%, farthest-side, #902A8A, #67328D);
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+	border-radius: 20px; 
+	margin-left: -30px;
+	width: 880px;
+	}
+	
+div#content-area .content p, div#content-area .content h2 {
+	color: #fff;
+	padding: 0 20px;
+	}
+	

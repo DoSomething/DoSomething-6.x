@@ -101,9 +101,8 @@ color: #FBDA0F;
 }
 
 /*For the Tips and Tools in black and white*/
-#node-695338 h3.blackflag{
-
-background: url("blackflag.png") no-repeat scroll 0 -14px transparent;
+#node-695338 h3.blackflag {
+background: url("blackflag.png") no-repeat scroll 0 -14px transparent ;
 }
 
 /*Testing the arrows stuff*/
@@ -129,6 +128,12 @@ background: url("blackflag.png") no-repeat scroll 0 -14px transparent;
 }
 
 
+.page-spit-faq #block-block-323 {
+     margin: 0;
+     position: relative;
+     top: -3px;
+     left: 175px;
+}
 #content {
 	padding: 0 20px;}
 

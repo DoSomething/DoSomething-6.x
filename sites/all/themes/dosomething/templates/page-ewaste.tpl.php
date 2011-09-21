@@ -204,7 +204,7 @@
         </ul>
         <p>We'd love to accept all of your e-waste, but sadly we can't accept any of the below for this drive (but this doesn't mean you shouldn't recycle these products in the future!):</p>
         <ul>
-        <li>Computer monitors and CPUs</li>
+        <li>Computer monitors</li>
         <li>Televisions</li>
         <li>Batteries</li>
         <li>Appliances like refrigerators, dishwashers, clothes washers, etc.</li>

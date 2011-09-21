@@ -53,7 +53,7 @@
   <div id="pll-wrapper">
   <div id="content-wrapper">
     <img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-tagline.png" id="tagline" />
-    <a href="#" onclick="javascript:document.forms['webform-client-form-650471'].submit()"><img src="/<?=$ds_micro;?>/sfs/girls/<?=$girl;?>-join<?=($count <= 2500) ? '' : '-nocash';?>.png" id="" /></a>
+    
     <div id="girl-count" style="background-image: url('/<?=$ds_micro;?>/sfs/pll-<?=$girl;?>-<?=($count <= 2500) ? 'raised' : 'members';?>.png');">
      <?=($count <= 2500) ? '$' : ''; ?><?= $count;?>
     </div>
@@ -81,12 +81,7 @@
   <div class="clearfix">
     <?php print $content; ?>
   </div>
-  <div id="pll-enter-win">
-    <div id="pll-enter-win-sub">
-      <img src="/<?=$ds_micro;?>/sfs/pll-etw-sticky.png" style="position: absolute; left: -20px; top: 10px;" />
-      <a href="/staples-for-students/pretty-little-liars/sweeps" style="position:absolute; left: 425px; top: 240px;"><img src="/<?=$ds_micro;?>/sfs/pll-etw-button.png" /></a>
-    </div>
-  </div>
+  
   <div id="pll-home-footer"></div>
 </div>
 

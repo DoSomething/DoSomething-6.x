@@ -82,7 +82,17 @@
     
     
       <div style="clear:both"></div>
-      <?php print $messages; ?>
+      <?php 
+		$remove = 'You have already submitted this form. <a href="/node/688464/submissions">View your previous submissions</a>.';
+		if (strpos($messages, $remove))
+		{
+			global $user;
+			$sub = end(webform_get_submissions(array('nid' => 688464, 'uid' => $user->uid)));
+			$new = 'You have already submitted an application. <a href="/footlocker/application/confirm?sid='.$sub->sid.'">View your application status</a>.';
+			$messages = str_replace($remove, $new, $messages);
+		}
+		print $messages;
+	  ?>
         <?php print $highlight; ?>
 
 

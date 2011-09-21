@@ -212,11 +212,6 @@ a.funky-button:hover {
     margin: 0 auto;
 }
 
-#webform-component-recommendation--application-sid,
-#webform-component-recommendation--recommender-id
-{
-    display: none;
-}
 
 #edit-actions input,
 .apply-button {
@@ -326,4 +321,8 @@ tr.even, tr.odd {
 #webform-component-essays,
 #webform-component-recommendations {
     margin-top: 60px;
+}
+
+td.active {
+    background: transparent;
 }

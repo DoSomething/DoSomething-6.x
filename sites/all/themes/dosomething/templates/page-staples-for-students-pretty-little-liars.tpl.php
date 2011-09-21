@@ -64,13 +64,6 @@
         src="/<?=$ds_micro;?>/sfs/hover-troian.png" id="hover-troian" /></a><a href="/staples-for-students/pretty-little-liar/shay"><img
         src="/<?=$ds_micro;?>/sfs/hover-shay.png" id="hover-shay" /></a>
       </div>
-  </div>
-  <div id="pll-join">
-    <a href="/staples-for-students/pretty-little-liar/ashley"><img
-      src="/<?=$ds_micro;?>/sfs/pll-ashley-join<?=($counts['ashley'] <= 2500) ? '' : '-member';?>.png" alt="Join Ashley" /></a><a href="/staples-for-students/pretty-little-liar/lucy"><img
-      src="/<?=$ds_micro;?>/sfs/pll-lucy-join<?=($counts['lucy'] <= 2500) ? '' : '-member';?>.png" alt="Join Lucy" /></a><a href="/staples-for-students/pretty-little-liar/troian"><img
-      src="/<?=$ds_micro;?>/sfs/pll-troian-join<?=($counts['troian'] <= 2500) ? '' : '-member';?>.png" alt="Join Troian" /></a><a href="/staples-for-students/pretty-little-liar/shay"><img
-      src="/<?=$ds_micro;?>/sfs/pll-shay-join<?=($counts['shay'] <= 2500) ? '' : '-member';?>.png" alt="Join Shay" /></a>
   </div><div id="pll-raised">
     <div style="background-image: url('/<?=$ds_micro;?>/sfs/pll-ashley-<?=($counts['ashley'] <= 2500) ? 'raised' : 'members';?>.png'); width:208px;">
       <?=($counts['ashley'] <= 2500) ? '$' : '';?><?=$counts['ashley'];?>
@@ -84,7 +77,7 @@
   </div>
   <img src="/<?=$ds_micro;?>/sfs/pll-paper-callout.png" style="margin-left: -18px; padding-top: 20px;" />
   
-  <div id="pll-share">
+  <div id="pll-share" style="z-index: 5; position:relative;">
     <div id="pll-share-your-reason">
       <img src="/<?=$ds_micro;?>/sfs/pll-why-care-text.png" /><br/>
       <a href="#" id="share-your-reason"><img src="/<?=$ds_micro;?>/sfs/pll-why-care-share.png" /></a>
@@ -108,13 +101,8 @@
       
     </div>
   </div>
-  <div id="pll-enter-win">
-    <div id="pll-enter-win-sub">
-      <img src="/<?=$ds_micro;?>/sfs/pll-etw-sticky.png" style="position: absolute; left: -20px; top: 10px;" />
-      <a href="/staples-for-students/pretty-little-liars/sweeps" style="position:absolute; left: 450px; top: 225px;"><img src="/<?=$ds_micro;?>/sfs/pll-etw-button.png" /></a>
-    </div>
-  </div>
-  <div id="pll-home-footer"></div>
+
+  <div id="pll-home-footer" style="z-index: 1; position:relative;"></div>
 </div>
 
 <?php include_once 'staples-bottom.php'; ?>

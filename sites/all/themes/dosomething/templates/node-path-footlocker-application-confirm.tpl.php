@@ -7,21 +7,13 @@
     module_load_include('inc', 'webform', 'includes/webform.submissions');
     $submission = webform_get_submission($wf_nid, $sid);
     
-    $q = "SELECT sid FROM {webform_submitted_data} WHERE cid=1 AND data=$sid";
-    $rs = db_query($q);
-    $rec_q = '';
-    while ($rec = db_fetch_array($rs))
-        $req_q.= $rec['sid'].',';
-    $req_q = rtrim($req_q, ',');
-    
-    $q = "SELECT sid FROM {webform_submitted_data} WHERE nid=$rec_nid AND cid=2 AND data='character' AND sid IN ($req_q)";
-    $rs = db_query($q);
-    $character = (mysql_num_rows($rs) > 0);
-    
-    $q = "SELECT sid FROM {webform_submitted_data} WHERE nid=$rec_nid AND cid=2 AND data='athletic' AND sid IN ($req_q)";
-    $rs = db_query($q);
-    $athletic = (mysql_num_rows($rs) > 0);
-    
+	$recommendations = webform_get_submissions($rec_nid);
+	// find webforms for this submission, and set ${recommendation_type} = TRUE
+	$valid_recs = array();
+	foreach ($recommendations as $rec)
+		if ($rec->data[15]['value'][0] == $sid)
+			${$rec->data[16]['value'][0]} = TRUE;
+	
     $yes = '<div class="yes-box"></div> Recommendation received';
     $no = '<div class="no-box"></div> Recommendation not yet received';
 ?>

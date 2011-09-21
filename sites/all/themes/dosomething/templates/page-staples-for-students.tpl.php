@@ -3,7 +3,7 @@
 <div class="clearfix">
 
   <div id="sfs-sign-up">
-    <img src="/sites/all/micro/sfs/sign-up.png" />
+    <div style="height: 100px;"></div>
     <?php if ($_GET['signup']) : ?>
     <p>Thanks for signing up.  We'll be sending you info and updates throughout the campaign to help you rock your school supply drive!</p>
     <?php else: ?>
@@ -53,11 +53,6 @@
       data-text="I took action for #education w/ @dosomething. get involved: staplesforstudents.org"><img
         src="/<?=$ds_micro;?>/sfs/icon-twitter.png" alt="Twitter share" style="margin: 0 0 15px 5px;"/></a> 
    </div>
-  <ul id="start-links" class="clearfix">
-    <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/run-a-drive">1. run a drive</a></li>
-    <li><a class="button rounded shadow blue-gradient" href="/staples-for-students/pretty-little-liars">2. join the stars</a></li>
-    <li class="last"><a class="button rounded shadow blue-gradient" href="/node/add/sfs-report-gallery">3. report back</a></li>
-  </ul>
 
   <div id="intro" class="clearfix">
     <?php print $content; ?>

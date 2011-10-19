@@ -79,6 +79,22 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['field_email'][0]['#required'] = 0;
       $form['#validate'][] = 'validate_email_or_phone';
       break;
+ /*Added cancer stuff*/
+    case 'cancer_2011_signup_node_form':
+       $form['title']['#attributes']['onkeyup'] = 'lookup(this.value);';
+       $form['title']['#id'] = 'editString';
+       $form['title']['#attributes']['onblur'] = 'fill();';
+       break;
+       
+     case 'webform_client_form_682753':
+       /*
+       $form['school_name_cancer']['#attributes']['onkeyup'] = 'lookup(this.value);';
+       $form['title']['#id'] = 'editString';
+       $form['title']['#attributes']['onblur'] = 'fill();';
+        */
+       break;
+        
+ /*End of new stuff*/      
     case 'decade_2011_signup_node_form':
       $form['field_email'][0]['#required'] = 0;
       $form['field_campaign_phone'][0]['#required'] = 0;

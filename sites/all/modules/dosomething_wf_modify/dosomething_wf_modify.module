@@ -26,7 +26,7 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
       node_save($node);
     }
   }
-  else if ($node->nid == 679707) {
+ else if ($node->nid == 679707) {
     $map = _dosomething_wf_modify_webform_component_mapping($node);
     $checks = $submission->data[$map['check_boxes']]['value'];
     if (in_array('text', $checks)) {

@@ -29,8 +29,7 @@
 /* GENERAL */
 
 #banner  {
-  margin-left: -17px;
-  margin-bottom: -27px;
+    margin: 0;
 }
 
 #main-wrapper {
@@ -165,14 +164,16 @@ div.buttons h3 {
 }
 
 #map_canvas {
-  width: 505px;
   height: 414px;
   background: blue;
 }
 
-#map_canvas,form#thanks-search {
-  margin-left: 15px;
+#map_canvas,form#thanks-search,.share-thanks {
+  margin: 0 auto;
+  width: 700px;
 }
+
+.share-thanks { margin-top: 40px; }
 
 #spinner {
   display: none;
@@ -269,6 +270,10 @@ div.marker .name, div.marker .location {
   cursor: pointer;
 }
 
+#video-wrapper {
+  margin: 50px auto;
+  width: 700px;
+}
 
-
-
+hr { margin: 0; }
+#header-img { margin-bottom: 20px; }

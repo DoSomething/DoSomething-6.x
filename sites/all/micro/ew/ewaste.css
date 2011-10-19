@@ -548,3 +548,11 @@ ol.big-blue li
 div.block.with-block-editing {
     position: static
 }
+
+#edit-field-project-name-0-value-wrapper {
+    float: left;
+}
+
+#edit-field-num-people-involved-0-value-wrapper {
+    padding-left: 280px;
+}

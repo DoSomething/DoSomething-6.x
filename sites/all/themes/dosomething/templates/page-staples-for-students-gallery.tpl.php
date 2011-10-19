@@ -25,24 +25,27 @@
           $node = node_load($nodeID['nid']);
           foreach ($node->field_campaign_pictures as $img) {
             if ($img != '') {
+            print_r($img);
             $filename = explode('/', $img['filepath']);
             $filename = $filename[count($filename)-1];
-            $add['file'] = $filename;
+            $add['file'] = $img['filepath'];
             $add['description'] = $img['data']['description'];
             $add['title'] = $node->title;
-            $add['height'] = image_get_info($img['filepath']);
+            $shrink = str_replace('files/', 'files/imagecache/project_highlighted_photo/', $startImg['file']);
+            $add['height'] = image_get_info($shrink);
             $add['height'] = $add['height']['height'];
             $items[$filename] = $add;
           }}
         }
         $startImg = reset($items);
+        $startImg['file'] = str_replace('files/', 'files/imagecache/project_highlighted_photo/', $startImg['file']);
         echo 'var galleryImages = ' . json_encode($items);
       ?>
     </script>
     <?php print $content; ?>
     <h2 id="image-title"><?= $startImg['title']; ?></h2>
     <div id="current-image" style="height: <?= $startImg['height']; ?>px" >
-      <img src="/files/<?= $startImg['file']; ?>" id="large-image" />
+      <img src="/<?= $startImg['file']; ?>" id="large-image" />
     </div>
     <p id="image-description"><?= $startImg['description']; ?></p>
     <div id="gallery-back"><img src="/<?=$ds_micro;?>/sfs/gallery-back.png" alt="back" /></div>

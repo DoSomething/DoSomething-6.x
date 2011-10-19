@@ -169,6 +169,7 @@
 	float: left;
   color: black;
   padding-left: 20px;
+  margin-right: 200px;
 }
 
 #intro ul {
@@ -284,9 +285,6 @@ a > img {
 	width: 347px;
 	height: 238px;
 	background-image: url(supplies-bg.png);
-	position: absolute;
-	left:	565px;
-	top: -21px;
 }
 
 #home-footer-supplies a {

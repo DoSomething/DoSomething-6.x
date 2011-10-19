@@ -3,7 +3,7 @@
 <div class="clearfix">
 
   <div id="sfs-sign-up">
-    <div style="height: 100px;"></div>
+    <div style="height: 20px;"></div>
     <?php if ($_GET['signup']) : ?>
     <p>Thanks for signing up.  We'll be sending you info and updates throughout the campaign to help you rock your school supply drive!</p>
     <?php else: ?>

@@ -12,7 +12,8 @@ function loadImage() {
     loader.html('<img src="/sites/all/themes/dosomething/images/ajax-loader.gif" />');
     
     hash = location.hash.substring(1);
-    img_src = '/files/'+hash;
+    img_src = '/'+hash;
+    img_src = img_src.replace('/files/', '/files/imagecache/project_highlighted_photo/');
     img = new Image();
     
     $(img).load(function () {

@@ -69,8 +69,6 @@
         <?php print $content_top; ?>
 
         <div id="content-area">
-
-      <?php print $messages; ?>
     
     <div class="clearfix">
     

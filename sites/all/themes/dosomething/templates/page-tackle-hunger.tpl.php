@@ -4,7 +4,7 @@
 <head>
   <link rel="image_src" href="http://www.dosomething.org/files/imagecache/120x40/nd/tackle-hunger/tackle-hunger.png" />
   <!--<meta property='og:image' content='http://www.dosomething.org/files/imagecache/120x40/nd/tackle-hunger/tackle-hunger.png' />-->
-  <meta property='og:image' content='http://www.dosomething.org/nd/tackle-hunger/tackle-hunger.png' />
+  <meta property='og:image' content='http://www.dosomething.org/nd/tackle-hunger/tackle-hunger-new-logo.png' />
   <meta property="og:type" content="non_profit"/>
   <meta property="og:title" content="Tackle Hunger | Do Something"/>
   <title><?php print $head_title; ?></title>
@@ -133,7 +133,7 @@ $top_right
         <!-- end main text -->
 
         <div id="sidebar-left">
-          <a href="/tackle-hunger"><img src="/nd/tackle-hunger/tackle-hunger.png" /></a>
+          <a href="/tackle-hunger"><img src="/nd/tackle-hunger/tackle-hunger-new-logo.png" /></a>
           <div style="clear: both; padding-top: 1em;"></div>
           <!--<iframe title="YouTube video player" class="youtube-player" type="text/html" width="300" height="200" src="http://www.youtube.com/embed/c5KVEy0I60I?rel=0" frameborder="0"></iframe>-->
 <object width="300" height="200"><param name="movie" value="http://www.youtube.com/v/rI5l3xL58LA?fs=1&hl=en_US&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/rI5l3xL58LA?fs=1&hl=en_US&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="300" height="190"></embed></object>

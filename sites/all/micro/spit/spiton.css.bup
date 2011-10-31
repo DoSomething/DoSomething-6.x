@@ -1,0 +1,380 @@
+@font-face {
+    font-family: 'Chunk';
+    src: url('Chunkfive-webfont.eot');
+    src: url('Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Chunkfive-webfont.woff') format('woff'),
+         url('Chunkfive-webfont.ttf') format('truetype'),
+         url('Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Alt Gothic';
+    src: url('alternategothicno2bt-regula-webfont.eot');
+    src: url('alternategothicno2bt-regula-webfont.eot?#iefix') format('embedded-opentype'),
+         url('alternategothicno2bt-regula-webfont.woff') format('woff'),
+         url('alternategothicno2bt-regula-webfont.ttf') format('truetype'),
+         url('alternategothicno2bt-regula-webfont.svg#AlternateGothic2BTRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* DEVELOPER CRUD */
+.tabs {
+	position: absolute;
+		left: -100px; top: -50px;
+	width: 210px; }
+	
+
+.title { display: none; }
+
+#sponsorlogos img { height: 60px; margin-right: -20px; }
+
+#header-message {
+	position: absolute;
+		top: -100px;
+		left: 150px;}
+
+#main {
+	background: url(cancer-bg.png) repeat-y;
+	background-image: -moz-radial-gradient(center center, ellipse cover, #902A8A, #67328D 400px); background-image: -webkit-radial-gradient(center center, ellipse cover, #902A8A, #67328D 400px); background-image: -o-radial-gradient(center center, ellipse cover, #902A8A, #67328D 400px); background-image: -ms-radial-gradient(center center, ellipse cover, #902A8A, #67328D 400px); background-image: radial-gradient(center center, ellipse cover, #902A8A, #67328D 400px);
+	/* background: -webkit-gradient(radial, 50% 75%, 0, 50% 75%, 100, from(#902A8A), to(#67328D));
+	background: -moz-radial-gradient(50% 75%, farthest-side, #902A8A, #67328D); */
+		-webkit-border-radius: 40px;
+		-moz-border-radius: 40px;
+	border-radius: 40px; 
+	margin-top: 190px; }
+	
+#menu {
+	font-family: 'Alt Gothic', 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 200%;
+	margin: 0;
+	padding: 0 40px;
+	position: relative;
+	max-width: 860px;
+	z-index: 10;}
+	
+.page-spit-landing .region-right, .page-spit .region-right { 
+	position: relative; 
+		/*top: -400px; */}
+	
+body.section-spit div.content {
+	background: url('qtip-big.png') no-repeat scroll 345px 150px transparent;
+	/*margin-top: -90px; */}
+
+/*The Faqs Page and Tips page*/
+/*For removing the background qtip*/
+#node-688072 div.content, #node-695338 div.content{
+ background: none;
+}
+
+/* The Schools Page */
+.views-field-title {
+	color: #FFF;
+	font-family: Chunk, 'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	font-size: 130%;
+	letter-spacing: 1px;
+	
+	padding-bottom: 5px;
+	margin-bottom: 30px;
+	
+	border-bottom: 2px dotted #FBDA0F;
+	width: 810px;
+}
+
+.views-field-field-campaign-address-value,
+.views-field-field-cancer-drive-date-value {
+	font-family: 'Alt Gothic', 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 180%;
+	line-height: 120%;
+	color: #FFF;
+}
+
+.views-field-field-autotest-uid {
+	color: #FBDA0F;
+	font-family: Chunk, 'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	font-size: 220%;
+	letter-spacing: 1px;
+	padding-bottom: 10px;
+}
+
+.views-field-field-cancer-drive-date-value {
+	padding-top: 5px;
+	border-top: 2px solid #FBDA0F;	
+}
+
+.views-field-field-campaign-address-value {
+	padding-bottom: 5px;
+	border-bottom: 2px solid #FBDA0F;	
+}
+
+.drive2 .rightflag {
+	background: url("blackflag-right.png") no-repeat scroll 0 -14px transparent !important;
+    color: #FBDA0F;
+    margin: 0px 0px 0px -32px;
+    min-height: 30px;
+	text-align: center;
+	padding-right: 30px;
+
+	width: 300px;
+	
+	position: absolute;
+	right: -25px; top: 630px;
+}
+
+.drive2 .triarrows {
+	background-color: #FBDA0F;
+	
+	width: 220px;
+	height: 100px;
+	
+	position: absolute;
+	right: 18px; top: 646px;
+}
+
+#block-webform-client-block-704188  input#edit-submit { 
+	background: url('arrow-yellow-submit.png') no-repeat;
+	border-width: 0px;
+	cursor: pointer;
+	width: 100px;
+	height: 35px;
+	padding-right: 5px;
+	padding-left: 0;
+	padding-bottom: 7px;
+	color: black;
+	text-transform: uppercase; 
+}
+
+#block-webform-client-block-704188 #webform-component-join-this-drive { 
+	padding-top: 7px;
+}
+
+ul.triarrows {
+	padding-top: 5px;
+	/*list-style-image:url('arrow-black-list.png');
+	*/
+}
+
+ul.triarrows li {
+	/*background: url('arrow-black-list.png') no-repeat 0 -5px;
+	 */
+	color: #000 !important;	
+	padding: 0 0 8px 0px;
+}
+
+/*The Faqs Page*/
+#node-688072 div.content, #node-695338 div.content{
+ background: none;
+}
+#node-688072 div.content p {
+  width:780px;
+  max-width: 860px;
+  padding-top:10px;
+  font-weight:normal;
+}
+
+#node-688072 div.content li {
+   padding-top: 10px;
+   width: 780px;
+   max-width: 860px;
+   font-weight:bold;
+}
+
+/*Tips page */
+/*For fitting the list accross the length and no wrap*/
+#node-695338 div.content li {
+  width : 780px;
+  max-width:860px;
+}
+
+/*For fitting the head text and its color*/
+#node-695338 p.headtext {
+font-size: 150%;
+white-space: nowrap;
+color: #FBDA0F;
+}
+
+/*For the Tips and Tools in black and white*/
+#node-695338 h3.blackflag {
+background: url("blackflag.png") no-repeat scroll 0 -14px transparent ;
+}
+
+/*Testing the arrows stuff*/
+#node-695338 ul.triarrows {
+    /*margin-top: 5px;*/
+      list-style-type: none;
+        margin: 5px 0 0 10px;
+          padding: 0;
+}
+#node-695338 ul.triarrows li {
+    background: url('triangle-yellow-list.png') no-repeat 0 -5px;
+      padding: 0 0 15px 30px; }
+
+/* TIPS SOCIAL MEDIA BLOCK */
+.page-spit-tips #block-block-323 {
+        margin: 0;
+        position: relative;
+	top: 5px;
+	left: 175px;
+               /* left: -85px;*/
+                /*top: 60px; left: 410px;
+                /*top: -30px; */
+}
+
+
+.page-spit-faq #block-block-323 {
+     margin: 0;
+     position: relative;
+     top: -3px;
+     left: 175px;
+}
+/* FAQS SOCIAL MEDIA BLOCK */
+.page-spit-faq #block-block-323 {
+    top: -55px;
+	left: -50px;
+       
+}
+
+
+#content {
+	padding: 0 20px;}
+
+/* COLOR DEFINITIONS */
+/* yellow: #FBDA0F
+	lightest purple: #8D509A
+	medium purple: #803A93
+	dark purple: #602872
+	*/
+
+/* GENERAL DEFINITIONS */
+#main  #content  {
+	margin: 0;
+	width: 95.35%;
+	font-family: Arial, 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 125%;
+	line-height: 130%;}
+		
+#main a, #main a:link {
+	color: #FBDA0F;
+	text-decoration: underline; }
+	
+h3 {
+	font-family: Chunk, 'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	font-size: 130%;
+	letter-spacing: 2px;
+	margin: 0;
+	text-transform: uppercase;}
+	h3#learnmore {margin-bottom: 0px; font-family: 'Arial Narrow','Nimbus Sans L',sans-serif; }
+	
+.major {
+	color: #FBDA0F;
+	font-family: Chunk, 'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	font-size: 150%;
+	}
+
+.accent-white, .accent-yellow { }
+	.accent-white {
+	color: #fff;
+	}
+	.accent-yellow {
+	color: #FBDA0F; }
+	
+#main-wrapper p, #main-wrapper ul li, #main-wrapper ol li {
+	color: #fff;
+	width: 385px;	}
+	div.status p, div.messages p {color: #000;}
+
+/* STYLED UNORDERED LIST */
+
+ul.arrows {
+	/*margin-top: 5px;*/
+	list-style-type: none;
+	margin: 5px 0 0 10px;
+	padding: 0;
+}
+ul.arrows li {
+	background: url('arrow-yellow-list.png') no-repeat 0 -5px;
+	padding: 0 0 15px 30px; }
+/* END STYLED UNORDERED LIST */
+.blackflag {
+	background: url("blackflag.png") no-repeat scroll 0 -14px transparent;
+    color: #FBDA0F;
+    margin: 0 0 0 -32px !important;
+    min-height: 30px;
+	padding-left: 30px;
+	position: relative;
+	width: 400px;}
+	
+ol.big-blue li li, ol.big-blue li .not-so-big-blue { color: #fff; font-size: 60%; } /* omg this is so kludgey but the list on the landing page looks like ass otherwise, I am SORRY */
+	ol.big-blue { padding-left: 20px; margin-top: 5px; }
+	
+form#webform-client-form-682753 div.description p, form#webform-client-form-682784 div.description p {
+	font-size: 100%;
+	width: 250px;	}
+	
+/* MENU */
+#menu a {
+	background: url('qtip-small.png') no-repeat scroll 50% 16px transparent;
+	line-height: 200%;
+	min-width: 80px;
+	padding: 0 17px;
+	text-decoration: none !important; }
+	
+	#menu a:nth-child(4) {
+		margin-left: 200px; }
+	#menu a:last-child {
+		padding: 0 21px; }
+		
+/* RIGHT SIDEBAR */
+.block:nth-child(2) {margin-top: -40px; }
+
+/* SIGN-UP FORM */
+.block-webform {
+	background: #000;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+	border-radius: 10px;
+	color: #fff;}
+	.block-webform p {
+	width: 260px; }
+ .webform-component-select select{
+  width:200px;
+}
+#block-webform-client-block-682753  input#edit-submit { 
+	background: url('arrow-yellow-submit.png') no-repeat;
+	border-width: 0px;
+	cursor: pointer;
+	width: 100px;
+	height: 35px;
+	padding-right: 5px;
+	padding-left: 0;
+	padding-bottom: 7px;
+	color: black;
+	text-transform: uppercase; }
+	
+/* GREEK CHEEK CHALLENGE */
+#block-block-322 {
+	margin-left: -63px; }
+	
+/* SPECIFIC BULLSHIT */
+/* white arrow under "celeb getting involved" */
+body.section-spit h3:first-child {
+	background: url("arrow-white.png") no-repeat scroll -20px 5px transparent;
+	margin-bottom: -20px;
+    padding-bottom: 5px; }
+
+
+	
+/* ensuring the error messages are legible */
+div.status p, div.messages p,
+div.status li, div.messages li { color: #000 !important; position: relative; z-index: 30;}
+	
+/* SOCIAL MEDIA BLOCK */
+#block-block-323 {
+	margin: 0;
+	position: relative;
+		left: -85px;
+		/*top: 60px; left: 410px;
+		/*top: -30px; *
+    / width: 100px;}

@@ -95,6 +95,7 @@ $top_right
 ?>
 
 <body>
+<?php echo "Microsite is in ".$ds_micro; ?>
 <div id="wrapper">
     <div id="header">
            <h1><a href="/"><img src="<?=$base_path.$subtheme_directory;?>/images/logo.png" width="197" height="156" alt="DoSomething.org" /></a></h1>

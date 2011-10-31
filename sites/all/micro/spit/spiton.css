@@ -69,6 +69,196 @@ body.section-spit div.content {
  background: none;
 }
 
+/* The Schools Page */
+.schoolprofilepage{
+	padding-top: 18px;
+}
+
+.views-field-title {
+	color: #FFF;
+	font-family: Chunk, 'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	font-size: 130%;
+	letter-spacing: 1px;
+	
+	padding-bottom: 5px;
+	margin-bottom: 30px;
+	
+	border-bottom: 2px dotted #FBDA0F;
+	width: 810px;
+}
+
+.views-field-field-campaign-address-value,
+.views-field-field-cancer-drive-date-value,
+.views-field-field-cancer-drive-time-value,
+.views-field-field-cancer-location-value ,
+.views-field-field-campaign-city-value,
+.views-field-field-campaign-state-value,
+.views-field-field-campaign-zip-value,
+.views-field-field-cancer-alternate-location-value{
+	font-family: 'Alt Gothic', 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 180%;
+	line-height: 120%;
+	color: #FFF;
+}
+
+.views-field-field-autotest-uid {
+	color: #FBDA0F;
+	font-family: Chunk, 'Bookman Old Style',Bookman,'URW Bookman L','Palatino Linotype',serif;
+	font-size: 220%;
+	letter-spacing: 1px;
+	padding-bottom: 10px;
+}
+
+.views-field-field-cancer-drive-date-value {
+	padding-top: 5px;
+	border-top: 2px solid #FBDA0F;	
+}
+
+/*
+.views-field-field-campaign-address-value {
+	padding-bottom: 5px;
+	border-bottom: 2px solid #FBDA0F;	
+}
+*/
+
+.views-field-field-campaign-zip-value {
+	padding-bottom: 5px;
+	border-bottom: 2px solid #FBDA0F;	
+}
+.drive2{
+	padding-top: 10px;
+}
+.drive2 .blackflag, .page-spit-reportback .blackflag {
+	background: url("blackflag.png") no-repeat scroll 0 -14px transparent !important;
+    color: #FBDA0F;
+    margin: 0px 0px 0px -32px;
+    min-height: 30px;	
+	padding-right: 30px;
+	width: 300px;
+}
+.drive2 .triarrows {
+	background-color: #FBDA0F;
+	width: 220px;
+	height: 100px;
+	right: 17px;
+	top: 735px;
+}
+
+/*
+.drive2 .rightflag {
+	background: url("blackflag-right.png") no-repeat scroll 0 -14px transparent !important;
+    color: #FBDA0F;
+    margin: 0px 0px 0px -32px;
+    min-height: 30px;
+	text-align: center;
+	padding-right: 30px;
+	width: 300px;
+	position: absolute;
+	top:720px;
+	right: -25px;
+	/*
+	 top: 630px;
+
+}
+
+.drive2 .triarrows {
+	background-color: #FBDA0F;
+	width: 220px;
+	height: 100px;
+	position: absolute;
+	right: 17px;
+	top: 735px;
+	
+	/*
+	right: 18px; top: 646px;
+
+}
+*/
+/*Meet the organizer and its value*/
+.meetorganizer , .collegename{
+	color: #FBDA0F;
+	font-family: 'Alt Gothic', 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 140%;
+	letter-spacing: 1px;
+	padding-bottom: 1px;
+}
+
+
+.meetorganizer .orgvalue{
+	color: #FFF;
+	}
+	
+.schoolnamehelptext {
+	font-family: Arial, 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 100%;
+}
+
+
+/*Organizer page end*/
+#block-webform-client-block-704188  input#edit-submit, #block-block-331 input#edit-submit, .suggestionsubmit{ 
+	background: url('arrow-yellow-submit.png') no-repeat;
+	border-width: 0px;
+	cursor: pointer;
+	width: 100px;
+	height: 35px;
+	padding-right: 5px;
+	padding-left: 0;
+	padding-bottom: 7px;
+	color: black;
+	text-transform: uppercase; 
+}
+#block-webform-client-block-704188{
+	left: 33px;
+	top: 90px;
+}
+
+
+#block-webform-client-block-704188 #webform-component-join-this-drive { 
+	padding-top: 7px;
+}
+
+ul.triarrows {
+	padding-top: 5px;
+	/*list-style-image:url('arrow-black-list.png');
+	*/
+}
+
+ul.triarrows li,ul.triarrows a {
+	/*background: url('arrow-black-list.png') no-repeat 0 -5px;
+	 */
+	color: #000 !important;	
+	padding: 0 0 8px 0px;
+}
+
+/*The Report Back page*/
+.page-spit-reportback #block-block-323 {
+        margin: 0;
+        position: relative;
+	top: 5px;
+	left: 175px;             
+}
+ 
+.page-spit-reportback .form-item, .page-spit-reportback #field-campaign-pictures-items, .page-spit-reportback #field-campaign-video-items  {
+	color: #FBDA0F;
+	font-family: Arial, 'Arial Narrow','Nimbus Sans L',sans-serif;
+	font-size: 120%;
+	letter-spacing: 1px;
+	padding-bottom: 1px;
+}
+.page-spit-reportback .form-item .description{
+	color: #000000;
+	font-size: 70% !important;
+}
+
+.page-spit-reportback .blackflag {
+	background: url("blackflag.png") no-repeat scroll 0 -14px transparent !important;
+    color: #FFFFFF;
+    margin: 0px 0px 0px -32px;
+    min-height: 30px;
+	padding-right: 30px;
+	width: 300px;
+
+}
 /*The Faqs Page*/
 #node-688072 div.content, #node-695338 div.content{
  background: none;
@@ -141,8 +331,14 @@ background: url("blackflag.png") no-repeat scroll 0 -14px transparent ;
 	left: -50px;
        
 }
-
-
+/*Organizer Sign up Page*/
+#node-701206  ul.arrows li, #node-701206  ol.copy li, #node-706458  ul.arrows li , #node-706458  ol.copy li , #node-685130  ul.arrows li , #node-685130  ol.copy li  {
+    display: list-item; }
+	
+#block-block-331 input#editString , #block-block-331 input#edit-field-cancer-drive-date-0-value-date, #block-block-331 input#edit-field-cancer-drive-time1-0-value-date   {
+	 width: 250px;}
+	
+/*End of organizer*/
 #content {
 	padding: 0 20px;}
 
@@ -236,7 +432,7 @@ form#webform-client-form-682753 div.description p, form#webform-client-form-6827
 .block:nth-child(2) {margin-top: -40px; }
 
 /* SIGN-UP FORM */
-.block-webform {
+.block-webform, #block-block-333, #block-block-331  {
 	background: #000;
 		-webkit-border-radius: 10px;
 		-moz-border-radius: 10px;
@@ -247,7 +443,11 @@ form#webform-client-form-682753 div.description p, form#webform-client-form-6827
  .webform-component-select select{
   width:200px;
 }
-#block-webform-client-block-682753  input#edit-submit { 
+/*Signup from new*/
+#block-block-333, #block-block-331{
+	padding-left: 10px !important;
+}
+#block-webform-client-block-682753  input#edit-submit, #block-block-333 input#edit-submit, .page-spit-reportback  input#edit-submit, #block-webform-client-block-682784  input#edit-submit{ 
 	background: url('arrow-yellow-submit.png') no-repeat;
 	border-width: 0px;
 	cursor: pointer;

@@ -21,8 +21,12 @@
   <?php endif; ?>
   <link rel="stylesheet" href="/<?=$ds_micro.'/spit/spiton.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
-  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-  <script type="text/javascript" src="/<?=$ds_micro.'/spit/spit.js';?>"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <script type="text/javascript" src="/<?=$ds_micro.'/spit/autocomplete/try.js';?>"></script>
+
+    <!--
+    <script type="text/javascript" src="/<?//=$ds_micro.'/spit/spit.js';?>"></script>
+    -->
 </head>
 
 <body class="<?php print $classes; ?>">
@@ -43,7 +47,7 @@
         $base = '/spit';
 		$title = 'Coming soon! October 2011';
         $items = array(array('HOME', $base,),
-                       array('SCHOOLS', $base.'/schools'),
+                       array('SCHOOLS', $base.'/findyourschool'),
                        array('TIPS&TOOLS', $base.'/tips'),
                        array('REPORT BACK', $base.'/reportback'),
                        array('FAQ', $base.'/faq')
@@ -57,10 +61,12 @@
           else if ($i[1] == $base && $i[1] == $currPath)
             $class = 'active';
 			//if($i[0]=='HOME' || $i[0]=='TIPS&TOOLS') 
-			if($i[0]=='HOME' || $i[0]=='TIPS&TOOLS' || $i[0]=='FAQ' ) 
+			if($i[0]=='HOME' || $i[0]=='TIPS&TOOLS' || $i[0]=='FAQ' ||  $i[0]=='SCHOOLS' || $i[0]=='REPORT BACK'  ) 
           printf('<a href="%s" class="%s">%s</a>', $i[1], $class, $i[0]);
+		  /*
 		  else
 		  printf('<a href="#" class="%s" title="Coming soon! October 2011">%s</a>', $class, $i[0]);
+		  */
         }
        ?>
 	 

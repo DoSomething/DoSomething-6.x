@@ -1,0 +1,67 @@
+<?php
+
+function dosome_migrating_schema() {
+  $schema['dosome_migrating_user_changed'] = array(
+    'description' => 'Records when the user last changed their profile.',
+    'fields' => array(
+      'uid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => "User's {users}.uid.",
+      ),
+      'changed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The Unix timestamp when the user was most recently saved.',
+      ),
+    ),
+    'primary key' => array('uid'),
+  );
+  $schema['dosome_migrating_og_membership_change'] = array(
+    'fields' => array(
+      'id' => array(
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'description' => 'Primary Key: unique id for operation for replay.',
+      ),
+      'uid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => "User's {users}.uid.",
+      ),
+      'gid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => "User's {nodes}.nid of the group.",
+      ),
+      'op' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => "Whether the membership has most recently been created/updated or deleted.",
+      ),
+      'changed' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The Unix timestamp when the user was most recently saved.',
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}
+
+function dosome_migrating_install() {
+  drupal_install_schema('dosome_migrating');
+  // Lets make sure every user has a changed date so we can do an inner join.
+  db_query("INSERT INTO {dosome_migrating_user_changed} (uid, changed)
+    SELECT uid, created
+    FROM {users} WHERE uid > 0");
+}
+
+function dosome_migrating_uninstall() {
+  drupal_uninstall_schema('dosome_migrating');
+}

@@ -1,0 +1,62 @@
+#menu {
+  font-family: 'Facebook Letter Faces','Trebuchet MS';
+  left: -33px;
+  font-size:28px;
+  width:885px;
+  height: 45px;
+  list-style: none;
+  padding-left: 10px;
+  margin: -33px 0px 0px 0px;
+ /* width: 885px; */
+  float: left;
+  display: block;
+  position: relative;
+  background: url('/sites/all/micro/art-2011/img/nav.png') no-repeat;
+}
+
+#menu li {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+#menu a {
+  color: #FFFFFF;
+}
+
+
+/*
+#menu .home {
+  width: 125px;
+  height: 45px;
+  background: url('/sites/all/micro/art-2011/img/home.png') no-repeat;
+}
+
+#menu .art {
+  padding-left: 20px;
+  background: url('/sites/all/micro/art-2011/img/why.png') no-repeat;
+  width: 239px;
+  height: 45px;
+ }
+ 
+ 
+#menu .submit {
+  background: url('/sites/all/micro/art-2011/img/submit.png') no-repeat;
+  width: 262px;
+  height: 45px;
+  color: #000000;
+
+}
+
+#menu .gallery {
+  background: url('/sites/all/micro/art-2011/img/gallery.png') no-repeat;
+  width: 179px;
+  height: 45px;
+}
+
+#menu .prizing {
+  background: url('/sites/all/micro/art-2011/img/prizing.png') no-repeat;
+  width: 193px;
+  height: 45px;
+}
+*/

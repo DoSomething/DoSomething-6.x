@@ -1,0 +1,32 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+  $('#rules-popup h3').each(function() {
+    var tis = $(this), state = false, answer = tis.next('div').hide().css('height','auto').slideUp();
+    tis.click(function() {
+      state = !state;
+      answer.slideToggle(state);
+      tis.toggleClass('active',state);
+    });
+  });
+});
+	</script>
+<link rel="stylesheet" href="/sites/all/micro/art-2011/art.css" type="text/css" />
+<link rel="stylesheet" href="/sites/all/micro/art-2011/fonts.css" type="text/css" />
+</head>
+<body>
+<div id="rules-popup">
+<h2>RULES</h2>
+<li>Artwork can feature any visual art form including drawing, painting, printmaking, photography, and graphic design</li>
+<li>We strongly prefer digital artwork in one of the following formats: .jpg, .png, .gif. However, in the event that you’re unable to submit your artwork in one of these formats, scanned images or digital photos of your artwork will also be accepted</li>
+<li>Participants can submit more than one piece of art</li>
+<li>Participants must be 25 years or younger, but you must be at least 13 years old to participate. You must also be a permanent legal resident or citizen of the United States or Canada</li>
+<li>Show us why art education matters with your art! Artwork must be accompanied by written testimonial on the importance of arts education</li>
+<li>Starting November 11th, each participant should start mobilizing their networks to share their design. The 10 most shared artworks win <a href="/make-art-save-art/prizing" target="_top">prizes</a>!</li>
+<li>Anyone with over 1,000 shares will be contacted to verify that those are valid shares. Any artwork suspected of being shared by a single person or a computer program will be disqualified
+<li>By submitting your art, you are verifying that it is an original work of art and that you have the right to use the artwork in compliance with Copyright Guidelines. Copyright infringement is a serious offense, learn more.</li>
+</div>
+</body>
+</html>

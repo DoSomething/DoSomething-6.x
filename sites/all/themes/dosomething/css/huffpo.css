@@ -1,0 +1,11 @@
+#content-area {
+  width: 800px;
+}
+
+.views-field view-field-body th {
+  padding: 10px;
+}
+
+.views-field views-field-body p {
+  padding:10px;
+}  

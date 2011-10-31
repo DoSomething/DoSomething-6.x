@@ -5,6 +5,7 @@
   echo '<div id="signup-wrapper"><div id="signup-page-1">';
   echo '<div class="signup-right">';
   print drupal_render($form['field_project_name']);
+  print drupal_render($form['field_num_people_involved']);
   print drupal_render($form['field_campaign_essay']);
   print drupal_render($form['field_campaign_essay_how']);
   echo '</div><div class="signup-left">';

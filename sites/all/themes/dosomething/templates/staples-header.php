@@ -36,7 +36,7 @@
                               )); ?>
 
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
-     <img id="header-message" src="/<?=$ds_micro;?>/sfs/drop-off.jpg"/>
+     <?php /*<img id="header-message" src="/<?=$ds_micro;?>/sfs/drop-off.jpg"/>*/?>
       <div id="staples-nav">
       <?php
         $base = '/staples-for-students';

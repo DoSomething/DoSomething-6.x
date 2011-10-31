@@ -1,0 +1,43 @@
+<html>
+<head>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+  $('#faqs-popup h3').each(function() {
+    var tis = $(this), state = false, answer = tis.next('div').hide().css('height','auto').slideUp();
+    tis.click(function() {
+      state = !state;
+      answer.slideToggle(state);
+      tis.toggleClass('active',state);
+    });
+  });
+});
+	</script>
+<link rel="stylesheet" href="/sites/all/micro/art-2011/art.css" type="text/css" />
+<link rel="stylesheet" href="/sites/all/micro/art-2011/fonts.css" type="text/css" />
+</head>
+<body>
+<div id="faqs-popup">
+<h2>FAQ</h2>
+<h3><li>Why is Do Something running Make Art Save Art?</li></h3>
+<div><p>Imagine a world without arts? Boring right!? We know you care about the arts, and DoSomething.org is committed to giving you ways to take action on the causes you care about. DoSomething.org believes art is a critical part of a complete education, and we want you to use your creative talents to take action to keep art education in schools!</p></div>
+
+<h3><li>What types of art can I submit?</li></h3> 
+<div><p>We welcome any visual art form including drawing, painting, printmaking, photography and graphic design. We strongly prefer digital artwork in one of the following formats: .jpg, .png, .gif. However, in the event that you are unable to submit your artwork in one of these formats, scanned images or digital photos of your artwork will also be accepted. Your work of art is meant to represent the importance of arts education, so get drawing, painting, and designing to save art!</p></div>
+
+<h3><li>How do I win?</li></h3>
+<div><p>The 10 "most shared" artworks will be entered for the chance to win big <a href="/make-art-save-art/prizing" target="_top">prizes</a>! So, create a beautiful piece of art, write a compelling case on the importance of arts education, and encourage your friends, family, and social networks to share the heck out of your design. People will be able to share their favorite designs starting November 11th 2011.</p></div>
+
+<h3><li>Why should I share my art?</li></h3>
+<div><p>The key to advocating is getting your voice heard. Arts education is being cut from schools nationwide. If you want to Do Something about it, you need to speak up. Sharing online is a great way to spread the word and raise awareness about the importance of art education (not to mention, a great way to help you win!). 
+Sharing with state and local representatives is also really important. They're the ones who decide what schools need to include in their core curriculum. So, be sure to share your artwork on your state senator and state Representatives facebook and twitter pages!</p></div>
+
+<h3><li>How else can I take action to keep art in schools?</li></h3>
+<div><p>Encourage all of your friends and classmates to get involved in Make Art. Save Art. The more artworks we get, the stronger our case that students want art in schools.</p></div>
+
+<h3><li>Itching to do more?</li></h3>
+<div><p>You can print and post your design around your school and community. Take pictures and send them to <a href="mailto:photos@dosomething.org" target="_top">photos@dosomething.org</a> or text MAKEART to 38383!</p></div>
+
+</div>
+</body>
+</html>

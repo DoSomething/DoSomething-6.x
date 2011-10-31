@@ -9,7 +9,7 @@
   print drupal_render($form['field_campaign_email']);
   print drupal_render($form['field_campaign_phone_0']);
   print drupal_render($form['field_zip_campaign']);
-  print drupal_render($form['field_campaign_subscriptions']);
+  //print drupal_render($form['field_campaign_subscriptions']);
   print drupal_render($form['buttons']['submit']);
 
 ?>

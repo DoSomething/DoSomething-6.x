@@ -61,6 +61,7 @@
     <h2 class="college"><span class="orange"><?php echo $field_votes[0]['value']; ?></span> mobile votes<br />
     <span class="orange"><?php echo $likes + $field_votes[0]['value']; ?></span> total votes</h2>
     <h2 class="college">Number of people involved: <span class="orange"><?php echo $field_campaign_number_of_people[0]['value']; ?></span></h2>
+    <h2 class="college">Pieces of equipment collected: <span class="orange"><?php echo $field_campaign_pieces[0]['value']; ?></span></h2>
     <p class="college">What awesome things did you do to make your drive particularly successful?</p>
     <p><?php echo $field_campaign_essay[0]['value']; ?></p>
     

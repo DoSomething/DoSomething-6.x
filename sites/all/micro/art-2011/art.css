@@ -1,0 +1,1164 @@
+.content #sign-up .blue {
+	margin-top: -40px;
+}
+
+.node h2.title {
+  display: none;
+}
+
+#node-701156 fieldset {
+  display: none;
+}
+/* STRIPED BLACK BACKGROUND */
+
+#main-wrapper {
+  background: url('/sites/all/micro/art-2011/img/background.png');
+}
+
+#main-wrapper p {
+  font-family: 'DINWebCondLight';
+  color: #000000;
+  font-size: 20px;
+}
+  
+#main {
+  width: 850px;
+  margin-top: -20px;
+}
+
+/* WHITE ROUNDED CORNERS */
+
+#main-content {
+  border-radius: 10px #FFFFFF;
+  width: 800px;
+  padding: 10px 10px 20px 10px;
+}
+/* FAQ BUTTON */
+
+#faq {
+  position: absolute;
+  right: 70px;
+  top: 210px;
+}
+
+/* HEADER LOGO */  
+
+#header-image {
+  padding-bottom: 10px;
+  text-align: center;
+  background: #FFFFFF;
+  width: 880px;
+  margin-left:-30px;
+  top: 0px;
+}
+
+#white-box {
+  font-family: 'DINWebCondLight';
+  text-align: center;
+  color: #000000;
+  font-size: 20px;
+  background: #FFFFFF;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  padding: 40px 20px 60px 10px;
+}  
+
+#white-box-submit-art-hack {
+  font-family: 'DINWebCondLight';
+  text-align: center;
+  color: #000000;
+  font-size: 20px;
+  background: #FFFFFF;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  padding: 40px 20px 60px 10px;
+  height: 1500px;
+}  
+
+#submit-art-log-in-text {
+	text-align: left;
+	margin-left: 20px !important;
+}
+
+/* NAVIGATION MENU */
+
+#menu {
+  background: #FFFFFF;
+  width: 850px;
+  padding: 0;
+}
+  
+#home {	
+  margin-left: -30px;
+}
+
+#why {
+  margin-left: -32px;
+}
+  
+#submit {
+  margin-left: -32px;
+}
+
+#art {
+  margin-left: -30px;
+}
+
+#gallery {
+  margin-left: -30px;	
+}
+
+#prizing {
+  margin-left: -32px;
+}
+
+/* NAVIGATION END MENU */
+
+#boxes {
+  text-align:center;
+  width: 800px;
+  margin-left: 10px;
+}
+
+/* BLUE BOX */
+
+#box-blue {
+  text-align: center;
+  float:left;
+  background: url('/sites/all/micro/art-2011/img/box-blue.png') center top no-repeat;
+  width: 260px;
+  height: 272px; 
+}
+
+#box-blue p {
+  font-family: 'DINWebCondBlack';
+  font-size: 50px;
+  vertical-align: middle;
+  text-align: center;
+  color: #FFFFFF;
+  line-height: 50px;
+  padding: 40px 20px 0px 10px;  
+}
+
+/* PINK BOX 1ST PAGE */
+
+#box-pink {
+  display: inline;
+  background: url('/sites/all/micro/art-2011/img/box-pink.png') center bottom no-repeat;
+  width: 266px;
+  height: 270px;
+  float:left;
+  color: #FFFFFF;
+  text-align: center;
+  margin-left: -5px;
+}
+
+div.node #box-pink h2 {
+  font-family: 'DINWebCondMedium';
+  font-size: 42px;
+  padding-top:10px;
+  color: #FFFFFF;
+  margin-left: -10px;
+}
+
+#box-pink p {
+  font-family: 'DINWebCondLight';
+  font-size: 20px;
+  line-height: 30px;
+  padding: 5px 30px 10px 20px;
+  color: #FFFFFF;
+}
+
+#box-pink img {
+  border: none;
+}
+
+/* YELLOW BOX 1ST PAGE */
+
+#box-yellow {
+  float: left;
+  background: url('/sites/all/micro/art-2011/img/box-yellow.png') center bottom no-repeat;
+  width: 242px;
+  height: 270px;  
+}
+
+div.node #box-yellow h2 {
+  font-family: 'DINWebCondMedium';
+  font-size: 42px;
+  padding:10px 0px 0px 0px;
+  color: #231F20;
+  text-align: center;
+  text-shadow: 0px 3px 10px #444;
+}
+
+#box-yellow p {
+  font-family: 'DINWebCondLight';
+  color: #231F20;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 5px 30px 10px 30px;
+  text-align: center;  
+}
+
+#box-yellow img {
+  margin-top: -30px;
+  margin-left: -30px;
+  border: none;
+}
+
+/* BOXES 2ND PAGE */
+
+#boxes2 {
+  text-align: center;
+  height: 235px;
+  padding-bottom: 40px;
+}  
+
+/* PINK BOX 2ND PAGE*/
+
+#box-pink2 {
+  display: inline;
+  background: url('/sites/all/micro/art-2011/img/box-pink2.png') center bottom no-repeat;
+  width: 281px;
+  height: 255px;
+  float:left;
+  color: #FFFFFF;
+  text-align: center;
+  position: relative;
+  float: left;
+  margin-left: -265px;
+  left:50%;
+}
+
+div.node #box-pink2 h2 {
+  font-family: 'DINWebCondLight';
+  font-size: 42px;
+  padding: 10px 20px 0px 0px;
+  color: #FFFFFF;
+  line-height: 42px;
+  text-shadow: 0px 3px 10px #444;
+}
+
+#box-pink2 p {
+  font-family: 'DINWebCondLight';
+  font-size: 20px;
+  line-height: 30px;
+  color: #FFFFFF;
+  text-shadow: 0px 3px 10px #444;
+}
+
+#box-pink2 img {
+  margin-top: -55px;
+  border: none;
+}
+/* YELLOW BOX 2ND PAGE */
+
+#box-yellow2 {
+  float:right;
+  background: url('/sites/all/micro/art-2011/img/box-yellow2.png') center bottom no-repeat;
+  width: 255px;
+  height: 254px;
+  position: relative;
+  margin-right: -265px;
+  right:50%;
+}
+
+div.node #box-yellow2 p {
+  font-family: 'DINWebCondLight';
+  font-size: 42px;
+  color: #231F20;
+  text-align: center;
+  line-height: 42px;
+  padding: 10px;
+  text-shadow: 0px 3px 10px #444;
+}
+
+#view-gallery {
+ margin-left: -20px;
+ margin-top: -30px;
+}
+
+/* SHARE YOUR VOICE BOX */
+
+#bottom-box {
+ background: #FFFFFF;
+ width: 800px;
+-moz-border-radius: 0px 0px 10px 10px;
+}
+
+/* SECOND PAGE VIDEO */
+
+#why-video {
+  z-index: -1;
+  margin-left: auto;
+  margin-right: auto;
+  width: 515px;
+}
+
+#main-wrapper #why-video p {
+  color: #FFFFFF;
+  font-family: 'DINWebCond';
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  text-align: center;
+  background: #00ADEE;
+  width: 480px;
+  position: relative;
+  left: 8px;
+}
+
+#why-video a:link, a:visited, a:hover, a:active, li a.active {
+  color: #000000;
+}
+
+/* DID YOU KNOW 2ND PG */
+
+#did-you-know {
+  padding: 20px 20px 0px 0px;
+  background: #F5F5F5;
+}  
+
+#did-you-know p {
+  font-family: 'DINWebCond';
+  font-size: 42px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color :#231F20;
+  line-height: 25px;
+  padding: 15px 0px 10px 10px;
+  text-align: left;
+  -webkit-border-top-right-radius: 50px 50px;
+  -webkit-border-bottom-right-radius: 50px 50px;  
+}
+
+#did-you-know ul {
+  list-style-type: none;
+  padding: 10px 20px 10px 20px;
+  margin-top: -35px;
+  font-size: 20px;  
+  font-family: 'DINWebCondLight'; 
+  color: #231F20;  
+}
+
+#did-you-know li {
+  background-image: url('/sites/all/micro/art-2011/img/arrow-blue.png');
+  background-repeat: no-repeat;
+  background-position: 0px 5px; 
+  padding: 0px 0px 10px 14px;
+  line-height: 20px;
+  text-align: left;
+}
+
+/* SUBMIT - YELLOW BOX BEGIN */
+
+#box-yellow3 {
+  display: block;
+  background: #FFF100;
+  width: 266px;
+  height: 266px;
+  color: #231F20;
+  margin-bottom: 10px;
+}
+
+div.node #box-yellow3 h2 {
+  font-family: 'DINWebCondBlack';
+  font-size: 40px;
+  color: #231F20;
+  padding: 0px 10px 10px 10px;
+  text-align: center;
+  margin-bottom: -30px;
+  text-shadow: 0px 3px 5px #444;
+}
+
+#box-yellow3 p {
+  font-family: 'DINWebCondLight';
+  font-size: 30px;
+  color: #231F20;
+  line-height: 30px;
+  padding: 15px 20px 10px 10px;
+  text-align: center;
+  text-shadow: 0px 1px 2px #444;
+}  
+
+#box-yellow3 img {
+  margin-top: -7px;
+  position: relative;
+  text-shadow: 0px 3px 10px #444;
+}
+
+#box-blue-star {
+  display: block;
+  width: 266px;
+  height: 266px;
+  background: url('/sites/all/micro/art-2011/img/box-blue-star.png') center top no-repeat;
+  margin-bottom: 10px;
+}
+
+#box-blue-star p {
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight';
+  font-size: 85px;
+  line-height: 80px;
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  text-shadow: 0px 3px 10px #444;
+  letter-spacing: 10px;
+}
+
+#box-blue-star a {
+  color: #FFFFFF;
+}  
+
+#box-pink-faqs {
+  color: #FFFFFF;
+  display:block;
+  width: 266px;
+  height: 266px;
+  background: url('/sites/all/micro/art-2011/img/box-pink-faqs.png') center no-repeat;
+  margin-bottom: 10px;
+}
+
+#box-pink-faqs p {
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight';
+  font-size: 110px;
+  padding: 60px 10px 10px 10px;
+  text-align: center;
+  text-shadow: 0px 3px 10px #444;
+  letter-spacing: 10px;
+}
+
+#box-pink-faqs a {
+  color: #FFFFFF;
+}  
+
+#boxes3 {
+  display: block;
+  width: 266px;
+  position: absolute;
+  top: 270px;
+  right: 60px;
+}
+
+#box-yellow-angled {
+  background: url('/sites/all/micro/art-2011/img/box-yellow-angled.png') center no-repeat; 
+  width: 350px;
+  height: 180px;
+}
+
+#box-yellow-share {
+  float: right;
+  background: url('/sites/all/micro/art-2011/img/box-yellow-share.png') center no-repeat; 
+  width: 439px;
+  height: 174px;
+  margin-top: 30px;
+}
+
+#box-yellow-share p {
+  font-family: 'DINWebCondLight';
+  font-size: 26px;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
+  color: #000000;  
+  line-height: 25px;
+}
+
+div.node #box-yellow-angled h2 {
+  color: #231F20; 
+  font-family: 'DINWebCondLight';
+  text-shadow: 0px 3px 10px #444;
+  font-size: 75px;
+  text-align: center;
+  padding: 25px 10px 10px 10px;
+  line-height: 70px;
+}
+/* PRIZING - STEPS BEGIN */
+#prize-steps {
+  width: 360px;
+  color: #000000;
+}
+
+#prize-steps li {
+  font-family: 'DINWebCondBlack';
+  font-size: 40px;
+  color: #000000;
+  line-height: 20px;
+  margin-left: 15px;
+}
+
+#prize-steps p {
+  font-family: 'DINWebCondLight';
+  font-size: 20px;
+  color: #000000;
+  margin-left: -10px;
+}
+/* PRIZING - STEPS END */
+
+/* PRIZING - JUDGES BEGIN */
+
+#judges {
+  background: #F5F5F5;
+  float: right;
+  padding-right: 10px;
+  height: 50px;
+  width: 750px;
+  margin-right: -20px;
+  line-height: 2px;
+}
+  
+div.node #judges h2 {
+  font-family: 'DINWebCondBlack'; 
+  font-size: 30px;
+  color: #000000;
+  text-align: right;  
+}
+
+#judges p {
+  font-family: 'DINWebCondLight'; 
+  color: #000000;
+  text-align: right;
+  font-size: 20px;  
+}
+
+#judges-name {
+	margin-left: 68px;
+}
+
+#judges-name a {
+  float: left;
+}
+
+#judges-name img {
+  margin-top: 10px;
+  margin-left: 10px; 
+}
+
+#judges-name a p {
+  font-family: 'DINWebCondLight'; 
+  font-size: 20px;  
+  background-color: #FFF100;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+div.node #judges-name h2 {
+  background-color: #FFF100;
+  font-family: 'DINWebCondLight';
+  color: #000000;
+  font-size: 20px;
+  text-align: left;
+  float:left;
+  width: 150px;  
+  height: 20px;
+  display: block;
+  padding: 5px;
+}
+
+.judges-bio {
+
+}
+
+.bio-content {
+  font-family: 'DINWebCondLight'; 
+  font-size: 20px;
+  color: #FFFFFF;
+  padding: 20px;	
+}
+/* PRIZING - JUDGES END */
+
+#prizing-above {
+  margin-left: 40px;
+}
+
+/* PRIZING BEGIN */
+#prizes {
+  width: 800px;
+  text-align: center;
+  padding-left: 20px;
+}
+  
+#box-pink-prizes {
+  display: inline;
+  background-color: #EB008B;
+  width: 200px;
+  height: 200px;  
+  float: left;
+}
+
+#box-grey-prizes-1 p,
+#box-grey-prizes-2 p,
+#box-grey-prizes-3 p {
+	margin-top: 5px;
+	padding: 5px;
+	line-height: 18px;
+	width: 190px;
+	height: 40px; 
+	font-family: 'DINWebCondLight'; 
+	background-color: #D0D2D3;
+	text-align: center;
+	float: left;
+}
+
+#box-grey-prizes-1 p {
+	margin-left: 20px;
+	font-size: 16px;
+}
+
+#box-grey-prizes-2 p {
+	margin-left: 65px;
+	font-size: 15px;
+}
+
+#box-grey-prizes-3 p {
+	margin-left: 65px;
+	font-size: 16px;
+}
+
+#box-pink-prizes p {
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight'; 
+  font-size: 45px;
+  vertical-align: middle;
+  line-height: 40px;
+  padding: 20px 25px 15px 15px;  
+}
+
+#box-blue-prizes {
+  display: inline;
+  background-color: #00ADEE;
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight'; 
+  width: 200px;
+  height: 200px;
+  float: left;  
+}	
+
+#box-blue-prizes p {
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight'; 
+  font-size: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+  padding: 15px;  
+}
+
+#box-yellow-prizes {
+  display: inline;
+  background-color: #FFF100;
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight'; 
+  width: 200px;
+  height: 200px;
+  float: left;  
+}
+
+#box-yellow-prizes p {
+  color: #000000;
+  font-family: 'DINWebCondLight'; 
+  font-size: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+  padding: 15px;  
+}
+
+#plus {
+  float: left;
+  margin-top: 70px;
+  padding: 0px 5px 0px 5px;
+}
+
+#front-video {
+  padding: 25px 0px 20px 0px;
+  width: 510px;
+  height: 410px;
+  margin-left: -30px;
+}
+
+#share-video {
+  font-family: 'DINWebCond';
+  font-size: 18px;
+  position: relative;
+  right: 30px;
+  bottom: 20px;
+  width: 480px;
+  background: #00ADEE;
+  padding: 0px 10px 10px 20px;
+}
+
+#share-video img {
+  border: 0px;
+  padding-right: 2px;
+  text-align: right;
+  left: 30px;
+  position: relative;
+  top: 5px;
+}
+
+/* SHARE YOUR VOICE FORM */
+
+div#block-webform-client-block-700377 {
+ background: #F5F5F5;
+ color:#231F20;
+ width: 430px;
+ padding-top: 30px;
+ float: left;
+}
+
+#block-webform-client-block-700377 h2.title {
+  color: #FFFFFF;
+  font-size: 32px;
+  font-family: 'DINWebCondBlack';  
+  background: #D0D2D3;
+  text-shadow: 0px 3px 10px #444; 
+  padding: 0px 20px 0px 20px;
+  display: inline;
+  margin-left: 10px;
+}
+
+#block-webform-client-block-700377 .content {
+  font-family: 'DINWebCondLight';
+  font-size: 16px;
+  color: #231F20;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+#webform-client-form-700377 #webform-component-last-name {
+  margin: -58px 0 0 100px;
+}
+
+#webform-client-form-700377 #webform-component-mobile--or--email {
+  margin: -58px 0 0 200px;
+}
+
+#webform-client-form-700377 div.form-actions input#edit-submit:hover {
+  cursor: pointer;
+  border: none;
+  background: url('/sites/all/micro/art-2011/img/submit-pink.png') no-repeat;
+  height: 65px;
+  width:65px;
+  text-indent:-9999px;
+}
+
+#webform-client-form-700377 div.form-actions input#edit-submit {
+  cursor: pointer;
+  border: none;
+  background: url('/sites/all/micro/art-2011/img/submit-pink-on-white.png') no-repeat;
+  height: 65px;
+  width:65px;
+  text-indent:-9999px;
+  margin: -100px 0 0 290px;
+  position: absolute;  
+}
+
+#webform-client-form-700377 div#edit-submitted-why-is-art-education-important-to-you-wrapper.form item {
+  width: 280px;
+}
+
+div#block-webform-client-block-700377 .form-required, div#block-webform-client-block-700377 .content {
+  color: #000000;
+}
+
+#webform-client-form-700377 #edit-submitted-why-is-art-education-important-to-you-wrapper {
+  width: 280px;
+}
+
+/* SHARE YOUR VOICE FORM END */
+
+.tabs {
+  position: absolute;
+  right:0px;
+  width: 200px;
+  top: 60px;
+}
+
+/* .form-item label, .form-required {
+  color: #FFFFFF;
+}
+*/
+
+.input {
+  border: none;
+  border-style: none;
+}
+
+/* SIGN UP FORM BEGIN */
+
+/* FACEBOOK & TWITTER ICONS */
+
+#share-signup {
+  position: absolute;
+  top: 240px;
+  left: 790px;
+  z-index: 2;
+}
+
+div#block-webform-client-block-696607 .form-required, div#block-webform-client-block-696607 .content {
+  color: #FFFFFF;
+  font-family: 'DINWebCondLight';
+  font-size: 15px;  
+}
+  
+div#block-webform-client-block-696607 {
+  position: absolute;
+  right: -15px;
+  top: 230px;
+  width: 320px;
+  display: block;
+  color: #FFFFFF;
+  line-height: 10px;
+  background: #eb008a; 
+/* FF3.6+ */
+  background: -moz-linear-gradient(left, #eb008a 0%, #da1b5e 100%); 
+/* Chrome,Safari 4+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#eb008a), color-stop(100%,#da1b5e)); 
+/* Chrome 10+,Safari 5.1+ */
+  background: -webkit-linear-gradient(left, #eb008a 0%,#da1b5e 100%); 
+/* Opera 11.10+ */
+  background: -o-linear-gradient(left, #eb008a 0%,#da1b5e 100%); 
+/* W3C */
+  background: linear-gradient(left, #eb008a 0%,#da1b5e 100%); 
+/* IE 5.5 - 7 */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=#eb008a, endColorStr=#da1b5e, GradientType=1);
+/* IE6-9 */		
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eb008a', endColorstr='#da1b5e',GradientType=1 ); 
+/* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#eb008a, endColorstr=#da1b5e, GradientType=1)";
+/* IE10+ */
+  background: -ms-linear-gradient(left, #eb008a 0%,#da1b5e 100%); 
+}
+
+#webform-client-form-696607 #webform-component-last-name {
+  margin: -51px 0 0 120px;
+}
+
+#signup-form-wrap-around img {
+	position: absolute;
+	right:-26px;
+	top: 201px;
+}
+
+#fine-art-america-logo img { 
+	position: absolute;
+	right:80px;
+	top: 639px;
+} 
+
+#webform-client-form-696607 div.form-actions input#edit-submit:hover {
+  border: none;
+  background: url('/sites/all/micro/art-2011/img/submit-pink-on-white.png') no-repeat;
+  height: 65px;
+  width:65px;
+  text-indent:-9999px;
+  margin: -800px 0 0 220px;  
+}
+
+#webform-client-form-696607 div.form-actions input#edit-submit {
+  border: none;
+  background: url('/sites/all/micro/art-2011/img/submit-pink.png') no-repeat;
+  height: 65px;
+  width:65px;
+  text-indent:-9999px;
+  margin: -800px 0 0 220px;  
+}
+
+/* SIGN-UP SUBMIT BUTTON */
+
+#edit-submit-1 div.form-actions input#edit-submit:hover {
+  border: none;
+  background: url('/sites/all/micro/art-2011/img/submit-pink-on-white.png') no-repeat;
+  height: 65px;
+  width:65px;
+  text-indent:-9999px;
+  margin: -800px 0 0 220px;  
+}
+
+#edit-submit-1 div.form-actions input#edit-submit {
+  border: none;
+  background: url('/sites/all/micro/art-2011/img/submit-pink.png') no-repeat;
+  height: 65px;
+  width:65px;
+  text-indent:-9999px;
+  margin: -800px 0 0 220px;  
+}
+
+#block-webform-client-block-696607 h2.title {
+  color: #FFFFFF;
+  font-family: 'DINWebCondBlack';
+  font-size: 37px;
+  font-weight: normal;
+  font-style: normal;
+  padding-top: 20px;
+  text-transform: uppercase;
+  margin-bottom: -20px;
+}
+
+/* SIGN UP END */
+
+#submit-art {
+  font-family: 'DINWebCondLight';
+  font-size: 20px;
+  background: #F5F5F5;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px; /* future proofing */
+  -khtml-border-radius: 10px; /* for old Konqueror browsers */
+  width: 450px;
+  padding: 10px 10px 20px 20px;
+}
+
+#edit-field-art2011-file-0-upload-wrapper {
+
+}
+
+/* #edit-field-art2011-file-0-upload-wrapper .description {
+ border-bottom: 1px solid #231F20;
+}
+#edit-field-art2011-file-0-upload {
+ border-top: 1px solid #231F20; 
+}
+*/
+
+#edit-title, #edit-field-art2011-why-0-value, #edit-field-art2011-whyart-0-value {
+  width: 360px;
+}
+
+#edit-field-art2011-file-0-upload {
+  cursor: pointer;
+  background: url( '/sites/all/micro/art-2011/img/choose-file.png') no-repeat;
+  text-indent: -9999px;  
+  margin: -0px 0px 0px 0px;
+  height: 18px;
+}
+
+#edit-field-art2011-file-0-filefield-upload {
+  cursor: pointer;
+  float: right;
+  text-indent: -9999px;
+  background: url( '/sites/all/micro/art-2011/img/submit-upload.png') no-repeat;
+  width: 74px;
+  border: 0px;
+  margin: -20px 0px 0px 0px;
+} 
+
+/* GALLERY PAGE */
+
+.view-make-art-save-art-2011 {
+  padding: 10px;	
+} 
+
+.views-view-grid {
+  margin-left: auto;
+  margin-right: auto;	
+}
+
+.views-field-title {
+  background: #FFF100;
+  color: #000000;
+  font-family: 'DINWebCondLight'; 
+  font-size: 20px;
+  padding:15px;
+  width: 170px;
+}
+.field-content a:link, a:visited, a:active {
+  color: #000000;
+}  
+#gallery-how {
+  margin-left: -10px;
+  padding-bottom:15px;
+}
+
+#whitebox2 {
+  height: 800px;
+}  
+
+#webform-component-tell-us {
+  color: #000000;
+  font-family: 'DINWebCondLight'; 
+  font-size: 20px;
+}
+
+#clear-both {
+	clear: both;
+}
+
+#sb-player.html {
+overflow: hidden;
+}
+
+/* FAQS POPUP */
+
+#faqs-popup {
+  z-index: 1;
+  background: url('/sites/all/micro/art-2011/img/faq-popup.png') #EB008B center center fixed no-repeat;
+  height: 500px;
+  width: 500px;
+  color: #FFFFFF;
+  font-family: 'DINWebCond'; 
+  font-size: 18px;
+  text-indent: 10px;
+  overflow-x: hidden;
+}  
+
+#faqs-popup h2 {
+  font-family: 'DINWebCond'; 
+  font-size: 100px;
+  text-indent: 10px;
+  line-height: 0px;
+}  
+
+#faqs-popup li {
+  list-style-image:url('/sites/all/micro/art-2011/img/arrow-white.png');
+}
+#faqs-popup h3 { 
+  cursor: pointer; 
+  font-size: 18px;
+}
+
+#faqs-popup h3.active { 
+  color:#000000; 
+}
+
+#faqs-popup div { 
+  height:0; 
+  overflow:hidden; 
+  position:relative; 
+  width: 470px;
+}
+
+#faqs-popup div p { 
+  padding:0px 10px 0px 10px; 
+  margin:-2px 0px 0px 0px; 
+}
+
+/* FAQS POPUP END */
+
+/* RULES POPUP */
+
+#rules-popup {
+  z-index: 1;
+  background: url('/sites/all/micro/art-2011/img/rules-popup.png') no-repeat;
+  height: 500px;
+  width: 500px;
+  color: #FFFFFF;
+  font-family: 'DINWebCond'; 
+  font-size: 18px;
+  text-indent: 10px;
+  overflow-x: hidden;  
+}  
+
+#rules-popup h2 {
+  font-family: 'DINWebCond'; 
+  font-size: 100px;
+  text-indent: 10px;
+  margin: -10px 0px -45px 0px;
+}  
+
+#rules-popup li {
+  list-style-image:url('/sites/all/micro/art-2011/img/arrow-white.png');
+}
+#rules-popup h3 { 
+  cursor:pointer; 
+  font-size: 18px;
+}
+
+#rules-popup h3.active { 
+  color:#000000; 
+}
+
+#rules-popup div { 
+  height:0; 
+  overflow:hidden; 
+  position:relative; 
+}
+
+#rules-popup div p { 
+  padding:0px 10px 0px 10px; 
+  margin:-2px 0px 0px 0px; 
+}
+
+/* SHARE YOUR VOICE */
+
+#block-views-make_art_2011_share-block_1 {
+  width: 360px;
+  height: 300px;
+  float: left;
+  font-family: 'DINWebCondLight'; 
+  font-size: 20px;
+  background: #FFFFFF;
+  margin: 10px 0px 0px -15px;
+  padding-left: 5px;
+  overflow-y:auto;
+}
+
+.share-voice-content {
+  padding: 10px 10px 15px 0px;
+}  
+
+.share-voice-content-big {
+	display:none;  
+}  
+
+.share-voice-content-more {
+	cursor:pointer;
+	font-weight:bold;f
+    padding:3px;
+}  
+
+.share-voice-wrapper {
+	padding-top: 10px;
+} 
+
+.share-voice-wrapper:first-letter {
+  background: url('/sites/all/micro/art-2011/img/quote-top.png') no-repeat left top;
+  padding-left: 40px;
+} 
+
+.share-voice-name { 
+  font-weight: bold;
+  text-align: right;
+  padding: 10px 10px 25px 10px;
+  background: url('/sites/all/micro/art-2011/img/quote-bottom.png') no-repeat right bottom;
+  content:" ";  
+}
+
+.share-voice-name:before {
+  content: "--";
+}
+
+/* SHARE VOICE END */
+
+.region-content-bottom {  
+  background: #F5F5F5;
+  clear:both;
+  zoom: 1;
+}
+
+.region-content-bottom:after {
+  height: 0;
+  visibility: hidden;
+  content: ".";
+  clear: both;
+  display: block;
+}
+
+.campaign_art_2011_node_form {
+  test-align: left;	
+}
+
+/* .view-make-art-2011-share {
+  overflow-y: scroll;
+  height: 300px;
+} */
+
+/* clearfix begin */
+  .clearfix { zoom: 1; }
+  .clearfix:before,
+  .clearfix:after { content: ""; display: table; }
+  .clearfix:after { clear: both; }
+/* clearfix end */

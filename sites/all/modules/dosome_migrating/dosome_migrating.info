@@ -1,0 +1,4 @@
+name = DoSomething Migration Service
+description = Provides a service for importing data from DoSomething.org's live site.
+core = 6.x
+package = DoSomething

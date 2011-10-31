@@ -3,14 +3,8 @@
 
 <head>
   <title><?php print $head_title; ?></title>
-  <link rel="image_src" href="http://www.dosomething.org/files/imagecache/hp_art_gallery_mini/<?=$node->field_hp_art_design[0]['filepath'];?>" />
-  <meta property="og:title" content="Make Art. Save Art."/>
-  <meta property="og:type" content="non_profit"/>
-  <meta property="og:url" content="http://www.dosomething.org/<?=drupal_lookup_path('alias', 'node/'.$node->nid);?>" />
-  <meta property="og:image" content="http://www.dosomething.org/files/imagecache/hp_art_gallery_mini/<?=$node->field_hp_art_design[0]['filepath'];?>" />
-  <meta property="og:site_name" content="Make Art. Save Art."/>
-  <meta property="og:description" content="This design, <?=$node->title?>, shows why art is a crucial for a complete education. I joined &ldquo;Make Art. Save Art.&rdquo; because art education keeps me creative and excited about going to school! Support art and help this artist win an HP Pavilion dv6z laptop with AMD Vision technology by sharing their design with your friends too."/>
   <?php print $head; ?>
+
   <link rel="stylesheet" href="/nd/hp_art/hp_art.css" type="text/css" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/style.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/additional.css';?>" type="text/css" media="all" />
@@ -18,9 +12,8 @@
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/zen.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/drupal5-reference.css';?>" type="text/css" media="all" />
   <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/tabs.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/nd/hp_art/hp_art.css" type="text/css" />
-  <link rel="stylesheet" href="/nd/hp_art/gallery.css" type="text/css" />
- 
+
+
   <!--[if IE]>
     <?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie.css')): ?>
       <link rel="stylesheet" href="<?php print $base_path . $subtheme_directory ?>/fixes_msie.css" type="text/css">
@@ -31,10 +24,44 @@
       <link rel="stylesheet" href="<?php print $base_path . $subtheme_directory ?>/fixes_msie6.css" type="text/css">
   	<?php endif; ?>
   <![endif]-->
- <?php print $scripts; ?>
+  <?php print $scripts; ?>
   <script type="text/javascript" src="/sites/all/micro/dsu/jquery.cycle.lite.1.0.min.js"></script>
   <script type="text/javascript">$(function() { $('#slides').cycle(); });</script>
 </head>
+
+<?php /* different classes allow for separate theming of the home page */ ?>
+<?php
+
+//Variables available to us:
+/*
+$body_classes
+$search_box
+$logo
+$subtheme_directory
+$base_path
+$site_name
+$site_slogan
+$primary_links //needs theme('links',$primary_links);
+$secondary_links //needs theme('links', $secondary_links);
+$breadcrumb
+$mission
+$title
+$tabs
+$help
+$messages
+$content
+$feed_icons
+$footer_message
+$closure
+///////
+$header //Header block region
+$sidebar_right //Right sidebar region
+$content_top //Content Top region
+$content_bottom //Content Bottom region
+$closure_region //Closure Region block
+$top_right
+*/
+?>
 
 <body>
 <div id="wrapper">
@@ -63,13 +90,13 @@
 
         <div id="nav">
           <ul>
-            <li class="home"> <a href="/make-art-save-art">Home</a> </li>
-            <li class="art-ed"> <a href="/make-art-save-art/art-ed">Art Ed</a> </li>
-            <li class="submit"> <a href="/make-art-save-art/submit">Submit</a> </li>
-            <li class="gallery"> <a href="/make-art-save-art/gallery">Gallery</a> </li>
+          <li class="home"> <a<?php if (arg(1) === '582847') { print ' class="active"'; } ?> href="/make-art-save-art">Home</a> </li>
+            <li class="art-ed"> <a<?php if (arg(1) === '583277') { print ' class="active"'; } ?> href="/make-art-save-art/art-ed">Art Ed</a> </li>
+            <li class="submit"> <a<?php if (arg(1) === '583242') { print ' class="active"'; } ?> href="/make-art-save-art/submit">Submit</a> </li>
+            <li class="gallery"> <a<?php if (arg(1) === 'gallery') { print ' class="active"'; } ?> href="/make-art-save-art/gallery">Gallery</a> </li>
         </div>
         <!-- begin main text -->
-        <div id="main" >
+        <div id="main" class="<?=arg(1)?>">
         
 				<?php if ($messages): print $messages; endif; ?>
         
@@ -79,36 +106,8 @@
         <?php if(($help)&&(arg(0)=='node')&&(arg(1)=='add')): print $help; endif;?>
 			<?php print $content_top;?>
 			<?php print $content; ?>
-      <?php print $content_bottom;?>
-
-      <div id="sharing">
-
-        <h2><img class="share-this" src="/nd/hp_art/header_share_this.png" alt="Share This Design"></h2>
-
-        <p>Is this your favorite &ldquo;Make Art. Save Art.&rdquo; design? Share it with your social networks and the artist's representative to show that you support arts education in schools.</p>
-        <p>The design with the most &ldquo;shares&rdquo; will win $5000 for their school art program, a $1000 college scholarship, and an HP db6z laptop with AMD VISION technology. 4 other top designs will win laptops to power their creativity!</p>
-
-          <h3>Share this with your friends on Facebook</h3>
-
-        <div>
-          <a name="fb_share" type="box_count" href="http://www.facebook.com/sharer.php">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
-          <span style="padding-right: 15px;"></span>
-          <a href="http://twitter.com/share" class="twitter-share-button" data-text="Support art in schools & help artists win an @hp_pc w/ @AMD_Unprocessed. Share 'Make Art. Save Art.' designs. #SaveArt" data-count="vertical">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-        </div>
-
-        <div style="clear: both;"></div>
-
-      </div> <!-- sharing -->
-
-      <?php if (user_access('administer grant applications') || user_access('administer nodes')) : ?>
-        <div id="judging">
-          <iframe src="http://spreadsheets.google.com/embeddedform?formkey=dHlkQXVmZVROWDBEeFN2MVBsVXJEUVE6MQ" width="700" height="978" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-        </div>
-      <?php endif; ?>
-
-
+        			<?php print $content_bottom;?>
 			<div style="clear:both;"></div>
-
 <br />
 
 					
@@ -134,6 +133,17 @@
 </div>
 
 <?php print $closure;?>
+
+<script type="text/javascript">
+  $("#question-answer a").next().hide();
+  $("#question-answer a").click(function() {
+    if ($(this).next().is(":hidden")) {
+      $(this).next().slideDown('fast');
+    } else {
+      $(this).next().slideUp('fast');
+    }
+  });
+</script>
 
 <!-- Start Quantcast tag -->
 <script type="text/javascript">

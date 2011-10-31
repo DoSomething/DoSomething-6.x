@@ -29,7 +29,7 @@
                               'top_right' => $top_right,
                               )); ?>
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
-     <img id="header-message" src="/<?=$ds_micro;?>/ew/dates-sponsor.png"/>
+     <img id="header-message" src="/<?=$ds_micro;?>/ew/over.png"/>
      <img id="header-text" src="/<?=$ds_micro;?>/ew/text-01.png" width="250" />
       <div id="ewaste-nav">
       <?php

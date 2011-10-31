@@ -15,8 +15,8 @@
 ul.tabs {
     width: 270px;
     position: absolute;
-    top: -40px;
-    right: 0;
+    top: 0;
+    left: 0;
 }
 
 #main-wrapper {
@@ -325,4 +325,26 @@ tr.even, tr.odd {
 
 td.active {
     background: transparent;
+}
+
+#webform-client-form-711581 #edit-actions {
+    text-align: left;
+}
+
+#block-webform-client-block-711581 h2.title {
+    display: none;
+}
+
+.judge-image {
+    float: left;
+}
+
+.judge {
+    margin-left: 155px;
+}
+
+#node-659332 h3 {
+    clear: both;
+    padding-top: 20px;
+    margin-bottom: 0;
 }

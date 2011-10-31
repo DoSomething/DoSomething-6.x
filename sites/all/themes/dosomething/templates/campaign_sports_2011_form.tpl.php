@@ -3,6 +3,7 @@
     print drupal_render($form['title']);
     print drupal_render($form['field_zip_campaign']);
     print drupal_render($form['field_campaign_number_of_people']);
+    print drupal_render($form['field_campaign_pieces']);
     print drupal_render($form['field_campaign_pictures']);
     print drupal_render($form['field_campaign_essay']);
     print drupal_render($form['field_anything_else']);

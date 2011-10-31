@@ -1,0 +1,134 @@
+.title {
+	visibility:hidden;	
+}
+
+#main {
+  background-color: #005daa;
+  width: 850px;
+}
+
+#content {
+	width: 800px;
+}
+
+.branding {
+
+}
+
+.content h2 {
+	color: #fff !important;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+/*.dslogo {
+	background: url(ds-logo.png) no-repeat;
+	height: 200px;
+}*/
+
+.mtlogo {
+	margin-left: 200px;
+	background: url(mt-logo.png) no-repeat;
+	height: 180px;
+	align: center;
+}
+
+input#mobile,
+input#date_of_birth {
+  font-size: 27px;
+  font-weight: bold;
+  background: #eee;
+  color: #000;
+  border: none;
+  padding: 12px;
+  display: block;
+  margin: 10px;
+  margin-left: 210px;
+  width: 380px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  text-align:center;
+  
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+}
+
+input.form-submit.icon {
+	font-family: 'DINWebCondBlack';
+	color: #000;
+	font-size: 34px;
+	background-position: 0px 0px;
+	background-color: #fdb739;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc55e', endColorstr='#fdb739'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffc55e), to(#fdb739)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #ffc55e,  #fdb739); /* for firefox 3.6+ */ 
+	width: 140px;
+	height: 50px;
+	text-align: center;
+	margin-left: 340px;
+	cursor: pointer;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	border: 0;
+	-webkit-border-radius: 5px;
+}
+
+input.form-submit.icon:hover {
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+}
+
+.header1 {
+	color: #fff;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+.get-tix {
+	margin-left: 150px;
+	background: url(free-tickets.png) no-repeat;
+	height: 340px;
+	align: center;	
+	margin-bottom: 30px;
+}
+
+.header2 {
+	font-family: 'DINWebCondBlack';
+	font-size: 50px;
+	color: #000;
+	text-align: center;
+	background: #fed104;
+}
+
+.description {
+	font-size: 23px;
+	text-align: center;
+	line-height: 34px;
+	margin-left: 50px !important;
+	width: 700px;
+	padding: 10px;
+	color: #000 !important;
+	text-align: center;
+	background: #eaeaea;
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.disclaimer {
+	font-size: 18px;
+	line-height: 24px;
+	margin-left: 50px !important;
+	width: 700px;
+	padding: 10px;
+	color: #000 !important;
+	text-align: center;
+	margin-bottom: 30px;
+}

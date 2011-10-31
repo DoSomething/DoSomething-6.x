@@ -1,0 +1,452 @@
+<?php
+
+/**
+ * Implementation of hook_menu().
+ */
+function dosome_migrating_menu() {
+  $items['migrate/node/fields'] = array(
+    'page callback' => 'dosome_migrating_node_fields',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/node/list'] = array(
+    'page callback' => 'dosome_migrating_node_list',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/node/count'] = array(
+    'page callback' => 'dosome_migrating_node_count',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/node/get'] = array(
+    'page callback' => 'dosome_migrating_node_get',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+
+  $items['migrate/user/fields'] = array(
+    'page callback' => 'dosome_migrating_user_fields',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/user/count'] = array(
+    'page callback' => 'dosome_migrating_user_count',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/user/list'] = array(
+    'page callback' => 'dosome_migrating_user_list',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/user/get'] = array(
+    'page callback' => 'dosome_migrating_user_get',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+
+  $items['migrate/webform/fields'] = array(
+    'page callback' => 'dosome_migrating_webform_fields',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/webform/list'] = array(
+    'page callback' => 'dosome_migrating_webform_list',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/webform/count'] = array(
+    'page callback' => 'dosome_migrating_webform_count',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+  $items['migrate/webform/get'] = array(
+    'page callback' => 'dosome_migrating_webform_get',
+    'access callback' => 'dosome_migrating_menu_access',
+  );
+
+  return $items;
+}
+
+/**
+ * Implementation of hook_og().
+ */
+function dosome_migrating_og($op, $gid, $uid) {
+  db_query("INSERT INTO {dosome_migrating_og_membership_change} (uid, gid, op, changed) VALUES (%d, %d, '%s', %d)", $uid, $gid, $op, time());
+}
+
+function dosome_migrating_menu_access() {
+  // TODO should be smarter here.
+  return variable_get('dosome_migrating_access', FALSE);
+}
+
+function _dosome_migrating_print_ids($sql, $args, $field_name) {
+  $page = isset($_GET['page']) ? (int) $_GET['page'] : 0;
+  $page_size = 10000;
+  $result = db_query_range($sql, $args, $page * $page_size, $page_size);
+  $rows = array();
+  while ($row = db_fetch_object($result)) {
+    $rows[] = (int) $row->$field_name;
+  }
+
+  print drupal_json($rows);
+  return NULL;
+}
+
+function _dosome_migrating_print_count($sql, $args, $group_field = NULL, $count_field = NULL) {
+  $result = db_query($sql, $args);
+  if ($group_field && $count_field) {
+    $rows = array();
+    while ($row = db_fetch_object($result)) {
+      $rows[$row->$group_field] = (int) $row->$count_field;
+    }
+  }
+  else {
+    $rows = db_result(db_query($sql, $args));
+  }
+
+  print drupal_json($rows);
+  return NULL;
+}
+
+function dosome_migrating_node_fields() {
+  $fields = array();
+
+  $common_fields = array(
+    'nid' => t('Node: Existing node ID'),
+    'uid' => t('Node: Authored by (uid)'),
+    'created' => t('Node: Created timestamp'),
+    'changed' => t('Node: Modified timestamp'),
+    'status' => t('Node: Published'),
+    'promote' => t('Node: Promoted to front page'),
+    'sticky' => t('Node: Sticky at top of lists'),
+    'language' => t('Node: Language (fr, en, ...)'),
+    'path' => t('Node: Path alias'),
+  );
+
+  $content_info = _content_type_info();
+  foreach (node_get_types('names') as $type => $name) {
+    // Merge in the common fields...
+    $fields[$type] = $common_fields;
+    $node_type = node_get_types('type', $type);
+    if ($node_type->has_title) {
+      $fields[$type]['title'] = t('Node:') . ' Title - ' . $node_type->title_label;
+    }
+    if ($node_type->has_body) {
+      $fields[$type]['body'] = t('Node:') . ' Body - ' . $node_type->body_label;
+      $fields[$type]['format'] = t('Node: Body filter format');
+      $fields[$type]['teaser'] = t('Node: Teaser');
+    }
+
+    // ...then get the CCK fields...
+    foreach ($content_info['content types'][$type]['fields'] as $machine_name => $instance) {
+      $fields[$type][$machine_name] = $instance['type'] . ': ' . $instance['widget']['label'];
+    }
+
+    // ...and location fields...
+    $settings = variable_get('location_settings_node_'. $type, array());
+    if (isset($settings['multiple']) && $settings['multiple']['max'] > 0) {
+      $fields[$type]['locations'] = format_plural($settings['multiple']['max'], 'location: 1 value', 'Location: up to @count values');
+    }
+  }
+
+  // ...and taxonomy vocabularies.
+  $result = db_query("SELECT n.type, v.vid, v.name, v.description, v.multiple
+    FROM {vocabulary} v
+    INNER JOIN {vocabulary_node_types} n ON v.vid = n.vid
+    ORDER BY n.type, v.weight, v.name");
+  while ($v = db_fetch_object($result)) {
+    $label = ($v->multiple ? 'terms:' : 'term:') . ' ' . $v->name . ($v->description ? ' - ' : '') . $v->description;
+    $fields[$v->type]['vocab_' . $v->vid] = $label;
+  }
+
+  print drupal_json($fields);
+  return NULL;
+}
+
+function dosome_migrating_node_count() {
+  $sql = "SELECT COUNT(nid) as count, type
+    FROM {node}
+    GROUP BY type";
+  $args = array();
+  return _dosome_migrating_print_count($sql, $args, 'type', 'count');
+}
+
+function dosome_migrating_node_list($type) {
+  $sql = "SELECT nid
+    FROM {node}
+    WHERE type = '%s'
+    ORDER BY changed";
+  $args = array($type);
+  return _dosome_migrating_print_ids($sql, $args, 'nid');
+}
+
+function dosome_migrating_node_get($ids) {
+  $ids = explode(',', $ids);
+  $nodes = array();
+
+  $info = _content_type_info();
+
+  foreach ($ids as $id) {
+    $node = node_load($id);
+    if ($node->nid) {
+      // Flatten CCK fields.
+      if (isset($info['content types'][$node->type]['fields'])) {
+        foreach ($info['content types'][$node->type]['fields'] as $name => $field) {
+          $node->$name = _dosome_migrating_flatten($field, $node->$name);
+        }
+      }
+
+      // Flatten taxonomy terms.
+      foreach ($node->taxonomy as $term) {
+        $node->{'vocab_' . $term->vid}[$term->tid] = $term->name;
+      }
+      unset($node->taxonomy);
+
+      // Kill off duplicate location info (we prefer $node->locations).
+      unset($node->location);
+
+      $nodes[$node->nid] = $node;
+    }
+  }
+
+  print drupal_json($nodes);
+  return NULL;
+}
+
+function _dosome_migrating_flatten($field_info, $field) {
+  $return = array();
+  foreach ($field as $delta => $i) {
+    switch ($field_info['type']) {
+      case 'date': case 'datestamp': case 'datetime':
+      case 'number_integer': case 'number_decimal': case 'number_float':
+      case 'text':
+        $return[$delta] = $i['value'];
+        break;
+      case 'nodereference':
+        $return[$delta] = $i['nid'];
+        break;
+      case 'userreference':
+        $return[$delta] = $i['uid'];
+        break;
+      case 'filefield':
+        $return[$delta] = $i['fid'];
+        break;
+      case 'link':
+        $return[$delta] = $i['url'];
+        break;
+      case 'emvideo':
+        // Skip over the bullshit zzz_custom_url provider.
+        $return[$delta] = ($i['provider'] && $i['provider'] != 'zzz_custom_url' && $i['value']) ? ("{$i['provider']}://v/{$i['value']}") : NULL;
+        break;
+      default:
+        // Unknown field type or one that needs multiple colums so we return
+        // the whole thing.
+        $return[$delta] = $i;
+        break;
+    }
+  }
+
+  // Return the first element for single value fields, everything else goes back
+  // as an array.
+  return empty($field_info['multiple']) ? $return[0] : array_filter($return);
+}
+
+function dosome_migrating_user_fields() {
+  $fields = array(
+    'uid' => t('User: Existing user ID'),
+    'name' => t('User: Username'),
+    'pass' => t('User: Password hash'),
+    'mail' => t('User: Email address'),
+    'roles' => t('User: Role Ids'),
+    'theme' => t('User: Default theme'),
+    'signature' => t('User: Signature'),
+    'signature_format' => t('User: Signature format'),
+    'created' => t('User: Registered timestamp'),
+    'access' => t('User: Last access timestamp'),
+    'login' => t('User: Last login timestamp'),
+    'status' => t('User: Status'),
+    'timezone' => t('User: Timezone'),
+    'language' => t('User: Language'),
+    'picture' => t('User: Picture'),
+    'init' => t('User: Init'),
+  );
+
+  foreach (profile_categories() as $category) {
+    $result = _profile_get_fields($category['name'], FALSE);
+    while ($field = db_fetch_object($result)) {
+      $fields[$field->name] = $field->category . ': ' . $field->title . ' (' . $field->type . ')';
+    }
+  }
+
+  print drupal_json($fields);
+  return NULL;
+}
+
+function dosome_migrating_user_count() {
+  if ($_GET['since_uid']) {
+    $sql = "SELECT COUNT(uid)
+      FROM {users}
+      WHERE uid >= %d
+      ORDER BY uid";
+    $args = array($_GET['since_uid']);
+  }
+  elseif ($_GET['since_ts']) {
+    $sql = "SELECT COUNT(uid)
+      FROM {dosome_migrating_user_changed}
+      WHERE changed >= %d
+      ORDER BY uid";
+    $args = array($_GET['since_ts']);
+  }
+  else {
+    $sql = "SELECT COUNT(uid)
+      FROM {users}
+      WHERE uid > 0
+      ORDER BY uid";
+    $args = array();
+  }
+
+  return _dosome_migrating_print_count($sql, $args);
+}
+
+function dosome_migrating_user_list() {
+  if ($_GET['since_uid']) {
+    $sql = "SELECT uid
+      FROM {users}
+      WHERE uid >= %d
+      ORDER BY uid";
+    $args = array($_GET['since_uid']);
+  }
+  elseif ($_GET['since_ts']) {
+    $sql = "SELECT uid
+      FROM {dosome_migrating_user_changed}
+      WHERE changed >= %d
+      ORDER BY uid";
+    $args = array($_GET['since_ts']);
+  }
+  else {
+    $sql = "SELECT uid
+      FROM {users}
+      WHERE uid > 0
+      ORDER BY uid";
+    $args = array();
+  }
+  return _dosome_migrating_print_ids($sql, $args, 'uid');
+}
+
+function dosome_migrating_user_get($ids) {
+  $ids = explode(',', $ids);
+  $users = array();
+
+  foreach ($ids as $id) {
+    $user = user_load(array('uid' => $id));
+    if ($user->uid) {
+      $users[$user->uid] = $user;
+    }
+  }
+
+  print drupal_json($users);
+  return NULL;
+}
+
+/**
+ * Implementation of hook_user().
+ */
+function dosome_migrating_user($op, &$edit, &$account, $category = NULL) {
+  switch ($op) {
+    case 'update':
+      // Kill off any existing record and insert a new one.
+      db_query('DELETE FROM {dosome_migrating_user_changed} WHERE uid = %d', array($account->uid));
+      // Intentionally no break here.
+    case 'insert':
+      $row = array('uid' => $account->uid, 'changed' => time());
+      drupal_write_record('dosome_migrating_user_changed', $row);
+      break;
+
+    case 'delete':
+      // TODO should record deletion so we don't migrate them?
+      break;
+  }
+}
+
+function dosome_migrating_webform_fields($nid) {
+  // Fields defined by the schema.
+  $fields = array(
+    'nid' => t('The webform node id.'),
+    'sid' => t('The unique identifier for this submission.'),
+    'uid' => t('The id of the user that completed this submission.'),
+    'is_draft' => t('Is this a draft of the submission?'),
+    'submitted' => t('Timestamp of when the form was submitted.'),
+    'remote_addr' => t('The IP address of the user that submitted the form.'),
+  );
+
+  // Create a field for each component on the webform.
+  $additions = webform_node_load((object) array('nid' => $nid));
+  if (isset($additions['webform']['components'])) {
+    foreach ($additions['webform']['components'] as $component) {
+      $fields['data_' . $component['form_key']] = t('@type: @name', array('@type' => $component['type'], '@name' => $component['name']));
+    }
+  }
+
+  print drupal_json($fields);
+  return NULL;
+}
+
+function dosome_migrating_webform_count($nid) {
+  if ($_GET['since_ts']) {
+    $sql = "SELECT COUNT(sid) as count, nid
+      FROM {webform_submissions}
+      WHERE submitted >= %d
+      GROUP BY nid";
+    $args = array($_GET['since_ts']);
+  }
+  else {
+    $sql = "SELECT COUNT(sid) as count, nid
+      FROM {webform_submissions}
+      GROUP BY nid";
+    $args = array();
+  }
+  return _dosome_migrating_print_count($sql, $args, 'nid', 'count');
+}
+
+function dosome_migrating_webform_list($nid) {
+  if ($_GET['since_ts']) {
+    $sql = "SELECT sid
+      FROM {webform_submissions}
+      WHERE nid = %d AND submitted >= %d
+      ORDER BY submitted";
+    $args = array($nid, $_GET['since_ts']);
+  }
+  else {
+    $sql = "SELECT sid
+      FROM {webform_submissions}
+      WHERE nid = %d
+      ORDER BY submitted";
+    $args = array($nid);
+  }
+  return _dosome_migrating_print_ids($sql, $args, 'sid');
+}
+
+function dosome_migrating_webform_get($ids) {
+  static $components;
+
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+
+  $ids = explode(',', $ids);
+  $webforms = array();
+  foreach ($ids as $id) {
+    foreach (webform_get_submissions(array('sid' => $id)) as $webform) {
+      // Make sure we've got the data to map component id to keys.
+      if (!isset($components[$webform->nid])) {
+        $additions = webform_node_load((object) array('nid' => $webform->nid));
+        if (isset($additions['webform']['components'])) {
+          $components[$webform->nid] = array();
+          foreach ($additions['webform']['components'] as $component) {
+            $components[$webform->nid][$component['cid']] = 'data_' . $component['form_key'];
+          }
+        }
+      }
+
+      // Flatten the Pull the data elements up and prefix the
+      foreach ($webform->data as $cid => $values) {
+        $webform->{$components[$webform->nid][$cid]} = $values['value'];
+      }
+      unset($webform->data);
+
+      $webforms[$webform->sid] = $webform;
+    }
+  }
+
+  print drupal_json($webforms);
+  return NULL;
+}

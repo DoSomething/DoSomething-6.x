@@ -107,13 +107,15 @@ $top_right
       </div>
 
         <div id="botbTop"></div>
+		
         <div id="botbMain">
         
 				<?php if ($messages): print $messages; endif; ?>
         
         <?php if(($help)&&(arg(0)=='node')&&(arg(1)=='add')): print $help; endif;?>
         <?php print $content_top;?>
-        <?php print $content; ?>
+        
+		<?php print $content; ?>
         <?php print $content_bottom;?>
 
         <div style="clear: both;"></div>

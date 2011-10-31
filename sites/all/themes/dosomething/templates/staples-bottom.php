@@ -1,4 +1,4 @@
-<div id="home-footer" class="clearfix">
+<?php /*<div id="home-footer" class="clearfix">
 
   <div id="home-footer-locator">
 
@@ -32,3 +32,4 @@
   </div>
 
 </div>
+*/?>

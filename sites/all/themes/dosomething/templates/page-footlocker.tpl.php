@@ -27,7 +27,7 @@
 
 <?
   $current_path = preg_replace('/^\//', '', drupal_get_path_alias(request_uri()));
-  $twitter_text = "Win a $20,000 scholarship by applying to the Foot Locker Scholar Athletes program! http://www.dosomething.org/footlocker";
+  $twitter_text = "You could be one of 20 awarded a $20K scholarship by applying to the Foot Locker Scholar Athletes scholarship program. dsorg.us/FLs20";
 ?>
 
 <body class="<?php print $classes; ?>">

@@ -30,7 +30,7 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
     $map = _dosomething_wf_modify_webform_component_mapping($node);
     $checks = $submission->data[$map['check_boxes']]['value'];
     if (in_array('text', $checks)) {
-        ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 68611, 79611);
+      ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 68611, 79611);
     }
     if (in_array('email', $checks)) {
         dia_signup(array(
@@ -47,7 +47,19 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
     if (in_array('action_kit', $checks)) {
         $node->webform['redirect_url'] = 'sports/action-kit';
     }
-  }
+ }
+  /*Give a Spit About cancer webform*/
+ else if ($node->nid == 682753) {
+   $map = _dosomething_wf_modify_webform_component_mapping($node);
+   ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 67751, 82281);
+ }
+  /*Give a Spit - Join this Drive webform on Schools Page*/
+/*
+ else if ($node->nid == 704188) {
+      $map = _dosomething_wf_modify_webform_component_mapping($node);
+          ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 67751, 82281);
+ }
+*/
 }
 
 function _dosomething_wf_modify_webform_component_mapping($node) {

@@ -296,6 +296,9 @@ color: #FBDA0F;
 background: url("blackflag.png") no-repeat scroll 0 -14px transparent ;
 }
 
+#node-695338 h3.blackflag-shs {
+background: url("blackflag_shs.png") no-repeat scroll 0 -14px transparent ;
+}
 /*Testing the arrows stuff*/
 #node-695338 ul.triarrows {
     /*margin-top: 5px;*/

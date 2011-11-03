@@ -20,14 +20,14 @@
     $app_emails = array();
     foreach ($apps as $app)
     {
-        $email = rtrim($app->data[4]['value'][0]);
+        $email = rtrim(strtolower($app->data[4]['value'][0]));
         $app_emails[$email] = TRUE;
     }
     $conversions = 0;
     $nominators = array();
     foreach ($noms as $nom)
     {
-        $email = rtrim($nom->data[5]['value'][0]);
+        $email = rtrim(strtolower($nom->data[5]['value'][0]));
         if ($app_emails[$email])
             $conversions++;
         $nominators[] = rtrim($nom->data[3]['value'][0]);

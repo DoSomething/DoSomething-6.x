@@ -56,10 +56,6 @@ function dosome_migrating_schema() {
 
 function dosome_migrating_install() {
   drupal_install_schema('dosome_migrating');
-  // Lets make sure every user has a changed date so we can do an inner join.
-  db_query("INSERT INTO {dosome_migrating_user_changed} (uid, changed)
-    SELECT uid, created
-    FROM {users} WHERE uid > 0");
 }
 
 function dosome_migrating_uninstall() {

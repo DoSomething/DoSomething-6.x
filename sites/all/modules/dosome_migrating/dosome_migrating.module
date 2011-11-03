@@ -281,12 +281,19 @@ function dosome_migrating_user_count() {
       ORDER BY uid";
     $args = array($_GET['since_uid']);
   }
-  elseif ($_GET['since_ts']) {
+  elseif ($_GET['created_since']) {
+    $sql = "SELECT COUNT(uid)
+      FROM {users}
+      WHERE created >= %d
+      ORDER BY uid";
+    $args = array($_GET['created_since']);
+  }
+  elseif ($_GET['changed_since']) {
     $sql = "SELECT COUNT(uid)
       FROM {dosome_migrating_user_changed}
       WHERE changed >= %d
       ORDER BY uid";
-    $args = array($_GET['since_ts']);
+    $args = array($_GET['changed_since']);
   }
   else {
     $sql = "SELECT COUNT(uid)
@@ -303,16 +310,23 @@ function dosome_migrating_user_list() {
   if ($_GET['since_uid']) {
     $sql = "SELECT uid
       FROM {users}
-      WHERE uid >= %d
+      WHERE uid > %d
       ORDER BY uid";
     $args = array($_GET['since_uid']);
   }
-  elseif ($_GET['since_ts']) {
+  elseif ($_GET['created_since']) {
+    $sql = "SELECT uid
+      FROM {users}
+      WHERE created >= %d
+      ORDER BY uid";
+    $args = array($_GET['created_since']);
+  }
+  elseif ($_GET['changed_since']) {
     $sql = "SELECT uid
       FROM {dosome_migrating_user_changed}
       WHERE changed >= %d
       ORDER BY uid";
-    $args = array($_GET['since_ts']);
+    $args = array($_GET['changed_since']);
   }
   else {
     $sql = "SELECT uid
@@ -383,12 +397,12 @@ function dosome_migrating_webform_fields($nid) {
 }
 
 function dosome_migrating_webform_count($nid) {
-  if ($_GET['since_ts']) {
+  if ($_GET['created_since']) {
     $sql = "SELECT COUNT(sid) as count, nid
       FROM {webform_submissions}
       WHERE submitted >= %d
       GROUP BY nid";
-    $args = array($_GET['since_ts']);
+    $args = array($_GET['created_since']);
   }
   else {
     $sql = "SELECT COUNT(sid) as count, nid
@@ -400,18 +414,18 @@ function dosome_migrating_webform_count($nid) {
 }
 
 function dosome_migrating_webform_list($nid) {
-  if ($_GET['since_ts']) {
+  if ($_GET['created_since']) {
     $sql = "SELECT sid
       FROM {webform_submissions}
       WHERE nid = %d AND submitted >= %d
-      ORDER BY submitted";
-    $args = array($nid, $_GET['since_ts']);
+      ORDER BY sid";
+    $args = array($nid, $_GET['created_since']);
   }
   else {
     $sql = "SELECT sid
       FROM {webform_submissions}
       WHERE nid = %d
-      ORDER BY submitted";
+      ORDER BY sid";
     $args = array($nid);
   }
   return _dosome_migrating_print_ids($sql, $args, 'sid');

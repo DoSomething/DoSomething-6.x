@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#"  xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
   <title><?php print $head_title; ?></title>
@@ -10,11 +10,11 @@
   ?>
   <meta name="description" content="Give a Spit About Cancer" />
   <meta property="og:title" content="Give a Spit About Cancer | Do Something"/>
-  <meta property="og:url" content="http://dosomething.org/spit" />
+  <meta property="og:url" content="http://www.dosomething.org/spit" />
   <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/spit/spit-logo.png" />
   <meta property="og:description" content="Do you Give a Spit about Cancer? Swab your cheek and you could save a life. Join me at the marrow donor registration drive!" />
   <meta property="og:type" content="non_profit"/>
-  <meta property="fb:admins" content="508145411,603061,630191494" />
+  <meta property="fb:admins" content="603061" />
   <meta property="fb:app_id" content="93836527897" />
   <meta property="og:site_name" content="DoSomething.org"/>
   
@@ -30,6 +30,17 @@
 </head>
 
 <body class="<?php print $classes; ?>">
+
+<!-- Added new facebook Javascript Sdk for Video share pages 11/1/2011 -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=237958862926429";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--End of Javascript fdk code -->
 
   <div id="page-wrapper"><div id="page">
   <? print theme('header', array(

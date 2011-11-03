@@ -1151,10 +1151,9 @@ overflow: hidden;
   test-align: left;	
 }
 
-/* .view-make-art-2011-share {
-  overflow-y: scroll;
-  height: 300px;
-} */
+#tinsel-korey-pics {
+  position: relative;
+}  
 
 /* clearfix begin */
   .clearfix { zoom: 1; }

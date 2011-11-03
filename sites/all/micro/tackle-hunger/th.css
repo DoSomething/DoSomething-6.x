@@ -1,0 +1,233 @@
+#main-wrapper {
+	padding: 0px;
+}
+
+#content { 
+    background: #42210b;
+    margin: 0;
+    width: 100%;
+}
+
+.node h2.title,
+#intro h2.title {
+	display: none;
+}
+
+#bag-top { 
+	width: 880px;
+	position: relative;
+	top: 3px;
+}
+
+#tackle-hunger-logo {
+	float: left;
+	width: 450px;
+	padding-left: 8px;
+} 
+
+.content #signup-form {
+	width: 360px;
+	height: 250px;
+	background: url('sign-up-now.png') no-repeat #be1e2d;
+	float: right;
+	margin-right: 15px;
+	padding: 15px;
+	padding-top: 70px;
+	color: #fff;
+}
+
+.content #log-in-text {
+	color: #fff;
+	margin-top: 20px;
+	margin-left: 5px;
+	font-size: 16px;
+}
+
+.content #log-in-text a {
+	color: #fcb619;
+	font-weight: bold;
+}
+
+.content #signup-form .form-text {
+	width: 260px;
+}
+
+.content #signup-form .form-required { 
+	color: #fff;
+}
+
+.content #signup-form .collapsed,
+#edit-preview,
+#edit-field-cannedfood-studentsinvolv-0-value-wrapper,
+#edit-field-tackle-hunger-expected-lb-0-value-wrapper,
+#edit-field-campaign-cell-reminder-value-wrapper,
+#edit-field-campaign-state-0-value-,
+#edit-field-campaign-city-0-value-wrapper,
+#edit-field-campaign-state-0-value-wrapper {
+	display: none;
+}
+
+#signup-form input#edit-submit {
+  cursor: pointer;
+  border: none;
+  background: url('/sites/all/micro/tackle-hunger/submit-yellow.png') no-repeat;
+  height: 31px;
+  width: 110px;
+  text-indent:-9999px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.content #everyones-doing-it {
+	background: url('everyones-doing-it.png') no-repeat;
+	height: 150px;
+	width: 400px; 
+	float: left;
+	margin: 15px 0px 0px 70px;
+}
+
+.content #share-with-friends {
+	background: url('share-with-your-friends.png') no-repeat;
+	height: 190px;
+	width: 190px;
+	float: right;
+	margin-top: 7px;
+	margin-right: 10px;
+}
+
+.content #share-with-friends img {
+	position: relative;
+	top: 138px;
+	left: 63px;
+	width: 30px;
+}
+
+.content #hunger-affects {
+	background: url('hunger-affects.png') no-repeat;
+	height: 190px;
+	width: 190px;
+	float: right;
+	margin-top: 7px;
+	margin-right: 15px;
+}
+
+.content #do-this {
+	background: url('do-this.png') no-repeat;
+	height: 221px;
+	width: 740px;
+	float: left;
+	margin: 15px 0px 6px 70px;
+}
+
+.content #email-us {
+	background: url('email-us.png') no-repeat;
+	height: 42px;
+	width: 740px;
+	float: left;
+	margin: 0px 0px 6px 70px;
+}
+
+.content #scholarships { 
+	background: url('scholarships.png') no-repeat;
+	height: 337px;
+	width: 300px;
+	float: left;
+	margin: 0px 0px 6px 70px;
+}
+
+.content #food-bank-finder {
+	background: url('food-bank-finder.png') no-repeat; 
+	height: 163px;
+	width: 200px;
+	float: left;
+	margin: 0px 0px 6px 20px;
+}
+
+.content #food-bank-finder input#zip-code {
+	width: 100px;
+	position: relative;
+	top: 110px;
+	left: 10px;
+	line-height: 28px;
+	font-size: 18px;
+	border: 0;
+	text-align: center;
+}
+
+.content #food-bank-finder input#submit-zip-code {
+	background: url('/sites/all/micro/tackle-hunger/submit-red.png') no-repeat;
+	position: relative;
+	top: 110px;
+	left: 15px;
+    cursor: pointer;
+    border: none;
+	height: 25px;
+	width: 80px;
+	text-indent:-9999px;
+  }
+
+.content #rock-your-drive {
+	background: url('rock-your-drive.png') no-repeat;
+	height: 163px;
+	width: 200px;
+	position: relative;
+	left: 390px;
+	top: 175px;
+}
+
+.content #rock-your-drive img {
+	position: relative;
+	left: 5px;
+	top: -285px;
+}
+
+.content #text-your-friends {
+	background: url('text-your-friends.png') no-repeat;
+	height: 338px;
+	width: 200px;
+	float: left;
+	margin: 0px 0px 6px 20px;
+}
+
+.content #text-your-friends form {
+	color: #fff;
+	margin-top: 92px;
+	margin-left: 13px;
+	font-weight: normal;
+}
+
+.content #text-your-friends label {
+	font-weight: normal;
+}
+
+.content #text-your-friends input {
+	border: 0px;
+	line-height: 20px;
+}
+
+.content #text-your-friends .submit {
+	float: right;
+	margin-right: 13px;
+	margin-top: 5px;
+	
+	background: url('/sites/all/micro/tackle-hunger/submit-red.png') no-repeat;
+	position: relative;
+	cursor: pointer;
+    border: none;
+	height: 25px;
+	width: 80px;
+	text-indent:-9999px;
+}
+
+.content #powered-by-walmart {
+	background: url('powered-by-walmart.png') no-repeat;
+	height: 78px;
+	width: 190px;
+	float: right;
+	margin: 30px 20px 30px 20px;
+}
+
+.clear-both {
+	clear: both;
+}

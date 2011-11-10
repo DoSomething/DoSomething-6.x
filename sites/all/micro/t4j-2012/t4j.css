@@ -1,0 +1,217 @@
+#main-wrapper {
+	padding: 0px;
+}
+
+.twitter_button, 
+.fb_button {
+	display:none;
+}
+
+#content { 
+    background: #fff;
+    margin: 0;
+    width: 100%;
+}
+
+.node h2.title, 
+#intro h2.title,
+#block-webform-client-block-720951 h2.title,
+#block-webform-client-block-720997 h2.title {
+	display: none; 
+}
+
+h2 {
+	font-family: 'DINWebCondMedium';
+	color: #fff !important;
+	font-size: 51px !important;
+}
+
+.big-text {
+	color: #fff;
+	font-family: 'DINWebCondMedium';
+	font-size: 46px;
+	line-height: 41px;
+}
+
+.mid-text {
+	color: #fff;
+	font-family: 'DINWebCondMedium';
+	font-size: 28px;
+	line-height: 28px;
+}
+
+.small-text {
+	font-family: 'DINWebCondMedium';
+	font-size: 19px;
+	line-height: 21px;
+}
+
+.black {
+	color: #000 !important;
+}
+
+#campaign-date-header { 
+	position: relative;
+	top: -60px;
+}
+
+#t4j-logo-with-sponsors { 
+	position: relative;
+	top: -70px;
+}
+
+
+
+#block-webform-client-block-720997 {
+  background: #00AB4E;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#block-webform-client-block-720997 .content {
+  padding: 0 10px;
+}
+
+#block-webform-client-block-720997 label {
+  width: 40%;
+  float: left;
+}
+
+#block-webform-client-block-720997 label div {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#webform-client-form-720997 .form-submit {
+	margin-left: 300px;
+	margin-top: 5px;
+	height: 34px;
+	width: 86px;
+	background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
+	position: relative; 
+	cursor: pointer;
+    border: none; 
+
+	text-indent:-9999px;
+	text-transform: capitalize;
+}
+
+#block-webform-client-block-720997 h2 {
+  font-family: din-web;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: 600;
+  color: white;
+  line-height: 1em;
+  margin: 10px 10px 0 10px;
+}
+
+
+
+#webform-client-form-720951 {
+	background: url('sign-up-here.png') no-repeat #041f3d;
+	width: 280px;
+	color: #fff;
+	
+	display: block;   
+	margin-left: auto;   
+	margin-right: auto; 
+	
+	padding: 150px 140px 20px 140px;
+}
+
+#webform-client-form-720951 .form-item {
+	margin: 2px;
+}
+
+#webform-client-form-720951 .form-item input {
+	border: 0px;
+}
+
+#webform-client-form-720951 .form-item label {
+	font-weight: normal;
+	/*font-family: 'DINWebCondMedium';
+	font-size: 19px;                                         yuck
+	line-height: 21px;*/
+}
+
+#webform-client-form-720951 .form-submit {
+	margin-left: 300px;
+	margin-top: 5px;
+	height: 34px;
+	width: 86px;
+	background: url('/sites/all/micro/t4j-2012/submit-green.png') no-repeat;
+	position: relative; 
+	cursor: pointer;
+    border: none;
+
+	text-indent:-9999px;
+	text-transform: capitalize;
+}
+
+#webform-client-form-720951 #webform-component-first-name,
+#webform-client-form-720951 #webform-component-state,
+#webform-client-form-720951 #webform-component-zip-code,
+#webform-client-form-720951 #webform-component-last-name {
+	float: left;
+	width: 50%;
+}
+
+#webform-client-form-720951 #webform-component-email-address,
+#webform-client-form-720951 .form-submit {
+	clear: both;
+}
+
+img#portrait-pics-left {
+	left:-70px;
+	position: absolute;	
+	top: 320px;
+	z-index: 1;
+}
+
+img#portrait-pics-right {
+	right:-40px;
+	position: absolute;	
+	top: 320px;
+	z-index: 1;
+}
+
+#quick-stats {
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
+
+#invite-your-friends {
+	margin-bottom: 30px;
+}
+
+#more-info-email {
+	background-color: #041f3d;
+	text-align: center;
+	color: #fff;
+	height: 33px;
+	width: 860px;
+	padding-top: 5px;
+	float: left;
+	margin: 20px 0px 10px 10px;
+}
+
+.center-image {	
+	display: block;   
+	margin-left: auto;   
+	margin-right: auto; 
+} 
+
+.clear-both {
+	clear: both;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}

@@ -2,21 +2,25 @@
 	padding: 0px;
 }
 
+.twitter_button, 
+.fb_button {
+	display:none;
+}
+
 #content { 
     background: #42210b;
     margin: 0;
     width: 100%;
 }
 
-.node h2.title,
+.node h2.title, 
 #intro h2.title {
 	display: none;
 }
 
 #bag-top { 
-	width: 880px;
 	position: relative;
-	top: 3px;
+	top: 6px;
 }
 
 #tackle-hunger-logo {
@@ -26,30 +30,39 @@
 } 
 
 .content #signup-form {
-	width: 360px;
-	height: 250px;
-	background: url('sign-up-now.png') no-repeat #be1e2d;
+	width: 390px;
+	height: 330px;
+	background: #be1e2d; 
 	float: right;
+	padding-bottom: 15px;
 	margin-right: 15px;
-	padding: 15px;
-	padding-top: 70px;
 	color: #fff;
+}
+
+.content #signup-form .tackle_hunger_node_form {
+	margin-left: 15px;
 }
 
 .content #log-in-text {
 	color: #fff;
 	margin-top: 20px;
-	margin-left: 5px;
+	text-align: center;
 	font-size: 16px;
 }
 
-.content #log-in-text a {
+.content #signup-form a {
 	color: #fcb619;
 	font-weight: bold;
 }
 
 .content #signup-form .form-text {
 	width: 260px;
+	font-size: 18px;
+}
+
+.content #signup-form label {
+	font-size: 16px;
+	margin-bottom: 3px;
 }
 
 .content #signup-form .form-required { 
@@ -74,9 +87,24 @@
   height: 31px;
   width: 110px;
   text-indent:-9999px;
+  text-transform: capitalize;
   float: right;
   margin-right: 10px;
-  margin-top: 20px;
+  margin-top: 8px;
+}
+
+.content #signup-form #signed-up-text {
+	color: #fff;	
+	font-size: 32px;
+	text-align: center;
+	margin-top: 110px;
+}
+
+.content #signup-form #text-your-friends-text {
+	color: #fff;	
+	padding: 20px;
+	font-size: 17px;
+	line-height: 1.3;
 }
 
 .content #everyones-doing-it {
@@ -165,6 +193,7 @@
 	height: 25px;
 	width: 80px;
 	text-indent:-9999px;
+	text-transform: capitalize;
   }
 
 .content #rock-your-drive {
@@ -192,9 +221,8 @@
 
 .content #text-your-friends form {
 	color: #fff;
-	margin-top: 92px;
-	margin-left: 13px;
-	font-weight: normal;
+	margin-top: 90px;
+	margin-left: 14px;
 }
 
 .content #text-your-friends label {
@@ -203,7 +231,12 @@
 
 .content #text-your-friends input {
 	border: 0px;
-	line-height: 20px;
+	margin: 0px;
+	margin-bottom: 3px;
+}
+
+.content #text-your-friends .space-after {
+	margin-bottom: 7px;
 }
 
 .content #text-your-friends .submit {
@@ -218,6 +251,7 @@
 	height: 25px;
 	width: 80px;
 	text-indent:-9999px;
+	text-transform: capitalize;
 }
 
 .content #powered-by-walmart {

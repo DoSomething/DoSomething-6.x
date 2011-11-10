@@ -1133,7 +1133,7 @@ overflow: hidden;
 
 /* SHARE VOICE END */
 
-.region-content-bottom {  
+#node-696082 .region-content-bottom {  
   background: #F5F5F5;
   clear:both;
   zoom: 1;
@@ -1154,7 +1154,73 @@ overflow: hidden;
 #tinsel-korey-pics {
   position: relative;
 }  
+/* GALLERY ARTWORK PAGE */
 
+div.node #artwork-page h2 {
+  font-family: 'DINWebCondMedium'; 
+  color: #FFFFFF;
+  background: #00ADEE;
+  font-size: 24px;
+  text-align: right;
+  padding-right: 5px;
+  margin-bottom: 10px;
+}
+
+#artwork-page h3 {
+  font-family: 'DINWebCondMedium'; 
+  background: #EB008B;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 2px 0px 0px 5px;
+  margin: 10px 0px 0px 0px;
+}
+
+#artwork-page h4 {
+  font-family: 'DINWebCondMedium'; 
+  background: #000000;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 2px 0px 0px 5px;
+  margin: 10px 0px 0px 0px;
+}
+
+
+#artwork-why {
+  text-align: left;
+  background: #F5F5F5;
+  padding: 10px;
+  margin-top: 10px;
+  width: 725px;
+  margin-right: auto;
+  margin-left: auto;
+}  
+
+#artwork {
+  padding: 10px;
+  background: #F5F5F5;
+}
+
+#artwork-share {
+  text-align: left;
+  padding-top: 5px;
+  width: 645px;
+}
+#artwork-tw {
+  float: right;
+  padding: 5px 5px 0px 0px;
+}
+
+#artwork-fb {
+  float: right;
+  padding-top: 5px;
+}
+
+#artwork-view-more p {
+  font-size: 80px;
+  font-family: DINWebCond;
+}
 /* clearfix begin */
   .clearfix { zoom: 1; }
   .clearfix:before,

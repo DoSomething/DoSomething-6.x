@@ -1,0 +1,385 @@
+#main-wrapper {
+	padding: 0px;
+}
+
+.twitter_button, 
+.fb_button {
+	display:none;
+}
+
+#content { 
+    background: #42210b;
+    margin: 0;
+    width: 100%;
+}
+
+.node h2.title, 
+#intro h2.title {
+	display: none;
+}
+
+h2 {
+	font-family: 'DINWebCondMedium';
+	color: #fff !important;
+	font-size: 51px !important;
+}
+
+.big-text {
+	color: #fff;
+	font-family: 'DINWebCondMedium';
+	font-size: 46px;
+	line-height: 41px;
+}
+
+.mid-text {
+	color: #fff;
+	font-family: 'DINWebCondMedium';
+	font-size: 25px;
+	line-height: 30px;
+}
+
+.small-text {
+	font-family: 'DINWebCondMedium';
+	font-size: 19px;
+	line-height: 21px;
+}
+
+.orange {
+	color: #f05a28;
+}
+
+.yellow {
+	color: #ffc524;
+}
+
+.red {
+	color: #be1e2d;
+}
+
+.black {
+	color: #000 !important;
+}
+
+#bag-top { 
+	position: relative;
+	top: 6px;
+}
+
+#tackle-hunger-logo {
+	float: left;
+	padding-left: 8px;
+} 
+
+#signup-form {
+	width: 390px;
+	height: 330px;
+	background: #be1e2d; 
+	float: right;
+	padding-bottom: 15px;
+	margin-right: 15px;
+	color: #fff;
+}
+
+#signup-form .tackle_hunger_node_form {
+	margin-left: 15px;
+}
+
+#log-in-text {
+	color: #fff;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#signup-form a {
+	color: #fcb619;
+	font-weight: bold;
+}
+
+#signup-form .form-text {
+	width: 260px;
+	font-size: 18px;
+}
+
+#signup-form label {
+	font-size: 16px;
+	margin-bottom: 3px;
+}
+
+#signup-form .form-required { 
+	color: #fff;
+}
+
+#signup-form .collapsed,
+#edit-preview,
+#edit-field-cannedfood-studentsinvolv-0-value-wrapper,
+#edit-field-tackle-hunger-expected-lb-0-value-wrapper,
+#edit-field-campaign-cell-reminder-value-wrapper,
+#edit-field-campaign-state-0-value-,
+#edit-field-campaign-city-0-value-wrapper,
+#edit-field-campaign-state-0-value-wrapper {
+	display: none;
+}
+
+#signup-form input#edit-submit {
+  cursor: pointer;
+  border: none;
+  background: url('/sites/all/micro/tackle-hunger/submit-yellow.png') no-repeat;
+  height: 31px;
+  width: 110px;
+  text-indent:-9999px;
+  text-transform: capitalize;
+  float: right;
+  margin-right: 10px;
+  margin-top: 8px;
+}
+
+#signup-form #signed-up-text {
+	color: #fff;	
+	font-size: 32px;
+	text-align: center;
+	margin-top: 110px;
+}
+
+#signup-form #text-your-friends-text {
+	color: #fff;	
+	padding: 20px;
+	font-size: 17px;
+	line-height: 1.3;
+}
+
+#everyones-doing-it {
+	background: url('everyones-doing-it.pn') no-repeat;
+	width: 400px; 
+	float: left;
+	margin: 70px 0px 0px 70px;
+
+	color: #fcb619;
+	font-family: 'DINWebCondMedium';
+	font-size: 30px;
+	line-height: 26px;
+	text-align: center;
+}
+
+#everyones-doing-it h2 {
+	line-height: 20px;
+	text-align: center;
+}
+
+#share-with-friends {
+	background-color: #603813;
+	height: 165px;
+	width: 190px;
+	float: right;
+	margin-top: 7px;
+	margin-right: 10px;
+	padding-top: 10px;
+	text-align: center;
+}
+
+#share-with-friends img {
+	width: 30px;
+	margin-top: 3px;
+}
+
+#hunger-affects {
+	background-color: #603813;
+	height: 170px;
+	width: 190px;
+	float: right;
+	margin-top: 7px;
+	margin-right: 15px;
+	padding-top: 5px;
+	text-align: center;
+}
+
+#do-this-title {
+	background-color: #ffc524;
+	height: 58px;
+	width: 720px;
+	float: left;
+	margin: 15px 0px 0px 70px;
+	padding: 0px 10px 0px 10px;
+}
+
+#do-this-content {
+	background-color: #be1e2d;
+	height: 170px;
+	width: 720px;
+	float: left;
+	margin: 0px 0px 6px 70px;
+	padding: 0px 10px 0px 10px;
+}
+
+#do-this-content #yellow-list-bullets {
+	background: url('yellow-bullet-numbers.png') no-repeat;
+	margin-top: 5px;
+	height:155px;
+	width: 65px;
+}
+
+#do-this-content #do-this-list {
+	margin-top: 12px;
+	height:155px;
+	width: 540px;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+#do-this-content #do-this-list p {
+	margin-bottom: 14px;
+	color: #fff;
+}
+
+#email-us {
+	background-color: #ffc524;
+	text-align: center;
+	height: 33px;
+	width: 740px;
+	padding-top: 5px;
+	float: left;
+	margin: 0px 0px 6px 70px;
+}
+
+.red-block-title { 
+	background: url('red-top-header.png') no-repeat #ffc524;
+}
+
+.red-block-title-small { 
+	background: url('red-top-header-small.png') no-repeat #ffc524;
+}
+
+#scholarships { 
+	height: 337px;
+	width: 300px;
+	float: left;
+	margin: 0px 0px 6px 70px;
+}
+
+#box-title {
+	margin-top: 5px;
+	font-size: 32px;
+	text-align: center;
+}
+
+#scholarships ul { 
+	margin-top: 35px;
+	padding-right: 10px;
+	padding-left: 5px;
+}
+
+#scholarships li { 
+	list-style-type: none;
+	background: url('star-brown.png') no-repeat;
+	padding-left: 38px;
+	margin-bottom: 12px;
+}
+
+#food-bank-finder {
+	height: 163px;
+	width: 200px;
+	float: left;
+	margin: 0px 0px 6px 20px;
+}
+
+#food-bank-finder p {
+	margin: 25px 10px 10px 10px;
+	text-align: center;
+}
+
+#food-bank-finder input#zip-code {
+	width: 100px;
+	line-height: 28px;
+	font-size: 18px;
+	border: 0;
+	margin-left: 13px;
+	text-align: center;
+}
+
+#food-bank-finder input#submit-zip-code {
+	background: url('/sites/all/micro/tackle-hunger/submit-red.png') no-repeat;
+    cursor: pointer;
+    border: none;
+	height: 25px;
+	width: 80px;
+	text-indent:-9999px;
+	text-transform: capitalize;
+  }
+
+#rock-your-drive {
+	background: url('rock-your-drive.png') no-repeat;
+	height: 163px;
+	width: 200px;
+	position: relative;
+	left: 390px;
+	top: 175px;
+}
+
+#rock-your-drive img {
+	position: relative;
+	left: 5px;
+	top: -285px;
+}
+
+#text-your-friends {
+	background: url('text-your-friends.png') no-repeat;
+	height: 338px;
+	width: 200px;
+	float: left;
+	margin: 0px 0px 6px 20px;
+}
+
+#text-your-friends form {
+	color: #fff;
+	margin-top: 90px;
+	margin-left: 14px;
+}
+
+#text-your-friends label {
+	font-weight: normal;
+}
+
+#text-your-friends input {
+	border: 0px;
+	margin: 0px;
+	margin-bottom: 3px;
+}
+
+#text-your-friends .space-after {
+	margin-bottom: 7px;
+}
+
+#text-your-friends .submit {
+	float: right;
+	margin-right: 13px;
+	margin-top: 5px;
+	
+	background: url('/sites/all/micro/tackle-hunger/submit-red.png') no-repeat;
+	position: relative; 
+	cursor: pointer;
+    border: none;
+	height: 25px;
+	width: 80px;
+	text-indent:-9999px;
+	text-transform: capitalize;
+}
+
+#powered-by-walmart {
+	background: url('powered-by-walmart.png') no-repeat;
+	height: 78px;
+	width: 190px;
+	float: right;
+	margin: 30px 20px 30px 20px;
+}
+
+.clear-both {
+	clear: both;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}

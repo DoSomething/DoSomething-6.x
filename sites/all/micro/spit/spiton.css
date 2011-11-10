@@ -65,7 +65,7 @@ body.section-spit div.content {
 
 /*The Faqs Page and Tips page*/
 /*For removing the background qtip*/
-#node-688072 div.content, #node-695338 div.content{
+#node-688072 div.content, #node-695338 div.content, #node-719527 div.content {
  background: none;
 }
 
@@ -263,7 +263,8 @@ ul.triarrows li,ul.triarrows a {
 #node-688072 div.content, #node-695338 div.content{
  background: none;
 }
-#node-688072 div.content p {
+	/*Making paras fit*/ /*Greek Cheek Challenge Page*/	
+#node-688072 div.content p, #node-719527 div.content p {
   width:780px;
   max-width: 860px;
   padding-top:10px;
@@ -279,7 +280,7 @@ ul.triarrows li,ul.triarrows a {
 
 /*Tips page */
 /*For fitting the list accross the length and no wrap*/
-#node-695338 div.content li {
+#node-695338 div.content li,#node-719527 div.content li  {
   width : 780px;
   max-width:860px;
 }
@@ -311,7 +312,7 @@ background: url("blackflag_shs.png") no-repeat scroll 0 -14px transparent ;
       padding: 0 0 15px 30px; }
 
 /* TIPS SOCIAL MEDIA BLOCK */
-.page-spit-tips #block-block-323 {
+.page-spit-tips #block-block-323, .page-spit-greekcheekchallenge #block-block-323 {
         margin: 0;
         position: relative;
 	top: 5px;
@@ -466,6 +467,11 @@ form#webform-client-form-682753 div.description p, form#webform-client-form-6827
 #block-block-322 {
 	margin-left: -63px; }
 	
+/* GREEK CHALLENGE PAGE*/
+#node-719527 ul.arrows li{
+	font-size: 100% !important;
+}
+
 /* SPECIFIC BULLSHIT */
 /* white arrow under "celeb getting involved" */
 body.section-spit h3:first-child {

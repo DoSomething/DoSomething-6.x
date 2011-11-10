@@ -3,14 +3,15 @@
 
 <head>
   <title><?php print $head_title; ?></title>
-  <meta property="og:title" content="<?=$head_title;?>"/>
+  <meta property="og:title" content="Make Art. Save Art. | <?php print $title ?>"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />
   <meta property="og:type" content="non_profit"/>
-  <meta property="og:url" content="http://www.dosomething.org" />
-  <meta property="og:image" content="http://www.dosomething.org/files/dosomething-org.jpg" />
+  <meta property="og:url" content="http://www.dosomething.org/<?php print drupal_lookup_path('alias',"node/".$node->nid) ?>" />
+  <meta property="og:image" content="http://www.dosomething.org/<?php print $url = imagecache_create_path('500_either_way', 
+            $node->field_art2011_file[0]['filepath']); ?>" />
   <meta property="og:site_name" content="DoSomething.org"/>
-  <meta property="og:description" content="POWERING OFFLINE ACTION. Using the power of online to get teens to do good stuff offline."/>
+  <meta property="og:description" content="Support art in schools & help artists win $5000 by sharing @dosomething Make Art. Save Art designs!"/>
 
   <?php print $head; ?>
   <?php print $styles; ?>
@@ -55,8 +56,7 @@
 </div>
         <div id="content-area">
 		<div id="main-content">
-		<div id="white-box"><a id="shadowbox-faq-button" href="#"><img src="/sites/all/micro/art-2011/img/faq.png" id="faq" border="0"></a>
-		<img src="/sites/all/micro/art-2011/img/gallery-how.png" id="gallery-how">
+		<div id="white-box">
           <?php unset($title); print $content; ?>
         <div id="bottom-box">
 		<?php print $content_bottom; ?></div>

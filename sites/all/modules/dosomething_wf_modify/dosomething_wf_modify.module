@@ -54,12 +54,44 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
    ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 67751, 82281);
  }
   /*Give a Spit - Join this Drive webform on Schools Page*/
-/*
+
  else if ($node->nid == 704188) {
       $map = _dosomething_wf_modify_webform_component_mapping($node);
           ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 67751, 82281);
  }
-*/
+ 
+ 
+ //// Teens For Jeans - Splash
+ else if ($node->nid == 720997) {
+ 
+	// send the email to infusionsoft
+	include 'isdk.php';
+	$app = new iSDK;
+
+	if($app->cfgCon("emaildrop")) {
+
+		// set up the data to send to infusionsoft
+		$contact=array('Email' => $submission->data[$map['phone_number']]['value'][0]);
+
+		// apply the Teens for jeans tags
+		$actionId = 748;
+
+		//check for existing contact;
+		//$returnFields = array('Id');
+		//$dups = $app->findByEmail($contact['Email'], $returnFields);
+		
+		//if (empty($dups)) {
+			// add new contact and add them to the action set
+			$dups = $app->addCon($contact);	
+		//}
+		
+		$app->runAS($dups, $actionId);
+		
+		print_r($dups);
+		print_r($app);
+		exit;
+	}
+ }
 }
 
 function _dosomething_wf_modify_webform_component_mapping($node) {

@@ -2,15 +2,14 @@
 	padding: 0px;
 }
 
-.twitter_button, 
-.fb_button {
-	display:none;
-}
-
 #content { 
     background: #fff;
     margin: 0;
     width: 100%;
+}
+
+#block-webform-client-block-720951 .content {
+	min-height: 720px;
 }
 
 .node h2.title, 
@@ -35,15 +34,16 @@ h2 {
 
 .mid-text {
 	color: #fff;
-	font-family: 'DINWebCondMedium';
-	font-size: 28px;
-	line-height: 28px;
+	font-family: 'DINWebCond';
+	font-size: 31px;
+	margin: 15px 0px 0px 4px;
+	font-weight: 600;
+	text-align: center;
 }
 
 .small-text {
 	font-family: 'DINWebCondMedium';
-	font-size: 19px;
-	line-height: 21px;
+	font-size: 28px;
 }
 
 .black {
@@ -51,16 +51,23 @@ h2 {
 }
 
 #campaign-date-header { 
-	position: relative;
-	top: -60px;
+	position: absolute;
+	left: 280px;
+	top: -80px;
 }
 
-#t4j-logo-with-sponsors { 
-	position: relative;
-	top: -70px;
+#t4j-logo-with-sponsors {  
+	position: absolute;
+	top: -5px;
+	margin-left: 105px;
 }
 
-
+#t4j-logo-with-sponsors-splash {  
+	position: absolute;
+	top: -5px;
+	width: 555px;
+	margin-left: 157px;
+}
 
 #block-webform-client-block-720997 {
   background: #00AB4E;
@@ -68,47 +75,44 @@ h2 {
   -moz-border-radius: 15px;
   border-radius: 15px;
   overflow: hidden;
+  
+  margin: 110px 0px 50px 160px;
+  width: 553px;
 }
 
-#block-webform-client-block-720997 .content {
-  padding: 0 10px;
+#block-webform-client-block-720997 .webform-component {
+	float: left;
+	margin-left: 10px;
 }
 
-#block-webform-client-block-720997 label {
-  width: 40%;
-  float: left;
+#block-webform-client-block-720997 .webform-component label {
+	font-family: 'DINWebCondMedium';
+	font-weight: normal;
+	font-size: 19px;
 }
 
-#block-webform-client-block-720997 label div {
-  font-size: 18px;
-  font-weight: 500;
+#block-webform-client-block-720997 .webform-component input {
+	width: 220px;
+	line-height: 28px;
+	font-size: 18px;
+	border: 0;
+	text-align: center;
 }
 
 #webform-client-form-720997 .form-submit {
-	margin-left: 300px;
-	margin-top: 5px;
+	margin-top: 31px;
 	height: 34px;
 	width: 86px;
 	background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
 	position: relative; 
 	cursor: pointer;
     border: none; 
+	float: left;
 
+	margin-left: 6px;
 	text-indent:-9999px;
 	text-transform: capitalize;
 }
-
-#block-webform-client-block-720997 h2 {
-  font-family: din-web;
-  text-transform: uppercase;
-  font-size: 30px;
-  font-weight: 600;
-  color: white;
-  line-height: 1em;
-  margin: 10px 10px 0 10px;
-}
-
-
 
 #webform-client-form-720951 {
 	background: url('sign-up-here.png') no-repeat #041f3d;
@@ -119,22 +123,23 @@ h2 {
 	margin-left: auto;   
 	margin-right: auto; 
 	
+	margin-top: 170px;
 	padding: 150px 140px 20px 140px;
 }
 
 #webform-client-form-720951 .form-item {
-	margin: 2px;
+	margin: 7px;
 }
 
 #webform-client-form-720951 .form-item input {
 	border: 0px;
 }
 
-#webform-client-form-720951 .form-item label {
+#webform-client-form-720951 .form-item label,
+#webform-client-form-720951 legend {
+	font-family: 'DINWebCond';
 	font-weight: normal;
-	/*font-family: 'DINWebCondMedium';
-	font-size: 19px;                                         yuck
-	line-height: 21px;*/
+	font-size: 18px;
 }
 
 #webform-client-form-720951 .form-submit {
@@ -151,11 +156,24 @@ h2 {
 	text-transform: capitalize;
 }
 
+#webform-client-form-720951 #webform-component-receive-tfj-banner .form-item label,
+#webform-client-form-720951 #webform-component-address-info legend {
+	font-size: 21px;
+}
+
+#webform-client-form-720951 #webform-component-address-info {
+	border: 0;
+}
+
 #webform-client-form-720951 #webform-component-first-name,
-#webform-client-form-720951 #webform-component-state,
-#webform-client-form-720951 #webform-component-zip-code,
+#webform-client-form-720951 #webform-component-address-info--state,
+#webform-client-form-720951 #webform-component-address-info--zip-code,
 #webform-client-form-720951 #webform-component-last-name {
 	float: left;
+}
+
+#webform-client-form-720951 #webform-component-first-name,
+#webform-client-form-720951 #webform-component-last-name {
 	width: 50%;
 }
 
@@ -164,18 +182,38 @@ h2 {
 	clear: both;
 }
 
-img#portrait-pics-left {
-	left:-70px;
-	position: absolute;	
-	top: 320px;
-	z-index: 1;
-}
-
 img#portrait-pics-right {
 	right:-40px;
 	position: absolute;	
-	top: 320px;
+	top: 365px;
 	z-index: 1;
+}
+
+img#portrait-pics-left {
+	left:-70px;
+	position: absolute;	
+	top: 365px;
+	z-index: 1;
+}
+
+#signup-page img#portrait-pics-right,
+#signup-page img#portrait-pics-left {
+	top: 270px;
+}
+
+#sign-up-your-school {
+  background: url('/sites/all/micro/t4j-2012/sign-up-your-school.png') no-repeat;
+  width: 553px;
+  height: 334px;
+ margin-top: 170px;
+	display: block;   
+	margin-left: auto;   
+	margin-right: auto;
+}
+
+#sign-up-your-school img {
+	margin-left: 228px;
+	margin-top: 288px;
 }
 
 #quick-stats {
@@ -191,11 +229,21 @@ img#portrait-pics-right {
 	background-color: #041f3d;
 	text-align: center;
 	color: #fff;
-	height: 33px;
+	height: 25px;
 	width: 860px;
-	padding-top: 5px;
+	padding-top: 10px;
 	float: left;
-	margin: 20px 0px 10px 10px;
+	margin: 10px 0px 10px 10px;
+}
+
+#social-icons #facebook {
+	float: left;
+	margin-left: 404px;
+}
+
+#social-icons #twitter {
+	float: left;
+	margin-left: 4px;
 }
 
 .center-image {	

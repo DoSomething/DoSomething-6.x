@@ -43,5 +43,4 @@
 <?php print $field_art2011_whyart[0]['value']; ?>
 </div>
 </div>
-<a href="/make-art-save-art/gallery"><< Back to Gallery</a>
 </div>

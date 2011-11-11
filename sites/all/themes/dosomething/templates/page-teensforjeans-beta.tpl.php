@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/<?=$ds_micro.'/t4j-2012/t4j.css';?>" type="text/css" media="all" />
     <link rel="stylesheet" href="/<?=$ds_micro.'/t4j-2012/fonts.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
+    <script type="text/javascript" src="/sites/all/micro/t4j-2012/t4j.js"></script>
 </head>
 
 <body class="<?php print $classes; ?>">

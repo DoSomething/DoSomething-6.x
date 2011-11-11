@@ -55,6 +55,14 @@ $(document).ready(function(){
         width:      500,
     });	
   });
+ $("#lincoln-lopez").click(function(){
+    Shadowbox.open({
+        content:    'http://www.dosomething.org/sites/all/micro/art-2011/lincoln-lopez.html',
+        player:     "iframe",
+        height:     500,
+        width:      500,
+    });	
+  });  
  $("#emilio-sosa").click(function(){
     Shadowbox.open({
         content:    'http://www.dosomething.org/sites/all/micro/art-2011/emilio-sosa.html',

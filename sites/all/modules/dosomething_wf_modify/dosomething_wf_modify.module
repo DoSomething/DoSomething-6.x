@@ -64,6 +64,8 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
  //// Teens For Jeans - Splash
  else if ($node->nid == 720997) {
  
+	 $map = _dosomething_wf_modify_webform_component_mapping($node);
+	 
 	// send the email to infusionsoft
 	include 'isdk.php';
 	$app = new iSDK;
@@ -71,25 +73,30 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
 	if($app->cfgCon("emaildrop")) {
 
 		// set up the data to send to infusionsoft
-		$contact=array('Email' => $submission->data[$map['phone_number']]['value'][0]);
-
+		$contact=array('Email' => $submission->data[$map['email']]['value'][0]);
+		
 		// apply the Teens for jeans tags
 		$actionId = 748;
 
 		//check for existing contact;
-		//$returnFields = array('Id');
-		//$dups = $app->findByEmail($contact['Email'], $returnFields);
+		$returnFields = array('Id');
+		$dups = $app->findByEmail($contact['Email'], $returnFields);
 		
-		//if (empty($dups)) {
+		/*If email does not exist in the database*/
+		if (empty($dups)) {
 			// add new contact and add them to the action set
 			$dups = $app->addCon($contact);	
-		//}
+			//$app->runAS($dups, $actionId);
+		} 
 		
-		$app->runAS($dups, $actionId);
-		
+		/*If it exists*/
+		/*
+		else {
+			$app->runAS($dups[0]['id'], $actionId);
+		}
+		*/
 		print_r($dups);
-		print_r($app);
-		exit;
+		//exit;
 	}
  }
 }

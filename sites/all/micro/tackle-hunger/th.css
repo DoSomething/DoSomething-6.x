@@ -2,6 +2,13 @@
 	padding: 0px;
 }
 
+.mid-text {
+	color: #fff;
+	font-family: 'DINWebCondMedium';
+	font-size: 25px;
+	line-height: 30px;
+}
+
 .twitter_button, 
 .fb_button {
 	display:none;
@@ -37,6 +44,12 @@
 	padding-bottom: 15px;
 	margin-right: 15px;
 	color: #fff;
+}
+
+.content #psa {
+	float: left;
+	margin-top: 10px;
+	margin-left: 25px;
 }
 
 .content #signup-form .tackle_hunger_node_form {
@@ -146,6 +159,54 @@
 	width: 740px;
 	float: left;
 	margin: 15px 0px 6px 70px;
+}
+
+#do-this-title {
+	background-color: #ffc524;
+	height: 58px;
+	width: 720px;
+	float: left;
+	margin: 15px 0px 0px 70px;
+	padding: 0px 10px 0px 10px;
+}
+
+#do-this-content {
+	background-color: #be1e2d;
+	height: 170px;
+	width: 720px;
+	float: left;
+	margin: 0px 0px 6px 70px;
+	padding: 0px 10px 0px 10px;
+}
+
+#do-this-title h2 {
+	font-family: 'DINWebCondMedium';
+	color: #fff !important;
+	font-size: 51px !important;
+}
+
+#do-this-content #yellow-list-bullets {
+	background: url('yellow-bullet-numbers.png') no-repeat;
+	margin-top: 5px;
+	height:155px;
+	width: 65px;
+}
+
+#do-this-content #do-this-list {
+	margin-top: 12px;
+	height:155px;
+	width: 540px;
+	font-size: 24px;
+	line-height: 28px;
+}
+
+#do-this-content #do-this-list p {
+	margin-bottom: 14px;
+	color: #fff;
+}
+
+#do-this-content #do-this-list a {
+	color: #ffc524;
 }
 
 .content #email-us {
@@ -264,4 +325,12 @@
 
 .clear-both {
 	clear: both;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
 }

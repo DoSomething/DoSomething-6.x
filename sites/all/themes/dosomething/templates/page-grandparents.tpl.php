@@ -3,7 +3,7 @@
 
 <head>
   <title><?php print $head_title; ?></title>
-  <meta property="og:title" content="Make Art. Save Art. | <?php print $title ?>"/>
+  <meta property="og:title" content="Grandparents Gone Wired"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />
   <meta property="og:type" content="non_profit"/>
@@ -15,10 +15,7 @@
   <?php print $head; ?>
   <?php print $styles; ?>
   <?php print $scripts; ?>
-  <link rel="stylesheet" href="/sites/all/micro/art-2011/fonts.css" type="text/css" />
-  <link rel="stylesheet" href="/sites/all/micro/art-2011/art.css" type="text/css" />
-  <script src="/sites/all/micro/art-2011/popup.js"></script>
-  <script src="/sites/all/micro/art-2011/judges.js"></script>
+  <link rel="stylesheet" href="/sites/all/micro/grandparents-2011/grandparents.css" type="text/css" />
 </head>
 
 <body class="<?php print $classes; ?>">
@@ -43,17 +40,7 @@
         <?php if ($tabs): ?>
           <div class="tabs"><?php print $tabs; ?></div>
         <?php endif; ?>
-
-<div id="header-image"><a href="/make-art-save-art"><img src="/sites/all/micro/art-2011/img/logo.png" border="0"></a></div>
         <?php print $content_top; ?>
-
-<div id="menu">
-<a href="/make-art-save-art" id="home"><img src="/sites/all/micro/art-2011/img/home.png" border="0"></a>
-<a href="/make-art-save-art/why" id="why"><img src="/sites/all/micro/art-2011/img/why.png" border="0"></a>
-<a href="/make-art-save-art/submit" id="submit"><img src="/sites/all/micro/art-2011/img/submit.png" border="0"></a>
-<a href="/make-art-save-art/gallery" id="gallery"><img src="/sites/all/micro/art-2011/img/gallery.png" border="0"></a>
-<a href="/make-art-save-art/prizing" id="prizing"><img src="/sites/all/micro/art-2011/img/prizing.png" border="0"></a>
-</div>
         <div id="content-area">
 		<div id="main-content">
           <?php unset($title); print $content; ?>

@@ -32,7 +32,7 @@
         <?php endif; ?>
 
         <?php print $help; ?>
-
+<?php print $messages; ?>
 		 <img id="t4j-logo-with-sponsors" class="center-image" src="/<?=$ds_micro;?>/t4j-2012/t4j-logo-with-sponsors.png" />
 
         <?php print $content_top; ?>
@@ -41,7 +41,7 @@
 
     <div id="t4j">
 	
-     <?php print $messages; ?>
+     
     
     
     

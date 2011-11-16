@@ -1,0 +1,71 @@
+.node h2.title {
+  display: none;
+}
+
+#main-wrapper {
+  background: url('/sites/all/micro/grandparents-2011/img/bg.png');
+}
+
+.node .content {
+  width: 800px;
+}
+
+h2 {
+  color: #333333;
+}
+
+#prizing {
+  margin-bottom: -25px;
+}
+
+#block-webform-client-block-722522 {
+  position: absolute;
+  top: 375px;
+  left: 115px;
+}
+
+#block-webform-client-block-722522 .webform-component {
+  float: left;
+  margin-left: 10px;
+}
+
+.form-item label {
+  display: none;
+}  
+
+#block-webform-client-block-722522  .webform-component input {
+  width: 245px;
+  line-height: 28px;
+  font-size: 18px;
+  border: 0;
+}
+
+#webform-client-form-722522 .form-submit {
+margin-right: -90px;
+margin-top: -45px;
+height: 34px;
+width: 85px;
+background: url('/sites/all/micro/grandparents-2011/img/submit.png') no-repeat;
+position: relative;
+cursor: pointer;
+border: none;
+float: right;
+margin-left: 6px;
+text-indent: -9999px;
+text-transform: capitalize;
+}
+
+#social-icons {
+  position: absolute;
+bottom: 180px;
+margin-left: 370px;
+  /*width: 270px;
+  height: 71px;
+  background: url('/sites/all/micro/grandparents-2011/img/invite.png') no-repeat left bottom; */
+}
+
+#invite {
+bottom: 100px;
+position: absolute;
+left: 300px;
+}

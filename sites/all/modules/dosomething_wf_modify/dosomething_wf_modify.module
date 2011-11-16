@@ -82,21 +82,23 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
 		$returnFields = array('Id');
 		$dups = $app->findByEmail($contact['Email'], $returnFields);
 		
-		/*If email does not exist in the database*/
+		/*If email is not a duplicate*/
 		if (empty($dups)) {
 			// add new contact and add them to the action set
 			$dups = $app->addCon($contact);	
-			//$app->runAS($dups, $actionId);
+			$app->runAS($dups, $actionId);
 		} 
-		
-		/*If it exists*/
-		/*
-		else {
-			$app->runAS($dups[0]['id'], $actionId);
+		else
+		{
+			/*If the email is a duplicate*/
+			/*
+			
+			$groupId = 734;
+			$result = $app->grpAssign($contactId, $groupId);			
+			*/
+			$contactId = $dups[0][Id];
+			$app->runAS($contactId, $actionId);
 		}
-		*/
-		print_r($dups);
-		//exit;
 	}
  }
 }

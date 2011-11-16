@@ -15,7 +15,16 @@
   
 <div class="content"<?php print $content_attributes; ?>>
 <div id="artwork-page">
-<h2><?php print $title ?> by <a href="/<?php print drupal_get_path_alias('user/' . $node->uid); ?>"><?php print $field_art2011_first[0]['value']; ?></a></h2>
+<h2>
+<?php
+	$print_me = $title;
+	if ($field_art2011_first[0]['value'] != '')
+		$print_me .= ' by ' . $field_art2011_first[0]['value'];
+	else
+		$print_me .= ' - Is this your artwork? <a href="https://docs.google.com/a/dosomething.org/spreadsheet/viewform?hl=en_US&formkey=dDBzRWJBVlJwb3R4R3A0MzZzZ1FvRVE6MQ#gid=0" target="_blank">Claim</a> it.';
+	echo $print_me;
+?>
+</h2>
 <img src="/<?php print $url = imagecache_create_path('500_either_way', 
             $node->field_art2011_file[0]['filepath']); ?>" id="artwork">
 <h3>SHARE THIS ARTWORK</h3>

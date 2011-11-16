@@ -728,14 +728,15 @@ div#block-webform-client-block-700377 {
   padding-bottom: 20px;
 }
 
-#webform-client-form-700377 #webform-component-last-name {
+/*#webform-client-form-700377 #webform-component-last-name {
   margin: -58px 0 0 100px;
 }
 
 #webform-client-form-700377 #webform-component-mobile--or--email {
   margin: -58px 0 0 200px;
 }
-
+*/
+/*
 #webform-client-form-700377 div.form-actions input#edit-submit:hover {
   cursor: pointer;
   border: none;
@@ -752,10 +753,10 @@ div#block-webform-client-block-700377 {
   height: 65px;
   width:65px;
   text-indent:-9999px;
-  margin: -100px 0 0 290px;
+  margin: -250px 0 0 290px;
   position: absolute;  
 }
-
+*/
 #webform-client-form-700377 div#edit-submitted-why-is-art-education-important-to-you-wrapper.form item {
   width: 280px;
 }
@@ -798,6 +799,10 @@ div#block-webform-client-block-700377 .form-required, div#block-webform-client-b
   z-index: 2;
 }
 
+#block-webform-client-block-696607 .webform-component input {
+  border: 0;
+}
+  
 div#block-webform-client-block-696607 .form-required, div#block-webform-client-block-696607 .content {
   color: #FFFFFF;
   font-family: 'DINWebCondLight';
@@ -834,7 +839,7 @@ div#block-webform-client-block-696607 {
 }
 
 #webform-client-form-696607 #webform-component-last-name {
-  margin: -51px 0 0 120px;
+  margin: -48px 0 0 120px;
 }
 
 #signup-form-wrap-around img {
@@ -927,7 +932,7 @@ div#block-webform-client-block-696607 {
 #edit-title, #edit-field-art2011-why-0-value, #edit-field-art2011-whyart-0-value {
   width: 360px;
 }
-
+/*
 #edit-field-art2011-file-0-upload {
   cursor: pointer;
   background: url( '/sites/all/micro/art-2011/img/choose-file.png') no-repeat;
@@ -945,7 +950,7 @@ div#block-webform-client-block-696607 {
   border: 0px;
   margin: -20px 0px 0px 0px;
 } 
-
+*/
 /* GALLERY PAGE */
 
 .view-make-art-save-art-2011 {
@@ -1096,6 +1101,13 @@ overflow: hidden;
   overflow-y:auto;
 }
 
+#block-webform-client-block-700377 .webform-component input {
+  border: 0;
+}
+
+.resizable-textarea textarea {
+  border: 0;
+}
 .share-voice-content {
   padding: 10px 10px 15px 0px;
 }  
@@ -1131,9 +1143,9 @@ overflow: hidden;
   content: "--";
 }
 
-/* SHARE VOICE END */
+/* SHARE VOICE END #node-696082 */
 
-#node-696082 .region-content-bottom {  
+.region-content-bottom {  
   background: #F5F5F5;
   clear:both;
   zoom: 1;
@@ -1195,6 +1207,8 @@ div.node #artwork-page h2 {
   width: 725px;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 20px;
+  line-height: 20px;
 }  
 
 #artwork {
@@ -1217,10 +1231,16 @@ div.node #artwork-page h2 {
   padding-top: 5px;
 }
 
-#artwork-view-more p {
+#artwork-view-more {
   font-size: 80px;
-  font-family: DINWebCond;
+  padding: 30px 0px 5px 0px;
+  font-family: 'DINWebCond'; 
 }
+
+.imagecache .imagecache-200_by_200 .node-type-campaign-art-2011 {
+  padding: 15px;
+}
+
 /* clearfix begin */
   .clearfix { zoom: 1; }
   .clearfix:before,

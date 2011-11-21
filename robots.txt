@@ -55,3 +55,14 @@ Disallow: /?q=search/
 Disallow: /?q=user/password/
 Disallow: /?q=user/register/
 Disallow: /?q=user/login/
+# Custom Security
+Disallow: /campaign-project-macys-membership-2011/
+Disallow: /taxonomy/term/nd/node/
+Disallow: /taxonomy/term/node/
+Disallow: /cancer-2011-signup/
+Disallow: /aspca-grant-app/
+Disallow: /ididthis/
+Disallow: /1in3-dating-abuse/
+Disallow: /boot-camp-bio-form/
+Disallow: /all-you-can-jet/
+Disallow: /node/

@@ -20,8 +20,8 @@ h2 {
 
 #block-webform-client-block-722522 {
   position: absolute;
-  top: 375px;
-  left: 115px;
+  top: 385px;
+  left: 100px;
 }
 
 #block-webform-client-block-722522 .webform-component {
@@ -57,15 +57,15 @@ text-transform: capitalize;
 
 #social-icons {
   position: absolute;
-bottom: 180px;
-margin-left: 370px;
+  bottom: 180px;
+  margin-left: 370px;
   /*width: 270px;
   height: 71px;
   background: url('/sites/all/micro/grandparents-2011/img/invite.png') no-repeat left bottom; */
 }
 
 #invite {
-bottom: 100px;
-position: absolute;
-left: 300px;
+  bottom: 100px;
+  position: absolute;
+  left: 300px;
 }

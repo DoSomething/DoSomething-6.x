@@ -1,0 +1,56 @@
+
+<?php
+  
+/**
+ * Implements hook_menu()
+ */
+function dosomething_api_menu() {
+  $items['services/%'] = array(
+    'page callback' => 'dosomething_api_call',
+    'page arguments' => array(1,2),
+    'type' => MENU_CALLBACK,
+    'access callback' => TRUE,
+  );
+
+  return $items;
+}
+
+function dosomething_api_call($service_name, $service_id) {
+  $function = '_dosomething_api_call_'.$service_name;
+
+  if (isset($_GET['key']) && in_array($_GET['key'], dosomething_api_keys())) {
+    module_load_include('inc', 'dosomething_api');
+    if (function_exists($function)) {
+      $return = call_user_func($function, $service_id);
+    }
+    else {
+      $return = dosomething_api_error('DoSomething.org does not provide a function of that name.');
+    }
+  }
+  else {
+    $return = dosomething_api_error('Invalid API key.', FALSE);
+  }
+
+  echo json_encode($return);
+}
+
+function dosomething_api_error($message, $vars = TRUE) {
+  if (!is_array($message)) $message = array($message);
+  $return = array(
+    'success' => 'false',
+    'message' => $message,
+  );
+  if ($vars) {
+    unset($_GET['q']);
+    unset($_GET['key']);
+    $return['_POST'] = $_POST;
+    $return['_GET'] = $_GET;
+  }
+  return $return;
+}
+
+function dosomething_api_keys() {
+  return array(md5('DoSomething.org'));
+}
+
+

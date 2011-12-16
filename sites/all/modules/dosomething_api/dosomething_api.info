@@ -1,0 +1,4 @@
+name = "DoSomething REST API"
+description = "DoSomething REST API (mostly for mobile dev)"
+core = 6.x
+package = DoSomething

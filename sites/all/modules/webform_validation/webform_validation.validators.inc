@@ -150,18 +150,6 @@ function webform_validation_webform_validation_validators() {
       'min_components' => 2,
       'description' => t('Forces the user to specify / select at least one of several selected webform components'),
     ),
-    'oneofseveral_expanded' => array( // Additional validator
-      'name' => "Require at least one of several fields - Expanded",
-      'component_types' => array(
-        'textfield',
-        'textarea',
-        'email',
-        'select',
-        'file',
-      ),
-      'min_components' => 2,
-      'description' => t('Same functionality as oneoftwo or oneofseveral, except this checks file fields as well and adds a custom error message when only two fields are selected.'),
-    ),
     'select_min' => array(
       'name' => "Minimum number of selections required",
       'component_types' => array(
@@ -265,7 +253,7 @@ function webform_validation_webform_validation_validate($validator_name, $items,
    * The array_filter callback function is only loaded for webform 3 to make sure
    * it works perfectly for webform 3, and works in all cases except with key 0 for webform 2
    */
-  $version = $version = webform_validation_check_version();
+  $version = webform_validation_check_version();
   $check_false_callback = ($version == 3) ? '_webform_validation_check_false' : NULL;
 
   if ($items) {
@@ -417,46 +405,6 @@ function webform_validation_webform_validation_validate($validator_name, $items,
             $names[] = $components[$value]['name'];
           }
           return array($keys[0] => t('You have to specify at least one of these items:') . theme('item_list', $names));
-        }
-        break;
-      case "oneofseveral_expanded":
-        // $components should have at least 2 items - no need to check due to params in rule
-        $keys = array_keys($items);
-        $entryN = array();
-        foreach($keys as $jj=>$kk) {
-            if ($components[$kk]['type'] == 'file') { // Is it a file field?
-                $parent = array($components[$kk]['form_key']);
-                
-                $pid = $cid = $components[$kk]['cid'];
-                while ($pid = $components['item_'.$pid]['pid']) {
-                    $parent[] = $components['item_'.$pid]['form_key'];
-                }
-                $loc_form_key = implode('_',array_reverse($parent));
-                if ($_FILES['files']['size'][$loc_form_key] > 0) { // ensure that the file exists by file byte size > 0
-                    $entryN[$jj] = $_FILES['files']['name'][$loc_form_key]; // sets with the file name
-                }
-                else if ($items['item_'.$cid]['_old'] != '') {
-                    $entryN[$jj] = $items['item_'.$cid]['_old'];
-                }
-                else { 
-                    $entryN[$jj] = ''; // empty
-                }
-            }
-            else { // non-file fields
-                $entryN[$jj] = _webform_validation_flatten_array($items[$kk]);
-            }
-        }
-        if (count(array_filter($entryN)) < 1) { // Are all the elements empty?
-            $names = array();
-            foreach ($keys as $value) {
-                $names[] = $components[$value]['name'];
-            }
-            if (count($keys) == 2) { // custom error msg for only two items
-                return array($keys[0] => t('You have to specify %item1 or %item2 (or both)', array('%item1' => $components[$keys[0]]['name'], '%item2' => $components[$keys[1]]['name'])));
-            }
-            else { // default error msg for three or more items
-                return array($keys[0] => t('You have to specify at least one of these items:') . theme('item_list', $names));
-            }
         }
         break;
       case "select_min":
@@ -622,6 +570,7 @@ function webform_validation_get_validator_info($validator_key) {
  * Handle translatable error messages, if available
  */
 function _webform_validation_i18n_error_message($rule) {
+  $rule['error_message'] = filter_xss($rule['error_message']);
   if (module_exists('i18nstrings')) {
     return i18nstrings('webform_validation:error_message:' . $rule['ruleid'] . ':message', $rule['error_message']);
   }

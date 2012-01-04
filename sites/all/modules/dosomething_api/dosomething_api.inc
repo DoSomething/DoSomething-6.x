@@ -18,7 +18,14 @@ function _dosomething_api_call_signup($webform_id) {
     );
 
     foreach ($_POST as $key => $val) {
-      $form_state['value']['submitted'][$key] = $val;
+      if (is_array($val)) {
+        foreach ($val as $key2 => $val2) {
+          $form_state['values']['submitted'][$key][$key2] = $val2;
+        }
+      }
+      else {
+        $form_state['values']['submitted'][$key] = $val;
+      }
     }
 
     drupal_execute('webform_client_form_'.$webform_id, $form_state, $node);
@@ -35,10 +42,7 @@ function _dosomething_api_call_signup($webform_id) {
 }
 
 function _dosomething_api_call_report($content_type) {
-  return array(
-    'success' => 'true',
-    'call' => 'report',
-  );
+  return dosomething_api_error('Yup. Can\'t do this yet.');
 }
 
 

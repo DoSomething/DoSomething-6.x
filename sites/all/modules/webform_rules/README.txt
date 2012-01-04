@@ -1,4 +1,3 @@
-/* $Id: README.txt,v 1.1.2.6 2010/12/31 12:10:02 stborchert Exp $ */
 
 This module provides basic rules integration for webform.
 

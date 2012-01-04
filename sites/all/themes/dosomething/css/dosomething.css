@@ -175,7 +175,7 @@ a:hover {
 #sign-up {
   position: absolute;
   width: 202px;
-  top: 15px;
+  top: -20px;
   right: -23px;
   font-size: 0.85em;
   z-index: 500;
@@ -761,3 +761,14 @@ margin-right: 1px;
 
 #block-webform-client-block-679745 { display: none; }
 #block-block-334.block { margin: 0; }
+#block-webform-client-block-728548 {
+  border: 5px solid black;
+  position: relative;
+}
+
+#block-webform-client-block-728548 h2.title {
+  top: auto;
+  margin: 5px -5px;
+  padding-left: 50px;
+  font-size: 1.2em;
+}

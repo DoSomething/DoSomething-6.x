@@ -3,3 +3,32 @@ function array_identical($a, $b) {
   return (is_array($a) && is_array($b) && array_diff_assoc($a, $b) === array_diff_assoc($b, $a));
 }
 
+function dosomething_functions_infusionsoft($action_id, $emails) {
+  if (!is_array($emails)) $emails = array($emails);
+  
+  include('isdk.php');
+  $app = new iSDK;
+
+  if($app->cfgCon("emaildrop")) {
+    foreach ($emails as $email) {
+      // set up the data to send to infusionsoft
+      $contact = array('Email' => $email);
+
+      //check for existing contact;
+      $returnFields = array('Id');
+      $dups = $app->findByEmail($contact['Email'], $returnFields);
+
+      /*If email is not a duplicate*/
+      if (empty($dups)) {
+        // add new contact and add them to the action set
+        $dups = $app->addCon($contact);
+        $app->runAS($dups, $action_id);
+      }
+      else {
+        /*If the email is a duplicate*/
+        $contactId = $dups[0][Id];
+        $app->runAS($contactId, $action_id);
+      }
+    }
+  }
+}

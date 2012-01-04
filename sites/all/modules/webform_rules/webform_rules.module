@@ -1,10 +1,48 @@
 <?php
-// $Id: webform_rules.module,v 1.1.2.11 2011/02/06 09:37:50 stborchert Exp $
 
 /**
  * @file
  * Adds rules integration for webform submissions.
  */
+
+/**
+ * Implementation of hook_webform_submission_insert().
+ *
+ * @param $node
+ *   The webform node.
+ * @param $submission
+ *   The webform submission.
+ */
+function webform_rules_webform_submission_insert($node, $submission) {
+  // Invoke event.
+  webform_rules_rules_invoke_event($submission, $node, 'insert');
+}
+
+/**
+ * Implementation of hook_webform_submission_update().
+ *
+ * @param $node
+ *   The webform node.
+ * @param $submission
+ *   The webform submission.
+ */
+function webform_rules_webform_submission_update($node, $submission) {
+  // Invoke event.
+  webform_rules_rules_invoke_event($submission, $node, 'update');
+}
+
+/**
+ * Implementation of hook_webform_submission_update().
+ *
+ * @param $node
+ *   The webform node.
+ * @param $submission
+ *   The webform submission.
+ */
+function webform_rules_webform_submission_delete($node, $submission) {
+  // Invoke event.
+  webform_rules_rules_invoke_event($submission, $node, 'delete');
+}
 
 /**
  * Implementation of hook_form_alter().
@@ -18,6 +56,11 @@ function webform_rules_form_alter(&$form, $form_state, $form_id) {
 
 /**
  * Custom submit handler for webform submissions.
+ *
+ * This is needed to catch submissions of saved webform drafts as
+ * hook_webform_submission_insert() only fires once and its not possible in
+ * hook_webform_submission_update() to check if the data has been submitted
+ * before (e.g. saved as draft).
  */
 function webform_rules_client_form_submit($form, &$form_state) {
   // If the webform is NOT completed, don't run the submit handler!
@@ -29,15 +72,22 @@ function webform_rules_client_form_submit($form, &$form_state) {
   // If we've got to this point, then we are not mid-way through a form submission.
   $values = $form_state['values'];
   // Check if user is submitting as a draft.
-  $is_draft = $values['op'] == t('Save Draft');
-  // Get webform node.
-  $node = $form['#node'];
-  // Save submission id.
-  $node->webform['sid'] = $is_draft ? '' : $values['details']['sid'];
-  // Get submitted data from webform.
-  $submission_data = webform_submission_data($node, $values['submitted']);
-  // Invoke event.
-  webform_rules_rules_invoke_event($submission_data, $node, $is_draft);
+  if ($values['op'] == t('Save Draft')) {
+    // Saving the webform as draft is handled by hook_webform_submission_insert().
+    return;
+  }
+  if ($form['#is_draft'] && isset($form_state['values']['details']['sid'])) {
+    $submission = $form['#submission'];
+    // Map submitted data to submission data.
+    foreach ($form_state['values']['submitted'] as $cid => $value) {
+      if (isset($submission->data[$cid])) {
+        $submission->data[$cid]['value'] = $value;
+      }
+    }
+    // Invoke event.
+    webform_rules_rules_invoke_event($submission, $form['#node'], 'submit');
+  }
+  return;
 }
 
 /**
@@ -47,42 +97,80 @@ function webform_rules_client_form_submit($form, &$form_state) {
  *   Data from webform prepared by webform_submission_data().
  * @param $node
  *   The submitted webform node.
- * @param $is_draft
- *   TRUE if the webform is saved as draft, otherwise FALSE. Defaults to FALSE.
+ * @param $op
+ *   Type of submission: 'insert', 'update', 'delete', 'submit.
  */
-function webform_rules_rules_invoke_event($submission_data, $node, $is_draft = FALSE) {
+function webform_rules_rules_invoke_event($submission, $node, $op = 'insert') {
   global $user;
-  if (!is_array($submission_data) || count($submission_data) == 0) {
+  if (!is_array($submission->data) || count($submission->data) == 0) {
     return;
   }
+  $is_draft = (isset($submission->is_draft) && $submission->is_draft);
   $webform = $node->webform;
   $data = array(
-    'sid' => $webform['sid'],
+    'op' => $op,
+    'sid' => $submission->sid,
     'components' => array(),
   );
   $form_id = 'webform-client-form-'. $webform['nid'];
   // Map values to field names.
-  foreach ($submission_data as $cid => $value) {
+  foreach ($submission->data as $cid => $value) {
     $component = $webform['components'][$cid];
     $data['components'][$component['form_key']]['value'] = $value['value'];
     $data['components'][$component['form_key']]['component'] = $component;
   }
   // Invoke the rules event.
-  if ($is_draft) {
-    rules_invoke_event('webform_rules_submit_as_draft', array(
-      'user' => $user,
-      'node' => $node,
-      'data' => $data,
-      'form_id' => $form_id,
-    ));
-  }
-  else {
-    rules_invoke_event('webform_rules_submit', array(
-      'user' => $user,
-      'node' => $node,
-      'data' => $data,
-      'form_id' => $form_id,
-    ));
+  switch ($op) {
+    case 'insert':
+      if ($is_draft) {
+        rules_invoke_event('webform_rules_submit_as_draft', array(
+          'user' => $user,
+          'node' => $node,
+          'data' => $data,
+          'form_id' => $form_id,
+        ));
+      }
+      else {
+        rules_invoke_event('webform_rules_submit', array(
+          'user' => $user,
+          'node' => $node,
+          'data' => $data,
+          'form_id' => $form_id,
+        ));
+      }
+      break;
+    case 'submit':
+      rules_invoke_event('webform_rules_submit', array(
+        'user' => $user,
+        'node' => $node,
+        'data' => $data,
+        'form_id' => $form_id,
+      ));
+      break;
+    case 'update':
+      rules_invoke_event('webform_rules_update', array(
+        'user' => $user,
+        'node' => $node,
+        'data' => $data,
+        'form_id' => $form_id,
+      ));
+      break;
+    case 'delete':
+      rules_invoke_event('webform_rules_delete', array(
+        'user' => $user,
+        'node' => $node,
+        'data' => $data,
+        'form_id' => $form_id,
+      ));
+      break;
+    case 'delete':
+      rules_invoke_event('webform_rules_delete', array(
+        'user' => $user,
+        'node' => $node,
+        'data' => $data,
+        'form_id' => $form_id,
+      ));
+      break;
   }
 }
 
@@ -109,7 +197,7 @@ function webform_rules_token_list($type) {
  */
 function webform_rules_token_values($type, $object = NULL, $options = array()) {
   $values = array();
-  if (!is_array($object)) {
+  if (!is_array($object) || !isset($object['sid']) || !isset($object['components'])) {
     return $values;
   }
   switch ($type) {
@@ -205,6 +293,7 @@ function webform_rules_prepare_component_value($component_value, $raw = FALSE) {
  *   The rendered component value.
  */
 function webform_rules_render_component($component, $value, $format = 'text', $title = TRUE) {
+  module_load_include('inc', 'webform', 'includes/webform.components');
   if ($format != 'text') {
     $format = 'html';
   }

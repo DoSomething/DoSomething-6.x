@@ -1,4 +1,3 @@
-; $Id: webform_rules.info,v 1.1 2010/11/26 15:50:02 stborchert Exp $
 name = Webform Rules
 core = 6.x
 description = "Adds rules integration for webform submissions."
@@ -6,9 +5,9 @@ package = Webform
 dependencies[] = webform
 dependencies[] = rules
 
-; Information added by drupal.org packaging script on January 1, 1970 - 00:00
-version = "6.x-1.4"
+; Information added by drupal.org packaging script on 2011-11-20
+version = "6.x-1.6"
 core = "6.x"
 project = "webform_rules"
-datestamp = "1296985627"
+datestamp = "1321802451"
 

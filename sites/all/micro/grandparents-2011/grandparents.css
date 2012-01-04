@@ -64,8 +64,13 @@ text-transform: capitalize;
   background: url('/sites/all/micro/grandparents-2011/img/invite.png') no-repeat left bottom; */
 }
 
+
 #invite {
   bottom: 100px;
   position: absolute;
   left: 300px;
 }
+
+.outside-margin {
+  margin-top: 125px;
+}  

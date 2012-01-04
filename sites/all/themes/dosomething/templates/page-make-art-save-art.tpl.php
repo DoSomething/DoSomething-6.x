@@ -83,7 +83,7 @@
           <?php print $navigation; ?>
 
         </div></div> <!-- /.section, /#navigation -->
-      <?php endif; ?><?php include "session.php";?>
+      <?php endif; ?>
 
       <?php //print $sidebar_first; ?>
 

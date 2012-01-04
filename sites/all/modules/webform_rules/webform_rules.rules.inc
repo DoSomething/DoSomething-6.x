@@ -1,5 +1,4 @@
 <?php
-// $Id: webform_rules.rules.inc,v 1.1.2.5 2010/12/31 11:57:00 stborchert Exp $
 
 /**
  * @file
@@ -19,6 +18,21 @@ function webform_rules_rules_event_info() {
     ),
     'webform_rules_submit' => array(
       'label' => t('After a webform has been submitted'),
+      'module' => t('Webform'),
+      'arguments' => _webform_rules_event_variables(),
+    ),
+    'webform_rules_insert' => array(
+      'label' => t('After a webform submission has been added'),
+      'module' => t('Webform'),
+      'arguments' => _webform_rules_event_variables(),
+    ),
+    'webform_rules_update' => array(
+      'label' => t('After a webform submission has been updated'),
+      'module' => t('Webform'),
+      'arguments' => _webform_rules_event_variables(),
+    ),
+    'webform_rules_delete' => array(
+      'label' => t('After a webform submission has been deleted'),
       'module' => t('Webform'),
       'arguments' => _webform_rules_event_variables(),
     ),
@@ -51,7 +65,7 @@ function webform_rules_data_type_info() {
       'label' => t('webform data'),
       'class' => 'webform_rules_data_type_webform_data',
       'savable' => TRUE,
-      'identifiable' => TRUE,
+      'identifiable' => FALSE,
       'use_input_form' => FALSE,
       'module' => 'Webform',
       'token type' => 'webform',
@@ -157,6 +171,7 @@ class webform_rules_data_type_webform_data extends rules_data_type {
     }
     // Update submission data if necessary.
     if ($changed) {
+      module_load_include('inc', 'webform', 'includes/webform.submissions');
       // TODO: changed is always TRUE atm?
       webform_submission_update($node, $new_submission);
     }
@@ -164,11 +179,15 @@ class webform_rules_data_type_webform_data extends rules_data_type {
   }
 
   function load($sid) {
+    module_load_include('inc', 'webform', 'includes/webform.submissions');
     return webform_get_submissions(array('sid' => $sid));
   }
 
   function get_identifier() {
     $submission = &$this->get();
+    if (is_array($submission)) {
+      $submission = (object) $submission;
+    }
     return $submission->sid;
   }
 

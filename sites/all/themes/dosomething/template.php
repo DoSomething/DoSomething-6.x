@@ -95,7 +95,8 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
                  'campaign_bully_2011',
 				 'club',
 				 'cancer_2011_signup',
-				 'campaign_cancer_2011'
+				 'campaign_cancer_2011',
+         'campaign_tfj_2012',
                  );
   //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
   foreach ($ds_forms as $name) {

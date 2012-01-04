@@ -257,3 +257,7 @@ img#portrait-pics-left {
 .float-right {
 	float: right;
 }
+
+#webform-component-friends-email-addresses {
+  display: none;
+}

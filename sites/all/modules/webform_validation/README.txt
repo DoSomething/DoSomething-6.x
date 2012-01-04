@@ -10,6 +10,8 @@ The following validation rules are currently included:
 - Numeric values (optionally specify min and / or max value)
 - Minimum length
 - Maximum length
+- Minimum number of words
+- Maximum number of words
 - Equal values on multiple fields
 - Unique values on multiple fields
 - Specific value
@@ -22,6 +24,7 @@ The following validation rules are currently included:
 - Regular expression
 - Must be empty (Anti-Spam: Hide with CSS)
 - Words blacklist
+- Must match a username
 
 Installation
 ------------

@@ -26,12 +26,14 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
       node_save($node);
     }
   }
+/* Grandparents 2011 -> 2012 */  
  else if ($node->nid == 679707) {
     $map = _dosomething_wf_modify_webform_component_mapping($node);
     $checks = $submission->data[$map['check_boxes']]['value'];
     if (in_array('text', $checks)) {
       ds_mobile_mcommons_optin_campaign($submission->data[$map['phone']]['value'][0], 68611, 79611);
     }
+/* END - Grandparents 2011 */	
     if (in_array('email', $checks)) {
         dia_signup(array(
                        'link' => 'groups',
@@ -61,11 +63,38 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
  }
  
  
- //// Teens For Jeans - Splash
+ /*Teens for Jeans Splash*/
  else if ($node->nid == 720997) {
- 
-	 $map = _dosomething_wf_modify_webform_component_mapping($node);
+ 	 $map = _dosomething_wf_modify_webform_component_mapping($node);
 	 
+	// send the email to infusionsoft
+	include 'isdk.php';
+	$app = new iSDK;
+
+	if($app->cfgCon("emaildrop")) {
+		// set up the data to send to infusionsoft
+		$contact=array('Email' => $submission->data[$map['email']]['value'][0]);
+		// apply the Teens for jeans tags
+		$actionId = 748;
+		//check for existing contact;
+		$returnFields = array('Id');
+		$dups = $app->findByEmail($contact['Email'], $returnFields);
+		/*If email is not a duplicate*/
+		if (empty($dups)) {
+			// add new contact and add them to the action set
+			$dups = $app->addCon($contact);	
+			$app->runAS($dups, $actionId);
+		} 
+		else
+		{
+			/*If the email is a duplicate*/
+			$contactId = $dups[0][Id];
+			$app->runAS($contactId, $actionId);
+		}
+	}
+ }
+ else if ($node->nid == 722522) { 
+	 $map = _dosomething_wf_modify_webform_component_mapping($node);	 
 	// send the email to infusionsoft
 	include 'isdk.php';
 	$app = new iSDK;
@@ -76,7 +105,7 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
 		$contact=array('Email' => $submission->data[$map['email']]['value'][0]);
 		
 		// apply the Teens for jeans tags
-		$actionId = 748;
+		$actionId = 852;
 
 		//check for existing contact;
 		$returnFields = array('Id');
@@ -100,6 +129,41 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
 			$app->runAS($contactId, $actionId);
 		}
 	}
+ } 
+ 
+ /*College Survey webform*/
+ else if ($node->nid == 726972) { 
+	 $map = _dosomething_wf_modify_webform_component_mapping($node);
+	/*Infusionsoft Library*/
+	include 'isdk.php';
+	$app = new iSDK;
+
+	if($app->cfgCon("emaildrop")) {
+		// set up the data to send to infusionsoft
+		$contact=array('Email' => $submission->data[$map['email']]['value'][0]);		
+		// apply the College Survey tag
+		$actionId = 868;
+		//check for existing contact;
+		$returnFields = array('Id');
+		$dups = $app->findByEmail($contact['Email'], $returnFields);
+		
+		/*If email is not a duplicate*/
+		if (empty($dups)) {
+			// add new contact and add them to the action set
+			$dups = $app->addCon($contact);	
+			$app->runAS($dups, $actionId);
+		} 
+		else
+		{
+			/*If the email is a duplicate*/			
+			$contactId = $dups[0][Id];
+			$app->runAS($contactId, $actionId);
+		}
+	}
+ } 
+ else if ($node->nid == 731708) {
+   $map = _dosomething_wf_modify_webform_component_mapping($node);
+   dosomething_functions_infusionsoft(932, $submission->data[$map['enter_your_email_address']]['value'][0]);
  }
 }
 

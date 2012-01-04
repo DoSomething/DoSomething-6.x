@@ -1,0 +1,223 @@
+<?php
+
+/**
+ * Node definitions. Should probably do this a little nicer.
+ * DSAPP_APP is the application webform nid.
+ * DSAPP_REC is the recommendation wegform nid.
+ */
+define('DSAPP_APP', 727926);
+define('DSAPP_REC', 727992);
+
+/**
+ * Implements hook_menu()
+ */
+function dosomething_awards_menu() {
+  $items['dsawards/resend/%/%'] = array(
+    'page callback' => 'dosomething_awards_resend_email',
+    'page arguments' => array(2,3),
+    'access callback' => 'dosomething_awards_submission_permission',
+    'access arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dsawards/status/%'] = array(
+    'page callback' => 'dosomething_awards_app_status',
+    'page arguments' => array(2),
+    'access callback' => 'dosomething_awards_submission_permission',
+    'access arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_theme()
+ */
+function dosomething_awards_theme() {
+  $theme = array(
+    'dsawards_status' => array(
+      'arguments' => array(
+        'sid' => NULL,
+        'draft' => NULL,
+        'recommendations' => NULL,
+      ),
+      'template' => 'templates/dsawards-status',
+    ),
+  );
+  return $theme;
+}
+
+/**
+ * Implements hook_form_alter(&$form, &$form_state, $form_id)
+ *
+ * Adds a submit handler to suppress emails on submission that should only
+ * go out in the case of a draft.
+ *
+ */
+function dosomething_awards_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'webform_client_form_'.DSAPP_APP) {
+    $first = array_shift($form['#submit']);
+    array_unshift($form['#submit'], $first, 'dosomething_awards_unset_emails');
+  }
+  else if ($form_id == 'webform_client_form_'.DSAPP_REC) {
+    $first = array_shift($form['#submit']);
+    array_unshift($form['#submit'], $first, 'dosomething_awards_set_email');
+  }
+}
+
+/**
+ * Suppress emails that we don't want going out on submission.
+ */
+function dosomething_awards_unset_emails(&$form, &$form_state) {
+  if ($form_state['save_draft']) return;
+
+  $suppress = array(1, 2, 3, 4, 5);
+  foreach ($suppress as $email) {
+    unset($form['#node']->webform['emails'][$email]);
+  }
+}
+
+/**
+ * Set the send-to address of the email to the applicant's email.
+ */
+function dosomething_awards_set_email(&$form, &$form_state) {
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $sid = $form_state['values']['submitted_tree']['sid'];
+  $app = webform_get_submission(DSAPP_APP, $sid);
+  $email = $app->data[dosomething_awards_load_field(DSAPP_APP, 'email_address')]['value'][0];
+  $form['#node']->webform['emails'][1]['email'] = $email;
+}
+
+function dosomething_awards_resend_email($sid, $rec_num) {
+  global $user;
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $submission = webform_get_submission(DSAPP_APP, $sid);
+  $node = node_load(DSAPP_APP);
+  webform_submission_send_mail($node, $submission, array($node->webform['emails'][$rec_num]));
+  drupal_goto('dsawards/status/'.$sid);
+}
+
+function dosomething_awards_submission_permission($sid) {
+  global $user;
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $submission = webform_get_submission(DSAPP_APP, $sid);
+  return ($user->uid == $submission->uid || user_access('access all webform results'));
+}
+
+function dosomething_awards_app_status($sid) {
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $submission = webform_get_submission(DSAPP_APP, $sid);
+  if (!isset($submission->sid)) {
+    return theme('dsawards_status', NULL, NULL, NULL);
+  }
+  $rs = db_query("SELECT sid FROM {webform_submitted_data} WHERE nid=%d AND cid=%d AND data='%s'", DSAPP_REC, dosomething_awards_load_field(DSAPP_REC, 'sid'), $sid);
+
+  $project = dosomething_awards_load_field(DSAPP_APP, 'project_title');
+  $project = $submission->data[$project]['value'][0];
+  $draft = (bool) $submission->is_draft;
+
+  $rec_submitted = array(FALSE, FALSE);
+  while ($rec = db_result($rs)) {
+    $rec = webform_get_submission(DSAPP_REC, $rec);
+    $rec_submitted[$rec->data[dosomething_awards_load_field(DSAPP_REC, 'rid')]['value'][0]] = TRUE;
+  }
+
+  $recs = array();
+  for ($i = 1; $i <= 2; $i++) {
+    $parent = dosomething_awards_load_field(DSAPP_APP, 'recommendation_'.$i);
+    $email = dosomething_awards_load_field(DSAPP_APP, 'email', $parent);
+    $name = dosomething_awards_load_field(DSAPP_APP, 'name', $parent);
+
+    $recs[] = array(
+      'name' => $submission->data[$name]['value'][0],
+      'email' => $submission->data[$email]['value'][0],
+      'received' => $rec_submitted[$i],
+      'rid' => $i,
+    );
+  }
+
+  drupal_set_title($project . ' Do Something Awards Application Status');
+
+  return theme('dsawards_status', $sid, $draft, $recs);
+}
+
+/**
+ * Implements hook_webform_submission_insert($node, $submission)
+ */
+function dosomething_awards_webform_submission_insert($node, $submission) {
+  if ($node->nid == DSAPP_APP) {
+    if ($submission->is_draft) {
+      webform_submission_send_mail($node, $submission, array($node->webform['emails'][5]));
+    }
+    for ($i = 1; $i <= 2; $i++) {
+      $parent = dosomething_awards_load_field(DSAPP_APP, 'recommendation_'.$i);
+      $email = dosomething_awards_load_field(DSAPP_APP, 'email', $parent);
+      $name = dosomething_awards_load_field(DSAPP_APP, 'name', $parent);
+
+      if (!empty($submission->data[$email]['value'][0])) {
+        webform_submission_send_mail($node, $submission, array($node->webform['emails'][$i], $node->webform['emails'][$i+2]));
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_webform_submission_presave($node, &$submission)
+ */
+function dosomething_awards_webform_submission_presave($node, &$submission) {
+  if ($node->nid == DSAPP_APP) {
+    if (isset($submission->sid)) {
+      // reload the node in case it was unset above
+      $node = node_load(DSAPP_APP);
+      module_load_include('inc', 'webform', 'includes/webform.submissions');
+      $previous = webform_get_submission(DSAPP_APP, $submission->sid, TRUE);
+      for ($i = 1; $i <= 2; $i++) {
+        $parent = dosomething_awards_load_field(DSAPP_APP, 'recommendation_'.$i);
+        $email = dosomething_awards_load_field(DSAPP_APP, 'email', $parent);
+        $email_check = $previous->data[$email]['value'][0] !== $submission->data[$email]['value'][0];
+        if ($email_check && !empty($submission->data[$email]['value'][0])) {
+          webform_submission_send_mail($node, $submission, array($node->webform['emails'][$i], $node->webform['emails'][$i+2]));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_webform_select_options_info().
+ */
+function dosomething_awards_webform_select_options_info() {
+  $items = array();
+  $items['user_projects'] = array(
+      'title' => t('User\'s projects'),
+      'options callback' => 'dosomething_awards_options_user_projects'
+  );
+  return $items;
+}
+
+function dosomething_awards_options_user_projects() {
+  global $user;
+  if ($user->uid == 0) return;
+  $rs = db_query("SELECT n.nid, n.title FROM {node} n WHERE n.type='project' AND n.uid=%d", $user->uid);
+  
+  $options = array();
+  while ($project = db_fetch_array($rs)) {
+      $options[$project['nid']] = $project['title'];
+  }
+  
+  if (count($options) === 0);
+      //$options[0] = '< Please create a project. >';
+  return $options;
+}
+
+function dosomething_awards_load_field($nid, $field_name, $pid = NULL) {
+  $node = node_load($nid);
+
+  foreach ($node->webform['components'] as $component) {
+    if (($component['form_key'] == $field_name && isset($pid) && $component['pid'] == $pid) ||
+        ($component['form_key'] == $field_name && !isset($pid))) {
+      return $component['cid'];
+    }
+  }
+}

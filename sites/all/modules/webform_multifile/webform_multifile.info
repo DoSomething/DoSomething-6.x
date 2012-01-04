@@ -1,0 +1,12 @@
+; $Id$
+name = Webform multifile
+description = Adds a new field to webform to allow multiple file uploads
+core = 6.x
+package = Webform
+
+; Information added by drupal.org packaging script on 2011-11-08
+version = "6.x-1.1"
+core = "6.x"
+project = "webform_multifile"
+datestamp = "1320786336"
+

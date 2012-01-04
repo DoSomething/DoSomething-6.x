@@ -1,0 +1,538 @@
+/**
+ *  Teens for Jeans CSS
+ */
+
+#header, #main-wrapper {
+  background: url('img/bg.png');;
+}
+
+#header {
+  margin-left: 0;
+  height: 154px;
+}
+
+#logo {
+  left: 0;
+}
+
+#primary-nav { left: 202px; }
+
+#content-area {
+  margin-top: 15px;
+}
+
+#main-wrapper {
+  background-position: -34px -154px;
+}
+
+#content {
+  font-family: 'DINWebCond';
+  font-size: 20px;
+  line-height: 1em;
+  width: 770px;
+  margin: 0 40px;
+  background: white;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#content .section {
+  margin: 0 auto;
+  width: 545px;
+}
+
+h2.title { display: none; }
+
+.node-type-webform h2.title { display: block; }
+
+div.tabs {
+  position: absolute;
+  top: 150px;
+  right: 100px;
+  z-index: 100;
+}
+
+#block-webform-client-block-722522 {
+  background: #ED1C24;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+
+}
+#block-webform-client-block-722522:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+#block-webform-client-block-722522 .webform-component {
+  float: left;
+  margin-left: 10px;
+}
+
+
+#block-webform-client-block-722522 .webform-component label {
+  font-family: 'DINWebCondMedium';
+  font-weight: normal;
+  font-size: 19px;
+}
+
+#block-webform-client-block-722522 .webform-component input {
+  width: 212px;
+  line-height: 28px;
+  font-size: 18px;
+  border: 0;
+}
+
+#webform-client-form-722522 .form-submit {
+  margin-top: 31px;
+  height: 34px;
+  width: 86px;
+  background: url('/sites/all/micro/grandparents-2011/img/submit-black.png') no-repeat;
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  float: left;
+  margin-left: 6px;
+  text-indent:-9999px;
+  text-transform: capitalize;
+}
+
+#webform-client-form-727764 .form-submit {
+  position: absolute;
+  text-decoration: none;
+  bottom: 10px;
+  background: #ED1C24;
+  padding: 5px 10px 3px;
+  font-family: DINWebCondBlack;
+  font-size: 16px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  color: white;
+  text-transform: uppercase;
+  border: 0px;
+}
+
+.mid-text {
+  color: #fff;
+  font-family: 'DINWebCond';
+  font-size: 31px;
+  margin: 15px 0px 0px 0px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.main-box {
+  background: #F2F2F2;
+  margin: 0 0 15px 0;
+  padding: 0;
+  color: #000000;
+}
+
+.main-box ul {
+  margin: 15px 0;
+}
+
+.main-box li {
+  margin: 10px;
+  list-style-image: url('images/ul-arrow-white.png');
+}
+
+div.node .main-box h2 {
+  margin: 0;
+  padding: 2px 2px 0 2px;
+  background: #333333;
+  color: white;
+}
+
+.squares {
+  font-size: 20px;
+  line-height: 20px;
+  background: #F2F2F2;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  float: left;
+  width: 230px;
+  margin-left: 15px;
+  -webkit-box-shadow: 0px 0px 10px 0px #666666;
+  -moz-box-shadow: 0px 0px 10px 0px #666666;
+  box-shadow: 0px 0px 10px 0px #666666;
+  height: 200px;
+  position: relative;
+  text-align: center;
+}
+
+div.node .squares h2 {
+  -moz-border-radius-topleft: 15px;
+  -moz-border-radius-topright: 15px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-radius: 15px 15px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
+  color: white;
+  font-size: 27px;
+  background: #ED1C24;
+  margin-bottom: 3px;
+  margin-top: 0;
+}
+
+.squares ul {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.squares .box-button {
+  position: absolute;
+  text-decoration: none;
+  bottom: 10px;
+  background: #ED1C24;
+  padding: 5px;
+  font-family: DINWebCondBlack;
+  font-size: 16px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.squares:first-child {
+  margin-left: -1px;
+}
+
+.outside-margin {
+  margin-left: -87px !important;
+  margin-right: -88px !important;
+}
+
+/**
+ * Header hacks!
+ */
+
+#primary-nav li.whatsyourthing a {
+  background: url('/sites/all/micro/membership/whats.png') no-repeat 0 0;
+}
+
+#primary-nav li.actnow a {
+  background: url('/sites/all/micro/membership/act.png') no-repeat 0 0;
+}
+
+#primary-nav li.programs a {
+  background: url('/sites/all/micro/membership/share.png') no-repeat 0 0;
+}
+
+#photo-viewer {
+  width: 700px;
+  height: 420px;
+  padding: 10px;
+  background: #231F20;
+  text-align: center;
+  position: relative;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#photo-viewer img {
+  background: white;
+}
+
+h2, div.node h2 {
+  text-transform: uppercase;
+  font-family: DINWebCondBlack;
+  background: #000000;
+  margin: 0;
+  color: white;
+  font-weight: normal;
+  padding: 2px 5px 0;
+  margin-top: 15px;
+}
+
+h2 a:link, h2 a:visited, h2 a:hover, h2 a:active {
+  color: white;
+  text-decoration: none;
+  text-transform: none;
+  font-size: .6em;
+}
+
+h2 .green {
+  margin: 0;
+  font-size: 1.8em;
+  vertical-align: middle;
+}
+
+.main-box span {
+  text-transform: none;
+  font-size: 20px;
+  float: right;
+  padding-right: 10px;
+}
+  
+div.view-content tbody tr:hover {
+  background: none;
+}
+
+div.view-content td {
+  width: 140px;
+  margin-right: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.green {
+  color: #19A854;
+  text-transform: uppercase;
+}
+
+#node-726866 .green {
+  margin-left: -.8em;
+  margin-top: 8px;
+  margin-bottom: 5px;
+}
+
+#node-726893 .green {
+  font-size: 1.8em;
+  line-height: 1em;
+  font-family: DINWebCondBlack;
+}
+
+#main-wrapper p {
+  font-size: 1.2em;
+  line-height: 1em;
+  font-family: DINWebCond;
+  margin: 1em 0;
+  color: #000000;
+}
+
+.grey-box, .node-type-webform .content {
+  background: #F2F2F2;
+  padding: 10px 20px;
+}
+
+.grey-box ul {
+  list-style-image: url('images/nav-arrow-black.png');
+}
+
+.grey-box li {
+  margin: 5px 0;
+}
+
+a:link, a:visited, a:hover, a:active, li a.active {
+  color: black;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#webform-component-first-name, #webform-component-last-name {
+  float: left;
+}
+
+#webform-component-email-address {
+  clear: both;
+}
+
+#edit-field-name-f-0-value-wrapper, #edit-field-name-l-0-value-wrapper {
+  float: left;
+}
+
+#edit-title-wrapper {
+  clear: both;
+}
+
+#node-form input[type=text], #node-form table, .description {
+  width: 90%;
+}
+
+.filefield-element, .filefield-element .widget-edit .form-item {
+  margin: 0;
+}
+
+.form-item label, th {
+  font-weight: normal;
+}
+
+.description {
+  background: white;
+}
+
+#node-form input[type=text] {
+  border: 0;
+}
+
+tr.even, tr.odd {
+  background: none;
+}
+
+#field-campaign-pictures-items tbody tr {
+  background: white;
+}
+
+#node-form #edit-submit {
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  background: #ED1C24;
+  color: white;
+  padding: 2px 10px 0;
+  border: 0;
+  font-family: DINWebCondBlack;
+  font-size: 1.1em;
+  cursor: pointer;
+}
+
+/**
+ * Main navigation
+ */
+
+ul.links {
+  padding-bottom: 18px;
+  position: absolute;
+  right: -18px;
+  width: 170px;
+  background: url('/sites/all/micro/t4j-full/images/nav-triangle-3a3a3a.png') no-repeat right bottom;
+}
+
+ul.links li {
+  list-style: none;
+  background: #000000;
+  padding: 3px 0 0 0;
+  margin: 0;
+  font-family: DINWebCond;
+  line-height: 1em;
+  display: block;
+  font-size: 26px;
+  line-height: 35px;
+  text-transform: uppercase;
+  border-bottom: 1px solid white;
+}
+
+ul.links li:last-child {
+  border: none;
+}
+
+ul.links li a {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+ul.links li a.active {
+  color: #ED1C24;
+  background-image: url('/sites/all/micro/tfj-full/images/nav-arrow-white.png');
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+ul.links li a:hover {
+  color: white;
+}
+
+#sb-player {
+  background: #ED1C24;
+  font-family: DINWebCond;
+}
+
+#sb-player p {
+  line-height: 1em;
+  font-size: 1.1em;
+}
+
+#sb-player .q {
+  color: white;
+  font-family: DINWebCondBlack;
+  margin-top: 20px;
+  line-height: 1em;
+  font-size: 30px;
+}
+
+.pad-me {
+  padding: 10px;
+}
+
+#sb-player .q a {
+  color: white;
+}
+
+#social-stats {
+  position: absolute;
+  top: 285px;
+  right: -50px;
+}
+
+.main-box #ready {
+  color: #FF0000;
+  font-size: 25px;
+  text-align: center;
+  line-height: 25px;
+  padding-top: 5px;
+} 
+
+#faqs p {
+  font-family: DINWebCond;
+  color: #000000;
+  font-size: 20px;
+}
+
+#faqs li {
+  font-size: 22px;
+  font-family: DINWebCondBlack;
+  color: #ED1C24;
+  list-style-image: url('img/arrow-black.png');  
+  margin-left: -10px;
+}
+
+#take-action li {
+  list-style-image: url('img/arrow-red.png');
+}
+
+#do-this li {
+  font-size: 25px;
+  margin-left: -10px;
+  list-style-image: url('img/arrow-red.png');
+  margin-top: -20px;
+  line-height: 35px;
+}
+
+#do-this h3 {
+  font-family: DINWebCondBlack;
+  color: #ED1C24;
+  font-size: 22px;
+  padding-left: 10px;
+}
+  
+#edit-campaign-grandparents-2011-node-form {
+ font-size: 20px;
+} 
+
+.campaign_grandparents_2011_node_form {
+  padding: 0px 10px 0px 10px;
+}  
+
+#rules {
+  padding:15px;
+  font-size: 18px;
+}  
+
+#contest-rules {
+  font-family: DINWebCondBlack;
+  text-align: center;
+  font-size: 30px;
+  line-height: 30px;
+}  
+
+#prizes-img {
+  padding-left: 20px;
+}  
+
+.outside-margin {
+  margin-top: 125px;
+}  
+
+.resizable-textarea {
+  width: 400px;
+}	

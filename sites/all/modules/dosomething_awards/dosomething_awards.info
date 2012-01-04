@@ -1,0 +1,4 @@
+name = "DoSomething Awards Webforms"
+description = "DoSomething Awards workflow module"
+core = 6.x
+package = DoSomething

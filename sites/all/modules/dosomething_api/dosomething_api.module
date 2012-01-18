@@ -16,6 +16,12 @@ function dosomething_api_menu() {
 }
 
 function dosomething_api_call($service_name, $service_id) {
+  if (!dosomething_api_check_post($_POST)) {
+    $return = dosomething_api_error('You gave me some unsanitary data. Make sure all data is UTF-8.');
+    echo json_encode($return);
+    return;
+  }
+ 
   $function = '_dosomething_api_call_'.$service_name;
 
   if (isset($_GET['key']) && in_array($_GET['key'], dosomething_api_keys())) {
@@ -53,4 +59,44 @@ function dosomething_api_keys() {
   return array(md5('DoSomething.org'));
 }
 
+function dosomething_api_check_post(&$check) {
+  foreach ($check as &$p) {
+    if (!empty($p) && !is_array($p)) {
+      $p = filter_xss($p);
+      if (empty($p)) {
+        return false;
+      }
+    }
+    else if (is_array($p)) {
+      // we don't want to just return the function result, because we may not have finished looping.
+      // only terminate the loop if we fail the check.
+      if (!dosomething_api_check_post($p)) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
 
+function _dosomething_api_wrap_text_field($text, $key_str = 'value') {
+  $return = array();
+  if (!is_array($text)) {
+    $text = array($text);
+  }
+
+  foreach ($text as $t) {
+    $return[] = array($key_str => $t);
+  }
+  return $return;
+}
+
+function dosomething_api_complete($type) {
+  $err = drupal_get_messages();
+  if (!empty($err['error'])) {
+    return dosomething_api_error($err['error']);
+  }
+  return array(
+    'success' => 'true',
+    'call' => $type,
+  );
+}

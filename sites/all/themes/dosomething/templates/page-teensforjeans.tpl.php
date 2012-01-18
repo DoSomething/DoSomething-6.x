@@ -1,18 +1,74 @@
 <?php
+/*
+function movePage($num,$url){
+    static $http = array (
+        301 => "HTTP/1.1 301 Moved Permanently",
+        302 => "HTTP/1.1 302 Found",
+    );
+    header($http[$num]);
+    header ("Location: $url");
+}
+
+$is_mobile = false;
+
+/* Detect if we should display for a mobile device */
+/* Devices and corresponding strings to match against HTTP_USER_AGENT */
+/*
+$devices = array(
+    "android" => "android",
+    "blackberry" => "blackberry",
+    "iphone" => "(iphone|ipod)",
+    "opera" => "opera mini",
+    "palm"  => "(avantgo|blazer|elaine|hiptop|palm|plucker|xiino)",
+    "windows" => "windows ce; (iemobile|ppc|smartphone)",
+    "generic" => "(kindle|mobile|mmp|midp|o2|pda|pocket|psp|symbian|smartphone|treo|up.browser|up.link|vodafone|wap)"
+);
+    
+foreach($devices as $device => $regexp) {
+    if(preg_match('/'.$regexp.'/i', $_SERVER['HTTP_USER_AGENT'])) {
+        $is_mobile = true;
+        break;
+    }
+}
+
+/* If mobile device detected and 'view_standard' $_GET is not set, redirect to our mobile site */
+/*
+if( $is_mobile == true ) {
+    if( $_GET['view_standard'] != 'true' ) {
+//        movePage( 302, 'http://m.dosomething.org/teensforjeans/index.php' );
+    }
+}
+*/
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<script type="text/javascript">
+  document.createElement('viewport').setAttribute('content','width=device-width');
+  if (window.location.search.toLowerCase().indexOf('nomobi=false') != -1) {
+    document.cookie = 'dsnomobi=; expires=-1; path=/';
+  }
+  if (window.location.search.toLowerCase().indexOf('nomobi=true') != -1) {
+    var date = new Date();
+    date.setTime(date.getTime()+(86400000));
+    var expires = "; expires="+date.toGMTString();
+    document.cookie = 'dsnomobi=dsnomobi'+expires+"; path=/";
+  }
+  else if (screen.width <= 699 && document.cookie.indexOf('dsnomobi=dsnomobi') == -1) {
+    document.location = "http://m.dosomething.org/teensforjeans";
+  }
+</script>
   <title><?php print $head_title; ?></title>
   <meta property="og:title" content="<?=$head_title;?>"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />
   <meta property="og:type" content="non_profit"/>
   <meta property="og:url" content="http://www.dosomething.org/teensforjeans" />
-  <meta property="og:image" content="http://www.dosomething.org/files/dosomething-org.jpg" />
+  <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/t4j-2012/tfj-logo.png" />
   <meta property="og:site_name" content="DoSomething.org"/>
-  <meta property="og:description" content="POWERING OFFLINE ACTION. Using the power of online to get teens to do good stuff offline."/>
+  <meta property="og:description" content="1 in 3 homeless people in the U.S. is under the age of 18. I'm doing something about it, you should too!"/>
 
   <?php print $head; ?>
   <?php print $styles; ?>

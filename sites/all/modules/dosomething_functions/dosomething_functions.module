@@ -32,3 +32,60 @@ function dosomething_functions_infusionsoft($action_id, $emails) {
     }
   }
 }
+
+function footlocker_apps($num_apps = 10) {
+  // find all yes or maybes
+  $q = "SELECT sid FROM webform_submitted_data WHERE nid=711581 AND cid=2 AND (data='yes' OR data='maybe')";
+  $rs = db_query($q);
+  $judge_me = array();
+  while ($internal = db_fetch_array($rs)) {
+    $judge_me[] = $internal['sid'];
+  }
+  $judge = implode(',', $judge_me);
+  // get SIDs of the yesses and maybes
+  $q = "SELECT data FROM webform_submitted_data WHERE nid=711581 AND cid=1 AND sid IN ($judge)";
+  $rs = db_query($q);
+  $return = array();
+  while ($app = db_fetch_array($rs)) {
+    $return[] = $app['data'];
+  }
+
+  // find all current judgments, sorted first by number of times they've been judged, then randomly
+  $q = "SELECT title as sid, COUNT(title) as count FROM node WHERE type='fl_judge' GROUP BY title ORDER BY count ASC, RAND()";
+  $rs = db_query($q);
+
+  $judged = array();
+  while ($row = db_fetch_array($rs)) {
+    unset($return[array_search($row['sid'])]);
+    $judged[] = $row['sid'];
+  }
+
+  // filter out apps that this judge has already judged
+  $q = "SELECT title as sid FROM node WHERE uid={$user->uid}";
+  $rs = db_query($q);
+  while ($row = db_fetch_array($rs)) {
+    unset($return[array_search($row['sid'])]);
+  }
+
+  // clean up the arrays and merge them together
+  $return = array_values($return);
+  shuffle($return);
+  $return = array_merge($return, $judged);
+
+  return array_slice($return, 0, $num_apps);
+}
+
+function footlocker_percent_complete($nid) {
+  $q = "SELECT field_fl_sportsmanship_value,
+               field_fl_passion_value,
+               field_fl_role_model_value,
+               field_fl_diversity_value,
+               field_fl_material_value
+               FROM content_type_fl_judge WHERE nid=$nid";
+  $rs = db_fetch_array(db_query($q));
+  $count = 0;
+  foreach (array_keys($rs) as $key) {
+    if ($rs[$key] != '') $count++;
+  }
+  return $count/5*100;
+}

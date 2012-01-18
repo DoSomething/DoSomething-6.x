@@ -92,6 +92,7 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
 			$app->runAS($contactId, $actionId);
 		}
 	}
+  ds_mobile_mcommons_optin_campaign($submission->data[$map['phone_number']]['value'][0], 74002, 89072);
  }
  else if ($node->nid == 722522) { 
 	 $map = _dosomething_wf_modify_webform_component_mapping($node);	 

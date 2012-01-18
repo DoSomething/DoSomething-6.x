@@ -44,7 +44,6 @@
      <div class="header-message">
 		<a href="http://www.DoSomething.org/footlocker" id="main-logo"><img src="/<?=$ds_micro;?>/footlocker/footlocker-logo.png" alt="Footlocker Scholar Athletes"/></a>
 		<a href="http://www.fastweb.com" id="sponsor-logo"><img src="/<?=$ds_micro;?>/footlocker/fastweb-logo.png" alt="Powered with Fastweb: paying for school just got easier."/></a></div>
-    <?php if ($right) print $right; ?>
     </div>
 	
       <div id="content" class="column">
@@ -54,7 +53,7 @@
       <?php
         $base = '/footlocker';
         $items = array(array('HOME', $base),
-                       array('APPLY', $base.'/application'),
+                    /*   array('APPLY', $base.'/application'), */
                        array('ABOUT', $base.'/about'),
                        array('JUDGES', $base.'/judges'),
                        array('COLLEGE TIPS', $base.'/tips'),
@@ -102,6 +101,7 @@
 
 
 
+    <?php if ($right) print $right; ?>
     
     
     

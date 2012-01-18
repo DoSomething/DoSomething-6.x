@@ -67,16 +67,18 @@ ul.tabs {
 
 #menu-item-0 { background: url('nav/home.png'); width: 99px; }
 #menu-item-0.active, #menu-item-0:hover { background: url('nav/home-active.png'); }
-#menu-item-1 { background: url('nav/apply.png'); width: 115px; }
-#menu-item-1.active, #menu-item-1:hover { background: url('nav/apply-active.png'); }
-#menu-item-2 { background: url('nav/about.png'); width: 127px; }
-#menu-item-2.active, #menu-item-2:hover { background: url('nav/about-active.png'); }
-#menu-item-3 { background: url('nav/judges.png'); width: 144px; }
-#menu-item-3.active, #menu-item-3:hover { background: url('nav/judges-active.png'); }
-#menu-item-4 { background: url('nav/tips.png'); width: 227px; }
-#menu-item-4.active, #menu-item-4:hover { background: url('nav/tips-active.png'); }
-#menu-item-5 { background: url('nav/faqs.png'); width: 83px; }
-#menu-item-5.active, #menu-item-5:hover { background: url('nav/faqs-active.png'); }
+/*
+ * #menu-item-1 { background: url('nav/apply.png'); width: 115px; }
+ * #menu-item-1.active, #menu-item-1:hover { background: url('nav/apply-active.png'); }
+ */
+#menu-item-1 { background: url('nav/about.png'); width: 127px; }
+#menu-item-1.active, #menu-item-1:hover { background: url('nav/about-active.png'); }
+#menu-item-2 { background: url('nav/judges.png'); width: 144px; }
+#menu-item-2.active, #menu-item-2:hover { background: url('nav/judges-active.png'); }
+#menu-item-3 { background: url('nav/tips.png'); width: 227px; }
+#menu-item-3.active, #menu-item-3:hover { background: url('nav/tips-active.png'); }
+#menu-item-4 { background: url('nav/faqs.png'); width: 83px; }
+#menu-item-4.active, #menu-item-4:hover { background: url('nav/faqs-active.png'); }
 
 
 .node-unpublished {
@@ -347,4 +349,27 @@ td.active {
     clear: both;
     padding-top: 20px;
     margin-bottom: 0;
+}
+
+.webform-submission-navigation {
+  display: none;
+}
+
+.region-right {
+  position: fixed;
+  top: 0px;
+  right: 10px;
+  width: 250px;
+  height: 100%;
+  background: black;
+  z-index: 600;
+  padding: 0;
+}
+
+.webform-submission-info, .webform-submission, #block-block-338 {
+  margin-right: 200px;
+}
+
+#webform-component-legal {
+  display: none;
 }

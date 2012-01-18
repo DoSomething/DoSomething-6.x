@@ -1,0 +1,276 @@
+.node h2.title {
+	display: none;
+}
+
+.clear-both {
+	clear: both;
+}
+
+#content {
+	margin: 0;
+	width: 810px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+#content p a {
+	color: #000;
+	text-decoration: underline;
+}
+
+#content p {
+  font-family: 'DINWebCond';
+  font-size: 18px;
+  line-height: 20px;
+  color: #000;
+}
+
+#trashy-logo {
+	position: relative;
+	left: 155px;
+	top: -80px;
+	width: 340px;
+} 
+
+#pass-it-on {
+	position: relative;
+	left: 160px;
+	top: -127px;
+	width: 160px;
+}
+
+.node .content {
+	width: 800px;
+}
+
+ul.links {
+	position: absolute;
+	top: 115px;
+  text-align: center;
+  background: #343535;
+  color: #FFF;
+  padding: 12px 10px 4px 10px;
+} 
+
+ul.links a:link, 
+ul.links a:visited {
+  color: #FFF;
+  text-decoration: none;
+}  
+
+ul.links a:hover, 
+ul.links a:active {
+  color: #0087ca;
+}  
+
+ul.links li {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: DINWebCondBlack;
+  padding-right: 38px;
+  padding-left: 38px;
+}
+
+#front-page-info-text {
+	float: left;
+	width: 390px;
+	margin: 37px 0px 25px 50px;
+}
+
+#block-webform-client-block-730698 {
+	font-family: DINWebCond;
+	
+	position: absolute;
+	top: 302px;
+	right: 45px;
+	width: 265px;
+	height: 250px;
+	background: #0087ca; 
+	float: right;
+	padding-bottom: 15px;
+	color: #fff;
+	margin-right: 10px;
+
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+#how-header {
+	display: block;  
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#how {
+	float: left;
+	margin-left: 40px;
+	width: 440px;
+}
+
+#recycling-girl {
+	float: right;
+	width: 310px;
+}
+
+#prizes {
+	width: 830px;
+}
+
+#nestle-logo {
+	width: 120px;
+	float: right;
+	margin-right: 10px;
+}
+
+#how img {
+	float: left;
+	padding-right: 5px;
+	padding-bottom: 10px;
+}
+
+#how .pop-down {
+	margin-top: 12px;
+}
+
+#block-webform-client-block-730698 h2 {
+	color: #000;
+	margin-top: 30px;
+	font-family: 'DINWebCondMedium';
+	font-size: 30px;
+}
+
+#block-webform-client-block-730698 .form-item {
+	margin: 0px;
+	margin-bottom: 10px;
+}
+
+#block-webform-client-block-730698 .form-item label {
+	margin: 0px;
+}
+
+#signup-form .tackle_hunger_node_form {
+	margin-left: 15px;
+}
+
+#log-in-text {
+	color: #fff;
+	margin-top: 20px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#block-webform-client-block-730698 a {
+	color: #fcb619;
+	font-weight: bold;
+}
+
+#block-webform-client-block-730698 .form-text {
+	width: 260px;
+	font-size: 14px;
+}
+
+#block-webform-client-block-730698 label {
+	font-size: 14px;
+	margin-bottom: 3px;
+}
+
+#block-webform-client-block-730698 .form-required { 
+	color: #fff;
+}
+
+#block-webform-client-block-730698 input#edit-submit {
+  cursor: pointer;
+  border: none;
+  background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
+  height: 34px;
+  width: 86px;
+  text-indent:-9999px;
+  text-transform: capitalize;
+  float: right;
+  margin-right: 10px;
+}
+
+#block-webform-client-block-730698 #signed-up-text {
+	color: #fff;	
+	font-size: 32px;
+	text-align: center;
+	margin-top: 110px;
+}
+
+#project-ideas {
+	display: block; 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.impact-text {
+	text-align: center;
+	padding: 10px;
+	font-size: 24px !important;
+}
+ 
+#choose-project-ideas {
+	margin-top: 23px;
+	opacity: 0.83;
+}
+ 
+#ideas-paper-header {
+	background: url('/sites/all/micro/trashy/images/paper-top.png') repeat-y;	
+	height: 80px;
+}
+
+#ideas-paper-body {
+	background: url('/sites/all/micro/trashy/images/paper-middle.png') repeat-y;	
+	height: 261px;
+}
+
+#ideas-paper-body ul {
+	list-style-image: url('/sites/all/micro/trashy/images/blue-bullet.png');
+	margin: 0px;
+	margin-left: 80px;
+	padding-top: 20px;
+	
+	float: left;
+	width: 210px;
+	
+	font-family: 'DINWebCondMedium';
+	font-size: 24px;
+	line-height: 22px;
+}
+
+#ideas-paper-body li {
+	padding-bottom: 12px;
+	padding-left: 5px;
+}
+
+#ideas-paper-body a {
+	color: black;
+}
+
+#ideas-paper-footer {
+	background: url('/sites/all/micro/trashy/images/paper-top.png') repeat-y;	
+	height: 108px;
+	margin-bottom: 10px;
+}
+
+#ideas-paper-footer p {
+	float: left;
+	margin-left: 150px;
+	margin-top: 40px;
+	font-size: 24px;
+}
+
+.views-view-grid {
+  width: 100%;
+}
+.views-view-grid td {
+  text-align: center;
+  width: 33%;
+}
+
+.twitter-share-button {
+	vertical-align: top;
+}
+

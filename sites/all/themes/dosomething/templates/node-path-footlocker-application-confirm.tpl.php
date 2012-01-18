@@ -10,9 +10,15 @@
 	$recommendations = webform_get_submissions($rec_nid);
 	// find webforms for this submission, and set ${recommendation_type} = TRUE
 	$valid_recs = array();
-	foreach ($recommendations as $rec)
-		if ($rec->data[15]['value'][0] == $sid)
-			${$rec->data[16]['value'][0]} = TRUE;
+	foreach ($recommendations as $rec) {
+    if ($rec->data[15]['value'][0] == $sid) {
+      if (preg_match('/character/i', $rec->data[16]['value'][0]))
+        $character = TRUE;
+      else if (preg_match('/athletic/i', $rec->data[16]['value'][0]))
+        $athletic = TRUE;
+    }
+  }
+    
 	
     $yes = '<div class="yes-box"></div> Recommendation received';
     $no = '<div class="no-box"></div> Recommendation not yet received';

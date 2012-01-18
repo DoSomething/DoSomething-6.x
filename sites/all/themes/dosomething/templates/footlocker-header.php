@@ -26,7 +26,7 @@
         $base = '/footlocker';
         $items = array(array('home', $base),
                        /* array('LINK', $base.'/SUBPATH'), */
-					   array('apply', $base.'/apply'),
+				/*	   array('apply', $base.'/apply'), */
 					   array('about', $base.'/about'),
 					   array('tips for college', $base.'/tips'),
 					   array('judges', $base.'/judges'),

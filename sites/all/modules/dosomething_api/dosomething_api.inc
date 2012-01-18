@@ -30,19 +30,47 @@ function _dosomething_api_call_signup($webform_id) {
 
     drupal_execute('webform_client_form_'.$webform_id, $form_state, $node);
     
-    $err = drupal_get_messages();
-    if (!empty($err['error'])) {
-      return dosomething_api_error($err['error']);
-    }
-    return array(
-      'success' => 'true',
-      'call' => 'signup',
-    );
+    return dosomething_api_complete('signup');
   }
 }
 
 function _dosomething_api_call_report($content_type) {
-  return dosomething_api_error('Yup. Can\'t do this yet.');
+  module_load_include('inc', 'node', 'node.pages');
+  $node = new StdClass();
+  $node->type = $content_type;
+
+  $form_state = array();
+  $form_id = $content_type.'_node_form';
+
+  $form = drupal_retrieve_form($form_id, $form_state, $node);
+  drupal_prepare_form($form_id, $form, $form_state);
+
+  $form_state['values'] = array(
+    'title' => ucwords(str_replace('_', ' ', $content_type.' report back')),
+    'op' => t('Save'),
+  );
+
+  foreach ($_POST as $key => $val) {
+    if ($key == 'title' || $key == 'body') {
+      $form_state['values'][$key] = $val;
+    }
+    else {
+      switch ($form['#field_info'][$key]['type']) {
+        case 'emvideo':
+          $type = 'embed';
+          break;
+        default:
+          $type = 'value';
+          break;
+      }
+
+      $form_state['values'][$key] = _dosomething_api_wrap_text_field($val, $type);
+    }
+  }
+
+  drupal_execute($form_id, $form_state, $node);
+
+  return dosomething_api_complete('report');
 }
 
 

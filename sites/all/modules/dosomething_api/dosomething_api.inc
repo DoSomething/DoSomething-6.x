@@ -1,4 +1,3 @@
-
 <?php
 
 function _dosomething_api_call_signup($webform_id) {

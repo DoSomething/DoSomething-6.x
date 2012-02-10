@@ -1,0 +1,123 @@
+label.option {
+	color:#fff;
+}
+
+fieldset.collapsible {
+	display:none;
+}
+
+div.attachments {
+	display:none;
+}
+
+h2.outside-margin {
+	background-color:#009149;
+	font-family:'DINWebCondMedium';	
+	font-size: 22px!important;
+	text-align: center;
+	line-height: 30px;
+	padding: 10px 0;
+	color:#fff!important;
+	width:685px;
+}
+
+#edit-field-gys-projects-value-Recycling-wrapper, 
+#edit-field-gys-projects-value-Energy-wrapper, 
+#edit-field-gys-projects-value-Green-Agriculture-wrapper, 
+#edit-field-gys-projects-value-Bring-It-Home-wrapper, 
+#edit-field-gys-projects-value-Other-wrapper {
+	font-family:'DINWebCondMedium';	
+	font-size: 22px;
+	text-align: center;
+	line-height: 30px;
+	padding: 10px 0;
+	color:#fff;
+	margin-bottom: 10px;
+	background-color: #009149;
+	-webkit-border-bottom-right: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius:10px;
+}
+
+.campaign_gys_2012_node_form {
+	background-color: #78C848;
+	padding: 25px;
+	margin-bottom:15px;
+	width: 635px;
+	-webkit-border-bottom-right-radius: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	-khtml-border-radius-bottomright: 12px;
+	-khtml-border-radius-bottomleft: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+#edit-field-gys-projects-value-Recycling-wrapper input, 
+#edit-field-gys-projects-value-Energy-wrapper input, 
+#edit-field-gys-projects-value-Green-Agriculture-wrapper input, 
+#edit-field-gys-projects-value-Bring-It-Home-wrapper input, 
+#edit-field-gys-projects-value-Other-wrapper input {
+	display:none;
+}
+
+#node-736273 {
+	width:600px;
+}
+
+input#edit-submit.form-submit {
+	background-color: #009149;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+	display: inline-block;
+	color: white;
+	font-size: 15px;
+	padding: 1px 20px 1px;
+	text-decoration: none;
+	font-family: 'DINWebCondMedium';
+	margin-top: 7px;
+	border:none;
+	text-transform:uppercase;
+	cursor: pointer;
+}
+
+div["label=Check off the projects below that your school has completed:"] {
+	font-size:1000%;
+}
+
+/*TABLE STYLING*/
+
+table#field_picture_values tbody {
+	border-radius:15px;
+}
+
+/*PROJECT IDEAS jQUERY STYLING*/
+
+#project-center {
+	width:600px;
+	margin:0 auto;
+}
+
+#nestle-recycling-copy {
+	text-align:center;
+}
+
+h3#recycling:hover, h3#energy:hover, h3#green-agriculture:hover, h3#bring-it-home:hover, h3#other:hover {
+	color:#009149;
+}
+
+.green-box .box-content {
+	-webkit-border-bottom-right-radius: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	-khtml-border-radius-bottomright: 12px;
+	-khtml-border-radius-bottomleft: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+	padding-bottom:15px;
+}

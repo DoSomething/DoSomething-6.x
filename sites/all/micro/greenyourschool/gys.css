@@ -1,0 +1,953 @@
+.node h2.title {
+	display: none;
+}
+
+.clear-both {
+	clear: both;
+}
+
+#content a {
+	text-decoration: none;
+	color: #78c848;
+}
+
+/**
+ * Header hacks!
+ */
+#primary-nav li.whatsyourthing a {
+  background: url('/sites/all/micro/membership/whats.png') no-repeat 0 0;
+}
+
+#primary-nav li.actnow a {
+  background: url('/sites/all/micro/membership/act.png') no-repeat 0 0;
+}
+
+#primary-nav li.programs a {
+  background: url('/sites/all/micro/membership/share.png') no-repeat 0 0;
+}
+
+#header {
+	margin-left: 18px;
+	height: 154px;
+}
+
+#logo {
+	left: -17px;
+}
+/**
+ * End of header hacks!
+ */
+ 
+ /**
+ * Main navigation
+ */
+#nav ul.links {
+  padding-bottom: 17px;
+  position: absolute;
+  left: -18px;
+  top: 0px;
+  width: 170px;
+  background: url('images/nav-triangle.png') no-repeat left bottom;
+}
+
+#nav ul.links li {
+  list-style: none;
+  background: #78c848;
+  padding: 3px 0 0 0;
+  margin: 0;
+  font-family: 'DINWebCondBlack';
+  line-height: 1em;
+  display: block;
+  font-size: 20px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+#nav ul.links li:first-child {
+  padding-top: 8px;
+}
+
+#nav ul.links li:last-child {
+  padding-bottom: 8px;
+}
+
+#nav ul.links li a {
+  color: #fff !important;
+  text-decoration: none;
+  padding-left: 20px;
+}
+
+#nav ul.links li a.active {
+  color: #009149 !important;
+  background-image: url('images/nav-arrow-white.png');
+  background-repeat: no-repeat;
+  background-position: 1px 6px;
+} 
+
+#nav ul.links li a:hover {
+  color: #009149 !important;
+}
+
+ /**
+ * Main navigation END
+ */
+
+ 
+#main-wrapper,
+#header {
+	background: #101110;
+}
+
+
+#campaign-logo {
+	position: absolute;
+	left: 202px;
+	top: -75px;
+} 
+
+#content {
+	width: 770px;
+	font-family: 'DINWebCond';
+	font-size: 18px;
+	line-height: 1em;
+	margin: 0 80px;
+}
+
+#greener-subheader {
+  text-align: center;
+  margin-top: 150px;
+  color: white;
+  font-family: 'DINWebCond';
+  font-size: 23px;
+  padding-bottom: 6px;
+}
+
+#block-webform-client-block-735506 {
+  background: #009149;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 482px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+}
+
+#webform-client-form-735506 p {
+  color: #fff;
+  font-family: 'DINWebCond';
+  font-size: 32px;
+  margin: 17px 0px 3px 0px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#block-webform-client-block-735506 .webform-component {
+  float: left;
+  margin-left: 15px;
+  margin-bottom:0px;
+}
+
+#block-webform-client-block-735506 .webform-component:first-child {
+  float: none;
+}
+
+#block-webform-client-block-735506 .webform-component label {
+  font-family: 'DINWebCondMedium';
+  font-weight: normal;
+  color: #fff;
+  font-size: 17px;
+}
+
+#block-webform-client-block-735506 #webform-component-opt-in .form-checkboxes {
+	margin-top: 0px;
+}
+
+#block-webform-client-block-735506 #webform-component-opt-in .form-checkboxes #edit-submitted-opt-in-1-wrapper{
+	margin-top: 0px;
+}
+
+#block-webform-client-block-735506 .webform-component .form-required {
+  color: #fff;
+}
+
+#block-webform-client-block-735506 .webform-component input.form-text {
+  width: 180px;
+  line-height: 24px;
+  font-size: 14px;
+  border: 0;
+}
+
+#webform-client-form-735506 .form-submitold {
+  margin-top: 31px;
+  height: 34px;
+  width: 86px;
+  background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  float: left;
+  margin-left: 6px;
+  text-indent:-9999px;
+  text-transform: capitalize;
+}
+
+#webform-client-form-735506 .form-submit {
+  background-color: #78c848;
+  -moz-border-radius:15px; 
+  -webkit-border-radius:15px;
+  -khtml-border-radius: 15px;
+  border-radius:15px;
+  display:inline-block;
+  color:#fff;
+  font-size:16px;
+  padding: 1px 10px 0px 10px;
+  text-decoration:none;
+  font-family: 'DINWebCondBlack';
+
+  margin-top: 0px;
+
+
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  float: left;
+  margin-left: 52px;
+margin-top: -41px;
+  text-transform: capitalize;
+}
+
+.small-button {
+  background-color: #78c848;
+  -moz-border-radius:15px; 
+  -webkit-border-radius:15px;
+  -khtml-border-radius: 15px;
+  border-radius:15px;
+  display:inline-block;
+  color:#fff;
+  font-size:15px;
+  padding: 5px 7px 3px 7px;
+  text-decoration:none;
+  font-family: 'DINWebCondMedium';
+}
+
+		/*	START LONG FORM STYLING		*/
+
+.webform_client_form_736100 {
+	background-color:#78C848;
+	margin: 0 60px 20px;
+	padding:25px;
+	width:510px;
+	-webkit-border-bottom-right-radius: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	-khtml-border-radius-bottomright: 12px;
+	-khtml-border-radius-bottomleft: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+.webform_client_form_736100 h3 {
+	font-size:22px;
+	text-align:center;
+	line-height:40px;
+	color:#fff;
+	margin-bottom:10px;
+	background-color:#000;
+	border-radius:10px;
+
+}
+
+.webform_client_form_736100 p {
+	font-size:18px;
+	text-align:center;
+	line-height:30px;
+	color:#000;
+	margin-bottom:10px;
+}
+
+.webform_client_form_736100 #edit-submitted-name-of-school-wrapper a {
+	margin-left:50px;
+	color:white;
+	text-decoration:underline;
+}
+
+#edit-submitted-birthday-wrapper .container-inline,
+#edit-submitted-state-wrapper select {
+	float:right;
+}
+
+#edit-submitted-state-wrapper select {
+	margin-top:-15px;
+}
+
+
+#webform-component-action-kit {
+	width:250px;
+	margin:0 auto;
+}
+
+.webform_client_form_736100 #webform-component-markup p,
+.webform_client_form_736100 #webform-component-title-markup p {
+	font-size:22px;
+	text-align:center;
+	line-height:30px;
+	padding:10px 0;
+	color:#fff;
+	margin-bottom:10px;
+	background-color:#009149;
+	border-radius:10px;
+}
+
+.webform_client_form_736100 .webform-component-textfield label,
+.webform_client_form_736100 .webform-component-email label,
+.webform_client_form_736100 .webform-component-date .form-item label {
+	display:inline;
+}
+
+.webform_client_form_736100 .webform-component-textfield input, 
+.webform_client_form_736100 .webform-component-email input {
+	background-color:#fff;
+	border:0;
+	padding:1px;
+	height:25px;
+	width:300px;
+	float:right;
+	-moz-border-radius:7px; 
+	-webkit-border-radius:7px;
+	-khtml-border-radius: 7px;
+}
+
+#webform-client-form-736100 .form-submit {
+	background-color:#009149;
+	-moz-border-radius:12px; 
+	-webkit-border-radius:12px;
+	-khtml-border-radius: 12px;
+	color:#fff;
+	font-size:16px;
+	padding: 1px 15px 0px;
+	font-family: 'DINWebCondBlack';
+	border: none; 
+	cursor: pointer;
+}
+
+#edit-submitted-receive-gys-kit-1-wrapper label {
+	text-align:right;
+}
+
+#webform-client-form-736100 fieldset {
+	border:none;
+}
+
+/*		DARK GREEN
+			#009149
+			
+		LIGHT GREEN
+			#78C848
+			
+			*/
+
+		/*		END LONG FORM STYLING		*/
+
+#psa {
+  width: 550px;
+  margin-left: 80px;
+}
+
+#psa #youtube-video {
+  margin-bottom: 8px;
+}
+
+#psa #social {
+  float: left;
+}
+
+#psa #caption {
+  float: left;
+  color: white;
+  margin: 8px 10px 0px 20px;
+}
+
+.green-box {
+	margin-bottom: 20px;
+}
+
+.green-box .box-header {
+	background-color: #009149;
+	padding: 3px 10px 0px 10px;
+}
+
+.small-box .box-header h2 {
+	color: #fff;
+	font-size: 22px;
+	margin: 0px;
+}
+
+.big-box .box-header h2 {
+	color: #fff;
+	font-size: 32px;
+	margin: 0px;
+	font-family: 'DINWebCondMedium';
+}
+
+.green-box .box-content {
+	background: #78c848;
+	padding: 1px;
+}
+
+.node p {
+	color: black;
+}
+
+.green-box .box-content ol {
+	font-size: 20px;
+	line-height: 18px;
+	margin-right: 40px;
+}
+
+.green-box .box-content li {
+	margin: 8px 0px 14px 0px;
+}
+
+.small-box .box-content p {
+	text-align: center;
+	margin-bottom: 2px !important;
+}
+
+.small-box .box-content img {
+	margin-left: 85px;
+	display: block;
+}
+
+.big-box { 
+	width: 685px;
+	margin-top: 10px;
+}
+
+.big-box p { 
+	font-family: 'DINWebCondMedium';
+	font-size: 24px;
+	line-height: 26px;
+	padding: 15px 40px 0px 40px;
+	text-align: center;
+}
+
+.small-box {
+	width: 215px;
+	margin-right: 20px;
+}
+
+.small-box .box-content {
+	-webkit-border-bottom-right-radius: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	-khtml-border-radius-bottomright: 12px;
+	-khtml-border-radius-bottomleft: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+	padding: 6px;
+	height: 120px;
+	text-align: center;
+	position: relative;
+}
+
+.big-box h3,
+#my-school .box-content h2,
+.view-display-id-page_2 h3,
+.view-display-id-page_2 label {
+	font-family: 'DINWebCondMedium';
+	font-size: 26px;
+	line-height: 28px;
+	color: black;
+	background: url('images/black-triangle.png') no-repeat left;
+	padding: 5px 0 0 15px;
+	margin: 0px 5px 2px 15px;
+}
+
+.big-box ul {
+	color: white !important;
+	background-color: #222;
+	  -moz-border-radius:15px; 
+  -webkit-border-radius:15px;
+  -khtml-border-radius: 15px;
+  border-radius:15px;
+  padding: 10px 0px 3px 36px !important;
+margin: 0px 7px 5px 7px !important;
+}
+
+.big-box ul li {
+	margin-bottom: 15px;
+}
+
+.big-box ul.project-ideas-section li a {
+	color: white !important;
+}
+
+#prizes, 
+#judging-criteria {
+  background-color: #222;
+  -moz-border-radius:15px;  
+  -webkit-border-radius:15px;
+  -khtml-border-radius: 15px;
+  border-radius:15px;
+  margin: 20px 5px 7px 5px;
+  text-align: center;
+  padding-bottom: 12px;
+  padding-top: 4px;
+}
+
+#prizes h2 {
+  color: #78c848;
+  text-transform: uppercase;
+  font-size: 46px;
+}
+
+#prizes p {
+  color: #fff;
+  padding: 0px;
+  margin-bottom: 5px;
+  font-size: 19px;
+  padding: 0px 75px;
+}
+
+#judging-criteria h3 {
+	font-family: 'DINWebCondMedium';
+	font-size: 30px;
+	line-height: 32px;
+	  text-align: left;
+	  color: white;
+	    text-transform: none;
+	background: url('images/green-triangle.png') no-repeat left;
+	padding: 5px 0 0 22px;
+	margin: 10px 15px 0px 15px;
+}
+
+#judging-criteria p { 
+	font-family: 'DINWebCond';
+	font-size: 19px;
+	line-height: 21px;
+	  text-align: left;
+	  color: white;
+	padding: 5px 0 0 15px; 
+	margin: 0px 23px;
+}
+
+#prizes #prizes-image {
+  padding: 7px;
+}
+
+#prizes .pad-more {
+  padding: 10px 150px 0px 150px;
+}
+
+.left { float: left; }
+.right { float: right; }
+.center-text { text-align: center; }
+.left-text { text-align: left; }
+.bold { font-weight: 600; }
+.white { color: white; }
+.green { color: #78c848; }
+.dark-green { color: #009149 !important; }
+.center { 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#nestle-branding {
+	margin-right: 150px;
+}
+
+#energy-star-branding {
+	width: 70px;
+	margin-left: 60px;
+}
+
+.small-button {
+	background-color: #009149;
+	-moz-border-radius:15px; 
+	-webkit-border-radius:15px;
+	-khtml-border-radius: 15px;
+	border-radius:15px;
+	display:inline-block;
+	color:#fff;
+	font-size:15px;
+	padding: 5px 7px 3px 7px;
+	text-decoration:none;
+	font-family: 'DINWebCondMedium';
+	
+	margin-top: 7px;
+	display: inline-block;
+}
+
+.view-gys-school-page #big-school-image,
+.view-display-id-page_1 .imagecache {
+  width: 435px;
+  height: 330px;
+  padding: 6px;
+background-color: black;
+margin: 8px;
+float: left;
+}
+
+#block-views-gys_school_user_list-block_1 {
+float: left;
+margin-top: 25px;
+padding-top: 10px;
+margin-bottom: 20px !important;
+}
+
+#block-views-gys_school_user_list-block_1 .content {
+overflow: hidden;
+max-height: 120px;
+}
+
+#block-views-gys_school_user_list-block_1 ul {
+margin-left: 30px;
+background: none !important;
+list-style: none;
+text-decoration: none;
+padding-top: 0px !important;
+margin-top: 0px !important;
+}
+
+#block-views-gys_school_user_list-block_1 ul li {
+list-style: none;
+list-style-image: none;
+color: black;
+font-size: 18px;
+font-weight: 600;
+margin: 0;
+float: none;
+padding-bottom: 2px;
+padding-top: 0px;
+background: none;
+}
+
+#block-views-gys_school_page-block_1,
+#block-views-gys_school_page-block_2,
+#block-views-gys_school_page-block_3 {
+margin: 0 0 15px !important;
+}
+
+#block-views-gys_school_page-block_3 table {
+	margin-left: 27px;
+}
+
+#block-views-gys_school_page-block_3 tbody tr {
+	border-bottom:none;
+}
+
+#block-views-gys_school_page-block_3 tbody tr:hover {
+	background:none;
+}
+
+#block-views-gys_school_page-block_3 tbody tr td img {
+	  padding: 3px;
+	margin-right: 8px;
+	background-color: black;
+}
+
+#block-views-gys_school_page-block_1 h2,
+#block-views-gys_school_page-block_2 h2 {
+top: -5px;
+}
+
+#block-views-gys_school_page-block_3 h2 {
+top: 5px;
+}
+
+.view-display-id-page_2 {
+background-color: #78C848;
+width: 685px;
+}
+
+.view-display-id-page_2 .view-filters {
+padding-left: 10px;
+padding-bottom: 1px;
+margin-bottom: 10px;
+}
+
+.view-display-id-page_2 .view-footer {
+padding-left: 10px;
+padding-bottom: 1px;
+margin-bottom: 10px;
+}
+
+.view-display-id-page_2 .view-footer p {
+margin-left: 15px !important;
+margin-bottom: 25px !important;
+}
+
+.view-display-id-page_2 a {
+color: #009149 !important;
+font-weight: bold;
+}
+
+.view-display-id-page_2 #browse-schools-top-copy {
+font-size: 22px;
+line-height: 26px;
+text-align: center;
+font-family: 'DINWebCondMedium';
+}
+
+.view-display-id-page_2 #edit-state {
+margin-left: 15px;
+}
+
+.view-display-id-page_2 ul {
+margin:0px;
+margin-bottom:15px;
+}
+
+.view-display-id-page_2 ul li {
+list-style-image: none !important;
+}
+
+.view-display-id-page_2 #edit-submit-gys-school-page {
+margin-top: 1px;
+}
+
+.view-display-id-page_2 .views-exposed-form .views-exposed-widget label {
+display:none;
+}
+
+#nestle-recycling-copy {
+width: 495px;
+margin-left: 9px;
+margin-bottom: 3px;
+font-size: 15px;
+}
+
+.view-gys-school-page #browse-school-by-state-header {
+margin-left: 25px;
+}
+
+#block-block-340 {
+margin: 0px !important;
+margin-bottom: 15px !important;
+}
+
+#block-block-340 .content {
+margin-right: 45px;
+}
+
+#block-block-340 a {
+margin-left: 37px;
+}
+
+#block-block-340 p {
+font-size: 17px;
+line-height: 18px;
+text-align: center;
+padding: 0px;
+}
+
+.view-gys-school-page {
+   
+}
+
+#block-views-gys_school_page-block_1 ul li {
+float: none;
+background: none;
+font-size: 20px;
+list-style-type: disc;
+list-style-image: none;
+}
+
+#block-views-gys_school_page-block_1 ul li a {
+float: none;
+background: none;
+font-size: 20px;
+}
+
+#block-views-gys_school_page-block_2 ul li {
+float: none;
+background: none;
+font-size: 20px;
+list-style-type: none;
+list-style-image: none;
+margin-right: 20px;
+}
+
+#block-views-gys_school_page-block_2 ul li .views-field-created {
+font-size: 15px;
+color: #bbb;
+}
+
+#placeholder-gallery-pic {
+margin-left: 20px;
+}
+
+#node-736273 #edit-preview,
+#node-736273 #edit-field-school-ref-nid-nid-wrapper {
+display:none;
+}
+
+label.option {
+	color:#fff;
+}
+
+fieldset.collapsible {
+	display:none;
+}
+
+div.attachments {
+	display:none;
+}
+
+h2.outside-margin {
+	background-color:#009149;
+	font-family:'DINWebCondMedium';	
+	font-size: 22px!important;
+	text-align: center;
+	line-height: 30px;
+	padding: 10px 0;
+	color:#fff!important;
+	width:685px;
+}
+
+#edit-field-gys-projects-value-Recycling-wrapper, 
+#edit-field-gys-projects-value-Energy-wrapper, 
+#edit-field-gys-projects-value-Green-Agriculture-wrapper, 
+#edit-field-gys-projects-value-Bring-It-Home-wrapper, 
+#edit-field-gys-projects-value-Other-wrapper {
+	font-family:'DINWebCondMedium';	
+	font-size: 22px;
+	text-align: center;
+	line-height: 30px;
+	padding: 10px 0;
+	color:#fff;
+	margin-bottom: 10px;
+	background-color: #009149;
+	-webkit-border-bottom-right: 10px;
+	-khtml-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius:10px;
+}
+
+.campaign_gys_2012_node_form {
+	background-color: #78C848;
+	padding: 25px;
+	margin-bottom:15px;
+	width: 635px;
+	-webkit-border-bottom-right-radius: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	-khtml-border-radius-bottomright: 12px;
+	-khtml-border-radius-bottomleft: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+}
+
+#edit-field-gys-projects-value-Recycling-wrapper input, 
+#edit-field-gys-projects-value-Energy-wrapper input, 
+#edit-field-gys-projects-value-Green-Agriculture-wrapper input, 
+#edit-field-gys-projects-value-Bring-It-Home-wrapper input, 
+#edit-field-gys-projects-value-Other-wrapper input {
+	display:none;
+}
+
+#node-736273 {
+	margin-top: 10px;
+	width:600px;
+}
+
+input#edit-submit.form-submit {
+	background-color: #009149;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+	display: inline-block;
+	color: white;
+	font-size: 15px;
+	padding: 1px 20px 1px;
+	text-decoration: none;
+	font-family: 'DINWebCondMedium';
+	margin-top: 7px;
+	border:none;
+	text-transform:uppercase;
+	cursor: pointer;
+}
+
+div["label=Check off the projects below that your school has completed:"] {
+	font-size:1000%;
+}
+
+/*TABLE STYLING*/
+
+table#field_picture_values tbody {
+	border-radius:15px;
+}
+
+/*PROJECT IDEAS jQUERY STYLING*/
+
+#project-center {
+	width:600px;
+	margin:0 auto;
+}
+
+#nestle-recycling-copy {
+	text-align:center;
+}
+
+h3#recycling:hover, h3#energy:hover, h3#green-agriculture:hover, h3#bring-it-home:hover, h3#other:hover {
+	color:#009149;
+	cursor:pointer;
+}
+
+.green-box .box-content {
+	-webkit-border-bottom-right-radius: 12px;
+	-webkit-border-bottom-left-radius: 12px;
+	-khtml-border-radius-bottomright: 12px;
+	-khtml-border-radius-bottomleft: 12px;
+	-moz-border-radius-bottomright: 12px;
+	-moz-border-radius-bottomleft: 12px;
+	border-bottom-right-radius: 12px;
+	border-bottom-left-radius: 12px;
+	padding-bottom:15px;
+}
+
+div.messages {
+width: 600px;
+	font-size:22px;
+	text-align:center;
+	line-height:40px;
+	color:#fff;
+	margin-top: 20px;
+	margin-bottom: 40px;
+	background-color:#000;
+	border-radius:10px;
+	border:none!important;
+	font-family: 'DINWebCond';
+}
+
+div.messages {
+	background-position:10px 15px;
+}
+
+div.messages p {
+width: 580px;
+margin-left: 10px;
+margin-right: 10px;
+}
+
+div.messages a {
+	color:#78C848!important;
+	text-decoration: underline !important; 
+}
+
+#do-this li a {
+	text-decoration: underline !important; 
+	color: black;
+}
+
+.fb-like {
+  top: -9px;
+  width: 48px;
+}

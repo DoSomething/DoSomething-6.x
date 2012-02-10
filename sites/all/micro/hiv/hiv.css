@@ -1,0 +1,431 @@
+.node h2.title {
+	display: none;
+}
+
+.clear-both {
+	clear: both;
+}
+
+#content a {
+	text-decoration: none;
+	color: #004f9a;
+}
+
+h4 {
+	margin: 0;
+}
+
+/**
+ * Header hacks!
+ */
+#primary-nav li.whatsyourthing a {
+  background: url('/sites/all/micro/membership/whats.png') no-repeat 0 0;
+}
+
+#primary-nav li.actnow a {
+  background: url('/sites/all/micro/membership/act.png') no-repeat 0 0;
+}
+
+#primary-nav li.programs a {
+  background: url('/sites/all/micro/membership/share.png') no-repeat 0 0;
+}
+
+#header {
+	margin-left: 18px;
+	height: 154px;
+}
+
+#logo {
+	left: -17px;
+}
+/**
+ * End of header hacks!
+ */
+ 
+#main-wrapper,
+#header {
+	background: #e8ecf1;
+}
+
+
+#hiv-logo {
+	position: absolute;
+	left: 210px;
+	top: -60px;
+} 
+
+#get-swag {
+	position: absolute;
+	right: -10px;
+	top: 100px;
+}
+
+#content {
+	width: 770px;
+	font-family: 'DINWebCond';
+	font-size: 18px;
+	line-height: 1em;
+	margin: 0 70px;
+}
+
+#block-webform-client-block-734426 {
+  background: #ff001b;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 486px;
+  margin-left: 166px;
+  margin-top: 142px;
+}
+
+#webform-client-form-734426 p {
+  color: #fff;
+  font-family: 'DINWebCond';
+  font-size: 32px;
+  margin: 15px 0px 5px 0px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#block-webform-client-block-734426 .webform-component {
+  float: left;
+  margin-left: 15px;
+}
+
+#block-webform-client-block-734426 .webform-component:first-child {
+  float: none;
+}
+
+#block-webform-client-block-734426 .webform-component label {
+  font-family: 'DINWebCondMedium';
+  font-weight: normal;
+  color: #fff;
+  font-size: 17px;
+}
+
+#block-webform-client-block-734426 .webform-component .form-required {
+  color: #fff;
+}
+
+#block-webform-client-block-734426 .webform-component input {
+  width: 180px;
+  line-height: 24px;
+  font-size: 14px;
+  border: 0;
+}
+
+#webform-client-form-734426 .form-submit {
+  margin-top: 31px;
+  height: 34px;
+  width: 86px;
+  background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  float: left;
+  margin-left: 6px;
+  text-indent:-9999px;
+  text-transform: capitalize;
+}
+
+.blue-box {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #C4CDDC;
+	margin-bottom: 20px;
+}
+
+.blue-box .box-header {
+	background-color: #c4cddc;
+	padding: 3px 10px 0px 10px;
+}
+
+.blue-box .box-header-less-padding {
+	background-color: #c4cddc;
+	padding: 3px 1px 0px 1px;
+}
+
+.blue-box .box-header h2,
+.blue-box .box-header-less-padding h2 {
+	color: #fff;
+	font-size: 25px;
+}
+
+.blue-box .box-content {
+	background: #fff;
+	padding: 1px;
+}
+
+.node p {
+	color: black;
+}
+
+.blue-box .box-content ol {
+	font-size: 20px;
+	line-height: 18px;
+	margin-right: 40px;
+}
+
+.blue-box .box-content ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+.blue-box .box-content li {
+	margin-bottom: 7px;
+}
+
+.small-box .box-content p {
+	text-align: center;
+}
+
+.box-content #sign-up-counter {
+	text-align: center;
+	margin: 17px 0 20px 0;
+	font-size: 48px;
+	font-weight: 600;
+}
+
+#content-after {
+	background-color:#fff;
+	text-align:center;
+	padding:10px 10px;
+	margin-bottom:20px;
+	width:668px;
+	font-family:'DINWebCondMedium';
+	border-style: solid;
+	border-width: 1px;
+	border-color: #C4CDDC;
+}
+
+.left { float: left; }
+.right { float: right; }
+.center-text { text-align: center; }
+.left-text { text-align: left; }
+.bold { font-weight: 600; }
+.center { 
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#do-this-box { 
+	width: 690px;
+	border-color: #004f9a;
+	margin-top:20px;
+}
+
+.small-box {
+	width: 215px;
+	margin-right: 20px;
+}
+
+.medium-box {
+	width: 307px;
+	margin-right: 20px;
+}
+
+.medium-box .box-content {
+	height: 577px;
+	padding: 15px 7px;
+	font-family: 'DINWebCondMedium';
+}
+
+#spread-the-word .box-content {
+	height: 435px;
+	padding: 15px 7px;
+	font-family: 'DINWebCondMedium';
+}
+
+.small-box .box-content {
+	height: 110px;
+	padding-top: 15px;
+}
+
+.small-box .box-content p {
+	padding: 0 10px;
+}
+
+.blue-box form #zip-code {
+	background-color: #ddd;
+	border: 0;
+	height: 22px;
+	width: 110px;
+	float: left;
+	margin-left: 10px;
+	text-align: center;
+	font-size: 16px;
+}
+
+#prizes-box .box-content p {
+font-size: 28px;
+line-height: 28px;
+padding-top: 3px;
+}
+
+.blue-box form #submit-zip-code {
+  height: 34px;
+  width: 77px;
+  background: url('/sites/all/micro/hiv/images/get-tested-button.png') no-repeat;
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  float: left;
+  margin-left: 6px;
+  text-indent:-9999px;
+  text-transform: capitalize;
+}
+
+#arrows {
+	position:absolute;
+	width:200px;
+}
+
+#left-arrow {
+	position:relative;
+	top: -619px;
+	left: 294px;
+}
+
+#right-arrow {
+	position:relative;
+	top: -406px;
+	left: 371px;
+}
+
+#timeline-divider {
+	float: left;
+	margin-right: 30px;
+	padding-left: 10px;
+	height:642px;
+}
+
+.small-button {
+	background-color: #ed1c24;
+	-moz-border-radius:15px; 
+	-webkit-border-radius:15px;
+	-khtml-border-radius: 15px;
+	border-radius:15px;
+	display:inline-block;
+	color:#fff;
+	font-size:15px;
+	padding: 5px 7px 3px 7px;
+	text-decoration:none;
+	font-family: 'DINWebCondMedium';
+}
+
+.medium-box form input.field {
+  width: 260px;
+  line-height: 24px;
+  font-size: 14px;
+  border: 0;
+  background-color: #ddd;
+  margin: 1px 15px 6px 15px;
+}
+
+.medium-box form input.submit {
+  background-color: #ed1c24;
+  -moz-border-radius:15px; 
+  -webkit-border-radius:15px;
+  -khtml-border-radius: 15px;
+  border-radius:15px;
+  display:inline-block;
+  color:#fff;
+  font-size:16px;
+  padding: 1px 10px 0px 10px;
+  text-decoration:none;
+  font-family: 'DINWebCondBlack';
+
+  margin-right: 17px;
+
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  float: right;
+  margin-left: 8px;
+  text-transform: capitalize;
+}
+
+/* This section contains all of the hack-ish nonsense that is webform styling */
+
+.webform_client_form_736130, .webform_client_form_736135 {
+	background-color:#fff;
+	border:1px #C4CDDC solid;
+	margin-bottom:20px;
+	padding:25px;
+	width:650px;
+}
+
+.webform_client_form_736135 .webform-component-markup h2 {
+	font-size:25px;
+	text-align:center;
+	background-color:#C4CDDC;
+	line-height:50px;
+	color:#000;
+	margin-bottom:10px;
+	width:655px;
+}
+
+.webform_client_form_736135 .webform-component-markup p {
+}
+
+.webform_client_form_736130 .form-submit,
+.webform_client_form_736135 .form-submit {
+  height: 34px;
+  width: 86px;
+  background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
+  position: relative; 
+  cursor: pointer;
+  border: none; 
+  text-indent:-9999px;
+  text-transform: capitalize;
+}
+
+.webform_client_form_736135 .webform-component-textfield label {
+
+}
+
+.webform_client_form_736130 .webform-component-textfield input,
+.webform_client_form_736130 .webform-component-email input,
+.webform_client_form_736135 .webform-component-textfield input, 
+.webform_client_form_736135 .webform-component-email input {
+	background-color:#E8ECF1;
+	border:0;
+	padding:1px;
+	height:25px;
+	width:300px;
+}
+
+.webform_client_form_736135 .webform-component-email label {
+
+}
+
+.webform_client_form_736135 .webform-component-email input {
+
+}
+
+.webform_client_form_736135 .webform-component-radios {
+
+}
+
+.webform_client_form_736135 .webform-component-markup {
+
+}
+
+.webform_client_form_736135 .webform-component-file {
+}
+
+#social {
+	position:absolute;
+	top:18px;
+	z-index:1000;
+	right:-10px;
+	width:170px;
+}
+
+.fb-like {
+  top: -8px;
+  width: 45px;
+}
+
+

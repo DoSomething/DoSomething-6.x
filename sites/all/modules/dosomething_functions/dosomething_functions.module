@@ -6,11 +6,12 @@ function array_identical($a, $b) {
 function dosomething_functions_infusionsoft($action_id, $emails) {
   if (!is_array($emails)) $emails = array($emails);
   
-  include('isdk.php');
+  include_once('isdk.php');
   $app = new iSDK;
 
   if($app->cfgCon("emaildrop")) {
     foreach ($emails as $email) {
+      if (empty($email)) continue;
       // set up the data to send to infusionsoft
       $contact = array('Email' => $email);
 
@@ -26,7 +27,7 @@ function dosomething_functions_infusionsoft($action_id, $emails) {
       }
       else {
         /*If the email is a duplicate*/
-        $contactId = $dups[0][Id];
+        $contactId = $dups[0]['Id'];
         $app->runAS($contactId, $action_id);
       }
     }
@@ -80,12 +81,13 @@ function footlocker_percent_complete($nid) {
                field_fl_passion_value,
                field_fl_role_model_value,
                field_fl_diversity_value,
-               field_fl_material_value
+               field_fl_material_value,
+               field_fl_academics_value
                FROM content_type_fl_judge WHERE nid=$nid";
   $rs = db_fetch_array(db_query($q));
   $count = 0;
   foreach (array_keys($rs) as $key) {
     if ($rs[$key] != '') $count++;
   }
-  return $count/5*100;
+  return $count/6*100;
 }

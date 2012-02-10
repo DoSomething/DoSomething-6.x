@@ -3,7 +3,7 @@
 
 <a name="fb_share"></a>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="Recycling Matters. Help Pass It On. Join @nestlewatersHQ & @dosomething. Share stats & take action. Don't Be Trashy!! <?php print $node_url; ?>" data-url=" ">Tweet</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Recycling Matters. Help Pass It On. Join @nestlewatersHQ & @dosomething. Share stats & take action. Don't Be Trashy!">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
 </br></br>
 
@@ -18,7 +18,7 @@
 </br>
 <a name="fb_share"></a>
 
-<a href="https://twitter.com/share" class="twitter-share-button" data-text="Recycling Matters. Help Pass It On. Join @nestlewatersHQ & @dosomething. Share stats & take action. Don't Be Trashy! http://www.dosomething.org<?php print $node_url; ?>" data-url=" ">Tweet</a>
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Recycling Matters. Help Pass It On. Join @nestlewatersHQ & @dosomething. Share stats & take action. Don't Be Trashy!">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
 
 </div>

@@ -106,6 +106,7 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
 		$contact=array('Email' => $submission->data[$map['email']]['value'][0]);
 		
 		// apply the Teens for jeans tags
+		/* grandparents gone wired */
 		$actionId = 852;
 
 		//check for existing contact;
@@ -166,6 +167,100 @@ function dosomething_wf_modify_webform_submission_insert($node, $submission) {
    $map = _dosomething_wf_modify_webform_component_mapping($node);
    dosomething_functions_infusionsoft(932, $submission->data[$map['enter_your_email_address']]['value'][0]);
  }
+ else if ($node->nid == 736100) {
+  global $user;
+  $map = _dosomething_wf_modify_webform_component_mapping($node);
+  $gsid = $submission->data[$map['gsid']]['value'][0];
+  $query = "SELECT nid FROM {content_type_school} WHERE field_gsid_value = $gsid";
+  $rs = db_query($query);
+  if (mysql_num_rows($rs) == 0) {
+    $school = new StdClass();
+    $school->type = 'school';
+    $school->status = 1;
+    $school->uid = $user->uid;
+    $school->title = $submission->data[$map['name_of_school']]['value'][0];
+    $school->field_state[0]['value'] = $submission->data[15]['value'][0];
+    $school->field_gsid[0]['value'] = $gsid;
+    if ($school = node_submit($school)) {
+      node_save($school);
+    }
+  }
+  else {
+    $school = node_load(db_fetch_object($rs)->nid);
+  }
+  og_save_subscription($school->nid, $user->uid, array('is_active' => 1));
+  $friends = array();
+  for ($i = 1; $i <= 5; $i++) {
+    if (!empty($submission->data[$map['friend_email_'.$i]]['value'][0]))
+      $friends[] = $submission->data[$map['friend_email_'.$i]]['value'][0];
+  }
+  dosomething_functions_infusionsoft(1096, $friends);
+  if ((isset($map['opt_in']) && $submission->data[$map['opt_in']]['value'][0] == 'yes') || !isset($map['opt_in'])) {
+    dosomething_functions_infusionsoft(1036, $submission->data[$map['email']]['value'][0]);
+    ds_mobile_mcommons_optin_campaign($submission->data[$map['phone_number']]['value'][0], 13751, 97351);
+  }
+ }
+  
+
+ /* HIV aka. Update Your Status */  
+ else if ($node->nid == 734426 || $node->nid == 736130) {
+   $map = _dosomething_wf_modify_webform_component_mapping($node);
+   dosomething_functions_infusionsoft(1024, $submission->data[$map['email']]['value'][0]);
+   ds_mobile_mcommons_optin_campaign($submission->data[$map['phone_number']]['value'][0], 78971, 95641);
+ }
+ 
+ /* Green Your School */
+ else if ($node->nid == 735506 || $node->nid == 736100) {
+  $map = _dosomething_wf_modify_webform_component_mapping($node);
+  if ((isset($map['opt_in']) && $submission->data[$map['opt_in']]['value'][0] == 'yes') || !isset($map['opt_in'])) {
+   dosomething_functions_infusionsoft(1036, $submission->data[$map['email']]['value'][0]);
+   ds_mobile_mcommons_optin_campaign($submission->data[$map['phone_number']]['value'][0], 13751, 97351);
+  }
+ }
+
+ /* Battle for the Bands 2012 */ 
+
+ else if ($node->nid == 737134) {
+  $map = _dosomething_wf_modify_webform_component_mapping($node);
+  $phone = $submission->data[$map['phone_number']]['value'][0];
+
+  if ((isset($map['opt_in']) && $submission->data[$map['opt_in']]['value'][0] == 'yes') || !isset($map['opt_in'])) {
+    ds_mobile_mcommons_optin_campaign($phone, 53191, 95791);
+    dosomething_functions_infusionsoft(1050, $submission->data[$map['email']]['value'][0]);
+  }
+  //GET FRIENDS
+  ds_mobile_mcommons_optin_campaign($submission->data[$map['cell_number_'.$i]]['value'][0], 53191, 95851);
+  $update_url = 'http://dosomething.mcommons.com/profiles/join';
+  $fields = 'person[phone]='.urlencode($phone)
+    .'&friends[]='.$submission->data[$map['cell_number_1']]['value'][0]
+    .'&friends[]='.$submission->data[$map['cell_number_2']]['value'][0]
+    .'&friends[]='.$submission->data[$map['cell_number_3']]['value'][0]
+    .'&friends[]='.$submission->data[$map['cell_number_4']]['value'][0]
+    .'&friends[]='.$submission->data[$map['cell_number_5']]['value'][0]
+    .'&opt_in_path=95791&friends_opt_in_path=95851';
+
+  $ch = curl_init();
+  curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch,CURLOPT_URL,$update_url);
+  curl_setopt($ch,CURLOPT_POST,count($fields));
+  curl_setopt($ch,CURLOPT_POSTFIELDS,$fields);
+  $result = curl_exec($ch);
+  curl_close($ch);
+ }
+ else if ($node->nid == 737152) {
+   $map = _dosomething_wf_modify_webform_component_mapping($node);
+   if ((isset($map['opt_in']) && $submission->data[$map['opt_in']]['value'][0] == 'yes') || !isset($map['opt_in'])) {
+     dosomething_functions_infusionsoft(1050, $submission->data[$map['email']]['value'][0]);
+     ds_mobile_mcommons_optin_campaign($submission->data[$map['phone_number']]['value'][0], 53191, 58751);
+   }
+ }
+
+  /*
+ else if ($node->nid == ***WEBFORM_NID***) {
+   $map = _dosomething_wf_modify_webform_component_mapping($node);
+   dosomething_functions_infusionsoft(***ACTION_ID***, $submission->data[$map['***EMAIL_KEY***']]['value'][0]);
+   ds_mobile_mcommons_optin_campaign($submission->data[$map['***PHONE_KEY***']]['value'][0], ***CAMPAIGN_ID***, ***OPT_IN_PATH_ID***);
+ }*/
 }
 
 function _dosomething_wf_modify_webform_component_mapping($node) {
@@ -203,4 +298,3 @@ function dosomething_wf_modify_options_user_clubs() {
 }
 
 
-?>

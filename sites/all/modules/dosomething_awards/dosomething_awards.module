@@ -7,6 +7,8 @@
  */
 define('DSAPP_APP', 727926);
 define('DSAPP_REC', 727992);
+define('DSAPP_NOM', 728548);
+define('DSAPP_MOD', 735470);
 
 /**
  * Implements hook_menu()
@@ -25,6 +27,19 @@ function dosomething_awards_menu() {
     'page arguments' => array(2),
     'access callback' => 'dosomething_awards_submission_permission',
     'access arguments' => array(2),
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dsawards/nomination-moderation/%'] = array(
+    'page callback' => 'dosomething_awards_nomination_moderation',
+    'page arguments' => array(2),
+    'access callback' => 'dosomething_awards_submission_permission',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dsawards/nomination-moderation'] = array(
+    'page callback' => 'dosomething_awards_nomination_moderation',
+    'access callback' => 'dosomething_awards_submission_permission',
     'type' => MENU_CALLBACK,
   );
 
@@ -98,8 +113,10 @@ function dosomething_awards_resend_email($sid, $rec_num) {
   drupal_goto('dsawards/status/'.$sid);
 }
 
-function dosomething_awards_submission_permission($sid) {
+function dosomething_awards_submission_permission($sid = null) {
   global $user;
+  if (is_null($sid))
+    return user_access('access all webform results');
   module_load_include('inc', 'webform', 'includes/webform.submissions');
   $submission = webform_get_submission(DSAPP_APP, $sid);
   return ($user->uid == $submission->uid || user_access('access all webform results'));
@@ -140,6 +157,46 @@ function dosomething_awards_app_status($sid) {
   drupal_set_title($project . ' Do Something Awards Application Status');
 
   return theme('dsawards_status', $sid, $draft, $recs);
+}
+
+function dosomething_awards_nomination_moderation($view = 'unviewed') {
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $nominations = webform_get_submissions(DSAPP_NOM);
+  $judgments = webform_get_submissions(DSAPP_MOD);
+  $return = array();
+
+  if ($view == 'unviewed') {
+    foreach ($judgments as $judgment) {
+      unset($nominations[$judgment->data[1]['value'][0]]);
+    }
+    $return = $nominations;
+  }
+  else {
+    foreach ($judgments as $key => $judgment) {
+      $rating_field = dosomething_awards_load_field(DSAPP_MOD, 'rating');
+      $sid_field = dosomething_awards_load_field(DSAPP_MOD, 'app_sid');
+
+      if ($judgment->data[$rating_field]['value'][0] == $view) {
+        $sid = $judgment->data[$sid_field]['value'][0];
+        $return[$sid] = $nominations[$sid];
+      }
+    }
+  }
+
+  $menu = theme('links', array(
+    array('title' => 'Unviewed', 'href' => 'dsawards/nomination-moderation'),
+    array('title' => 'Yes', 'href' => 'dsawards/nomination-moderation/yes'),
+    array('title' => 'No', 'href' => 'dsawards/nomination-moderation/no'),
+    array('title' => 'Maybe', 'href' => 'dsawards/nomination-moderation/maybe'),
+  ));
+  
+  $spit = array();
+  foreach ($return as $key => $link) {
+    $spit[] = l($key, 'node/'.DSAPP_NOM."/submission/$key", array('query' => 'destination='.$_GET['q']));
+  }
+
+  drupal_set_title('DS Awards Moderation: '.$view);
+  return $menu . theme('item_list', $spit);
 }
 
 /**

@@ -351,23 +351,21 @@ td.active {
     margin-bottom: 0;
 }
 
-.webform-submission-navigation {
-  display: none;
+.webform-submission-navigation, .webform-submission-actions, .webform-submission-info {
+  display: none !important;
 }
 
 .region-right {
-  position: fixed;
-  top: 0px;
-  right: 10px;
   width: 250px;
-  height: 100%;
-  background: black;
-  z-index: 600;
+  float: right;
   padding: 0;
+  height: 100%;
 }
 
+.clear-block { display: none; }
+
 .webform-submission-info, .webform-submission, #block-block-338 {
-  margin-right: 200px;
+  margin-right: 260px;
 }
 
 #webform-component-legal {

@@ -62,11 +62,22 @@ if (!$is_admin) {
   $total = 'over 9000';
   switch ($cat) {
     case 'unjudged':
+      $groups = 3;
+      $out .= '<a href="#g2">Group 2</a> | <a href="#g3">Group 3</a>';
+      $out .= '<h2 id="g1">Group 1</h2>';
+      $out1 = $out2 = '';
       foreach ($applications as $key=>$app) {
         $app = l($key, "node/$wf_nid/submission/$key", array('query' => 'destination=footlocker/admin?cat=unjudged'));
-        if (in_array($key, $incompletes)) $out.='(missing rec)';
-        $out .= $app . '<br />';
+        if (in_array($key, $incompletes)) $app.='(missing rec)';
+        if ($key % $groups == 0)
+          $out .= $app . '<br />';
+        else if ($key % $groups == 1)
+          $out1 .= $app . '<br />';
+        else 
+          $out2 .= $app . '<br />';
       }
+      $out .= '<h2 id="g2">Group 2</h2>' . $out1;
+      $out .= '<h2 id="g3">Group 3</h2>' . $out2;
       $total = count($applications);
       break;
     case 'yes':

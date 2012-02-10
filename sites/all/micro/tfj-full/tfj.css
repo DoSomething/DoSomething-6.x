@@ -54,7 +54,14 @@ h2.title { display: none; }
   text-align: center;
   margin: 10px;
 }
+.fb-like {
+  top: -8px;
+  width: 45px;
+}
 
+.pluginSkinLight .connect_widget {
+  margin-top: 5px; 
+}  
 div.tabs {
   position: absolute;
   top: 150px;
@@ -292,12 +299,16 @@ div.view-content td {
   font-family: DINWebCondBlack;
 }
 
-#main-wrapper p {
+/* #main-wrapper p {
   font-size: 1.2em;
   line-height: 1em;
   font-family: DINWebCondBlack;
   margin: 1em 0;
   color: #041F3D;
+} */
+
+#main-wrapper p {
+  color: #000;
 }
 
 .grey-box, .node-type-webform .content {
@@ -331,7 +342,7 @@ a:hover {
 }
 
 #school-counter {
-  font-size: 6em;
+  font-size: 5em;
   line-height: 1em;
   font-family: DINWebCondBlack;
 }
@@ -438,7 +449,7 @@ ul.links li a:hover {
 
 #faq {
   position: absolute;
-  top: 285px;
+  top: 325px;
   right: 56px;
 }
 
@@ -484,3 +495,90 @@ ul.links li a:hover {
   color: white;
 }
 
+#gallery-copy {
+  text-align: center;
+  margin: 0px 50px !important;
+}
+
+/* blog - main page */
+
+.tfj-blog .field-content #main-wrapper p {  
+  font-family: 'DINWebCond';
+  font-size: 18px;
+  line-height: 1em;
+  padding-top: 10px;
+}
+
+.tfj-blog .views-field-field-picture-fid {
+  padding: 5px 10px 5px 0px;
+  float:left;
+} 
+
+/* blog title */
+
+.tfj-blog #blog-header {
+  color: #FFF;
+  text-transform: uppercase;
+  font-family: DINWebCondBlack;
+  font-size: 32px;
+  padding: 10px 0px 10px 5px;
+  background: #041F3D;
+  margin: 10px 0px 5px 0px;
+}  
+
+.tfj-blog .views-field-title a {
+  font-family: DINWebCondBlack;
+  color: #19A854;
+  font-size: 26px;
+  text-decoration: underline;
+  margin-top: 5px;
+}
+
+.tfj-blog .views-field-title {
+  padding-top: 10px;
+}  
+
+.tfj-blog #content-area {
+  background: #E3E3E3;
+}
+
+.tfj-blog .view-content {
+  background: #e3e3e3;
+  padding: 0px 10px 25px 10px;
+}
+
+/* read more link */
+
+.tfj-blog .more-link {
+  padding: 0px 10px 5px 0px;
+}  
+
+/* hide bottom login to comment */
+
+.node ul.links .comment_forbidden, ul.links.inline{
+  display: none;
+}
+
+.tfj-blog .submitted {
+  padding: 10px 0px 10px 0px;
+}  
+
+#fb-position {
+  top: -5px;
+}  
+
+.view-campaign-blog {
+  background: #e3e3e3;
+  padding-bottom: 40px;
+}
+
+/* blog post image */
+
+#tfj-blog-img {
+  float: right;
+  padding: 10px;
+}
+
+.tfj-blog .views-field-field-campaign-blog-teaser-value {
+  padding-top: 10px;
+}

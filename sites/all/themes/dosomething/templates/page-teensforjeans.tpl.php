@@ -113,6 +113,7 @@ if( $is_mobile == true ) {
               array('href' => $root.'/contests', 'title' => 'contests'),
               array('href' => $root.'/report-back', 'title' => 'report back'),
               array('href' => $root.'/gallery', 'title' => 'photo gallery'),
+			  array('href' => $root.'/blog', 'title' => 'blog'),
           );
           foreach ($nav as &$n) {
             $path = drupal_lookup_path('source', $n['href']);
@@ -132,7 +133,15 @@ if( $is_mobile == true ) {
         <?php if (!empty($node->field_pageheader[0]['value'])) echo '<div style="margin-top: 15px;">',$node->field_pageheader[0]['value'],'</div>'; unset($node->field_pageheader[0]['value']); ?>
 
 <hr style="border-top: 1px solid black; margin-bottom: 2px;" />
-<iframe src="//www.facebook.com/plugins/like.php?href=www.dosomething.org%2Fteensforjeans&amp;send=false&amp;layout=box_count&amp;width=60&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=verdana&amp;height=90" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:50px; height:62px;" allowTransparency="true"></iframe>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-like" data-href="http://dosomething.org/teensforjeans" data-send="false" data-layout="box_count" data-width="50px" data-show-faces="false"></div>
 <a href="https://twitter.com/share" class="twitter-share-button" data-url="www.dosomething.org/teensforjeans" data-text="1 in 3 homeless people in the U.S. is under the age of 18. @dosomething about it! www.dosomething.org/teensforjeans #teensforjeans" data-count="vertical">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <g:plusone size="tall" href="http://www.dosomething.org/teensforjeans"></g:plusone>
           <script type="text/javascript">

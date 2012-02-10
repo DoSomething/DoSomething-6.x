@@ -107,11 +107,9 @@
     
     <?php print $content; ?>
     <?php print $content_bottom; ?>
-    <div style="clear:both;"></div>
     </div></div>
 
         
-<div class="clearfix"></div>
         <?php if ($feed_icons): ?>
           <div class="feed-icons"><?php print $feed_icons; ?></div>
         <?php endif; ?>

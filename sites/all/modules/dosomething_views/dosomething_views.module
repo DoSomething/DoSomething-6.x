@@ -18,4 +18,3 @@ function dosomething_views_views_post_render(&$view, &$output, &$cache) {
 }
 
 
-?>

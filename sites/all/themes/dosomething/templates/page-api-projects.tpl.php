@@ -25,10 +25,8 @@ $cause = 'all';
 if (isset ($_GET['cause'])) {
   $cause = $_GET['cause'];
 }
-$distance = 10;
-$page = 0;
-$cause = $_GET['cause'];
 
+$distance = 10;
 if (isset($_GET['distance'])) {
   $distance = $_GET['distance'];
 }
@@ -38,6 +36,7 @@ if ($_GET['keyword']) {
   $keyword = $_GET['keyword'];
 }
 
+$page = 0;
 if (isset($_GET['page']) && preg_match('/^\d+$/', $_GET['page']) && $_GET['page'] > 0) {
   $page = $_GET['page']-1;
 }
@@ -93,4 +92,3 @@ if ($key_valid) {
   $error = '<error>Maximum number of queries hit or key is invalid</error>';
   print $prefix.$error.$suffix;
 }
-?>

@@ -129,6 +129,13 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['og_selective']['#suffix'] = '</div>';
       $form['og_selective']['#default_value'] = 1;
       break;
+    case 'school_node_form':
+    case 'webform_client_form_736100':
+      drupal_add_js('nd/school/jquery-ui-1.8.17.custom.min.js');
+      drupal_add_js('nd/school/school.js');
+      drupal_add_css('nd/school/jqui.css');
+      break;
+
 
   }
 }
@@ -559,4 +566,3 @@ function dosomething_forms_og_links_alter(&$links, $group_node) {
     if ($links['must_login'])
         $links['must_login'] = t('You must <a href="!register">register</a> or <a href="!login">login</a> in order to request membership in this group.', array('!register' => url("user/register", array('query' => $dest)), '!login' => url("user/login", array('query' => $dest))));
 }
-?>

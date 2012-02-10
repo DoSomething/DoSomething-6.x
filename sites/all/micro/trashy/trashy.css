@@ -46,6 +46,7 @@
 ul.links {
 	position: absolute;
 	top: 115px;
+	left: 16px;
   text-align: center;
   background: #343535;
   color: #FFF;
@@ -129,6 +130,8 @@ ul.links li {
 	padding-right: 5px;
 	padding-bottom: 10px;
 }
+
+.left { float: left; }
 
 #how .pop-down {
 	margin-top: 12px;

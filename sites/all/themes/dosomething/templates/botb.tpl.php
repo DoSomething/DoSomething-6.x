@@ -4,7 +4,7 @@
 
 <head>
   <title><?php print $head_title; ?></title>
-<meta property="og:image" content="http://www.dosomething.org/nd/botb/bftb-logo_01.png" />
+<meta property="og:image" content="http://www.dosomething.org/nd/botb-2011/bftb-logo_01.png" />
 <meta property="og:site_name" content="DoSomething.org"/>
 <meta property="og:description" content="Do Something to Save the Music! Join the Battle for the Bands campaign."/>
 
@@ -19,7 +19,7 @@
     <?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie.css')): ?>
       <link rel="stylesheet" href="<?php print $base_path . $subtheme_directory ?>/fixes_msie.css" type="text/css">
     <?php endif; ?>
-    <link rel="stylesheet" href="/nd/botb/botb-ie7.css" type="text/css">
+    <link rel="stylesheet" href="/sites/all/themes/dosomething/botb-2011/botb-ie7.css" type="text/css">
   <![endif]-->
   <!--[if lte IE 6]>
     <?php if ($subtheme_directory && file_exists($subtheme_directory .'/fixes_msie.css')): ?>
@@ -29,9 +29,9 @@
   <!--[if IE 7]>
   <script src="http://ie7-js.googlecode.com/svn/version/2.0(beta3)/IE8.js" type="text/javascript"></script>
   <![endif]-->
-  <link rel="stylesheet" href="/nd/botb/botb.css" type="text/css">
+  <link rel="stylesheet" href="/sites/all/micro/botb-2011/botb.css" type="text/css">
   <!--[if IE 6]>
-  <link rel="stylesheet" href="/nd/botb/botb-ie6.css" type="text/css">
+  <link rel="stylesheet" href="/sites/all/micro/botb-2011/botb-ie6.css" type="text/css">
   <![endif]-->
   <?php print $scripts; ?>
 </head>
@@ -98,10 +98,10 @@ $top_right
         </div>
         <div id="botbNav">
           <ul>
-          <li class="start<?php print arg(1) == 634121 ? " start-active" : ""; ?>"><a href="/battle/get-started">Getting Started</a></li>
-            <li class="videos<?php print arg(1) == 640036 ? " videos-active" : ""; ?>"><a href="/battle/gallery">Video Gallery</a></li>
-            <li class="tips<?php print arg(1) == 634352 ? " tips-active" : ""; ?>"><a href="/battle/celeb-gallery">Tips</a></li>
-            <li class="register<?php print arg(1) == 638555 ? " register-active" : ""; ?>"><a href="/battle/submit">Register Your Video</a></li>
+          <li class="start<?php print arg(1) == 634121 ? " start-active" : ""; ?>"><a href="/battle-2011/get-started">Getting Started</a></li>
+            <li class="videos<?php print arg(1) == 640036 ? " videos-active" : ""; ?>"><a href="/battle-2011/gallery">Video Gallery</a></li>
+            <li class="tips<?php print arg(1) == 634352 ? " tips-active" : ""; ?>"><a href="/battle-2011/celeb-gallery">Tips</a></li>
+            <li class="register<?php print arg(1) == 638555 ? " register-active" : ""; ?>"><a href="/battle-2011/submit">Register Your Video</a></li>
           </ul>
         </div>
       </div>

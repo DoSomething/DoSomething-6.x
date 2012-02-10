@@ -290,4 +290,3 @@ function _dosomething_projects_state_lookup($state) {
 
 }
 
-?>

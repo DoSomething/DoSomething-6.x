@@ -1,4 +1,5 @@
 <h1>Group Texting (beta)</h1>
+<p>Welcome to your group texting portal. Here you can view who is currently signed up to your group messages, add members to your group, and send texts to your group members.</p>
 <?php
 $columns = '-moz-column-count: 4;-moz-column-gap: 20px;-webkit-column-count: 4;-webkit-column-gap: 20px;column-count: 4;column-gap: 20px;';
 $clubs = array(
@@ -71,12 +72,17 @@ if (isset($c_messages['warning'])): ?>
 $subs = get_subscribers($club);
 echo theme('item_list', $subs, 'Current Subscribers', 'ul', array('style' => $columns));
 ?>
+<h2>Add Members</h2>
+<p>Add your members below by entering in their 10 digit cell phone number (you can't forget area codes!). You can enter multiple numbers at one time by putting a comma in between phone numbers.</p>
+<p>Ex: 555-123-4567, 555-765-4321, 555-555-5555</p>
 <form action="/group-text" method="post">
 <label for="add-member">Add a member:<input type="text" name="number" id="add-member"/></label>
 <input type="submit" value="Add member" />
 </form>
-
-<h2>Send a message</h2>
+<p>Once you enter in their cell phone number, they will receive a message notifying them that you have sent them a message from DoSomething.org. If they reply "y" to this message, they will get your welcome message and be added to your texting group (note: they won't show up as a current subscriber on this page until the next time you visit this page).</p>
+<h2>Send a text</h2>
+<p>Type in your text below. It will immediately be sent to everyone who has either texted in your special keyword to 38383 or who has accepted the invitation you sent above.</p>
+<p>Just remember: no texting on Mondays because that's when we send out our big text to our 200,000+ mobile subscribers.</p>
 <form action="/group-text" method="post">
 <label for="send-message">Send a message<br /><textarea rows="6" cols="50" name="message" id="send-message"></textarea>
 <br /><div><span id="char-count">NO JS</span> characters left</div>
@@ -165,8 +171,12 @@ function mc_post($url, $fields) {
 
 ?>
 
-<h2>Need a poll?</h2>
-Send an email to <a href="mailto:mfantini@dosomething.org">mfantini@dosomething.org</a> to request a poll to be sent to your group.
+<h2>Want to send a poll question?</h2>
+<p>Email Mike at <a href="mailto:mfantini@dosomething.org">mfantini@dosomething.org</a> to request a poll to be sent to your group. In your email please include a poll question that is no more than 140 characters in total.</p>
+<p>Ex: What day next week works best for you to meet? A. Monday B. Tuesday C. Wednesday</p>
+<p>Mike will then send out your message and let you know when it has been sent. He will then send you the results of your poll question.</p>
+
+
 <script type="text/javascript">
 var limit = <?php echo 160-strlen($signature); ?>;
 $('#char-count').html(limit);

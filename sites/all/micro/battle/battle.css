@@ -1566,12 +1566,15 @@ a.reglog-header h2:hover {
 
 #reglog-content legend {display:none;}
 #reglog-content fieldset {border:none;margin:0;padding:0;}
-#reglog-content .form-item label{
+#reglog-content .form-item label { 
 	display:inline-block;
 	font-family:"DINWeb-Medium";
 	font-weight:400;
 	font-size:16px;
+	width:200px;
 }
+
+#reglog-content .form-item label.option {width:100%;}
 
 #reglog-content .form-item input[type='text'], #reglog-content .form-item input[type='password'] {
 	display:inline-block;

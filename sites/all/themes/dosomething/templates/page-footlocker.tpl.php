@@ -7,6 +7,7 @@
   <?php print $styles; ?>
 
   <?php
+    $internal = ((strpos(request_uri(), 'internal') !== false) || (arg(1) == 739245));
     if ($_SERVER['HTTP_USER_AGENT'] == 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)') :
   ?>
   <meta property="og:title" content="Foot Locker Scholar Athletes Program | Do Something"/>
@@ -21,6 +22,7 @@
   <?php endif; ?>
   
   <link rel="stylesheet" href="/<?=$ds_micro.'/footlocker/footlocker-new.css';?>" type="text/css" media="all" />
+  <?php if ($internal) : ?><link rel="stylesheet" href="/sites/all/micro/footlocker/internal.css" type="text/css" media="all" /><?php endif; ?>
   <?php print $scripts; ?>
   <script type="text/javascript" src="/sites/all/micro/footlocker/footlocker.js"></script>
 </head>
@@ -59,6 +61,13 @@
                        array('COLLEGE TIPS', $base.'/tips'),
 					   array ('FAQs', $base.'/faqs')
                       );
+        if ($internal) {
+          $base = '/footlocker/internal';
+          $items = array(array('HOME', $base),
+            array('APPLY', $base.'/apply'),
+            array('FAQs', $base.'/faqs'),
+          );
+        }
         $pos=0;
         foreach ($items as $i) {
           $class = ' ';

@@ -1,0 +1,152 @@
+.node h2.title {
+	display: none;
+}
+
+.clear-both {
+	clear: both;
+}
+
+/**
+ * Header hacks!
+ */
+#primary-nav li.whatsyourthing a {
+  background: url('/sites/all/micro/membership/whats.png') no-repeat 0 0;
+}
+
+#primary-nav li.actnow a {
+  background: url('/sites/all/micro/membership/act.png') no-repeat 0 0;
+}
+
+#primary-nav li.programs a {
+  background: url('/sites/all/micro/membership/share.png') no-repeat 0 0;
+}
+
+#header {
+	margin-left: 18px;
+	height: 154px;
+}
+
+#logo {
+	left: -17px;
+}
+/**
+ * End of header hacks!
+ */
+ 
+ /**
+ * Main navigation
+ */
+
+#campaign-logo {
+	position: relative;
+	left: 202px;
+	top: -80px;
+} 
+
+#content {
+	width: 770px;
+	font-family: 'DINWebCond';
+	font-size: 18px;
+	line-height: 1em;
+	margin: -110px 40px;
+}
+
+#block-webform-client-block-740433 {
+  background: #F5C540;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+  overflow: hidden;
+  width: 255px;
+}
+
+#block-webform-client-block-740433 h2.title {
+	display:none;
+}
+
+#webform-client-form-740433 p {
+  color: #black;
+  font-family: 'DINWebCond';
+  font-size: 32px;
+  margin: 17px 0px 3px 0px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#block-webform-client-block-740433 .webform-component {
+  float: left;
+  margin-left: 2px;
+  margin-bottom: 0px;
+}
+
+#edit-submitted-phone-number-wrapper {
+	margin-bottom: 8px;
+	margin-left: 10px;
+}
+
+#block-webform-client-block-740433 .webform-component:first-child {
+  float: none;
+}
+
+#block-webform-client-block-740433 .webform-component label {
+  font-family: 'DINWebCondMedium';
+  font-weight: normal;
+  color: #black;
+  font-size: 17px;
+}
+
+#block-webform-client-block-740433 #webform-component-opt-in .form-checkboxes {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+#block-webform-client-block-740433 #webform-component-opt-in .form-checkboxes #edit-submitted-opt-in-1-wrapper {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+#block-webform-client-block-740433 #webform-component-opt-in .form-checkboxes #edit-submitted-opt-in-1-wrapper label {
+	font-size: 15px;
+}
+
+#block-webform-client-block-740433 .webform-component .form-required {
+  color: black;
+}
+
+#block-webform-client-block-740433 .webform-component input.form-text {
+  width: 148px;
+  line-height: 24px;
+  font-size: 16px;
+  border: 0;
+  text-align: center;
+}
+
+input#edit-submit.form-submit {
+	background-color: #48BCDC;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	-khtml-border-radius: 15px;
+	border-radius: 15px;
+	display: inline-block;
+	color: white;
+	font-size: 15px;
+	padding: 2px 20px 1px;
+	text-decoration: none;
+	font-family: 'DINWebCondMedium';
+	margin-top: 37px;
+	margin-left: 7px;
+	border:none;
+	text-transform:uppercase;
+	cursor: pointer;
+}
+
+#expert-this-week-header {
+	font-size: 22px;
+}
+
+#expert-this-week-header .expert-name {
+	font-size: 24px;
+	font-weight: bold;
+}

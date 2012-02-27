@@ -7,7 +7,7 @@ $display_id = 'feed_1';
 $prefix = '<?xml version="1.0" encoding="utf-8"?><xml>';
 $suffix = '</xml>';
 
-$maxnum = trim($_GET['maxnum']);
+$maxnum = intval(trim($_GET['maxnum']));
 $key = trim($_GET['key']);
 $zip = $_GET['zip'];
 $country = $_GET['country'];
@@ -72,7 +72,7 @@ if ($key_valid) {
     $filter['value']['search_distance'] = $distance;
     $view->set_item($display_id, 'filter', 'distance', $filter);
     $view->set_item($display_id, 'filter', 'distance_1', NULL);
-  } elseif ($province != 'all') {
+  } elseif (isset($province)) {
     //do nothing, province argument is passed to view below
     $view->set_item($display_id, 'filter', 'distance_1', NULL);
     $view->set_item($display_id, 'filter', 'distance', NULL);
@@ -85,8 +85,8 @@ if ($key_valid) {
     $view->set_item($display_id, 'filter', 'distance', NULL);
   }
   
+  $view->set_items_per_page($maxnum);
   $view->set_current_page($page);
-//  $view->set_items_per_page($maxnum);
   print $view->preview($display_id, array($cause, $province, $keyword));
 } else {
   $error = '<error>Maximum number of queries hit or key is invalid</error>';

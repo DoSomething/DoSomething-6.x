@@ -1,5 +1,73 @@
-/* Custom fonts for Movie Tickets.com Page */
+/* OLD FONTS.CSS FILE */
+
 @font-face {
+  font-family: 'DINWebCondBlackIta';
+    src: url('fonts/DINWeb-CondBlackIta.eot');
+    src: url('fonts/DINWeb-CondBlackIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-CondBlackIta.woff') format('woff'),
+         url('fonts/DINWeb-CondBlackIta.ttf') format('truetype'),
+         url('fonts/DINWeb-CondBlackIta.svg#DINWebCondBlackIta') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWebCondBold';
+    src: url('fonts/DINWeb-CondBold.eot');
+    src: url('fonts/DINWeb-CondBold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-CondBold.woff') format('woff'),
+         url('fonts/DINWeb-CondBold.ttf') format('truetype'),
+         url('fonts/DINWeb-CondBold.svg#DINWebCondBold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWebCondBoldIta';
+    src: url('fonts/DINWeb-CondBoldIta.eot');
+    src: url('fonts/DINWeb-CondBoldIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-CondBoldIta.woff') format('woff'),
+         url('fonts/DINWeb-CondBoldIta.ttf') format('truetype'),
+         url('fonts/DINWeb-CondBoldIta.svg#DINWebCondBoldIta') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWebCondIta';
+    src: url('fonts/DINWeb-CondIta.eot');
+    src: url('fonts/DINWeb-CondIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-CondIta.woff') format('woff'),
+         url('fonts/DINWeb-CondIta.ttf') format('truetype'),
+         url('fonts/DINWeb-CondIta.svg#DINWebCondIta') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWebCondLightIta';
+    src: url('fonts/DINWeb-CondLightIta.eot');
+    src: url('fonts/DINWeb-CondLightIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-CondLightIta.woff') format('woff'),
+         url('fonts/DINWeb-CondLightIta.ttf') format('truetype'),
+         url('fonts/DINWeb-CondLightIta.svg#DINWebCondLightIta') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWebCondMediumIta';
+    src: url('fonts/DINWeb-CondMediumIta.eot');
+    src: url('fonts/DINWeb-CondMediumIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-CondMediumIta.woff') format('woff'),
+         url('fonts/DINWeb-CondMediumIta.ttf') format('truetype'),
+         url('fonts/DINWeb-CondMediumIta.svg#DINWebCondMediumIta') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+	
   font-family: 'DINWebCondBlack';
     src: url('fonts/DINWeb-CondBlack.eot');
     src: url('fonts/DINWeb-CondBlack.eot?#iefix') format('embedded-opentype'),
@@ -22,17 +90,6 @@
 }
 
 @font-face {
-  font-family: 'DINWebCondRegular';
-    src: url('fonts/DINWeb-CondRegular.eot');
-    src: url('fonts/DINWeb-CondRegular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/DINWeb-CondRegular.woff') format('woff'),
-         url('fonts/DINWeb-CondRegular.ttf') format('truetype'),
-         url('fonts/DINWeb-CondRegular.svg#DINWebCondRegular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: 'DINWebCondLight';
     src: url('fonts/DINWeb-CondLight.eot');
     src: url('fonts/DINWeb-CondLight.eot?#iefix') format('embedded-opentype'),
@@ -50,6 +107,129 @@
          url('fonts/DINWeb-Cond.woff') format('woff'),
          url('fonts/DINWeb-Cond.ttf') format('truetype'),
          url('fonts/DINWeb-Cond.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* NEW FONTS.CSS DECLARATIONS */
+
+@font-face {
+  font-family: 'DINWeb-Ita';
+    src: url('fonts/DINWeb-Ita.eot');
+    src: url('fonts/DINWeb-Ita.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-Ita.woff') format('woff'),
+         url('fonts/DINWeb-Ita.ttf') format('truetype'),
+         url('fonts/DINWeb-Ita.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-Light';
+    src: url('fonts/DINWeb-Light.eot');
+    src: url('fonts/DINWeb-Light.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-Light.woff') format('woff'),
+         url('fonts/DINWeb-Light.ttf') format('truetype'),
+         url('fonts/DINWeb-Light.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-LightIta';
+    src: url('fonts/DINWeb-LightIta.eot');
+    src: url('fonts/DINWeb-LightIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-LightIta.woff') format('woff'),
+         url('fonts/DINWeb-LightIta.ttf') format('truetype'),
+         url('fonts/DINWeb-LightIta.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-Medium';
+    src: url('fonts/DINWeb-Medium.eot');
+    src: url('fonts/DINWeb-Medium.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-Medium.woff') format('woff'),
+         url('fonts/DINWeb-Medium.ttf') format('truetype'),
+         url('fonts/DINWeb-Medium.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-MediumIta';
+    src: url('fonts/DINWeb-MediumIta.eot');
+    src: url('fonts/DINWeb-MediumIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-MediumIta.woff') format('woff'),
+         url('fonts/DINWeb-MediumIta.ttf') format('truetype'),
+         url('fonts/DINWeb-MediumIta.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb';
+    src: url('fonts/DINWeb.eot');
+    src: url('fonts/DINWeb.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb.woff') format('woff'),
+         url('fonts/DINWeb.ttf') format('truetype'),
+         url('fonts/DINWeb.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-Ita';
+    src: url('fonts/DINWeb-Ita.eot');
+    src: url('fonts/DINWeb-Ita.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-Ita.woff') format('woff'),
+         url('fonts/DINWeb-Ita.ttf') format('truetype'),
+         url('fonts/DINWeb-Ita.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-Black';
+    src: url('fonts/DINWeb-Black.eot');
+    src: url('fonts/DINWeb-Black.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-Black.woff') format('woff'),
+         url('fonts/DINWeb-Black.ttf') format('truetype'),
+         url('fonts/DINWeb-Black.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-BlackIta';
+    src: url('fonts/DINWeb-BlackIta.eot');
+    src: url('fonts/DINWeb-BlackIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-BlackIta.woff') format('woff'),
+         url('fonts/DINWeb-BlackIta.ttf') format('truetype'),
+         url('fonts/DINWeb-BlackIta.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-Bold';
+    src: url('fonts/DINWeb-Bold.eot');
+    src: url('fonts/DINWeb-Bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-Bold.woff') format('woff'),
+         url('fonts/DINWeb-Bold.ttf') format('truetype'),
+         url('fonts/DINWeb-Bold.svg#DINWebCond') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DINWeb-BoldIta';
+    src: url('fonts/DINWeb-BoldIta.eot');
+    src: url('fonts/DINWeb-BoldIta.eot?#iefix') format('embedded-opentype'),
+         url('fonts/DINWeb-BoldIta.woff') format('woff'),
+         url('fonts/DINWeb-BoldIta.ttf') format('truetype'),
+         url('fonts/DINWeb-BoldIta.svg#DINWebCond') format('svg');
   font-weight: normal;
   font-style: normal;
 }

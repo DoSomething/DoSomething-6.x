@@ -53,6 +53,7 @@ h2.title { display: none; }
   color: #041F3D;
   text-align: center;
   margin: 10px;
+visibility:hidden;
 }
 .fb-like {
   top: -8px;
@@ -570,6 +571,17 @@ ul.links li a:hover {
 .view-campaign-blog {
   background: #e3e3e3;
   padding-bottom: 40px;
+}
+
+#front-page-collage {
+	margin-left: -140px;
+	margin-top: -20px;
+	margin-bottom: -20px;
+}
+
+#webform-component-receive-tfj-banner,
+#webform-component-friends-email-addresses {
+	display:none;
 }
 
 /* blog post image */

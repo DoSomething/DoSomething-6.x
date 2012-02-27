@@ -1,0 +1,18 @@
+/*
+	header
+*/
+
+#main-wrapper, #header {
+	background: url('images/header.jpg')!important;
+	background-repeat: no-repeat!important;
+	background-position: top left!important;
+	background-color:#fff!important;
+}
+
+#main-wrapper {
+	background-position:-18px -210px!important;
+}
+
+#header {
+	background-position:0 -56px!important;
+}

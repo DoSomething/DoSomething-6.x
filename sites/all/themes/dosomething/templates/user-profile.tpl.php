@@ -100,9 +100,10 @@
       'grant' => t('Grant Application'),
       'surge_scholarship' => t('Surge Scholarship'),
       'Foot Locker Scholarship Application' => t('Foot Locker Scholarship Application'),
+      'Do Something Awards Application' => t('Do Something Awards Application'),
     );
     
-    $webforms = array(688464);
+    $webforms = array(688464, 727926);
 
     $valid_grants_string = "'" . (count($valid_grant_types) ? implode("', '", array_keys($valid_grant_types)) : 'no_valid_types') . "'";
     $webforms_string = implode(',', $webforms);
@@ -127,7 +128,7 @@
         array('data'=> l($grant->title,'node/'.$grant->nid.$grant_text)),
         $valid_grant_types[$grant->type], 
         date('F j, Y',$grant->created),
-        array('data'=> l('Edit','node/'.$grant->nid . $grant_text . '/edit')),
+        array('data'=> l('Edit','node/'.$grant->nid/* . $grant_text . '/edit'*/)),
       );
     }
     $header = array('Title', 'Grant', 'Date Created', 'Edit');

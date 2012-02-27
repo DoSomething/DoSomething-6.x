@@ -84,6 +84,7 @@
               array('href' => $root.'/share-your-video', 'title' => 'share your video'),
               array('href' => $root.'/video-gallery', 'title' => 'video gallery'),
               array('href' => $root.'/celebrity-gallery', 'title' => 'celebrity gallery'),
+              array('href' => $root.'/contests', 'title' => 'scholarships', 'fragment' => 'scholarships'),
               array('href' => $root.'/contests', 'title' => 'contests'),
               array('href' => $root.'/faq', 'title' => 'faq'),
               array('href' => $root.'/blog', 'title' => 'blog'),
@@ -152,13 +153,20 @@
 
       <?php //print $sidebar_second; ?>
 
+
+
+
+
+
+
+
 <div class="mustard-box small-box left">
 	<div class="box-header">
 		<h2 class="center-text">Prizes</h2>
 	</div> 		<!-- end box-header div-->
 	<div class="box-content">
 		<p>You can win scholarships, concert tickets or even a chance to perform at Lollapalooza!</p>
-		<a href="http://www.dosomething.org/battle-temp/contests"><div class="small-button center">view prizes</div></a>
+		<div class="mustard-low"><a href="http://www.dosomething.org/battle/contests"><div class="small-button center">view prizes</div></a></div>
 	</div> 		<!-- end box-content div-->
 </div> 		<!-- end mustard-box small-box left div-->
 
@@ -168,7 +176,7 @@
 	</div> 		<!-- end box-header div-->
 	<div class="box-content">
 		<p>We'll give you the tips you need to make a great video.</p>
-		<a href="http://www.dosomething.org/battle-temp/video-how-tos"><div class="small-button center">get started</div></a>
+		<div class="mustard-low"><a href="http://www.dosomething.org/nd/pdf/battle-video-guide.pdf"><div class="small-button center">get started</div></a></div>
 	</div> 		<!-- end box-content div-->
 </div> 		<!-- end mustard-box small-box left div-->
 
@@ -178,11 +186,18 @@
 	</div>	<!-- end box-header div-->
 	<div class="box-content">
 		<p>We've got celebs, music industry insiders and media experts checking out your video.</p>
-		<a href="http://www.dosomething.org/battle-temp/judges"><div class="small-button center">check 'em out</div></a>
+		<div class="mustard-low"><a href="http://www.dosomething.org/battle/judges"><div class="small-button center">check 'em out</div></a></div>
 	</div> 		<!-- end box-content div-->
 </div> 		<!-- end mustard-box small-box left div-->
 
 <div class="clear-both"></div>
+
+
+
+
+
+
+
 			
 <a href="http://idolator.com/">
 	<img class="sponsor2012" src="/<?=$ds_micro;?>/battle/images/bob_idol.png" alt="Idolator Logo" />

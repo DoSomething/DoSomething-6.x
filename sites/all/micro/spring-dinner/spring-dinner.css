@@ -1,0 +1,271 @@
+/*
+	header hacks
+*/
+
+#primary-nav li.whatsyourthing a {
+ 	background: url('/sites/all/micro/membership/whats.png') no-repeat 0 0;
+}
+
+#primary-nav li.actnow a {
+ 	background: url('/sites/all/micro/membership/act.png') no-repeat 0 0;
+}
+
+#primary-nav li.programs a {
+	background: url('/sites/all/micro/membership/share.png') no-repeat 0 0;
+}
+
+#header {
+	margin-left: 18px;
+	height: 154px;
+}
+
+#logo {
+	left: -17px;
+}
+
+/*
+	header
+*/
+
+#main-wrapper, #header {
+	background: url('images/header.jpg'), url('images/bg.png');
+	background-repeat: no-repeat, repeat;
+	background-position: top left, top right;
+	background-color:#fff;
+}
+
+#main-wrapper {
+	background-position:-18px -210px;
+}
+
+#header {
+	background-position:0 -56px;
+}
+
+#campaign-logo {
+	margin:50px 0 10px -10px;
+	display:block;
+}
+
+#campaign-slogan {
+	text-align:right;
+	font-family:"DINWeb-Light";
+	font-size: 20px;
+	letter-spacing:3px;
+	color:#fff;
+	margin:-15px 0 5px!important;
+}
+
+/*
+	social
+*/
+
+.fb-like {
+	width: 45px;
+}
+
+#social {
+	position:absolute;
+	top:0;
+	z-index:2;
+	right:10px;
+	width:175px;
+	overflow:visible;
+}
+
+#social h1 {
+	color:#FFCD0A;
+	font-size:22px;
+	font-family:'DINWebCondBold';
+	text-align:left;
+	margin:0;
+}
+
+#social p {
+	color:#fff;
+	font-family:'DINWebCondMedium';
+	text-align:left;
+	letter-spacing:1px;
+	font-size:15px;
+	margin-bottom:8px;
+}
+
+/*
+	nav
+*/
+
+ul.links {
+	background-image:url('images/nav-bg2.png');
+	background-position:15px 0;
+	background-repeat:no-repeat;
+	height:75px;
+	width:960px;
+	margin:0 0 25px -55px;
+	text-align:center;
+}
+
+ul.links li {
+	display:inline-block;
+	margin:25px 40px;
+	text-align:center;
+	font-family:'DINWebCond';
+	font-size:25px;
+	text-transform:uppercase;
+	zoom: 1;
+	*display:inline;
+	_height:60px;
+}
+
+ul.links li a {
+	color:#D2D0CF;
+}
+
+ul.links li a:hover {
+	color:#E8E8E8;
+	text-decoration:none;
+}
+
+#node-741760 h1 span {
+	text-align:right;
+	font-size:16px;
+	color:#0c8;
+}
+
+/*
+	drupal
+*/
+
+.node h2.title {
+	display:none;
+}
+
+/*
+	main
+*/
+
+#content {
+	width:96%;
+}
+
+#node-741760 .sd-box {
+	border:1px solid #ccc;
+	background-color:#fff;
+	margin:0 auto 45px;
+	box-shadow:			0px 20px 30px -10px #aaa;
+	-moz-box-shadow:	0px 20px 30px -10px #aaa;
+	-webkit-box-shadow:	0px 20px 30px -10px #aaa;
+}
+
+#node-741760 .sd-box h1 {
+	background:url('images/heading-bg.jpg');
+	border-bottom:1px solid #ccc;
+	font-family:'DINWebCondMedium';
+	color:#009488;
+	font-size:35px;
+	padding-top:6px;
+	text-align:center;
+	text-transform:uppercase;
+}
+
+#node-741760 .fragment:hover {
+	text-decoration:none;
+}
+
+#node-741760 .sd-box p {
+	font-family:'DINWebCond';
+	letter-spacing:1px;
+	line-height:25px;
+	font-size:20px;
+	color:#000;
+	padding:0 20px;
+}
+
+#node-741760 .sd-box span {
+	text-transform:uppercase;
+}
+
+#node-741760 a {
+	color:#184086;
+}
+
+#node-741760 a:hover {
+	text-decoration:underline;
+}
+
+#node-741760 .clear-both {clear:both;}
+#node-741760 .left {float:left;}
+#node-741760 .right {float:right;}
+#node-741760 p.first {padding-top:20px;}
+#node-741760 p.last {/*padding-bottom:20px;*/}
+
+/*
+	invited
+*/
+
+#invited .left {
+	margin:10px 0 10px 80px;
+}
+
+#invited .right {
+	width:350px;
+	padding:0!important;
+	margin:40px 40px 10px;
+}
+
+#invited .last {
+	text-align:center;
+	margin-top:10px;
+}
+
+/*
+	our-story
+*/
+
+#our-story iframe {
+	width:450px;
+	height:252px;
+	padding:25px 0 25px 20px;
+}
+
+#our-story .right {
+	width:325px;
+	margin-top:15px;
+	
+}
+
+/*
+	honorees
+*/
+
+#honorees {
+	padding-bottom:20px;	
+}
+
+#honorees img {
+	margin:0 auto;
+	display:block;
+}
+
+/*
+	sponsors
+*/
+
+#sponsor_logos {
+	margin:0 0 10px 10px;
+}
+
+#sponsor_logos a {
+	margin:0 15px 0 20px;
+	display:inline-block;
+	cursor:pointer;
+}
+
+/*
+	event
+*/
+
+
+#event p {
+	text-align:center;
+	margin-top:17px;
+}

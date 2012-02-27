@@ -1,0 +1,9 @@
+#menu-item-0 { background: url('nav/home.png'); width: 99px; margin-left: 250px; }
+#menu-item-0.active, #menu-item-0:hover { background: url('nav/home-active.png'); }
+#menu-item-1 { background: url('nav/apply.png'); width: 115px; }
+#menu-item-1.active, #menu-item-1:hover { background: url('nav/apply-active.png'); }
+#menu-item-2 { background: url('nav/faqs.png'); width: 83px; }
+#menu-item-2.active, #menu-item-2:hover { background: url('nav/faqs-active.png'); }
+
+.share { display: none; }
+#footer { display: none !important; }

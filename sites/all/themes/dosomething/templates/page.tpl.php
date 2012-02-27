@@ -117,13 +117,17 @@
   <meta property="og:title" content="<?=$head_title;?>"/>
   <meta property="fb:admins" content="508145411,603061,630191494" />
   <meta property="fb:app_id" content="93836527897" />
+  <meta property="fb:page_id" content="7630216751" />
   <meta property="og:type" content="non_profit"/>
+  <!--
   <meta property="og:url" content="http://www.dosomething.org" />
   <meta property="og:image" content="http://www.dosomething.org/files/dosomething-org.jpg" />
+  -->
   <meta property="og:site_name" content="DoSomething.org"/>
+  <!--
   <meta property="og:description" content="POWERING OFFLINE ACTION. Using the power of online to get teens to do good stuff offline."/>
-
-  <?php print $head; ?>
+-->
+  <?php print $head; ?> 
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>

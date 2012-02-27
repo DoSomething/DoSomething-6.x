@@ -131,7 +131,8 @@ function dosomething_forms_form_alter(&$form, &$form_state, $form_id) {
       break;
     case 'school_node_form':
     case 'webform_client_form_736100':
-      drupal_add_js('nd/school/jquery-ui-1.8.17.custom.min.js');
+      //drupal_add_js('nd/school/jquery-ui-1.8.17.custom.min.js');
+      drupal_add_js('nd/school/jquery-ui-1.8.7.min.js');
       drupal_add_js('nd/school/school.js');
       drupal_add_css('nd/school/jqui.css');
       break;

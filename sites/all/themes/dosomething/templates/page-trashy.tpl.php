@@ -10,6 +10,8 @@
   <meta property="og:type" content="non_profit"/>
 <?php if (isset($node->field_trashy_image)) : ?>
   <meta property="og:image" content="<?php echo imagecache_create_url('200_by_200', $node->field_trashy_image[0]['filepath']); ?>" />
+<?php elseif (isset($node->field_trashy_image_user)) : ?>
+  <meta property="og:image" content="<?php echo imagecache_create_url('200_by_200', $node->field_trashy_image_user[0]['filepath']); ?>" />
 <?php else: ?>
   <meta property="og:url" content="http://www.dosomething.org/trashy" />
   <meta property="og:image" content="http://www.dosomething.org/sites/all/micro/trashy/images/trashy-logo.png" />
@@ -42,6 +44,7 @@
           $nav = array(
               array('href' => $root, 'title' => 'home'),
               array('href' => $root.'/gallery', 'title' => 'gallery'),
+			  array('href' => $root.'/user-gallery', 'title' => 'user gallery'),
 			  array('href' => $root.'/project-ideas', 'title' => 'project ideas'),
 			  array('href' => $root.'/tell-us', 'title' => 'tell us about it'),
           );

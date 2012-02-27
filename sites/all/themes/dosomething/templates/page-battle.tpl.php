@@ -22,6 +22,7 @@
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   <script type="text/javascript" src="/<?=$ds_micro.'/battle/bftb.js';?>"></script>
   <script src="/sites/all/micro/art-2011/popup.js"></script>
+  <script src="/sites/all/micro/battle/judges/judges.js"></script>
 
 </head>
 
@@ -76,23 +77,26 @@
 
         <?php print $help; ?>
 	
-	<!--<?php
-          $root = 'green-temp';
-          $nav = array(
-              array('href' => $root, 'title' => 'home'),
-              array('href' => $root.'/project-ideas', 'title' => 'project ideas'),
-              array('href' => $root.'/browse-schools', 'title' => 'browse schools'),
-              array('href' => $root.'/my-school', 'title' => 'my school'),
-              array('href' => 'trashy', 'title' => 'dont be trashy', 'attributes' => array('target' => '_blank')),
-              array('href' => $root.'/prizes', 'title' => 'prizes'),
-          );
-          foreach ($nav as &$n) {
-            $path = drupal_lookup_path('source', $n['href']);
-            if (!empty($path)) $n['href'] = $path;
-          }
-          echo theme_links($nav);
-        ?>-->
+		<?php
+	          $root = 'battle';
+	          $nav = array(
+	              array('href' => $root, 'title' => 'home'),
+	              array('href' => $root.'/share-your-video', 'title' => 'share your video'),
+	              array('href' => $root.'/video-gallery', 'title' => 'video gallery'),
+	              array('href' => $root.'/celeb-gallery', 'title' => 'celebrity gallery'),
+	              array('href' => $root.'/contests', 'title' => 'contests'),
+	              array('href' => $root.'/contests', 'title' => 'scholarships', 'fragment' => 'scholarships'),
+	              array('href' => $root.'/faq', 'title' => 'faq'),
+		      array('href' => $root.'/blog', 'title' => 'blog'),
+	          );
+	          foreach ($nav as &$n) {
+	            $path = drupal_lookup_path('source', $n['href']);
+	            if (!empty($path)) $n['href'] = $path;
+	          }
+	          echo theme_links($nav);
+	        ?>
 
+           <!-- array('href' => $root.'/blog', 'title' => 'blog'), -->
 	
 
         <?php print $content_top; ?>
@@ -149,6 +153,40 @@
       <?php //print $sidebar_first; ?>
 
       <?php //print $sidebar_second; ?>
+		
+		
+		<div class="mustard-box small-box left">
+			<div class="box-header">
+				<h2 class="center-text">Prizes</h2>
+			</div> 		<!-- end box-header div-->
+			<div class="box-content">
+				<p>You can win scholarships, concert tickets or even a chance to perform at Lollapalooza!</p>
+				<div class="mustard-low"><a href="http://www.dosomething.org/battle/contests"><div class="small-button center">view prizes</div></a></div>
+			</div> 		<!-- end box-content div-->
+		</div> 		<!-- end mustard-box small-box left div-->
+
+		<div class="mustard-box small-box left">
+			<div class="box-header">
+				<h2 class="center-text">Video How To's</h2>
+			</div> 		<!-- end box-header div-->
+			<div class="box-content">
+				<p>We'll give you the tips you need to make a great video.</p>
+				<div class="mustard-low"><a href="http://www.dosomething.org/nd/pdf/battle-video-guide.pdf" target="_blank"><div class="small-button center">get started</div></a></div>
+			</div> 		<!-- end box-content div-->
+		</div> 		<!-- end mustard-box small-box left div-->
+
+		<div class="mustard-box small-box left">
+			<div class="box-header">
+				<h2 class="center-text">Judges</h2>
+			</div>	<!-- end box-header div-->
+			<div class="box-content">
+				<p>We've got celebs, music industry insiders and media experts checking out your video.</p>
+				<!-- <div class="mustard-low"><a href="http://www.dosomething.org/battle/judges"><div class="small-button center">check 'em out</div></a></div> -->
+			</div> 		<!-- end box-content div-->
+		</div> 		<!-- end mustard-box small-box left div-->
+
+		<div class="clear-both"></div>
+		
 		
 		<a href="http://idolator.com/">
 			<img class="sponsor2012" src="/<?=$ds_micro;?>/battle/images/bob_idol.png" alt="Idolator Logo" />

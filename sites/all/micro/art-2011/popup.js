@@ -4,7 +4,7 @@ $(document).ready(function(){
         content:    'http://www.dosomething.org/sites/all/micro/art-2011/faqs.html',
         player:     "iframe",
         height:     500,
-        width:      500,
+        width:      500
     });
   });
  $("#shadowbox-rules-button").click(function(){
@@ -12,7 +12,7 @@ $(document).ready(function(){
         content:    'http://www.dosomething.org/sites/all/micro/art-2011/rules.html',
         player:     "iframe",
         height:     500,
-        width:      500,
+        width:      500
     });	
   });
  $("iframe").each(function(){

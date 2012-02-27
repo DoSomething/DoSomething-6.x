@@ -261,3 +261,7 @@ img#portrait-pics-left {
 #webform-component-friends-email-addresses {
   display: none;
 }
+
+#front-page-collage {
+	margin-left: -140px;
+}

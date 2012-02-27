@@ -43,6 +43,19 @@ function dosomething_awards_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['dsawards/judge'] = array(
+    'page callback' => 'dosomething_awards_judge',
+    'access callback' => 'dosomething_awards_judge_perm',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dsawards/judge/%'] = array(
+    'page callback' => 'dosomething_awards_judge_app',
+    'page arguments' => array(2),
+    'access callback' => 'dosomething_awards_judge_perm',
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -58,6 +71,12 @@ function dosomething_awards_theme() {
         'recommendations' => NULL,
       ),
       'template' => 'templates/dsawards-status',
+    ),
+    'dsawards_judge' => array(
+      'arguments' => array(
+        'app_list' => NULL,
+      ),
+      'template' => 'templates/dsawards-judge-landing',
     ),
   );
   return $theme;
@@ -120,6 +139,20 @@ function dosomething_awards_submission_permission($sid = null) {
   module_load_include('inc', 'webform', 'includes/webform.submissions');
   $submission = webform_get_submission(DSAPP_APP, $sid);
   return ($user->uid == $submission->uid || user_access('access all webform results'));
+}
+
+function dosomething_awards_judge_perm() {
+  global $user;
+  $perms = array('grant reviewer', 'administrator');
+  return (count(array_diff($perms, array_values($user->roles))) < 2);
+}
+
+function dosomething_awards_judge() {
+  return theme('dsawards_judge', 'test123892389283901');
+}
+
+function dosomething_awards_judge_app($sid) {
+  return 'banana';
 }
 
 function dosomething_awards_app_status($sid) {

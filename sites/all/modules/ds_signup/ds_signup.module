@@ -25,7 +25,7 @@ function _ds_signup_block() {
     <a href="/news/were-getting-makeover-not-plastic-surgery" style="color: magenta; font-size: 16px; font-weight: bold;">New site coming soon!</a>';
   $block_str .= '<div class="blue" style="margin-top: 10px;">'.
     '<img class="need-help" src="/sites/all/themes/dosomething/images/need-help.png"/>'.
-    '<p><span class="lightblue">Text </span> HELPME to 38383</p>'.
+    '<p><span class="lightblue">Text </span> JOIN to 38383 <a style="vertical-align: super;" title="Text in to get weekly updates and chances to win scholarships, money, and prizes from DoSomething.org. Message and data rates may apply. Text STOP to opt out. Text HELP or email help@dosomething.org for help." href="#" onclick="return false;">?</a></p>'.
     '<p><span class="lightblue"><a href="mailto:helpme@dosomething.org">Email</a> </span> helpme@dosomething.org</p>'.
 	'<p>Sign up to our newsletter!</p>'.
     '<form method="POST" action="http://www.dosomething.org/nd/infusionsoft/webform.php">'.

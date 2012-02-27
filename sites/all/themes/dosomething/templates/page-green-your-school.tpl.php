@@ -67,7 +67,7 @@
               array('href' => $root.'/my-school', 'title' => 'my school'),
               array('href' => 'trashy', 'title' => 'dont be trashy', 'attributes' => array('target' => '_blank')),
               array('href' => $root.'/prizes', 'title' => 'prizes'),
-	      array('href' => $root.'/report-back', 'title' => 'Report Back'),
+	      array('href' => $root.'/report-back', 'title' => 'Tell Us About It'),
           );
           foreach ($nav as &$n) {
             $path = drupal_lookup_path('source', $n['href']);
@@ -93,6 +93,10 @@
 <?php
           $messages = str_replace('You must <a href="/user/login?destination=node%2F736100">login</a> or <a href="/user/register?destination=node%2F736100">register</a> to view this form.',
             'To sign up your school, you must <a href="/user/login?destination=node%2F736100">login</a> or <a href="/user/register?destination=node%2F736100">register</a>.', $messages);
+?>
+
+<?php
+          $messages = str_replace('<em>GSID</em> is not numeric', 'Please select your school from the drop down menu.', $messages);
 ?>
       <?php print $messages; ?>
     
@@ -132,7 +136,7 @@
 <div class="box-content">
 <p>Explore project ideas and create a check list for your school.</p>
 <img class="center" src="/sites/all/micro/greenyourschool/images/tickbox.png" />
-<a href="/green-your-school/project-ideas"><div class="small-button center">VIEW IDEAS</div></a>
+<div class="mustard-low"><a href="/green-your-school/project-ideas"><div class="small-button center">VIEW IDEAS</div></a></div>
 </div>
 </div>
 
@@ -143,7 +147,7 @@
 <div class="box-content">
 <p>Here’s your opportunity to win a scholarship or a green grant.</p>
 <img class="center" src="/sites/all/micro/greenyourschool/images/dollar-sign.png" />
-<a href="/green-your-school/prizes"><div class="small-button center">CHECK IT OUT</div></a>
+<div class="mustard-low"><a href="/green-your-school/prizes"><div class="small-button center">CHECK IT OUT</div></a></div>
 </div>
 </div>
 
@@ -153,13 +157,15 @@
 </div>
 <div class="box-content">
 <p>Find your school of start you own Green Your School Challenge.</p>
-<a href="/green-your-school/browse-schools"><div class="small-button center">BROWSE SCHOOLS</div></a>
+<div class="mustard-low"><a href="/green-your-school/browse-schools"><div class="small-button center">BROWSE SCHOOLS</div></a></div>
 </div>
 </div>
 
 <div class="clear-both"></div>
 
 <?php } ?>
+
+<div class="email-us">Need help? Email us at <a href="mailto:green@dosomething.org">green@dosomething.org</a></div>
 
 <img id="energy-star-branding" class="left" src="/sites/all/micro/greenyourschool/images/energy-star-logo.png" />
 <img id="nestle-branding" class="right" src="/sites/all/micro/greenyourschool/images/nestle-logo.png" />

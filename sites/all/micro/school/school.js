@@ -1,5 +1,4 @@
 var lastQuery;
-console.log('loaded!');
 
 jQuery(document).ready(function () {
   var schoolName = jQuery('#edit-title, #edit-submitted-name-of-school');
@@ -18,7 +17,7 @@ jQuery(document).ready(function () {
           .val('');
       });
     schoolName
-      .attr('disabled', 'disabled')
+      .attr('disabled', true)
       .val('Please select a state first.')
       .autocomplete({
         source: function( request, response ) {
@@ -32,7 +31,7 @@ jQuery(document).ready(function () {
             response(completes);
           });
         }, select: function(e, ui) {
-          schoolName.attr('disabled', 'disabled');
+          schoolName.attr('disabled', true);
           gsid.val(findGSID(ui.item.value));
           var clear = jQuery('<a href="#">Clear</a>').click(function () {
             schoolName.removeAttr('disabled');
@@ -41,16 +40,27 @@ jQuery(document).ready(function () {
           });
           schoolName.parent().append(clear);
         }
+      })
+      .blur(function () {
+        schoolName.attr('disabled', true);
+        gsid.val(findGSID(schoolName.val()));
+
+        var clear = jQuery('<a href="#">Clear</a>').click(function () {
+          schoolName.removeAttr('disabled');
+          jQuery(this).remove();
+          return false;
+        });
+        if (!schoolName.parent().find('a')) {
+          schoolName.parent().append(clear);
+        }
       });
   }
   sForm.submit(function () {
     schoolName.removeAttr('disabled');
-    /*
     if (gsid.val() == '') {
       alert('Please choose a school from the autocomplete menu.');
       return false;
     }
-    */
   });
 });
 
@@ -68,16 +78,18 @@ function parseOut(obj) {
 }
 
 function findGSID(schoolName) {
-  if (lastQuery.school instanceof Array) {
-    for (var i = 0; i < lastQuery.school.length; i++) {
-      if (lastQuery.school[i].name == schoolName) {
-        return lastQuery.school[i].gsId;
+  if (lastQuery) {
+    if (lastQuery.school instanceof Array) {
+      for (var i = 0; i < lastQuery.school.length; i++) {
+        if (lastQuery.school[i].name == schoolName) {
+          return lastQuery.school[i].gsId;
+        }
       }
     }
-  }
-  else
-  {
-    return lastQuery.school.gsId;
+    else
+    {
+      return lastQuery.school.gsId;
+    }
   }
   return null;
 }

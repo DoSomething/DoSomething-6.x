@@ -110,7 +110,7 @@
           $messages = str_replace('You must <a href="/user/login?destination=node%2F737134">login</a> or <a href="/user/register?destination=node%2F737134">register</a> to view this form.',
             'To complete your sign up to Battle For The Bands you must <a href="/user/login?destination=node%2F737134">login</a> or <a href="/user/register?destination=node%2F737134">register</a>.', $messages);
 ?>
-      <?php print $messages; ?>
+      <!-- <?php print $messages; ?> -->
     
     
     
@@ -186,6 +186,12 @@
 		</div> 		<!-- end mustard-box small-box left div-->
 
 		<div class="clear-both"></div>
+		
+		<div class="mustard-box mustard-help">
+			<div class="box-content">
+				<p>Need help? Email us at <a href="mailto:battle@dosomething.org">battle@dosomething.org</a>.</p>
+			</div>
+		</div>
 		
 		
 		<a href="http://idolator.com/">

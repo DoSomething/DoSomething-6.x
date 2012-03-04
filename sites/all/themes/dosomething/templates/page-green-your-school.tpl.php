@@ -42,9 +42,11 @@
 		module_load_include('inc', 'webform', 'includes/webform.submissions');
 	
 		if (arg(1) <> '736100' AND webform_get_submission_count(736100, $user->uid) == 0) { 
-	      $sign_up = module_invoke('webform', 'block', 'view', 'client-block-735506');
-              echo $sign_up['content']; 
-	      }
+	       if (arg(1) <> '744085') {	
+			$sign_up = module_invoke('webform', 'block', 'view', 'client-block-735506');
+              echo $sign_up['content'];
+			} 
+	    }
         ?></div>
        <div id="content" class="column"><div class="section">
 
@@ -98,7 +100,7 @@
 <?php
           $messages = str_replace('<em>GSID</em> is not numeric', 'Please select your school from the drop down menu.', $messages);
 ?>
-      <?php print $messages; ?>
+      <?php //print $messages; ?>
     
     
     

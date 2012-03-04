@@ -21,6 +21,7 @@
 
   <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
   <script type="text/javascript" src="/<?=$ds_micro.'/battle/bftb.js';?>"></script>
+  <script type="text/javascript" src="/<?=$ds_micro.'/battle/bftb_opt.js';?>"></script>
   <script src="/sites/all/micro/battle/popup.js"></script>
   <script src="/sites/all/micro/battle/judges/judges.js"></script>
 
@@ -109,7 +110,7 @@
           $messages = str_replace('You must <a href="/user/login?destination=node%2F737134">login</a> or <a href="/user/register?destination=node%2F737134">register</a> to view this form.',
             'To complete your sign up to Battle For The Bands you must <a href="/user/login?destination=node%2F737134">login</a> or <a href="/user/register?destination=node%2F737134">register</a>.', $messages);
 ?>
-      <?php print $messages; ?>
+     <!-- <?php print $messages; ?> -->
     
     
     

@@ -188,7 +188,7 @@
   <?php print $page_closure; ?>
 
   <?php print $closure; ?>
-  
+
 </body>
 </html>
 

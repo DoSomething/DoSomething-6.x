@@ -98,6 +98,7 @@ function dosomething_theme(&$existing, $type, $theme, $path) {
 				 'campaign_cancer_2011',
          'campaign_tfj_2012',
          'fl_judge',
+         'dsa_judge',
                  );
   //$hooks['ebd_signup_node_form'] = array( 'template' => 'ebd_signup_form', 'arguments' => array('form' => array()), 'path' => $templates_path );
   foreach ($ds_forms as $name) {
@@ -608,7 +609,20 @@ function theme_fb_tw_g() {
 
 function theme_addthis($additional_class = "addthis_32x32_style") {
   $addthis = "
-<!-- ADDTHIS BUTTON BEGIN -->
+  <!-- SHARETHIS CODE STARTS -->
+
+  <span class='st_facebook_vcount' displayText='Facebook'></span>
+  <span class='st_twitter_vcount' displayText='Tweet'></span>
+  <span class='st_linkedin_vcount' displayText='LinkedIn'></span>
+  <span class='st_email_vcount' displayText='Email'></span>
+  <span class='st_fblike_vcount' displayText='Facebook Like'></span>
+   <span class='st_plusone_vcount' displayText='Google +1'></span>
+ <a href='#' onclick='window.print()'><img src='http://www.dosomething.org/files/print.png'/></a>
+  <!-- SHARETHIS CODE ENDS -->
+
+
+
+    <!-- ADDTHIS BUTTON BEGIN -->
 <script type=\"text/javascript\">
 var addthis_config = {
   username: \"dosomething\",
@@ -619,7 +633,8 @@ var addthis_share = {
 }
 </script>
 
-<div class=\"addthis_toolbox $additional_class addthis_default_style\">
+  <div class=\"addthis_toolbox $additional_class addthis_default_style\">
+  <!--
 <a class=\"addthis_button_facebook\"></a>
 <a class=\"addthis_button_twitter\" tw:via=\"dosomething\"></a>
 <a class=\"addthis_button_myspace\"></a>
@@ -628,9 +643,11 @@ var addthis_share = {
 <a class=\"addthis_button_print\"></a>".
     theme_google_plusone_button(array('css' => 'display:inline;float:left;',
                                       'url' => 'http://www.dosomething.org'.drupal_get_path_alias(request_uri()) )).
-"</div>
+                                      "-->
+                                      </div>
 
 <script type=\"text/javascript\" src=\"http://s7.addthis.com/js/250/addthis_widget.js\"></script>
+
 <!-- ADDTHIS BUTTON END -->";
   return $addthis;
 }

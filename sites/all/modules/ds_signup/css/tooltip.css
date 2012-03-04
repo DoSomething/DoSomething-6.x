@@ -1,0 +1,15 @@
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	border: 0px solid #48BCDC;
+	background-color: #eee;
+	padding: 3px;
+	font-size: 11px;
+	opacity: 1.0;
+	width:240px;
+}
+
+#blocktooltip {
+	color:#48BCDC;
+	cursor:pointer;
+}

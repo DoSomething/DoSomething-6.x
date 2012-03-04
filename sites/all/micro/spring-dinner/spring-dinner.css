@@ -60,6 +60,12 @@
 	social
 */
 
+.fb_edge_widget_with_comment {
+	position:relative;
+	top:-3px;
+	right:3px;
+}
+
 .fb-like {
 	width: 45px;
 }

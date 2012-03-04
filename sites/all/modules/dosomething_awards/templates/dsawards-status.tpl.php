@@ -16,7 +16,7 @@
 <?php endif; ?>
 </div>
 
-<p>The application deadline is March 1st, 2012(5PM EST). If you have any questions or concerns, please email <a href="mailto:dsawards@dosomething.org">dsawards@dosomething.org.</a></p>
+<p>The application deadline is March 15st, 2012(5PM EST). If you have any questions or concerns, please email <a href="mailto:dsawards@dosomething.org">dsawards@dosomething.org.</a></p>
 <p>If you are having difficulty accessing your grant application or other technical issues please contact <a href="mailto:help@dosomething.org">help@dosomething.org</a>.</p>
 <p>Thank you for taking the time to share your extraordinary ideas and achievements with us.</p>
 

@@ -205,8 +205,32 @@ div.messages a:hover {
 #block-webform-client-block-737152 fieldset {border:none;margin:0;padding:0;}
 #block-webform-client-block-737152 .form-item {margin-bottom:0;}
 #block-webform-client-block-737152 #edit-actions {float:right;}
-#block-webform-client-block-737152 #webform-component-fieldset-2 {margin:10px 10px 15px;}
+#block-webform-client-block-737152 #webform-component-fieldset-2 {margin:0 10px 10px;}
 #block-webform-client-block-737152 #webform-component-fieldset-2--legal {margin-left:0;}
+#block-webform-client-block-737152 #edit-submitted-fieldset-2-opt-in-1-wrapper {width:410px;}
+#block-webform-client-block-737152 #edit-submitted-fieldset-2-opt-in-1-wrapper label {font-family:'DINWeb-Light';font-size:13px;}
+
+/*
+legal nonsense
+*/
+
+#webform-component-fieldset-2--legal a {
+	display:block;
+	color:#fff!important;
+	height:15px;
+	width:15px;
+	cursor:default;
+}
+
+#webform-component-fieldset-2--legala.mobile_legal a:hover {
+	color:#ccc!important;
+	text-decoration:none!important;
+	cursor:default;
+}
+
+/*	
+end shortform compatability edit
+*/
 
 #edit-submitted-opt-in-1-wrapper {
 	margin:-5px 0 15px 10px;
@@ -356,6 +380,15 @@ div.messages a:hover {
 				/*				 STYLING		*/
 
 
+#webform-component-rules--reg {
+	text-align:right;
+	margin:35px 0 15px;
+}
+
+#webform-component-rules--reg a {color:#D33936!important;}
+
+#webform-component-rules--reg a:hover {text-decoration:underline;}
+
 #webform-component-opt-in {
 	margin:0 auto;
 	width:500px;
@@ -410,12 +443,14 @@ div.messages a:hover {
 
 .webform_client_form_737134 .webform-component-textfield label,
 .webform_client_form_737134 .webform-component-email label,
-.webform_client_form_737134 .webform-component-date .form-item label {
+.webform_client_form_737134 .webform-component-date .form-item label,
+.webform_client_form_737134 .webform-component-webform_email label {
 	display:inline;
 }
 
 .webform_client_form_737134 .webform-component-textfield input, 
-.webform_client_form_737134 .webform-component-email input {
+.webform_client_form_737134 .webform-component-email input,
+.webform_client_form_737134 #edit-submitted-email-wrapper input {
 	background-color:#fff;
 	border:0;
 	padding:1px;
@@ -485,12 +520,6 @@ div.messages a:hover {
 	line-height:30px;
 	color:#000;
 	margin-bottom:10px;
-}
-
-#webform-component-kelly-needs-number p {
-	text-align:right;
-	font-size:15px;
-	margin:-10px 2px -10px 0;
 }
 
 #webform-component-enter-your-mailing-address-to-receive-sweet-swag legend {
@@ -715,7 +744,7 @@ becca-blog
 #bob-wrapper object {
 	margin:10px auto;
 	display:block;
-	padding:10px;
+	padding:3px;
 	background-color:#fff;
 }
 
@@ -922,13 +951,16 @@ p#scholarship-copy span {
 }
 
 .jbb-footer h1 {
-	font-size:18px!important;
+	font-size:20px!important;
 	padding: 5px 25px 2px 5px!important;
 }
 
 .jbb-footer h2 {
-	font-size:14px!important;
+	font-size:15px!important;
+  font-family:'DINWeb-Light';
+  line-height:20px;
 	padding: 5px 10px 2px 5px!important;
+  width:125px;
 }
 
 .jbb-footer {
@@ -982,6 +1014,9 @@ p#scholarship-copy span {
 	background-color:#fff;
 	height:30px;
 }
+
+.bftb-video-gallery .views-field-field-bfb-team-value {margin-bottom:-15px;}
+.bftb-video-gallery .views-field-field-bfb-city-value {margin-top:-15px;}
 
 .bftb-video-gallery .views-field-field-bfb-city-value span.field-content a, .bftb-video-gallery .views-field-field-bfb-team-value span.field-content a, .bftb-video-gallery .views-field-title span.field-content a {
 	font-family:"DINWeb-Medium";
@@ -1207,7 +1242,7 @@ h1 {
 #winners-content a span {
 	display:none;
 	position:absolute;
-	bottom:403px;
+	bottom:473px;
 	right:45px;
 }
 
@@ -1229,6 +1264,11 @@ h1 {
 #video_feat {
 	float:left;
 	margin:75px 0 0 25px;
+}
+
+#video_feat iframe {
+	width:475px;
+	height:300px;
 }
 
 #text_feat h1, #text_feat h2 {
@@ -1286,7 +1326,7 @@ h1 {
 }
 
 .box-content p {
-	margin-top:10px!important;
+	margin-top:15px!important;
 }
 
 .mustard-box .box-header {
@@ -1298,6 +1338,19 @@ h1 {
 	position:absolute;
 	bottom:25px;
 	right:75px;
+}
+
+.mustard-help {
+	width:755px;
+	text-align:center;
+}
+
+.mustard-help a {
+	color:#D33936!important;
+}
+
+.mustard-help a:hover {
+	text-decoration:underline!important;
 }
 
 .small-box .box-header h2 {
@@ -1481,7 +1534,6 @@ margin: 0px 7px 5px 7px;
 	text-decoration:none;
 	font-family: 'DINWebCondMedium';
 	margin-top: 7px;
-	display: inline-block;
 }
 
 .submitted {
@@ -1489,137 +1541,166 @@ margin: 0px 7px 5px 7px;
 }
 
 /*
-	new user sign up flow
+	NEW USER SIGN UP & REGISTER FLOW
 */
+	
+#rl-wrap {margin:0 auto 50px;width:500px;}							/*	main components padding & margins */
+#rl-content {padding:15px;}
+.rl-header {padding:0;margin-top:25px;float:left;}
+.rl-header h2 {padding:5px 15px 2px 15px!important;}
 
-.reglog-header {
-	padding:0;
-	margin-top:25px;
+#rl-content legend {display:none;}									/*	fieldset & jquery display resets */
+#rl-content fieldset {border:none;margin:0!important;padding:0;}
+#rl-content .description {display:none;}
+.invisible {display:none;}
+
+#rl-content .form-submit {											/*	submit button declarations */
+	padding: 1px 15px 0px;
+	margin:0 0 10px 175px;
+	border: none;
+	cursor: pointer;
 }
 
-.reglog-header h2 {
-	color:#000!important;
-	font-family: 'DINWeb-Medium';
-	font-size: 17px!important;
-	padding:5px 15px 2px 15px!important;
-	font-weight: 600;
-	text-align: left;
-	text-transform: uppercase;
-	background-color:#EFC123;
-	display:inline-block;
-	-moz-border-top-right-radius:6px; 
-	-webkit-border-top-right-radius:6px;
-	-khtml-border-top-right-radius:6px;
-	border-bottom-top-radius:6px;
-	-moz-border-top-left-radius:6px; 
-	-webkit-border-top-left-radius:6px;
-	-khtml-border-top-left-radius:6px;
-	border-bottom-top-left-radius:6px;
+/*	USER PROCESS STYLES	*/
+
+#bob-wrapper .bftb_step h1, 
+#bob-wrapper .bftb_step h2 {font-family:'DINWeb-Medium';text-align:center;}
+#bob-wrapper .bftb_step h1 {color:#000;font-size:31px;margin-top:5px;}
+#bob-wrapper .bftb_step h2 {color:#333;font-size:20px;font-weight:400;margin-bottom:15px;}
+
+/*	LABEL DECLARATIONS	*/
+	
+#rl-content .form-item label {width:200px;float:left;padding-top:5px}
+#rl-content .form-item label.option {width:100%;}
+
+/*	INPUT DECLARATIONS	*/
+	
+#edit-profile-receive-wrapper input, 
+#edit-profile-newsletter-wrapper input {margin-right:10px;float:right;}
+#rl-content input[type='checkbox'] {width:15px!important;float:left!important;}
+#rl-content .form-item input {
+	width:215px;
+	float:right;
+	border:none;
+}
+#rl-content .form-item input[type='text'], 
+#rl-content .form-item input[type='password'] {
+	height:25px;
+	width:250px;
+	margin:0 2px;
+	float:left;
 }
 
-a.reglog-header h2:hover {
-	color:#fff!important;
+#edit-pass-1-wrapper {margin-bottom:0;}								/*	fixes margin gap issue	*/
+#edit-pass-pass1-wrapper {margin-top:0;margin-bottom:10px;}
+#edit-pass-pass2-wrapper {margin-top:0;}
+#edit-profile-bday-wrapper {margin-top:-15px;}
+
+/*	FLOAT CLEARS	*/
+
+#rl-float, 
+#rl-content .form-item {border:none;overflow:hidden;width:100%;} 	/*	clears floated tabs to avoid inline:block	*/
+
+/*	FONT DECLARATIONS	*/
+
+.rl-header h2 {
+	font-family:'DINWeb-Medium';
+	font-size:17px!important;
+	font-weight:600;
+	text-align:left;
+	text-transform:uppercase;
 }
 
-#reglog-wrap {
-	margin:30px auto 50px;
-	width:500px;
+#rl-content .form-item label { 
+	font-family:'DINWeb-Medium';
+	font-size:16px;
+	font-weight:400;
+	text-align:left;
 }
 
-#reglog-content {
-	padding:15px;
-	background-color:#EFC123;
-	-moz-border-bottom-right-radius:6px; 
+#rl-content .form-submit {
+	font-family:'DINWebCondMedium';
+	font-size:16px;
+	letter-spacing:1px;
+}
+
+#bob-wrapper .password-strength,
+#bob-wrapper .password-confirm,
+#bob-wrapper .password-description {
+	font-family: "DINWeb-Medium";
+	font-size:15px;
+}
+
+/*	BORDER RADIUS DECLARATIONS	*/
+
+#rl-content {
+	   -moz-border-bottom-right-radius:6px;
 	-webkit-border-bottom-right-radius:6px;
-	-khtml-border-bottom-right-radius:6px;
-	border-bottom-right-radius:6px;
-	-moz-border-bottom-left-radius:6px; 
-	-webkit-border-bottom-left-radius:6px;
-	-khtml-border-bottom-left-radius:6px;
-	border-bottom-left-radius:6px;
-	-moz-border-top-right-radius:6px; 
-	-webkit-border-top-right-radius:6px;
-	-khtml-border-top-right-radius:6px;
-	border-bottom-top-radius:6px;
+	 -khtml-border-bottom-right-radius:6px;
+	        border-bottom-right-radius:6px;
+	   
+	    -moz-border-bottom-left-radius:6px;
+	 -webkit-border-bottom-left-radius:6px;
+	  -khtml-border-bottom-left-radius:6px;
+		     border-bottom-left-radius:6px;
+
+      	  -moz-border-top-right-radius:6px;
+	   -webkit-border-top-right-radius:6px;
+	    -khtml-border-top-right-radius:6px;
+		       border-top-right-radius:6px;
+}
+#rl-content .form-item input {
+		 -moz-border-radius:3px;
+	  -webkit-border-radius:3px;
+	   -khtml-border-radius:3px;
+			  border-radius:3px;
+}
+.rl-header h2 {
+		  -moz-border-top-right-radius:6px; 
+	   -webkit-border-top-right-radius:6px;
+	    -khtml-border-top-right-radius:6px;
+			   border-top-right-radius:6px;
+			
+		   -moz-border-top-left-radius:6px;
+	    -webkit-border-top-left-radius:6px;
+	     -khtml-border-top-left-radius:6px;
+	            border-top-left-radius:6px;
+}
+#rl-content .form-submit {
+	   -moz-border-radius:	12px; 
+	-webkit-border-radius:	12px;
+	 -khtml-border-radius:  12px;
+		    border-radius:  12px;
+}
+#bob-wrapper .password-description {
+		 -moz-border-radius:10px;
+	  -webkit-border-radius:10px;
+	   -khtml-border-radius:10px;
+			  border-radius:10px;
+}
+
+/*	BOX-SHADOW DECLARATIONS	*/
+	
+.rl-shadow {
 	box-shadow:			0px 20px 30px -10px #A3801C;
 	-moz-box-shadow:	0px 20px 30px -10px #A3801C;
 	-webkit-box-shadow:	0px 20px 30px -10px #A3801C;
 }
 
-#reglog-content .form-submit {
-	background-color:#E5AE00;
-	-moz-border-radius:12px; 
-	-webkit-border-radius:12px;
-	-khtml-border-radius: 12px;
-	color:#000;
-	font-size:16px;
-	padding: 1px 15px 0px;
-	font-family: 'DINWebCondMedium';
-	letter-spacing:1px;
-	margin-left:175px;
-	border: none;
-	cursor: pointer;
-}
+/*	WHAT IS GOING ON ???  */
+	
+#bob-wrapper .password-strength,
+#bob-wrapper .password-confirm {margin-top:40px;display:block;}
+#bob-wrapper .password-description {margin-bottom:45px;}
 
-.inactive {background-color:#E5AE00!important;}
-.invisible {display:none;}
+#bob-wrapper .error {color:#ddd;}
+#bob-wrapper .warning {color:#fff700}
+#bob-wrapper .password-description {background-color:#E5AE00!important;}
 
-#reglog-content legend {display:none;}
-#reglog-content fieldset {border:none;margin:0;padding:0;}
-#reglog-content .form-item label { 
-	display:inline-block;
-	font-family:"DINWeb-Medium";
-	font-weight:400;
-	font-size:16px;
-	width:200px;
-}
-
-#reglog-content .form-item label.option {width:100%;}
-
-#reglog-content .form-item input[type='text'], #reglog-content .form-item input[type='password'] {
-	display:inline-block;
-	height:25px;
-	width:250px;
-	margin:0 2px;
-	float:right;
-}
-
-#reglog-content .description {display:none;}
-
-#reglog-content .form-item label[type="text"] {
-	text-transform:lowercase;
-	font-size:16px;
-	width:200px;
-}
-
-#edit-profile-receive-wrapper input, #edit-profile-newsletter-wrapper input {margin-right:10px;}
-#edit-pass-pass1-wrapper {margin-bottom:-5px;}
-
-#reglog-content input[type='checkbox'] {width:15px!important;float:left!important;}
-
-#reglog-content .form-item input {
-	width:215px;
-	float:right;
-	border:none;
-	-moz-border-radius:3px; 
-	-webkit-border-radius:3px;
-	-khtml-border-radius: 3px;
-	border-radius:3px;
-}
-
-/*
-legal nonsense
-*/
-
-#node-735885 a.mobile_legal {
-	display:block;
-	color:#fff!important;
-	height:15px;
-	width:15px;
-	cursor:default;
-}
-
-#node-735885 a.mobile_legal:hover {
-	color:#ccc!important;
-	cursor:default;
-}
+/*	COLOR DECLARATIONS	*/
+	
+a.rl-header h2 				{color:#000!important;background-color:#EFC123;} 	/*	"register", "login" tabs' solid color	*/
+a.rl-header h2:hover 		{color:#D33936!important;}							/*	"register", "login" tabs' hover color	*/
+#rl-content 				{background-color:#EFC123;}							/*	form background color; must match "a.rl-header h2"	*/
+#rl-content .form-submit 	{color:#000;background-color:#E5AE00;}				/*	submit button background color	*/
+.inactive 					{background-color:#E5AE00!important;}				/*	darker background color for inactive tab	*/

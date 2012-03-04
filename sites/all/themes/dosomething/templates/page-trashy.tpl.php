@@ -44,9 +44,9 @@
           $nav = array(
               array('href' => $root, 'title' => 'home'),
               array('href' => $root.'/gallery', 'title' => 'gallery'),
-			  array('href' => $root.'/user-gallery', 'title' => 'user gallery'),
+			  array('href' => $root.'/user-gallery', 'title' => 'create your own'),
 			  array('href' => $root.'/project-ideas', 'title' => 'project ideas'),
-			  array('href' => $root.'/tell-us', 'title' => 'tell us about it'),
+			  array('href' => $root.'/tell-us', 'title' => 'tell us'),
           );
           foreach ($nav as &$n) {
             $path = drupal_lookup_path('source', $n['href']);

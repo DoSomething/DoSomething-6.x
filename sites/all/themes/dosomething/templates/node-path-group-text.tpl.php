@@ -39,7 +39,7 @@ if (is_null($club)) {
   return;
 }
 
-else if (date('N') === 1) {
+else if (date('N') === '1') {
   echo "Sorry, this system is not available on Mondays. Please try again tomorrow.";
   return;
 }

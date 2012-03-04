@@ -49,10 +49,29 @@ function dosomething_awards_menu() {
     'type' => MENU_CALLBACK,
   );
 
+  $items['dsawards/judge/confirm'] = array(
+    'page callback' => 'dosomething_awards_judge_confirm',
+    'access callback' => 'dosomething_awards_judge_perm',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dsawards/pull.csv'] = array(
+    'page callback' => 'dosomething_awards_pull',
+    'access callback' => 'dosomething_awards_submission_permission',
+    'type' => MENU_CALLBACK,
+  );
+
   $items['dsawards/judge/%'] = array(
     'page callback' => 'dosomething_awards_judge_app',
     'page arguments' => array(2),
     'access callback' => 'dosomething_awards_judge_perm',
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['dsawards/view/%'] = array(
+    'page callback' => 'dosomething_awards_judge_app',
+    'page arguments' => array(2, false),
+    'access callback' => 'dosomething_awards_submission_permission',
     'type' => MENU_CALLBACK,
   );
 
@@ -78,10 +97,58 @@ function dosomething_awards_theme() {
       ),
       'template' => 'templates/dsawards-judge-landing',
     ),
+    'dsawards_judge_confirm' => array(
+      'arguments' => array(
+        'incomplete' => true,
+      ),
+      'template' => 'templates/dsawards-judge-confirm',
+    ),
+    'dsawards_app' => array(
+      'arguments' => array(
+        'app' => NULL,
+        'rec' => NULL,
+      ),
+      'template' => 'templates/dsawards-app',
+    ),
   );
   return $theme;
 }
 
+/**
+ * Implements hook_block()
+ */
+
+function dosomething_awards_block($op = 'list', $delta = 0) {
+  $block = array();
+  switch ($op) {
+    case 'list':
+      $block[0]['info'] = t('Do Something Awards Judge Form');
+      return $block;
+    case 'view':
+      $block['subject'] = t('Judgment Form');
+      $block['content'] = dosomething_awards_get_judgment_form();
+      return $block;
+  }
+}
+
+function dosomething_awards_get_judgment_form() {
+  global $user;
+  $sid = arg(2);
+  module_load_include('inc', 'node', 'node.pages');
+
+  $return = <<<EOM
+<p>Scoring: The applicants should be judged on a scale of 1-10
+(1 = absolutely do not agree; 5 = neutral; 10 = totally agree).</p>
+<p>The applicant...</p>
+EOM;
+  $q = "SELECT nid FROM node WHERE title=$sid AND uid={$user->uid}";
+  $nid = db_fetch_object(db_query($q))->nid;
+  $node = node_load($nid);
+  if (!is_null($node->nid)) {
+    $return.= drupal_get_form($node->type.'_node_form', $node);
+  }
+  return $return;
+}
 /**
  * Implements hook_form_alter(&$form, &$form_state, $form_id)
  *
@@ -148,11 +215,146 @@ function dosomething_awards_judge_perm() {
 }
 
 function dosomething_awards_judge() {
-  return theme('dsawards_judge', 'test123892389283901');
+  global $user;
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $q = 'SELECT n.nid, n.title as sid, ct.field_dsa_complete_value FROM node n JOIN content_type_dsa_judge ct ON ct.nid=n.nid WHERE ct.field_dsa_complete_value IS NOT TRUE AND uid='.$user->uid;
+  $rs = db_query($q);
+  if (mysql_num_rows($rs) == 0) {
+    $apps = dosomething_awards_random_apps(10);
+    foreach ($apps as $app)
+    {
+      $node = new stdClass();
+      $node->type = 'dsa_judge';
+      $node->title = $app;
+      $node->uid = $user->uid; 
+      $node->status = 0;
+      print_r($node);
+      node_save($node);
+    }
+    $rs = db_query($q);
+  }
+  $rows = array();
+  $headers = array('Name', 'Complete %');
+  while($row = db_fetch_array($rs)) {
+    $sub = webform_get_submission(DSAPP_APP, $row['sid']);
+    $rows[] = array(l($sub->data[12]['value'][0], 'dsawards/judge/'.$row['sid']), dosomething_awards_percent_complete($row['nid']).'%');
+  }
+  $form = <<<EOM
+<form action="/dsawards/judge/confirm" method="get">
+<input type="submit" value="Submit" />
+</form>
+EOM;
+  return theme('table', $headers, $rows).$form;
+  //return theme('dsawards_judge', dosomething_awards_random_apps(10));
 }
 
-function dosomething_awards_judge_app($sid) {
-  return 'banana';
+function dosomething_awards_judge_confirm() {
+  global $user;
+  $q = 'SELECT n.nid FROM node n JOIN content_type_dsa_judge ct ON ct.nid=n.nid WHERE ct.field_dsa_complete_value IS NOT TRUE AND uid='.$user->uid;
+  $rs = db_query($q);
+  $incomplete = false;
+  $nids = array();
+  while ($row = db_fetch_array($rs)) {
+    if (dosomething_awards_percent_complete($row['nid']) != 100)
+      $incomplete = true;
+    $nids[] = $row['nid'];
+  }
+  if (!$incomplete) {
+    foreach ($nids as $nid) {
+      $judgment = node_load($nid);
+      $judgment->field_dsa_complete[0]['value'] = 1;
+      node_save($judgment);
+    }
+  }
+
+  return theme('dsawards_judge_confirm', $incomplete);
+}
+
+function dosomething_awards_pull() {
+  set_time_limit(120);
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $subs = webform_get_submissions(DSAPP_APP);
+  $recs = webform_get_submissions(DSAPP_REC);
+  foreach ($recs as $rec) {
+    $subs[$rec->data[1]['value'][0]]->rec[$rec->data[2]['value'][0]] = TRUE;
+  }
+  
+  echo 'Complete,sid,';
+  $fields = array(
+    12 => 'Project Title',
+    3 => 'Name',
+    4 => 'Cell number',
+    44 => 'Alternate phone',
+    5 => 'Email',
+    6 => 'Street Address',
+    8 => 'City',
+    7 => 'State',
+    9 => 'Zip',
+    10 => 'Gender',
+    11 => 'Birthday',
+    51 => 'Applied before?',
+    1 => 'Project posting (/node/XXX)',
+    14 => 'Short Description',
+    15 => 'Time in existence',
+    16 => 'People involved',
+    45 => 'Participant Emails',
+    17 => 'Number impacted',
+    31 => 'Recommender 1',
+    36 => 'Recommender 2',
+  );
+
+  echo implode(',', $fields) . ',R1 received?,R2 received?' . "\n";
+  foreach ($subs as $sub) {
+    $out = array(
+      ($sub->is_draft)?'no':'yes',
+      $sub->sid,
+    );
+    foreach ($fields as $k => $f) {
+      $out[] = '"'.$sub->data[$k]['value'][0].'"';
+    }
+    $out[] = $sub->rec[1];
+    $out[] = $sub->rec[2];
+    echo implode(',',$out), "\n";
+  }
+  drupal_set_header('Content-Type: text/x-comma-separated-values');
+  module_invoke_all('exit');
+  exit;
+}
+
+function dosomething_awards_judge_app($sid, $judgeForm = true) {
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $app = webform_get_submission(DSAPP_APP, $sid);
+  $recs = webform_get_submissions(DSAPP_REC);
+  $recs_valid = array();
+  foreach ($recs as $rec) {
+    if ($rec->data[1]['value'][0] == $sid)
+      $recs_valid[] = $rec;
+  }
+
+  $node = node_load(DSAPP_APP);
+  $app_return = array('sid' => $sid);
+  foreach ($node->webform['components'] as $component) {
+    if (isset($app_return[$component['form_key']])) {
+      if (!is_array($app_return[$component['form_key']])) {
+        $app_return[$component['form_key']] = array($app_return[$component['form_key']]);
+      }
+      $app_return[$component['form_key']][] = $app->data[$component['cid']]['value'][0];
+    }
+    else {
+      $app_return[$component['form_key']] = $app->data[$component['cid']]['value'][0];
+    }
+  }
+  $node = node_load(DSAPP_REC);
+  $recs_return = array();
+  for ($i = 0; $i < count($recs_valid); $i++) {
+    $recs_return[$i] = array();
+    foreach ($node->webform['components'] as $component) {
+      $recs_return[$i][$component['form_key']] = $recs_valid[$i]->data[$component['cid']]['value'][0];
+    }
+    unset($recs_return[$i]['sid']);
+  }
+
+  return theme('dsawards_app', $app_return, $recs_return);
 }
 
 function dosomething_awards_app_status($sid) {
@@ -289,7 +491,12 @@ function dosomething_awards_webform_select_options_info() {
 function dosomething_awards_options_user_projects() {
   global $user;
   if ($user->uid == 0) return;
-  $rs = db_query("SELECT n.nid, n.title FROM {node} n WHERE n.type='project' AND n.uid=%d", $user->uid);
+  if (in_array('administrator', $user->roles)) {
+    $rs = db_query("SELECT n.nid, n.title FROM {node} n WHERE n.type='project' ORDER BY n.title");
+  }
+  else {
+    $rs = db_query("SELECT n.nid, n.title FROM {node} n WHERE n.type='project' AND n.uid=%d", $user->uid);
+  }
   
   $options = array();
   while ($project = db_fetch_array($rs)) {
@@ -310,4 +517,55 @@ function dosomething_awards_load_field($nid, $field_name, $pid = NULL) {
       return $component['cid'];
     }
   }
+}
+
+function dosomething_awards_percent_complete($nid) {
+  $fields = array();
+  for ($i=1;$i<=10;$i++) { $fields[] = 'field_dsa_'.$i.'_value'; }
+  $fields = implode(',',$fields);
+  $q = "SELECT $fields FROM content_type_dsa_judge WHERE nid=$nid";
+  $rs = db_fetch_array(db_query($q));
+  $count = 0;
+  foreach (array_keys($rs) as $key) {
+    if ($rs[$key] != '') $count++;
+  }
+  return $count/10*100;
+}
+
+function dosomething_awards_random_apps($num_apps = null, $full_app = false) {
+  module_load_include('inc', 'webform', 'includes/webform.submissions');
+  $q = "SELECT sid FROM webform_submissions WHERE nid=".DSAPP_APP." AND is_draft=0";
+  $rs = db_query($q);
+  $return = array();
+  while ($row = db_fetch_array($rs)) {
+    $return[$row['sid']] = $row['sid'];
+  }
+
+  $q = "SELECT title as sid, COUNT(title) as count FROM node WHERE type='fl_judge' GROUP BY title ORDER BY count ASC, RAND()";
+  $rs = db_query($q);
+
+  $judged = array();
+  while ($row = db_fetch_array($rs)) {
+    unset($return[$row['sid']]);
+    $judged[] = $row['sid'];
+  }
+
+  // filter out apps that this judge has already judged
+  $q = "SELECT title as sid FROM node WHERE uid={$user->uid}";
+  $rs = db_query($q);
+  while ($row = db_fetch_array($rs)) {
+    unset($return[$row['sid']]);
+  }
+
+  // clean up the arrays and merge them together
+  $return = array_values($return);
+  shuffle($return);
+  $return = array_merge($return, $judged);
+
+  $return = array_slice($return, 0, $num_apps);
+  if ($full_app) {
+    $return = webform_get_submissions(array('nid' => DSAPP_APP, 'sid' => $return));
+  }
+
+  return $return;
 }

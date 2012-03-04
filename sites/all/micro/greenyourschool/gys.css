@@ -123,6 +123,11 @@
   padding-bottom: 6px;
 }
 
+#node-744085 .content {
+	margin-top:20px;
+	margin-left:-80px;
+}
+
 #block-webform-client-block-735506 {
   background: #009149;
   -webkit-border-radius: 15px;
@@ -146,12 +151,16 @@
 
 #block-webform-client-block-735506 .webform-component {
   float: left;
-  margin-left: 15px;
-  margin-bottom:0px;
+  margin-left: 10px;
 }
 
 #block-webform-client-block-735506 .webform-component:first-child {
   float: none;
+}
+
+#block-webform-client-block-735506 .webform-component-email,
+#block-webform-client-block-735506 .webform-component-textfield {
+	padding-left:12px;
 }
 
 #block-webform-client-block-735506 .webform-component label {
@@ -161,8 +170,13 @@
   font-size: 17px;
 }
 
-#block-webform-client-block-735506 #webform-component-opt-in .form-checkboxes {
-	margin-top: 0px;
+#block-webform-client-block-735506 #edit-submitted-fieldset-2-opt-in-1-wrapper label {
+  font-family: 'DINWebCond';
+}
+
+#block-webform-client-block-735506 .form-checkboxes {
+	margin:0;
+	text-align:left;
 }
 
 #block-webform-client-block-735506 #webform-component-opt-in .form-checkboxes #edit-submitted-opt-in-1-wrapper{
@@ -174,24 +188,25 @@
 }
 
 #block-webform-client-block-735506 .webform-component input.form-text {
-  width: 180px;
   line-height: 24px;
   font-size: 14px;
   border: 0;
 }
 
-#webform-client-form-735506 .form-submitold {
-  margin-top: 31px;
-  height: 34px;
-  width: 86px;
-  background: url('/sites/all/micro/t4j-2012/submit-blue.png') no-repeat;
-  position: relative; 
-  cursor: pointer;
-  border: none; 
-  float: left;
-  margin-left: 6px;
-  text-indent:-9999px;
-  text-transform: capitalize;
+#block-webform-client-block-735506 #webform-component-fieldset-2--legal a {
+	display:block;
+	color:#fff!important;
+	height:15px;
+	width:15px;
+	cursor:default;
+	font-size:18px;
+	text-decoration:none;
+}
+
+#block-webform-client-block-735506 #webform-component-fieldset-2--legala.mobile_legal a:hover {
+	color:#ccc!important;
+	text-decoration:none!important;
+	cursor:default;
 }
 
 #webform-client-form-735506 .form-submit {
@@ -206,18 +221,22 @@
   padding: 1px 10px 0px 10px;
   text-decoration:none;
   font-family: 'DINWebCondBlack';
-
   margin-top: 0px;
-
-
   position: relative; 
   cursor: pointer;
   border: none; 
-  float: left;
-  margin-left: 52px;
-margin-top: -41px;
+  float: right;
+  margin:-40px 20px 0 0;
   text-transform: capitalize;
 }
+
+
+#webform-component-fieldset-1 div, #webform-component-fieldset-2 div {float:left;}
+#block-webform-client-block-735506 fieldset {border:none;margin:0;padding:0;}
+#block-webform-client-block-735506 .form-item {margin-bottom:0;}
+#block-webform-client-block-735506 #edit-actions {float:right;}
+#block-webform-client-block-735506 #webform-component-fieldset-2 {margin:10px 10px 15px;}
+#block-webform-client-block-735506 #webform-component-fieldset-2--legal {margin-left:0;}
 
 .small-button {
   background-color: #78c848;
@@ -303,13 +322,13 @@ margin-top: -41px;
 }
 
 .webform_client_form_736100 .webform-component-textfield label,
-.webform_client_form_736100 .webform-component-email label,
+.webform_client_form_736100 .webform-component-webform_email label,
 .webform_client_form_736100 .webform-component-date .form-item label {
 	display:inline;
 }
 
 .webform_client_form_736100 .webform-component-textfield input, 
-.webform_client_form_736100 .webform-component-email input {
+.webform_client_form_736100 .webform-component-webform_email input {
 	background-color:#fff;
 	border:0;
 	padding:1px;
@@ -995,3 +1014,174 @@ div.messages a {
 .disclaimer-text {
 	
 }
+
+/*
+	NEW USER SIGN UP & REGISTER FLOW
+*/
+	
+#rl-wrap {margin:0 auto 50px;width:500px;}							/*	main components padding & margins */
+#rl-content {padding:15px;}
+.rl-header {padding:0;margin-top:25px;float:left;}
+.rl-header h2 {padding:5px 15px 2px 15px!important;}
+
+#rl-content legend {display:none;}									/*	fieldset & jquery display resets */
+#rl-content fieldset {border:none;margin:0!important;padding:0;}
+#rl-content .description {display:none;}
+.invisible {display:none;}
+
+#rl-content .form-submit {											/*	submit button declarations */
+	padding: 1px 15px 0px;
+	margin:0 0 10px 175px;
+	border: none;
+	cursor: pointer;
+}
+
+/*	USER PROCESS STYLES	*/
+#node-736100 .gys_step h1, #node-744085 .gys_step h1, #node-744085 .gys_step h2, 
+#node-736100 .gys_step h2, #node-744085 .gys_step h2 {font-family:'DINWeb-Medium';text-align:center;}
+#node-736100 .gys_step h1, #node-744085 .gys_step h1 {color:#fff;font-size:31px;margin-top:5px;}
+#node-736100 .gys_step h2, #node-744085 .gys_step h2 {color:#eee;font-size:20px;font-weight:400;margin-bottom:15px;}
+
+/*	LABEL DECLARATIONS	*/
+	
+#rl-content .form-item label {width:200px;float:left;padding-top:5px}
+#rl-content .form-item label.option {width:100%;}
+
+/*	INPUT DECLARATIONS	*/
+	
+#edit-profile-receive-wrapper input, 
+#edit-profile-newsletter-wrapper input {margin-right:10px;float:right;}
+#rl-content input[type='checkbox'] {width:15px!important;float:left!important;}
+#rl-content .form-item input {
+	width:215px;
+	float:right;
+	border:none;
+}
+#rl-content .form-item input[type='text'], 
+#rl-content .form-item input[type='password'] {
+	height:25px;
+	width:250px;
+	margin:0 2px;
+	float:right;
+}
+
+#edit-pass-1-wrapper {margin-bottom:0;}								/*	fixes margin gap issue	*/
+#edit-pass-pass1-wrapper {margin-top:0;margin-bottom:10px;}
+#edit-pass-pass2-wrapper {margin-top:0;}
+#edit-profile-bday-wrapper {margin-top:-15px;}
+
+/*	FLOAT CLEARS	*/
+
+#rl-float, 
+#rl-content .form-item {border:none;overflow:hidden;width:100%;} 	/*	clears floated tabs to avoid inline:block	*/
+
+/*	FONT DECLARATIONS	*/
+
+.rl-header h2 {
+	font-family:'DINWeb-Medium';
+	font-size:17px!important;
+	font-weight:600;
+	text-align:left;
+	text-transform:uppercase;
+}
+
+#rl-content .form-item label { 
+	font-family:'DINWeb-Medium';
+	font-size:16px;
+	font-weight:400;
+	text-align:left;
+}
+
+#rl-content .form-submit {
+	font-family:'DINWebCondMedium';
+	font-size:16px;
+	letter-spacing:1px;
+}
+
+#rl-content #edit-profile-receive-wrapper label,
+#rl-content #edit-profile-newsletter-wrapper label {
+	color:black;
+}
+
+#node-744085 .password-strength,
+#node-744085 .password-confirm,
+#node-744085 .password-description {
+	font-family: "DINWeb-Medium";
+	font-size:15px;
+}
+
+#edit-pass-pass2 {font-size:14px!important;}
+
+/*	BORDER RADIUS DECLARATIONS	*/
+
+#rl-content {
+	   -moz-border-bottom-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	 -khtml-border-bottom-right-radius:6px;
+	        border-bottom-right-radius:6px;
+	   
+	    -moz-border-bottom-left-radius:6px;
+	 -webkit-border-bottom-left-radius:6px;
+	  -khtml-border-bottom-left-radius:6px;
+		     border-bottom-left-radius:6px;
+
+      	  -moz-border-top-right-radius:6px;
+	   -webkit-border-top-right-radius:6px;
+	    -khtml-border-top-right-radius:6px;
+		       border-top-right-radius:6px;
+}
+#rl-content .form-item input {
+		 -moz-border-radius:3px;
+	  -webkit-border-radius:3px;
+	   -khtml-border-radius:3px;
+			  border-radius:3px;
+}
+.rl-header h2 {
+		  -moz-border-top-right-radius:6px; 
+	   -webkit-border-top-right-radius:6px;
+	    -khtml-border-top-right-radius:6px;
+			   border-top-right-radius:6px;
+			
+		   -moz-border-top-left-radius:6px;
+	    -webkit-border-top-left-radius:6px;
+	     -khtml-border-top-left-radius:6px;
+	            border-top-left-radius:6px;
+}
+#rl-content .form-submit {
+	   -moz-border-radius:	12px; 
+	-webkit-border-radius:	12px;
+	 -khtml-border-radius:  12px;
+		    border-radius:  12px;
+}
+#node-744085 div.password-description {
+		 -moz-border-radius:10px;
+	  -webkit-border-radius:10px;
+	   -khtml-border-radius:10px;
+			  border-radius:10px;
+}
+
+/*	BOX-SHADOW DECLARATIONS	*/
+	
+.rl-shadow {
+	box-shadow:			0px 20px 30px -10px #222;
+	-moz-box-shadow:	0px 20px 30px -10px #222;
+	-webkit-box-shadow:	0px 20px 30px -10px #222;
+}
+
+/*	WHAT IS GOING ON ???  */
+	
+#node-744085 .password-strength,
+#node-744085 .password-confirm {margin-top:40px;display:block;}
+#node-744085 .password-description {margin-bottom:45px;}
+
+#node-744085 .error {color:#C00;}
+#node-744085 .warning {color:#fff700}
+#node-744085 .password-description {background-color:#009149!important;}
+
+/*	COLOR DECLARATIONS	*/
+	
+#node-744085 a.rl-header h2 			{color:#000!important;background-color:#78C848;} 	/*	"register", "login" tabs' solid color	*/
+#node-744085 a.rl-header h2:hover 		{color:#fff!important;}								/*	"register", "login" tabs' hover color	*/
+#node-744085 #rl-content 				{background-color:#78C848;}							/*	form background color; must match "a.rl-header h2"	*/
+#node-744085 #rl-content .form-submit 	{color:#000;background-color:#009149;}				/*	submit button background color	*/
+#node-744085 .inactive 					{background-color:#009149!important;}				/*	second background color for inactive tab	*/

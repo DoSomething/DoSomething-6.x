@@ -130,6 +130,11 @@
   <?php print $head; ?> 
   <?php print $styles; ?>
   <?php print $scripts; ?>
+<!-- Code for Sharethis scripts -->
+  <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "8ee2a471-8067-40db-b002-106552723079"}); </script>
+
 </head>
 
 <body class="<?php print $classes; ?>">

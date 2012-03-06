@@ -76,6 +76,8 @@
 		
 		<div id="footnote" style="display: none; left: 185px; right: auto; top: 130px; " class=""><span style="display: block; ">Enter your phone number to get weekly updates from DoSomething.org, including campaign news and chances to win prizes and scholarships. Text <strong>STOP</strong> to opt-out.<br>Text <strong>HELP</strong> or email help@dosomething.org for help.</span></div>
 		
+		
+		<iframe width="500px" height="300px" scrolling="no"  src="https://www.google.com/fusiontables/embedviz?viz=MAP&q=select+col2+from+3136598+&h=false&lat=36.381542323695705&lng=-96.81728475&z=5&t=1&l=col2"></iframe>
 
         <?php print $content_bottom; ?>
 

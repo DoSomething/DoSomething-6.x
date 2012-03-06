@@ -93,14 +93,15 @@ function select_or_other_process($element, $edit, &$form_state, $form) {
     '#options' => $element['#options'],
     '#attributes' => $element['#attributes'],
     '#weight' => 10,
-
-    // The following values were set by the content module and need
-    // to be passed down to the nested element.
-    '#field_name' => $element['#field_name'],
-    '#delta' => $element['#delta'],
-    '#columns' => $element['#columns'],
-
   );
+
+  // The following values were set by the content module and need
+  // to be passed down to the nested element.
+  if (isset($element['#field_name'])) {
+    $element['select']['#field_name'] = $element['#field_name'];
+    $element['select']['#delta'] = $element['#delta'];
+    $element['select']['#columns'] = $element['#columns'];
+  }
 
   // If working with checkboxes, create a property so we can identify it in a
   // process function.
@@ -426,7 +427,7 @@ function select_or_other_widget(&$form, &$form_state, $field, $items, $delta = N
       $options[$key] = (isset($value) && $value !=='') ? html_entity_decode($value) : $key;
     }
     else {
-      $options[$opt] = $opt;
+      $options[$opt] = html_entity_decode($opt);
     }
   }
 
@@ -676,7 +677,7 @@ function select_or_other_content_allowed_values_alter(&$allowed_values, $field) 
         $allowed_values[$key] = (isset($value) && $value !== '') ? html_entity_decode($value) : $key;
       }
       else {
-        $allowed_values[$option] = $option;
+        $allowed_values[$option] = html_entity_decode($option);
       }
     }
 
@@ -720,15 +721,29 @@ function select_or_other_apachesolr_cck_fields_alter(&$mappings) {
  *   Boolean indicating if the key is set.
  */
 function select_or_other_multi_array_key_exists($needle, $haystack) {
-  foreach ($haystack as $key => $value) {
-    if ($needle === $key) {
-      return TRUE;
-    }
-    if (is_array($value)) {
-      if (select_or_other_multi_array_key_exists($needle, $value)) {
+  if (array_key_exists($needle, $haystack)) {
+    return TRUE;
+  }
+  else {
+    foreach ($haystack as $key => $value) {
+      if (is_array($value) && select_or_other_multi_array_key_exists($needle, $value)) {
         return TRUE;
       }
     }
   }
   return FALSE;
+}
+
+/**
+ * Implementation of hook_content_multigroup_allowed_widgets().
+ */
+function select_or_other_content_multigroup_allowed_widgets() {
+  return array('select_or_other', 'select_or_other_sort', 'select_or_other_buttons');
+}
+
+/**
+ * Implementation of hook_content_multigroup_no_remove_widgets().
+ */
+function select_or_other_content_multigroup_no_remove_widgets() {
+  return array('select_or_other', 'select_or_other_sort', 'select_or_other_buttons');
 }

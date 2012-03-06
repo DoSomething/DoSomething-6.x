@@ -2,7 +2,7 @@
 
 function ds_signup_block($op = 'list', $delta = 0, $edit = array()) {
   
- 	drupal_add_js(drupal_get_path('module', 'ds_signup') . '/js/jquery.dimensions.js');
+ 	//drupal_add_js(drupal_get_path('module', 'ds_signup') . '/js/jquery.dimensions.js');
  	  drupal_add_js(drupal_get_path('module', 'ds_signup') . '/js/jquery.tooltip.min.js');
 	  drupal_add_js(drupal_get_path('module', 'ds_signup') . '/js/tooltip.js');
 	  drupal_add_css(drupal_get_path('module', 'ds_signup') . '/css/tooltip.css');
@@ -19,7 +19,7 @@ function ds_signup_block($op = 'list', $delta = 0, $edit = array()) {
         $blocks['content'] = _ds_signup_block();
         break;
     }
-  }
+  } 
 
   return $blocks;
 }

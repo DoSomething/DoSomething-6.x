@@ -297,7 +297,6 @@ function dosomething_awards_pull() {
     14 => 'Short Description',
     15 => 'Time in existence',
     16 => 'People involved',
-    45 => 'Participant Emails',
     17 => 'Number impacted',
     31 => 'Recommender 1',
     36 => 'Recommender 2',

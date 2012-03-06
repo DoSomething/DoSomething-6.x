@@ -295,7 +295,7 @@ function spamicide_delete_confirm_submit($form, &$form_state) {
  * @param $form
  */
 function spamicide_form_alter(&$form, $form_state, $form_id) {
-  if(strpos($form_id, 'search') !== FALSE) {//ignore the search forms
+  if(strpos($form_id, 'search') !== FALSE || strpos($form_id, 'update_script') !== FALSE) {//ignore the search & update forms
     return;
   }
     $spamicide_field = _spamicide_get_field($form_id);

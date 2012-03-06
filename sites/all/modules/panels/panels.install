@@ -1,5 +1,4 @@
 <?php
-// $Id: panels.install,v 1.4.2.40 2010/10/19 20:42:32 merlinofchaos Exp $
 
 /**
  * Test requirements for installation and running.
@@ -252,7 +251,7 @@ function panels_schema_1() {
       ),
       'layout' => array(
         'type' => 'varchar',
-        'length' => '32',
+        'length' => '255',
         'default' => '',
       ),
       'layout_settings' => array(
@@ -1515,32 +1514,25 @@ function panels_update_6310() {
   return $ret;
 }
 
+/**
+ * Change panels_display.layout to match the size of panels_layout.name.
+ */
 function panels_update_6311() {
-
   $ret = array();
 
-  // fix panels_display
-  db_change_field($ret, 'panels_display', 'layout', 'layout',
-    array('type' => 'varchar', 'length' => '32', 'default' => ''));
-  db_change_field($ret, 'panels_display', 'title', 'title',
-    array('type' => 'varchar', 'length' => '255', 'default' => ''));
-  db_change_field($ret, 'panels_display', 'hide_title', 'hide_title',
-    array('type' => 'int', 'size' => 'tiny', 'default' => 0));
+  // Clear the schema cache so the change is picked up.
+  cache_clear_all('schema', 'cache');
 
-  // fix panels_pane
-  db_change_field($ret, 'panels_pane', 'panel', 'panel',
-    array('type' => 'varchar', 'length' => '32', 'default' => ''));
-  db_change_field($ret, 'panels_pane', 'type', 'type',
-    array('type' => 'varchar', 'length' => '32', 'default' => ''));
-  db_change_field($ret, 'panels_pane', 'subtype', 'subtype',
-    array('type' => 'varchar', 'length' => '64', 'default' => ''));
-  db_change_field($ret, 'panels_pane', 'shown', 'shown',
-    array('type' => 'int', 'size' => 'tiny', 'default' => 1));
-  db_change_field($ret, 'panels_pane', 'position', 'position',
-    array('type' => 'int', 'size' => 'small', 'default' => 0));
-  db_drop_index($ret, 'panels_pane', 'did');
-  db_add_index($ret, 'panels_pane', 'did_idx', array('did'));
+  // Load the schema.
+  $schema = panels_schema();
+  $table = 'panels_display';
+  $field = 'layout';
+  $spec = $schema[$table]['fields'][$field];
+
+  // Re-define the column.
+  db_change_field($ret, $table, $field, $field, $spec);
+
+  $ret[] = array('success' => TRUE, 'query' => t('Changed the panels_display.layout field to the correct size.'));
 
   return $ret;
-
 }

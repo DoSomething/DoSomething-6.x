@@ -14,7 +14,7 @@ function google_plusone_admin_settings() {
 
   // Custom javascript code to preview in real-time the button
   drupal_add_js(drupal_get_path('module', 'google_plusone') . '/google_plusone.admin.js');
-  // not good performance.. but anyway, it's only for admin page and can help for debugging.
+  // not good performance in <head>, but anyway, it's only for the admin page and can help for debugging purposes.
   $script = '<script type="text/javascript" src="http://apis.google.com/js/plusone.js">';
   drupal_set_html_head('<script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>');
 
@@ -25,8 +25,8 @@ function google_plusone_admin_settings() {
   );
   $form['display'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Display Settings'),
-    '#description' => t('These are settings for nodes: the button will be created dynamically for each node using its URL. <br />In the other hand, if you only need a block with a fixed URL like your homepage, go to the <a href="@blocks">blocks</a> page to enable and configure the <em>Google +1 Button</em> block.', array('@blocks' => url('admin/build/block'))),
+    '#title' => t('Display Settings for nodes'),
+    '#description' => t('These settings will render a button <strong>for each node</strong>, using its URL. If you only need a block with a fixed URL like your homepage, or dynamic URL for generic pages, better go to the <a href="@blocks">blocks</a> page to enable and configure the <em>Google +1 Button</em> block.', array('@blocks' => url('admin/build/block'))),
   );
   $form['display']['google_plusone_node_types'] = array(
     '#type' => 'checkboxes',
@@ -41,11 +41,11 @@ function google_plusone_admin_settings() {
     '#default_value' => variable_get('google_plusone_node_location', array('full')),
   );
   $form['display']['google_plusone_weight'] = array(
-     '#type' => 'weight',
-     '#title' => t('Weight'),
-     '#delta' => 50,
-     '#default_value' => variable_get('google_plusone_weight', '-10'),
-     '#description' => t('Heavier items will sink. The default weight -10 will show the button at the top of the node content.'),
+    '#type' => 'weight',
+    '#title' => t('Weight'),
+    '#delta' => 50,
+    '#default_value' => variable_get('google_plusone_weight', '-10'),
+    '#description' => t('Heavier items will sink. The default weight -10 will show the button at the top of the node content.'),
   );
 
 
@@ -55,24 +55,38 @@ function google_plusone_admin_settings() {
     '' => t('Standard (24px)'),
     'tall' => t('Tall (60px)'),
   );
+  $available_annotations = array(
+    'none' => t('None'),
+    'bubble' => t('Bubble (by default)'),
+    'inline' => t('Inline'),
+  );
   $default = array(
-    'count' => 0,
+    'annotation' => 'bubble',
+    'width' => '250',
     'size' => '',  // standard
     'css' => 'margin: 0 1em 1em 1em;float:right',
     'syntax' => 'g:plusone',
+    'alias' => 'aliased'
   );
-  $button_settings = variable_get('google_plusone_button_settings', $default);
+  $button_settings = array_merge($default, variable_get('google_plusone_button_settings', array()));
   $form['google_plusone_button_settings'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Button Settings'),
+    '#title' => t('Button Settings for nodes'),
     '#tree' => TRUE, // All the options in this fieldset will be grouped in 1 single variable.
-  );
-  $form['google_plusone_button_settings']['count'] = array(
-    '#type' => 'radios',
-    '#title' => t('Include count?'),
-    '#options' => array(t('Yes'), t('No')),
-    '#default_value' => $button_settings['count'],
     '#description' => google_plusone_build_preview_button($available_sizes),
+  );
+  $form['google_plusone_button_settings']['annotation'] = array(
+    '#type' => 'radios',
+    '#title' => t('Annotation: How to show the counting?'),
+    '#options' => $available_annotations,
+    '#default_value' => $button_settings['annotation'],
+  );
+  $form['google_plusone_button_settings']['width'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Width (only affects to inline annotation)'),
+    '#default_value' => $button_settings['width'],
+    '#size' => 20,
+    '#description' => t('By default recommended 250 (pixels). Minimum 120'),
   );
   $form['google_plusone_button_settings']['size'] = array(
     '#type' => 'radios',
@@ -85,7 +99,7 @@ function google_plusone_admin_settings() {
     '#title' => t('Optional wrapper with CSS'),
     '#maxlength' => 256,
     '#default_value' => $button_settings['css'],
-    '#description' => t('To help with the layout and placement of the button, it will be rendered by default inside a wrapper: <br />	&lt;div class="g-plusone-wrapper"&gt;	&lt;/div&gt;<br/>You can enter CSS rules to style this wrapper. By default <em>margin: 0 1em 1em 1em;float:right</em><br />To disable totally the wrapper, input the word <em>nowrapper</em>'),
+    '#description' => t('The button is wrapped in a div &lt;div class="g-plusone-wrapper"&gt;[button]&lt;/div&gt;<br/>. Here you can enter CSS rules to style this wrapper. By default <em>margin: 0 1em 1em 1em;float:right</em><br />To disable totally the wrapper, input the word <em>nowrapper</em>'),
   );
   $form['google_plusone_button_settings']['syntax'] = array(
     '#type' => 'radios',
@@ -94,34 +108,48 @@ function google_plusone_admin_settings() {
     '#default_value' => $button_settings['syntax'],
     '#description' => t('Two different but equivalent formats are allowed for the +1 tag. By default: g:plusone'),
   );
+  $form['google_plusone_button_settings']['alias'] = array(
+    '#type' => 'radios',
+    '#title' => t('Aliased path'),
+    '#default_value' => $button_settings['alias'],
+    '#options' => array('not_aliased' => t('Not aliased'), 'aliased' => t('Aliased')),
+    '#description' => t('By default <em>Aliased</em>. If you change this setting, <strong>be aware</strong> that Google+ will see them as different URLs, so the button will not keep the previous counting.'),
+  );
 
 
   $default_advanced = array(
-      'lang' => '',
-      'scope' => 'page_bottom_docwrite',
-      'parsetags' => 'onload',
+    'lang' => '',
+    'scope_location' => 'footer',
+    'parsetags' => 'onload',
+    'async' => 1,
   );
-  $config = variable_get('google_plusone_advanced_settings', $default_advanced);
+  $config = array_merge($default_advanced, variable_get('google_plusone_advanced_settings', $default_advanced));
   $form['google_plusone_advanced_settings'] = array(
     '#type' => 'fieldset',
     '#title' => t('Advanced Settings'),
     '#collapsed' => TRUE,
     '#tree' => TRUE, // All the options in this fieldset will be grouped in 1 single variable.
     '#collapsible' => TRUE,
-    '#description' => t('Get more information about these options from the documentation of the <a href="@api-doc">Google +1 API</a>.', array('@api-doc' => 'http://code.google.com/apis/+1button/')),
+    '#description' => t('Get more information about these options from the documentation of the <a href="@api-doc">Google +1 API</a>.', array('@api-doc' => 'https://developers.google.com/+/plugins/+1button/')),
   );
   $form['google_plusone_advanced_settings']['lang'] = array(
     '#type' => 'textfield',
     '#title' => t('Language'),
     '#default_value' => $config['lang'],
-    '#description' => t('Input the language code you want from <a href="@api-doc">this list</a>. Leave empty to use the default <em>en-Us</em> language.<br/>If your Drupal site has multiple languages enabled (using Locale module), then input <strong>the Google +1 language codes</strong> separated by commas. For example: <em>pt-br,fr,ru</em>', array('@api-doc' => 'http://code.google.com/apis/+1button/#languages')),
+    '#description' => t('Input the language code you want from <a href="@api-doc">this list</a>. Leave empty to use the default <em>en-Us</em> language.<br/>If, and only if, you have a multi-lingual site using Locale module, then you can input a list of <strong>Google +1 language codes</strong> separated by commas. For example: <em>pt-br,fr,ru</em>', array('@api-doc' => 'https://developers.google.com/+/plugins/+1button/#available-languages')),
   );
-  $form['google_plusone_advanced_settings']['scope'] = array(
+  $form['google_plusone_advanced_settings']['scope_location'] = array(
     '#type' => 'radios',
     '#title' => t('Scope'),
-    '#options' => array('page_bottom_docwrite' => t('Footer'), 'header' => t('Header')),
-    '#default_value' => $config['scope'],
+    '#options' => array('footer' => t('Footer'), 'header' => t('Header')),
+    '#default_value' => $config['scope_location'],
     '#description' => t('Location of the script file. By default: <em>Footer</em>, for performance reasons.'),
+  );
+  $form['google_plusone_advanced_settings']['async'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Load JavaScript asynchronously'),
+    '#default_value' => $config['async'],
+    '#description' => t('By default enabled. If enabled, the Google+1 JavaScript will be loaded asynchronously, preventing that the browser gets blocked (waiting for the JavaScript load) in the pages where Google+1 button is present.'),
   );
   $form['google_plusone_advanced_settings']['parsetags'] = array(
     '#type' => 'radios',
@@ -138,15 +166,17 @@ function google_plusone_admin_settings() {
  * Returns HTML for a preview button in the admin settings page.
  */
 function google_plusone_build_preview_button($sizes) {
-  $output = '';
-  $output .= '<div id="google_plusone_preview" style="display:none;">';
-  $output .= '<div style="float: right;padding:2em;margin: 0 3em 0 3em;font-size:1.2em;border: thin groove #999;">' . t('Preview of the Google +1 button:') . '<br /><br />';
+  $output = '<div id="google_plusone_preview" style="display:none;">';
+  $output .= '<div style="float: right;padding:2em;margin: 0 3em 0 3em;font-size:1.2em;border: thin groove #999;">' . t('Real time preview (annotation, width and size) for http://drupal.org') . '<br /><br />';
   foreach ($sizes as $size => $value) {
     $output .= '<div id="google_plusone_' . $size . '" style="display:none">';
-    $output .= '<div class="g-plusone" href="http://drupal.org" data-size="' . $size . '" data-count="false"></div>';
-    $output .= '<br /><br clear="all" />' . t('With counting included:') . '<br /><br />';
-    $output .= '<div class="g-plusone" href="http://drupal.org" data-size="' . $size . '" data-count="true"></div>';
-    $output .= '</div>';
+    $output .= '<br clear="all" />' . t('With no annotation:') . '<br /><br />';
+    $output .= '<div class="g-plusone" data-href="http://drupal.org" data-size="' . $size . '" data-annotation="none"></div>';
+    $output .= '<br /><br clear="all" />' . t('With bubble annotation:') . '<br /><br />';
+    $output .= '<div class="g-plusone" data-href="http://drupal.org" data-size="' . $size . '" data-annotation="bubble"></div>';
+    $output .= '<br /><br clear="all" />' . t('With inline annotation:') . '<br /><br /><div class="g-inline">';
+    $output .= '<div class="g-plusone" data-href="http://drupal.org" data-size="' . $size . '" data-annotation="inline"></div>';
+    $output .= '</div></div>';
   }
   $output .= '</div></div>';
   return $output;

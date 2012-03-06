@@ -710,6 +710,8 @@ becca-blog
 	display:none;
 }
 
+.bftb-blog img {margin:0 auto 10px;display:block;}
+
 /*.view-campaign-blog .views-field-title {
 	background:#000;
 	width: 550px;
@@ -740,6 +742,9 @@ becca-blog
 	margin-bottom:10px;
 	padding:10px;
 }
+
+.wrap-battle-wrap .blog_img {display:none;}
+#bftb-blog .blog_img {display:block;margin:0 auto 10px;}
 
 #bob-wrapper object {
 	margin:10px auto;
